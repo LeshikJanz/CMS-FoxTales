@@ -1,0 +1,67 @@
+<div class="container"><h2>Tabs </h2></div>
+<div id="exTab3" class="container">	
+
+
+<ul class="list-group" *ngFor="let item of experienceDetails">
+  <li class="list-group-item">{{item.displayName}}</li>
+
+</ul>
+  
+<!--<ul  class="nav nav-pills">
+			<li class="active">
+        <a  href="#1b" data-toggle="tab">Conent</a>
+			</li>
+			<li><a href="#2b" data-toggle="tab">Social</a>
+			</li>
+			<li><a href="#3b" data-toggle="tab">Email</a>
+			</li>
+  		<li><a href="#4a" data-toggle="tab">Galleries</a>
+			</li>
+      	<li><a href="#5a" data-toggle="tab">Interface</a>
+			</li>
+      	<li><a href="#6a" data-toggle="tab">Feeds</a>
+			</li>
+      	<li><a href="#7a" data-toggle="tab">Settings</a>
+			</li>
+		</ul>-->
+
+    <!--<nav md-tab-nav-bar>
+  <a md-tab-link
+     *ngFor="let link of navLinks"
+     [routerLink]="link"
+     routerLinkActive #rla="routerLinkActive"
+     [active]="rla.isActive">
+    {{tabLink.label}}
+  </a>
+</nav>-->
+
+        <md-tab-group>
+  <md-tab label="Conent">Content
+
+  </md-tab>
+  <md-tab label="Social">Social</md-tab>
+   <md-tab label="Email">Email</md-tab>
+     <md-tab label="Galleries">Galleries</md-tab>
+       <md-tab label="Interface">Interface</md-tab>
+         <md-tab label="Feeds">Feed</md-tab>
+           <md-tab >
+             <template md-tab-label>Settings</template>
+             <template md-tab-content>
+             <div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Dropdown button
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="#">Action</a>
+    <a class="dropdown-item" href="#">Another action</a>
+    <a class="dropdown-item" href="#">Something else here</a>
+  </div>
+</div>
+             </template>
+           </md-tab>
+</md-tab-group>
+
+
+  </div>
+
+

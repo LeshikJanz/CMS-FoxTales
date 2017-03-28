@@ -1,1 +1,923 @@
 /* You can add global styles to this file, and also import other style files */
+/*@import "node_modules/angular2-data-table/release/datatable.css";
+@import "node_modules/angular2-data-table/release/material.css";*/
+@import "https://file.myfontastic.com/Jnf54BZCm7mSjGCxNRbfp3/icons.css";
+
+body
+{
+  font-family: 'roboto', 'sans-serif';
+}
+
+#login
+{
+  min-height:100%;
+  padding-top:50px;
+  background:#f68d20;
+  overflow: hidden;
+
+}
+
+.loginWrapper
+{
+  background:#fff;
+  min-height: 300px;
+  float:none;
+  margin:auto;
+  padding: 50px;
+  padding-top: 30px;
+  max-width:450px;
+  box-shadow: 0 12px 30px #464545;
+  
+}
+
+#login .loginPop
+{
+  animation: loginappear 700ms ease-out;
+}
+
+#login .alert-danger
+{
+      position: absolute;
+    top: 365px;
+    left: 151px;
+}
+
+.loginWrapper img
+{
+  max-width:100px;
+  width:100%;
+}
+
+.loginWrapper span.tale, .loginWrapper span.tracker
+{
+  font-family: 'Roboto', sans-serif;
+  font-size:50px;
+  font-weight:300;
+  text-transform: lowercase;
+  position: relative;
+  top: 20px;
+}
+
+.loginWrapper span.tale
+{
+  color:#f68d20;
+}
+
+.loginWrapper span.tracker
+{
+  color:#b1b1b1;
+  left:-2px;
+}
+
+.loginFormWrapper
+{
+  padding:30px;
+}
+
+.loginFormWrapper input[type="text"], .loginFormWrapper input[type="password"]
+{
+  font-family: 'Roboto', 'sans-serif';
+  height:45px;
+  border: 1px solid #dedede;
+}
+
+.login-misc
+{
+  overflow:hidden;
+}
+
+.loginBtn
+{
+  float:none;
+  clear:both;
+  text-align: center;
+  margin-top: 25px;
+
+}
+
+.loginBtn button
+{
+    background: #f68d20;
+    border: none;
+    padding: 8px 35px;
+    font-weight: 600;
+    font-size: 16px;
+    text-transform: capitalize;
+    border-radius: 4px;
+    color: #fff;
+    letter-spacing: .05em;
+    transition: background 350ms linear;
+}
+
+.loginBtn button:hover
+{
+    background:#f68d20;
+}
+
+.loginAlt > div
+{
+  width:100%;
+  text-align: center;
+  margin-top:15px;
+}
+
+.loginAlt > div button
+{
+  border:none;
+  width:220px;
+  padding: 9px 10px;
+  border-radius:4px;
+  color:#fff;
+  /*font-weight: 600;*/
+}
+
+.loginAlt > div button.fb-btn
+{
+  background:#3b5998;
+
+}
+
+.loginAlt > div button.gplus-btn
+{
+  background:#dd4b39;
+
+}
+
+.login-misc label.rememberme
+{
+  font-weight: 500;
+    color: #babdbf;
+    text-transform: capitalize;
+}
+
+.login-misc a.forgot-pass
+{
+  color:#f5a14f;
+  text-transform: capitalize;
+}
+
+.login-misc a.forgot-pass:hover
+{
+  text-decoration: none;
+}
+
+#login footer
+{
+  width:100%;
+  text-align: center;
+  color:#fff;
+  font-family: 'roboto', 'sans-serif';
+  font-size:11px;
+  padding-top:40px;
+}
+
+ @media only screen and (min-width: 1402px){
+   #login footer
+   {
+     position: absolute;
+      right: 0;
+      bottom: 0;
+      left: 0;
+   }
+ }
+
+
+
+ /*
+
+DASHBOARD STYLES START HERE
+
+ */
+
+
+/* DASHBOARD header
+
+*/
+
+#main > header .nav-meta-data i.fa
+{
+  color: #d8d8d9;
+  font-size: 18px;
+  position: relative;
+  top: 20px;
+  left: -15px;
+  float: left;
+  margin-right: 10px;
+}
+
+#main > header .nav-meta-data h1
+{
+  float: left;
+  font-size: 18px;
+  text-transform: uppercase;
+  font-family: 'roboto', 'sans-serif';
+  color: #d8d8d9;
+}
+
+
+#main > header .search-wrapper
+{
+  text-align:center;
+  color:#babdbf;
+}
+
+#main > header .search-wrapper .app-search
+{
+    width: 370px;
+    margin: auto;
+    background: #7c7e81;
+    margin-top: 10px;
+    height: 35px;
+}
+
+#main > header .search-wrapper input
+{
+    height: 27px;
+    width: 300px;
+    margin-top: 4px;
+    border: none;
+    padding-left: 10px;
+    background: #7c7e81;
+    border-left: 1px solid rgba(186,189,191,0.2);
+    border-right: 1px solid rgba(186,189,191,0.2);
+    outline:none!important;
+}
+
+#main > header .search-wrapper .fa.fa-search
+{
+  position: relative;
+  left: -6px;
+}
+
+#main > header .search-wrapper .fa.fa-filter
+{
+  position: relative;
+  right: -7px;
+}
+
+#main > header .user-area
+{
+  text-align: right;
+}
+
+#main > header .user-area img#company-icon
+{
+    position: relative;
+    right: -15px;
+    top: 9px;
+}
+
+#main > header .user-area img#user-icon
+{
+  position: relative;
+  left: -10px;
+  top: 9px;
+}
+
+#main > header .user-area > span
+{
+  position: relative;
+  top: 11px;
+  left: -22px;
+  color:#fff;
+}
+
+/* DASHBOARD nav
+*/
+
+
+
+ #dashboard nav, #dashboard #main
+ {
+   float:left;
+   min-height:100%;
+ }
+
+ #dashboard nav
+ {
+   width:55px;
+   background:#f68d20;
+   transition: width .3s linear;
+   position:fixed;
+   z-index:2;
+   border-radius:0;
+   border:none;
+ }
+
+ #dashboard nav.open
+ {
+   width:160px;
+ }
+
+#dashboard #main
+{
+  padding-left:55px;
+  width:100%;
+  height:100%;
+}
+
+ #dashboard #main > header
+ {
+   width:100%;
+   background:#616366;
+   height:55px;
+ }
+
+ #dashboard #main > #content
+ {
+   background:#f5f5f5;
+   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#898b8e+2,616366+100 
+background: -moz-radial-gradient(center, ellipse cover,  #898b8e 2%, #616366 100%);
+background: -webkit-radial-gradient(center, ellipse cover,  #898b8e 2%,#616366 100%);
+background: radial-gradient(ellipse at center,  #898b8e 2%,#616366 100%); 
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#898b8e', endColorstr='#616366',GradientType=1 );*/
+
+   height:calc(100% - 55px);
+   overflow-y:auto;
+ }
+
+
+.sidebar-nav {
+    padding: 9px 0;
+}
+
+nav.navbar > ul > li
+{
+  height:55px;
+
+}
+
+nav.navbar .nav > li > a
+{
+  height: 55px;
+  /*width: 55px;*/
+  color: white !important;
+}
+
+
+
+/*.dropdown-menu .sub-menu {
+    left: 100%;
+    position: absolute;
+    top: 0;
+    visibility: hidden;
+    margin-top: -1px;
+}
+
+.dropdown-menu li:hover .sub-menu {
+    visibility: visible;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 55px;
+    background: #f7ab59;
+    border: none;
+    box-shadow: none;
+    border-radius: 0
+}*/
+
+.nav-tabs .dropdown-menu, .nav-pills .dropdown-menu, .navbar .dropdown-menu {
+    margin-top: 0;
+}
+
+.navbar-inverse .navbar-brand 
+{
+    float: left;
+    height: 55px;
+    padding: 15px 11px;
+    font-size: 18px;
+    line-height: 20px;
+}
+.navbar-brand1 
+{
+    float: left;
+    height: 55px;
+    padding: 15px 11px;
+    font-size: 18px;
+    line-height: 20px;
+}
+
+.dropdown > a:hover, .dropdown:hover > a, .dropdown > a.active
+{
+  background-color: #f7ab59!important;
+}
+
+.dropdown-menu>li
+{
+  margin-bottom:10px;
+}
+
+.dropdown-menu>li>a
+{
+  font-family: 'quicksand', 'sans-serif';
+  font-size:14px;
+}
+
+/*.dropdown-menu>li>a, .dropdown-menu>li>a
+{
+  color: #fff;
+
+  position:relative;
+}*/
+
+ .dropdown-menu>li>a:focus, .dropdown-menu>li>a:hover, .dropdown-menu>li>a.active
+ {
+    font-weight: 600;
+    color: #fff;
+    text-decoration: none;
+    background-color:transparent;
+ }
+
+.dropdown-menu>li>a:focus, .dropdown-menu>li>a:after
+{
+  content: "";
+  position: absolute;
+  width: 53%;
+  height: 1px;
+  top: 25px;
+  left: 13%;
+  visibility: hidden;
+  -webkit-transform: scaleX(0);
+  transform: scaleX(0);
+  -webkit-transition: all 0.3s ease-in-out 0s;
+  transition: all 0.3s ease-in-out 0s;
+  background:#fff;
+}
+
+
+  .dropdown-menu>li>a:focus, .dropdown-menu>li>a:hover:after, .dropdown-menu>li>a.active:after
+  {
+    visibility: visible;
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+    
+  }
+
+ .navbar
+ {
+   margin-bottom:0!important;
+       background-color: grey !important;
+ }
+ .navbar-text{
+     color: white !important;
+ }
+
+ #user-icon
+{
+  position: relative;
+  left: -10px;
+  top: 9px;
+}
+.navbar-right > span {
+    position: relative;
+    font-size: 20px;
+    right: 160px;
+    top: 15px;
+}
+
+
+
+ /*
+
+USER MANAGEMENT STYLEs
+
+
+ */
+
+ .top-panel
+ {
+   background:#fff;
+   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.15);
+   overflow:hidden;
+ }
+
+ .top-panel > .page-header
+ {
+   margin:0;
+   padding:30px;
+   font-family: 'quicksand', 'sans-serif';
+   font-weight:600;
+   font-size:18px;
+   text-transform: capitalize;
+   color:#616366;
+   border:none;
+ }
+
+.widget-area
+{
+  padding:0;
+  margin-top:3px;
+}
+
+ #users-widget
+ {
+   background: #fff;
+ }
+
+ .filters
+ {
+   overflow:hidden;
+   padding:0 30px;
+ }
+
+.edit-btn
+{
+  text-align: right;
+}
+
+.user-list-table thead > tr > th
+{
+  font-family:'quicksand', 'roboto', 'sans-serif';
+  font-size:15px;
+  font-weight:600;
+  color:#616366;
+}
+
+.user-list-table tbody > tr > td
+{
+  height:55px;
+  vertical-align: middle;
+}
+
+.user-list-table tr > td:first-child, .user-list-table tr > th:first-child
+{
+  padding-left:25px;
+}
+
+.user-list-table tr > td:last-child, .user-list-table tr > th:last-child
+{
+  padding-right:25px;
+}
+
+.user-table-wrapper
+{
+  padding:10px;
+}
+
+
+/*
+  USER CREATION
+
+*/
+
+.form-group.col-lg-4
+{
+  clear:both;
+}
+
+.modal-wrapper .user-modal
+{
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    margin-top: -100px;
+    margin-left: -215px;
+    height: 250px;
+    width: 520px;
+    background: #fff;
+    box-shadow: 0 6px 15px #464545;
+    padding:20px;
+    opacity:0;
+    transition: margin 1s linear, opacity 1s linear ;
+}
+
+.animate-modal
+{
+  display: none;
+  opacity:0;
+  margin-top:-100px;
+  transition: margin 1s linear, opacity 1s linear ;
+}
+
+.modal-wrapper
+{
+  display: none;
+  position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(0,0,0,0.4);
+}
+
+.modal-wrapper.modal-open
+{
+  display: block;
+}
+
+.modal-wrapper.modal-open .user-modal
+{
+  display:block;
+  margin-top:-150px;
+  opacity: 1;
+  transition: margin 1s linear, opacity 1s linear ;
+}
+
+.modal-wrapper .user-modal h1
+{
+    font-family: 'quicksand', 'sans-serif';
+   font-weight:600;
+   font-size:16px;
+   text-transform: capitalize;
+   color:#616366;
+}
+
+.modal-wrapper .user-modal button, .modal-wrapper .user-modal a
+{
+    background: #babdbf;
+    border: none;
+    padding: 8px 25px;
+    font-weight: 500;
+    font-size: 14px;
+    text-transform: capitalize;
+    border-radius: 4px;
+    color: #616366;
+    letter-spacing: .05em;
+    transition: background 350ms linear;
+    text-decoration:none!important;
+    height:35px;
+}
+
+.modal-wrapper .user-modal .modal-actions
+{
+  margin-top:90px;
+}
+
+.modal-wrapper .user-modal a
+{
+  margin-left:40px;
+  color:#fff;
+  background:#f68d20
+}
+
+.alert-danger
+{
+  background: transparent;
+  border: none;
+  position: relative;
+  top: 17px;
+}
+
+.form-control
+{
+  transition: border-color 0.5s linear;
+}
+
+.form-control.ng-invalid.ng-touched
+{
+  border-color:#f77371;
+}
+
+.loginWrapper.shake
+{
+  animation: shake 500ms ease-out;
+}
+
+#add-new-user, #save-user[disabled]
+{
+ background: #babdbf;
+    border: none;
+    padding: 8px 25px;
+    font-weight: 500;
+    font-size: 14px;
+    text-transform: capitalize;
+    border-radius: 4px;
+    color: #616366;
+    letter-spacing: .05em;
+    transition: background 350ms linear;
+    text-decoration: none!important;
+    height: 35px;
+    margin-top: 20px;
+    display: block;
+    max-width: 150px;
+    margin-bottom: 20px;
+}
+
+#save-user
+{
+  background:#f68d20;
+   border: none;
+    padding: 8px 25px;
+    font-weight: 500;
+    font-size: 14px;
+    text-transform: capitalize;
+    border-radius: 4px;
+    color: #fff;
+    letter-spacing: .05em;
+    transition: background 350ms linear;
+    text-decoration: none!important;
+    height: 35px;
+    margin-top: 20px;
+    display: block;
+    max-width: 150px;
+    margin-bottom: 20px;
+    transition: background 500ms linear;
+}
+
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+  
+  12.5% {
+    transform: translateX(-6px) rotateY(-5deg);
+  }
+  
+  37.5% {
+    transform: translateX(5px) rotateY(4deg);
+  }
+  
+  62.5% {
+    transform: translateX(-3px) rotateY(-2deg);
+  }
+  
+  87.5% {
+    transform: translateX(2px) rotateY(1deg);
+  }
+  
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@-webkit-keyframes loginappear {
+    from {opacity:0; margin-top:100px;}
+    to {opacity:1; margin-top:0;}
+} 
+
+#back-button
+{
+  display: block;
+    padding: 7px 35px;
+    margin-bottom: 20px;
+    background: #babdbf;
+    color: white;
+    float: left;
+}
+
+.dropdown-menu>li>a:focus, .dropdown-menu>li>a:after
+{
+  background:transparent;
+  width:100%;
+  position:static;
+  height:auto;
+  outline:none;
+}
+
+pagination-controls ul li
+{
+  font-size:14px!important;
+}
+
+pagination-controls ul li.current
+{
+  background-color:#f68d20!important;
+  color:#fff!important;
+}
+
+#forgot-password
+{
+  margin-top:40px;
+}
+
+#forgot-password h1, #forgot-password p
+{
+    text-align:center;
+}
+
+#forgot-password p
+{
+  font-size:14px;
+  padding:20px;
+}
+
+#forgot-password form
+{
+  padding:20px;
+  text-align:center;
+  margin:auto;
+  float:none;
+
+}
+
+.btn-submit
+{
+    background: #babdbf;
+    border: none;
+    padding: 8px 25px;
+    font-weight: 500;
+    font-size: 14px;
+    text-transform: capitalize;
+    border-radius: 4px;
+    color: #616366;
+    letter-spacing: .05em;
+    transition: background 350ms linear;
+    text-decoration:none!important;
+    height:35px;
+}
+
+.align-center
+{
+  margin:40px;
+  text-align:center;
+}
+
+#forgot-password .alert.alert-danger
+{
+  padding:0;
+  top:5px;
+}
+
+
+.input-tags > div
+{
+  display: inline-block;
+  padding:8px 10px;
+  background:#d8d6d6;
+  margin:10px;
+  margin-left:0;
+  border-radius:4px;
+
+}
+
+.input-tags > div span.remove-tag
+{
+  padding:3px;
+  margin-left:4px;
+
+}
+
+
+.logo-preview-wrapper
+{
+  display:block;
+  border:1px solid lightgrey;
+  border-radius:4px;
+  width:150px;
+  height:150px;
+  max-width:150px;
+  max-height:150px;
+  margin-bottom:10px;
+  overflow:hidden;
+}
+
+.logo-preview-wrapper img
+{
+  margin:0;
+  max-width:150px;
+  width:100%;
+}
+
+#upload-logo-btn
+{
+  background: #f68d20;
+  color:#fff;
+  font-weight:500;
+  cursor:pointer;
+  border-radius:4px;
+  margin:10px;
+  padding:5px 10px;
+}
+
+#logo-uploader
+{
+  display:none;
+}
+
+.dropdown-menu
+{
+  z-index:99!important;
+
+}
+
+.material.datatable
+{
+  z-index: 0;
+}
+
+.sort-btn
+{
+  position: absolute;
+  top: 9px;
+  right: 50px;
+}
+
+.datatable-header, .datatable-header-cell
+{
+  height:100px!important;
+}
+
+.datatable-header-cell span
+{
+  margin-top: 10px;
+  display: block;
+  font-size: 16px;
+}
+
+.datatable-header-cell input
+{
+  margin-top:10px;
+}

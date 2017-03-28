@@ -1,0 +1,137 @@
+<!--<div class="top-panel">
+    <h1 class="page-header">Add Experience</h1>
+    <div class="container-fluid">
+        <div class="col-lg-3 form-group">
+            <a routerLink="/events" id="add-new-user">Back</a>
+        </div>
+
+        <div class="col-lg-12">
+            <form (submit)="onSave()" [formGroup]="experienceForm">
+                
+                <div class="form-group col-lg-4">
+                    <label for="experienceName">Experience Name</label>
+                    <input type="text" class="form-control" id="experienceName" name="experienceName"
+                    formControlName="name" required>
+                    
+                </div> 
+                <div class="col-lg-8">
+                    <div *ngIf="name.touched && !name.valid" 
+                    class="alert alert-danger">
+                        Experience name is required
+                    </div>
+                </div>
+
+                <div class="form-group col-lg-4">
+                    <label for="productId">Product</label>
+                    <select class="form-control" name="product" id="productId" formControlName="productId" [(ngModel)]="product">
+                        <option *ngFor="let p of products" [value]="p.id">{{ p.name }}</option>
+                    </select>
+                </div> 
+
+                <div class="col-lg-8">
+                    <div class="alert alert-danger"
+                        *ngIf="productId.touched && !productId.valid"
+                    >
+                        Please select a product
+                    </div>
+                </div>
+                    <div style="clear:both"></div>
+                <div class="form-group col-lg-2">
+                    <label for="startDate">Start Date</label>
+                    <input type="date" class="form-control" id="startDate" name="startDate"
+                    formControlName="startDate" >
+                    
+                </div> 
+                <div class="form-group col-lg-2">
+                    <label for="endDate">End Date</label>
+                    <input type="date" class="form-control" id="endDate" name="endDate"
+                    formControlName="endDate" >
+                    
+                </div> 
+                <div class="col-lg-8">
+                    
+                </div>
+
+                <div class="form-group col-lg-4">
+                    <label for="brands">Brands</label>
+                    <input [(ngModel)]='brand' (keyup.space)="addTag(brand)" [ngModelOptions]="{standalone: true}" class="form-control" id="brands" name="brands" />
+                    <div class="input-tags">
+                        <div *ngFor="let item of experience.brands"><span>{{item}}</span><span (click)="removeTag(item)" class="remove-tag"><i  class="fa fa-close"></i></span></div>
+                    </div>
+                    
+                </div> 
+                <div class="col-lg-8">
+                    
+                </div>
+
+                
+                <div class="form-group col-lg-12">
+                    <input value="Save" type="submit" id="save-user"  [disabled]="!experienceForm.valid">
+                </div>
+                
+            </form>
+            
+        </div>
+    </div>
+   
+</div>-->
+
+<div class="container"><h2>Tabs </h2></div>
+<div id="exTab3" class="container">	
+<ul  class="nav nav-pills">
+			<li class="active">
+        <a  href="#1b" data-toggle="tab">Experiences</a>
+			</li>
+			<li><a href="#2b" data-toggle="tab">Media</a>
+			</li>
+			<li><a href="#3b" data-toggle="tab">Feed</a>
+			</li>
+  		<li><a href="#4a" data-toggle="tab">Settings</a>
+			</li>
+		</ul>
+
+			<div class="tab-content clearfix">
+			  <div class="tab-pane active" id="1b">
+         <ngx-datatable class="material" [rows]="rows" [rowHeight]="'auto'">
+  <ngx-datatable-column [width]="1000" [checkboxable]="true">
+    <template let-row="row" ngx-datatable-cell-template>
+      {{row.name}}  &nbsp;&nbsp;&nbsp;&nbsp; {{row.brands}}
+
+   
+                                 <div class="dropdown pull-right">
+  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Action
+  <span class="caret"></span></button>
+  <ul class="dropdown-menu">
+    <li><a href="">Edit</a></li>
+    <li><a href="">Clone</a></li>
+        <li><a href="">Archive</a></li>
+    <li><a href="">Assign Users</a></li>
+  </ul>
+</div>
+   <div class="btn-group pull-right" role="group" >
+  <button type="button" class="btn btn-default" [routerLink]="['content-list',row.id]">Content</button>
+  <button type="button" class="btn btn-default">Gallery</button>
+  <button type="button" class="btn btn-default">Email</button>
+    <button type="button" class="btn btn-default">Social</button>
+      <button type="button" class="btn btn-default">Experience</button>
+        <button type="button" class="btn btn-default">Feeds</button>
+</div>
+
+  
+    </template>
+  </ngx-datatable-column>
+</ngx-datatable>
+				</div>
+				<div class="tab-pane" id="2b">
+          <h3>Media</h3>
+				</div>
+        <div class="tab-pane" id="3b">
+          <h3>Feed</h3>
+				</div>
+          <div class="tab-pane" id="4a">
+          <h3>Settings</h3>
+				</div>
+			</div>
+  </div>
+
+
