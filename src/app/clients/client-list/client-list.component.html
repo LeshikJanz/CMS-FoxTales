@@ -1,0 +1,78 @@
+<!--<div class="col-lg-12 user-table-wrapper">
+    
+            <datatable
+            class="material"
+            [rows]="data"
+            [options]="options" >
+                <datatable-column name="Client Name" prop="name">
+                    <template let-sort="sort" let-row="row" let-column="column">
+                        <span (click)="sort()">Client Name</span>
+                        <div class="form-group"><input 
+                            [ngModel]='val'
+                            (ngModelChange)='dataFilter($event, column["prop"])' 
+                            type="text" 
+                            placeholder="Search by {{column['name']}}"
+                            class="form-control">
+                        </div>
+                    </template> 
+                    <template let-row="row" let-value="value">
+                        {{value}}
+                    </template>
+                </datatable-column>
+                <datatable-column name="Address">
+                    <template let-sort="sort" let-row="row" let-column="column">
+                        <span (click)="sort()">Address</span>
+                        <div class="form-group"><input 
+                            [ngModel]='val'
+                            (ngModelChange)='dataFilter($event, column["prop"])' 
+                            type="text" 
+                            placeholder="Search by {{column['name']}}"
+                            class="form-control">
+                        </div>
+                    </template>
+                <template let-row="row" let-value="value">
+                    {{value}}
+                </template>
+                </datatable-column>
+                <datatable-column name="Email">
+                    <template let-sort="sort" let-row="row" let-column="column">
+                        <span (click)="sort()">Email</span>
+                        <div class="form-group"><input 
+                            [ngModel]='val'
+                            (ngModelChange)='dataFilter($event, column["prop"])' 
+                            type="text" 
+                            placeholder="Search by {{column['name']}}"
+                            class="form-control">
+                        </div>
+                    </template>
+                <template let-row="row" let-value="value">
+                    {{value}}
+                </template>
+                </datatable-column>
+                <datatable-column name="Phone">
+                    <template let-sort="sort" let-row="row" let-column="column">
+                        <span (click)="sort()">Phone</span>
+                        <div class="form-group"><input 
+                            [ngModel]='val'
+                            (ngModelChange)='dataFilter($event, column["prop"])' 
+                            type="text" 
+                            placeholder="Search by {{column['name']}}"
+                            class="form-control">
+                        </div>
+                    </template>
+                <template let-row="row" let-value="value">
+                    {{value}}
+                </template>
+                </datatable-column>
+                <datatable-column name="">
+                <template let-row="row" let-value="value" prop="id">
+                     <a [routerLink]="['/client', value.id]">
+                        <i class="fa fa-edit"></i>
+                    </a>
+                </template>
+                </datatable-column>
+            </datatable>
+
+            
+                
+            </div>-->

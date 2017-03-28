@@ -1,0 +1,83 @@
+<nav class="navbar navbar-fixed-top">
+  <div class="container-fluid">
+   <a class="navbar-brand"><img src="src/assets/foxtales logo short.png" alt=""></a>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+         <li><a href="#">Dashboard</a></li>
+        <li><a href="/events">Events</a></li>
+         <li><a href="#">Track</a></li>
+          <li><a href="#">Admin</a></li>
+      
+      </ul>
+      <!--<form class="navbar-form navbar-left">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form>-->
+<div class="navbar-right">
+     <span class="glyphicon glyphicon-search"></span>
+            <p class="navbar-text">Michael Robinson</p>
+                    <img id="user-icon" src="src/assets/Profile Picture.png" alt="">
+                    
+</div>
+
+
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+<div id="dashboard">
+    <!--<nav class="navbar navbar-inverse navbar-fixed-left">
+        <a class="navbar-brand"><img src="assets/foxtales logo short.png" alt=""></a>
+        <ul class="nav navbar-nav">
+            <li><a><img src="assets/Dashboard.png" alt=""></a></li>
+            <li><a><img src="assets/Track.png" alt=""></a></li>
+            <li class="dropdown"><a><img src="assets/Manage.png" alt=""></a>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a routerLink="/events">Events</a></li>
+                    <li><a >Event Groups</a></li>
+                    <li><a >Gallery Moderation</a></li>
+                </ul>
+            </li>
+            <li class="dropdown"><a class="active"><img src="assets/Admin.png" alt=""></a>
+                <ul class="dropdown-menu" role="menu">
+                <li><a routerLink="/clients">Clients</a></li>
+                <li><a class="active" routerLink="/users">Users</a></li>
+                <li><a >Integrations</a></li>
+                </ul>
+            </li>
+            <li><a><img src="assets/Help.png" alt=""></a></li>
+            <li><a><img src="assets/The Den.png" alt=""></a></li>
+        </ul>
+    </nav>-->
+    <div id="main">
+        <!--<header>
+            <div class="container-fluid">
+                <div class="col-lg-3 nav-meta-data">
+                    <i class="fa fa-navicon"></i>
+                    <h1 id="nav-title">Manage</h1>
+                </div>
+                <div class="col-lg-6">
+                    <div class="search-wrapper">
+                        <div class="app-search">
+                            <i class="fa fa-search"></i>
+                            <input type="text" placeholder="Search">
+                            <i class="fa fa-filter"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 user-area">
+                    <span>Michael Robinson</span>
+                    <img id="user-icon" src="/assets/Profile Picture.png" alt="">
+                    <img id="company-icon" src="/assets/FacebookIcon.png" alt="">
+                </div>
+            </div>
+        </header>-->
+        <div id="content">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,34 @@
+.dropdown-menu .sub-menu {
+    left: 100%;
+    position: absolute;
+    top: 0;
+    visibility: hidden;
+    margin-top: -1px;
+}
+
+/*.navbar {
+    width: 80%;
+    left: 10%;
+}*/
+
+.dropdown-menu li:hover .sub-menu {
+    visibility: visible;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 55px;
+    background: #f7ab59;
+    border: none;
+    box-shadow: none;
+    border-radius: 0
+}
+
+.dropdown-menu>li>a, .dropdown-menu>li>a
+{
+  color: #fff;
+
+  position:relative;
+}
