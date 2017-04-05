@@ -30,7 +30,11 @@ import { DashboardModule } from './dashboard/dashboard.module';
 import { MomentModule } from 'angular2-moment';
 import {NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { ContentListComponent } from './content-list/content-list.component';
-import { CalendarModule } from 'angular-calendar';
+import {TabViewModule, ScheduleModule } from 'primeng/primeng';
+import * as moment from 'moment';
+
+
+
 
 
 @NgModule({
@@ -68,7 +72,8 @@ import { CalendarModule } from 'angular-calendar';
      ReactiveFormsModule,
      NgxDatatableModule,
      MaterialModule,
-     CalendarModule.forRoot()
+     TabViewModule,
+     ScheduleModule
   ],
   providers: [LoginService],
   bootstrap: [AppComponent]
