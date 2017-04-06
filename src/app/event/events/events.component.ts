@@ -3,9 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { EventListComponent } from '../event-list/event-list.component';
 import { EventService } from '../event.service';
 import { EventDatePipe } from '../../shared/event-date.pipe';
-import {  
-  ColumnMode,
-  NgxDatatableModule} from '@swimlane/ngx-datatable';
+import { ColumnMode, NgxDatatableModule} from '@swimlane/ngx-datatable';
+import {ScheduleModule, TabViewModule} from 'primeng/primeng';
+
 
 @Component({
     selector: 'events',
