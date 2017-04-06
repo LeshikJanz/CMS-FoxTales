@@ -4,13 +4,10 @@
         <!--<div class="col-lg-3 form-group">
             <a routerLink="/event" id="add-new-user">Add Event</a>
         </div>-->
-        <md-tab-group>
-  <md-tab label="Events"></md-tab>
-  <md-tab label="Event Groups"></md-tab>
-   <md-tab label="Favorited Media"></md-tab>
-</md-tab-group>
 
-        <div class="col-lg-12">
+        <p-tabView>
+    <p-tabPanel header="Events">
+      <div class="col-lg-12">
             <div class="col-lg-12 user-table-wrapper">
                 <h3>Upcoming Events</h3>
                 <event-list></event-list>
@@ -18,15 +15,39 @@
 
             <div class="col-lg-12 user-table-wrapper">
                 <h3>Recent Events</h3>
-                <!--<event-list ></event-list>-->
+                <!--<event-list ></event-list>-->              
+            </div>
+        </div>
+    </p-tabPanel>
+    <p-tabPanel header="Event Groups">
+        Event Groups
+    </p-tabPanel>
+    <p-tabPanel header="Favorited Media">
+        Favorited Media
+    </p-tabPanel>
+     <p-tabPanel header="Temp Calendar">
+         <p-schedule [events]="events"></p-schedule>
+     </p-tabPanel>
+</p-tabView>
+        <!--<md-tab-group>
+  <md-tab label="Events">        <div class="col-lg-12">
+            <div class="col-lg-12 user-table-wrapper">
+                <h3>Upcoming Events</h3>
+                <event-list></event-list>
+            </div>
+
+            <div class="col-lg-12 user-table-wrapper">
+                <h3>Recent Events</h3>
+                <event-list ></event-list>
                
 
                
             </div>
-            <mwl-calendar-month-view
- >
-</mwl-calendar-month-view>
+        </div></md-tab>
+  <md-tab label="Event Groups"><div>Event Groups</div></md-tab>
+   <md-tab label="Favorited Media"><div>Favorited Media</div></md-tab>
+</md-tab-group>-->
 
-        </div>
+
     </div>
 </div>
