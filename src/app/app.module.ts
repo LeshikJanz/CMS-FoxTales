@@ -32,6 +32,9 @@ import {NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { ContentListComponent } from './content-list/content-list.component';
 import {TabViewModule, ScheduleModule } from 'primeng/primeng';
 import * as moment from 'moment';
+import {ButtonModule} from 'primeng/primeng';
+import {SplitButtonModule} from 'primeng/primeng';
+import { ExperienceBuilderComponent } from './experience-builder/experience-builder.component';
 
 
 
@@ -59,7 +62,8 @@ import * as moment from 'moment';
     ForgotPasswordComponent,
     ResetpasswordComponent,
     EventComponent,
-    ContentListComponent
+    ContentListComponent,
+    ExperienceBuilderComponent
 
   ],
   imports: [
@@ -73,7 +77,9 @@ import * as moment from 'moment';
      NgxDatatableModule,
      MaterialModule,
      TabViewModule,
-     ScheduleModule
+     ScheduleModule,
+     ButtonModule,
+     SplitButtonModule
   ],
   providers: [LoginService],
   bootstrap: [AppComponent]
