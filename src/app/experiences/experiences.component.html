@@ -77,7 +77,70 @@
 </div>-->
 
 <div class="container"><h2>Tabs </h2></div>
-<div id="exTab3" class="container">	
+<p-tabView>
+    <p-tabPanel header="Experiences">
+			<div class="tab-content clearfix">
+			  <div class="tab-pane active" id="1b">
+         <ngx-datatable class="material" [rows]="rows" [rowHeight]="'auto'" [footerHeight]="500">
+  <ngx-datatable-column [width]="1000" [checkboxable]="true">
+    <template let-row="row" ngx-datatable-cell-template>
+      {{row.name}}  &nbsp;&nbsp;&nbsp;&nbsp; {{row.brands}}
+
+  
+                                 <!--<div class="dropdown pull-right">
+  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Action
+  <span class="caret"></span></button>
+  <ul class="dropdown-menu">
+    <li><a href="">Edit</a></li>
+    <li><a href="">Clone</a></li>
+        <li><a href="">Archive</a></li>
+    <li><a href="">Assign Users</a></li>
+  </ul>
+</div>-->
+<button pButton type="button" label="content" ></button>
+<button pButton type="button" label="gallery" ></button>
+<button pButton type="button" label="email" ></button>
+<button pButton type="button" label="social" ></button>
+<button pButton type="button" label="experience" ></button>
+<button pButton type="button" label="feeds" ></button>
+ <p-splitButton label="Action"  [model]="items"></p-splitButton>
+   <!--<div class="btn-group pull-right" role="group" >
+  <button type="button" class="btn btn-default" [routerLink]="['content-list',row.id]">Content</button>
+  <button type="button" class="btn btn-default">Gallery</button>
+  <button type="button" class="btn btn-default">Email</button>
+    <button type="button" class="btn btn-default">Social</button>
+      <button type="button" class="btn btn-default">Experience</button>
+        <button type="button" class="btn btn-default">Feeds</button>
+</div>-->
+
+  
+    </template>
+  </ngx-datatable-column>
+</ngx-datatable>
+				</div>
+				<div class="tab-pane" id="2b">
+          <h3>Media</h3>
+				</div>
+        <div class="tab-pane" id="3b">
+          <h3>Feed</h3>
+				</div>
+          <div class="tab-pane" id="4a">
+          <h3>Settings</h3>
+				</div>
+			</div>
+       
+    </p-tabPanel>
+    <p-tabPanel header="Media">
+        Content 2
+    </p-tabPanel>
+    <p-tabPanel header="Feed">
+        Content 3    
+    </p-tabPanel>
+    <p-tabPanel header="Settings">
+        Settings
+    </p-tabPanel>
+</p-tabView>
+<!--<div id="exTab3" class="container">	
 <ul  class="nav nav-pills">
 			<li class="active">
         <a  href="#1b" data-toggle="tab">Experiences</a>
@@ -132,6 +195,6 @@
           <h3>Settings</h3>
 				</div>
 			</div>
-  </div>
+  </div>-->
 
 

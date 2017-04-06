@@ -12,7 +12,8 @@ import {ExperienceService} from './experiences.service';
 import {Experience} from './experiences.model';
 import {Product} from './product.model';
 import {Http, Response, Headers, RequestOptions} from '@angular/http';
-
+import {ButtonModule} from 'primeng/primeng';
+import {SplitButtonModule} from 'primeng/primeng';
 
 @Component({
   selector: 'app-experiences',
@@ -37,6 +38,7 @@ export class ExperiencesComponent implements OnInit {
     public brand: string;
 
 public rows: any[];
+ public items: any[];
 
 
     constructor(
@@ -97,7 +99,19 @@ public rows: any[];
     
  this.rows = results.experiences;
            } );
+
+            this.items = [
+            {label: 'Edit', icon: 'fa-refresh', command: () => {
+              
+            }},
+            {label: 'Clone', icon: 'fa-close', command: () => {
+              
+            }},
+            {label: 'Archive', icon: 'fa-link', url: 'http://angular.io'},
+            {label: 'Assign User', icon: 'fa-paint-brush', routerLink: ['/theming']}
+        ];
      }
+
 
     ngOnChanges()
     {
