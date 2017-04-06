@@ -13,6 +13,7 @@ import {ExperiencesComponent} from 'app/experiences/experiences.component';
 // import {UserCreateComponent} from './user-create.component';
 // import {UserEditComponent} from './user-edit.component';
 import { ContentListComponent } from '../../content-list/content-list.component';
+import { ExperienceBuilderComponent } from '../../experience-builder/experience-builder.component';
 
 const dashboardRoutes: Routes = [
         
@@ -28,7 +29,8 @@ const dashboardRoutes: Routes = [
                 {path: 'event', component: EventComponent},
             //     {path: 'event/:id', component: EventEditComponent},
                 {path: 'events/:eventId/experience', component: ExperiencesComponent},
-                {path: 'events/:eventId/experience/content-list/:experienceId', component: ContentListComponent }
+                {path: 'events/:eventId/experience/content-list/:experienceId', component: ContentListComponent },
+                {path: 'experiencebuilder', component: ExperienceBuilderComponent }
             ]
         }
 ]

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {SelectButtonModule} from 'primeng/primeng';
+import {InputTextModule} from 'primeng/primeng';
 
 @Component({
   selector: 'app-experience-builder',
@@ -7,7 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ExperienceBuilderComponent implements OnInit {
 
-  constructor() { }
+  public experienceType: any[];
+  public selectedExperience: string;
+  public experienceName: string;
+
+  constructor() {
+    this.experienceType = [];
+    this.experienceType.push({label: 'StoryStudio', value: 'StoryStudio'});
+    this.experienceType.push({label: 'StoryRing', value: 'StoryRing'});
+    this.experienceType.push({label: 'Content Feed', value: 'Content Feed'});
+    this.experienceType.push({label: 'Future Products', value: 'Future Products'});
+   }
 
   ngOnInit() {
   }

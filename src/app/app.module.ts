@@ -34,6 +34,8 @@ import {TabViewModule, ScheduleModule } from 'primeng/primeng';
 import * as moment from 'moment';
 import {ButtonModule} from 'primeng/primeng';
 import {SplitButtonModule} from 'primeng/primeng';
+import {SelectButtonModule} from 'primeng/primeng';
+import {InputTextModule} from 'primeng/primeng';
 import { ExperienceBuilderComponent } from './experience-builder/experience-builder.component';
 
 
@@ -79,7 +81,9 @@ import { ExperienceBuilderComponent } from './experience-builder/experience-buil
      TabViewModule,
      ScheduleModule,
      ButtonModule,
-     SplitButtonModule
+     SplitButtonModule,
+     SelectButtonModule,
+     InputTextModule
   ],
   providers: [LoginService],
   bootstrap: [AppComponent]
