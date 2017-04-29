@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { AppState } from './app.service';
 
 /*
@@ -10,11 +10,7 @@ import { AppState } from './app.service';
   encapsulation: ViewEncapsulation.None,
   templateUrl: './app.component.html'
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   constructor(public appState: AppState) {
-  }
-
-  public ngOnInit() {
-    console.log('Initial App State', this.appState.state);
   }
 }
