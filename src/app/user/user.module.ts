@@ -7,7 +7,7 @@ import { ToastrModule, ToastContainerModule } from 'ngx-toastr';
 
 import { HttpService } from '../shared';
 
-import USER_ROUTES from './user.routes';
+import { USER_ROUTING } from './user.routes';
 
 import { UserService } from './user.service';
 import { UserListComponent } from './list';
@@ -23,16 +23,12 @@ import { UserEditComponent } from './edit';
     NgxErrorsModule,
     ToastrModule.forRoot(),
     ToastContainerModule.forRoot(),
-    USER_ROUTES
+    USER_ROUTING
   ],
   providers: [
     {
       provide: Http,
-      useFactory: (
-        backend: XHRBackend,
-        defaultOptions: RequestOptions,
-        injector: Injector
-      ) => new HttpService(backend, defaultOptions, injector),
+      useFactory: httpFactory,
       deps: [ XHRBackend, RequestOptions, Injector ]
     },
     UserService
@@ -43,5 +39,19 @@ import { UserEditComponent } from './edit';
     UserEditComponent
   ]
 })
-export default class UserModule {
+export class UserModule {
+}
+
+/**
+ * Http factory
+ *
+ * @param {XHRBackend} backend - Connection backend
+ * @param {RequestOptions} defaultOptions - Request options object
+ * @param {Injector} injector - Injector interface
+ * @returns {HttpService} - Http service
+ */
+export function httpFactory(backend: XHRBackend,
+                            defaultOptions: RequestOptions,
+                            injector: Injector) {
+  return new HttpService(backend, defaultOptions, injector);
 }

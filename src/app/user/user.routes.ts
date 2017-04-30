@@ -1,3 +1,4 @@
+import { ModuleWithProviders } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { UserListComponent } from './list';
@@ -10,4 +11,4 @@ const USER_ROUTES: Routes = [
   { path: 'user/:id', component: UserEditComponent }
 ];
 
-export default RouterModule.forChild(USER_ROUTES);
+export const USER_ROUTING: ModuleWithProviders = RouterModule.forChild(USER_ROUTES);
