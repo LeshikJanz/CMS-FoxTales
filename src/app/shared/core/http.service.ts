@@ -1,7 +1,7 @@
 import { Injectable, Injector } from '@angular/core';
 import {
   Request,
-  XHRBackend,
+  ConnectionBackend,
   RequestOptions,
   Response,
   Http,
@@ -22,14 +22,16 @@ export class HttpService extends Http {
   /**
    * Constructor
    *
-   * @param {XHRBackend} backend - Create XHRConnection instances
+   * @param {ConnectionBackend} backend - Connection backend
    * @param {RequestOptions} defaultOptions - Request options object
    * @param {Injector} injector - Injector interface
    * @returns {void}
    */
-  constructor(backend: XHRBackend, defaultOptions: RequestOptions, private injector: Injector) {
+  constructor(
+    backend: ConnectionBackend,
+    defaultOptions: RequestOptions,
+    private injector: Injector) {
     super(backend, defaultOptions);
-
   }
 
   /**

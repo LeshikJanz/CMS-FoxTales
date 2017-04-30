@@ -1,0 +1,12 @@
+{
+  "id": "2eb5c2ff-44f8-4664-8a67-458a39ff4e9d",
+  "firstName": "Karri",
+  "lastName": "Manns",
+  "role": "MANAGER",
+  "enabled": true,
+  "email": "karri@milk.com",
+  "phone": "425-651-7131",
+  "client": "Chocolate Milk",
+  "location": "850 Main Street Seattle, WA 98109",
+  "lastActive": "Sun Apr 30 2017 14:08:22 GMT+0300 (+03)"
+}
