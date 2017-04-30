@@ -1,4 +1,5 @@
 import { User } from './user';
+import { MOCK_USER } from './user.mock';
 
 describe('User', () => {
   it('should create an instance', () => {
@@ -6,22 +7,10 @@ describe('User', () => {
   });
 
   it('should accept values in the constructor', () => {
-    const userData = {
-      firstName: 'Patrick',
-      lastName: 'Simmons',
-      role: 'ADMIN',
-      enabled: true,
-      email: 'patrick@gopro.com',
-      phone: '985-438-7340',
-      client: 'GoPro',
-      location: '744 Nicholas Trail Apt. 181',
-      lastActive: new Date()
-    };
-
-    const user = new User(userData);
+    const user = new User(MOCK_USER);
 
     Object.keys(user).forEach((key: string) => {
-      expect(user[key]).toEqual(userData[key]);
+      expect(user[key]).toEqual(MOCK_USER[key]);
     });
   });
 });
