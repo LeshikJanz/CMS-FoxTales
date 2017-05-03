@@ -75,7 +75,10 @@ module.exports = function (options) {
           exclude: [
             // these packages have problems with their sourcemaps
             helpers.root('node_modules/rxjs'),
-            helpers.root('node_modules/@angular')
+            helpers.root('node_modules/ng2-validation'),
+            helpers.root('node_modules/ngx-toastr'),
+            helpers.root('node_modules/@angular'),
+            helpers.root('node_modules/@ultimate')
           ]
         },
 
