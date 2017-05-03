@@ -47,7 +47,7 @@ export class HttpService extends Http {
 
     return super.request(url, options)
       .catch((error: Response) => {
-        toastr.error('Error', error.json());
+        toastr.error(error.text(), 'Error', { enableHtml: true });
         return Observable.throw(error);
       });
   }
