@@ -1,3 +1,19 @@
 <h1>User List</h1>
 
-<p *ngFor="let user of users">{{ user | json }}</p>
+<div toastContainer class="toast-top-center"></div>
+
+<div *ngFor="let user of users">
+  <h4>{{ user.firstName }} {{ user.lastName }}</h4>
+  <small>{{ user | json }}</small>
+
+  <p>
+    <a href="javascript:void(0);" [routerLink]="['/user', user.id]">edit</a>
+    <a href="javascript:void(0);" (click)="deleteUser(user.id)">delete</a>
+    <a href="javascript:void(0);" (click)="archiveUser(user.id)">archive</a>
+    <a href="javascript:void(0);" (click)="unarchiveUser(user.id)">unarchive</a>
+  </p>
+</div>
+
+<div>
+  <button type="button" [routerLink]="['/user']">add new user</button>
+</div>

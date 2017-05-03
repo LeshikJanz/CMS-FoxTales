@@ -1,1 +1,136 @@
 <h1>User Create</h1>
+
+<form
+  [formGroup]="userForm"
+  (ngSubmit)="addUser(userForm.value)"
+  novalidate>
+
+  <!-- First Name -->
+  <div>
+    <label for="firstName">First Name</label>
+    <input
+      id="firstName"
+      type="text"
+      formControlName="firstName"
+      placeholder="First Name">
+
+    <div ngxErrors="firstName">
+      <div ngxError="required" when="touched">
+        Field is required
+      </div>
+    </div>
+  </div>
+
+  <!-- Last Name -->
+  <div>
+    <label for="lastName">Last Name</label>
+    <input
+      id="lastName"
+      type="text"
+      formControlName="lastName"
+      placeholder="Last Name">
+
+    <div ngxErrors="lastName">
+      <div ngxError="required" when="touched">
+        Field is required
+      </div>
+    </div>
+  </div>
+
+  <!-- Email -->
+  <div>
+    <label for="email">Email</label>
+    <input
+      id="email"
+      type="email"
+      formControlName="email"
+      placeholder="Email">
+
+    <div ngxErrors="email">
+      <div ngxError="required" when="touched">
+        Field is required
+      </div>
+      <div ngxError="email" when="dirty">
+        Invalid value
+      </div>
+    </div>
+  </div>
+
+  <!-- Phone -->
+  <div>
+    <label for="phone">Phone</label>
+    <input
+      id="phone"
+      type="text"
+      formControlName="phone"
+      placeholder="Phone">
+
+    <div ngxErrors="phone">
+      <div ngxError="required" when="touched">
+        Field is required
+      </div>
+      <div ngxError="phone" when="dirty">
+        Invalid value
+      </div>
+    </div>
+  </div>
+
+  <!-- Location -->
+  <div>
+    <label for="location">Location</label>
+    <input
+      id="location"
+      type="text"
+      formControlName="location"
+      placeholder="Location">
+
+    <div ngxErrors="location">
+      <div ngxError="required" when="touched">
+        Field is required
+      </div>
+    </div>
+  </div>
+
+  <!-- Client -->
+  <div>
+    <label for="clientId">Client</label>
+    <select
+      id="clientId"
+      formControlName="clientId">
+      <option value="">Select</option>
+      <option value="1">Client 1</option>
+      <option value="2">Client 2</option>
+    </select>
+
+    <div ngxErrors="clientId">
+      <div ngxError="required" when="touched">
+        Field is required
+      </div>
+    </div>
+  </div>
+
+  <!-- Role -->
+  <div>
+    <label for="roles">Role</label>
+    <select
+      id="roles"
+      formControlName="roles">
+      <option value="">Select</option>
+      <option value="1">Role 1</option>
+      <option value="2">Role 2</option>
+    </select>
+
+    <div ngxErrors="roles">
+      <div ngxError="required" when="touched">
+        Field is required
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <input
+      type="submit"
+      [disabled]="userForm.invalid"
+      value="Done">
+  </div>
+</form>

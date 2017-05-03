@@ -2,6 +2,7 @@ import { NgModule, Injector } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Http, HttpModule, RequestOptions, XHRBackend } from '@angular/http';
+import { CustomFormsModule } from 'ng2-validation';
 import { NgxErrorsModule } from '@ultimate/ngxerrors';
 import { ToastrModule, ToastContainerModule } from 'ngx-toastr';
 
@@ -19,6 +20,7 @@ import { UserEditComponent } from './edit';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    CustomFormsModule,
     HttpModule,
     NgxErrorsModule,
     ToastrModule.forRoot(),

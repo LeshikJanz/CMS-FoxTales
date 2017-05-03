@@ -1,4 +1,4 @@
-import { IUser } from './user.interface';
+import { IUser, IUserRole } from './user.interface';
 
 /**
  * User entity
@@ -10,6 +10,13 @@ export class User implements IUser {
    * @type {string}
    */
   public id: string;
+
+  /**
+   * Client organization
+   *
+   * @type {string}
+   */
+  public clientId: string;
 
   /**
    * First name
@@ -26,20 +33,6 @@ export class User implements IUser {
   public lastName: string;
 
   /**
-   * Role
-   *
-   * @type {string}
-   */
-  public role: string;
-
-  /**
-   * Is user enabled?
-   *
-   * @type {boolean}
-   */
-  public enabled: boolean;
-
-  /**
    * Email
    *
    * @type {string}
@@ -54,11 +47,18 @@ export class User implements IUser {
   public phone: string;
 
   /**
-   * Client organization
+   * Roles
    *
-   * @type {string}
+   * @type {IUserRole[]}
    */
-  public client: string;
+  public roles: IUserRole[];
+
+  /**
+   * Is user active?
+   *
+   * @type {boolean}
+   */
+  public isActive: boolean;
 
   /**
    * Location
