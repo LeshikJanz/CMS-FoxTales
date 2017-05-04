@@ -67,7 +67,7 @@ export class ClientService {
    * @returns {Observable<Response>} - Response
    */
   public deleteClient(id: string): Observable<Response> {
-    return this.http.get(`/assets/mock-data/client/empty.json`);
+    return this.http.get(`/assets/mock-data/empty.json`);
   }
 
   /**
@@ -77,7 +77,7 @@ export class ClientService {
    * @returns {Observable<Response>} - Response
    */
   public archiveClient(id: string): Observable<Response> {
-    return this.http.get(`/assets/mock-data/client/empty.json`);
+    return this.http.get(`/assets/mock-data/empty.json`);
   }
 
   /**
@@ -87,6 +87,6 @@ export class ClientService {
    * @returns {Observable<Response>} - Response
    */
   public unarchiveClient(id: string): Observable<Response> {
-    return this.http.get(`/assets/mock-data/client/empty.json`);
+    return this.http.get(`/assets/mock-data/empty.json`);
   }
 }

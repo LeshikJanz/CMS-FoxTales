@@ -67,7 +67,7 @@ export class UserService {
    * @returns {Observable<Response>} - Response
    */
   public deleteUser(id: string): Observable<Response> {
-    return this.http.get(`/assets/mock-data/user/empty.json`);
+    return this.http.get(`/assets/mock-data/empty.json`);
   }
 
   /**
@@ -77,7 +77,7 @@ export class UserService {
    * @returns {Observable<Response>} - Response
    */
   public archiveUser(id: string): Observable<Response> {
-    return this.http.get(`/assets/mock-data/user/empty.json`);
+    return this.http.get(`/assets/mock-data/empty.json`);
   }
 
   /**
@@ -87,6 +87,6 @@ export class UserService {
    * @returns {Observable<Response>} - Response
    */
   public unarchiveUser(id: string): Observable<Response> {
-    return this.http.get(`/assets/mock-data/user/empty.json`);
+    return this.http.get(`/assets/mock-data/empty.json`);
   }
 }
