@@ -1,0 +1,30 @@
+{
+  "id": "2eb5c2ff-44f8-4664-8a67-458a39ff4e9d",
+  "logo": "http://placeholder.pics/svg/100/DEDEDE/555555/Logo",
+  "name": "Air New Zealand",
+  "email": "air@zealand.com",
+  "address": "850 Main Street Seattle, WA 98109",
+  "phone": "425-651-7131",
+  "city": "Houston",
+  "state": "TX",
+  "freshBookUrl": "freshbooks/zootopia21083",
+  "socialAccounts": [
+    "facebook.com/zootopia21083",
+    "twitter.com/zootopia21083",
+    "instagram.com/zootopia21083"
+  ],
+  "licenses": [
+    {
+      "id": "a2896d75-9d9b-48ec-ac8b-03e4864d55ed",
+      "name": "enterprise"
+    },
+    {
+      "id": "681f2133-4c04-49de-9528-85df12dade4a",
+      "name": "partner"
+    },
+    {
+      "id": "ca1b0e56-24ea-482f-9d97-50c63175c0b0",
+      "name": "internal"
+    }
+  ]
+}

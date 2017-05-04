@@ -1,0 +1,19 @@
+<h1>Client List</h1>
+
+<div toastContainer class="toast-top-center"></div>
+
+<div *ngFor="let client of clients">
+  <h4>{{ client.name }}</h4>
+  <small>{{ client | json }}</small>
+
+  <p>
+    <a href="javascript:void(0);" [routerLink]="['/client', client.id]">edit</a>
+    <a href="javascript:void(0);" (click)="deleteClient(client.id)">delete</a>
+    <a href="javascript:void(0);" (click)="archiveClient(client.id)">archive</a>
+    <a href="javascript:void(0);" (click)="unarchiveClient(client.id)">unarchive</a>
+  </p>
+</div>
+
+<div>
+  <button type="button" [routerLink]="['/client']">add new client</button>
+</div>
