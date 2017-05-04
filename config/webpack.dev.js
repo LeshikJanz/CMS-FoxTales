@@ -176,6 +176,9 @@ module.exports = function (options) {
             '@angular/router',
             '@angularclass/hmr',
             'rxjs',
+            '@ultimate/ngxerrors',
+            'ng2-validation',
+            'ngx-toastr'
           ]
         },
         dllDir: helpers.root('dll'),
