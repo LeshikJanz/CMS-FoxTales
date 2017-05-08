@@ -11,10 +11,12 @@
   [rows]="clients"
   [cols]="cols"
   [rowsCount]="totalClients"
+  [actions]="actions"
   (sortChanged)="onSortChanged($event)"
   (limitChanged)="onLimitChanged($event)"
   (searchChanged)="onSearchChanged($event)"
-  (pageChanged)="onPageChanged($event)">
+  (pageChanged)="onPageChanged($event)"
+  (actionChanged)="onActionChanged($event)">
 </data-table>
 
 <div>

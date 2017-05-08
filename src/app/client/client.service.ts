@@ -82,7 +82,9 @@ export class ClientService {
    * @returns {Observable<Response>} - Response
    */
   public archiveClient(id: string): Observable<Response> {
-    return this.http.get(`/assets/mock-data/empty.json`);
+    return this.http.post(`${process.env.API_URL}/Clients/Archive`, {
+      selectedIds: [ id ]
+    });
   }
 
   /**
@@ -94,7 +96,9 @@ export class ClientService {
    * @returns {Observable<Response>} - Response
    */
   public unarchiveClient(id: string): Observable<Response> {
-    return this.http.get(`/assets/mock-data/empty.json`);
+    return this.http.post(`${process.env.API_URL}/Clients/UnArchive`, {
+      selectedIds: [ id ]
+    });
   }
 
   /**

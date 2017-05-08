@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { ICol } from '../../shared/table';
-import { IClient, IClientList, IClientFilter } from '../client.interface';
+import { ICol, ITableAction } from '../../shared/table';
+import { IClientList, IClientFilter } from '../client.interface';
 import { Client } from '../client';
 import { ClientService } from '../client.service';
 
@@ -33,12 +34,23 @@ export class ClientListComponent implements OnInit {
    * @type {ICol[]}
    */
   public cols: ICol[] = [
-    { id: 'name',    title: 'Client Name', format: 'default' },
-    { id: 'address', title: 'Address',     format: 'default' },
-    { id: 'city',    title: 'City',        format: 'default' },
-    { id: 'state',   title: 'State',       format: 'default' },
-    { id: 'email',   title: 'Email',       format: 'default' },
-    { id: 'phone',   title: 'Phone',       format: 'default' }
+    { id: 'name',    title: 'Client Name', format: 'default',  searchable: true },
+    { id: 'address', title: 'Address',     format: 'default',  searchable: true },
+    { id: 'city',    title: 'City',        format: 'default',  searchable: true },
+    { id: 'state',   title: 'State',       format: 'default',  searchable: true },
+    { id: 'email',   title: 'Email',       format: 'default',  searchable: true },
+    { id: 'phone',   title: 'Phone',       format: 'default',  searchable: true }
+  ];
+
+  /**
+   * Row actions
+   *
+   * @type {ITableAction[]}
+   */
+  public actions: ITableAction[] = [
+    { title: 'Edit',      callback: 'editClient' },
+    { title: 'Archive',   callback: 'archiveClient' },
+    { title: 'Unarchive', callback: 'unarchiveClient' }
   ];
 
   /**
@@ -59,11 +71,16 @@ export class ClientListComponent implements OnInit {
   /**
    * Constructor
    *
+   * @param {Router} router - Router
    * @param {ToastrService} toastrService - Toastr service
    * @param {ClientService} clientService - Client service
    * @returns {void}
    */
-  constructor(private toastrService: ToastrService, private clientService: ClientService) {
+  constructor(
+    private router: Router,
+    private toastrService: ToastrService,
+    private clientService: ClientService
+  ) {
   }
 
   /**
@@ -88,6 +105,16 @@ export class ClientListComponent implements OnInit {
       this.clients = clients.result;
       this.totalClients = clients.totalRowCount;
     });
+  }
+
+  /**
+   * Redirect to client edit page
+   *
+   * @param {string} id - Client id
+   * @returns {Promise<boolean>}
+   */
+  public editClient(id: string): Promise<boolean> {
+    return this.router.navigate(['/client', id]);
   }
 
   /**
@@ -177,5 +204,17 @@ export class ClientListComponent implements OnInit {
   public onTypeChanged(type: number): void {
     this.filter.currentFilter = type;
     this.getClients();
+  }
+
+  /**
+   * On action changed
+   *
+   * @param {any} action - Action
+   * @returns {void}
+   */
+  public onActionChanged(action: any): void {
+    if (this[action.callback]) {
+      this[action.callback](action.id);
+    }
   }
 }
