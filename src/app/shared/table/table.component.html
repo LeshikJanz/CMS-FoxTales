@@ -4,21 +4,31 @@
       <tr>
         <th *ngFor="let col of cols">
           <label (click)="changeSort(col)">{{ col.title }}</label>
-          <div>
+          <div *ngIf="col.searchable">
             <input
               type="text"
               placeholder="Search"
               (input)="searchQuery[col.id].next($event.target.value)">
           </div>
         </th>
+        <th *ngIf="actions"></th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let row of rows">
         <td
           *ngFor="let col of cols"
-          (click)="clickRow(row)">
-          {{ row[col.id] | myFormatCell:col.format:col.formatOptions }}
+          (click)="clickRow(row)"
+          [innerHtml]="row[col.id] | myFormatCell:col.format:col.formatOptions">
+        </td>
+        <td *ngIf="actions">
+          <select (change)="changeAction()" [(ngModel)]="currentAction">
+            <option
+              *ngFor="let action of actions"
+              [ngValue]="{ id: row.id, callback: action.callback }">
+              {{ action.title }}
+            </option>
+          </select>
         </td>
       </tr>
     </tbody>

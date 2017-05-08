@@ -3,6 +3,7 @@ import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
 import { ICol } from './col.interface';
+import { ITableAction } from './action.interface';
 
 @Component({
   selector: 'data-table',
@@ -32,6 +33,14 @@ export class TableComponent implements OnInit {
    */
   @Input()
   public rowsCount: number = 0;
+
+  /**
+   * Row actions
+   *
+   * @type {ITableAction[]}
+   */
+  @Input()
+  public actions: ITableAction[];
 
   /**
    * Row click event emitter
@@ -72,6 +81,14 @@ export class TableComponent implements OnInit {
    */
   @Output()
   public pageChanged: EventEmitter<number> = new EventEmitter();
+
+  /**
+   * Action event emitter
+   *
+   * @type {EventEmitter}
+   */
+  @Output()
+  public actionChanged: EventEmitter<any> = new EventEmitter();
 
   /**
    * Search query
@@ -137,6 +154,13 @@ export class TableComponent implements OnInit {
   public sort: boolean = true;
 
   /**
+   * Current action
+   *
+   * @type {ITableAction}
+   */
+  public currentAction: ITableAction;
+
+  /**
    * On directive init
    *
    * @returns {void}
@@ -152,6 +176,10 @@ export class TableComponent implements OnInit {
    */
   public buildSearch(): void {
     this.cols.forEach((col: ICol) => {
+      if (!col.searchable) {
+        return;
+      }
+
       this.searchQuery[col.id] = new Subject<string>();
       this.searchQuery[col.id]
         .debounceTime(400)
@@ -221,6 +249,15 @@ export class TableComponent implements OnInit {
       : this.page * this.limit;
 
     this.pageChanged.emit(this.page);
+  }
+
+  /**
+   * Action changed event
+   *
+   * @returns {void}
+   */
+  public changeAction(): void {
+    this.actionChanged.emit(this.currentAction);
   }
 
   /**
