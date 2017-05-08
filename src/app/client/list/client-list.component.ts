@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
-import { IClient } from '../client.interface';
+import { IClient, IClientList, IClientFilter } from '../client.interface';
 import { Client } from '../client';
 import { ClientService } from '../client.service';
 
@@ -18,6 +18,28 @@ export class ClientListComponent implements OnInit {
    * @type {Client[]}
    */
   public clients: Client[];
+
+  /**
+   * Filter
+   *
+   * @type {IClientFilter}
+   */
+  public filter: IClientFilter = {
+    pageingInfo: {
+      currentPage: 0,
+      pageRowCount: 10
+    },
+    currentFilter: 1,
+    currentSortType: 1,
+    isAscendantSort: true
+  };
+
+  /**
+   * Total clients
+   *
+   * @type {number}
+   */
+  public totalClients: number = 0;
 
   /**
    * Constructor
@@ -46,23 +68,11 @@ export class ClientListComponent implements OnInit {
    */
   public getClients(): void {
     this.clientService
-      .getClients()
-      .subscribe((clients: IClient[]) => this.clients = clients);
-  }
-
-  /**
-   * Delete client by id
-   *
-   * @param {string} id - Client id
-   * @returns {void}
-   */
-  public deleteClient(id: string): void {
-    this.clientService
-      .deleteClient(id)
-      .subscribe(() => {
-        this.toastrService.success('Client has been removed successfully.');
-        this.getClients();
-      });
+      .getClients(this.filter)
+      .subscribe((clients: IClientList) => {
+      this.clients = clients.result;
+      this.totalClients = clients.totalRowCount;
+    });
   }
 
   /**

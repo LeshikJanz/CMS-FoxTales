@@ -1,4 +1,4 @@
-import { IClient, IClientLicense } from './client.interface';
+import { IClient } from './client.interface';
 
 /**
  * Client entity
@@ -9,14 +9,35 @@ export class Client implements IClient {
    *
    * @type {string}
    */
-  public id: string;
+  public id?: string;
+
+  /**
+   * Tenant id
+   *
+   * @type {string}
+   */
+  public tenantId?: string;
+
+  /**
+   * Is active?
+   *
+   * @type {boolean}
+   */
+  public isActive?: boolean;
 
   /**
    * Logo url
    *
    * @type {string}
    */
-  public logo: string;
+  public logo?: string;
+
+  /**
+   * Logo bytes
+   *
+   * @type {string}
+   */
+  public logoBytes?: string;
 
   /**
    * Client name
@@ -24,6 +45,13 @@ export class Client implements IClient {
    * @type {string}
    */
   public name: string;
+
+  /**
+   * Client display name
+   *
+   * @type {string}
+   */
+  public displayName: string;
 
   /**
    * Email
@@ -51,21 +79,21 @@ export class Client implements IClient {
    *
    * @type {string}
    */
-  public city: string;
+  public city?: string;
 
   /**
    * State
    *
    * @type {string}
    */
-  public state: string;
+  public state?: string;
 
   /**
    * Freshbook url
    *
    * @type {string}
    */
-  public freshBookUrl: string;
+  public freshBooks: string;
 
   /**
    * Social accounts
@@ -77,9 +105,44 @@ export class Client implements IClient {
   /**
    * Licenses
    *
-   * @type {IClientLicense[]}
+   * @type {string[]}
    */
-  public licenses: IClientLicense[];
+  public selectedLicenses?: string[];
+
+  /**
+   * Tenant
+   *
+   * @type {string}
+   */
+  public tenant?: string;
+
+  /**
+   * Domain
+   *
+   * @type {string}
+   */
+  public domain?: string;
+
+  /**
+   * Client id
+   *
+   * @type {string}
+   */
+  public clientId?: string;
+
+  /**
+   * Client secret
+   *
+   * @type {string}
+   */
+  public clientSecret?: string;
+
+  /**
+   * Client secret valid date
+   *
+   * @type {string}
+   */
+  public clientSecretValidTo?: string;
 
   /**
    * Constructor

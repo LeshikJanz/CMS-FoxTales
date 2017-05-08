@@ -5,6 +5,7 @@ import { Http, HttpModule, RequestOptions, XHRBackend } from '@angular/http';
 import { CustomFormsModule } from 'ng2-validation';
 import { NgxErrorsModule } from '@ultimate/ngxerrors';
 import { ToastrModule, ToastContainerModule } from 'ngx-toastr';
+import { AgmCoreModule } from '@agm/core';
 
 import { HttpService } from '../shared';
 
@@ -25,6 +26,10 @@ import { ClientEditComponent } from './edit';
     NgxErrorsModule,
     ToastrModule.forRoot(),
     ToastContainerModule.forRoot(),
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyAW7s_PMAH6CJRMMXRVWnQPevWqipMkCyA',
+      libraries: [ 'places' ]
+    }),
     CLIENT_ROUTING
   ],
   providers: [

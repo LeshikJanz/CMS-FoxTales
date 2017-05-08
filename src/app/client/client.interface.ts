@@ -2,23 +2,52 @@
  * Client interface
  */
 export interface IClient {
-  id: string;
-  logo: string;
+  id?: string;
+  tenantId?: string;
+  isActive?: boolean;
+  logo?: string;
+  logoBytes?: string;
   name: string;
+  displayName: string;
   email: string;
   address: string;
   phone: string;
-  city: string;
-  state: string;
-  freshBookUrl: string;
+  city?: string;
+  state?: string;
+  freshBooks: string;
   socialAccounts: string[];
-  licenses: IClientLicense[];
+  selectedLicenses?: string[];
+  tenant?: string;
+  domain?: string;
+  clientId?: string;
+  clientSecret?: string;
+  clientSecretValidTo?: string;
 }
 
 /**
- * Client license interface
+ * Client list interface
  */
-export interface IClientLicense {
-  id: string;
-  name: string;
+export interface IClientList {
+  totalRowCount: number;
+  currentPageNumber: number;
+  numberRowsOnPage: number;
+  result: IClient[];
+  suscess: boolean;
+  message: string;
+}
+
+/**
+ * Client filter interface
+ */
+export interface IClientFilter {
+  pageingInfo: {
+    currentPage: number;
+    pageRowCount: number;
+  };
+  currentFilter: number;
+  currentSortType: number;
+  isAscendantSort: boolean;
+  searchFields?: {
+    [index: string]: string;
+  };
 }

@@ -1,133 +1,158 @@
-<h1>{{ client?.name }}</h1>
+<h1>{{ client?.displayName }}</h1>
 
-<img src="{{ client?.logo }}">
+<img src="{{ client?.logo }}" alt="">
 
 <form
-  *ngIf="client"
-  [formGroup]="clientForm"
-  (ngSubmit)="updateClient(clientForm.value)"
+  (ngSubmit)="updateClient()"
   novalidate>
 
-  <!-- Name -->
-  <div>
-    <label for="name">Client Name</label>
-    <input
-      id="name"
-      type="text"
-      [(ngModel)]="client.name"
-      formControlName="name"
-      placeholder="Name">
+  <div [formGroup]="clientForm">
+    <!-- Logo -->
+    <div>
+      <label for="logoBytes">Logo</label>
+      <input
+        id="logoBytes"
+        type="file"
+        accept="image/*"
+        (change)="extractLogo($event)"
+        formControlName="logoBytes">
+    </div>
 
-    <div ngxErrors="name">
-      <div ngxError="required" when="touched">
-        Field is required
+    <!-- Name -->
+    <div>
+      <label for="name">Client Name</label>
+      <input
+        id="name"
+        type="text"
+        [(ngModel)]="client.name"
+        formControlName="name"
+        placeholder="Name">
+
+      <div ngxErrors="name">
+        <div ngxError="required" when="touched">
+          Field is required
+        </div>
+      </div>
+    </div>
+
+    <!-- Display Name -->
+    <div>
+      <label for="displayName">Display Name</label>
+      <input
+        id="displayName"
+        type="text"
+        [(ngModel)]="client.displayName"
+        formControlName="displayName"
+        placeholder="Display Name">
+
+      <div ngxErrors="displayName">
+        <div ngxError="required" when="touched">
+          Field is required
+        </div>
+      </div>
+    </div>
+
+    <!-- Email -->
+    <div>
+      <label for="email">Email</label>
+      <input
+        id="email"
+        type="email"
+        [(ngModel)]="client.email"
+        formControlName="email"
+        placeholder="Email">
+
+      <div ngxErrors="email">
+        <div ngxError="required" when="touched">
+          Field is required
+        </div>
+        <div ngxError="email" when="dirty">
+          Invalid value
+        </div>
+      </div>
+    </div>
+
+    <!-- Address -->
+    <div>
+      <label for="address">Address</label>
+      <input
+        id="address"
+        type="text"
+        [(ngModel)]="client.address"
+        formControlName="address"
+        autocorrect="off"
+        autocapitalize="off"
+        spellcheck="off"
+        #address
+        placeholder="Search for Location">
+
+      <div ngxErrors="address">
+        <div ngxError="required" when="touched">
+          Field is required
+        </div>
+      </div>
+    </div>
+
+    <!-- Phone -->
+    <div>
+      <label for="phone">Phone</label>
+      <input
+        id="phone"
+        type="text"
+        [(ngModel)]="client.phone"
+        formControlName="phone"
+        placeholder="Phone">
+
+      <div ngxErrors="phone">
+        <div ngxError="required" when="touched">
+          Field is required
+        </div>
+      </div>
+    </div>
+
+    <!-- FreshBook -->
+    <div>
+      <label for="freshBooks">FreshBook Url</label>
+      <input
+        id="freshBooks"
+        type="text"
+        [(ngModel)]="client.freshBooks"
+        formControlName="freshBooks"
+        placeholder="FreshBook Url">
+
+      <div ngxErrors="freshBooks">
+        <div ngxError="required" when="touched">
+          Field is required
+        </div>
+      </div>
+    </div>
+
+    <!-- Social Accounts -->
+    <div formArrayName="socialAccounts">
+      <label>Social Accounts</label>
+
+      <div *ngFor="let account of socialAccounts.controls">
+        <input
+          type="text"
+          [formControl]="account"
+          placeholder="Social Account Url">
+      </div>
+
+      <div>
+        <a href="javascript:void(0)" (click)="addSocialAccount()">add</a>
       </div>
     </div>
   </div>
 
-  <!-- Email -->
+  <!-- Licenses -->
   <div>
-    <label for="email">Email</label>
-    <input
-      id="email"
-      type="email"
-      [(ngModel)]="client.email"
-      formControlName="email"
-      placeholder="Email">
-
-    <div ngxErrors="email">
-      <div ngxError="required" when="touched">
-        Field is required
-      </div>
-      <div ngxError="email" when="dirty">
-        Invalid value
-      </div>
-    </div>
-  </div>
-
-  <!-- Address -->
-  <div>
-    <label for="address">Address</label>
-    <input
-      id="address"
-      type="text"
-      [(ngModel)]="client.address"
-      formControlName="address"
-      placeholder="Address">
-
-    <div ngxErrors="address">
-      <div ngxError="required" when="touched">
-        Field is required
-      </div>
-    </div>
-  </div>
-
-  <!-- Phone -->
-  <div>
-    <label for="phone">Phone</label>
-    <input
-      id="phone"
-      type="text"
-      [(ngModel)]="client.phone"
-      formControlName="phone"
-      placeholder="Phone">
-
-    <div ngxErrors="phone">
-      <div ngxError="required" when="touched">
-        Field is required
-      </div>
-    </div>
-  </div>
-
-  <!-- City -->
-  <div>
-    <label for="city">City</label>
-    <input
-      id="city"
-      type="text"
-      [(ngModel)]="client.city"
-      formControlName="city"
-      placeholder="City">
-
-    <div ngxErrors="city">
-      <div ngxError="required" when="touched">
-        Field is required
-      </div>
-    </div>
-  </div>
-
-  <!-- State -->
-  <div>
-    <label for="state">State</label>
-    <input
-      id="state"
-      type="text"
-      [(ngModel)]="client.state"
-      formControlName="state"
-      placeholder="State">
-
-    <div ngxErrors="state">
-      <div ngxError="required" when="touched">
-        Field is required
-      </div>
-    </div>
-  </div>
-
-  <!-- FreshBook -->
-  <div>
-    <label for="freshBookUrl">FreshBook Url</label>
-    <input
-      id="freshBookUrl"
-      type="text"
-      [(ngModel)]="client.freshBookUrl"
-      formControlName="freshBookUrl"
-      placeholder="FreshBook Url">
-
-    <div ngxErrors="freshBookUrl">
-      <div ngxError="required" when="touched">
-        Field is required
-      </div>
-    </div>
+    <label *ngFor="let license of licenses">
+      <input
+        type="checkbox"
+        name="selectedLicenses[]"
+        [(ngModel)]="license.checked">
+      {{ license.name }}
+    </label>
   </div>
 
   <div>
