@@ -53,6 +53,7 @@
     "webpack": "webpack"
   },
   "dependencies": {
+    "@agm/core": "^1.0.0-beta.0",
     "@angular/animations": "~4.0.3",
     "@angular/common": "~4.0.3",
     "@angular/compiler": "~4.0.3",
@@ -79,6 +80,7 @@
   },
   "devDependencies": {
     "@angular/compiler-cli": "~4.0.3",
+    "@types/googlemaps": "^3.26.11",
     "@types/hammerjs": "^2.0.34",
     "@types/jasmine": "2.5.45",
     "@types/node": "^7.0.13",

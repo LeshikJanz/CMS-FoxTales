@@ -176,6 +176,7 @@ module.exports = function (options) {
             '@angular/router',
             '@angularclass/hmr',
             'rxjs',
+            '@agm/core',
             '@ultimate/ngxerrors',
             'ng2-validation',
             'ngx-toastr'
