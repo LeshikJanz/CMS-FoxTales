@@ -6,7 +6,7 @@ export const MOCK_CLIENTS_FILTER: IClientFilter = {
     pageRowCount: 10
   },
   currentFilter: 1,
-  currentSortType: 1,
+  currentSortType: 'name',
   isAscendantSort: true
 };
 

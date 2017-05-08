@@ -7,7 +7,8 @@ import { NgxErrorsModule } from '@ultimate/ngxerrors';
 import { ToastrModule, ToastContainerModule } from 'ngx-toastr';
 import { AgmCoreModule } from '@agm/core';
 
-import { HttpService } from '../shared';
+import { SharedModule } from '../shared';
+import { HttpService } from '../shared/core';
 
 import { CLIENT_ROUTING } from './client.routes';
 
@@ -26,6 +27,7 @@ import { ClientEditComponent } from './edit';
     NgxErrorsModule,
     ToastrModule.forRoot(),
     ToastContainerModule.forRoot(),
+    SharedModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAW7s_PMAH6CJRMMXRVWnQPevWqipMkCyA',
       libraries: [ 'places' ]

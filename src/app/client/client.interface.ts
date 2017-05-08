@@ -45,7 +45,7 @@ export interface IClientFilter {
     pageRowCount: number;
   };
   currentFilter: number;
-  currentSortType: number;
+  currentSortType: string;
   isAscendantSort: boolean;
   searchFields?: {
     [index: string]: string;

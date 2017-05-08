@@ -6,7 +6,7 @@ import { CustomFormsModule } from 'ng2-validation';
 import { NgxErrorsModule } from '@ultimate/ngxerrors';
 import { ToastrModule, ToastContainerModule } from 'ngx-toastr';
 
-import { HttpService } from '../shared';
+import { HttpService } from '../shared/core';
 
 import { USER_ROUTING } from './user.routes';
 
