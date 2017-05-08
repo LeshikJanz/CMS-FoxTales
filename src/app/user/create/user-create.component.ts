@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { CustomValidators } from 'ng2-validation';
 import { IUser } from '../user.interface';
+import { IUserRole } from '../user-role.interface';
 import { UserService } from '../user.service';
 
 @Component({
@@ -16,6 +17,22 @@ export class UserCreateComponent implements OnInit {
    * @type {FormGroup}
    */
   public userForm: FormGroup;
+
+  /**
+   * User roles
+   *
+   * @type {IUserRole[]}
+   */
+  public roles: IUserRole[];
+
+  /**
+   * Additional user details
+   *
+   * @type {any}
+   */
+  public userDetails: any = {
+    roles: []
+  };
 
   /**
    * Constructor
@@ -39,7 +56,20 @@ export class UserCreateComponent implements OnInit {
    * @returns {void}
    */
   public ngOnInit(): void {
-    this.buildUserForm();
+    this
+      .buildUserForm()
+      .getUserRoles();
+  }
+
+  /**
+   * Get user roles
+   *
+   * @returns {void}
+   */
+  public getUserRoles(): void {
+    this.userService
+      .getUserRoles()
+      .subscribe((roles: IUserRole[]) => this.roles = roles);
   }
 
   /**
@@ -49,17 +79,30 @@ export class UserCreateComponent implements OnInit {
    * @returns {void}
    */
   public addUser(user: IUser): void {
+    this.extractRoles();
+
     this.userService
-      .addUser(user)
+      .addUser({ ...user, ...this.userDetails })
       .subscribe(() => this.router.navigate(['/users']));
+  }
+
+  /**
+   * Extract selected roles
+   *
+   * @returns {void}
+   */
+  public extractRoles(): void {
+    this.userDetails.roles = this.roles
+      .filter((role: IUserRole) => role.checked)
+      .map((role: IUserRole) => role.id);
   }
 
   /**
    * Build user form
    *
-   * @returns {void}
+   * @returns {UserCreateComponent} - Component
    */
-  public buildUserForm(): void {
+  public buildUserForm(): UserCreateComponent {
     this.userForm = this.formBuilder.group({
       firstName: ['', [
         Validators.required
@@ -80,9 +123,11 @@ export class UserCreateComponent implements OnInit {
       clientId: ['', [
         Validators.required
       ]],
-      roles: ['', [
+      selectedClientAccess: ['', [
         Validators.required
       ]]
     });
+
+    return this;
   }
 }

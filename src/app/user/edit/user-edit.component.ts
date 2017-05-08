@@ -4,6 +4,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { CustomValidators } from 'ng2-validation';
 import { IUser } from '../user.interface';
+import { IUserRole } from '../user-role.interface';
 import { UserService } from '../user.service';
 
 /**
@@ -26,7 +27,22 @@ export class UserEditComponent implements OnInit {
    *
    * @type {IUser}
    */
-  public user: IUser;
+  public user: IUser = {
+    firstName: null,
+    lastName: null,
+    email: null,
+    phone: null,
+    location: null,
+    roles: [],
+    selectedClientAccess: null
+  };
+
+  /**
+   * User roles
+   *
+   * @type {IUserRole[]}
+   */
+  public roles: IUserRole[];
 
   /**
    * Constructor
@@ -63,6 +79,26 @@ export class UserEditComponent implements OnInit {
   }
 
   /**
+   * Get user roles
+   *
+   * @returns {void}
+   */
+  public getUserRoles(): void {
+    this.userService
+      .getUserRoles()
+      .subscribe((roles: IUserRole[]) => {
+        // Check selected roles
+        if (this.user.roles) {
+          roles.forEach((role: IUserRole) => {
+            role.checked = -1 !== this.user.roles.indexOf(role);
+          });
+        }
+
+        this.roles = roles;
+    });
+  }
+
+  /**
    * Get user by id
    *
    * @returns {void}
@@ -76,21 +112,34 @@ export class UserEditComponent implements OnInit {
         }
 
         this.user = user;
+        this.getUserRoles();
       });
   }
 
   /**
    * Update user
    *
-   * @param {IUser} user - User
    * @returns {void}
    */
-  public updateUser(user: IUser): void {
+  public updateUser(): void {
+    this.extractRoles();
+
     this.userService
-      .updateUser(user)
+      .updateUser(this.user)
       .subscribe(() => {
         this.toastrService.success('User has been removed successfully.');
       });
+  }
+
+  /**
+   * Extract selected roles
+   *
+   * @returns {void}
+   */
+  public extractRoles(): void {
+    this.user.roles = this.roles
+      .filter((role: IUserRole) => role.checked)
+      .map((role: IUserRole) => role);
   }
 
   /**
@@ -116,10 +165,7 @@ export class UserEditComponent implements OnInit {
       location: ['', [
         Validators.required
       ]],
-      clientId: ['', [
-        Validators.required
-      ]],
-      roles: ['', [
+      selectedClientAccess: ['', [
         Validators.required
       ]]
     });

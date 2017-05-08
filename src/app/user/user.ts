@@ -1,4 +1,5 @@
-import { IUser, IUserRole } from './user.interface';
+import { IUser } from './user.interface';
+import { IUserRole } from './user-role.interface';
 
 /**
  * User entity
@@ -9,14 +10,21 @@ export class User implements IUser {
    *
    * @type {string}
    */
-  public id: string;
+  public id?: string;
+
+  /**
+   * AD Id
+   *
+   * @type {string}
+   */
+  public userADId?: string;
 
   /**
    * Client organization
    *
    * @type {string}
    */
-  public clientId: string;
+  public clientId?: string;
 
   /**
    * First name
@@ -58,7 +66,7 @@ export class User implements IUser {
    *
    * @type {boolean}
    */
-  public isActive: boolean;
+  public isActive?: boolean;
 
   /**
    * Location
@@ -72,7 +80,14 @@ export class User implements IUser {
    *
    * @type {string}
    */
-  public lastActive: string;
+  public lastActiveDate?: string;
+
+  /**
+   * Client access
+   *
+   * @type {string}
+   */
+  public selectedClientAccess: string;
 
   /**
    * Constructor

@@ -6,6 +6,7 @@ import { CustomFormsModule } from 'ng2-validation';
 import { NgxErrorsModule } from '@ultimate/ngxerrors';
 import { ToastrModule, ToastContainerModule } from 'ngx-toastr';
 
+import { SharedModule } from '../shared';
 import { HttpService } from '../shared/core';
 
 import { USER_ROUTING } from './user.routes';
@@ -25,6 +26,7 @@ import { UserEditComponent } from './edit';
     NgxErrorsModule,
     ToastrModule.forRoot(),
     ToastContainerModule.forRoot(),
+    SharedModule,
     USER_ROUTING
   ],
   providers: [

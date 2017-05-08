@@ -2,17 +2,22 @@
 
 <div toastContainer class="toast-top-center"></div>
 
-<div *ngFor="let user of users">
-  <h4>{{ user.firstName }} {{ user.lastName }}</h4>
-  <small>{{ user | json }}</small>
+<select (change)="onTypeChanged($event.target.value)">
+  <option value="1">Unarchived</option>
+  <option value="2">Archived</option>
+</select>
 
-  <p>
-    <a href="javascript:void(0);" [routerLink]="['/user', user.id]">edit</a>
-    <a href="javascript:void(0);" (click)="deleteUser(user.id)">delete</a>
-    <a href="javascript:void(0);" (click)="archiveUser(user.id)">archive</a>
-    <a href="javascript:void(0);" (click)="unarchiveUser(user.id)">unarchive</a>
-  </p>
-</div>
+<data-table
+  [rows]="users"
+  [cols]="cols"
+  [rowsCount]="totalUsers"
+  [actions]="actions"
+  (sortChanged)="onSortChanged($event)"
+  (limitChanged)="onLimitChanged($event)"
+  (searchChanged)="onSearchChanged($event)"
+  (pageChanged)="onPageChanged($event)"
+  (actionChanged)="onActionChanged($event)">
+</data-table>
 
 <div>
   <button type="button" [routerLink]="['/user']">add new user</button>
