@@ -7,7 +7,8 @@ import { ITableAction } from './action.interface';
 
 @Component({
   selector: 'data-table',
-  templateUrl: './table.component.html'
+  templateUrl: './table.component.html',
+  styleUrls: ['./styles/style.scss']
 })
 export class TableComponent implements OnInit {
   /**

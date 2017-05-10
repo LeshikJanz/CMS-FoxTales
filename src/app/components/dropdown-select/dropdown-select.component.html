@@ -1,0 +1,6 @@
+<div class="styled-select blue semi-square">
+  <select class="select" (change)="onTypeChanged($event.target.value)">
+    <option *ngFor="let option of options" value="{{option.id}}">{{option.state}}</option>
+  </select>
+</div>
+
