@@ -1,4 +1,5 @@
 <div class="container">
+  <navigation></navigation>
   <h1>{{ user?.firstName }} {{ user?.lastName }}</h1>
 
   <form
@@ -137,7 +138,7 @@
     <div>
       <button
         type="submit"
-        [disabled]="clientForm.invalid"
+        [disabled]="userForm.invalid"
         class="create-button">UPDATE</button>
     </div>
   </form>
