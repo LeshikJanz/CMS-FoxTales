@@ -25,9 +25,15 @@
   align-items: flex-end;
 }
 
-label {
-  margin-bottom: 0;
-  color: white;
-  font-family: AvenirNext;
-  font-size: 16px;
+.creation-button {
+  & label {
+    margin-bottom: 0;
+    color: white;
+    font-family: AvenirNext;
+    font-size: 16px;
+  }
+}
+
+.main-label {
+  align-self: flex-start;
 }
