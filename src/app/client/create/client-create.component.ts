@@ -16,6 +16,7 @@ import { Router } from '@angular/router';
 import { CustomValidators } from 'ng2-validation';
 import { MapsAPILoader } from '@agm/core';
 import {  } from '@types/googlemaps';
+import * as moment from 'moment';
 import { IClient } from '../client.interface';
 import { IClientLicense } from '../client-license.interface';
 import { ClientService } from '../client.service';
@@ -144,6 +145,7 @@ export class ClientCreateComponent implements OnInit {
    */
   public addClient(client: IClient): void {
     this.extractLicenses();
+    client.clientSecretValidTo = this.extractDate(client.clientSecretValidTo);
 
     this.clientService
       .addClient({ ...client, ...this.clientDetails })
@@ -175,6 +177,16 @@ export class ClientCreateComponent implements OnInit {
     }
 
     this.fileReader.readAsDataURL(files.item(0));
+  }
+
+  /**
+   * Convert date to ISO 8601 format
+   *
+   * @param {string} date - Date
+   * @returns {string} - ISO 8601 formatted date
+   */
+  public extractDate(date: string): string {
+    return moment(date).toISOString();
   }
 
   /**
