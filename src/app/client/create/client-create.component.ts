@@ -22,7 +22,8 @@ import { ClientService } from '../client.service';
 
 @Component({
   selector: 'client-create',
-  templateUrl: './client-create.component.html'
+  templateUrl: './client-create.component.html',
+  styleUrls: [ './client-create.component.scss' ]
 })
 export class ClientCreateComponent implements OnInit {
   /**
@@ -245,6 +246,17 @@ export class ClientCreateComponent implements OnInit {
     });
 
     return this;
+  }
+
+
+  /**
+   * Recieve img in base64
+   *
+   * @param {string} base64 - string
+   * @returns {void}
+   */
+  public onImgUploaded(base64) {
+    this.clientDetails.logoBytes = base64.replace('data:image/png;base64,', '');
   }
 
   /**
