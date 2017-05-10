@@ -128,6 +128,7 @@ export class UserEditComponent implements OnInit {
       .updateUser(this.user)
       .subscribe(() => {
         this.toastrService.success('User has been removed successfully.');
+        this.router.navigate(['/users']);
       });
   }
 

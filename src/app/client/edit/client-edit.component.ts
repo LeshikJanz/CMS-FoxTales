@@ -219,6 +219,7 @@ export class ClientEditComponent implements OnInit {
       .updateClient(this.client)
       .subscribe(() => {
         this.toastrService.success('Client has been updated successfully.');
+        this.router.navigate(['/clients']);
       });
   }
 
