@@ -1,5 +1,5 @@
 <div class="container">
-
+  <navigation></navigation>
   <form
     (ngSubmit)="addUser(userForm.value)"
     class="form"
@@ -139,8 +139,8 @@
     <div>
       <button
         type="submit"
-        [disabled]="clientForm.invalid"
-        class="create-button">UPDATE</button>
+        [disabled]="userForm.invalid"
+        class="create-button">CREATE</button>
     </div>
   </form>
 </div>
