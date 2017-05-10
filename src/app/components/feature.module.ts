@@ -6,6 +6,7 @@ import { CommonModule } from "@angular/common";
 import { FormsModule } from "@angular/forms";
 import { CreationButton } from "./creationButton/creation-button.component";
 import { DropDownSelect } from "./dropdown-select/dropdown-select.component";
+import { Navigation } from "./navigation/navigation.component";
 
 @NgModule({
   imports: [
@@ -17,14 +18,16 @@ import { DropDownSelect } from "./dropdown-select/dropdown-select.component";
   declarations: [
     CreationButton,
     UploadButton,
-    DropDownSelect
+    DropDownSelect,
+    Navigation
   ],
   exports: [
     CreationButton,
     UploadButton,
     DropDownSelect,
     CommonModule,
-    FormsModule
+    FormsModule,
+    Navigation
   ]
 })
 
