@@ -8,22 +8,16 @@
 
   <div [formGroup]="clientForm">
     <!-- Logo -->
-    <div>
-      <label for="logoBytes">Logo</label>
-      <input
-        id="logoBytes"
-        type="file"
-        accept="image/*"
-        (change)="extractLogo($event)"
-        formControlName="logoBytes">
-    </div>
+    <label style="font-size: 18px">Client logo</label>
+    <upload-button (imgUploaded)="onImgUploaded($event)"></upload-button>
 
     <!-- Name -->
-    <div>
-      <label for="name">Client Name</label>
+    <div class="form-element">
+    <label for="name">Client Name</label>
       <input
         id="name"
         type="text"
+        class="form-control input"
         [(ngModel)]="client.name"
         formControlName="name"
         placeholder="Name">
@@ -36,11 +30,12 @@
     </div>
 
     <!-- Display Name -->
-    <div>
-      <label for="displayName">Display Name</label>
+    <div class="form-element">
+    <label for="displayName">Display Name</label>
       <input
         id="displayName"
         type="text"
+        class="form-control input"
         [(ngModel)]="client.displayName"
         formControlName="displayName"
         placeholder="Display Name">
@@ -53,11 +48,12 @@
     </div>
 
     <!-- Email -->
-    <div>
-      <label for="email">Email</label>
+    <div class="form-element">
+    <label for="email">Email</label>
       <input
         id="email"
         type="email"
+        class="form-control input"
         [(ngModel)]="client.email"
         formControlName="email"
         placeholder="Email">
@@ -73,11 +69,12 @@
     </div>
 
     <!-- Address -->
-    <div>
-      <label for="address">Address</label>
+    <div class="form-element">
+    <label for="address">Address</label>
       <input
         id="address"
         type="text"
+        class="form-control input"
         [(ngModel)]="client.address"
         formControlName="address"
         autocorrect="off"
@@ -94,11 +91,12 @@
     </div>
 
     <!-- Phone -->
-    <div>
-      <label for="phone">Phone</label>
+    <div class="form-element">
+    <label for="phone">Phone</label>
       <input
         id="phone"
         type="text"
+        class="form-control input"
         [(ngModel)]="client.phone"
         formControlName="phone"
         placeholder="Phone">
@@ -111,11 +109,12 @@
     </div>
 
     <!-- FreshBook -->
-    <div>
-      <label for="freshBooks">FreshBook Url</label>
+    <div class="form-element">
+    <label for="freshBooks">FreshBook Url</label>
       <input
         id="freshBooks"
         type="text"
+        class="form-control input"
         [(ngModel)]="client.freshBooks"
         formControlName="freshBooks"
         placeholder="FreshBook Url">
@@ -128,12 +127,13 @@
     </div>
 
     <!-- Social Accounts -->
-    <div formArrayName="socialAccounts">
+    <div  class="form-element" formArrayName="socialAccounts">
       <label>Social Accounts</label>
 
       <div *ngFor="let account of socialAccounts.controls">
         <input
           type="text"
+          class="form-control input"
           [formControl]="account"
           placeholder="Social Account Url">
       </div>
@@ -145,11 +145,12 @@
   </div>
 
   <!-- Licenses -->
-  <div>
+  <div class="form-group">
     <label *ngFor="let license of licenses">
       <input
         type="checkbox"
         name="selectedLicenses[]"
+        class="form-control input checkbox"
         [(ngModel)]="license.checked">
       {{ license.name }}
     </label>

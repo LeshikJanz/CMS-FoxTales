@@ -2,23 +2,29 @@
 
 <div toastContainer class="toast-top-center"></div>
 
-<select (change)="onTypeChanged($event.target.value)">
-  <option value="1">Unarchived</option>
-  <option value="2">Archived</option>
-</select>
+<div class="list-container">
+  <div class="list-menu">
+    <div class="create-client">
+      <button type="button" class="creation-button" [routerLink]="['/user']">
+        <img src="assets/img/ui-24-px-outline-2-small-add.svg" alt="">
+        <label>Create New User</label></button>
+    </div>
 
-<data-table
-  [rows]="users"
-  [cols]="cols"
-  [rowsCount]="totalUsers"
-  [actions]="actions"
-  (sortChanged)="onSortChanged($event)"
-  (limitChanged)="onLimitChanged($event)"
-  (searchChanged)="onSearchChanged($event)"
-  (pageChanged)="onPageChanged($event)"
-  (actionChanged)="onActionChanged($event)">
-</data-table>
+    <dropdown-select
+      [options]="clientStates"
+      (typeChanged)="onTypeChanged($event)">
+    </dropdown-select>
+  </div>
 
-<div>
-  <button type="button" [routerLink]="['/user']">add new user</button>
+  <data-table
+    [rows]="users"
+    [cols]="cols"
+    [rowsCount]="totalUsers"
+    [actions]="actions"
+    (sortChanged)="onSortChanged($event)"
+    (limitChanged)="onLimitChanged($event)"
+    (searchChanged)="onSearchChanged($event)"
+    (pageChanged)="onPageChanged($event)"
+    (actionChanged)="onActionChanged($event)">
+  </data-table>
 </div>

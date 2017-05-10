@@ -8,7 +8,8 @@ import { UserService } from '../user.service';
 
 @Component({
   selector: 'user-create',
-  templateUrl: './user-create.component.html'
+  templateUrl: './user-create.component.html',
+  styleUrls: [ './user-create.component.scss' ]
 })
 export class UserCreateComponent implements OnInit {
   /**

@@ -1,0 +1,33 @@
+.list-container {
+  margin: 50px;
+}
+
+.create-client {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.creation-button {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 204px;
+  height: 54px;
+  border-radius: 6px;
+  background-color: #2fd976;
+}
+
+.list-menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+label {
+  margin-bottom: 0;
+  color: white;
+  font-family: AvenirNext;
+  font-size: 16px;
+}

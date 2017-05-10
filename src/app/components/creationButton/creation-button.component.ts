@@ -11,11 +11,9 @@ import { Component, Output, EventEmitter, Input } from '@angular/core';
 export class CreationButton {
   @Output() clicked: EventEmitter<string> = new EventEmitter();
 
-  @Input() value: number;
+  @Input() value: string;
 
   public handleClick = (event) => {
     this.clicked.emit(event);
   }
-
-
 }
