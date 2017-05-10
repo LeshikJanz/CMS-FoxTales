@@ -1,12 +1,12 @@
-import { UploadButton } from "./uploadButton/upload-button.component";
-import { NgModule } from "@angular/core";
-import { RouterModule } from "@angular/router";
-import { FEATURE_ROUTES } from "./feature.routing";
-import { CommonModule } from "@angular/common";
-import { FormsModule } from "@angular/forms";
-import { CreationButton } from "./creationButton/creation-button.component";
-import { DropDownSelect } from "./dropdown-select/dropdown-select.component";
-import { Navigation } from "./navigation/navigation.component";
+import { UploadButtonComponent } from './uploadButton/upload-button.component';
+import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { FEATURE_ROUTES } from './feature.routing';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { CreationButtonComponent } from './creationButton/creation-button.component';
+import { DropDownSelectComponent } from './dropdown-select/dropdown-select.component';
+import { NavigationComponent } from './navigation/navigation.component';
 
 @NgModule({
   imports: [
@@ -16,18 +16,18 @@ import { Navigation } from "./navigation/navigation.component";
   ],
   providers: [],
   declarations: [
-    CreationButton,
-    UploadButton,
-    DropDownSelect,
-    Navigation
+    CreationButtonComponent,
+    UploadButtonComponent,
+    DropDownSelectComponent,
+    NavigationComponent
   ],
   exports: [
-    CreationButton,
-    UploadButton,
-    DropDownSelect,
+    CreationButtonComponent,
+    UploadButtonComponent,
+    DropDownSelectComponent,
     CommonModule,
     FormsModule,
-    Navigation
+    NavigationComponent
   ]
 })
 

@@ -170,7 +170,6 @@ export class TableComponent implements OnInit {
     this.buildSearch();
   }
 
-
   /**
    * Emit open search field
    *
@@ -178,7 +177,7 @@ export class TableComponent implements OnInit {
    * @returns {void}
    */
   public openSearch(col: ICol): void {
-    col.isSearchOpen = !col.isSearchOpen
+    col.isSearchOpen = !col.isSearchOpen;
   }
 
   /**

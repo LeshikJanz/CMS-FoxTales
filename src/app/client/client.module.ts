@@ -16,7 +16,7 @@ import { ClientService } from './client.service';
 import { ClientListComponent } from './list';
 import { ClientCreateComponent } from './create';
 import { ClientEditComponent } from './edit';
-import { FeatureModule } from "../components/feature.module";
+import { FeatureModule } from '../components/feature.module';
 
 @NgModule({
   imports: [

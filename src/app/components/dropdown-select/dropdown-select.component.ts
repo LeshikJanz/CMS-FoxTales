@@ -1,5 +1,5 @@
-import { Component, Input, Output, EventEmitter } from "@angular/core";
-import { IArchieveState } from "../../client/client.interface";
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { IArchieveState } from '../../client/client.interface';
 
 /**
  * Drop down select
@@ -10,12 +10,10 @@ import { IArchieveState } from "../../client/client.interface";
   styleUrls: ['./dropdown-select.component.scss']
 })
 
-export class DropDownSelect {
-  @Input() options: IArchieveState[];
+export class DropDownSelectComponent {
+  @Input() public options: IArchieveState[];
 
-  @Output() typeChanged: EventEmitter<string> = new EventEmitter();;
-
-  constructor() {}
+  @Output() public typeChanged: EventEmitter<string> = new EventEmitter();
 
   public onTypeChanged(value: string) {
     this.typeChanged.emit(value);

@@ -260,7 +260,6 @@ export class ClientCreateComponent implements OnInit {
     return this;
   }
 
-
   /**
    * Recieve img in base64
    *
