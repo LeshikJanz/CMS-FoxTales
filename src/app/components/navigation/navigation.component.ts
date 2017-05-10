@@ -5,4 +5,4 @@ import { Component } from '@angular/core';
   templateUrl: './navigation.component.html'
 })
 
-export class Navigation {}
+export class NavigationComponent {}

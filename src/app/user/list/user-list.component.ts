@@ -5,7 +5,7 @@ import { ICol, ITableAction } from '../../shared/table';
 import { IUserList, IUserFilter } from '../user.interface';
 import { User } from '../user';
 import { UserService } from '../user.service';
-import { IArchieveState } from "../../client/client.interface";
+import { IArchieveState } from '../../client/client.interface';
 
 /**
  * User list component

@@ -8,10 +8,10 @@ import { Component, Output, EventEmitter, Input } from '@angular/core';
   templateUrl: 'creation-button.component.html',
   styleUrls: ['creation-button.component.scss']
 })
-export class CreationButton {
-  @Output() clicked: EventEmitter<string> = new EventEmitter();
+export class CreationButtonComponent {
+  @Output() public clicked: EventEmitter<string> = new EventEmitter();
 
-  @Input() value: string;
+  @Input() public value: string;
 
   public handleClick = (event) => {
     this.clicked.emit(event);

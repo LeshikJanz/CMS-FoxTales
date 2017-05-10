@@ -15,7 +15,7 @@ import { UserService } from './user.service';
 import { UserListComponent } from './list';
 import { UserCreateComponent } from './create';
 import { UserEditComponent } from './edit';
-import { FeatureModule } from "../components/feature.module";
+import { FeatureModule } from '../components/feature.module';
 
 @NgModule({
   imports: [
