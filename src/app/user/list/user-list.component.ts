@@ -5,6 +5,7 @@ import { ICol, ITableAction } from '../../shared/table';
 import { IUserList, IUserFilter } from '../user.interface';
 import { User } from '../user';
 import { UserService } from '../user.service';
+import { IArchieveState } from "../../client/client.interface";
 
 /**
  * User list component
@@ -69,6 +70,16 @@ export class UserListComponent implements OnInit {
     currentSortType: 'firstName',
     isAscendantSort: true
   };
+
+  /**
+   * Archieve states
+   *
+   * @type {ITableAction[]}
+   */
+  public clientStates: IArchieveState[] = [
+    { id: 1, state: 'Unarchived'},
+    { id: 2, state: 'Archived'}
+  ];
 
   /**
    * Constructor

@@ -133,6 +133,16 @@ export class ClientEditComponent implements OnInit {
   }
 
   /**
+   * Recieve img in base64
+   *
+   * @param {string} base64 - string
+   * @returns {void}
+   */
+  public onImgUploaded(base64) {
+    this.client.logoBytes = base64.replace('data:image/png;base64,', '');
+  }
+
+  /**
    * Add new social account control
    *
    * @param {string} url - Account url
