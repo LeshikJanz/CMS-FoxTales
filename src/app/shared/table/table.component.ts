@@ -170,6 +170,17 @@ export class TableComponent implements OnInit {
     this.buildSearch();
   }
 
+
+  /**
+   * Emit open search field
+   *
+   * @param {ICol} col
+   * @returns {void}
+   */
+  public openSearch(col: ICol): void {
+    col.isSearchOpen = !col.isSearchOpen
+  }
+
   /**
    * Build search form
    *
