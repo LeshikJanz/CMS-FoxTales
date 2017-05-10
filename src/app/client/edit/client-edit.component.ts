@@ -139,7 +139,7 @@ export class ClientEditComponent implements OnInit {
    * @returns {void}
    */
   public onImgUploaded(base64) {
-    this.client.logoBytes = base64.replace('data:image/png;base64,', '');
+    this.client.logoBytes = base64.replace(/data:image\/(png|jpg|jpeg|gif);base64,/, '');
   }
 
   /**

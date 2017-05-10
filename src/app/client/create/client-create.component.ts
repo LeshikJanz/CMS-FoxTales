@@ -225,7 +225,8 @@ export class ClientCreateComponent implements OnInit {
    */
   public initFileReader(): ClientCreateComponent {
     this.fileReader.onload = () => {
-      this.clientDetails.logoBytes = this.fileReader.result.replace('data:image/png;base64,', '');
+      this.clientDetails.logoBytes =
+        this.fileReader.result.replace(/data:image\/(png|jpg|jpeg|gif);base64,/, '');
     };
 
     return this;
@@ -267,7 +268,7 @@ export class ClientCreateComponent implements OnInit {
    * @returns {void}
    */
   public onImgUploaded(base64) {
-    this.clientDetails.logoBytes = base64.replace('data:image/png;base64,', '');
+    this.clientDetails.logoBytes = base64.replace(/data:image\/(png|jpg|jpeg|gif);base64,/, '');
   }
 
   /**

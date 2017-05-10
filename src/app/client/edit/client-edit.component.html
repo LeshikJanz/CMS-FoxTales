@@ -1,5 +1,5 @@
 <div class="container">
-<navigation></navigation>
+
   <h1>{{ client?.displayName }}</h1>
 
   <img src="{{ client?.logo }}" alt="">
@@ -87,7 +87,7 @@
           placeholder="Search for Location">
 
         <div ngxErrors="address">
-          <div class="field-error"  ngxError="required" when="touched">
+          <div  ngxError="required" when="touched">
             Field is required
           </div>
         </div>
@@ -123,7 +123,7 @@
           placeholder="FreshBook Url">
 
         <div ngxErrors="freshBooks">
-          <div class="field-error"  ngxError="required" when="touched">
+          <div ngxError="required" when="touched">
             Field is required
           </div>
         </div>
