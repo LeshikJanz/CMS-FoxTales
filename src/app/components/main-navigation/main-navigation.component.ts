@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -10,7 +10,5 @@ import { Router } from '@angular/router';
 export class MainNavigationComponent {
   constructor(private router: Router) {}
 
-  public goToMain() {
-  this.router.navigate(['']);
-}
+  @Input() user;
 }
