@@ -16,7 +16,7 @@
   </div>
   <!--I was using ngxtables prior to this port, but wanted to get you guys something-->
   <div *ngFor="let events of Event">
-    <a style="text-decoration: none" [routerLink]="[events.id,'experiences']"> 
+    <a style="text-decoration: none" [routerLink]="['../','experience',events.id]" [queryParams]="{ id: events.id }"> 
     {{ events.name }} {{ events.startTime | date}} {{ events.tags }} {{ events.experiences.length}}
         </a>
     <!--need to figure out how to pull out ITableAction potentially for this select tag-->

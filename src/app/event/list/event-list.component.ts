@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-// import { Client } from '../client';
 import { EventService } from '../event.service';
 
+
 /**
- * Client list component
+ * Event list component
  */
 @Component({
   selector: 'event-list',
@@ -28,7 +28,7 @@ export class EventListComponent implements OnInit {
     }
 
     /**
-    * Get clients
+    * Get events
     *
     * @returns {void}
     */
