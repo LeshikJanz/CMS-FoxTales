@@ -5,5 +5,6 @@ export const ROUTES: Routes = [
   { path: '',      loadChildren: 'app/user/user.module#UserModule' },
   { path: '',      loadChildren: 'app/client/client.module#ClientModule' },
   { path: '',      loadChildren: 'app/admin/admin.module#AdminModule' },
+  { path: '',      loadChildren: 'app/event/event.module#EventModule' },
   { path: '**',    component: NoContentComponent },
 ];

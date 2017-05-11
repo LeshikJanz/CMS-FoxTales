@@ -1,0 +1,43 @@
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+// import { Client } from '../client';
+import { EventService } from '../event.service';
+
+/**
+ * Client list component
+ */
+@Component({
+  selector: 'event-list',
+  templateUrl: './event-list.component.html',
+  styleUrls: ['./event-list.component.scss']
+})
+export class EventListComponent implements OnInit {
+    /**
+    * Event
+    *
+    * @type {Event[]}
+    */
+    public Event: any[];
+
+    constructor(private eventService: EventService){
+    }
+
+    public ngOnInit(): void {
+        this.getEvents();
+    }
+
+    /**
+    * Get clients
+    *
+    * @returns {void}
+    */
+    public getEvents(): void {
+        this.eventService
+        .getEvents()
+        .subscribe((event) => {
+          this.Event = event;
+    });
+  }
+
+}
