@@ -1,7 +1,10 @@
-import './polyfills.ts';
-
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { initializePlayground, PlaygroundModule } from 'angular-playground';
+import { enableProdMode } from '@angular/core';
+import { PlaygroundModule, initializePlayground } from 'angular-playground';
 
-initializePlayground('app-root');
+if (process.env.ENV === 'production') {
+  enableProdMode();
+}
+
+initializePlayground('app');
 platformBrowserDynamic().bootstrapModule(PlaygroundModule);

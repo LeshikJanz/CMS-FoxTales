@@ -3,5 +3,5 @@ import { UploadButtonComponent } from "./upload-button.component";
 
 export default sandboxOf(UploadButtonComponent)
   .add('with simple text', {
-    template: `<upload-button></upload-button>`
+    template: `<h1>ABC</h1>`
   });
