@@ -8,6 +8,7 @@ import { CreationButtonComponent } from './creationButton/creation-button.compon
 import { DropDownSelectComponent } from './dropdown-select/dropdown-select.component';
 import { NavigationComponent } from './admin-navigation/admin-navigation.component';
 import { MainNavigationComponent } from './main-navigation/main-navigation.component';
+import { UploadParentComponent } from "./uploadButton/parent.component";
 
 @NgModule({
   imports: [
@@ -21,7 +22,8 @@ import { MainNavigationComponent } from './main-navigation/main-navigation.compo
     UploadButtonComponent,
     DropDownSelectComponent,
     NavigationComponent,
-    MainNavigationComponent
+    MainNavigationComponent,
+    UploadParentComponent
   ],
   exports: [
     CreationButtonComponent,
