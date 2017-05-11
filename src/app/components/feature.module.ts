@@ -6,7 +6,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { CreationButtonComponent } from './creationButton/creation-button.component';
 import { DropDownSelectComponent } from './dropdown-select/dropdown-select.component';
-import { NavigationComponent } from './navigation/navigation.component';
+import { NavigationComponent } from './admin-navigation/admin-navigation.component';
+import { MainNavigationComponent } from './main-navigation/main-navigation.component';
 
 @NgModule({
   imports: [
@@ -19,7 +20,8 @@ import { NavigationComponent } from './navigation/navigation.component';
     CreationButtonComponent,
     UploadButtonComponent,
     DropDownSelectComponent,
-    NavigationComponent
+    NavigationComponent,
+    MainNavigationComponent
   ],
   exports: [
     CreationButtonComponent,
@@ -27,7 +29,8 @@ import { NavigationComponent } from './navigation/navigation.component';
     DropDownSelectComponent,
     CommonModule,
     FormsModule,
-    NavigationComponent
+    NavigationComponent,
+    MainNavigationComponent
   ]
 })
 
