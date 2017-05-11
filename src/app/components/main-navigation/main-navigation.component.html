@@ -1,10 +1,16 @@
-<div class="container">
-  <img class="brand" src="assets/img/foxtales.png" (click)="goToMain()">
+<div class="nav-container">
+  <div class="link-bar">
+    <a href="javascript:void(0)" [routerLink]="['/']"><img class="logo" src="assets/img/foxtales.png"></a>
     <nav>
       <a href="javascript:void(0)" [routerLink]="['/dashboard']">Dashboard</a>
       <a href="javascript:void(0)" [routerLink]="['/events']">Events</a>
       <a href="javascript:void(0)" [routerLink]="['/track']">Track</a>
       <a href="javascript:void(0)" [routerLink]="['/admin']">Admin</a>
+      <a href="javascript:void(0)" [routerLink]="['/live']">Live</a>
     </nav>
-  <div class="profile"></div>
+  </div>
+
+  <div class="profile">
+    <h1>Profile</h1>
+  </div>
 </div>

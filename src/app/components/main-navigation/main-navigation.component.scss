@@ -1,15 +1,43 @@
-.container {
+.nav-container {
   display: flex;
   align-items: center;
-  width: 100%;
+  justify-content: space-between;
   height: 75px;
   background-color: #f8f8f8;
   font-family: Avenir;
   color: #687078;
 
-   .brand {
-     cursor: pointer;
+  .link-bar {
+    display: flex;
+    width: 50%;
+    justify-content: space-around;
+
+    a {
+      margin: auto;
+    }
+
+    nav {
+      display: flex;
+      margin: auto;
+      min-width: 30%;
+      width: 70%;
+
+      justify-content: space-between;
+
+      a {
+        margin: auto;
+      }
+    }
+  }
+
+  .profile {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .logo {
     width: 43px;
     height: 38px;
   }
 }
+
