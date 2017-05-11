@@ -127,7 +127,7 @@ export class UserListComponent implements OnInit {
    * @returns {Promise<boolean>}
    */
   public editUser(id: string): Promise<boolean> {
-    return this.router.navigate(['/user', id]);
+    return this.router.navigate(['/admin/user', id]);
   }
 
   /**

@@ -17,6 +17,7 @@ import { AppState, InternalStateType } from './app.service';
 import { NoContentComponent } from './no-content';
 
 import '../styles/styles.scss';
+import { FeatureModule } from './components/feature.module';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -43,7 +44,8 @@ type StoreType = {
     BrowserAnimationsModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot(ROUTES, { useHash: true, preloadingStrategy: PreloadAllModules })
+    RouterModule.forRoot(ROUTES, { useHash: true, preloadingStrategy: PreloadAllModules }),
+    FeatureModule
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,

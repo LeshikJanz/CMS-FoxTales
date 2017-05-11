@@ -125,7 +125,7 @@ export class ClientListComponent implements OnInit {
    * @returns {Promise<boolean>}
    */
   public editClient(id: string): Promise<boolean> {
-    return this.router.navigate(['/client', id]);
+    return this.router.navigate(['/admin/client', id]);
   }
 
   /**

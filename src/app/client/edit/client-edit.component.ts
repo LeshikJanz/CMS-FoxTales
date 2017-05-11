@@ -177,7 +177,7 @@ export class ClientEditComponent implements OnInit {
       .subscribe((client: IClient) => {
         // Redirect to the client list if no client
         if (!client) {
-          return this.router.navigate(['/clients']);
+          return this.router.navigate(['/admin/clients']);
         }
 
         this.client = client;
@@ -219,7 +219,7 @@ export class ClientEditComponent implements OnInit {
       .updateClient(this.client)
       .subscribe(() => {
         this.toastrService.success('Client has been updated successfully.');
-        this.router.navigate(['/clients']);
+        this.router.navigate(['/admin/clients']);
       });
   }
 

@@ -84,7 +84,7 @@ export class UserCreateComponent implements OnInit {
 
     this.userService
       .addUser({ ...user, ...this.userDetails })
-      .subscribe(() => this.router.navigate(['/users']));
+      .subscribe(() => this.router.navigate(['/admin/users']));
   }
 
   /**

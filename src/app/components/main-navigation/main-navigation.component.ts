@@ -7,8 +7,4 @@ import { Router } from '@angular/router';
   styleUrls: ['./main-navigation.component.scss']
 })
 
-export class MainNavigationComponent {
-  constructor(private router: Router) {}
-
-  @Input() user;
-}
+export class MainNavigationComponent {}

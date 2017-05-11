@@ -108,7 +108,7 @@ export class UserEditComponent implements OnInit {
       .getUser(id)
       .subscribe((user: IUser) => {
         if (!user) {
-          return this.router.navigate(['/users']);
+          return this.router.navigate(['/admin/users']);
         }
 
         this.user = user;
@@ -128,7 +128,7 @@ export class UserEditComponent implements OnInit {
       .updateUser(this.user)
       .subscribe(() => {
         this.toastrService.success('User has been removed successfully.');
-        this.router.navigate(['/users']);
+        this.router.navigate(['/admin/users']);
       });
   }
 
