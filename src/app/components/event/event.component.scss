@@ -1,0 +1,17 @@
+.event-container {
+  display: flex;
+  height: 133px;
+  width: 100%;
+
+  & :first-child {
+    margin-right: 10px;
+  }
+
+  .main-info {
+
+  }
+
+  .experience {
+
+  }
+}

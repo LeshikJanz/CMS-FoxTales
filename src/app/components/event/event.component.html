@@ -1,0 +1,19 @@
+<div class="event-container">
+  <fox-checkbox></fox-checkbox>
+  <div class="main-info">
+    <div>
+      <div *ngIf="status === -1"><img src="../../../assets/img/attention.svg" alt=""></div>
+      <div *ngIf="status === 1"><img src="../../../assets/img/complete.svg" alt=""></div>
+      <label [hidden]="!name">{{name}}</label>
+      <label [hidden]="!date">{{date}}</label>
+      <label [hidden]="!tags" *ngFor="let tag of tags">#{{tag}}</label>
+    </div>
+    <div class="experience">
+      <label [hidden]="!expCount" name="experiences">
+        {{expCount}} Experiences
+      </label>
+    </div>
+  </div>
+
+</div>
+<hr>
