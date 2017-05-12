@@ -56,7 +56,7 @@ export interface IClientFilter {
 /**
  * CLient state interface
  * */
-export interface IArchieveState {
+export interface IActionState {
   id: number,
   state: string
 }

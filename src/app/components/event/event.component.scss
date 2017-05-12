@@ -1,0 +1,47 @@
+.event-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-top: 20px;
+  height: 65px;
+
+  & :first-child {
+    margin-right: 20px;
+  }
+
+  .main-info {
+
+    & :first-child {
+      > * {
+        margin: auto;
+        margin-right: 20px;
+        padding-bottom: 5px;
+      }
+
+      display: flex;
+      align-items: center;
+
+      img {
+        height: 35px;
+        width: 35px;
+      }
+
+      label {
+        font-size: 16px;
+        font-weight: bold;
+        font-family: Avenir-Book;
+        line-height: 1.38;
+        color: #343a40;
+      }
+    }
+  }
+
+  .experience {
+
+    label{
+      font-size: 16px;
+      font-family: Avenir-Book;
+      margin-left: 45px;
+    }
+  }
+}

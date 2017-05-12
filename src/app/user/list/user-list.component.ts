@@ -5,7 +5,7 @@ import { ICol, ITableAction } from '../../shared/table';
 import { IUserList, IUserFilter } from '../user.interface';
 import { User } from '../user';
 import { UserService } from '../user.service';
-import { IArchieveState } from '../../client/client.interface';
+import { IActionState } from '../../client/client.interface';
 
 /**
  * User list component
@@ -76,7 +76,7 @@ export class UserListComponent implements OnInit {
    *
    * @type {ITableAction[]}
    */
-  public clientStates: IArchieveState[] = [
+  public clientStates: IActionState[] = [
     { id: 1, state: 'Unarchived'},
     { id: 2, state: 'Archived'}
   ];

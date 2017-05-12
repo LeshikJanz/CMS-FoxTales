@@ -6,9 +6,9 @@ import { UserCreateComponent } from './create';
 import { UserEditComponent } from './edit';
 
 const USER_ROUTES: Routes = [
-  { path: 'admin/users',    component: UserListComponent },
-  { path: 'admin/user',     component: UserCreateComponent },
-  { path: 'admin/user/:id', component: UserEditComponent }
+  { path: 'users',    component: UserListComponent },
+  { path: 'user',     component: UserCreateComponent },
+  { path: 'user/:id', component: UserEditComponent }
 ];
 
 export const USER_ROUTING: ModuleWithProviders = RouterModule.forChild(USER_ROUTES);

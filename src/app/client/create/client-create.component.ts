@@ -149,7 +149,7 @@ export class ClientCreateComponent implements OnInit {
 
     this.clientService
       .addClient({ ...client, ...this.clientDetails })
-      .subscribe(() => this.router.navigate(['/clients']));
+      .subscribe(() => this.router.navigate(['/admin/clients']));
   }
 
   /**

@@ -1,16 +1,5 @@
-<!--<div class="styled-select blue semi-square">-->
-  <!--<select class="select" (change)="onTypeChanged($event.target.value)">-->
-    <!--<option *ngFor="let option of options" value="{{option.id}}">{{option.state}}</option>-->
-  <!--</select>-->
-<!--</div>-->
-
-<div class="dropdown pull-right">
-  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Action
-    <span class="caret"></span></button>
-  <ul class="dropdown-menu">
-    <li><a href="">Edit</a></li>
-    <li><a href="">Clone</a></li>
-    <li><a href="">Archive</a></li>
-    <li><a href="">Assign Users</a></li>
-  </ul>
+<div class="styled-select blue semi-square">
+  <select class="select" (change)="onTypeChanged($event.target.value)">
+    <option *ngFor="let option of options" value="{{option.id}}">{{option.state}}</option>
+  </select>
 </div>
