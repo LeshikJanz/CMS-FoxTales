@@ -14,6 +14,7 @@ import { EVENT_ROUTING } from './event.routes';
 
 import { EventService } from './event.service';
 import { EventListComponent } from './list';
+import { EventCreateComponent } from './create';
 
 import { FeatureModule } from '../components/feature.module';
 
@@ -41,6 +42,7 @@ import { FeatureModule } from '../components/feature.module';
   ],
   declarations: [
     EventListComponent,
+    EventCreateComponent
   ]
 })
 export class EventModule {
