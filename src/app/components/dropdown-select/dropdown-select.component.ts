@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { IArchieveState } from '../../client/client.interface';
+import { IActionState } from '../../client/client.interface';
 
 /**
  * Drop down select
@@ -11,7 +11,7 @@ import { IArchieveState } from '../../client/client.interface';
 })
 
 export class DropDownSelectComponent {
-  @Input() public options: IArchieveState[];
+  @Input() public options: IActionState[];
 
   @Output() public typeChanged: EventEmitter<string> = new EventEmitter();
 

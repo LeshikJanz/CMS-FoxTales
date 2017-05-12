@@ -1,18 +1,22 @@
 .event-container {
-  display: inline-flex;
+  display: flex;
+  justify-content: space-between;
   margin-top: 20px;
   height: 65px;
 
   & :first-child {
-    > * {
-      margin: auto;
-      margin-right: 20px;
-      padding-bottom: 5px;
-    }
+    margin-right: 20px;
   }
 
   .main-info {
+
     & :first-child {
+      > * {
+        margin: auto;
+        margin-right: 20px;
+        padding-bottom: 5px;
+      }
+
       display: flex;
       align-items: center;
 
@@ -34,9 +38,9 @@
   .experience {
 
     label{
-      margin-left: 45px;
       font-size: 16px;
       font-family: Avenir-Book;
+      margin-left: 45px;
     }
   }
 }

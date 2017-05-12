@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ICol, ITableAction } from '../../shared/table';
-import { IClientList, IClientFilter, IArchieveState } from '../client.interface';
+import { IClientList, IClientFilter, IActionState } from '../client.interface';
 import { Client } from '../client';
 import { ClientService } from '../client.service';
 
@@ -59,7 +59,7 @@ export class ClientListComponent implements OnInit {
    *
    * @type {ITableAction[]}
    */
-  public clientStates: IArchieveState[] = [
+  public clientStates: IActionState[] = [
     { id: 1, state: 'Unarchived'},
     { id: 2, state: 'Archived'}
   ];

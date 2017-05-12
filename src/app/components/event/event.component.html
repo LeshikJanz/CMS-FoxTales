@@ -1,18 +1,22 @@
 <div class="event-container">
-  <div class="main-info">
-    <div>
-      <checkbox></checkbox>
-      <div *ngIf="status === -1"><img src="../../../assets/img/attention.svg" alt=""></div>
-      <div *ngIf="status === 1"><img src="../../../assets/img/complete.svg" alt=""></div>
-      <label class="name" [hidden]="!name">{{name}}</label>
-      <label class="date" [hidden]="!date">{{date}}</label>
-      <label [hidden]="!tags" *ngFor="let tag of tags">#{{tag}}</label>
-    </div>
-    <div class="experience">
-      <label [hidden]="!expCount" name="experiences">
-        {{expCount}} Experiences
-      </label>
+  <div>
+    <div class="main-info">
+      <div>
+        <checkbox></checkbox>
+        <img *ngIf="status === -1" src="../../../assets/img/attention.svg" alt="">
+        <img *ngIf="status === 1" src="../../../assets/img/complete.svg" alt="">
+        <label class="name" [hidden]="!name">{{name}}</label>
+        <label class="date" [hidden]="!date">{{date}}</label>
+        <label [hidden]="!tags" *ngFor="let tag of tags">#{{tag}}</label>
+      </div>
+      <div class="experience">
+        <label [hidden]="!expCount" name="experiences">
+          {{expCount}} Experiences
+        </label>
+      </div>
     </div>
   </div>
+  <dropdown-select [options]="eventActions"
+  ></dropdown-select>
 </div>
 <hr>

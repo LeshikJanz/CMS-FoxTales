@@ -10,7 +10,6 @@ import { NavigationComponent } from './admin-navigation/admin-navigation.compone
 import { MainNavigationComponent } from './main-navigation/main-navigation.component';
 import { EventComponent } from './event/event.component';
 import { CheckboxComponent } from './checkbox/checkbox.component';
-import { TestComponent } from './test.component';
 
 @NgModule({
   imports: [
@@ -26,8 +25,7 @@ import { TestComponent } from './test.component';
     NavigationComponent,
     MainNavigationComponent,
     EventComponent,
-    CheckboxComponent,
-    TestComponent
+    CheckboxComponent
   ],
   exports: [
     CreationButtonComponent,
@@ -37,8 +35,7 @@ import { TestComponent } from './test.component';
     FormsModule,
     NavigationComponent,
     MainNavigationComponent,
-    CheckboxComponent,
-    TestComponent
+    CheckboxComponent
   ]
 })
 

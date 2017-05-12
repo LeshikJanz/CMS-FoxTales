@@ -1,8 +1,9 @@
 import { sandboxOf } from 'angular-playground';
 import { EventComponent } from "./event.component";
 import { CheckboxComponent } from "../checkbox/checkbox.component";
+import { DropDownSelectComponent } from "../dropdown-select/dropdown-select.component";
 
-export default sandboxOf(EventComponent, {declarations: [CheckboxComponent], })
+export default sandboxOf(EventComponent, {declarations: [CheckboxComponent, DropDownSelectComponent], })
   .add('default event', {
     template: `<event
                 [name]="'TestEvent'"
@@ -10,7 +11,7 @@ export default sandboxOf(EventComponent, {declarations: [CheckboxComponent], })
                 [expCount]="7"
                 [status]="0"
                 ></event>`,
-    context: [CheckboxComponent]
+    context: [CheckboxComponent, DropDownSelectComponent]
   })
   .add('warning event', {
     template: `<event
@@ -19,7 +20,7 @@ export default sandboxOf(EventComponent, {declarations: [CheckboxComponent], })
                 [expCount]="7"
                 [status]="-1"
                 ></event>`,
-    context: [CheckboxComponent]
+    context: [CheckboxComponent, DropDownSelectComponent]
   })
   .add('success event', {
     template: `<event
@@ -28,5 +29,5 @@ export default sandboxOf(EventComponent, {declarations: [CheckboxComponent], })
                 [expCount]="7"
                 [status]="1"
                 ></event>`,
-    context: [CheckboxComponent]
+    context: [CheckboxComponent, DropDownSelectComponent]
   });
