@@ -53,10 +53,10 @@ export class EventComponent {
   public isChecked: boolean = false;
 
   public eventActions: IActionState[] = [
-  { id: 1, state: 'SETTINGS'},
-  { id: 2, state: 'CLONE'},
-  { id: 3, state: 'ARCHIEVE'},
-  { id: 4, state: 'ADD TO GROUP'},
-  { id: 5, state: 'ASSIGN USERS'},
+  { id: 1, action: 'SETTINGS'},
+  { id: 2, action: 'CLONE'},
+  { id: 3, action: 'ARCHIEVE'},
+  { id: 4, action: 'ADD TO GROUP'},
+  { id: 5, action: 'ASSIGN USERS'},
 ];
 }

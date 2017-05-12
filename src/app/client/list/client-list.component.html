@@ -13,10 +13,10 @@
           <label>Create New Client</label></button>
       </div>
 
-      <dropdown-select
+      <dropdown
         [options]="clientStates"
-        (typeChanged)="onTypeChanged($event)">
-      </dropdown-select>
+        (typeChanged)="onTypeChanged($event)"
+      ></dropdown>
     </div>
   </div>
   <data-table
@@ -30,5 +30,4 @@
     (pageChanged)="onPageChanged($event)"
     (actionChanged)="onActionChanged($event)">
   </data-table>
-
 </div>

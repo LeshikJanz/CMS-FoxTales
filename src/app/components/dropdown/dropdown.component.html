@@ -1,0 +1,8 @@
+<div class="btn-group" dropdown>
+  <button dropdownToggle type="button" class="btn btn-primary dropdown-toggle">
+    Action
+  </button>
+  <ul *dropdownMenu class="dropdown-menu" role="menu">
+    <li *ngFor="let option of options" role="menuitem"><a class="dropdown-item" (click)="onTypeChanged(option.id)" href="javascript:void(0)">{{option.action}}</a></li>
+  </ul>
+</div>
