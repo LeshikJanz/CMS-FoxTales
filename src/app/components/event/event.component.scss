@@ -1,31 +1,42 @@
 .event-container {
-  display: flex;
-  height: 133px;
-  width: 100%;
+  display: inline-flex;
+  margin-top: 20px;
+  height: 65px;
 
   & :first-child {
-    margin-right: 10px;
+    > * {
+      margin: auto;
+      margin-right: 20px;
+      padding-bottom: 5px;
+    }
   }
 
   .main-info {
     & :first-child {
       display: flex;
+      align-items: center;
 
       img {
-        height: 25px;
-        width: 25px;
+        height: 35px;
+        width: 35px;
+      }
+
+      label {
+        font-size: 16px;
+        font-weight: bold;
+        font-family: Avenir-Book;
+        line-height: 1.38;
+        color: #343a40;
       }
     }
-
-    .name, .date {
-      font: 26px bold Avenir-Book;
-      line-height: 1.38;
-      color: #343a40;
-    }
-
   }
 
   .experience {
 
+    label{
+      margin-left: 45px;
+      font-size: 16px;
+      font-family: Avenir-Book;
+    }
   }
 }

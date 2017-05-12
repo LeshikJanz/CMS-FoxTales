@@ -3,5 +3,5 @@ import { CheckboxComponent } from "./checkbox.component";
 
 export default sandboxOf(CheckboxComponent)
   .add('checkboxes', {
-    template: `<fox-checkbox></fox-checkbox>`
+    template: `<checkbox></checkbox>`
   });
