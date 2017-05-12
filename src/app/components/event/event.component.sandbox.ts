@@ -10,5 +10,23 @@ export default sandboxOf(EventComponent, {declarations: [CheckboxComponent], })
                 [expCount]="7"
                 [status]="0"
                 ></event>`,
-    context: CheckboxComponent
+    context: [CheckboxComponent]
+  })
+  .add('warning event', {
+    template: `<event
+                [name]="'TestEvent'"
+                [tags]="['firstTag', 'secondTag', 'thirdTag']"
+                [expCount]="7"
+                [status]="-1"
+                ></event>`,
+    context: [CheckboxComponent]
+  })
+  .add('success event', {
+    template: `<event
+                [name]="'TestEvent'"
+                [tags]="['firstTag', 'secondTag', 'thirdTag']"
+                [expCount]="7"
+                [status]="1"
+                ></event>`,
+    context: [CheckboxComponent]
   });

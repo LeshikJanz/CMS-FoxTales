@@ -8,6 +8,20 @@
   }
 
   .main-info {
+    & :first-child {
+      display: flex;
+
+      img {
+        height: 25px;
+        width: 25px;
+      }
+    }
+
+    .name, .date {
+      font: 26px bold Avenir-Book;
+      line-height: 1.38;
+      color: #343a40;
+    }
 
   }
 
