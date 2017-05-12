@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { IActionState } from "../../client/client.interface";
+import { IActionState } from '../../client/client.interface';
 
 @Component({
   selector: 'event',
@@ -58,5 +58,5 @@ export class EventComponent {
   { id: 3, state: 'ARCHIEVE'},
   { id: 4, state: 'ADD TO GROUP'},
   { id: 5, state: 'ASSIGN USERS'},
-]
+];
 }

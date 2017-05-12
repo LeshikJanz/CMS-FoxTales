@@ -8,5 +8,5 @@ export default sandboxOf(UploadButtonComponent)
 
   })
   .add('default upload button', {
-    template: `<input type="file" name="images" accept=".jpg, .png"`
+    template: `<input type="file" name="images" accept=".jpg, .png">`
   });
