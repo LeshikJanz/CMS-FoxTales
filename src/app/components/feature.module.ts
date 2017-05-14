@@ -15,6 +15,7 @@ import { BsDropdownModule } from 'ngx-bootstrap';
 import { ActionDropDownComponent } from "./dropdowns/action-dropdown/action-dropdown.component";
 import { ProfileImgComponent } from "./profile-img/profile-img.component";
 import { AdminNavigationComponent } from "./navigations/admin-navigation/admin-navigation.component";
+import { TableDropDownComponent } from "./dropdowns/table-dropdown/table-dropdown.component";
 
 @NgModule({
   imports: [
@@ -35,7 +36,8 @@ import { AdminNavigationComponent } from "./navigations/admin-navigation/admin-n
     CheckboxComponent,
     DropDownComponent,
     ActionDropDownComponent,
-    ProfileImgComponent
+    ProfileImgComponent,
+    TableDropDownComponent
   ],
   exports: [
     CreationButtonComponent,
@@ -49,7 +51,8 @@ import { AdminNavigationComponent } from "./navigations/admin-navigation/admin-n
     CheckboxComponent,
     DropDownComponent,
     ActionDropDownComponent,
-    ProfileImgComponent
+    ProfileImgComponent,
+    TableDropDownComponent
   ]
 })
 

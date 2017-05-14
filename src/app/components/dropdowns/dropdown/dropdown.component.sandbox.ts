@@ -4,15 +4,17 @@ import { BsDropdownModule } from 'ngx-bootstrap';
 
 export default sandboxOf(DropDownComponent, { imports: [ BsDropdownModule.forRoot() ] })
   .add('small', {
-    template: `<dropdown 
+    template: `
+              <div >
+               <dropdown 
                [title]="title"
                [options]="options"
                [size]="size"
                (typeChanged)="onTypeChanged($event)"
-               ></dropdown>`,
+               ></dropdown></div>`,
     context: {
       title: "Most recent",
-      options: [{ id: 1, action: 'Unarchived' },{ id: 2, action: 'Archived' }],
+      options: [ { id: 1, action: 'Unarchived' }, { id: 2, action: 'Archived' } ],
       size: 'small',
       onTypeChanged(event) {
         console.log("onTypeChanged");
@@ -22,11 +24,20 @@ export default sandboxOf(DropDownComponent, { imports: [ BsDropdownModule.forRoo
   })
 
   .add('medium', {
-    template: `<dropdown 
+    template: `<div style="margin-left: 100px"><dropdown 
                [title]="'Action'"
                [options]="[{ id: 1, action: 'Unarchived' },{ id: 2, action: 'Archived' }]"
                [size]="'medium'"
                (typeChanged)="onTypeChanged($event)"
-               ></dropdown>`
+               ></dropdown></div>`
+  })
+
+  .add('big', {
+    template: `<div style="margin-left: 100px"><dropdown 
+               [title]="'Action'"
+               [options]="[{ id: 1, action: 'Unarchived' },{ id: 2, action: 'Archived' }]"
+               [size]="'big'"
+               (typeChanged)="onTypeChanged($event)"
+               ></dropdown></div>`
   });
 

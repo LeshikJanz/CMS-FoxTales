@@ -12,9 +12,10 @@
           <img src="assets/img/ui-24-px-outline-2-small-add.svg" alt="">
           <label>Create New Client</label></button>
       </div>
-
       <dropdown
+        [title]="'Action'"
         [options]="clientStates"
+        [size]="'medium'"
         (typeChanged)="onTypeChanged($event)"
       ></dropdown>
     </div>

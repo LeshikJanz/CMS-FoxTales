@@ -3,12 +3,14 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { TableComponent, FormatPipe } from './table';
+import { FeatureModule } from "../components/feature.module";
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FeatureModule
   ],
   declarations: [
     TableComponent,

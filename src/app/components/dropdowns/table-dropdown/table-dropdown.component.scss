@@ -44,6 +44,7 @@ $big-height: 38px;
 
   .dropdown-menu {
     min-width: $small-width;
+    width: $small-width;
   }
 }
 
@@ -51,19 +52,19 @@ $big-height: 38px;
   .btn.drop-button {
     height: $mid-height;
     width: $mid-width;
-    border-radius: 6px;
+    border-radius: 3px;
     font-size: 16px;
     font-weight: 500;
     line-height: 1.58;
     color: #626d78;
-
     .fox-caret {
-      border-width: 0 2px 2px 0;
-      margin-bottom: 5%;
+      border-width: 0 1px 1px 0;
+      margin-bottom: 10%;
     }
   }
 
   .dropdown-menu {
+    min-width: $mid-width;
     width: $mid-width;
   }
 }
@@ -85,6 +86,7 @@ $big-height: 38px;
   }
 
   .dropdown-menu {
+    min-width: $big-width;
     width: $big-width;
   }
 }
