@@ -7,10 +7,12 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 
 export class ProfileImgComponent implements OnInit {
-  @Input() src: string;
+  @Input() public src: string;
 
-  ngOnInit() {
-    if(this.src == null) throw new Error("Attribute 'src' is required");
+  public ngOnInit() {
+    if (this.src == null) {
+      throw new Error("Attribute 'src' is required");
+    }
   }
 
 }

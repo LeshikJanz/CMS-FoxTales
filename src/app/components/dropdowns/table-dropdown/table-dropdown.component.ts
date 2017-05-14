@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { ITableAction } from "../../../shared/table/action.interface";
+import { ITableAction } from '../../../shared/table/action.interface';
 
 /**
  * Drop down menu

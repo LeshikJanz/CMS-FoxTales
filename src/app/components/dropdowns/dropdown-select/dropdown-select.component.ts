@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { IActionState } from "../../../client/client.interface";
+import { IActionState } from '../../../client/client.interface';
 
 /**
  * Drop down select

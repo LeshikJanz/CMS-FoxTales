@@ -26,18 +26,19 @@
       </td>
       <td *ngIf="actions">
         <table-dropdown
-          [title]="Actions"
+          [title]="'Action'"
           [options]="actions"
           [size]="'medium'"
-          (typeChanged)="onTypeChanged($event)"
+          (typeChanged)="changeAction($event)"
         ></table-dropdown>
-        <select (change)="changeAction()" [(ngModel)]="currentAction">
-          <option
-            *ngFor="let action of actions"
-            [ngValue]="{ id: row.id, callback: action.callback }">
-            {{ action.title }}
-          </option>
-        </select>
+        <!--TODO: compare new version of dropdown-->
+        <!--<select (change)="changeAction()" [(ngModel)]="currentAction">-->
+          <!--<option-->
+            <!--*ngFor="let action of actions"-->
+            <!--[ngValue]="{ id: row.id, callback: action.callback }">-->
+            <!--{{ action.title }}-->
+          <!--</option>-->
+        <!--</select>-->
       </td>
     </tr>
     </tbody>

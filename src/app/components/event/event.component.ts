@@ -9,6 +9,14 @@ import { IActionState } from '../../client/client.interface';
 
 export class EventComponent {
 
+  public eventActions: IActionState[] = [
+    { id: 1, action: 'SETTINGS' },
+    { id: 2, action: 'CLONE' },
+    { id: 3, action: 'ARCHIEVE' },
+    { id: 4, action: 'ADD TO GROUP' },
+    { id: 5, action: 'ASSIGN USERS' },
+  ];
+
   /**
    * Event name
    *
@@ -52,13 +60,7 @@ export class EventComponent {
    */
   public isChecked: boolean = false;
 
-  public eventActions: IActionState[] = [
-  { id: 1, action: 'SETTINGS'},
-  { id: 2, action: 'CLONE'},
-  { id: 3, action: 'ARCHIEVE'},
-  { id: 4, action: 'ADD TO GROUP'},
-  { id: 5, action: 'ASSIGN USERS'},
-];
-
-
+  public onTypeChanged() {
+    console.log('onTypeChanged');
+  }
 }
