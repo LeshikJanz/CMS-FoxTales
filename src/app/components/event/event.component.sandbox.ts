@@ -1,7 +1,7 @@
 import { sandboxOf } from 'angular-playground';
 import { EventComponent } from "./event.component";
 import { CheckboxComponent } from "../checkbox/checkbox.component";
-import { DropDownSelectComponent } from "../dropdown-select/dropdown-select.component";
+import { DropDownSelectComponent } from "../dropdowns/dropdown-select/dropdown-select.component";
 
 export default sandboxOf(EventComponent, {declarations: [CheckboxComponent, DropDownSelectComponent], })
   .add('default event', {

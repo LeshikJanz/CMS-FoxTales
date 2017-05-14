@@ -1,15 +1,16 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { IActionState } from '../../client/client.interface';
+import { IActionState } from '../../../client/client.interface';
+
 /**
- * Drop down menu
+ * Drop down action menu
  */
 @Component({
-  selector: 'dropdown',
-  templateUrl: './dropdown.component.html',
-  styleUrls: ['./dropdown.component.scss']
+  selector: 'action-dropdown',
+  templateUrl: 'action-dropdown.component.html',
+  styleUrls: ['action-dropdown.component.scss']
 })
 
-export class DropDownComponent {
+export class ActionDropDownComponent {
   @Input() public options: IActionState[];
 
   @Output() public typeChanged: EventEmitter<number> = new EventEmitter();

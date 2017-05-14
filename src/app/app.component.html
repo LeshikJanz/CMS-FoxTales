@@ -1,2 +1,10 @@
-<main-navigation></main-navigation>
-<router-outlet></router-outlet>
+<header>
+  <main-navigation></main-navigation>
+</header>
+<div class="mainContent">
+  <div class="container-fluid">
+    <router-outlet></router-outlet>
+    <!--Loader for app-->
+    <!--<app-loader [showLoader]="false"></app-loader>-->
+  </div>
+</div>

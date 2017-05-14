@@ -5,13 +5,16 @@ import { FEATURE_ROUTES } from './feature.routing';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { CreationButtonComponent } from './creationButton/creation-button.component';
-import { DropDownSelectComponent } from './dropdown-select/dropdown-select.component';
-import { NavigationComponent } from './admin-navigation/admin-navigation.component';
-import { MainNavigationComponent } from './main-navigation/main-navigation.component';
+import { DropDownSelectComponent } from './dropdowns/dropdown-select/dropdown-select.component';
+import { ExperienceNavigationComponent } from './navigations/experience-navigation/experience-navigation.component';
+import { MainNavigationComponent } from './navigations/main-navigation/main-navigation.component';
 import { EventComponent } from './event/event.component';
 import { CheckboxComponent } from './checkbox/checkbox.component';
-import { DropDownComponent } from "./dropdown/dropdown.component";
+import { DropDownComponent } from "./dropdowns/dropdown/dropdown.component";
 import { BsDropdownModule } from 'ngx-bootstrap';
+import { ActionDropDownComponent } from "./dropdowns/action-dropdown/action-dropdown.component";
+import { ProfileImgComponent } from "./profile-img/profile-img.component";
+import { AdminNavigationComponent } from "./navigations/admin-navigation/admin-navigation.component";
 
 @NgModule({
   imports: [
@@ -25,11 +28,14 @@ import { BsDropdownModule } from 'ngx-bootstrap';
     CreationButtonComponent,
     UploadButtonComponent,
     DropDownSelectComponent,
-    NavigationComponent,
+    ExperienceNavigationComponent,
+    AdminNavigationComponent,
     MainNavigationComponent,
     EventComponent,
     CheckboxComponent,
-    DropDownComponent
+    DropDownComponent,
+    ActionDropDownComponent,
+    ProfileImgComponent
   ],
   exports: [
     CreationButtonComponent,
@@ -37,10 +43,13 @@ import { BsDropdownModule } from 'ngx-bootstrap';
     DropDownSelectComponent,
     CommonModule,
     FormsModule,
-    NavigationComponent,
+    ExperienceNavigationComponent,
     MainNavigationComponent,
+    AdminNavigationComponent,
     CheckboxComponent,
-    DropDownComponent
+    DropDownComponent,
+    ActionDropDownComponent,
+    ProfileImgComponent
   ]
 })
 

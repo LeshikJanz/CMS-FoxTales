@@ -59,4 +59,6 @@ export class EventComponent {
   { id: 4, action: 'ADD TO GROUP'},
   { id: 5, action: 'ASSIGN USERS'},
 ];
+
+
 }
