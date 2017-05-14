@@ -1,10 +1,12 @@
-<div class="btn-group" dropdown>
-  <button type="button" class="btn btn-danger">Action</button>
-  <button type="button" dropdownToggle class="btn btn-danger dropdown-toggle dropdown-toggle-split">
+<div class="btn-group" dropdown placement="bottom right">
+  <button type="button" class="btn">Action</button>
+  <button type="button" dropdownToggle class="btn dropdown-toggle dropdown-toggle-split">
     <!--<span class="caret"></span>-->
     <span class="sr-only">Split button!</span>
   </button>
-  <ul *dropdownMenu class="dropdown-menu" role="menu">
-    <li *ngFor="let option of options" role="menuitem"><a class="dropdown-item" (click)="onTypeChanged(option.id)" href="javascript:void(0)">{{option.action}}</a></li>
+  <ul *dropdownMenu class="dropdown-menu dropdown-menu-right" role="menu">
+    <li *ngFor="let option of options" role="menuitem">
+      <a class="dropdown-item" (click)="onTypeChanged(option.id)" href="javascript:void(0)">{{option.action}}</a>
+    </li>
   </ul>
 </div>

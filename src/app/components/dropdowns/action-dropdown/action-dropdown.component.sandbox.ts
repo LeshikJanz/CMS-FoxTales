@@ -4,10 +4,13 @@ import { BsDropdownModule } from "ngx-bootstrap";
 
 export default sandboxOf(ActionDropDownComponent, { imports: [ BsDropdownModule.forRoot() ]})
   .add('dropdown with actions', {
-    template: `<action-dropdown
+    template: `
+        <div style="margin-left: 100px">
+        <action-dropdown
         [options]="options"
         (typeChanged)="onTypeChanged($event)">
-      </action-dropdown>`,
+      </action-dropdown>
+</div>`,
     context: {
       options: [{ id: 1, action: 'Unarchived' },{ id: 2, action: 'Archived' }],
       onTypeChanged(event) {
