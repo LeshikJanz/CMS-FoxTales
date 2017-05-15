@@ -1,0 +1,18 @@
+{
+  "id": "2eb5c2ff-44f8-4664-8a67-458a39ff4e9d",
+  "userADId": "6fe1bcb7-eecb-4b0a-9d18-1f8f7d122572",
+  "clientId": "6fe1bcb7-eecb-4b0a-9d18-1f8f7d122572",
+  "clientName": "Microsoft",
+  "firstName": "Karri",
+  "lastName": "Manns",
+  "email": "karri@milk.com",
+  "phone": "425-651-7131",
+  "roles": [{
+    "id": "7658c8c0-f047-4a5b-862c-f15aebd926b1",
+    "name": "MANAGER"
+  }],
+  "isActive": true,
+  "location": "850 Main Street Seattle, WA 98109",
+  "lastActiveDate": "Sun Apr 30 2017 14:08:22 GMT+0300 (+03)",
+  "selectedClientAccess": "1"
+}

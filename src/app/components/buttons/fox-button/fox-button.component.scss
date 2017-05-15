@@ -1,0 +1,128 @@
+button {
+  width: inherit;
+  height: inherit;
+  font-size: inherit;
+}
+
+.primary {
+  color: white;
+  font-family: OpenSans-Bold;
+  border-radius: 6px;
+  background-color: #f57f17;
+
+  &:hover {
+    transition: .3s all;
+    background-color: #ffb536;
+  }
+
+  &:active {
+    transition: .3s all;
+    background-color: #f56c17;
+  }
+}
+
+.secondary {
+  border-radius: 6px;
+  background-color: transparent;
+  border: solid 2px #f37726;
+  font-family: Helvetica;
+  font-weight: bold;
+  line-height: 1;
+  letter-spacing: 0.5px;
+  text-align: center;
+  color: #f57f17;
+
+  &:hover {
+    transition: .3s all;
+    color: #ffb536;
+    border-radius: 6px;
+    border: solid 2px #ffb536;
+  }
+
+  &:active {
+    transition: .3s all;
+    color: #f56c17;
+    border: solid 2px #f56c17;
+  }
+}
+
+.tertiary {
+  border-radius: 6px;
+  background-color: transparent;
+  border: solid 2px #62aff7;
+  font-family: WorkSans-Bold;
+  font-weight: bold;
+  line-height: 1;
+  letter-spacing: 0.5px;
+  text-align: center;
+  color: #62aff7;
+
+  &:hover {
+    transition: .3s all;
+    color: white;
+    border-radius: 6px;
+    background-color: rgba(98, 175, 247, 0.45);
+    border: solid 2px #62aff7;
+  }
+
+  &:active {
+    transition: .3s all;
+    color: white;
+    background-color: #62aff7;
+    border: solid 2px #62aff7;
+  }
+}
+
+.special {
+  border-radius: 6px;
+  background-color: transparent;
+  border: solid 2px #2fd976;
+  font-family: WorkSans-Bold;
+  font-weight: bold;
+  line-height: 1;
+  letter-spacing: 0.5px;
+  text-align: center;
+  color: #2fd976;
+
+  &:hover {
+    transition: .3s all;
+    color: white;
+    border-radius: 6px;
+    background-color: #7de2a7;
+    border: solid 2px #7de2a7;
+  }
+
+  &:active {
+    transition: .3s all;
+    color: white;
+    background-color: #26bb65;
+    border: solid 2px #26bb65;
+  }
+}
+
+.gray {
+  border-radius: 6px;
+  background-color: transparent;
+  border: solid 2px #f8f8f8;
+  font-family: WorkSans-Medium;
+  font-weight: bold;
+  line-height: 1;
+  letter-spacing: 0.5px;
+  text-align: center;
+  color: #7a8693;
+
+  &:hover {
+    transition: .3s all;
+    color: #7a8693;
+    border-radius: 6px;
+    background-color: rgba(216, 220, 225, 0.42);
+    border: solid 2px rgba(216, 220, 225, 0.42);
+  }
+
+  &:active {
+    transition: .3s all;
+    color: #7a8693;
+    background-color: rgba(216, 220, 225, 0.55);
+    border: solid 2px rgba(216, 220, 225, 0.55);
+  }
+}

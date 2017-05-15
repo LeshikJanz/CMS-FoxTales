@@ -1,0 +1,41 @@
+.list-container {
+}
+
+.create-client {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.creation-button {
+  width: 204px;
+  height: 54px;
+  font-size: 16px;
+  border-radius: 6px;
+  color: white;
+  background-color: #2fd976;
+}
+
+.list-menu {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.creation-button {
+  & label {
+    margin-bottom: 0;
+    color: white;
+    font-family: AvenirNext;
+    font-size: 16px;
+  }
+}
+
+.main-label {
+  align-self: flex-start;
+}
+
+.dr-actions {
+  display: flex;
+  justify-content: flex-end;
+}

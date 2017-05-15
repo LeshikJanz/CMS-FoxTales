@@ -1,0 +1,93 @@
+$small-width: 132px;
+$small-height: 26px;
+$mid-width: 117px;
+$mid-height: 38px;
+$big-width: 177px;
+$big-height: 38px;
+
+.btn.drop-button {
+  display: inline-flex;
+  justify-content: space-between;
+  padding-top: 4%;
+  border-radius: 0;
+  background-color: #f8f8f8;
+  border: #f8f8f8;
+  font-family: AvenirNext;
+
+  label {
+    font-weight: 100;
+  }
+
+  .caret.fox-caret {
+    align-self: center;
+    border: solid black;
+    display: inline-block;
+    padding: 3px;
+    transform: rotate(45deg);
+  }
+}
+
+.small {
+  .btn.drop-button {
+    height: $small-height;
+    width: $small-width;
+    border-radius: 3px;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.58;
+    color: #626d78;
+    .fox-caret {
+      border-width: 0 1px 1px 0;
+      margin-bottom: 10%;
+    }
+  }
+
+  .dropdown-menu {
+    min-width: $small-width;
+    width: $small-width;
+  }
+}
+
+.medium {
+  .btn.drop-button {
+    height: $mid-height;
+    width: $mid-width;
+    border-radius: 3px;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.58;
+    color: #626d78;
+    .fox-caret {
+      border-width: 0 1px 1px 0;
+      margin-bottom: 10%;
+    }
+  }
+
+  .dropdown-menu {
+    min-width: $mid-width;
+    width: $mid-width;
+  }
+}
+
+.big {
+  .btn.drop-button {
+    height: $big-height;
+    width: $big-width;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.58;
+    color: #626d78;
+
+    .fox-caret {
+      border-width: 0 2px 2px 0;
+      margin-bottom: 5%;
+    }
+  }
+
+  .dropdown-menu {
+    min-width: $big-width;
+    width: $big-width;
+  }
+}
+

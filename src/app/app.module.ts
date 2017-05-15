@@ -1,91 +1,100 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { FormsModule,  ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { MaterialModule } from '@angular/material';
+import { NgModule, ApplicationRef } from '@angular/core';
+import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularclass/hmr';
+import { RouterModule, PreloadAllModules } from '@angular/router';
 
+/*
+ * Platform and Environment providers/directives/pipes
+ */
+import { ENV_PROVIDERS } from './environment';
+import { ROUTES } from './app.routes';
 
 import { AppComponent } from './app.component';
-import { ClientsComponent } from './clients/clients.component';
-import { ClientEditComponent } from './clients/client-edit/client-edit.component';
-import { ClientCreateComponent } from './clients/client-create/client-create.component';
-import { ClientListComponent } from './clients/client-list/client-list.component';
-import { UserComponent } from './user/user.component';
-import { UserCreateComponent } from './user/user-create/user-create.component';
-import { UserEditComponent } from './user/user-edit/user-edit.component';
-import { UserManagementComponent } from './user/user-management/user-management.component';
-import { EventComponent } from './event/event.component';
-import { EventEditComponent } from './event/event-edit/event-edit.component';
-import { EventListComponent } from './event/event-list/event-list.component';
-import { EventCollectionComponent } from './event/event-collection/event-collection.component';
-import { EventsComponent } from './event/events/events.component';
-import { ExperiencesComponent } from './experiences/experiences.component';
-import { LoginComponent } from './login/login.component';
-import { ConfirmationComponent } from './login/confirmation/confirmation.component';
-import { ForgotPasswordComponent } from './login/forgot-password/forgot-password.component';
-import { ResetpasswordComponent } from './login/resetpassword/resetpassword.component';
-import { routing } from './app.routing';
-import { LoginService } from './login/login.service';
-import { DashboardModule } from './dashboard/dashboard.module';
-import { MomentModule } from 'angular2-moment';
-import {NgxDatatableModule } from '@swimlane/ngx-datatable';
-import { ContentListComponent } from './content-list/content-list.component';
-import {TabViewModule, ScheduleModule } from 'primeng/primeng';
-import * as moment from 'moment';
-import {ButtonModule} from 'primeng/primeng';
-import {SplitButtonModule} from 'primeng/primeng';
-import {SelectButtonModule} from 'primeng/primeng';
-import {InputTextModule} from 'primeng/primeng';
-import { ExperienceBuilderComponent } from './experience-builder/experience-builder.component';
+import { APP_RESOLVER_PROVIDERS } from './app.resolver';
+import { AppState, InternalStateType } from './app.service';
+import { AuthGuard, AuthService } from './shared/core';
+import { NoContentComponent } from './no-content';
 
+import '../styles/styles.scss';
+import { FeatureModule } from './components/feature.module';
 
+// Application wide providers
+const APP_PROVIDERS = [
+  ...APP_RESOLVER_PROVIDERS,
+  AppState,
+  AuthGuard,
+  AuthService
+];
 
+type StoreType = {
+  state: InternalStateType,
+  restoreInputValues: () => void,
+  disposeOldHosts: () => void
+};
 
-
+/**
+ * `AppModule` is the main entry point into Angular2's bootstraping process
+ */
 @NgModule({
+  bootstrap: [ AppComponent ],
   declarations: [
     AppComponent,
-    ClientsComponent,
-    ClientEditComponent,
-    ClientCreateComponent,
-    ClientListComponent,
-    UserComponent,
-    UserCreateComponent,
-    UserEditComponent,
-    UserManagementComponent,
-    EventComponent,
-    EventEditComponent,
-    EventListComponent,
-    EventCollectionComponent,
-    EventsComponent,
-    ExperiencesComponent,
-    LoginComponent,
-    ConfirmationComponent,
-    ForgotPasswordComponent,
-    ResetpasswordComponent,
-    EventComponent,
-    ContentListComponent,
-    ExperienceBuilderComponent
-
+    NoContentComponent
   ],
-  imports: [
-    BrowserModule,
+  imports: [ // import Angular's modules
+    BrowserAnimationsModule,
+    CommonModule,
     FormsModule,
     HttpModule,
-    routing,
-    DashboardModule,
-    MomentModule,
-     ReactiveFormsModule,
-     NgxDatatableModule,
-     MaterialModule,
-     TabViewModule,
-     ScheduleModule,
-     ButtonModule,
-     SplitButtonModule,
-     SelectButtonModule,
-     InputTextModule
+    RouterModule.forRoot(ROUTES, { useHash: true, preloadingStrategy: PreloadAllModules }),
+    FeatureModule
   ],
-  providers: [LoginService],
-  bootstrap: [AppComponent]
+  providers: [ // expose our Services and Providers into Angular's dependency injection
+    ENV_PROVIDERS,
+    APP_PROVIDERS
+  ]
 })
-export class AppModule { }
+export class AppModule {
+  constructor(public appRef: ApplicationRef, public appState: AppState) {
+  }
+
+  public hmrOnInit(store: StoreType) {
+    if (!store || !store.state) {
+      return;
+    }
+
+    // set state
+    this.appState._state = store.state;
+    // set input values
+    if ('restoreInputValues' in store) {
+      let restoreInputValues = store.restoreInputValues;
+      setTimeout(restoreInputValues);
+    }
+
+    this.appRef.tick();
+    delete store.state;
+    delete store.restoreInputValues;
+  }
+
+  public hmrOnDestroy(store: StoreType) {
+    const cmpLocation = this.appRef.components.map((cmp) => cmp.location.nativeElement);
+    // save state
+    const state = this.appState._state;
+    store.state = state;
+    // recreate root elements
+    store.disposeOldHosts = createNewHosts(cmpLocation);
+    // save input values
+    store.restoreInputValues  = createInputTransfer();
+    // remove styles
+    removeNgStyles();
+  }
+
+  public hmrAfterDestroy(store: StoreType) {
+    // display new elements
+    store.disposeOldHosts();
+    delete store.disposeOldHosts;
+  }
+}

@@ -1,0 +1,99 @@
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 75px;
+  background-color: white;
+  font-family: Avenir;
+  color: #687078;
+
+  .link-bar {
+    display: flex;
+    width: 50%;
+    justify-content: space-around;
+
+    a {
+      margin: auto;
+    }
+
+    nav {
+      display: flex;
+      margin: auto;
+      min-width: 30%;
+      width: 70%;
+      justify-content: space-between;
+
+      & :nth-child(2) {
+        color: #f06a14;
+      }
+
+      & :last-child {
+        display: flex;
+        margin: auto;
+        color: #fc181f;
+
+        div {
+          margin: auto;
+          margin-right: 5px;
+        }
+      }
+    }
+  }
+
+  .profile {
+    display: flex;
+    justify-content: center;
+
+    .user-img {
+      cursor: pointer;
+      width: 40px;
+      height: 40px;
+    }
+
+    > * {
+       margin-left: 20px;
+     }
+
+    .user-profile {
+      display: flex;
+      justify-content: space-between;
+      min-width: 150px;
+
+      img {
+        cursor: pointer;
+        margin: auto;
+        width: 30px;
+        height: 30px;
+      }
+
+      .user-name {
+        font-family: Avenir-Medium;
+        font-size: 14px;
+      }
+
+      .user-design-name {
+        font-family: WorkSans-Regular;
+        font-size: 12px;
+      }
+    }
+  }
+
+  .logo {
+    width: 43px;
+    height: 38px;
+  }
+
+  #circle {
+    width: 10px;
+    height: 10px;
+    background: red;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+  }
+}
+
+.nav-container:hover {
+  background-color: #f8f8f8;
+}
+
