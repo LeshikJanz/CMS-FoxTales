@@ -1,5 +1,4 @@
 .list-container {
-  margin: 50px;
 }
 
 .create-client {
@@ -8,12 +7,9 @@
 }
 
 .creation-button {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
   width: 204px;
   height: 54px;
+  font-size: 16px;
   border-radius: 6px;
   color: white;
   background-color: #2fd976;
@@ -37,4 +33,9 @@
 
 .main-label {
   align-self: flex-start;
+}
+
+.dr-actions {
+  display: flex;
+  justify-content: flex-end;
 }
