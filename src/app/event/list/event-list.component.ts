@@ -18,7 +18,7 @@ export class EventListComponent implements OnInit {
     *
     * @type {Event[]}
     */
-    public Event: any[];
+    public Events: any[];
 
     constructor(private eventService: EventService){
     }
@@ -36,7 +36,7 @@ export class EventListComponent implements OnInit {
         this.eventService
         .getEvents()
         .subscribe((event) => {
-          this.Event = event;
+          this.Events = event;
     });
   }
 

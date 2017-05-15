@@ -5,6 +5,7 @@ import { EventListComponent } from './list';
 import { EventCreateComponent } from './create';
 
 const EVENT_ROUTES: Routes = [
+  { path: '',    redirectTo: 'events' },
   { path: 'events',    component: EventListComponent },
   { path: 'event',    component: EventCreateComponent },
 ];

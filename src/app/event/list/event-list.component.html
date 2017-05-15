@@ -8,26 +8,15 @@
     <div>
       <div class="create-event">
         <button type="button" class="creation-button" [routerLink]="['../','event']">
-          <img src="assets/img/ui-24-px-outline-2-small-add.svg" alt="">
           <label>Create New Event</label></button>
       </div>
     </div>
 
   </div>
-  <!--I was using ngxtables prior to this port, but wanted to get you guys something-->
-  <div *ngFor="let events of Event">
-    <a style="text-decoration: none" [routerLink]="['../','experience',events.id]" [queryParams]="{ id: events.id }"> 
-    {{ events.name }} {{ events.startTime | date}} {{ events.tags }} {{ events.experiences.length}}
-        </a>
-    <!--need to figure out how to pull out ITableAction potentially for this select tag-->
-    <select>
-  <option value="Settings">Settings</option>
-  <option value="Clone">Clone</option>
-  <option value="Archive">Archive</option>
-  <option value="Add to group">Add to group</option>
-   <option value="Assign Users">Assign Users</option>
-</select>
-  </div>
+
+  
+  <event *ngFor="let event of Events" [event]="event">
+    </event>
 
 
 
