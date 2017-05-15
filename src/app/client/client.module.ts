@@ -8,7 +8,7 @@ import { ToastrModule, ToastContainerModule } from 'ngx-toastr';
 import { AgmCoreModule } from '@agm/core';
 
 import { SharedModule } from '../shared';
-import { HttpService } from '../shared/core';
+import { HttpService, AuthService, AuthRequestOptions } from '../shared/core';
 
 import { CLIENT_ROUTING } from './client.routes';
 
@@ -42,6 +42,11 @@ import { FeatureModule } from '../components/feature.module';
       useFactory: httpFactory,
       deps: [ XHRBackend, RequestOptions, Injector ]
     },
+    {
+      provide: RequestOptions,
+      useFactory: requestOptionsFactory,
+      deps: [ AuthService ]
+    },
     ClientService
   ],
   declarations: [
@@ -65,4 +70,14 @@ export function httpFactory(backend: XHRBackend,
                             defaultOptions: RequestOptions,
                             injector: Injector) {
   return new HttpService(backend, defaultOptions, injector);
+}
+
+/**
+ * Request options factory
+ *
+ * @param {AuthService} auth - Auth service
+ * @returns {AuthRequestOptions} - Request options
+ */
+export function requestOptionsFactory(auth: AuthService) {
+  return new AuthRequestOptions(auth);
 }

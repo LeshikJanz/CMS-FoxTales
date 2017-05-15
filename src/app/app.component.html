@@ -1,8 +1,15 @@
 <header>
-  <main-navigation></main-navigation>
+  <main-navigation *ngIf="loggedIn()"></main-navigation>
 </header>
 <div class="mainContent">
   <div class="container-fluid">
+    <fox-button
+      *ngIf="loggedIn()"
+      class="logout-btn"
+      (click)="logout()"
+      [value]="'Log out'"
+      [type]="'tertiary'"
+    ></fox-button>
     <router-outlet></router-outlet>
     <!--Loader for app-->
     <!--<app-loader [showLoader]="false"></app-loader>-->
