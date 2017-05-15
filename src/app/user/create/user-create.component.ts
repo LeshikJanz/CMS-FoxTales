@@ -8,7 +8,8 @@ import { UserService } from '../user.service';
 
 @Component({
   selector: 'user-create',
-  templateUrl: './user-create.component.html'
+  templateUrl: './user-create.component.html',
+  styleUrls: [ './user-create.component.scss' ]
 })
 export class UserCreateComponent implements OnInit {
   /**
@@ -83,7 +84,7 @@ export class UserCreateComponent implements OnInit {
 
     this.userService
       .addUser({ ...user, ...this.userDetails })
-      .subscribe(() => this.router.navigate(['/users']));
+      .subscribe(() => this.router.navigate(['/admin/users']));
   }
 
   /**

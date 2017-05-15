@@ -1,0 +1,58 @@
+.table-header {
+  img {
+    width: 13px;
+    height: 13px;
+  }
+
+  input {
+    border: none;
+  }
+}
+
+
+.asc {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+
+  border-bottom: 5px solid black;
+}
+
+.desc {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+
+  border-top: 5px solid black;
+  padding-bottom: 2px;
+}
+
+.header-input {
+  border-bottom: 2px solid black;
+}
+
+.table-row {
+  height: 70px;
+}
+
+table {
+  border:none;
+  border-collapse: collapse;
+}
+
+table td {
+  border-top: 1px solid #000;
+  border-bottom: 1px solid #000;
+}
+
+table td:first-child {
+  border-left: none;
+}
+
+table td:last-child {
+  border-right: none;
+}

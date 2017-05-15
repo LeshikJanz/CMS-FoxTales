@@ -1,10 +1,11 @@
-<div *ngIf="loggedIn()">
-  <nav>
-    <a href="javascript:void(0)" [routerLink]="['/users']">Users</a>
-    <a href="javascript:void(0)" [routerLink]="['/clients']">Clients</a>
-  </nav>
-
-  <button (click)="logout()">Log out</button>
+<header>
+  <main-navigation *ngIf="loggedIn()"></main-navigation>
+  <button (click)="logout()" *ngIf="loggedIn()">Log out</button>
+</header>
+<div class="mainContent">
+  <div class="container-fluid">
+    <router-outlet></router-outlet>
+    <!--Loader for app-->
+    <!--<app-loader [showLoader]="false"></app-loader>-->
+  </div>
 </div>
-
-<router-outlet></router-outlet>

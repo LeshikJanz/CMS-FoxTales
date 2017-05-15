@@ -51,3 +51,12 @@ export interface IClientFilter {
     [index: string]: string;
   };
 }
+
+
+/**
+ * CLient state interface
+ * */
+export interface IActionState {
+  id: number,
+  action: string
+}

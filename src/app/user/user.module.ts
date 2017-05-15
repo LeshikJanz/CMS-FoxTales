@@ -15,6 +15,7 @@ import { UserService } from './user.service';
 import { UserListComponent } from './list';
 import { UserCreateComponent } from './create';
 import { UserEditComponent } from './edit';
+import { FeatureModule } from '../components/feature.module';
 
 @NgModule({
   imports: [
@@ -27,7 +28,8 @@ import { UserEditComponent } from './edit';
     ToastrModule.forRoot(),
     ToastContainerModule.forRoot(),
     SharedModule,
-    USER_ROUTING
+    USER_ROUTING,
+    FeatureModule
   ],
   providers: [
     {

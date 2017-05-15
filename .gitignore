@@ -32,3 +32,5 @@ doc/
 *.css.shim.ts
 *.ngsummary.json
 *.shim.ngstyle.ts
+/src/sandboxes.ts
+

@@ -1,36 +1,46 @@
 <section>
-  <table>
+  <table style="width: 100%">
     <thead>
-      <tr>
-        <th *ngFor="let col of cols">
-          <label (click)="changeSort(col)">{{ col.title }}</label>
-          <div *ngIf="col.searchable">
-            <input
-              type="text"
-              placeholder="Search"
-              (input)="searchQuery[col.id].next($event.target.value)">
-          </div>
-        </th>
-        <th *ngIf="actions"></th>
-      </tr>
+    <tr>
+      <th class="table-header" *ngFor="let col of cols">
+        <div>
+          <img (click)="openSearch(col)" [hidden]="!col.searchable" style="cursor: pointer" src="../../../assets/img/column-search.svg">
+          <label [hidden]="col.isSearchOpen" (click)="changeSort(col)">{{ col.title }}</label>
+          <input *ngIf="col.searchable && col.isSearchOpen"
+                 type="text"
+                 placeholder="Search"
+                 class="header-input"
+                 (input)="searchQuery[col.id].next($event.target.value)">
+          <div (click)="changeSort(col)" [class]="col.sort ? 'asc' : 'desc'"></div>
+        </div>
+      </th>
+      <th *ngIf="actions"></th>
+    </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let row of rows">
-        <td
-          *ngFor="let col of cols"
-          (click)="clickRow(row)"
-          [innerHtml]="row[col.id] | myFormatCell:col.format:col.formatOptions">
-        </td>
-        <td *ngIf="actions">
-          <select (change)="changeAction()" [(ngModel)]="currentAction">
-            <option
-              *ngFor="let action of actions"
-              [ngValue]="{ id: row.id, callback: action.callback }">
-              {{ action.title }}
-            </option>
-          </select>
-        </td>
-      </tr>
+    <tr class="table-row" *ngFor="let row of rows">
+      <td
+        *ngFor="let col of cols"
+        (click)="clickRow(row)"
+        [innerHtml]="row[col.id] | myFormatCell:col.format:col.formatOptions">
+      </td>
+      <td *ngIf="actions">
+        <table-dropdown
+          [title]="'Action'"
+          [options]="actions"
+          [size]="'medium'"
+          (typeChanged)="changeAction($event)"
+        ></table-dropdown>
+        <!--TODO: compare new version of dropdown-->
+        <!--<select (change)="changeAction()" [(ngModel)]="currentAction">-->
+          <!--<option-->
+            <!--*ngFor="let action of actions"-->
+            <!--[ngValue]="{ id: row.id, callback: action.callback }">-->
+            <!--{{ action.title }}-->
+          <!--</option>-->
+        <!--</select>-->
+      </td>
+    </tr>
     </tbody>
   </table>
 </section>

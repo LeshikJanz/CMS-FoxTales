@@ -7,7 +7,8 @@ import { ITableAction } from './action.interface';
 
 @Component({
   selector: 'data-table',
-  templateUrl: './table.component.html'
+  templateUrl: './table.component.html',
+  styleUrls: ['./styles/style.scss']
 })
 export class TableComponent implements OnInit {
   /**
@@ -167,6 +168,16 @@ export class TableComponent implements OnInit {
    */
   public ngOnInit(): void {
     this.buildSearch();
+  }
+
+  /**
+   * Emit open search field
+   *
+   * @param {ICol} col
+   * @returns {void}
+   */
+  public openSearch(col: ICol): void {
+    col.isSearchOpen = !col.isSearchOpen;
   }
 
   /**

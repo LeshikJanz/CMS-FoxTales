@@ -4,7 +4,6 @@ import { NoContentComponent } from './no-content';
 
 export const ROUTES: Routes = [
   { path: '', loadChildren: 'app/auth/auth.module#AuthModule' },
-  { path: '', loadChildren: 'app/user/user.module#UserModule', canActivate: [ AuthGuard ] },
-  { path: '', loadChildren: 'app/client/client.module#ClientModule', canActivate: [ AuthGuard ] },
-  { path: '**', component: NoContentComponent },
+  { path: 'admin', loadChildren: 'app/admin/admin.module#AdminModule', canActivate: [ AuthGuard ] },
+  { path: '**',    component: NoContentComponent }
 ];

@@ -1,0 +1,30 @@
+.regular-checkbox {
+  -webkit-appearance: none;
+  background-color: white;
+  border: 2px solid #cacece;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05);
+  padding: 10px;
+  border-radius: 4px;
+  display: inline-block;
+  position: relative;
+}
+
+.regular-checkbox:active, .regular-checkbox:checked:active {
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px 1px 3px rgba(0,0,0,0.1);
+}
+
+.regular-checkbox:checked {
+  background-color: white;
+  border: 2px solid #2dcc70;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05), inset 15px 10px -12px rgba(255,255,255,0.9);
+  color: white;
+}
+
+.regular-checkbox:checked:after {
+  content: '\2714';
+  font-size: 10px;
+  position: absolute;
+  top: 3px;
+  left: 6px;
+  color: #2dcc70;
+}

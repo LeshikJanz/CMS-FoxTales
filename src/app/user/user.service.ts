@@ -76,21 +76,29 @@ export class UserService {
   /**
    * Archive user by id
    *
+   * See: http://client2.dev.getfoxtales.com/swagger/#!/Users/ApiUsersArchivePost
+   *
    * @param {string} id - User id
    * @returns {Observable<Response>} - Response
    */
   public archiveUser(id: string): Observable<Response> {
-    return this.http.get(`/assets/mock-data/empty.json`);
+    return this.http.post(`${process.env.API_URL}/Users/Archive`, {
+      selectedIds: [ id ]
+    });
   }
 
   /**
    * Unarchive user by id
    *
+   * See: http://client2.dev.getfoxtales.com/swagger/#!/Users/ApiUsersUnArchivePost
+   *
    * @param {string} id - User id
    * @returns {Observable<Response>} - Response
    */
   public unarchiveUser(id: string): Observable<Response> {
-    return this.http.get(`/assets/mock-data/empty.json`);
+    return this.http.post(`${process.env.API_URL}/Users/UnArchive`, {
+      selectedIds: [ id ]
+    });
   }
 
   /**

@@ -26,7 +26,8 @@ import { ClientService } from '../client.service';
  */
 @Component({
   selector: 'client-edit',
-  templateUrl: './client-edit.component.html'
+  templateUrl: './client-edit.component.html',
+  styleUrls: [ './client-edit.component.scss' ]
 })
 export class ClientEditComponent implements OnInit {
   /**
@@ -132,6 +133,16 @@ export class ClientEditComponent implements OnInit {
   }
 
   /**
+   * Recieve img in base64
+   *
+   * @param {string} base64 - string
+   * @returns {void}
+   */
+  public onImgUploaded(base64) {
+    this.client.logoBytes = base64.replace(/data:image\/(png|jpg|jpeg|gif);base64,/, '');
+  }
+
+  /**
    * Add new social account control
    *
    * @param {string} url - Account url
@@ -166,7 +177,7 @@ export class ClientEditComponent implements OnInit {
       .subscribe((client: IClient) => {
         // Redirect to the client list if no client
         if (!client) {
-          return this.router.navigate(['/clients']);
+          return this.router.navigate(['/admin/clients']);
         }
 
         this.client = client;
@@ -208,6 +219,7 @@ export class ClientEditComponent implements OnInit {
       .updateClient(this.client)
       .subscribe(() => {
         this.toastrService.success('Client has been updated successfully.');
+        this.router.navigate(['/admin/clients']);
       });
   }
 

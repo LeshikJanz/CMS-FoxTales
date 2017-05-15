@@ -1,144 +1,146 @@
-<h1>User Create</h1>
+<div class="container">
+  <admin-navigation></admin-navigation>
+  <form
+    (ngSubmit)="addUser(userForm.value)"
+    class="form"
+    novalidate>
 
-<form
-  (ngSubmit)="addUser(userForm.value)"
-  novalidate>
-
-  <div [formGroup]="userForm">
-    <!-- First Name -->
-    <div>
+    <div [formGroup]="userForm">
+      <!-- First Name -->
+      <div class="form-element">
       <label for="firstName">First Name</label>
-      <input
-        id="firstName"
-        type="text"
-        formControlName="firstName"
-        placeholder="First Name">
+        <input
+          id="firstName"
+          type="text"
+          formControlName="firstName"
+          placeholder="First Name">
 
-      <div ngxErrors="firstName">
-        <div ngxError="required" when="touched">
-          Field is required
+        <div ngxErrors="firstName">
+          <div ngxError="required" when="touched">
+            Field is required
+          </div>
         </div>
       </div>
-    </div>
 
-    <!-- Last Name -->
-    <div>
+      <!-- Last Name -->
+      <div class="form-element">
       <label for="lastName">Last Name</label>
-      <input
-        id="lastName"
-        type="text"
-        formControlName="lastName"
-        placeholder="Last Name">
+        <input
+          id="lastName"
+          type="text"
+          formControlName="lastName"
+          placeholder="Last Name">
 
-      <div ngxErrors="lastName">
-        <div ngxError="required" when="touched">
-          Field is required
+        <div ngxErrors="lastName">
+          <div ngxError="required" when="touched">
+            Field is required
+          </div>
         </div>
       </div>
-    </div>
 
-    <!-- Email -->
-    <div>
+      <!-- Email -->
+      <div class="form-element">
       <label for="email">Email</label>
-      <input
-        id="email"
-        type="email"
-        formControlName="email"
-        placeholder="Email">
+        <input
+          id="email"
+          type="email"
+          formControlName="email"
+          placeholder="Email">
 
-      <div ngxErrors="email">
-        <div ngxError="required" when="touched">
-          Field is required
-        </div>
-        <div ngxError="email" when="dirty">
-          Invalid value
+        <div ngxErrors="email">
+          <div ngxError="required" when="touched">
+            Field is required
+          </div>
+          <div ngxError="email" when="dirty">
+            Invalid value
+          </div>
         </div>
       </div>
-    </div>
 
-    <!-- Phone -->
-    <div>
+      <!-- Phone -->
+      <div class="form-element">
       <label for="phone">Phone</label>
-      <input
-        id="phone"
-        type="text"
-        formControlName="phone"
-        placeholder="Phone">
+        <input
+          id="phone"
+          type="text"
+          formControlName="phone"
+          placeholder="Phone">
 
-      <div ngxErrors="phone">
-        <div ngxError="required" when="touched">
-          Field is required
-        </div>
-        <div ngxError="phone" when="dirty">
-          Invalid value
+        <div ngxErrors="phone">
+          <div ngxError="required" when="touched">
+            Field is required
+          </div>
+          <div ngxError="phone" when="dirty">
+            Invalid value
+          </div>
         </div>
       </div>
-    </div>
 
-    <!-- Location -->
-    <div>
+      <!-- Location -->
+      <div class="form-element">
       <label for="location">Location</label>
-      <input
-        id="location"
-        type="text"
-        formControlName="location"
-        placeholder="Location">
+        <input
+          id="location"
+          type="text"
+          formControlName="location"
+          placeholder="Location">
 
-      <div ngxErrors="location">
-        <div ngxError="required" when="touched">
-          Field is required
+        <div ngxErrors="location">
+          <div ngxError="required" when="touched">
+            Field is required
+          </div>
         </div>
       </div>
-    </div>
 
-    <!-- Client Id -->
-    <div>
+      <!-- Client Id -->
+      <div class="form-element">
       <label for="clientId">Client Id</label>
-      <input
-        id="clientId"
-        type="text"
-        formControlName="clientId"
-        placeholder="Client Id">
+        <input
+          id="clientId"
+          type="text"
+          formControlName="clientId"
+          placeholder="Client Id">
 
-      <div ngxErrors="clientId">
-        <div ngxError="required" when="touched">
-          Field is required
+        <div ngxErrors="clientId">
+          <div ngxError="required" when="touched">
+            Field is required
+          </div>
+        </div>
+      </div>
+
+      <!-- Client Access -->
+      <div>
+        <label for="selectedClientAccess">Client Access</label>
+        <select
+          id="selectedClientAccess"
+          formControlName="selectedClientAccess">
+          <option value="0">Access 1</option>
+        </select>
+
+        <div ngxErrors="selectedClientAccess">
+          <div ngxError="required" when="touched">
+            Field is required
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- Client Access -->
-    <div>
-      <label for="selectedClientAccess">Client Access</label>
-      <select
-        id="selectedClientAccess"
-        formControlName="selectedClientAccess">
-        <option value="0">Access 1</option>
-      </select>
-
-      <div ngxErrors="selectedClientAccess">
-        <div ngxError="required" when="touched">
-          Field is required
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Roles -->
-  <div>
+    <!-- Roles -->
+    <div class="form-element">
     <label *ngFor="let role of roles">
-      <input
-        type="checkbox"
-        name="roles[]"
-        [(ngModel)]="role.checked">
-      {{ role.name }}
-    </label>
-  </div>
+        <input
+          type="checkbox"
+          name="roles[]"
+          [(ngModel)]="role.checked">
+        {{ role.name }}
+      </label>
+    </div>
 
-  <div>
-    <input
-      type="submit"
-      [disabled]="userForm.invalid"
-      value="Done">
-  </div>
-</form>
+    <div>
+      <button
+        type="submit"
+        [disabled]="userForm.invalid"
+        class="create-button">CREATE</button>
+    </div>
+  </form>
+</div>

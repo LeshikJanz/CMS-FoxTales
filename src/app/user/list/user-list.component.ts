@@ -5,13 +5,15 @@ import { ICol, ITableAction } from '../../shared/table';
 import { IUserList, IUserFilter } from '../user.interface';
 import { User } from '../user';
 import { UserService } from '../user.service';
+import { IActionState } from '../../client/client.interface';
 
 /**
  * User list component
  */
 @Component({
   selector: 'user-list',
-  templateUrl: './user-list.component.html'
+  templateUrl: './user-list.component.html',
+  styleUrls: [ './user-list.component.scss']
 })
 export class UserListComponent implements OnInit {
   /**
@@ -70,6 +72,16 @@ export class UserListComponent implements OnInit {
   };
 
   /**
+   * Archieve states
+   *
+   * @type {ITableAction[]}
+   */
+  public clientStates: IActionState[] = [
+    { id: 1, action: 'Unarchived'},
+    { id: 2, action: 'Archived'}
+  ];
+
+  /**
    * Constructor
    *
    * @param {Router} router - Router
@@ -115,7 +127,7 @@ export class UserListComponent implements OnInit {
    * @returns {Promise<boolean>}
    */
   public editUser(id: string): Promise<boolean> {
-    return this.router.navigate(['/user', id]);
+    return this.router.navigate(['/admin/user', id]);
   }
 
   /**

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ICol, ITableAction } from '../../shared/table';
-import { IClientList, IClientFilter } from '../client.interface';
+import { IClientList, IClientFilter, IActionState } from '../client.interface';
 import { Client } from '../client';
 import { ClientService } from '../client.service';
 
@@ -11,7 +11,8 @@ import { ClientService } from '../client.service';
  */
 @Component({
   selector: 'client-list',
-  templateUrl: './client-list.component.html'
+  templateUrl: './client-list.component.html',
+  styleUrls: ['./client-list.component.scss']
 })
 export class ClientListComponent implements OnInit {
   /**
@@ -51,6 +52,16 @@ export class ClientListComponent implements OnInit {
     { title: 'Edit',      callback: 'editClient' },
     { title: 'Archive',   callback: 'archiveClient' },
     { title: 'Unarchive', callback: 'unarchiveClient' }
+  ];
+
+  /**
+   * Archieve states
+   *
+   * @type {ITableAction[]}
+   */
+  public clientStates: IActionState[] = [
+    { id: 1, action: 'Unarchived'},
+    { id: 2, action: 'Archived'}
   ];
 
   /**
@@ -114,7 +125,7 @@ export class ClientListComponent implements OnInit {
    * @returns {Promise<boolean>}
    */
   public editClient(id: string): Promise<boolean> {
-    return this.router.navigate(['/client', id]);
+    return this.router.navigate(['/admin/client', id]);
   }
 
   /**

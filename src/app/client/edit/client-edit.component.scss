@@ -1,0 +1,59 @@
+.container {
+  margin: 50px 70px;
+}
+
+.form {
+  width: 400px;
+}
+
+.form-element {
+  display: flex;
+  flex-direction: column;
+  margin-top: 25px;
+  margin-bottom: 10px;
+}
+
+.ng-touched.ng-invalid {
+  border-color: red;
+}
+
+.create-button {
+  width: 204px;
+  height: 54px;
+  border-radius: 6px;
+  background-color: #2fd976;
+  color: white;
+  font-size: 16px;
+  margin-top: 30px;
+}
+
+.error-text {
+  color: red;
+  font-family: Avenir;
+  font-size: 10px;
+}
+
+.form-element .input {
+  height: 30px;
+  font-size: 14px;
+}
+
+button.create-button[disabled] {
+  background-color: gray;
+  cursor: not-allowed;
+}
+
+.field-error {
+  font-style: italic;
+  color: red;
+}
+
+.form-group {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  .license {
+    padding-right: 15px;
+  }
+}

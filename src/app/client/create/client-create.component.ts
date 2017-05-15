@@ -16,13 +16,15 @@ import { Router } from '@angular/router';
 import { CustomValidators } from 'ng2-validation';
 import { MapsAPILoader } from '@agm/core';
 import {  } from '@types/googlemaps';
+import * as moment from 'moment';
 import { IClient } from '../client.interface';
 import { IClientLicense } from '../client-license.interface';
 import { ClientService } from '../client.service';
 
 @Component({
   selector: 'client-create',
-  templateUrl: './client-create.component.html'
+  templateUrl: './client-create.component.html',
+  styleUrls: [ './client-create.component.scss' ]
 })
 export class ClientCreateComponent implements OnInit {
   /**
@@ -143,10 +145,11 @@ export class ClientCreateComponent implements OnInit {
    */
   public addClient(client: IClient): void {
     this.extractLicenses();
+    client.clientSecretValidTo = this.extractDate(client.clientSecretValidTo);
 
     this.clientService
       .addClient({ ...client, ...this.clientDetails })
-      .subscribe(() => this.router.navigate(['/clients']));
+      .subscribe(() => this.router.navigate(['/admin/clients']));
   }
 
   /**
@@ -174,6 +177,16 @@ export class ClientCreateComponent implements OnInit {
     }
 
     this.fileReader.readAsDataURL(files.item(0));
+  }
+
+  /**
+   * Convert date to ISO 8601 format
+   *
+   * @param {string} date - Date
+   * @returns {string} - ISO 8601 formatted date
+   */
+  public extractDate(date: string): string {
+    return moment(date).toISOString();
   }
 
   /**
@@ -212,7 +225,8 @@ export class ClientCreateComponent implements OnInit {
    */
   public initFileReader(): ClientCreateComponent {
     this.fileReader.onload = () => {
-      this.clientDetails.logoBytes = this.fileReader.result.replace('data:image/png;base64,', '');
+      this.clientDetails.logoBytes =
+        this.fileReader.result.replace(/data:image\/(png|jpg|jpeg|gif);base64,/, '');
     };
 
     return this;
@@ -245,6 +259,17 @@ export class ClientCreateComponent implements OnInit {
     });
 
     return this;
+  }
+
+  /**
+   * Recieve img in base64
+   *
+   * @param {string} base64 - string
+   * @returns {void}
+   */
+  public onImgUploaded(base64) {
+    console.log(base64);
+    this.clientDetails.logoBytes = base64.replace(/data:image\/(png|jpg|jpeg|gif);base64,/, '');
   }
 
   /**
