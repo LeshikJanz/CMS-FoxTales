@@ -58,5 +58,5 @@ export interface IClientFilter {
  * */
 export interface IActionState {
   id: number,
-  state: string
+  action: string
 }

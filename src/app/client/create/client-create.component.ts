@@ -268,6 +268,7 @@ export class ClientCreateComponent implements OnInit {
    * @returns {void}
    */
   public onImgUploaded(base64) {
+    console.log(base64);
     this.clientDetails.logoBytes = base64.replace(/data:image\/(png|jpg|jpeg|gif);base64,/, '');
   }
 

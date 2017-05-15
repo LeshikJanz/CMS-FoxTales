@@ -16,7 +16,9 @@
       </div>
     </div>
   </div>
-  <dropdown-select [options]="eventActions"
-  ></dropdown-select>
+  <action-dropdown style="align-self: center"
+    [options]="eventActions"
+    (typeChanged)="onTypeChanged($event)"
+  ></action-dropdown>
 </div>
 <hr>

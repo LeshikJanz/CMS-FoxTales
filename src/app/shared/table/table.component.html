@@ -25,13 +25,20 @@
         [innerHtml]="row[col.id] | myFormatCell:col.format:col.formatOptions">
       </td>
       <td *ngIf="actions">
-        <select (change)="changeAction()" [(ngModel)]="currentAction">
-          <option
-            *ngFor="let action of actions"
-            [ngValue]="{ id: row.id, callback: action.callback }">
-            {{ action.title }}
-          </option>
-        </select>
+        <table-dropdown
+          [title]="'Action'"
+          [options]="actions"
+          [size]="'medium'"
+          (typeChanged)="changeAction($event)"
+        ></table-dropdown>
+        <!--TODO: compare new version of dropdown-->
+        <!--<select (change)="changeAction()" [(ngModel)]="currentAction">-->
+          <!--<option-->
+            <!--*ngFor="let action of actions"-->
+            <!--[ngValue]="{ id: row.id, callback: action.callback }">-->
+            <!--{{ action.title }}-->
+          <!--</option>-->
+        <!--</select>-->
       </td>
     </tr>
     </tbody>

@@ -1,34 +1,37 @@
 <div toastContainer class="toast-top-center"></div>
 
-<div class="list-container">
-  <div class="list-menu">
-    <div>
-      <h2 class="main-label">Client List</h2>
-      <admin-navigation class="main-label"></admin-navigation>
-    </div>
-    <div>
-      <div class="create-client">
-        <button type="button" class="creation-button" [routerLink]="['/admin/client']">
-          <img src="assets/img/ui-24-px-outline-2-small-add.svg" alt="">
-          <label>Create New Client</label></button>
-      </div>
-
-      <dropdown-select
-        [options]="clientStates"
-        (typeChanged)="onTypeChanged($event)">
-      </dropdown-select>
-    </div>
-  </div>
-  <data-table
-    [rows]="clients"
-    [cols]="cols"
-    [rowsCount]="totalClients"
-    [actions]="actions"
-    (sortChanged)="onSortChanged($event)"
-    (limitChanged)="onLimitChanged($event)"
-    (searchChanged)="onSearchChanged($event)"
-    (pageChanged)="onPageChanged($event)"
-    (actionChanged)="onActionChanged($event)">
-  </data-table>
-
+<div class="dr-actions">
+  <dropdown
+    [title]="'Action'"
+    [options]="clientStates"
+    [size]="'big'"
+    (typeChanged)="onTypeChanged($event)"
+  ></dropdown>
 </div>
+
+  <div class="list-container">
+    <div class="list-menu">
+      <div>
+        <h2 class="main-label">Client List</h2>
+        <!--<admin-navigation class="main-label"></admin-navigation>-->
+      </div>
+      <div>
+        <add-button
+          [routerLink]="['/admin/client']"
+          class="creation-button"
+          [value]="'Create New Client'"
+        ></add-button>
+      </div>
+    </div>
+    <data-table
+      [rows]="clients"
+      [cols]="cols"
+      [rowsCount]="totalClients"
+      [actions]="actions"
+      (sortChanged)="onSortChanged($event)"
+      (limitChanged)="onLimitChanged($event)"
+      (searchChanged)="onSearchChanged($event)"
+      (pageChanged)="onPageChanged($event)"
+      (actionChanged)="onActionChanged($event)">
+    </data-table>
+  </div>

@@ -60,8 +60,8 @@ export class ClientListComponent implements OnInit {
    * @type {ITableAction[]}
    */
   public clientStates: IActionState[] = [
-    { id: 1, state: 'Unarchived'},
-    { id: 2, state: 'Archived'}
+    { id: 1, action: 'Unarchived'},
+    { id: 2, action: 'Archived'}
   ];
 
   /**

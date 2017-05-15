@@ -1,25 +1,27 @@
-
 <div toastContainer class="toast-top-center"></div>
 
+<div class="dr-actions">
+  <dropdown
+    [title]="'Action'"
+    [options]="clientStates"
+    [size]="'big'"
+    (typeChanged)="onTypeChanged($event)"
+  ></dropdown>
+</div>
 <div class="list-container">
   <div class="list-menu">
     <div>
       <h2 class="main-label">User List</h2>
-      <admin-navigation class="main-label"></admin-navigation>
     </div>
-    <div>
-      <div class="create-client">
-        <button type="button" class="creation-button" [routerLink]="['/admin/user']">
-          <img src="assets/img/ui-24-px-outline-2-small-add.svg" alt="">
-          <label>Create New User</label></button>
-      </div>
+    <div class="">
+      <add-button
+        [routerLink]="['/admin/user']"
+        class="creation-button"
+        [value]="'Create New User'"
+      ></add-button>
 
-    <dropdown-select
-      [options]="clientStates"
-      (typeChanged)="onTypeChanged($event)">
-    </dropdown-select>
+    </div>
   </div>
-</div>
   <data-table
     [rows]="users"
     [cols]="cols"
