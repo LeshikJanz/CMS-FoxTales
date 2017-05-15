@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { AUTH_ROUTING } from './auth.routes';
 
-import { AuthService } from './auth.service';
+import { AuthService } from '../shared/core';
 import { AuthComponent } from './auth.component';
 
 @NgModule({

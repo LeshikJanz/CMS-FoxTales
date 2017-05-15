@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { AuthService } from './auth.service';
+import { Router } from '@angular/router';
+import { AuthService } from '../shared/core';
 
 /**
  * Auth component
@@ -12,10 +13,14 @@ export class AuthComponent {
   /**
    * Constructor
    *
+   * @param {Router} router - Router
    * @param {AuthService} auth - Auth service
    * @returns {void}
    */
-  constructor(private auth: AuthService) {
+  constructor(private router: Router, private auth: AuthService) {
+    if (this.auth.loggedIn()) {
+      this.router.navigate(['/']);
+    }
   }
 
   /**
@@ -26,15 +31,5 @@ export class AuthComponent {
   public login(): void {
     const context = this.auth.getContext();
     context.login();
-  }
-
-  /**
-   * Log out
-   *
-   * @returns {void}
-   */
-  public logout(): void {
-    const context = this.auth.getContext();
-    context.logout();
   }
 }

@@ -1,6 +1,10 @@
-<nav>
-  <a href="javascript:void(0)" [routerLink]="['/users']">Users</a>
-  <a href="javascript:void(0)" [routerLink]="['/clients']">Clients</a>
-</nav>
+<div *ngIf="loggedIn()">
+  <nav>
+    <a href="javascript:void(0)" [routerLink]="['/users']">Users</a>
+    <a href="javascript:void(0)" [routerLink]="['/clients']">Clients</a>
+  </nav>
+
+  <button (click)="logout()">Log out</button>
+</div>
 
 <router-outlet></router-outlet>

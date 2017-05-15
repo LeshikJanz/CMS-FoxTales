@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+import { AuthService } from './core';
 import { TableComponent, FormatPipe } from './table';
 
 @NgModule({
@@ -15,6 +16,7 @@ import { TableComponent, FormatPipe } from './table';
     FormatPipe
   ],
   providers: [
+    AuthService
   ],
   exports: [
     CommonModule,

@@ -1,4 +1,5 @@
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { NgModule, ApplicationRef } from '@angular/core';
@@ -14,6 +15,7 @@ import { ROUTES } from './app.routes';
 import { AppComponent } from './app.component';
 import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppState, InternalStateType } from './app.service';
+import { AuthGuard, AuthService } from './shared/core';
 import { NoContentComponent } from './no-content';
 
 import '../styles/styles.scss';
@@ -21,7 +23,9 @@ import '../styles/styles.scss';
 // Application wide providers
 const APP_PROVIDERS = [
   ...APP_RESOLVER_PROVIDERS,
-  AppState
+  AppState,
+  AuthGuard,
+  AuthService
 ];
 
 type StoreType = {
@@ -41,6 +45,7 @@ type StoreType = {
   ],
   imports: [ // import Angular's modules
     BrowserAnimationsModule,
+    CommonModule,
     FormsModule,
     HttpModule,
     RouterModule.forRoot(ROUTES, { useHash: true, preloadingStrategy: PreloadAllModules })

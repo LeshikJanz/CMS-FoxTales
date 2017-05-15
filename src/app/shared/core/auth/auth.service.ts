@@ -15,8 +15,8 @@ export class AuthService {
     return {
       tenant: process.env.AD_TENANT,
       clientId: process.env.AD_CLIENT,
-      postLogoutRedirectUrl: window.location.origin + '/',
-      redirectUri: window.location.origin + '/'
+      postLogoutRedirectUrl: window.location.origin + '/#/auth',
+      redirectUri: window.location.origin + '/#/auth'
     };
   }
 
@@ -27,5 +27,14 @@ export class AuthService {
    */
   public getContext(): AuthenticationContext {
     return Authentication.getContext(this.createConfig());
+  }
+
+  /**
+   * Is logged in?
+   *
+   * @returns {boolean} - Is logged in
+   */
+  public loggedIn(): boolean {
+    return !!this.getContext().getUser();
   }
 }
