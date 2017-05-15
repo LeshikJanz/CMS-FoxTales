@@ -18,11 +18,17 @@ const ENV = process.env.ENV = process.env.NODE_ENV = 'development';
 const HOST = process.env.HOST || 'localhost';
 const PORT = process.env.PORT || 3000;
 const API_URL = process.env.API_URL = 'http://client2.dev.getfoxtales.com/api';
+const AD_INSTANCE = process.env.AD_INSTANCE = 'https://login.microsoftonline.com/';
+const AD_TENANT = process.env.AD_TENANT = 'common';
+const AD_CLIENT = process.env.AD_CLIENT = 'dce90867-97f5-42cd-b3e4-013ed22c1824';
 const HMR = helpers.hasProcessFlag('hot');
 const METADATA = webpackMerge(commonConfig({env: ENV}).metadata, {
   host: HOST,
   port: PORT,
   API_URL: API_URL,
+  AD_INSTANCE: AD_INSTANCE,
+  AD_TENANT: AD_TENANT,
+  AD_CLIENT: AD_CLIENT,
   ENV: ENV,
   HMR: HMR
 });
@@ -144,10 +150,16 @@ module.exports = function (options) {
       new DefinePlugin({
         'ENV': JSON.stringify(METADATA.ENV),
         'API_URL': JSON.stringify(METADATA.API_URL),
+        'AD_INSTANCE': JSON.stringify(METADATA.AD_INSTANCE),
+        'AD_TENANT': JSON.stringify(METADATA.AD_TENANT),
+        'AD_CLIENT': JSON.stringify(METADATA.AD_CLIENT),
         'HMR': METADATA.HMR,
         'process.env': {
           'ENV': JSON.stringify(METADATA.ENV),
           'API_URL' : JSON.stringify(METADATA.API_URL),
+          'AD_INSTANCE': JSON.stringify(METADATA.AD_INSTANCE),
+          'AD_TENANT': JSON.stringify(METADATA.AD_TENANT),
+          'AD_CLIENT': JSON.stringify(METADATA.AD_CLIENT),
           'NODE_ENV': JSON.stringify(METADATA.ENV),
           'HMR': METADATA.HMR,
         }
