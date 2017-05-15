@@ -18,7 +18,7 @@ const ENV = process.env.ENV = process.env.NODE_ENV = 'development';
 const HOST = process.env.HOST || 'localhost';
 const PORT = process.env.PORT || 3000;
 const API_URL = process.env.API_URL = 'http://client2.dev.getfoxtales.com/api';
-const AD_TENANT = process.env.AD_TENANT = 'common.onmicrosoft.com';
+const AD_TENANT = process.env.AD_TENANT = 'common';
 const AD_CLIENT = process.env.AD_CLIENT = 'dce90867-97f5-42cd-b3e4-013ed22c1824';
 const HMR = helpers.hasProcessFlag('hot');
 const METADATA = webpackMerge(commonConfig({env: ENV}).metadata, {
