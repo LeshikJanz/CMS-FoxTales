@@ -6,7 +6,9 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { CreationButtonComponent } from './creationButton/creation-button.component';
 import { DropDownSelectComponent } from './dropdowns/dropdown-select/dropdown-select.component';
-import { ExperienceNavigationComponent }
+import {
+  ExperienceNavigationComponent
+}
   from './navigations/experience-navigation/experience-navigation.component';
 import { MainNavigationComponent } from './navigations/main-navigation/main-navigation.component';
 import { EventComponent } from './event/event.component';
@@ -15,10 +17,13 @@ import { DropDownComponent } from './dropdowns/dropdown/dropdown.component';
 import { BsDropdownModule } from 'ngx-bootstrap';
 import { ActionDropDownComponent } from './dropdowns/action-dropdown/action-dropdown.component';
 import { ProfileImgComponent } from './profile-img/profile-img.component';
-import { AdminNavigationComponent }
+import {
+  AdminNavigationComponent
+}
   from './navigations/admin-navigation/admin-navigation.component';
 import { TableDropDownComponent } from './dropdowns/table-dropdown/table-dropdown.component';
 import { FoxButtonComponent } from './buttons/fox-button/fox-button.component';
+import { AddButtonComponent } from './buttons/add-button/add-button.component';
 
 @NgModule({
   imports: [
@@ -41,7 +46,8 @@ import { FoxButtonComponent } from './buttons/fox-button/fox-button.component';
     ActionDropDownComponent,
     ProfileImgComponent,
     TableDropDownComponent,
-    FoxButtonComponent
+    FoxButtonComponent,
+    AddButtonComponent
   ],
   exports: [
     CreationButtonComponent,
@@ -57,7 +63,8 @@ import { FoxButtonComponent } from './buttons/fox-button/fox-button.component';
     ActionDropDownComponent,
     ProfileImgComponent,
     TableDropDownComponent,
-    FoxButtonComponent
+    FoxButtonComponent,
+    AddButtonComponent
   ]
 })
 

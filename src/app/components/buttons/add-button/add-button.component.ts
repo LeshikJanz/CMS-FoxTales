@@ -9,10 +9,12 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['add-button.component.scss']
 })
 
-export class AddButtonComponent implements OnInit{
+export class AddButtonComponent implements OnInit {
   @Input() public value: string;
 
-  ngOnInit() {
-    if(this.value == null) throw new Error("Attribute 'value' is required");
+  public ngOnInit() {
+    if (this.value == null) {
+      throw new Error("Attribute 'value' is required");
+    }
   }
 }
