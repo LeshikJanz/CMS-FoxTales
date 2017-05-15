@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ExperienceListComponent } from './list';
 
 const EXPERIENCE_ROUTES: Routes = [
+  { path: '',    redirectTo: 'experience' },
   { path: 'experience/:id',    component: ExperienceListComponent },
 ];
 
