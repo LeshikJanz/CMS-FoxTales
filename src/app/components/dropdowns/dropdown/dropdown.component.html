@@ -4,10 +4,10 @@
      [class.big]="size === 'big'"
 >
   <button dropdownToggle type="button" class="btn btn-primary drop-button">
-    <label>{{title}}</label>
+    <label>{{currentOption || title}}</label>
     <span class="caret fox-caret"></span>
   </button>
   <ul *dropdownMenu class="dropdown-menu dropdown-menu-right" role="menu">
-    <li *ngFor="let option of options" role="menuitem"><a class="dropdown-item" (click)="onTypeChanged(option.id)" href="javascript:void(0)">{{option.action}}</a></li>
+    <li *ngFor="let option of options" role="menuitem"><a class="dropdown-item" (click)="onTypeChanged(option)" href="javascript:void(0)">{{option.action}}</a></li>
   </ul>
 </div>

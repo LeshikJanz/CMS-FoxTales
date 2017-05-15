@@ -17,7 +17,6 @@ import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppState, InternalStateType } from './app.service';
 import { AuthGuard, AuthService } from './shared/core';
 import { NoContentComponent } from './no-content';
-
 import '../styles/styles.scss';
 import { FeatureModule } from './components/feature.module';
 

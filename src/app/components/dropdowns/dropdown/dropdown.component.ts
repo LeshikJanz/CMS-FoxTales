@@ -19,7 +19,10 @@ export class DropDownComponent {
 
   @Output() public typeChanged: EventEmitter<number> = new EventEmitter();
 
-  public onTypeChanged(id: number) {
-    this.typeChanged.emit(id);
+  private currentOption = null;
+
+  public onTypeChanged(option: IActionState) {
+    this.currentOption = option.action;
+    this.typeChanged.emit(option.id);
   }
 }
