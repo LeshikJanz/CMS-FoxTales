@@ -7,7 +7,7 @@ import { NgxErrorsModule } from '@ultimate/ngxerrors';
 import { ToastrModule, ToastContainerModule } from 'ngx-toastr';
 
 import { SharedModule } from '../shared';
-import { HttpService } from '../shared/core';
+import { HttpService, AuthService, AuthRequestOptions } from '../shared/core';
 
 import { USER_ROUTING } from './user.routes';
 
@@ -35,6 +35,11 @@ import { UserEditComponent } from './edit';
       useFactory: httpFactory,
       deps: [ XHRBackend, RequestOptions, Injector ]
     },
+    {
+      provide: RequestOptions,
+      useFactory: requestOptionsFactory,
+      deps: [ AuthService ]
+    },
     UserService
   ],
   declarations: [
@@ -58,4 +63,14 @@ export function httpFactory(backend: XHRBackend,
                             defaultOptions: RequestOptions,
                             injector: Injector) {
   return new HttpService(backend, defaultOptions, injector);
+}
+
+/**
+ * Request options factory
+ *
+ * @param {AuthService} auth - Auth service
+ * @returns {AuthRequestOptions} - Request options
+ */
+export function requestOptionsFactory(auth: AuthService) {
+  return new AuthRequestOptions(auth);
 }
