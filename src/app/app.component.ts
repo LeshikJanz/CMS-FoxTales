@@ -1,5 +1,5 @@
-import { Component, ViewEncapsulation } from '@angular/core';
-import { AppState } from './app.service';
+import { Component, ViewEncapsulation, OnInit } from '@angular/core';
+import { Authentication } from 'adal-ts';
 
 /*
  * App Component
@@ -10,7 +10,13 @@ import { AppState } from './app.service';
   encapsulation: ViewEncapsulation.None,
   templateUrl: './app.component.html'
 })
-export class AppComponent {
-  constructor(public appState: AppState) {
+export class AppComponent implements OnInit {
+  /**
+   * Process the redirect after login
+   *
+   * @returns {void}
+   */
+  public ngOnInit() {
+    Authentication.getAadRedirectProcessor().process();
   }
 }

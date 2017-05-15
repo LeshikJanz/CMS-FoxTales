@@ -61,7 +61,6 @@ declare var ENV: string;
 declare var HMR: boolean;
 declare var System: SystemJS;
 declare var API_URL: string;
-declare var AD_INSTANCE: string;
 declare var AD_TENANT: string;
 declare var AD_CLIENT: string;
 
