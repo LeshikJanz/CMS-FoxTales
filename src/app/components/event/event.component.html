@@ -3,22 +3,21 @@
     <div class="main-info">
       <div>
         <checkbox></checkbox>
+
         <img *ngIf="status === -1" src="../../../assets/img/attention.svg" alt="">
         <img *ngIf="status === 1" src="../../../assets/img/complete.svg" alt="">
-        <label class="name" [hidden]="!name">{{name}}</label>
-        <label class="date" [hidden]="!date">{{date}}</label>
-        <label [hidden]="!tags" *ngFor="let tag of tags">#{{tag}}</label>
+        <label class="name">{{event.name}}</label>
+        <label class="date">{{ event.startTime | date}}</label>
+        <label>#{{event.tags}}</label>
+        <a style="text-decoration: none" [routerLink]="['../','experience',event.id]" [queryParams]="{ id: event.id }">link to experience </a>
       </div>
       <div class="experience">
-        <label [hidden]="!expCount" name="experiences">
-          {{expCount}} Experiences
+        <label name="experiences">
+         {{ event.experiences.length}} Experiences
         </label>
       </div>
     </div>
   </div>
-  <action-dropdown style="align-self: center"
-    [options]="eventActions"
-    (typeChanged)="onTypeChanged($event)"
-  ></action-dropdown>
+  <action-dropdown style="align-self: center" [options]="eventActions" (typeChanged)="onTypeChanged($event)"></action-dropdown>
 </div>
 <hr>

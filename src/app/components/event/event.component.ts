@@ -22,6 +22,14 @@ export class EventComponent {
    *
    * @type string
    */
+  @Input() public event: any[];
+
+
+  /**
+   * Event name
+   *
+   * @type string
+   */
   @Input() public name: string;
 
   /**
