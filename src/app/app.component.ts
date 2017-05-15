@@ -1,4 +1,5 @@
 import { Component, ViewEncapsulation, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Authentication } from 'adal-ts';
 import { AuthService } from './shared/core';
 
@@ -15,10 +16,14 @@ export class AppComponent implements OnInit {
   /**
    * Constructor
    *
+   * @param {Router} router - Router
    * @param {AuthService} auth - Auth service
    * @returns {void}
    */
-  constructor(private auth: AuthService) {
+  constructor(private router: Router, private auth: AuthService) {
+    if (!this.auth.loggedIn()) {
+      this.router.navigate(['/auth']);
+    }
   }
 
   /**

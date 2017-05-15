@@ -15,8 +15,8 @@ export class AuthService {
     return {
       tenant: process.env.AD_TENANT,
       clientId: process.env.AD_CLIENT,
-      postLogoutRedirectUrl: window.location.origin + '/#/auth',
-      redirectUri: window.location.origin + '/#/auth'
+      postLogoutRedirectUrl: window.location.origin + '/',
+      redirectUri: window.location.origin + '/'
     };
   }
 
