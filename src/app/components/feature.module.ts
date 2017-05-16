@@ -24,6 +24,10 @@ import {
 import { TableDropDownComponent } from './dropdowns/table-dropdown/table-dropdown.component';
 import { FoxButtonComponent } from './buttons/fox-button/fox-button.component';
 import { AddButtonComponent } from './buttons/add-button/add-button.component';
+import {
+  EventNavigationComponent
+}
+  from './navigations/event-navigation/event-navigation.component';
 
 @NgModule({
   imports: [
@@ -40,6 +44,7 @@ import { AddButtonComponent } from './buttons/add-button/add-button.component';
     ExperienceNavigationComponent,
     AdminNavigationComponent,
     MainNavigationComponent,
+    EventNavigationComponent,
     EventComponent,
     CheckboxComponent,
     DropDownComponent,
@@ -57,6 +62,8 @@ import { AddButtonComponent } from './buttons/add-button/add-button.component';
     FormsModule,
     ExperienceNavigationComponent,
     MainNavigationComponent,
+    EventNavigationComponent,
+    EventComponent,
     AdminNavigationComponent,
     CheckboxComponent,
     DropDownComponent,

@@ -22,6 +22,14 @@ export class EventComponent {
    *
    * @type string
    */
+  @Input() public event: any[];
+
+
+  /**
+   * Event name
+   *
+   * @type string
+   */
   @Input() public name: string;
 
   /**
@@ -60,7 +68,24 @@ export class EventComponent {
    */
   public isChecked: boolean = false;
 
-  public onTypeChanged() {
-    console.log('onTypeChanged');
+  public onTypeChanged(event) {
+    switch(event){
+      case 1:
+        console.log('settings')
+        break;
+      case 2:
+        console.log('clone')
+        break;
+      case 3:
+        console.log('archieve')
+        break;
+      case 4:
+        console.log('add to group')
+        break;
+      case 5:
+        console.log('assign user')
+        break;
+    }
+    
   }
 }

@@ -1,0 +1,23 @@
+<div toastContainer class="toast-top-center"></div>
+
+<div class="list-container">
+  <div class="list-menu">
+    <div>
+      <h2 class="main-label">Event List</h2>
+    </div>
+    <div>
+      <div class="create-event">
+        <button type="button" class="creation-button" [routerLink]="['../','event']">
+          <label>Create New Event</label></button>
+      </div>
+    </div>
+
+  </div>
+
+  
+  <event *ngFor="let event of Events" [event]="event">
+    </event>
+
+
+
+</div>
