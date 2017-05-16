@@ -29,7 +29,7 @@
           [title]="'Action'"
           [options]="actions"
           [size]="'medium'"
-          (typeChanged)="changeAction($event)"
+          (typeChanged)="changeAction(row.id, $event)"
         ></table-dropdown>
         <!--TODO: compare new version of dropdown-->
         <!--<select (change)="changeAction()" [(ngModel)]="currentAction">-->

@@ -267,8 +267,9 @@ export class TableComponent implements OnInit {
    *
    * @returns {void}
    */
-  public changeAction(): void {
-    this.actionChanged.emit(this.currentAction);
+  public changeAction(id: number, event ): void {
+    event.id = id;
+    this.actionChanged.emit(event);
   }
 
   /**

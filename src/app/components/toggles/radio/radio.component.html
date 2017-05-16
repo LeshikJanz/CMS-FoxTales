@@ -1,13 +1,13 @@
 <ul>
   <li>
-    <input type="radio" id="f-option" name="selector" [(ngModel)]="type" value="Pizza">
+    <input type="radio" id="f-option" name="selector" [ngModel]="type" (ngModelChange)="onChange($event)" value="Pizza">
     <label for="f-option">Pizza</label>
 
     <div class="check"></div>
   </li>
 
   <li>
-    <input type="radio" id="s-option" name="selector"  [(ngModel)]="type" value="Bacon">
+    <input type="radio" id="s-option" name="selector" [ngModel]="type" (ngModelChange)="onChange($event)" value="Bacon">
     <label for="s-option">Bacon</label>
 
     <div class="check">
