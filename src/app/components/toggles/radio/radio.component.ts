@@ -6,11 +6,6 @@ import { Component, OnChanges, Output, Input } from '@angular/core';
   styleUrls: [ 'radio.component.scss' ]
 })
 
-export class RadioComponent implements OnChanges {
-  @Input() public checked:boolean = false;
-
-  ngOnChanges() {
-    console.log('this.checked');
-    console.log(this.checked);
-  }
+export class RadioComponent {
+  @Input() public type:string = 'Bacon';
 }

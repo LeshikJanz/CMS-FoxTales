@@ -1,13 +1,13 @@
 <ul>
   <li>
-    <input type="radio" id="f-option" name="selector">
+    <input type="radio" id="f-option" name="selector" [(ngModel)]="type" value="Pizza">
     <label for="f-option">Pizza</label>
 
     <div class="check"></div>
   </li>
 
   <li>
-    <input type="radio" id="s-option" name="selector">
+    <input type="radio" id="s-option" name="selector"  [(ngModel)]="type" value="Bacon">
     <label for="s-option">Bacon</label>
 
     <div class="check">
@@ -15,12 +15,4 @@
     </div>
   </li>
 
-  <li>
-    <input type="radio" id="t-option" name="selector">
-    <label for="t-option">Cats</label>
-
-    <div class="check">
-      <div class="inside"></div>
-    </div>
-  </li>
 </ul>
