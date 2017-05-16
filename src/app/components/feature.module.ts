@@ -28,6 +28,7 @@ import {
   EventNavigationComponent
 }
   from './navigations/event-navigation/event-navigation.component';
+import { EventGroupComponent } from "./eventGroup/event-group.component";
 
 @NgModule({
   imports: [
@@ -52,7 +53,8 @@ import {
     ProfileImgComponent,
     TableDropDownComponent,
     FoxButtonComponent,
-    AddButtonComponent
+    AddButtonComponent,
+    EventGroupComponent
   ],
   exports: [
     CreationButtonComponent,
@@ -71,7 +73,8 @@ import {
     ProfileImgComponent,
     TableDropDownComponent,
     FoxButtonComponent,
-    AddButtonComponent
+    AddButtonComponent,
+    EventGroupComponent
   ]
 })
 

@@ -1,5 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { IActionState } from "../../client/client.interface";
+import { IEvent } from "../../event/event.interface";
+import { IEventGroup } from "../../event-groups/event-groups.interaface";
 
 @Component({
   selector: 'event-group',
@@ -8,6 +10,8 @@ import { IActionState } from "../../client/client.interface";
 })
 
 export class EventGroupComponent {
+
+  @Input() eventGroups: IEventGroup;
 
   public isOpen: boolean = false;
 

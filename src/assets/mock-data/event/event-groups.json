@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "name": "First group",
+    "clientId": 1,
+    "eventIds": [1, 2]
+  },
+  {
+    "id": null,
+    "name": "Second group",
+    "clientId": 1,
+    "eventIds": [1, 2]
+  }
+]

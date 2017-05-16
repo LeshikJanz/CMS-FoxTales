@@ -1,14 +1,20 @@
-<div class="group-container">
-  <div class="info" >
-    <img (click)="isOpen = !isOpen" [hidden]="isOpen" class="circle" src="~assets/img/plus-outline.svg" alt="">
-    <img (click)="isOpen = !isOpen" [hidden]="!isOpen" class="circle" src="~assets/img/minus-outline.svg" alt="">
-    <div>
-      <label class="group-name">Halloween Events</label>
-      <label> 3 events</label>
-      <label>Oct 27-32, 2016</label>
-    </div>
+<div *ngFor="let group of eventGroups">
+  <div class="group-container">
+    <div (click)="group.isOpen = !group.isOpen" class="info">
+      <img [hidden]="group.isOpen" class="circle" src="../../../assets/img/plus-outline.svg" alt="">
+      <img [hidden]="!group.isOpen" class="circle" src="../../../assets/img/minus-outline.svg" alt="">
+      <div>
+        <label class="group-name">{{group.name}}</label>
+        <label> 3 events</label>
+        <label>Oct 27-32, 2016</label>
+      </div>
 
+    </div>
+    <action-dropdown style="align-self: center" [options]="eventActions"
+                     (typeChanged)="onTypeChanged($event)"></action-dropdown>
   </div>
-  <action-dropdown style="align-self: center" [options]="eventActions"
-                   (typeChanged)="onTypeChanged($event)"></action-dropdown>
+  <div [hidden]="!group.isOpen" class="group-dropdown">
+    <event *ngFor="let event of group.events" [event]="event">
+    </event>
+  </div>
 </div>

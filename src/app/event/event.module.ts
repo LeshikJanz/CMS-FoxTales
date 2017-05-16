@@ -17,6 +17,8 @@ import { EventListComponent } from './list';
 import { EventCreateComponent } from './create';
 
 import { FeatureModule } from '../components/feature.module';
+import { EventGroupsComponent } from "../event-groups/event-groups.component";
+import { EventGroupsService } from "../event-groups/event-groups.service";
 
 @NgModule({
   imports: [
@@ -30,7 +32,8 @@ import { FeatureModule } from '../components/feature.module';
     ToastContainerModule.forRoot(),
     SharedModule,
     EVENT_ROUTING,
-    FeatureModule
+    FeatureModule,
+
   ],
   providers: [
     {
@@ -38,11 +41,13 @@ import { FeatureModule } from '../components/feature.module';
       useFactory: httpFactory,
       deps: [ XHRBackend, RequestOptions, Injector ]
     },
-    EventService
+    EventService,
+    EventGroupsService
   ],
   declarations: [
     EventListComponent,
-    EventCreateComponent
+    EventCreateComponent,
+    EventGroupsComponent
   ]
 })
 export class EventModule {

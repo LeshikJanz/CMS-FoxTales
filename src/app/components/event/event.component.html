@@ -9,7 +9,8 @@
         <label class="name">{{event.name}}</label>
         <label class="date">{{ event.startTime | date}}</label>
         <label *ngIf="event.tags.length > 0">#{{event.tags}}</label>
-        <a style="text-decoration: none" [routerLink]="['/experience',event.id]" [queryParams]="{ id: event.id }">link to experience </a>
+        <a style="text-decoration: none">link to experience </a>
+        <!--<a style="text-decoration: none" [routerLink]="['/experience',event.id]" [queryParams]="{ id: event.id }">link to experience </a>-->
       </div>
       <div class="experience">
         <label name="experiences">

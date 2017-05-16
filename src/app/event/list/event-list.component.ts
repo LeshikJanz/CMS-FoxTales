@@ -38,6 +38,7 @@ export class EventListComponent implements OnInit {
         .subscribe((event) => {
           this.Events = event;
     });
+
   }
 
 }
