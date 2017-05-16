@@ -29,16 +29,8 @@
           [title]="'Action'"
           [options]="actions"
           [size]="'medium'"
-          (typeChanged)="changeAction($event)"
+          (typeChanged)="changeAction(row.id, $event)"
         ></table-dropdown>
-        <!--TODO: compare new version of dropdown-->
-        <!--<select (change)="changeAction()" [(ngModel)]="currentAction">-->
-          <!--<option-->
-            <!--*ngFor="let action of actions"-->
-            <!--[ngValue]="{ id: row.id, callback: action.callback }">-->
-            <!--{{ action.title }}-->
-          <!--</option>-->
-        <!--</select>-->
       </td>
     </tr>
     </tbody>
