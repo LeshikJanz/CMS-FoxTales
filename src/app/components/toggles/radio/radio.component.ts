@@ -9,6 +9,8 @@ import { Component, OnChanges, Output, EventEmitter, Input } from '@angular/core
 export class RadioComponent {
   @Input() public type:string = 'Bacon';
 
+  @Input() public options: string[];
+
   @Output() public toggle:EventEmitter<string> = new EventEmitter<string>();
 
   onChange(value: string) {
