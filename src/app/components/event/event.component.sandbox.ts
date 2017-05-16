@@ -1,6 +1,6 @@
 import { sandboxOf } from 'angular-playground';
 import { EventComponent } from "./event.component";
-import { CheckboxComponent } from "../checkbox/checkbox.component";
+import { CheckboxComponent } from "../toggles/checkbox/checkbox.component";
 import { ActionDropDownComponent } from "../dropdowns/action-dropdown/action-dropdown.component";
 import { BsDropdownModule } from "ngx-bootstrap";
 

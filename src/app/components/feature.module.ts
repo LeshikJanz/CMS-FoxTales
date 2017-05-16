@@ -12,7 +12,7 @@ import {
   from './navigations/experience-navigation/experience-navigation.component';
 import { MainNavigationComponent } from './navigations/main-navigation/main-navigation.component';
 import { EventComponent } from './event/event.component';
-import { CheckboxComponent } from './checkbox/checkbox.component';
+import { CheckboxComponent } from './toggles/checkbox/checkbox.component';
 import { DropDownComponent } from './dropdowns/dropdown/dropdown.component';
 import { BsDropdownModule } from 'ngx-bootstrap';
 import { ActionDropDownComponent } from './dropdowns/action-dropdown/action-dropdown.component';
