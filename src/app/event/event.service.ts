@@ -21,11 +21,10 @@ export class EventService {
    */
   public getEvents() {
         return this.http.get('https://foxtalesdev.azurewebsites.net/api/events')
-        .map(response => {
+        .map((response) => {
           let temp = response.json();
-        
           return temp;
-        })
+        });
   }
 
 }
