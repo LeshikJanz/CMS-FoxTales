@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'events',
-  templateUrl: './event.component.html'
+  templateUrl: './event-group.component.html'
 })
 
 export class EventComponent {

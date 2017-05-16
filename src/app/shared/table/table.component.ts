@@ -4,7 +4,7 @@ import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
 import { ICol } from './col.interface';
 import { ITableAction } from './action.interface';
-import { IActionState } from "../../client/client.interface";
+import { IActionState } from '../../client/client.interface';
 
 @Component({
   selector: 'data-table',

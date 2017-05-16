@@ -1,0 +1,42 @@
+.group-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-top: 40px;
+  height: 65px;
+  width: inherit;
+  padding-bottom: 20px;
+  border-bottom: medium solid #b2bac4;
+  border-width: 1px;
+
+  .info {
+    display: flex;
+    align-items: center;
+  }
+
+  label {
+    font-family: Avenir-Book;
+    font-size: 16px;
+    font-weight: 900;
+    margin-left: 20px;
+    align-self: flex-end;
+  }
+
+  .group-name {
+    font-size: 20px;
+  }
+}
+
+.circle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  width: 36px;
+  height: 36px;
+
+  img {
+    height: 16px;
+    width: 16px;
+  }
+}
