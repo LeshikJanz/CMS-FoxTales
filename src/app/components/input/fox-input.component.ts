@@ -14,7 +14,6 @@ export class FoxInputComponent {
   public value: string = null;
 
   onChange(value: string) {
-    console.log(value);
     this.value = value;
     this.Change.emit(value);
   }

@@ -4,7 +4,7 @@ import { FormsModule } from "@angular/forms";
 
 export default sandboxOf(FoxInputComponent, { imports: [FormsModule] })
   .add('fox-input', {
-    template: `<fox-input
+    template: `<fox-input style="width: 300px; height: 65px;"
               [title]="'title'" (Change)="value=$event"></fox-input>
                You wrote: {{ value }}`,
     context: {

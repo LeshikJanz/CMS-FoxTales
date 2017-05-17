@@ -5,6 +5,7 @@ import { EventGroupsService } from "./event-groups.service";
 import { IEventGroup } from "./event-groups.interaface";
 import { EventService } from "../../event/event.service";
 import { IActionState } from "../../client/client.interface";
+import { FormGroup, FormControl, Validators, FormBuilder } from "@angular/forms";
 
 @Component({
   selector: 'event-group-create',
@@ -20,6 +21,31 @@ export class EventGroupCreateComponent {
    * @param {Router} router - Router
    * @returns {void}
    */
-  constructor(private router: Router) {
+  constructor(private router: Router,
+              private formBuilder: FormBuilder,
+  ) {
+  }
+
+  /**
+   * Event group form
+   *
+   * @type {FormGroup}
+   */
+  public eventGroupForm: FormGroup;
+
+
+  /**
+   * Build client form
+   *
+   * @returns {ClientCreateComponent} - Component
+   */
+  public buildClientForm(): EventGroupCreateComponent {
+    this.eventGroupForm = this.formBuilder.group({
+      groupName: ['', [
+        Validators.required
+      ]],
+    });
+
+    return this;
   }
 }
