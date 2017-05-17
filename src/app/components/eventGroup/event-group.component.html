@@ -14,7 +14,7 @@
                      (typeChanged)="onTypeChanged($event)"></action-dropdown>
   </div>
   <div [hidden]="!group.isOpen" class="group-dropdown">
-    <event *ngFor="let event of group.events" [event]="event">
+    <event *ngFor="let event of group.events" [event]="event" [eventActions]="eventActions">
     </event>
   </div>
 </div>

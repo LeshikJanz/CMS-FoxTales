@@ -16,11 +16,7 @@ export class EventGroupComponent {
   public isOpen: boolean = false;
 
   public eventActions: IActionState[] = [
-    { id: 1, action: 'SETTINGS' },
-    { id: 2, action: 'CLONE' },
-    { id: 3, action: 'ARCHIEVE' },
-    { id: 4, action: 'ADD TO GROUP' },
-    { id: 5, action: 'ASSIGN USERS' },
+    { id: 1, action: 'Edit' }
   ];
 
   public onTypeChanged(event) {

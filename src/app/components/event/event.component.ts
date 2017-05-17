@@ -3,19 +3,11 @@ import { IActionState } from '../../client/client.interface';
 
 @Component({
   selector: 'event',
-  templateUrl: './event.component.html',
-  styleUrls: [ './event.component.scss' ]
+  templateUrl: 'event.component.html',
+  styleUrls: [ 'event.component.scss' ]
 })
 
 export class EventComponent {
-
-  public eventActions: IActionState[] = [
-    { id: 1, action: 'SETTINGS' },
-    { id: 2, action: 'CLONE' },
-    { id: 3, action: 'ARCHIEVE' },
-    { id: 4, action: 'ADD TO GROUP' },
-    { id: 5, action: 'ASSIGN USERS' },
-  ];
 
   /**
    * Event name
@@ -24,6 +16,12 @@ export class EventComponent {
    */
   @Input() public event: any[];
 
+  /**
+   * Actions for event
+   *
+   * @type IActionState[]
+   */
+  @Input() public eventActions: IActionState[];
 
   /**
    * Event name

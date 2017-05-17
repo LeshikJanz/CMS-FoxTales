@@ -31,11 +31,8 @@ export class EventGroupsComponent implements OnInit {
           .getEvents()
           .subscribe((events) => {
             this.eventGroups = eventGroups;
-            console.log("events");
-            console.log(events);
               this.eventGroups.forEach(group =>(group as any).events = events.filter(e => e.eventGroupId == group.id))
             //TODO: Change it when good eventGroups api will be available
-            // (this.eventGroups[0] as any).events = events.filter(e => e.groupId = 1);
           });
       });
   }
