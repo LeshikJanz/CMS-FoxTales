@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { CustomValidators } from 'ng2-validation';
-
 
 @Component({
   selector: 'event-create',
@@ -47,7 +45,7 @@ export class EventCreateComponent implements OnInit {
    * @returns {void}
    */
   public ngOnInit(): void {
-    this.buildEventForm()
+    this.buildEventForm();
   }
 
   /**
@@ -67,6 +65,5 @@ export class EventCreateComponent implements OnInit {
 
     return this;
   }
-
 
 }

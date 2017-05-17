@@ -16,25 +16,21 @@ export class EventGroupComponent {
   public isOpen: boolean = false;
 
   public eventActions: IActionState[] = [
-    { id: 1, action: 'Edit' }
+    { id: 1, action: 'Edit' },
+    { id: 2, action: 'Configure Gallery' },
+    { id: 3, action: 'Add Events to Group' },
   ];
 
   public onTypeChanged(event) {
     switch(event){
       case 1:
-        console.log('settings')
+        console.log('Edit')
         break;
       case 2:
-        console.log('clone')
+        console.log('Configure Gallery')
         break;
       case 3:
-        console.log('archieve')
-        break;
-      case 4:
-        console.log('add to group')
-        break;
-      case 5:
-        console.log('assign user')
+        console.log('Add Events to Group')
         break;
     }
   }
