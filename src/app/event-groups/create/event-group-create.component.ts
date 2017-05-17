@@ -13,7 +13,7 @@ import { FormGroup, FormControl, Validators, FormBuilder } from "@angular/forms"
   styleUrls: ['event-group-create.component.scss']
 })
 
-export class EventGroupCreateComponent {
+export class EventGroupCreateComponent implements OnInit {
 
   /**
    * Constructor
@@ -23,7 +23,10 @@ export class EventGroupCreateComponent {
    */
   constructor(private router: Router,
               private formBuilder: FormBuilder,
-  ) {
+  ) {}
+
+  ngOnInit() {
+    this.buildEventGroupForm();
   }
 
   /**
@@ -42,6 +45,9 @@ export class EventGroupCreateComponent {
   public buildEventGroupForm(): EventGroupCreateComponent {
     this.eventGroupForm = this.formBuilder.group({
       groupName: ['', [
+        Validators.required
+      ]],
+      groupGallery: ['', [
         Validators.required
       ]],
     });

@@ -8,15 +8,39 @@
     <div [formGroup]="eventGroupForm">
       <!-- Name -->
       <div class="form-element">
-        <label for="name">Client Name</label>
+        <label for="groupName">Client Name</label>
         <input
-          id="name"
+          id="groupName"
           class="form-control input"
           type="text"
-          formControlName="name"
-          placeholder="Name">
+          formControlName="groupName"
+          placeholder="Group name">
 
-        <div ngxErrors="name">
+        <div ngxErrors="groupName">
+          <div class="field-error" ngxError="required" when="touched">
+            Field is required
+          </div>
+        </div>
+      </div>
+
+      <event-tag
+        [title]="'Event Name'"
+      ></event-tag>`
+      <event-tag
+        [title]="'Event Name'"
+      ></event-tag>`
+      <event-tag
+        [title]="'Event Name'"
+      ></event-tag>`
+      <event-tag
+        [title]="'Event Name'"
+      ></event-tag>`
+
+      <div class="form-element">
+        <label for="groupGallery">Client Name</label>
+
+
+        <div ngxErrors="groupGallery">
           <div class="field-error" ngxError="required" when="touched">
             Field is required
           </div>
@@ -24,11 +48,12 @@
       </div>
     </div>
 
-    <div>
-      <button
+      <fox-button
+        style="height: 36px; width: 118px; font-size: 14px"
         type="submit"
         [disabled]="eventGroupForm.invalid"
-        class="create-button">Save and Exit</button>
-    </div>
+        [value]="'Save and Exit'"
+        [design]="'special'"
+      ></fox-button>
   </form>
 </div>

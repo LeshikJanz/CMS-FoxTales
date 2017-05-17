@@ -19,6 +19,6 @@
   </div>
   <fox-button *ngIf="eventActions.length === 1"
               [value]="eventActions[0].action"
-              [type]="'gray'"></fox-button>
+              [design]="'gray'"></fox-button>
   <action-dropdown *ngIf="eventActions.length > 1" style="align-self: center" [options]="eventActions" (typeChanged)="onTypeChanged($event)"></action-dropdown>
 </div>

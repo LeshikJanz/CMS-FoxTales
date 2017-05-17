@@ -2,6 +2,7 @@ button {
   width: inherit;
   height: inherit;
   font-size: inherit;
+  background-color: white;
 }
 
 .primary {
@@ -75,14 +76,14 @@ button {
 
 .special {
   border-radius: 6px;
-  background-color: transparent;
+  background-color: #2fd976;
   border: solid 2px #2fd976;
+  color: white;
   font-family: WorkSans-Bold;
   font-weight: bold;
   line-height: 1;
   letter-spacing: 0.5px;
   text-align: center;
-  color: #2fd976;
 
   &:hover {
     transition: .3s all;

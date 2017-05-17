@@ -8,7 +8,7 @@ export default sandboxOf(FoxButtonComponent)
                <fox-button 
                style="height: 55px; width: 120px; font-size: 16px"
                [value]="'PRIMARY'"
-               [type]="'primary'"
+               [design]="'primary'"
                ></fox-button></div>`
   })
   .add('primary button - small', {
@@ -17,7 +17,7 @@ export default sandboxOf(FoxButtonComponent)
                <fox-button 
                style="height: 36px; width: 118px; font-size: 14px"
                [value]="'SMALL'"
-               [type]="'primary'"
+               [design]="'primary'"
                ></fox-button></div>`
   })
   .add('secondary button - big', {
@@ -26,7 +26,7 @@ export default sandboxOf(FoxButtonComponent)
                <fox-button 
                style="height: 55px; width: 120px; font-size: 16px"
                [value]="'SECONDARY'"
-               [type]="'secondary'"
+               [design]="'secondary'"
                ></fox-button></div>`
   })
   .add('secondary button - small', {
@@ -35,7 +35,7 @@ export default sandboxOf(FoxButtonComponent)
                <fox-button 
                style="height: 36px; width: 118px; font-size: 14px"
                [value]="'SMALL'"
-               [type]="'secondary'"
+               [design]="'secondary'"
                ></fox-button></div>`
   })
   .add('tertiary button - big', {
@@ -44,7 +44,7 @@ export default sandboxOf(FoxButtonComponent)
                <fox-button 
                style="height: 55px; width: 120px; font-size: 16px"
                [value]="'TERTIARY'"
-               [type]="'tertiary'"
+               [design]="'tertiary'"
                ></fox-button></div>`
   })
   .add('tertiary button - small', {
@@ -53,7 +53,7 @@ export default sandboxOf(FoxButtonComponent)
                <fox-button 
                style="height: 36px; width: 118px; font-size: 14px"
                [value]="'SMALL'"
-               [type]="'tertiary'"
+               [design]="'tertiary'"
                ></fox-button></div>`
   })
   .add('special button - big', {
@@ -62,7 +62,7 @@ export default sandboxOf(FoxButtonComponent)
                <fox-button 
                style="height: 55px; width: 120px; font-size: 16px"
                [value]="'SPECIAL'"
-               [type]="'special'"
+               [design]="'special'"
                ></fox-button></div>`
   })
   .add('special button - small', {
@@ -71,7 +71,7 @@ export default sandboxOf(FoxButtonComponent)
                <fox-button 
                style="height: 36px; width: 118px; font-size: 14px"
                [value]="'SMALL'"
-               [type]="'special'"
+               [design]="'special'"
                ></fox-button></div>`
   })
   .add('gray button - big', {
@@ -80,7 +80,7 @@ export default sandboxOf(FoxButtonComponent)
                <fox-button 
                style="height: 55px; width: 120px; font-size: 16px"
                [value]="'GRAY'"
-               [type]="'gray'"
+               [design]="'gray'"
                ></fox-button></div>`
   })
   .add('gray button - small', {
@@ -89,6 +89,6 @@ export default sandboxOf(FoxButtonComponent)
                <fox-button 
                style="height: 36px; width: 118px; font-size: 14px"
                [value]="'SMALL'"
-               [type]="'gray'"
+               [design]="'gray'"
                ></fox-button></div>`
   })
