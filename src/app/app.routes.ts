@@ -8,6 +8,7 @@ export const ROUTES: Routes = [
   { path: 'admin', loadChildren: 'app/admin/admin.module#AdminModule', canActivate: [ AuthGuard ] },
   { path: 'events', loadChildren: 'app/events/events-container.module#EventsModule', canActivate: [ AuthGuard ] },
   { path: 'experience', loadChildren: 'app/experience/experience.module#ExperienceModule', canActivate: [ AuthGuard ] },
+  { path: 'experience-builder', loadChildren: 'app/experience-builder/experience-builder.module#ExperienceBuilderModule', canActivate: [ AuthGuard ] },
   { path: '**',    component: NoContentComponent }
 
 ];
