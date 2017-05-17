@@ -24,9 +24,9 @@ const OptimizeJsPlugin = require('optimize-js-plugin');
 const ENV = process.env.NODE_ENV = process.env.ENV = 'production';
 const HOST = process.env.HOST || 'localhost';
 const PORT = process.env.PORT || 8080;
-const API_URL = process.env.API_URL = 'http://client2.dev.getfoxtales.com/api';
+const API_URL = process.env.API_URL = 'http://test.getfoxtales.com/api';
 const AD_TENANT = process.env.AD_TENANT = 'common';
-const AD_CLIENT = process.env.AD_CLIENT = '018ba0b5-782f-405b-82c3-871178e219ad';
+const AD_CLIENT = process.env.AD_CLIENT = '69ed64b6-9e40-4063-9a79-94f6e3b3359e';
 const METADATA = webpackMerge(commonConfig({
   env: ENV
 }).metadata, {
