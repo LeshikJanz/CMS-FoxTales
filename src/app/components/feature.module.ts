@@ -14,7 +14,7 @@ import { MainNavigationComponent } from './navigations/main-navigation/main-navi
 import { EventComponent } from './event/event.component';
 import { CheckboxComponent } from './toggles/checkbox/checkbox.component';
 import { DropDownComponent } from './dropdowns/dropdown/dropdown.component';
-import { BsDropdownModule } from 'ngx-bootstrap';
+import { BsDropdownModule, ModalModule } from 'ngx-bootstrap';
 import { ActionDropDownComponent } from './dropdowns/action-dropdown/action-dropdown.component';
 import { ProfileImgComponent } from './profile-img/profile-img.component';
 import {
@@ -31,15 +31,17 @@ import {
 import { EventGroupComponent } from './eventGroup/event-group.component';
 import { FoxInputComponent } from './input/fox-input.component';
 import { EventTagComponent } from './eventTag/event-tag.component';
-import { SwitcherComponent } from "./toggles/switcher/switcher.component";
-import { ConfigureButtonComponent } from "./buttons/configure-button/configure-button.component";
+import { SwitcherComponent } from './toggles/switcher/switcher.component';
+import { ConfigureButtonComponent } from './buttons/configure-button/configure-button.component';
+import { AddEventModalComponent } from './modals/add-event-modal/add-event-modal.component';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     RouterModule.forChild(FEATURE_ROUTES),
-    BsDropdownModule.forRoot()
+    BsDropdownModule.forRoot(),
+    ModalModule.forRoot()
   ],
   providers: [],
   declarations: [
@@ -62,7 +64,8 @@ import { ConfigureButtonComponent } from "./buttons/configure-button/configure-b
     FoxInputComponent,
     EventTagComponent,
     SwitcherComponent,
-    ConfigureButtonComponent
+    ConfigureButtonComponent,
+    AddEventModalComponent
   ],
   exports: [
     CreationButtonComponent,
@@ -86,7 +89,8 @@ import { ConfigureButtonComponent } from "./buttons/configure-button/configure-b
     FoxInputComponent,
     EventTagComponent,
     SwitcherComponent,
-    ConfigureButtonComponent
+    ConfigureButtonComponent,
+    AddEventModalComponent
   ]
 })
 
