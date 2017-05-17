@@ -20,7 +20,7 @@ export class EventService {
    *
    */
   public getEvents() {
-        return this.http.get('https://foxtalesdev.azurewebsites.net/api/events')
+        return this.http.get('https://foxtalesapi-dev.azurewebsites.net/api/events')
         .map((response) => {
           let temp = response.json();
           return temp;
