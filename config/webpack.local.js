@@ -187,7 +187,8 @@ module.exports = function (options) {
             '@agm/core',
             '@ultimate/ngxerrors',
             'ng2-validation',
-            'ngx-toastr'
+            'ngx-toastr',
+            'ng2-tag-input'
           ]
         },
         dllDir: helpers.root('dll'),

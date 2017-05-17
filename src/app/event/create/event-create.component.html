@@ -10,6 +10,7 @@
       <label for="eventName">Event Name</label>
         <input
           id="eventName"
+          formControlName="eventName"
           type="text"
           placeholder="Event Name">
       </div>
@@ -19,11 +20,38 @@
       <label for="location">Location</label>
         <input
           id="location"
+          formControlName="location"
           type="text"
           placeholder="Location">
       </div>
 
-    <div>
+
+
+      <!-- Tags -->
+      <div class="form-element">
+        <label>Tags</label>
+        <tag-input
+          formControlName="tags"
+          [transform]="tagTransformer"
+          [maxItems]="10">
+            <tag-input-dropdown
+              [identifyBy]="'id'"
+              [displayBy]="'name'"
+              [autocompleteItems]="tags">
+            </tag-input-dropdown>
+        </tag-input>
+
+        <div ngxErrors="tags">
+          <div class="field-error" ngxError="required" when="touched">
+            Field is required
+          </div>
+        </div>
+      </div>
+
+
+
+
+      <div>
       <button
         type="submit"
         [disabled]="eventForm.invalid"
