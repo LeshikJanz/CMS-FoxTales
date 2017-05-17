@@ -1,0 +1,19 @@
+.group-container {
+  display: flex;
+  justify-content: space-between;
+
+  &:first-child {
+    display: flex;
+  }
+
+  .creation-button {
+    width: 154px;
+    height: 34px;
+    font-size: 14px;
+    border-radius: 6px;
+    color: white;
+    background-color: #2fd976;
+  }
+}
+
+

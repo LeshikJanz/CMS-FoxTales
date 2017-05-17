@@ -1,13 +1,15 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { IEvent } from "../event/event.interface";
+import { IEvent } from "../../event/event.interface";
 import { EventGroupsService } from "./event-groups.service";
 import { IEventGroup } from "./event-groups.interaface";
-import { EventService } from "../event/event.service";
+import { EventService } from "../../event/event.service";
+import { IActionState } from "../../client/client.interface";
 
 @Component({
   selector: 'event-groups',
-  templateUrl: './event-groups.component.html'
+  templateUrl: 'event-groups.component.html',
+  styleUrls: ['event-groups.component.scss']
 })
 
 export class EventGroupsComponent implements OnInit {
@@ -18,6 +20,16 @@ export class EventGroupsComponent implements OnInit {
 
   public eventGroups: IEventGroup[];
   public events: IEvent[];
+
+  public sortActions: IActionState[] = [
+    { id: 1, action: 'Upcoming' },
+    { id: 2, action: 'Descending' }
+  ];
+
+  public onSortChanged(event: number): void {
+    console.log("onSortChanged");
+    console.log(event);
+  }
 
   public ngOnInit(): void {
     this.getEventGroups();

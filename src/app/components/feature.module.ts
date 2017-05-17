@@ -29,6 +29,7 @@ import {
 }
   from './navigations/event-navigation/event-navigation.component';
 import { EventGroupComponent } from "./eventGroup/event-group.component";
+import { FoxInputComponent } from "./input/fox-input.component";
 
 @NgModule({
   imports: [
@@ -54,7 +55,8 @@ import { EventGroupComponent } from "./eventGroup/event-group.component";
     TableDropDownComponent,
     FoxButtonComponent,
     AddButtonComponent,
-    EventGroupComponent
+    EventGroupComponent,
+    FoxInputComponent
   ],
   exports: [
     CreationButtonComponent,
@@ -74,7 +76,8 @@ import { EventGroupComponent } from "./eventGroup/event-group.component";
     TableDropDownComponent,
     FoxButtonComponent,
     AddButtonComponent,
-    EventGroupComponent
+    EventGroupComponent,
+    FoxInputComponent
   ]
 })
 

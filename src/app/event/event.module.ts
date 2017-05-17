@@ -17,8 +17,9 @@ import { EventListComponent } from './list';
 import { EventCreateComponent } from './create';
 
 import { FeatureModule } from '../components/feature.module';
-import { EventGroupsComponent } from "../event-groups/event-groups.component";
-import { EventGroupsService } from "../event-groups/event-groups.service";
+import { EventGroupsComponent } from "../event-groups/list/event-groups.component";
+import { EventGroupsService } from "../event-groups/list/event-groups.service";
+import { EventGroupCreateComponent } from "../event-groups/create/event-group-create.component";
 
 @NgModule({
   imports: [
@@ -47,7 +48,8 @@ import { EventGroupsService } from "../event-groups/event-groups.service";
   declarations: [
     EventListComponent,
     EventCreateComponent,
-    EventGroupsComponent
+    EventGroupsComponent,
+    EventGroupCreateComponent
   ]
 })
 export class EventModule {

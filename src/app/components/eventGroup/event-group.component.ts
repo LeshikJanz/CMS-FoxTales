@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { IActionState } from "../../client/client.interface";
 import { IEvent } from "../../event/event.interface";
-import { IEventGroup } from "../../event-groups/event-groups.interaface";
+import { IEventGroup } from "../../event-groups/list/event-groups.interaface";
 
 @Component({
   selector: 'event-group',
@@ -11,14 +11,38 @@ import { IEventGroup } from "../../event-groups/event-groups.interaface";
 
 export class EventGroupComponent {
 
-  @Input() eventGroups: IEventGroup;
+  /**
+   * Event groups
+   *
+   * @type {IEventGroup[]}
+   * */
+  @Input() eventGroups: IEventGroup[];
 
+  /**
+   * Is event group tab open?
+   *
+   * @type {boolean}
+   * */
   public isOpen: boolean = false;
+
+  /**
+   * Actions for each event group
+   *
+   * @type {IActionState[]}
+   * */
+  public groupActions: IActionState[] = [
+    { id: 1, action: 'Edit', callback: 'editEventGroup' },
+    { id: 2, action: 'Configure Gallery',  callback: 'configureGallery' },
+    { id: 3, action: 'Add Events to Group', callback: 'addEventsToGroup'  }
+  ];
 
   public eventActions: IActionState[] = [
     { id: 1, action: 'Edit' },
-    { id: 2, action: 'Configure Gallery' },
-    { id: 3, action: 'Add Events to Group' },
+  ];
+
+  public sortActions: IActionState[] = [
+    { id: 1, action: 'Upcoming' },
+    { id: 2, action: 'Descending' }
   ];
 
   public onTypeChanged(event) {

@@ -3,8 +3,8 @@
     <div class="main-info">
       <div>
         <checkbox></checkbox>
-        <img *ngIf="status === -1" src="assets/img/attention.svg" alt="">
-        <img *ngIf="status === 1" src="assets/img/complete.svg" alt="">
+        <img *ngIf="status === -1" src="../../../assets/img/attention.svg" alt="">
+        <img *ngIf="status === 1" src="../../../assets/img/complete.svg" alt="">
         <label class="name">{{event.name}}</label>
         <label class="date">{{ event.startTime | date}}</label>
         <label *ngIf="event.tags.length > 0">#{{event.tags}}</label>

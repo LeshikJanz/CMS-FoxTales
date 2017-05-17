@@ -1,0 +1,22 @@
+<div>
+  <div class="group-container">
+    <div>
+      <label>Sort by</label>
+      <dropdown
+        [title]="'Upcoming'"
+        [options]="sortActions"
+        [size]="'medium'"
+        (typeChanged)="onSortChanged($event)"
+      ></dropdown>
+    </div>
+    <add-button
+      [routerLink]="['/events/event-group']"
+      class="creation-button"
+      [value]="'Create New Group'"
+    ></add-button>
+  </div>
+  <event-group
+    [eventGroups]="eventGroups"
+    style="width: 700px"
+  ></event-group>
+</div>
