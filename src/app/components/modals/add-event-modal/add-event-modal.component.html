@@ -3,13 +3,33 @@
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title">Add to {{groupName}}</h4>
+        <h3 class="modal-title">Add to {{groupName}}</h3>
         <button type="button" class="close" (click)="lgModal.hide()" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
       <div class="modal-body">
-        {{modalBody}}
+          <tag-input
+            [transform]="tagTransformer"
+            [maxItems]="10">
+            <tag-input-dropdown
+              [identifyBy]="'id'"
+              [displayBy]="'name'"
+              [autocompleteItems]="tags">
+            </tag-input-dropdown>
+          </tag-input>
+
+        <div class="btn-actions">
+          <fox-button
+            [value]="'Save'"
+            [design]="'primary'"
+          ></fox-button>
+          <fox-button
+            class="cancel"
+            [value]="'CANCEL'"
+            [design]="'tertiary'"
+          ></fox-button>
+        </div>
       </div>
     </div>
   </div>

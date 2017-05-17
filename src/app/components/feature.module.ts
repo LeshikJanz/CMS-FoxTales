@@ -34,6 +34,7 @@ import { EventTagComponent } from './eventTag/event-tag.component';
 import { SwitcherComponent } from './toggles/switcher/switcher.component';
 import { ConfigureButtonComponent } from './buttons/configure-button/configure-button.component';
 import { AddEventModalComponent } from './modals/add-event-modal/add-event-modal.component';
+import { TagInputModule } from 'ng2-tag-input';
 
 @NgModule({
   imports: [
@@ -41,7 +42,8 @@ import { AddEventModalComponent } from './modals/add-event-modal/add-event-modal
     FormsModule,
     RouterModule.forChild(FEATURE_ROUTES),
     BsDropdownModule.forRoot(),
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    TagInputModule
   ],
   providers: [],
   declarations: [

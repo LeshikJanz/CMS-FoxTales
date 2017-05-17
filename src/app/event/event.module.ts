@@ -35,7 +35,6 @@ import { EventGroupCreateComponent } from "../event-groups/create/event-group-cr
     SharedModule,
     EVENT_ROUTING,
     FeatureModule,
-
   ],
   providers: [
     {

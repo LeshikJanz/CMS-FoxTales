@@ -1,13 +1,10 @@
-import { Component, Input, OnInit, EventEmitter, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { IEvent } from "../../event/event.interface";
 import { EventGroupsService } from "./event-groups.service";
 import { IEventGroup } from "./event-groups.interaface";
 import { EventService } from "../../event/event.service";
-import { IActionState } from "../../client/client.interface";
-import { FormGroup, FormControl, Validators, FormBuilder } from "@angular/forms";
+import { FormGroup, Validators, FormBuilder } from "@angular/forms";
 import { ITag } from "../../event/tag.interface";
-import { ModalDirective } from "ngx-bootstrap";
 
 @Component({
   selector: 'event-group-create',
@@ -20,11 +17,11 @@ export class EventGroupCreateComponent implements OnInit {
   /**
    * Constructor
    *
-   * @param {Router} router - Router
+   * @param {FormBuilder} formBuilder - form builder
+   * @param {EventService} eventService - event service
    * @returns {void}
    */
-  constructor(private router: Router,
-              private formBuilder: FormBuilder,
+  constructor(private formBuilder: FormBuilder,
               private eventService: EventService
   ) {}
 
