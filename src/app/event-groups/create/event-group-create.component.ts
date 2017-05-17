@@ -39,7 +39,7 @@ export class EventGroupCreateComponent {
    *
    * @returns {ClientCreateComponent} - Component
    */
-  public buildClientForm(): EventGroupCreateComponent {
+  public buildEventGroupForm(): EventGroupCreateComponent {
     this.eventGroupForm = this.formBuilder.group({
       groupName: ['', [
         Validators.required
@@ -47,5 +47,9 @@ export class EventGroupCreateComponent {
     });
 
     return this;
+  }
+
+  public addEventGroup(group) {
+
   }
 }
