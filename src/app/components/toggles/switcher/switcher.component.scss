@@ -9,6 +9,17 @@ h2 {
   overflow: auto;
 }
 
+ul {
+  display: inline;
+  width: inherit;
+  height: inherit;
+}
+
+ul li {
+  width: inherit;
+  height: inherit;
+}
+
 ul li{
   color: #AAAAAA;
   display: inline;
@@ -39,9 +50,8 @@ ul li .check{
   justify-content: center;
   align-items: center;
   border: 2px solid #AAAAAA;
+  height: inherit;
   color: #7a8693;
-  height: 50px;
-  width: 130px;
   top: 0;
   left: 0;
   z-index: 5;

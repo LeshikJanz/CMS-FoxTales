@@ -8,7 +8,7 @@
     <div [formGroup]="eventGroupForm">
       <!-- Name -->
       <div class="form-element">
-        <label for="groupName">Client Name</label>
+        <label for="groupName">Client Name *</label>
         <input
           id="groupName"
           class="form-control input"
@@ -23,22 +23,33 @@
         </div>
       </div>
 
-      <event-tag
-        [title]="'Event Name'"
-      ></event-tag>`
-      <event-tag
-        [title]="'Event Name'"
-      ></event-tag>`
-      <event-tag
-        [title]="'Event Name'"
-      ></event-tag>`
-      <event-tag
-        [title]="'Event Name'"
-      ></event-tag>`
+      <!-- Tags -->
+      <div class="form-element">
+        <label>Add events</label>
+        <tag-input
+          formControlName="tags"
+          [transform]="tagTransformer"
+          [maxItems]="10">
+          <tag-input-dropdown
+            [identifyBy]="'id'"
+            [displayBy]="'name'"
+            [autocompleteItems]="tags">
+          </tag-input-dropdown>
+        </tag-input>
+
+        <div ngxErrors="tags">
+          <div class="field-error" ngxError="required" when="touched">
+            Field is required
+          </div>
+        </div>
+      </div>
 
       <div class="form-element">
-        <label for="groupGallery">Client Name</label>
-
+        <label for="groupGallery">Enable Group Gallery</label>
+        <switcher id="groupGallery" [options]="galleryOptions" (toggle)="value=$event"></switcher>
+        <configure-button
+          [value]="'Configure Gallery'"
+        ></configure-button>
 
         <div ngxErrors="groupGallery">
           <div class="field-error" ngxError="required" when="touched">
@@ -47,13 +58,14 @@
         </div>
       </div>
     </div>
+    <div>
 
       <fox-button
-        style="height: 36px; width: 118px; font-size: 14px"
         type="submit"
         [disabled]="eventGroupForm.invalid"
         [value]="'Save and Exit'"
         [design]="'special'"
       ></fox-button>
+    </div>
   </form>
 </div>

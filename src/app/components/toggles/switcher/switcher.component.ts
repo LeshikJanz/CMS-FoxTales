@@ -1,4 +1,4 @@
-import { Component, OnChanges, Output, EventEmitter, Input } from '@angular/core';
+import { Component, OnChanges, Output, EventEmitter, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'switcher',
@@ -6,12 +6,16 @@ import { Component, OnChanges, Output, EventEmitter, Input } from '@angular/core
   styleUrls: [ 'switcher.component.scss' ]
 })
 
-export class SwitcherComponent {
-  @Input() public type:string = 'Bacon';
+export class SwitcherComponent implements OnInit {
+  @Input() public type:string;
 
   @Input() public options: string[];
 
   @Output() public toggle:EventEmitter<string> = new EventEmitter<string>();
+
+  ngOnInit() {
+    this.type = this.options[0];
+  }
 
   onChange(value: string) {
     this.toggle.emit(value);

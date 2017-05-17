@@ -31,6 +31,8 @@ import {
 import { EventGroupComponent } from './eventGroup/event-group.component';
 import { FoxInputComponent } from './input/fox-input.component';
 import { EventTagComponent } from './eventTag/event-tag.component';
+import { SwitcherComponent } from "./toggles/switcher/switcher.component";
+import { ConfigureButtonComponent } from "./buttons/configure-button/configure-button.component";
 
 @NgModule({
   imports: [
@@ -58,7 +60,9 @@ import { EventTagComponent } from './eventTag/event-tag.component';
     AddButtonComponent,
     EventGroupComponent,
     FoxInputComponent,
-    EventTagComponent
+    EventTagComponent,
+    SwitcherComponent,
+    ConfigureButtonComponent
   ],
   exports: [
     CreationButtonComponent,
@@ -80,7 +84,9 @@ import { EventTagComponent } from './eventTag/event-tag.component';
     AddButtonComponent,
     EventGroupComponent,
     FoxInputComponent,
-    EventTagComponent
+    EventTagComponent,
+    SwitcherComponent,
+    ConfigureButtonComponent
   ]
 })
 
