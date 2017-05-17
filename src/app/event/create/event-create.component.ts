@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { ITag } from '../tag.interface';
+import { EventService } from '../event.service';
 
 @Component({
   selector: 'event-create',
@@ -16,25 +18,24 @@ export class EventCreateComponent implements OnInit {
   public eventForm: FormGroup;
 
   /**
-   * Additional user details
+   * Tags
    *
-   * @type {any}
+   * @type {ITag[]}
    */
-  public userDetails: any = {
-    roles: []
-  };
+  public tags: ITag[];
 
   /**
    * Constructor
    *
    * @param {Router} router - Router
    * @param {FormBuilder} formBuilder
-   * @param {UserService} userService - User service
+   * @param {EventService} event - Event service
    * @returns {void}
    */
   constructor(
     private router: Router,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private event: EventService
   ) {
   }
 
@@ -45,7 +46,40 @@ export class EventCreateComponent implements OnInit {
    * @returns {void}
    */
   public ngOnInit(): void {
-    this.buildEventForm();
+    this.getTags();
+    this.buildEventForm()
+  }
+
+  /**
+   * Get tags
+   *
+   * @returns {void}
+   */
+  public getTags(): void {
+    this.event
+      .getTags()
+      .subscribe((tags: ITag[]) => this.tags = tags);
+  }
+
+  /**
+   * Tag transformer
+   *
+   * @param {string} tag - Tag
+   * @returns {string} - Transformed tag
+   */
+  public tagTransformer(tag: string): string {
+    return tag.replace(/\s/g, '');
+  }
+
+  /**
+   * Add event
+   *
+   * @param event - Event
+   * @returns {void}
+   */
+  public addEvent(event): void {
+    event.tags = event.tags.map((tag: ITag) => tag.name);
+    console.log(event);
   }
 
   /**
@@ -60,10 +94,12 @@ export class EventCreateComponent implements OnInit {
       ]],
       location: ['', [
         Validators.required
+      ]],
+      tags: ['', [
+        Validators.required
       ]]
     });
 
     return this;
   }
-
 }
