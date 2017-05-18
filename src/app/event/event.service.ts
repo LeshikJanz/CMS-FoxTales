@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Response, Http } from '@angular/http';
 import { Observable } from 'rxjs';
 import { Tag } from './tag';
+import { IEventGroup } from "../event-groups/list/event-groups.interaface";
 
 @Injectable()
 export class EventService {
@@ -21,14 +22,13 @@ export class EventService {
    *
    */
   public getEvents() {
-        return this.http.get('https://foxtalesdev.azurewebsites.net/api/events')
+        return this.http.get(`${process.env.API_URL}/Events`)
         .map(response => {
           let temp = response.json();
-        
+
           return temp;
         })
   }
-
 
   /**
    * Get tags

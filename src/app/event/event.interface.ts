@@ -11,13 +11,13 @@ export interface IExperience {
  * Event interface
  * */
 export interface IEvent {
+  id: number,
   clientId: string,
   config: string,
   contentHostingLocation: number,
   endTime: string,
   eventGroupId: number,
   experiences: IExperience[],
-  id: number,
   isRunning: boolean,
   location: string,
   name: string,

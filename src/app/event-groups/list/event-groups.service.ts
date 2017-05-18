@@ -23,14 +23,14 @@ export class EventGroupsService {
   constructor(private http: Http) {
   }
 
+
   /**
-   * Get event groups
+   * Get Event groups
    *
-   *
-   * @returns {Observable<IEventGroups>} - Event groups
+   * @returns IEventGroup[]
    */
   public getEventGroups(): Observable<IEventGroup[]> {
-    return this.http.get(`assets/mock-data/event/event-groups.json`)
+    return this.http.get(`${process.env.API_URL}/EventGroups`)
       .map((response: Response) => <IEventGroup[]> response.json());
   }
 }

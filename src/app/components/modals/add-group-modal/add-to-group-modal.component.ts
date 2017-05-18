@@ -4,12 +4,12 @@ import { ITag } from "../../../event/tag.interface";
 import { EventService } from "../../../event/event.service";
 
 @Component({
-  selector: 'add-event-modal',
-  templateUrl: 'add-event-modal.component.html',
-  styleUrls: ['add-event-modal.component.scss']
+  selector: 'add-to-group-modal',
+  templateUrl: 'add-to-group-modal.component.html',
+  styleUrls: ['add-to-group-modal.component.scss']
 })
 
-export class AddEventModalComponent implements OnInit {
+export class AddToGroupModalComponent implements OnInit {
 
   /**
    * Constructor
@@ -19,7 +19,7 @@ export class AddEventModalComponent implements OnInit {
    * */
   constructor(private eventService: EventService){}
 
-  @ViewChild('aeModal') public lgModal: ModalDirective;
+  @ViewChild('atgModal') public lgModal: ModalDirective;
   isModalShown: boolean = false;
 
   /**
@@ -55,6 +55,15 @@ export class AddEventModalComponent implements OnInit {
    */
   public tagTransformer(tag: string): string {
     return tag.replace(/\s/g, '');
+  }
+
+  /**
+   * On Scroll event
+   *
+   * @returns {void}
+   * */
+  public onScroll() {
+    console.log("onScroll");
   }
 
   /**

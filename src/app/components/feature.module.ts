@@ -35,6 +35,9 @@ import { SwitcherComponent } from './toggles/switcher/switcher.component';
 import { ConfigureButtonComponent } from './buttons/configure-button/configure-button.component';
 import { AddEventModalComponent } from './modals/add-event-modal/add-event-modal.component';
 import { TagInputModule } from 'ng2-tag-input';
+import { AddToGroupModalComponent } from './modals/add-group-modal/add-to-group-modal.component';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { ScrollComponent } from "./scroll/scroll.component";
 
 @NgModule({
   imports: [
@@ -43,7 +46,8 @@ import { TagInputModule } from 'ng2-tag-input';
     RouterModule.forChild(FEATURE_ROUTES),
     BsDropdownModule.forRoot(),
     ModalModule.forRoot(),
-    TagInputModule
+    TagInputModule,
+    InfiniteScrollModule
   ],
   providers: [],
   declarations: [
@@ -67,7 +71,9 @@ import { TagInputModule } from 'ng2-tag-input';
     EventTagComponent,
     SwitcherComponent,
     ConfigureButtonComponent,
-    AddEventModalComponent
+    AddEventModalComponent,
+    AddToGroupModalComponent,
+    ScrollComponent
   ],
   exports: [
     CreationButtonComponent,
@@ -92,7 +98,9 @@ import { TagInputModule } from 'ng2-tag-input';
     EventTagComponent,
     SwitcherComponent,
     ConfigureButtonComponent,
-    AddEventModalComponent
+    AddEventModalComponent,
+    AddToGroupModalComponent,
+    ScrollComponent
   ]
 })
 
