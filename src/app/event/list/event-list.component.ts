@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
 import { EventService } from '../event.service';
-
 
 /**
  * Event list component
@@ -13,31 +10,30 @@ import { EventService } from '../event.service';
   styleUrls: ['./event-list.component.scss']
 })
 export class EventListComponent implements OnInit {
-    /**
-    * Event
-    *
-    * @type {Event[]}
-    */
-    public Events: any[];
+  /**
+   * Event
+   *
+   * @type {Event[]}
+   */
+  public Events: any[];
 
-    constructor(private eventService: EventService){
-    }
-
-    public ngOnInit(): void {
-        this.getEvents();
-    }
-
-    /**
-    * Get events
-    *
-    * @returns {void}
-    */
-    public getEvents(): void {
-        this.eventService
-        .getEvents()
-        .subscribe((event) => {
-          this.Events = event;
-    });
+  constructor(private eventService: EventService) {
   }
 
+  public ngOnInit(): void {
+    this.getEvents();
+  }
+
+  /**
+   * Get events
+   *
+   * @returns {void}
+   */
+  public getEvents(): void {
+    this.eventService
+      .getEvents()
+      .subscribe((event) => {
+        this.Events = event;
+      });
+  }
 }

@@ -19,7 +19,7 @@ const HOST = process.env.HOST || 'localhost';
 const PORT = process.env.PORT || 3000;
 const API_URL = process.env.API_URL = 'http://dev.getfoxtales.com/api';
 const AD_TENANT = process.env.AD_TENANT = 'common';
-const AD_CLIENT = process.env.AD_CLIENT = '018ba0b5-782f-405b-82c3-871178e219ad';
+const AD_CLIENT = process.env.AD_CLIENT = 'dce90867-97f5-42cd-b3e4-013ed22c1824';
 const HMR = helpers.hasProcessFlag('hot');
 const METADATA = webpackMerge(commonConfig({env: ENV}).metadata, {
   host: HOST,
@@ -94,18 +94,18 @@ module.exports = function (options) {
     module: {
 
       rules: [
-       {
-         test: /\.ts$/,
-         use: [
-           {
-             loader: 'tslint-loader',
-             options: {
-               configFile: 'tslint.json'
-             }
-           }
-         ],
-         exclude: [/\.(spec|e2e)\.ts$/]
-       },
+        {
+          test: /\.ts$/,
+          use: [
+            {
+              loader: 'tslint-loader',
+              options: {
+                configFile: 'tslint.json'
+              }
+            }
+          ],
+          exclude: [/\.(spec|e2e)\.ts$/]
+        },
 
         /*
          * css loader support for *.css files (styles directory only)

@@ -52,11 +52,10 @@ export interface IClientFilter {
   };
 }
 
-
 /**
- * CLient state interface
- * */
+ * Client state interface
+ */
 export interface IActionState {
-  id: number,
-  action: string
+  id: number;
+  action: string;
 }

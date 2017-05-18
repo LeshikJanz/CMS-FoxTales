@@ -6,6 +6,8 @@ import { CustomFormsModule } from 'ng2-validation';
 import { NgxErrorsModule } from '@ultimate/ngxerrors';
 import { ToastrModule, ToastContainerModule } from 'ngx-toastr';
 
+import { TagInputModule } from 'ng2-tag-input';
+
 import { SharedModule } from '../shared';
 import { HttpService } from '../shared/core';
 
@@ -27,6 +29,7 @@ import { FeatureModule } from '../components/feature.module';
     NgxErrorsModule,
     ToastrModule.forRoot(),
     ToastContainerModule.forRoot(),
+    TagInputModule,
     SharedModule,
     EVENT_ROUTING,
     FeatureModule

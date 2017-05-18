@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Response, Http } from '@angular/http';
 import { Observable } from 'rxjs';
+import { Tag } from './tag';
 
 @Injectable()
 export class ExperienceService {
@@ -18,7 +19,6 @@ export class ExperienceService {
    * Get Experiences
    *
    * Currently using the old endpoints for mock data, will be replacing to process.env.API_URL
-   *
    */
 
     public getExperiences(id) {
@@ -30,4 +30,13 @@ export class ExperienceService {
         });
     }
 
+  /**
+   * Get tags
+   *
+   * @returns {Observable<Tag[]>} - Tags
+   */
+  public  getTags(): Observable<Tag[]> {
+    return this.http.get(`${process.env.API_URL}/Tags/brands`)
+      .map((response: Response) => response.json() as Tag[]);
+  }
 }

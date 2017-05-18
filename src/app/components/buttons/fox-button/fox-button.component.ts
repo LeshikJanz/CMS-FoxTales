@@ -16,10 +16,10 @@ export class FoxButtonComponent implements OnInit {
 
   public ngOnInit() {
     if (this.value == null) {
-      throw new Error("Attribute 'value' is required");
+      throw new Error(`Attribute 'value' is required`);
     }
     if (this.type == null) {
-      throw new Error("Attribute 'type' is required");
+      throw new Error(`Attribute 'type' is required`);
     }
   }
 }

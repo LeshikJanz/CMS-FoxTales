@@ -8,7 +8,6 @@ import { IActionState } from '../../client/client.interface';
 })
 
 export class EventComponent {
-
   public eventActions: IActionState[] = [
     { id: 1, action: 'SETTINGS' },
     { id: 2, action: 'CLONE' },

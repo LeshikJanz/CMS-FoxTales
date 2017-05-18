@@ -6,6 +6,8 @@ import { CustomFormsModule } from 'ng2-validation';
 import { NgxErrorsModule } from '@ultimate/ngxerrors';
 import { ToastrModule, ToastContainerModule } from 'ngx-toastr';
 
+import { TagInputModule } from 'ng2-tag-input';
+
 import { SharedModule } from '../shared';
 import { HttpService } from '../shared/core';
 
@@ -13,6 +15,7 @@ import { EXPERIENCE_ROUTING } from './experience.routes';
 
 import { ExperienceService } from './experience.service';
 import { ExperienceListComponent } from './list';
+import { ExperienceCreateComponent } from './create';
 
 import { FeatureModule } from '../components/feature.module';
 
@@ -26,6 +29,7 @@ import { FeatureModule } from '../components/feature.module';
     NgxErrorsModule,
     ToastrModule.forRoot(),
     ToastContainerModule.forRoot(),
+    TagInputModule,
     SharedModule,
     EXPERIENCE_ROUTING,
     FeatureModule
@@ -40,6 +44,7 @@ import { FeatureModule } from '../components/feature.module';
   ],
   declarations: [
     ExperienceListComponent,
+    ExperienceCreateComponent
   ]
 })
 export class ExperienceModule {
