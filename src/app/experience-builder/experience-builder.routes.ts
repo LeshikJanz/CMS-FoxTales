@@ -6,7 +6,7 @@ import { ExperienceBuilderContainerComponent } from './experience-builder-contai
 import { BasicDetailsComponent } from './basic-details';
 import { UIBuilderComponent } from './ui-builder';
 import { EmailBuilderComponent } from './email-builder';
-
+import { ContentOptionsComponent } from './content-options';
 
 const EXPERIENCE_BUILDER_ROUTES: Routes = [
   { path: '',    redirectTo: 'intro' },
@@ -16,7 +16,9 @@ const EXPERIENCE_BUILDER_ROUTES: Routes = [
         { path: 'basic-details', component: BasicDetailsComponent },
         { path: 'ui-builder', component: UIBuilderComponent },
         { path: 'email-builder', component: EmailBuilderComponent },
+        { path: 'content-options', component: ContentOptionsComponent },
     ] }
 ];
 
-export const EXPERIENCE_BUILDER_ROUTING: ModuleWithProviders = RouterModule.forChild(EXPERIENCE_BUILDER_ROUTES);
+export const EXPERIENCE_BUILDER_ROUTING: ModuleWithProviders = 
+    RouterModule.forChild(EXPERIENCE_BUILDER_ROUTES);

@@ -7,6 +7,7 @@ import { NgxErrorsModule } from '@ultimate/ngxerrors';
 import { ToastrModule, ToastContainerModule } from 'ngx-toastr';
 import { TabsModule } from 'ngx-bootstrap';
 import { ModalModule } from 'ngx-bootstrap';
+import { ColorPickerModule } from 'ngx-color-picker'
 
 import { SharedModule } from '../shared';
 import { HttpService, AuthService, AuthRequestOptions } from '../shared/core';
@@ -16,10 +17,13 @@ import { ExperienceBuilderContainerComponent } from './experience-builder-contai
 import { BasicDetailsComponent } from './basic-details';
 import { UIBuilderComponent } from './ui-builder';
 import { EmailBuilderComponent } from './email-builder';
+import { ContentOptionsComponent } from './content-options';
 
 import { EXPERIENCE_BUILDER_ROUTING } from './experience-builder.routes';
 
 import { FeatureModule } from '../components/feature.module';
+
+import { ExperienceBuilderService } from './experience-builder.service'
 
 @NgModule({
   imports: [
@@ -35,8 +39,8 @@ import { FeatureModule } from '../components/feature.module';
     EXPERIENCE_BUILDER_ROUTING,
     FeatureModule,
     TabsModule.forRoot(),
-    ModalModule.forRoot()
-    
+    ModalModule.forRoot(),
+    ColorPickerModule
   ],
   providers: [
     {
@@ -49,13 +53,15 @@ import { FeatureModule } from '../components/feature.module';
       useFactory: requestOptionsFactory,
       deps: [ AuthService ]
     },
+    ExperienceBuilderService
   ],
   declarations: [
       ExperienceBuilderIntroComponent,
       ExperienceBuilderContainerComponent,
       BasicDetailsComponent,
       UIBuilderComponent,
-      EmailBuilderComponent
+      EmailBuilderComponent,
+      ContentOptionsComponent
   ]
 })
 export class ExperienceBuilderModule {

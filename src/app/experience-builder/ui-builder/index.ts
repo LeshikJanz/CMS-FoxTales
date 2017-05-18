@@ -1,1 +1,1 @@
-export * from './ui-builder';
+export * from './ui-builder.component';

@@ -23,7 +23,7 @@ export class ExperienceService {
 
     public getExperiences(id) {
 
-      return this.http.get('https://foxtalesdev.azurewebsites.net/api/events/' + id)
+      return this.http.get('https://foxtalesapi-dev.azurewebsites.net/api/events/' + id)
         .map((response) => {
             let temp = response.json();
             return temp.experiences;
