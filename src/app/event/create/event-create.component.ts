@@ -47,7 +47,7 @@ export class EventCreateComponent implements OnInit {
    */
   public ngOnInit(): void {
     this.getTags();
-    this.buildEventForm()
+    this.buildEventForm();
   }
 
   /**

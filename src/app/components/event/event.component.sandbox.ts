@@ -1,10 +1,11 @@
 import { sandboxOf } from 'angular-playground';
-import { EventComponent } from "./event.component";
-import { CheckboxComponent } from "../checkbox/checkbox.component";
-import { ActionDropDownComponent } from "../dropdowns/action-dropdown/action-dropdown.component";
-import { BsDropdownModule } from "ngx-bootstrap";
+import { EventComponent } from './event.component';
+import { CheckboxComponent } from '../checkbox/checkbox.component';
+import { ActionDropDownComponent } from '../dropdowns/action-dropdown/action-dropdown.component';
+import { BsDropdownModule } from 'ngx-bootstrap';
 
-export default sandboxOf(EventComponent, {declarations: [CheckboxComponent, ActionDropDownComponent],
+export default sandboxOf(EventComponent, {
+  declarations: [CheckboxComponent, ActionDropDownComponent],
   imports: [ BsDropdownModule.forRoot() ]})
   .add('default event', {
     template: `<event

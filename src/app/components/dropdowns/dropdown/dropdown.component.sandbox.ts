@@ -1,5 +1,5 @@
 import { sandboxOf } from 'angular-playground';
-import { DropDownComponent } from "./dropdown.component";
+import { DropDownComponent } from './dropdown.component';
 import { BsDropdownModule } from 'ngx-bootstrap';
 
 export default sandboxOf(DropDownComponent, { imports: [ BsDropdownModule.forRoot() ] })
@@ -13,11 +13,11 @@ export default sandboxOf(DropDownComponent, { imports: [ BsDropdownModule.forRoo
                (typeChanged)="onTypeChanged($event)"
                ></dropdown></div>`,
     context: {
-      title: "Most recent",
+      title: 'Most recent',
       options: [ { id: 1, action: 'Unarchived' }, { id: 2, action: 'Archived' } ],
       size: 'small',
       onTypeChanged(event) {
-        console.log("onTypeChanged");
+        console.log('onTypeChanged');
         console.log(event);
       }
     }
@@ -40,4 +40,3 @@ export default sandboxOf(DropDownComponent, { imports: [ BsDropdownModule.forRoo
                (typeChanged)="onTypeChanged($event)"
                ></dropdown></div>`
   });
-

@@ -18,17 +18,14 @@ export class EventService {
    * Get Events
    *
    * Currently using the old endpoints for mock data, will be replacing to process.env.API_URL
-   *
    */
   public getEvents() {
-        return this.http.get('https://foxtalesdev.azurewebsites.net/api/events')
-        .map(response => {
-          let temp = response.json();
-        
-          return temp;
-        })
+    return this.http.get('https://foxtalesdev.azurewebsites.net/api/events')
+      .map((response) => {
+        let temp = response.json();
+        return temp;
+      });
   }
-
 
   /**
    * Get tags

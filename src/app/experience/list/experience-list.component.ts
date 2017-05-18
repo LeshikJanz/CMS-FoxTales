@@ -1,7 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
-
 import { ExperienceService } from '../experience.service';
 import { ActivatedRoute } from '@angular/router';
 
@@ -14,33 +11,37 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./experience-list.component.scss']
 })
 export class ExperienceListComponent implements OnInit {
-
-
-    /**
+   /**
     * Experience
     *
     * @type {Experience[]}
     */
     public Experience: any[];
-    /**
+
+   /**
     * getting query parameter to find specific experiences
     *
     */
-    id: number;
+    public id: number;
+
+    public status: any;
+
     private sub: any;
 
-    constructor(private experienceService: ExperienceService,
-                private route: ActivatedRoute){
+    constructor(
+      private experienceService: ExperienceService,
+      private route: ActivatedRoute) {
     }
 
     public ngOnInit(): void {
-        this.sub = this.route.params.subscribe(params =>{
-          this.id = +params['id'];
-      })
-        this.getExperiences();
+      this.sub = this.route.params.subscribe((params) => {
+        this.id = params['id'];
+      });
+
+      this.getExperiences();
     }
 
-    /**
+   /**
     * Get experiences
     *
     * @returns {void}
@@ -52,5 +53,4 @@ export class ExperienceListComponent implements OnInit {
           this.Experience = experiences;
     });
   }
-
 }

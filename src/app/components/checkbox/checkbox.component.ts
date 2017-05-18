@@ -6,4 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: [ 'checkbox.component.scss' ]
 })
 
-export class CheckboxComponent {}
+export class CheckboxComponent {
+}
