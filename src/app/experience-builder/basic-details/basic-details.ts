@@ -8,4 +8,9 @@ import { Router } from '@angular/router';
 
 export class BasicDetailsComponent {
   constructor(private router: Router) {}
+
+
+  Next(){
+      console.log('waiting to choose timepicker to submit to BE ')
+  }
 }
