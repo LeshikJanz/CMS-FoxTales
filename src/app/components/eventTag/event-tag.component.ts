@@ -7,5 +7,5 @@ import { Component, Input } from '@angular/core';
 })
 
 export class EventTagComponent {
-  @Input() title = '';
+  @Input() public title = '';
 }

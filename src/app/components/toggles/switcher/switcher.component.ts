@@ -3,21 +3,21 @@ import { Component, OnChanges, Output, EventEmitter, Input, OnInit } from '@angu
 @Component({
   selector: 'switcher',
   templateUrl: 'switcher.component.html',
-  styleUrls: [ 'switcher.component.scss' ]
+  styleUrls: ['switcher.component.scss']
 })
 
 export class SwitcherComponent implements OnInit {
-  @Input() public type:string;
+  @Input() public type: string;
 
   @Input() public options: string[];
 
-  @Output() public toggle:EventEmitter<string> = new EventEmitter<string>();
+  @Output() public toggle: EventEmitter<string> = new EventEmitter<string>();
 
-  ngOnInit() {
-    this.type = this.options[0];
+  public ngOnInit() {
+    this.type = this.options[1];
   }
 
-  onChange(value: string) {
+  public onChange(value: string) {
     this.toggle.emit(value);
   }
 }

@@ -6,7 +6,7 @@ export default sandboxOf(ScrollComponent, { declarations: [CheckboxComponent] })
   .add('scroll', {
     template: `<scroll style='width: 300px; max-height: 100px;'
                 [options]="options" (chose)="items = $event"></scroll>
-               You chose: <div *ngFor="let item of items" >{{item}}</div>`,
+               You chose: {{item}}`,
     context: {
       options: ['Group name 1', 'Group name 2', 'Group name 3', 'Group name 4', 'Group name 5'],
       CheckboxComponent

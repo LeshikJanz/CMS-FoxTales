@@ -21,9 +21,6 @@
     style="width: 700px"
   ></event-group>
 
-  <add-event-modal #aeModal [groupName]="'Halloween'"></add-event-modal>
-
-  <button type="button" (click)="atgModal.show();">Show add-event-modal</button>
-  <add-to-group-modal #atgModal [eventGroups]="eventGroups" [groupName]="'Halloween'" ></add-to-group-modal>
+  <events-to-cur-group-modal #aeModal ></events-to-cur-group-modal>
 
 </div>

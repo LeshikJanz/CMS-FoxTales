@@ -1,11 +1,9 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { IEvent } from "../../event/event.interface";
-import { EventGroupsService } from "./event-groups.service";
-import { IEventGroup } from "./event-groups.interaface";
-import { EventService } from "../../event/event.service";
-import { IActionState } from "../../client/client.interface";
-import { Observable } from "rxjs";
+import { Component, OnInit } from '@angular/core';
+import { IEvent } from '../../event/event.interface';
+import { EventGroupsService } from './event-groups.service';
+import { IEventGroup } from './event-groups.interaface';
+import { EventService } from '../../event/event.service';
+import { IActionState } from '../../client/client.interface';
 
 @Component({
   selector: 'event-groups',
@@ -14,43 +12,42 @@ import { Observable } from "rxjs";
 })
 
 export class EventGroupsComponent implements OnInit {
-  constructor(private router: Router,
-              private eventGroupsService: EventGroupsService,
-              private eventService: EventService) {
-  }
-
   /**
    * Event groups
    *
    * @type {IEventGroup[]}
-   * */
+   */
   public eventGroups: IEventGroup[];
 
   /**
    * Events
    *
    * @type {IEvent[]}
-   * */
+   */
   public events: IEvent[];
 
   /**
    * Sort actions
    *
    * @type {IActionState[]}
-   * */
+   */
   public sortActions: IActionState[] = [
     {id: 1, action: 'Upcoming'},
     {id: 2, action: 'Descending'}
   ];
+
+  constructor(private eventGroupsService: EventGroupsService,
+              private eventService: EventService) {
+  }
 
   /**
    * Handle Sorting
    *
    * @param {number} event id
    * @return {void}
-   * */
+   */
   public onSortChanged(event: number): void {
-    console.log("onSortChanged");
+    console.log('onSortChanged');
     console.log(event);
   }
 
@@ -62,7 +59,7 @@ export class EventGroupsComponent implements OnInit {
    * Get event groups with list of events in each one
    *
    * @return {void}
-   * */
+   */
   public getEventGroups() {
     this.eventGroupsService
       .getEventGroups()
@@ -70,15 +67,14 @@ export class EventGroupsComponent implements OnInit {
 
         this.eventService.getEvents()
           .subscribe((events: any) => {
-            this.eventGroups = eventGroups.map(eg =>
+            this.eventGroups = eventGroups.map((eg: IEventGroup) =>
               ({
                 ...eg,
-                events: events.filter(e => eg.eventIds.some(eId => eId === e.id)
+                events: events.filter((e: IEvent) => eg.eventIds.some((eId: number) => eId === e.id)
                 )
               })
             );
-          })
+          });
       });
-  }
+  };
 }
-

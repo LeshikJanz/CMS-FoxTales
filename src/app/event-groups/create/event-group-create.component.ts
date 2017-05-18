@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { EventService } from "../../event/event.service";
-import { FormGroup, Validators, FormBuilder } from "@angular/forms";
-import { ITag } from "../../event/tag.interface";
-import { IEventGroup } from "../list/event-groups.interaface";
-import { EventGroupsService } from "../list/event-groups.service";
-import { IEvent } from "../../event/event.interface";
+import { EventService } from '../../event/event.service';
+import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { ITag } from '../../event/tag.interface';
+import { IEventGroup } from '../list/event-groups.interaface';
+import { EventGroupsService } from '../list/event-groups.service';
+import { IEvent } from '../../event/event.interface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'event-group-create',
@@ -13,22 +14,6 @@ import { IEvent } from "../../event/event.interface";
 })
 
 export class EventGroupCreateComponent implements OnInit {
-
-  /**
-   * Constructor
-   *
-   * @param {FormBuilder} formBuilder - form builder
-   * @param {EventService} eventService - event service
-   * @returns {void}
-   */
-  constructor(private formBuilder: FormBuilder,
-              private eventService: EventService
-  ) {}
-
-  ngOnInit() {
-    this.buildEventGroupForm();
-    this.getEvents();
-  }
 
   /**
    * Event group form
@@ -55,34 +40,45 @@ export class EventGroupCreateComponent implements OnInit {
    * Gallery toggle options
    *
    * @type {string}
-   * */
+   */
   public galleryOptions = ['Yes', 'No'];
 
   /**
-   * Get tags
+   * Selected group
    *
+   * @type {string}
+   */
+
+  public selectedGroup: string;
+  /**
+   * Constructor
+   *
+   * @param {FormBuilder} formBuilder - form builder
+   * @param {EventService} eventService - event service
    * @returns {void}
    */
-  public getTags(): void {
-    this.eventService
-      .getTags()
-      .subscribe((tags: ITag[]) => this.tags = tags);
+  constructor(private formBuilder: FormBuilder,
+              private eventService: EventService,
+              private eventGroupService: EventGroupsService,
+              private router: Router) {
   }
 
   /**
    * Get event groups
    *
    * @return {void}
-   * */
+   */
   public getEvents() {
     this.eventService
       .getEvents()
-      .subscribe((events: IEvent[]) => {
-        this.events = events.filter(e => e.name);
-        console.log("this.events");
-        console.log(this.events);
-      }
-    )
+      .subscribe((events: IEvent[]) =>
+          this.events = events.filter((e: IEvent) => e.name)
+      );
+  }
+
+  public ngOnInit() {
+    this.buildEventGroupForm();
+    this.getEvents();
   }
 
   /**
@@ -100,9 +96,14 @@ export class EventGroupCreateComponent implements OnInit {
    *
    * @returns {ClientCreateComponent} - Component
    */
-  public addEventGroup(eventGroup: IEventGroup){
-    console.log("eventGroup");
-    console.log(eventGroup);
+  public addEventGroup(eventGroup: IEventGroup) {
+    // TODO: Save client id to local storage and take it from there
+    const clientId = 1;
+    eventGroup.eventIds = eventGroup.events.map((e: IEvent) => e.id);
+    delete eventGroup.events;
+    eventGroup.clientId = clientId;
+    this.eventGroupService.addEventGroup(eventGroup)
+      .subscribe(() => this.router.navigate(['/events/event-groups']));
   }
 
   /**
@@ -113,9 +114,6 @@ export class EventGroupCreateComponent implements OnInit {
   public buildEventGroupForm(): EventGroupCreateComponent {
     this.eventGroupForm = this.formBuilder.group({
       name: ['', [
-        Validators.required
-      ]],
-      groupGallery: ['', [
         Validators.required
       ]],
       events: ['', [

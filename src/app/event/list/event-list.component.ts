@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
 import { EventService } from '../event.service';
-import { IActionState } from "../../client/client.interface";
-import { EventGroupsService } from "../../event-groups/list/event-groups.service";
-
+import { IActionState } from '../../client/client.interface';
+import { EventGroupsService } from '../../event-groups/list/event-groups.service';
 
 /**
  * Event list component
@@ -76,6 +73,4 @@ export class EventListComponent implements OnInit {
         this.eventGroups = eventGroups;
       });
   }
-
-
 }

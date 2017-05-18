@@ -9,8 +9,7 @@ import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 export class ScrollComponent implements OnInit {
   @Input() public options: string[];
 
-  @Output() public chose: EventEmitter<string[]> = new EventEmitter();
-  public selectedItems: string[] = [];
+  @Output() public chose: EventEmitter<string> = new EventEmitter();
 
   public ngOnInit() {
     if (this.options == null) {
@@ -19,9 +18,6 @@ export class ScrollComponent implements OnInit {
   }
 
   public onChose(elem: string) {
-    this.selectedItems.find(item => item === elem) ?
-      this.selectedItems = this.selectedItems.filter(item => item != elem)
-      : this.selectedItems.push(elem);
-    this.chose.emit(this.selectedItems);
+    this.chose.emit(elem);
   }
 }

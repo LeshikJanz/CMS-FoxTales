@@ -6,7 +6,7 @@ import { ModalDirective } from 'ngx-bootstrap';
 @Component({
   selector: 'event-group',
   templateUrl: 'event-group.component.html',
-  styleUrls: [ 'event-group.component.scss' ]
+  styleUrls: ['event-group.component.scss']
 })
 
 export class EventGroupComponent {
@@ -15,58 +15,59 @@ export class EventGroupComponent {
    * Event groups
    *
    * @type {IEventGroup[]}
-   * */
-  @Input() eventGroups: IEventGroup[];
+   */
+  @Input() public eventGroups: IEventGroup[];
 
   /**
    * Object controls Modal state
    *
    * @type {any}
-   * */
-  @Input() modal: any;
+   */
+  @Input() public modal: any;
 
   /**
    * Is event group tab open?
    *
    * @type {boolean}
-   * */
+   */
   public isOpen: boolean = false;
 
   /**
    * Actions for each event group
    *
    * @type {IActionState[]}
-   * */
+   */
   public groupActions: IActionState[] = [
-    { id: 1, action: 'Edit', callback: 'editEventGroup' },
-    { id: 2, action: 'Configure Gallery',  callback: 'configureGallery' },
-    { id: 3, action: 'Add Events to Group', callback: 'addEventsToGroup'  }
+    {id: 1, action: 'Edit', callback: 'editEventGroup'},
+    {id: 2, action: 'Configure Gallery', callback: 'configureGallery'},
+    {id: 3, action: 'Add Events to Group', callback: 'addEventsToGroup'}
   ];
 
   public eventActions: IActionState[] = [
-    { id: 1, action: 'Edit' },
+    {id: 1, action: 'Edit'},
   ];
 
   public sortActions: IActionState[] = [
-    { id: 1, action: 'Upcoming' },
-    { id: 2, action: 'Descending' }
+    {id: 1, action: 'Upcoming'},
+    {id: 2, action: 'Descending'}
   ];
 
   public addEventsToGroup(action) {
-    console.log("addEventsToGroup");
+    console.log('addEventsToGroup');
   }
 
   public onTypeChanged(elem) {
-    switch(elem.event.id){
+    switch (elem.event.id) {
       case 1:
-        console.log('Edit')
+        console.log('Edit');
         break;
       case 2:
-        console.log('Configure Gallery')
+        console.log('Configure Gallery');
         break;
       case 3:
         this.modal.show(elem.groupName);
         break;
+      default: break;
     }
   }
 }

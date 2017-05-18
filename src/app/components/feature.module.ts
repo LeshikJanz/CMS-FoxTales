@@ -33,12 +33,18 @@ import { FoxInputComponent } from './input/fox-input.component';
 import { EventTagComponent } from './eventTag/event-tag.component';
 import { SwitcherComponent } from './toggles/switcher/switcher.component';
 import { ConfigureButtonComponent } from './buttons/configure-button/configure-button.component';
-import { AddEventModalComponent } from './modals/add-event-modal/add-event-modal.component';
 import { TagInputModule } from 'ng2-tag-input';
-import { AddToGroupModalComponent } from './modals/add-group-modal/add-to-group-modal.component';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
-import { ScrollComponent } from "./scroll/scroll.component";
-import { GroupDropDownComponent } from "./dropdowns/group-dropdown/group-dropdown.component";
+import { ScrollComponent } from './scroll/scroll.component';
+import { GroupDropDownComponent } from './dropdowns/group-dropdown/group-dropdown.component';
+import {
+  EventsToCurGroupModalComponent
+}
+  from './modals/events-to-cur-group-modal/events-to-cur-group-modal.component';
+import {
+  EventToGroupModalComponent
+}
+  from './modals/event-to-group-modal/event-to-group-modal.component';
 
 @NgModule({
   imports: [
@@ -72,8 +78,8 @@ import { GroupDropDownComponent } from "./dropdowns/group-dropdown/group-dropdow
     EventTagComponent,
     SwitcherComponent,
     ConfigureButtonComponent,
-    AddEventModalComponent,
-    AddToGroupModalComponent,
+    EventsToCurGroupModalComponent,
+    EventToGroupModalComponent,
     ScrollComponent,
     GroupDropDownComponent
   ],
@@ -100,8 +106,8 @@ import { GroupDropDownComponent } from "./dropdowns/group-dropdown/group-dropdow
     EventTagComponent,
     SwitcherComponent,
     ConfigureButtonComponent,
-    AddEventModalComponent,
-    AddToGroupModalComponent,
+    EventsToCurGroupModalComponent,
+    EventToGroupModalComponent,
     ScrollComponent,
     GroupDropDownComponent
   ]

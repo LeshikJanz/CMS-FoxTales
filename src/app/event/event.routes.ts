@@ -3,8 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { EventListComponent } from './list';
 import { EventCreateComponent } from './create';
-import { EventGroupsComponent } from "../event-groups/list/event-groups.component";
-import { EventGroupCreateComponent } from "../event-groups/create/event-group-create.component";
+import { EventGroupsComponent } from '../event-groups/list/event-groups.component';
+import { EventGroupCreateComponent } from '../event-groups/create/event-group-create.component';
 
 const EVENT_ROUTES: Routes = [
   { path: '',    redirectTo: 'events' },

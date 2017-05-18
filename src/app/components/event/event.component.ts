@@ -4,7 +4,7 @@ import { IActionState } from '../../client/client.interface';
 @Component({
   selector: 'event',
   templateUrl: 'event.component.html',
-  styleUrls: [ 'event.component.scss' ]
+  styleUrls: ['event.component.scss']
 })
 
 export class EventComponent {
@@ -27,8 +27,8 @@ export class EventComponent {
    * Object controls Modal state
    *
    * @type {any}
-   * */
-  @Input() modal: any;
+   */
+  @Input() public modal: any;
 
   /**
    * Event name
@@ -74,21 +74,23 @@ export class EventComponent {
   public isChecked: boolean = false;
 
   public onTypeChanged(event) {
-    switch(event){
+    switch (event) {
       case 1:
-        console.log('settings')
+        console.log('settings');
         break;
       case 2:
-        console.log('clone')
+        console.log('clone');
         break;
       case 3:
-        console.log('archieve')
+        console.log('archieve');
         break;
       case 4:
         this.modal.show(event.action);
         break;
       case 5:
-        console.log('assign user')
+        console.log('assign user');
+        break;
+      default:
         break;
     }
   }
