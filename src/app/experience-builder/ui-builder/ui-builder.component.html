@@ -1,0 +1,27 @@
+<tabset #staticTabs class='ui-builder-container'>
+  <tab heading='Interface'>
+      <div class="interface-container">
+          <h3>Interface Colors</h3>
+          <h5>Primary Text Color</h5>
+           <input [(colorPicker)]="primaryColor" [style.background]="primaryColor" [value]="primaryColor"  [cpSaveClickOutside]="true"/>
+            <h5>Secondary Text Color</h5>
+           <input [(colorPicker)]="secondaryColor"  [value]="secondaryColor"  [style.background]="secondaryColor"/>
+            <h5>Background Color</h5>
+           <input [(colorPicker)]="backgroundColor"  [value]="backgroundColor"  [style.background]="backgroundColor"/>
+          <h5>Logo and Overlay</h5>
+          <upload-button></upload-button>
+          <fox-button  [type]="'tertiary'" [value]="'Next'" (click)="Next();"></fox-button>
+      </div>
+  </tab>
+  <tab heading='Text'>
+      <h3>Engagement Screen</h3>
+      <h5>Text</h5>
+      <textarea [(ngModel)]="text" cols="40" rows="5"></textarea>
+      <h5>Opt-In Screen</h5>
+      <textarea [(ngModel)]="optInText" cols="40" rows="5"></textarea>
+       <h5>Thank You Screen</h5>
+      <textarea [(ngModel)]="thankYouText" cols="40" rows="5"></textarea>
+      <br>
+    <fox-button  [type]="'tertiary'" [value]="'Finish'" (click)="Finish();"></fox-button>
+  </tab>
+</tabset>
