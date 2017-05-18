@@ -47,7 +47,7 @@ export class ExperienceCreateComponent implements OnInit {
    */
   public ngOnInit(): void {
     this.getTags();
-    this.buildExperienceForm()
+    this.buildExperienceForm();
   }
 
   /**

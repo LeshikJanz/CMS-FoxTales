@@ -91,4 +91,4 @@ export default sandboxOf(FoxButtonComponent)
                [value]="'SMALL'"
                [design]="'gray'"
                ></fox-button></div>`
-  })
+  });

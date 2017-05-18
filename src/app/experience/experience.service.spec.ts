@@ -23,7 +23,9 @@ describe('ExperienceService', () => {
     });
   });
 
-  it('should create an instance', inject([ExperienceService], (experienceService: ExperienceService) => {
+  it('should create an instance', inject(
+    [ExperienceService],
+    (experienceService: ExperienceService) => {
     expect(experienceService).toBeTruthy();
   }));
 

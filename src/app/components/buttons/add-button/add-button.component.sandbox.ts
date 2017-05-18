@@ -17,4 +17,4 @@ export default sandboxOf(AddButtonComponent)
                style="height: 36px; width: 118px; font-size: 14px"
                [value]="'SMALL'"
                ></add-button></div>`
-  })
+  });

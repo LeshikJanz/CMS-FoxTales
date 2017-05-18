@@ -1,7 +1,7 @@
 import { sandboxOf } from 'angular-playground';
 import { BsDropdownModule } from 'ngx-bootstrap';
-import { TableDropDownComponent } from "./table-dropdown.component";
-import { ITableAction } from "../../../shared/table/action.interface";
+import { TableDropDownComponent } from './table-dropdown.component';
+import { ITableAction } from '../../../shared/table/action.interface';
 
 export default sandboxOf(TableDropDownComponent, { imports: [ BsDropdownModule.forRoot() ] })
   .add('small', {
@@ -14,7 +14,7 @@ export default sandboxOf(TableDropDownComponent, { imports: [ BsDropdownModule.f
                (typeChanged)="onTypeChanged($event)"
                ></table-dropdown></div>`,
     context: {
-      title: "Most recent",
+      title: 'Most recent',
       options: [
         { title: 'Edit',      callback: 'editClient' },
         { title: 'Archive',   callback: 'archiveClient' },
@@ -22,7 +22,7 @@ export default sandboxOf(TableDropDownComponent, { imports: [ BsDropdownModule.f
       ],
       size: 'small',
       onTypeChanged(event) {
-        console.log("onTypeChanged");
+        console.log('onTypeChanged');
         console.log(event);
       }
     }
@@ -37,7 +37,7 @@ export default sandboxOf(TableDropDownComponent, { imports: [ BsDropdownModule.f
                (typeChanged)="onTypeChanged($event)"
                ></table-dropdown></div>`,
     context: {
-      title: "Action",
+      title: 'Action',
       options: [
         { title: 'Edit',      callback: 'editClient' },
         { title: 'Archive',   callback: 'archiveClient' },
@@ -45,7 +45,7 @@ export default sandboxOf(TableDropDownComponent, { imports: [ BsDropdownModule.f
       ],
       size: 'small',
       onTypeChanged(event) {
-        console.log("onTypeChanged");
+        console.log('onTypeChanged');
         console.log(event);
       }
     }
@@ -60,7 +60,7 @@ export default sandboxOf(TableDropDownComponent, { imports: [ BsDropdownModule.f
                (typeChanged)="onTypeChanged($event)"
                ></table-dropdown></div>`,
     context: {
-      title: "Action",
+      title: 'Action',
       options: [
         { title: 'Edit',      callback: 'editClient' },
         { title: 'Archive',   callback: 'archiveClient' },
@@ -68,9 +68,8 @@ export default sandboxOf(TableDropDownComponent, { imports: [ BsDropdownModule.f
       ],
       size: 'small',
       onTypeChanged(event) {
-        console.log("onTypeChanged");
+        console.log('onTypeChanged');
         console.log(event);
       }
     }
   });
-
