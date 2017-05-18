@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
-import { IActionState } from "../../client/client.interface";
-import { IEvent } from "../../event/event.interface";
-import { IEventGroup } from "../../event-groups/list/event-groups.interaface";
+import { IActionState } from '../../client/client.interface';
+import { IEventGroup } from '../../event-groups/list/event-groups.interaface';
+import { ModalDirective } from 'ngx-bootstrap';
 
 @Component({
   selector: 'event-group',
@@ -17,6 +17,13 @@ export class EventGroupComponent {
    * @type {IEventGroup[]}
    * */
   @Input() eventGroups: IEventGroup[];
+
+  /**
+   * Event groups
+   *
+   * @type {IEventGroup[]}
+   * */
+  @Input() modal: any;
 
   /**
    * Is event group tab open?
@@ -45,8 +52,14 @@ export class EventGroupComponent {
     { id: 2, action: 'Descending' }
   ];
 
-  public onTypeChanged(event) {
-    switch(event){
+  public addEventsToGroup(action) {
+    console.log("addEventsToGroup");
+  }
+
+  public onTypeChanged(elem) {
+    console.log("event");
+    console.log(event);
+    switch(elem.event.id){
       case 1:
         console.log('Edit')
         break;
@@ -54,7 +67,7 @@ export class EventGroupComponent {
         console.log('Configure Gallery')
         break;
       case 3:
-        console.log('Add Events to Group')
+        this.modal.show(elem.groupName);
         break;
     }
   }

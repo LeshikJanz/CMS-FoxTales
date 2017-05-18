@@ -38,6 +38,7 @@ import { TagInputModule } from 'ng2-tag-input';
 import { AddToGroupModalComponent } from './modals/add-group-modal/add-to-group-modal.component';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { ScrollComponent } from "./scroll/scroll.component";
+import { GroupDropDownComponent } from "./dropdowns/group-dropdown/group-dropdown.component";
 
 @NgModule({
   imports: [
@@ -73,7 +74,8 @@ import { ScrollComponent } from "./scroll/scroll.component";
     ConfigureButtonComponent,
     AddEventModalComponent,
     AddToGroupModalComponent,
-    ScrollComponent
+    ScrollComponent,
+    GroupDropDownComponent
   ],
   exports: [
     CreationButtonComponent,
@@ -100,7 +102,8 @@ import { ScrollComponent } from "./scroll/scroll.component";
     ConfigureButtonComponent,
     AddEventModalComponent,
     AddToGroupModalComponent,
-    ScrollComponent
+    ScrollComponent,
+    GroupDropDownComponent
   ]
 })
 

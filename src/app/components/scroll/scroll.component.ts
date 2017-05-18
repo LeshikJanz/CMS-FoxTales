@@ -18,25 +18,10 @@ export class ScrollComponent implements OnInit {
     }
   }
 
-  /**
-   * Method choose uniq array elements
-   *
-   * @return {string[]}
-   * */
-  public unique(arr: string[]) {
-    const obj = {};
-
-      arr.forEach((a, i) => {
-        const str = a[i];
-        obj[str] = true;
-      });
-
-    return Object.keys(obj);
-  }
-
   public onChose(elem: string) {
-    console.log(elem);
-    this.selectedItems.push(elem);
+    this.selectedItems.find(item => item === elem) ?
+      this.selectedItems = this.selectedItems.filter(item => item != elem)
+      : this.selectedItems.push(elem);
     this.chose.emit(this.selectedItems);
   }
 }

@@ -2,6 +2,7 @@ import { Component, OnChanges, Output, EventEmitter, Input, ViewChild, ElementRe
 import { ModalDirective } from "ngx-bootstrap";
 import { ITag } from "../../../event/tag.interface";
 import { EventService } from "../../../event/event.service";
+import { IEventGroup } from "../../../event-groups/list/event-groups.interaface";
 
 @Component({
   selector: 'add-to-group-modal',
@@ -17,7 +18,10 @@ export class AddToGroupModalComponent implements OnInit {
    * @param {EventService} eventService - event service
    * @return {void}
    * */
-  constructor(private eventService: EventService){}
+  constructor(private eventService: EventService){
+    console.log("this.eventGroups");
+    console.log(this.eventGroups);
+  }
 
   @ViewChild('atgModal') public lgModal: ModalDirective;
   isModalShown: boolean = false;
@@ -30,11 +34,25 @@ export class AddToGroupModalComponent implements OnInit {
   @Input() groupName: any;
 
   /**
+   * Event groups
+   *
+   * type {IEventGroup[]}
+   * */
+  @Input() eventGroups: IEventGroup[];
+
+  /**
    * Tags
    *
    * @type {ITag[]}
    */
   public tags: ITag[];
+
+  /**
+   * Selected groups
+   *
+   * @type {string[]}
+   */
+  public selectedGroups: string[];
 
   /**
    * Get tags

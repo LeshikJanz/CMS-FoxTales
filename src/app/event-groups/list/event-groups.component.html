@@ -16,15 +16,14 @@
     ></add-button>
   </div>
   <event-group
+    [modal]="aeModal"
     [eventGroups]="eventGroups"
     style="width: 700px"
   ></event-group>
 
-
-  <button type="button" (click)="aeModal.show();">Show add-event-modal</button>
-  <add-event-modal #aeModal [groupName]="'Halloween'" ></add-event-modal>
+  <add-event-modal #aeModal [groupName]="'Halloween'"></add-event-modal>
 
   <button type="button" (click)="atgModal.show();">Show add-event-modal</button>
-  <add-to-group-modal #atgModal [groupName]="'Halloween'" ></add-to-group-modal>
+  <add-to-group-modal #atgModal [eventGroups]="eventGroups" [groupName]="'Halloween'" ></add-to-group-modal>
 
 </div>

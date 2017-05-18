@@ -55,12 +55,11 @@ export class EventGroupsComponent implements OnInit {
   }
 
   public ngOnInit(): void {
-    // this.getEvents();
     this.getEventGroups();
   }
 
   /**
-   * Get event groups
+   * Get event groups with list of events in each one
    *
    * @return {void}
    * */
@@ -68,33 +67,18 @@ export class EventGroupsComponent implements OnInit {
     this.eventGroupsService
       .getEventGroups()
       .subscribe((eventGroups: IEventGroup[]) => {
-      console.log("eventGroups");
-      console.log(eventGroups);
+
         this.eventService.getEvents()
           .subscribe((events: any) => {
-          console.log("events");
-          console.log(events);
-
-            // this.eventGroups = eventGroups.map(eg =>
-            //   eg.events = events.filter(
-            //     e => (eg.eventIds.some(eId => eId === e.id))
-            //   )
-            // )
+            this.eventGroups = eventGroups.map(eg =>
+              ({
+                ...eg,
+                events: events.filter(e => eg.eventIds.some(eId => eId === e.id)
+                )
+              })
+            );
           })
       });
   }
-
-
-  /**
-   * Get Events
-   *
-   *@returns {void}
-   */
-  public getEvents() {
-    this.eventService
-      .getEvents()
-      .subscribe((events: IEvent[]) =>
-        this.events = events
-      );
-  }
 }
+

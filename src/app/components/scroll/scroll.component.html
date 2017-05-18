@@ -1,3 +1,6 @@
 <div id="sidebar">
-  <div *ngFor="let option of options" (click)="onChose(option)">{{option}}</div>
+  <div class="option" *ngFor="let option of options" >
+    <div class="group-name">{{option.name}}</div>
+    <checkbox (click)="onChose(option)"></checkbox>
+  </div>
 </div>

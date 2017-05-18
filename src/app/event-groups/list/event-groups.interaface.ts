@@ -4,7 +4,7 @@ import { IEvent } from "../../event/event.interface";
 * */
 export interface IEventGroup {
   id: number,
-  name: "string",
+  name: string,
   clientId: number,
   eventIds: number[],
   events?: IEvent[]

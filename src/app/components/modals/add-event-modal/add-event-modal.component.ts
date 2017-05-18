@@ -62,7 +62,8 @@ export class AddEventModalComponent implements OnInit {
    *
    * @return {void}
    * */
-  show() {
+  show(groupName: string) {
+    this.groupName = groupName;
     this.isModalShown = true;
   }
 

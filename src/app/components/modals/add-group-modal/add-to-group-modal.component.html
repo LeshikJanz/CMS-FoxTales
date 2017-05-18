@@ -19,20 +19,7 @@
               [autocompleteItems]="tags">
             </tag-input-dropdown>
           </tag-input>
-
-        <div class="search-results"
-             infiniteScroll
-             [infiniteScrollDistance]="2"
-             [infiniteScrollThrottle]="500"
-             (scrolled)="onScroll()"
-             [scrollWindow]="false">
-          <div>1</div>
-          <div>2</div>
-          <div>3</div>
-          <div>4</div>
-          <div>5</div>
-          <div></div>
-        </div>
+        <scroll [options]="eventGroups" (chose)="selectedGroups = $event"></scroll>
 
         <div class="btn-actions">
           <fox-button
@@ -43,6 +30,7 @@
             class="cancel"
             [value]="'CANCEL'"
             [design]="'tertiary'"
+            (click)="lgModal.hide()"
           ></fox-button>
         </div>
       </div>
