@@ -3,6 +3,7 @@ import { ModalDirective } from "ngx-bootstrap";
 import { ITag } from "../../../event/tag.interface";
 import { EventService } from "../../../event/event.service";
 import { IEventGroup } from "../../../event-groups/list/event-groups.interaface";
+import { IEvent } from "../../../event/event.interface";
 
 @Component({
   selector: 'add-to-group-modal',
@@ -76,20 +77,13 @@ export class AddToGroupModalComponent implements OnInit {
   }
 
   /**
-   * On Scroll event
-   *
-   * @returns {void}
-   * */
-  public onScroll() {
-    console.log("onScroll");
-  }
-
-  /**
    * Show modal
    *
    * @return {void}
    * */
-  show() {
+  show(event: IEvent) {
+    console.log("event");
+    console.log(event);
     this.isModalShown = true;
   }
 

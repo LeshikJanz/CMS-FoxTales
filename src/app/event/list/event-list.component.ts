@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { EventService } from '../event.service';
 import { IActionState } from "../../client/client.interface";
+import { EventGroupsService } from "../../event-groups/list/event-groups.service";
 
 
 /**
@@ -22,6 +23,13 @@ export class EventListComponent implements OnInit {
   public Events: any[];
 
   /**
+   * Event
+   *
+   * @type {Event[]}
+   */
+  public eventGroups: any[];
+
+  /**
    *  Event actions
    *
    * @type {IActionState[]}
@@ -34,11 +42,13 @@ export class EventListComponent implements OnInit {
     {id: 5, action: 'ASSIGN USERS'},
   ];
 
-  constructor(private eventService: EventService) {
+  constructor(private eventService: EventService,
+              private eventGroupsService: EventGroupsService) {
   }
 
   public ngOnInit(): void {
     this.getEvents();
+    this.getEventGroups();
   }
 
   /**
@@ -51,6 +61,19 @@ export class EventListComponent implements OnInit {
       .getEvents()
       .subscribe((event) => {
         this.Events = event;
+      });
+  }
+
+  /**
+   * Get event groups
+   *
+   * @returns {void}
+   */
+  public getEventGroups(): void {
+    this.eventGroupsService
+      .getEventGroups()
+      .subscribe((eventGroups) => {
+        this.eventGroups = eventGroups;
       });
   }
 

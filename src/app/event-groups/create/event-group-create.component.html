@@ -8,36 +8,36 @@
     <div [formGroup]="eventGroupForm">
       <!-- Name -->
       <div class="form-element">
-        <label for="groupName">Client Name *</label>
+        <label for="name">Client Name *</label>
         <input
           id="groupName"
           class="form-control input"
           type="text"
-          formControlName="groupName"
+          formControlName="name"
           placeholder="Group name">
 
-        <div ngxErrors="groupName">
+        <div ngxErrors="name">
           <div class="field-error" ngxError="required" when="touched">
             Field is required
           </div>
         </div>
       </div>
 
-      <!-- Tags -->
+      <!-- Events -->
       <div class="form-element">
         <label>Add events</label>
         <tag-input
-          formControlName="tags"
+          formControlName="events"
           [transform]="tagTransformer"
           [maxItems]="10">
           <tag-input-dropdown
             [identifyBy]="'id'"
             [displayBy]="'name'"
-            [autocompleteItems]="tags">
+            [autocompleteItems]="events">
           </tag-input-dropdown>
         </tag-input>
 
-        <div ngxErrors="tags">
+        <div ngxErrors="events">
           <div class="field-error" ngxError="required" when="touched">
             Field is required
           </div>

@@ -2,6 +2,10 @@
   width: 60%;
 }
 
+.ng2-dropdown-menu {
+  z-index: 2000 !important;
+}
+
 .modal-body {
 
   tag-input {

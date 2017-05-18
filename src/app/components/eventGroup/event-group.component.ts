@@ -19,9 +19,9 @@ export class EventGroupComponent {
   @Input() eventGroups: IEventGroup[];
 
   /**
-   * Event groups
+   * Object controls Modal state
    *
-   * @type {IEventGroup[]}
+   * @type {any}
    * */
   @Input() modal: any;
 
@@ -57,8 +57,6 @@ export class EventGroupComponent {
   }
 
   public onTypeChanged(elem) {
-    console.log("event");
-    console.log(event);
     switch(elem.event.id){
       case 1:
         console.log('Edit')

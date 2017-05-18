@@ -15,9 +15,9 @@
   </div>
 
 
-  <event *ngFor="let event of Events" [event]="event" [eventActions]="eventActions">
+  <event *ngFor="let event of Events" [modal]="atgModal" [event]="event" [eventActions]="eventActions">
     </event>
 
-
+  <add-to-group-modal #atgModal [eventGroups]="eventGroups" [groupName]="'Halloween'" ></add-to-group-modal>
 
 </div>

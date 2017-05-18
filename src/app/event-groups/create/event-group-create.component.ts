@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { EventGroupsService } from "./event-groups.service";
-import { IEventGroup } from "./event-groups.interaface";
 import { EventService } from "../../event/event.service";
 import { FormGroup, Validators, FormBuilder } from "@angular/forms";
 import { ITag } from "../../event/tag.interface";
+import { IEventGroup } from "../list/event-groups.interaface";
+import { EventGroupsService } from "../list/event-groups.service";
+import { IEvent } from "../../event/event.interface";
 
 @Component({
   selector: 'event-group-create',
@@ -27,7 +27,7 @@ export class EventGroupCreateComponent implements OnInit {
 
   ngOnInit() {
     this.buildEventGroupForm();
-    this.getTags();
+    this.getEvents();
   }
 
   /**
@@ -43,6 +43,13 @@ export class EventGroupCreateComponent implements OnInit {
    * @type {ITag[]}
    */
   public tags: ITag[];
+
+  /**
+   * Events
+   *
+   * @type {IEvent[]}
+   */
+  public events: IEvent[];
 
   /**
    * Gallery toggle options
@@ -63,6 +70,22 @@ export class EventGroupCreateComponent implements OnInit {
   }
 
   /**
+   * Get event groups
+   *
+   * @return {void}
+   * */
+  public getEvents() {
+    this.eventService
+      .getEvents()
+      .subscribe((events: IEvent[]) => {
+        this.events = events.filter(e => e.name);
+        console.log("this.events");
+        console.log(this.events);
+      }
+    )
+  }
+
+  /**
    * Tag transformer
    *
    * @param {string} tag - Tag
@@ -73,19 +96,29 @@ export class EventGroupCreateComponent implements OnInit {
   }
 
   /**
+   * Create new Event group
+   *
+   * @returns {ClientCreateComponent} - Component
+   */
+  public addEventGroup(eventGroup: IEventGroup){
+    console.log("eventGroup");
+    console.log(eventGroup);
+  }
+
+  /**
    * Build client form
    *
    * @returns {ClientCreateComponent} - Component
    */
   public buildEventGroupForm(): EventGroupCreateComponent {
     this.eventGroupForm = this.formBuilder.group({
-      groupName: ['', [
+      name: ['', [
         Validators.required
       ]],
       groupGallery: ['', [
         Validators.required
       ]],
-      tags: ['', [
+      events: ['', [
         Validators.required
       ]],
     });

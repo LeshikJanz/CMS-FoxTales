@@ -24,6 +24,13 @@ export class EventComponent {
   @Input() public eventActions: IActionState[];
 
   /**
+   * Object controls Modal state
+   *
+   * @type {any}
+   * */
+  @Input() modal: any;
+
+  /**
    * Event name
    *
    * @type string
@@ -78,7 +85,7 @@ export class EventComponent {
         console.log('archieve')
         break;
       case 4:
-        console.log('add to group')
+        this.modal.show(event.action);
         break;
       case 5:
         console.log('assign user')
