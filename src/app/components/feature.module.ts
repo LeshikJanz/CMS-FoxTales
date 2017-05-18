@@ -31,11 +31,13 @@ import {
   ExperienceBuilderNavigationComponent
 }
   from './navigations/experience-builder-navigation/experience-builder-navigation.component';
-
+ 
 //UI components from ngx-bootstrap
 import { BsDropdownModule } from 'ngx-bootstrap';
 import { TabsModule } from 'ngx-bootstrap';
 import { ModalModule } from 'ngx-bootstrap';
+
+import { ColorPickerModule } from 'ngx-color-picker'
 
 @NgModule({
   imports: [
@@ -44,7 +46,8 @@ import { ModalModule } from 'ngx-bootstrap';
     RouterModule.forChild(FEATURE_ROUTES),
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    ColorPickerModule
   ],
   providers: [],
   declarations: [
