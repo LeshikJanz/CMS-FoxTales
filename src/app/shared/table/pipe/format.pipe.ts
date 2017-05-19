@@ -1,4 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
+import { ImagePipe } from './image.pipe';
 
 /**
  * Format cell pipe
@@ -19,6 +20,14 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'myFormatCell'
 })
 export class FormatPipe implements PipeTransform {
+  /**
+   * Constructor
+   *
+   * @param {ImagePipe} myImage - Image pipe
+   */
+  constructor(private myImage: ImagePipe) {
+  }
+
   /**
    * Angular invokes the `transform` method with the value of a binding
    * as the first argument, and any parameters as the second argument in list form.

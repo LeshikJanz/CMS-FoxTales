@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AuthService } from './core';
-import { TableComponent, FormatPipe } from './table';
+import { TableComponent, FormatPipe, ImagePipe } from './table';
 import { FeatureModule } from '../components/feature.module';
 
 @NgModule({
@@ -18,7 +18,8 @@ import { FeatureModule } from '../components/feature.module';
     FormatPipe
   ],
   providers: [
-    AuthService
+    AuthService,
+    ImagePipe
   ],
   exports: [
     CommonModule,
