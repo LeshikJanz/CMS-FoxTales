@@ -1,4 +1,4 @@
-import { Component, ViewChild, OnInit } from '@angular/core';
+import { Component, ViewChild, OnInit, Input } from '@angular/core';
 import { ModalDirective } from 'ngx-bootstrap';
 import { EventService } from '../../../event/event.service';
 import { IEvent } from '../../../event/event.interface';
@@ -22,11 +22,11 @@ export class EventsToCurGroupModalComponent implements OnInit {
   public groupName: string;
 
   /**
-   * Event groups
+   * Events
    *
    * @type {IEvent[]}
    */
-  public events: IEvent[];
+  @Input() public events: IEvent[];
 
   /**
    * Constructor
@@ -35,17 +35,6 @@ export class EventsToCurGroupModalComponent implements OnInit {
    * @return {void}
    */
   constructor(private eventService: EventService) {
-  }
-
-  /**
-   * Get events
-   *
-   * @returns {void}
-   */
-  public getEvents(): void {
-    this.eventService
-      .getEvents()
-      .subscribe((events: IEvent[]) => this.events = events);
   }
 
   /**
@@ -93,7 +82,6 @@ export class EventsToCurGroupModalComponent implements OnInit {
    * @returns {void}
    */
   public ngOnInit() {
-    this.getEvents();
 
   }
 }

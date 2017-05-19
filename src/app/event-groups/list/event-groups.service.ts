@@ -29,7 +29,10 @@ export class EventGroupsService {
    * @returns IEventGroup[]
    */
   public getEventGroups(): Observable<IEventGroup[]> {
-    return this.http.get(`${process.env.API_URL}/EventGroups`)
+    // 19.05
+    // return this.http.get(`${process.env.API_URL}/EventGroups`)
+    // return this.http.get(`https://foxtalesdev.azurewebsites.net/api/EventGroups`)
+    return this.http.get(`assets/mock-data/event/event-groups.json`)
       .map((response: Response) => <IEventGroup[]> response.json());
   }
 

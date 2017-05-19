@@ -2,12 +2,14 @@ import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 
 @Component({
   selector: 'scroll',
-  templateUrl: './scroll.component.html',
-  styleUrls: [ './scroll.component.scss' ]
+  templateUrl: 'scroll.component.html',
+  styleUrls: ['scroll.component.scss']
 })
 
 export class ScrollComponent implements OnInit {
   @Input() public options: string[];
+
+  @Input() public type: string;
 
   @Output() public chose: EventEmitter<string> = new EventEmitter();
 

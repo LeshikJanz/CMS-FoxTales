@@ -73,8 +73,8 @@ export class EventComponent {
    */
   public isChecked: boolean = false;
 
-  public onTypeChanged(event) {
-    switch (event) {
+  public onTypeChanged(type) {
+    switch (type.event) {
       case 1:
         console.log('settings');
         break;
@@ -85,7 +85,7 @@ export class EventComponent {
         console.log('archieve');
         break;
       case 4:
-        this.modal.show(event.action);
+        this.modal.show(type.action);
         break;
       case 5:
         console.log('assign user');

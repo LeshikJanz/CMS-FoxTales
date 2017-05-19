@@ -67,6 +67,7 @@ export class EventGroupsComponent implements OnInit {
 
         this.eventService.getEvents()
           .subscribe((events: any) => {
+          this.events = events;
             this.eventGroups = eventGroups.map((eg: IEventGroup) =>
               ({
                 ...eg,

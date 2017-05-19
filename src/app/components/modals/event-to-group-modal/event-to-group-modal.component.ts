@@ -4,6 +4,7 @@ import { ITag } from '../../../event/tag.interface';
 import { EventService } from '../../../event/event.service';
 import { IEventGroup } from '../../../event-groups/list/event-groups.interaface';
 import { IEvent } from '../../../event/event.interface';
+import { MOCK_TAGS } from "../../../event/tag.mock";
 
 @Component({
   selector: 'event-to-group-modal',
@@ -59,9 +60,11 @@ export class EventToGroupModalComponent implements OnInit {
    * @returns {void}
    */
   public getTags(): void {
-    this.eventService
-      .getTags()
-      .subscribe((tags: ITag[]) => this.tags = tags);
+    // 19.05
+    // this.eventService
+    //   .getTags()
+    //   .subscribe((tags: ITag[]) => this.tags = tags);
+    this.tags = MOCK_TAGS;
   }
 
   /**

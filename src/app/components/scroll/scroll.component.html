@@ -1,6 +1,11 @@
 <div id="sidebar">
-  <div class="option" *ngFor="let option of options" >
-    <div class="group-name">{{option.name}}</div>
-    <checkbox (click)="onChose(option)"></checkbox>
-  </div>
+  <ul>
+    <li *ngFor="let option of options">
+      <label for="{{option.name}}-option">{{option.name}}</label>
+      <input type="radio" id="{{option.name}}-option" name="selector" [ngModel]="type" (ngModelChange)="onChose($event)"
+             value="{{option.name}}">
+      <div class="check"></div>
+    </li>
+
+  </ul>
 </div>

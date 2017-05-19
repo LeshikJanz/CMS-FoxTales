@@ -18,6 +18,7 @@
   <event *ngFor="let event of Events" [modal]="atgModal" [event]="event" [eventActions]="eventActions">
     </event>
 
+  <button (click)="atgModal.show()">Show modal</button>
   <event-to-group-modal #atgModal [eventGroups]="eventGroups" [groupName]="'Halloween'" ></event-to-group-modal>
 
 </div>
