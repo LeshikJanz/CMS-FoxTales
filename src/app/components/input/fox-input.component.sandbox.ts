@@ -1,6 +1,6 @@
 import { sandboxOf } from 'angular-playground';
-import { FoxInputComponent } from "./fox-input.component";
-import { FormsModule } from "@angular/forms";
+import { FoxInputComponent } from './fox-input.component';
+import { FormsModule } from '@angular/forms';
 
 export default sandboxOf(FoxInputComponent, { imports: [FormsModule] })
   .add('fox-input', {

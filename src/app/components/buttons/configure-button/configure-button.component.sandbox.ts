@@ -17,4 +17,4 @@ export default sandboxOf(ConfigureButtonComponent)
                style="height: 36px; width: 118px; font-size: 14px"
                [value]="'SMALL'"
                ></configure-button></div>`
-  })
+  });

@@ -1,5 +1,5 @@
 import { sandboxOf } from 'angular-playground';
-import { EventTagComponent } from "./event-tag.component";
+import { EventTagComponent } from './event-tag.component';
 
 export default sandboxOf(EventTagComponent)
   .add('event tag', {
@@ -7,4 +7,3 @@ export default sandboxOf(EventTagComponent)
                 [title]="'Event Name'"
                 ></event-tag>`
   });
-

@@ -1,6 +1,6 @@
 import { sandboxOf } from 'angular-playground';
-import { RadioComponent } from "./radio.component";
-import { FormsModule } from "@angular/forms";
+import { RadioComponent } from './radio.component';
+import { FormsModule } from '@angular/forms';
 
 export default sandboxOf(RadioComponent, { imports: [FormsModule] })
   .add('radio', {

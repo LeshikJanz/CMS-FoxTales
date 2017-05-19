@@ -6,12 +6,12 @@
       <div>
         <label class="group-name">{{group.name}}</label>
         <label> {{group.events.length}} events</label>
-        <label>Oct 27-32, 2016</label>
+        <label>{{getMinDate(group)}} - {{getMaxDate(group)}}</label>
       </div>
 
     </div>
     <group-dropdown style="align-self: center" [options]="groupActions"
-                     (typeChanged)="onTypeChanged({groupName: group.name, event: $event})"></group-dropdown>
+                    (typeChanged)="onTypeChanged({groupName: group.name, event: $event})"></group-dropdown>
   </div>
   <div [hidden]="!group.isOpen" class="group-dropdown">
     <event *ngFor="let event of group.events" [event]="event" [eventActions]="eventActions">

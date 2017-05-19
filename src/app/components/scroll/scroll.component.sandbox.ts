@@ -3,7 +3,8 @@ import { ScrollComponent } from './scroll.component';
 import { CheckboxComponent } from '../toggles/checkbox/checkbox.component';
 import { FormsModule } from '@angular/forms';
 
-export default sandboxOf(ScrollComponent, { declarations: [CheckboxComponent], imports: [FormsModule] })
+export default sandboxOf(ScrollComponent,
+  { declarations: [CheckboxComponent], imports: [FormsModule] })
   .add('scroll', {
     template: `<scroll style='width: 300px; max-height: 100px;'
                 [options]="options" (chose)="item = $event"></scroll>

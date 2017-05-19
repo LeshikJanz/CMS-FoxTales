@@ -56,7 +56,7 @@ export interface IClientFilter {
  * Client state interface
  */
 export interface IActionState {
-  id: number,
-  action: string,
-  callback?: string
+  id: number;
+  action: string;
+  callback?: string;
 }

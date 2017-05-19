@@ -1,6 +1,6 @@
 import { sandboxOf } from 'angular-playground';
 import { BsDropdownModule } from 'ngx-bootstrap';
-import { GroupDropDownComponent } from "./group-dropdown.component";
+import { GroupDropDownComponent } from './group-dropdown.component';
 
 export default sandboxOf(GroupDropDownComponent, { imports: [ BsDropdownModule.forRoot() ]})
   .add('dropdown with actions', {
