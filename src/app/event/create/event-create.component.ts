@@ -57,11 +57,9 @@ export class EventCreateComponent implements OnInit {
    * @returns {void}
    */
   public getTags(): void {
-    // 19.05
-    // this.event
-    //   .getTags()
-    //   .subscribe((tags: ITag[]) => this.tags = tags);
-    this.tags = MOCK_TAGS;
+    this.event
+      .getTags()
+      .subscribe((tags: ITag[]) => this.tags = tags);
   }
 
   /**

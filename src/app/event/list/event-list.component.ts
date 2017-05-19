@@ -56,8 +56,8 @@ export class EventListComponent implements OnInit {
   public getEvents(): void {
     this.eventService
       .getEvents()
-      .subscribe((event) => {
-        this.Events = event;
+      .subscribe((events) => {
+        this.Events = events;
       });
   }
 

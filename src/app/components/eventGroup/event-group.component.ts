@@ -38,9 +38,9 @@ export class EventGroupComponent {
    * @type {IActionState[]}
    */
   public groupActions: IActionState[] = [
-    {id: 1, action: 'Edit', callback: 'editEventGroup'},
-    {id: 2, action: 'Configure Gallery', callback: 'configureGallery'},
-    {id: 3, action: 'Add Events to Group', callback: 'addEventsToGroup'}
+    {id: 1, action: 'EDIT', callback: 'editEventGroup'},
+    {id: 2, action: 'CONFIGURE GALLERY', callback: 'configureGallery'},
+    {id: 3, action: 'ADD EVENTS TO GROUP', callback: 'addEventsToGroup'}
   ];
 
   public eventActions: IActionState[] = [

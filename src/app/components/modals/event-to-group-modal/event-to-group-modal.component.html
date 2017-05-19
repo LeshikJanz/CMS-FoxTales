@@ -3,25 +3,20 @@
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5>{{groupName}}</h5>
-        <h3 class="modal-title">Add to Group</h3>
+        <div>
+          <h5>{{groupName}}</h5>
+          <h3 class="modal-title">Add to Group</h3>
+        </div>
         <button type="button" class="close" (click)="lgModal.hide()" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
+          <img src="assets/img/close.svg">
         </button>
       </div>
       <div class="modal-body">
-          <tag-input
-            [transform]="tagTransformer"
-            [maxItems]="10">
-            <tag-input-dropdown
-              [appendToBody]=false
-              [identifyBy]="'id'"
-              [displayBy]="'name'"
-              [autocompleteItems]="tags">
-            </tag-input-dropdown>
-          </tag-input>
-        <scroll [options]="eventGroups" (chose)="selectedGroups = $event"></scroll>
-
+        <input type="text" name="search" placeholder="search for a group" [(ngModel)]="search"
+               (ngModelChange)="onSearchChange($event)">
+        <hr>
+        <scroll [options]="eventGroupList" (chose)="selectedGroup = $event"></scroll>
+        <hr>
         <div class="btn-actions">
           <fox-button
             [value]="'Add to group'"

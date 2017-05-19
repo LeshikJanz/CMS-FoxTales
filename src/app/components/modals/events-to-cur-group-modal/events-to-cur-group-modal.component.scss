@@ -2,13 +2,15 @@
   width: 60%;
 }
 
+.close img {
+  height: 30px;
+}
+
 .modal-body {
 
   tag-input {
     padding-top: 30px;
   }
-
-
 
   .btn-actions {
     display: flex;

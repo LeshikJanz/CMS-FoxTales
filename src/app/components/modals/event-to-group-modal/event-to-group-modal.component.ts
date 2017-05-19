@@ -1,4 +1,4 @@
-import { Component, Input, ViewChild, OnInit } from '@angular/core';
+import { Component, Input, ViewChild, OnInit, OnChanges } from '@angular/core';
 import { ModalDirective } from 'ngx-bootstrap';
 import { ITag } from '../../../event/tag.interface';
 import { EventService } from '../../../event/event.service';
@@ -12,7 +12,7 @@ import { MOCK_TAGS } from '../../../event/tag.mock';
   styleUrls: ['event-to-group-modal.component.scss']
 })
 
-export class EventToGroupModalComponent implements OnInit {
+export class EventToGroupModalComponent implements OnInit, OnChanges {
 
   @ViewChild('atgModal') public lgModal: ModalDirective;
   public isModalShown: boolean = false;
@@ -22,7 +22,7 @@ export class EventToGroupModalComponent implements OnInit {
    *
    * type {any}
    */
-  @Input() public groupName: any;
+  public groupName: any;
 
   /**
    * Event groups
@@ -32,6 +32,23 @@ export class EventToGroupModalComponent implements OnInit {
   @Input() public eventGroups: IEventGroup[];
 
   /**
+   * Filtered event groups
+   *
+   * type {IEventGroup[]}
+   */
+  public eventGroupList: IEventGroup[];
+
+  /**
+   * Search value
+   *
+   * type {string}
+   */
+  public search: string = '';
+
+  public onSearchChange(value: string): void {
+    this.eventGroupList = this.eventGroups.filter((eg: IEventGroup) => eg.name.toLowerCase().indexOf(value) >= 0);
+  }
+  /**
    * Tags
    *
    * @type {ITag[]}
@@ -39,11 +56,11 @@ export class EventToGroupModalComponent implements OnInit {
   public tags: ITag[];
 
   /**
-   * Selected groups
+   * Selected group
    *
-   * @type {string[]}
+   * @type {string}
    */
-  public selectedGroups: string[];
+  public selectedGroup: string;
 
   /**
    * Constructor
@@ -60,11 +77,9 @@ export class EventToGroupModalComponent implements OnInit {
    * @returns {void}
    */
   public getTags(): void {
-    // 19.05
-    // this.eventService
-    //   .getTags()
-    //   .subscribe((tags: ITag[]) => this.tags = tags);
-    this.tags = MOCK_TAGS;
+    this.eventService
+      .getTags()
+      .subscribe((tags: ITag[]) => this.tags = tags);
   }
 
   /**
@@ -83,7 +98,7 @@ export class EventToGroupModalComponent implements OnInit {
    * @return {void}
    */
   public show(event: IEvent) {
-    console.log(event);
+    this.groupName = event.name;
     this.isModalShown = true;
   }
 
@@ -113,9 +128,9 @@ export class EventToGroupModalComponent implements OnInit {
    */
   public ngOnInit() {
     this.getTags();
+  }
 
-    if (this.groupName == null) {
-      throw new Error("Attribute 'groupName' is required");
-    }
+  public ngOnChanges() {
+    this.eventGroupList = this.eventGroups;
   }
 }

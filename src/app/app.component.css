@@ -1,3 +1,39 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+@font-face {
+  font-family: WorkSans;
+  src: url(~assets/fonts/WorkSans/WorkSans-Regular.otf);
+}
+
+@font-face {
+  font-family: Avenir;
+  src: url(~assets/fonts/Avenir/AvenirNextLTPro-Regular.otf);
+}
+
+@font-face {
+  font-family: Avenir-Book;
+  src: url(~assets/fonts/Avenir/AvenirNextLTPro-Regular.otf);
+}
+
+@font-face {
+  font-family: Avenir-Bold;
+  src: url(~assets/fonts/Avenir/AvenirNextLTPro-Bold.otf);
+}
+
+@font-face {
+  font-family: Avenir-Medium;
+  src: url(~assets/fonts/Avenir/AvenirNextLTPro-MediumCn.otf);
+}
+
+@font-face {
+  font-family: OpenSans-Bold;
+  src: url(~assets/fonts/OpenSans/OpenSans-Bold.ttf);
+}
+
+@font-face {
+  font-family: WorkSans-Bold;
+  src: url(~assets/fonts/WorkSans/WorkSans-Bold.otf);
+}
+
 .mainContent {
   padding: 0 106px 0 106px;
 }
@@ -20,3 +56,13 @@ div.modal div.ng2-dropdown-menu[style] {
   margin-top: -24px !important;
 }
 
+.dropdown-toggle::after {
+  display: inline-block;
+  border-top: .6em solid;
+  border-right: .4em solid transparent;
+  border-left: .4em solid transparent;
+}
+
+h1, h2, h3, h4, h5 label {
+  font-family: Avenir;
+}
