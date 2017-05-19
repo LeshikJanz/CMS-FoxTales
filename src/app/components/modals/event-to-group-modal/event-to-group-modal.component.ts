@@ -4,7 +4,7 @@ import { ITag } from '../../../event/tag.interface';
 import { EventService } from '../../../event/event.service';
 import { IEventGroup } from '../../../event-groups/list/event-groups.interaface';
 import { IEvent } from '../../../event/event.interface';
-import { MOCK_TAGS } from "../../../event/tag.mock";
+import { MOCK_TAGS } from '../../../event/tag.mock';
 
 @Component({
   selector: 'event-to-group-modal',

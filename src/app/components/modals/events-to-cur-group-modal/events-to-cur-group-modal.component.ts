@@ -1,4 +1,4 @@
-import { Component, ViewChild, OnInit, Input } from '@angular/core';
+import { Component, ViewChild, Input } from '@angular/core';
 import { ModalDirective } from 'ngx-bootstrap';
 import { EventService } from '../../../event/event.service';
 import { IEvent } from '../../../event/event.interface';
@@ -9,7 +9,7 @@ import { IEvent } from '../../../event/event.interface';
   styleUrls: ['events-to-cur-group-modal.component.scss']
 })
 
-export class EventsToCurGroupModalComponent implements OnInit {
+export class EventsToCurGroupModalComponent {
 
   @ViewChild('aeModal') public lgModal: ModalDirective;
   public isModalShown: boolean = false;
@@ -73,15 +73,5 @@ export class EventsToCurGroupModalComponent implements OnInit {
    */
   public onHidden() {
     this.isModalShown = false;
-  }
-
-  /**
-   * Lifecycle hook that is called after data-bound properties of a directive are
-   * initialized
-   *
-   * @returns {void}
-   */
-  public ngOnInit() {
-
   }
 }

@@ -1,11 +1,9 @@
 <div id="sidebar">
-  <ul>
-    <li *ngFor="let option of options">
-      <label for="{{option.name}}-option">{{option.name}}</label>
-      <input type="radio" id="{{option.name}}-option" name="selector" [ngModel]="type" (ngModelChange)="onChose($event)"
-             value="{{option.name}}">
-      <div class="check"></div>
-    </li>
+  <div *ngFor="let option of options">
+    <input type="radio" id="{{option.name}}-option" name="selector"
+           [ngModel]="type" (ngModelChange)="onChose($event)"
+           value="{{option.name}}">
+    <label for="{{option.name}}-option">{{option.name}}</label>
 
-  </ul>
+  </div>
 </div>
