@@ -1,7 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 import { IActionState } from '../../client/client.interface';
 import { IEventGroup } from '../../event-groups/list/event-groups.interaface';
-import { ModalDirective } from 'ngx-bootstrap';
 
 @Component({
   selector: 'event-group',

@@ -4,7 +4,6 @@ import { ITag } from '../../../event/tag.interface';
 import { EventService } from '../../../event/event.service';
 import { IEventGroup } from '../../../event-groups/list/event-groups.interaface';
 import { IEvent } from '../../../event/event.interface';
-import { MOCK_TAGS } from '../../../event/tag.mock';
 
 @Component({
   selector: 'event-to-group-modal',
@@ -45,9 +44,6 @@ export class EventToGroupModalComponent implements OnInit, OnChanges {
    */
   public search: string = '';
 
-  public onSearchChange(value: string): void {
-    this.eventGroupList = this.eventGroups.filter((eg: IEventGroup) => eg.name.toLowerCase().indexOf(value) >= 0);
-  }
   /**
    * Tags
    *
@@ -72,6 +68,17 @@ export class EventToGroupModalComponent implements OnInit, OnChanges {
   }
 
   /**
+   * Search handler
+   *
+   * @param {string} value
+   * @returns {void}
+   */
+  public onSearchChange(value: string): void {
+    this.eventGroupList = this.eventGroups.filter(
+      (eg: IEventGroup) => eg.name.toLowerCase().indexOf(value) >= 0);
+  }
+
+  /**
    * Get tags
    *
    * @returns {void}
@@ -80,16 +87,6 @@ export class EventToGroupModalComponent implements OnInit, OnChanges {
     this.eventService
       .getTags()
       .subscribe((tags: ITag[]) => this.tags = tags);
-  }
-
-  /**
-   * Tag transformer
-   *
-   * @param {string} tag - Tag
-   * @returns {string} - Transformed tag
-   */
-  public tagTransformer(tag: string): string {
-    return tag.replace(/\s/g, '');
   }
 
   /**

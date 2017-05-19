@@ -44,12 +44,12 @@ export class EventGroupCreateComponent implements OnInit {
   public galleryOptions = ['Yes', 'No'];
 
   /**
-   * Selected group
+   * Is Gallery Enabled (yes/no)
    *
    * @type {string}
    */
 
-  public selectedGroup: string;
+  public isGalleryEnabled: string;
   /**
    * Constructor
    *
