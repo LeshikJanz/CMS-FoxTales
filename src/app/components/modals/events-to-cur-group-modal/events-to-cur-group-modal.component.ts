@@ -1,7 +1,10 @@
-import { Component, ViewChild, Input } from '@angular/core';
+import { Component, ViewChild, Input, OnChanges } from '@angular/core';
 import { ModalDirective } from 'ngx-bootstrap';
 import { EventService } from '../../../event/event.service';
 import { IEvent } from '../../../event/event.interface';
+import { IEventGroup } from '../../../event-groups/list/event-groups.interaface';
+import { EventGroupsService } from '../../../event-groups/list/event-groups.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'events-to-cur-group-modal',
@@ -9,7 +12,7 @@ import { IEvent } from '../../../event/event.interface';
   styleUrls: ['events-to-cur-group-modal.component.scss']
 })
 
-export class EventsToCurGroupModalComponent {
+export class EventsToCurGroupModalComponent implements OnChanges {
 
   @ViewChild('aeModal') public lgModal: ModalDirective;
   public isModalShown: boolean = false;
@@ -19,7 +22,7 @@ export class EventsToCurGroupModalComponent {
    *
    * type {any}
    */
-  public groupName: string;
+  public group: IEventGroup;
 
   /**
    * Events
@@ -29,12 +32,21 @@ export class EventsToCurGroupModalComponent {
   @Input() public events: IEvent[];
 
   /**
+   * Selected Events
+   *
+   * @type {IEvent[]}
+   */
+  @Input() public selectedEvents: IEvent[];
+
+  /**
    * Constructor
    *
    * @param {EventService} eventService - event service
    * @return {void}
    */
-  constructor(private eventService: EventService) {
+  constructor(private eventService: EventService,
+              private eventGroupService: EventGroupsService,
+              private toastrService: ToastrService) {
   }
 
   /**
@@ -52,8 +64,8 @@ export class EventsToCurGroupModalComponent {
    *
    * @return {void}
    */
-  public show(groupName: string) {
-    this.groupName = groupName;
+  public show(group: IEventGroup) {
+    this.group = group;
     this.isModalShown = true;
   }
 
@@ -73,5 +85,26 @@ export class EventsToCurGroupModalComponent {
    */
   public onHidden() {
     this.isModalShown = false;
+  }
+
+  /**
+   * Update event group
+   *
+   * @return {void}
+   */
+  public updateGroup() {
+    this.selectedEvents.forEach((e: IEvent) =>
+      this.group.eventIds.push(e.id)
+  );
+
+    this.eventGroupService.updateEventGroup(this.group)
+      .subscribe(() => {
+        this.hide();
+        this.toastrService.success('Event group has been updated successfully.');
+      });
+  }
+
+  public ngOnChanges() {
+    this.selectedEvents = this.group.events;
   }
 }

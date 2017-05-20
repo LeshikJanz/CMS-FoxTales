@@ -4,7 +4,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <div>
-          <h5>{{groupName}}</h5>
+          <h5>{{event.name}}</h5>
           <h3 class="modal-title">Add to Group</h3>
         </div>
         <button type="button" class="close" (click)="lgModal.hide()" aria-label="Close">
@@ -21,6 +21,7 @@
           <fox-button
             [value]="'Add to group'"
             [design]="'primary'"
+            (click)="addEvent()"
           ></fox-button>
         </div>
       </div>

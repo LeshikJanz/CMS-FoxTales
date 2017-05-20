@@ -9,4 +9,5 @@ export interface IEventGroup {
   clientId: number;
   eventIds: number[];
   events?: IEvent[];
+  gallery?: any;
 }

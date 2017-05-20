@@ -4,6 +4,8 @@ import { ITag } from '../../../event/tag.interface';
 import { EventService } from '../../../event/event.service';
 import { IEventGroup } from '../../../event-groups/list/event-groups.interaface';
 import { IEvent } from '../../../event/event.interface';
+import { EventGroupsService } from '../../../event-groups/list/event-groups.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'event-to-group-modal',
@@ -17,11 +19,11 @@ export class EventToGroupModalComponent implements OnInit, OnChanges {
   public isModalShown: boolean = false;
 
   /**
-   * Group name where events are added
+   * Event
    *
-   * type {any}
+   * type {IEvent}
    */
-  public groupName: any;
+  public event: IEvent;
 
   /**
    * Event groups
@@ -54,17 +56,21 @@ export class EventToGroupModalComponent implements OnInit, OnChanges {
   /**
    * Selected group
    *
-   * @type {string}
+   * @type {IEventGroup}
    */
-  public selectedGroup: string;
+  public selectedGroup: IEventGroup;
 
   /**
    * Constructor
    *
    * @param {EventService} eventService - event service
+   * @param {EventGroupsService} eventGroupService - event group service
+   * @param {ToastrService} toastrService - toastr service
    * @return {void}
    */
-  constructor(private eventService: EventService) {
+  constructor(private eventService: EventService,
+              private eventGroupService: EventGroupsService,
+              private toastrService: ToastrService) {
   }
 
   /**
@@ -95,7 +101,7 @@ export class EventToGroupModalComponent implements OnInit, OnChanges {
    * @return {void}
    */
   public show(event: IEvent) {
-    this.groupName = event.name;
+    this.event = event;
     this.isModalShown = true;
   }
 
@@ -127,7 +133,28 @@ export class EventToGroupModalComponent implements OnInit, OnChanges {
     this.getTags();
   }
 
+  /**
+   * Lifecycle hook that is called after ngOnInit and after any component's
+   * properties change
+   *
+   * @returns {void}
+   */
   public ngOnChanges() {
     this.eventGroupList = this.eventGroups;
+  }
+
+  /**
+   * Add event to selected group
+   *
+   * @return {void}
+   */
+  public addEvent() {
+    this.selectedGroup.eventIds.push(this.event.id);
+
+    this.eventGroupService.updateEventGroup(this.selectedGroup)
+      .subscribe(() => {
+        this.hide();
+        this.toastrService.success('Event group has been updated successfully.');
+      });
   }
 }

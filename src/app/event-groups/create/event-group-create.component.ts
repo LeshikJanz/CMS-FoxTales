@@ -6,6 +6,7 @@ import { IEventGroup } from '../list/event-groups.interaface';
 import { EventGroupsService } from '../list/event-groups.service';
 import { IEvent } from '../../event/event.interface';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'event-group-create',
@@ -57,10 +58,11 @@ export class EventGroupCreateComponent implements OnInit {
    * @param {EventService} eventService - event service
    * @returns {void}
    */
-  constructor(private formBuilder: FormBuilder,
-              private eventService: EventService,
+  constructor(private eventService: EventService,
               private eventGroupService: EventGroupsService,
-              private router: Router) {
+              private router: Router,
+              private toastrService: ToastrService
+  ) {
   }
 
   /**
@@ -72,12 +74,11 @@ export class EventGroupCreateComponent implements OnInit {
     this.eventService
       .getEvents()
       .subscribe((events: IEvent[]) =>
-          this.events = events.filter((e: IEvent) => e.name)
+          this.events = events.filter((e: IEvent) => !!e.name)
       );
   }
 
   public ngOnInit() {
-    this.buildEventGroupForm();
     this.getEvents();
   }
 
@@ -94,7 +95,7 @@ export class EventGroupCreateComponent implements OnInit {
   /**
    * Create new Event group
    *
-   * @returns {ClientCreateComponent} - Component
+   * @returns {void}
    */
   public addEventGroup(eventGroup: IEventGroup) {
     // TODO: Save client id to local storage and take it from there
@@ -103,24 +104,9 @@ export class EventGroupCreateComponent implements OnInit {
     delete eventGroup.events;
     eventGroup.clientId = clientId;
     this.eventGroupService.addEventGroup(eventGroup)
-      .subscribe(() => this.router.navigate(['/events/event-groups']));
-  }
-
-  /**
-   * Build client form
-   *
-   * @returns {ClientCreateComponent} - Component
-   */
-  public buildEventGroupForm(): EventGroupCreateComponent {
-    this.eventGroupForm = this.formBuilder.group({
-      name: ['', [
-        Validators.required
-      ]],
-      events: ['', [
-        Validators.required
-      ]],
-    });
-
-    return this;
+      .subscribe(() => {
+        this.toastrService.success('Event group has been added successfully.');
+        this.router.navigate(['/events/event-groups']);
+      });
   }
 }

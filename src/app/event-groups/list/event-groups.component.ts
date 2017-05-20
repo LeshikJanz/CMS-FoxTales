@@ -17,7 +17,7 @@ export class EventGroupsComponent implements OnInit {
    *
    * @type {IEventGroup[]}
    */
-  public eventGroups: IEventGroup[];
+  public eventGroups: any[];
 
   /**
    * Events
@@ -32,8 +32,8 @@ export class EventGroupsComponent implements OnInit {
    * @type {IActionState[]}
    */
   public sortActions: IActionState[] = [
-    {id: 1, action: 'Upcoming'},
-    {id: 2, action: 'Descending'}
+    { id: 1, action: 'Upcoming' },
+    { id: 2, action: 'Descending' }
   ];
 
   constructor(private eventGroupsService: EventGroupsService,
@@ -66,7 +66,7 @@ export class EventGroupsComponent implements OnInit {
       .subscribe((eventGroups: IEventGroup[]) => {
 
         this.eventService.getEvents()
-          .subscribe((events: any) => {
+          .subscribe((events: IEvent[]) => {
             this.events = events;
             this.eventGroups = eventGroups.map((eg: IEventGroup) =>
               ({

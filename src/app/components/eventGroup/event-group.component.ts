@@ -78,7 +78,7 @@ export class EventGroupComponent {
         console.log('Configure Gallery');
         break;
       case 3:
-        this.modal.show(elem.groupName);
+        this.modal.show(elem.group);
         break;
       default:
         break;

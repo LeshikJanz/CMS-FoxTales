@@ -3,7 +3,7 @@
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h3 class="modal-title">Add to {{groupName}}</h3>
+        <h3 class="modal-title">Add to {{group.name}}</h3>
         <button type="button" class="close" (click)="lgModal.hide()" aria-label="Close">
           <img src="assets/img/close.svg">
         </button>
@@ -12,6 +12,7 @@
           <tag-input
             [transform]="tagTransformer"
             [maxItems]="10"
+            [(ngModel)]="selectedEvents"
           >
             <tag-input-dropdown
               [appendToBody]=false
@@ -25,6 +26,7 @@
           <fox-button
             [value]="'Save'"
             [design]="'primary'"
+            (click)="updateGroup()"
           ></fox-button>
           <fox-button
             class="cancel"
