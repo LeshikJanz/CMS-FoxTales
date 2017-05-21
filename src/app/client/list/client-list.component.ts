@@ -35,12 +35,12 @@ export class ClientListComponent implements OnInit {
    * @type {ICol[]}
    */
   public cols: ICol[] = [
-    { id: 'name',    title: 'Client Name', format: 'default',  searchable: true },
-    { id: 'address', title: 'Address',     format: 'default',  searchable: true },
-    { id: 'city',    title: 'City',        format: 'default',  searchable: true },
-    { id: 'state',   title: 'State',       format: 'default',  searchable: true },
-    { id: 'email',   title: 'Email',       format: 'default',  searchable: true },
-    { id: 'phone',   title: 'Phone',       format: 'default',  searchable: true }
+    { id: 'name',    title: 'Client Name', format: 'default',  searchable: true, sort: true },
+    { id: 'address', title: 'Address',     format: 'default',  searchable: true, sort: true },
+    { id: 'city',    title: 'City',        format: 'default',  searchable: true, sort: true },
+    { id: 'state',   title: 'State',       format: 'default',  searchable: true, sort: true },
+    { id: 'email',   title: 'Email',       format: 'default',  searchable: true, sort: true },
+    { id: 'phone',   title: 'Phone',       format: 'default',  searchable: true, sort: true }
   ];
 
   /**
