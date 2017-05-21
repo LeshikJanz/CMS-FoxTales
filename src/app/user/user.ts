@@ -31,14 +31,14 @@ export class User implements IUser {
    *
    * @type {string}
    */
-  public firstName: string;
+  public firstName?: string;
 
   /**
    * Last name
    *
    * @type {string}
    */
-  public lastName: string;
+  public lastName?: string;
 
   /**
    * Email
@@ -52,7 +52,7 @@ export class User implements IUser {
    *
    * @type {string}
    */
-  public phone: string;
+  public phone?: string;
 
   /**
    * Roles
@@ -73,7 +73,7 @@ export class User implements IUser {
    *
    * @type {string}
    */
-  public location: string;
+  public location?: string;
 
   /**
    * Last active date

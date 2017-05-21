@@ -8,13 +8,13 @@ export interface IUser {
   userADId?: string;
   clientId?: string;
   clientName?: string;
-  firstName: string;
-  lastName: string;
+  firstName?: string;
+  lastName?: string;
   email: string;
-  phone: string;
+  phone?: string;
   roles: IUserRole[];
   isActive?: boolean;
-  location: string;
+  location?: string;
   lastActiveDate?: string;
   selectedClientAccess: string;
 }
