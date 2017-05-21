@@ -47,13 +47,6 @@ export class Client implements IClient {
   public name: string;
 
   /**
-   * Client display name
-   *
-   * @type {string}
-   */
-  public displayName: string;
-
-  /**
    * Email
    *
    * @type {string}

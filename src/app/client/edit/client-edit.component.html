@@ -32,24 +32,6 @@
         </div>
       </div>
 
-      <!-- Display Name -->
-      <div class="form-element">
-        <label for="displayName">Display Name</label>
-        <input
-          id="displayName"
-          type="text"
-          class="form-control input"
-          [(ngModel)]="client.displayName"
-          formControlName="displayName"
-          placeholder="Display Name">
-
-        <div ngxErrors="displayName">
-          <div class="field-error"  ngxError="required" when="touched">
-            Field is required
-          </div>
-        </div>
-      </div>
-
       <!-- Email -->
       <div class="form-element">
         <label for="email">Email</label>

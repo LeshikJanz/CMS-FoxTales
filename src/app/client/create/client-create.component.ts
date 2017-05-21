@@ -283,9 +283,6 @@ export class ClientCreateComponent implements OnInit {
       name: ['', [
         Validators.required
       ]],
-      displayName: ['', [
-        Validators.required
-      ]],
       email: ['', [
         Validators.required,
         CustomValidators.email

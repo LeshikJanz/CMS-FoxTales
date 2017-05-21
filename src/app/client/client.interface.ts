@@ -8,7 +8,6 @@ export interface IClient {
   logo?: string;
   logoBytes?: string;
   name: string;
-  displayName: string;
   email: string;
   address: string;
   phone: string;
