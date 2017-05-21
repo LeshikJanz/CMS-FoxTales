@@ -2,6 +2,15 @@ import { sandboxOf } from 'angular-playground';
 import { FoxButtonComponent } from './fox-button.component';
 
 export default sandboxOf(FoxButtonComponent)
+  .add('primary button - big disabled', {
+    template: `
+              <div>
+               <fox-button 
+               style="height: 55px; width: 120px; font-size: 16px"
+               [value]="'PRIMARY'"
+               [design]="'primary'"
+               ></fox-button></div>`
+  })
   .add('primary button - big', {
     template: `
               <div>
@@ -9,6 +18,7 @@ export default sandboxOf(FoxButtonComponent)
                style="height: 55px; width: 120px; font-size: 16px"
                [value]="'PRIMARY'"
                [design]="'primary'"
+               [disabled]="true"
                ></fox-button></div>`
   })
   .add('primary button - small', {

@@ -29,11 +29,9 @@ export class EventGroupsService {
    * @returns IEventGroup[]
    */
   public getEventGroups(): Observable<IEventGroup[]> {
-    // 19.05
     return this.http.get(`${process.env.API_URL}/EventGroups`)
-    // return this.http.get(`https://foxtalesdev.azurewebsites.net/api/EventGroups`)
-    // return this.http.get(`assets/mock-data/event/event-groups.json`)
-      .map((response: Response) => <IEventGroup[]> response.json());
+      .map((response: Response) => <IEventGroup[]> response.json())
+      .catch(this.handleError);
   }
 
   /**
@@ -46,7 +44,8 @@ export class EventGroupsService {
    */
   public addEventGroup(eventGroup: IEventGroup): Observable<IEventGroup> {
     return this.http.post(`${process.env.API_URL}/EventGroups`, eventGroup)
-      .map((response: Response) => <IEventGroup> response.json());
+      .map((response: Response) => <IEventGroup> response.json())
+      .catch(this.handleError);
   }
 
   /**
@@ -59,6 +58,18 @@ export class EventGroupsService {
    */
   public updateEventGroup(eventGroup: IEventGroup): Observable<IEventGroup> {
     return this.http.put(`${process.env.API_URL}/EventGroups/${eventGroup.id}`, eventGroup)
-      .map((response: Response) => <IEventGroup> response.json());
+      .map((response: Response) => <IEventGroup> response.json())
+      .catch(this.handleError);
+  }
+
+  /**
+   * Handle error
+   *
+   * @param {Response} error
+   * @return {Observable<Error>} -
+   */
+  public handleError(error: Response) {
+    console.error(error);
+    return Observable.throw(error.json().error || 'Server error');
   }
 }
