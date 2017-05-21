@@ -38,12 +38,7 @@ export const MOCK_CLIENTS: IClientList = {
         'a2896d75-9d9b-48ec-ac8b-03e4864d55ed',
         '681f2133-4c04-49de-9528-85df12dade4a',
         'ca1b0e56-24ea-482f-9d97-50c63175c0b0'
-      ],
-      tenant: 'd85131e4-1763-42d6-b9c7-b6bad64b3a51',
-      domain: 'client',
-      clientId: 'd85131e4-1763-42d6-b9c7-b6bad64b3a51',
-      clientSecret: 'votRG16WIGK',
-      clientSecretValidTo: '2017-05-07T10:04:22.367Z'
+      ]
     },
     {
       id: 'be7c2346-036e-43f3-9b6e-b6ad2602eb7c',
@@ -66,12 +61,7 @@ export const MOCK_CLIENTS: IClientList = {
         'a2896d75-9d9b-48ec-ac8b-03e4864d55ed',
         '681f2133-4c04-49de-9528-85df12dade4a',
         'ca1b0e56-24ea-482f-9d97-50c63175c0b0'
-      ],
-      tenant: 'd85131e4-1763-42d6-b9c7-b6bad64b3a51',
-      domain: 'client',
-      clientId: 'd85131e4-1763-42d6-b9c7-b6bad64b3a51',
-      clientSecret: 'votRG16WIGK',
-      clientSecretValidTo: '2017-05-07T10:04:22.367Z'
+      ]
     },
     {
       id: '6705a0f2-d3ef-463a-9d29-8ea8f9fea433',
@@ -94,12 +84,7 @@ export const MOCK_CLIENTS: IClientList = {
         'a2896d75-9d9b-48ec-ac8b-03e4864d55ed',
         '681f2133-4c04-49de-9528-85df12dade4a',
         'ca1b0e56-24ea-482f-9d97-50c63175c0b0'
-      ],
-      tenant: 'd85131e4-1763-42d6-b9c7-b6bad64b3a51',
-      domain: 'client',
-      clientId: 'd85131e4-1763-42d6-b9c7-b6bad64b3a51',
-      clientSecret: 'votRG16WIGK',
-      clientSecretValidTo: '2017-05-07T10:04:22.367Z'
+      ]
     }
   ]
 };
@@ -125,10 +110,5 @@ export const MOCK_CLIENT: IClient = {
     'a2896d75-9d9b-48ec-ac8b-03e4864d55ed',
     '681f2133-4c04-49de-9528-85df12dade4a',
     'ca1b0e56-24ea-482f-9d97-50c63175c0b0'
-  ],
-  tenant: 'd85131e4-1763-42d6-b9c7-b6bad64b3a51',
-  domain: 'client',
-  clientId: 'd85131e4-1763-42d6-b9c7-b6bad64b3a51',
-  clientSecret: 'votRG16WIGK',
-  clientSecretValidTo: '2017-05-07T10:04:22.367Z'
+  ]
 };

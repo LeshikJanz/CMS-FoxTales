@@ -16,11 +16,6 @@ export interface IClient {
   freshBooks: string;
   socialAccounts: string[];
   selectedLicenses?: string[];
-  tenant?: string;
-  domain?: string;
-  clientId?: string;
-  clientSecret?: string;
-  clientSecretValidTo?: string;
 }
 
 /**

@@ -103,41 +103,6 @@ export class Client implements IClient {
   public selectedLicenses?: string[];
 
   /**
-   * Tenant
-   *
-   * @type {string}
-   */
-  public tenant?: string;
-
-  /**
-   * Domain
-   *
-   * @type {string}
-   */
-  public domain?: string;
-
-  /**
-   * Client id
-   *
-   * @type {string}
-   */
-  public clientId?: string;
-
-  /**
-   * Client secret
-   *
-   * @type {string}
-   */
-  public clientSecret?: string;
-
-  /**
-   * Client secret valid date
-   *
-   * @type {string}
-   */
-  public clientSecretValidTo?: string;
-
-  /**
    * Constructor
    *
    * @param {Object} values
