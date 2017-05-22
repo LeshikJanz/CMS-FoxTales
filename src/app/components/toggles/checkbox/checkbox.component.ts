@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'checkbox',
@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 
 export class CheckboxComponent {
+  @Output() public toggle: EventEmitter<string> = new EventEmitter<string>();
+
+  public onChange(value: string) {
+    this.toggle.emit(value);
+  }
 }
