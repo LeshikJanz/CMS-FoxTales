@@ -1,0 +1,10 @@
+<div class="selectbar">
+  <div><b>{{selected}}</b> of <b>{{size}}</b> selected</div>
+  <div>
+    <button class="delete-selected" (click)="onDeleteSelected()">Delete Selected</button>
+    <button class="clone-selected" (click)="onCloneSelected()">Clone Selected</button>
+  </div>
+  <div>
+    <button class="deselect-all" (click)="onDeselectAll()">deselect all (esc)</button>
+  </div>
+</div>

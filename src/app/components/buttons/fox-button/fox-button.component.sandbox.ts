@@ -2,7 +2,7 @@ import { sandboxOf } from 'angular-playground';
 import { FoxButtonComponent } from './fox-button.component';
 
 export default sandboxOf(FoxButtonComponent)
-  .add('primary button - big disabled', {
+  .add('primary button - big', {
     template: `
               <div>
                <fox-button 
@@ -11,7 +11,7 @@ export default sandboxOf(FoxButtonComponent)
                [design]="'primary'"
                ></fox-button></div>`
   })
-  .add('primary button - big', {
+  .add('primary button - big disabled', {
     template: `
               <div>
                <fox-button 
