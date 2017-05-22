@@ -28,11 +28,7 @@ export class UserEditComponent implements OnInit {
    * @type {IUser}
    */
   public user: IUser = {
-    firstName: null,
-    lastName: null,
     email: null,
-    phone: null,
-    location: null,
     roles: [],
     selectedClientAccess: null
   };
@@ -122,7 +118,7 @@ export class UserEditComponent implements OnInit {
    * @returns {void}
    */
   public updateUser(): void {
-    this.extractRoles();
+    // this.extractRoles();
 
     this.userService
       .updateUser(this.user)
@@ -150,21 +146,9 @@ export class UserEditComponent implements OnInit {
    */
   public buildUserForm(): void {
     this.userForm = this.formBuilder.group({
-      firstName: ['', [
-        Validators.required
-      ]],
-      lastName: ['', [
-        Validators.required
-      ]],
       email: ['', [
         Validators.required,
         CustomValidators.email
-      ]],
-      phone: ['', [
-        Validators.required
-      ]],
-      location: ['', [
-        Validators.required
       ]],
       selectedClientAccess: ['', [
         Validators.required

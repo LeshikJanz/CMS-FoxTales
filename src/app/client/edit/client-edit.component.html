@@ -1,6 +1,7 @@
 <div class="container">
+  <a href="javascript:void(0)" [routerLink]="['/admin/clients']">Back to all Clients</a>
 
-  <h1>{{ client?.displayName }}</h1>
+  <h1>{{ client?.name }}</h1>
 
   <img src="{{ client?.logo }}" alt="">
 
@@ -26,24 +27,6 @@
           placeholder="Name">
 
         <div ngxErrors="name">
-          <div class="field-error"  ngxError="required" when="touched">
-            Field is required
-          </div>
-        </div>
-      </div>
-
-      <!-- Display Name -->
-      <div class="form-element">
-        <label for="displayName">Display Name</label>
-        <input
-          id="displayName"
-          type="text"
-          class="form-control input"
-          [(ngModel)]="client.displayName"
-          formControlName="displayName"
-          placeholder="Display Name">
-
-        <div ngxErrors="displayName">
           <div class="field-error"  ngxError="required" when="touched">
             Field is required
           </div>

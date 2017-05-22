@@ -145,7 +145,6 @@ export class ClientCreateComponent implements OnInit {
    */
   public addClient(client: IClient): void {
     this.extractLicenses();
-    client.clientSecretValidTo = this.extractDate(client.clientSecretValidTo);
 
     this.clientService
       .addClient({ ...client, ...this.clientDetails })
@@ -177,16 +176,6 @@ export class ClientCreateComponent implements OnInit {
     }
 
     this.fileReader.readAsDataURL(files.item(0));
-  }
-
-  /**
-   * Convert date to ISO 8601 format
-   *
-   * @param {string} date - Date
-   * @returns {string} - ISO 8601 formatted date
-   */
-  public extractDate(date: string): string {
-    return moment(date).toISOString();
   }
 
   /**
@@ -262,13 +251,12 @@ export class ClientCreateComponent implements OnInit {
   }
 
   /**
-   * Recieve img in base64
+   * Receive img in base64
    *
    * @param {string} base64 - string
    * @returns {void}
    */
   public onImgUploaded(base64) {
-    console.log(base64);
     this.clientDetails.logoBytes = base64.replace(/data:image\/(png|jpg|jpeg|gif);base64,/, '');
   }
 
@@ -283,9 +271,6 @@ export class ClientCreateComponent implements OnInit {
       name: ['', [
         Validators.required
       ]],
-      displayName: ['', [
-        Validators.required
-      ]],
       email: ['', [
         Validators.required,
         CustomValidators.email
@@ -295,24 +280,6 @@ export class ClientCreateComponent implements OnInit {
         Validators.required
       ]],
       freshBooks: ['', [
-        Validators.required
-      ]],
-      tenant: ['', [
-        Validators.required
-      ]],
-      tenantId: ['', [
-        Validators.required
-      ]],
-      domain: ['', [
-        Validators.required
-      ]],
-      clientId: ['', [
-        Validators.required
-      ]],
-      clientSecret: ['', [
-        Validators.required
-      ]],
-      clientSecretValidTo: ['', [
         Validators.required
       ]],
       socialAccounts: new FormArray([])

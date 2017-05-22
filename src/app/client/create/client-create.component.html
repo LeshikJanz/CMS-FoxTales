@@ -1,4 +1,6 @@
 <div class="container">
+  <a href="javascript:void(0)" [routerLink]="['/admin/clients']">Back to all Clients</a>
+
   <form
     (ngSubmit)="addClient(clientForm.value)"
     class="form"
@@ -20,23 +22,6 @@
           placeholder="Name">
 
         <div ngxErrors="name">
-          <div class="field-error" ngxError="required" when="touched">
-            Field is required
-          </div>
-        </div>
-      </div>
-
-      <!-- Display Name -->
-      <div class="form-element">
-        <label for="displayName">Display Name</label>
-        <input
-          id="displayName"
-          type="text"
-          class="form-control input"
-          formControlName="displayName"
-          placeholder="Display Name">
-
-        <div ngxErrors="displayName">
           <div class="field-error" ngxError="required" when="touched">
             Field is required
           </div>
@@ -118,108 +103,7 @@
         </div>
       </div>
 
-
-      <!-- Tenant -->
-      <div class="form-element">
-        <label for="tenant">Tenant</label>
-        <input
-          id="tenant"
-          type="text"
-          formControlName="tenant"
-          class="form-control input"
-          placeholder="Tenant">
-
-        <div class="field-error" ngxErrors="tenant">
-          <div ngxError="required" when="touched">
-            Field is required
-          </div>
-        </div>
-      </div>
-
-      <!-- Tenant id -->
-      <div class="form-element">
-        <label for="tenantId">Tenant Id</label>
-        <input
-          id="tenantId"
-          class="form-control input"
-          type="text"
-          formControlName="tenantId"
-          placeholder="Tenant Id">
-      </div>
-        <div ngxErrors="tenantId">
-          <div class="field-error" ngxError="required" when="touched">
-            Field is required
-          </div>
-        </div>
-
-      <!-- Domain -->
-      <div class="form-element">
-        <label for="domain">Domain</label>
-        <input
-          id="domain"
-          class="form-control input"
-          type="text"
-          formControlName="domain"
-          placeholder="Domain">
-</div>
-        <div ngxErrors="domain">
-          <div class="field-error" ngxError="required" when="touched">
-            Field is required
-          </div>
-        </div>
-
-      <!-- Client Id -->
-      <div class="form-element">
-        <label for="clientId">Client Id</label>
-        <input
-          id="clientId"
-          class="form-control input"
-          type="text"
-          formControlName="clientId"
-          placeholder="Client Id">
-
-        <div ngxErrors="clientId">
-          <div class="field-error" ngxError="required" when="touched">
-            Field is required
-          </div>
-        </div>
-      </div>
-
-      <!-- Client Secret -->
-      <div class="form-element">
-        <label for="clientSecret">Client Secret</label>
-        <input
-          id="clientSecret"
-          class="form-control input"
-          type="text"
-          formControlName="clientSecret"
-          placeholder="Client Secret">
-
-        <div ngxErrors="clientSecret">
-          <div class="field-error" ngxError="required" when="touched">
-            Field is required
-          </div>
-        </div>
-      </div>
-
-      <!-- Client Secret Valid To -->
-      <div class="form-element">
-        <label for="clientSecretValidTo">Client Secret Valid To</label>
-        <input
-          id="clientSecretValidTo"
-          class="form-control input"
-          type="date"
-          formControlName="clientSecretValidTo"
-          placeholder="Client Secret Valid To">
-
-        <div ngxErrors="clientSecretValidTo">
-          <div class="field-error" ngxError="required" when="touched">
-            Field is required
-          </div>
-        </div>
-      </div>
-
-      <!-- Social Accounts -->
+     <!-- Social Accounts -->
       <div class="form-element" formArrayName="socialAccounts">
         <label>Social Accounts</label>
 
