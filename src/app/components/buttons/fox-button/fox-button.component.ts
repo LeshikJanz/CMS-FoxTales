@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, OnChanges } from '@angular/core';
 
 /**
  * Drop down menu
@@ -9,7 +9,7 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: [ 'fox-button.component.scss' ]
 })
 
-export class FoxButtonComponent implements OnInit {
+export class FoxButtonComponent implements OnInit, OnChanges {
   @Input() public value: string;
 
   @Input() public design: string;
@@ -23,5 +23,10 @@ export class FoxButtonComponent implements OnInit {
     if (this.design == null) {
       throw new Error("Attribute 'design' is required");
     }
+  }
+
+  public ngOnChanges() {
+    console.log('this.disabled');
+    console.log(this.disabled);
   }
 }

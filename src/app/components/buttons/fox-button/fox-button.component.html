@@ -1,5 +1,5 @@
 <button
-  [attr.disabled]="disabled"
+  [attr.disabled]="disabled ? '' : null"
   [class.primary]="design === 'primary'"
   [class.secondary]="design === 'secondary'"
   [class.tertiary]="design === 'tertiary'"

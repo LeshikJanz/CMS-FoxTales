@@ -3,5 +3,5 @@ import { ThumbnailComponent } from './thumbnail.component';
 
 export default sandboxOf(ThumbnailComponent)
   .add('thumbnail component', {
-    template: `<thumbnail></thumbnail>`
+    template: `<thumbnail style="height: 362px; width: 250px"></thumbnail>`
   })

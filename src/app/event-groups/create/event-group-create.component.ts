@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EventService } from '../../event/event.service';
-import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { FormGroup, Validators, FormBuilder, FormArray } from '@angular/forms';
 import { ITag } from '../../event/tag.interface';
 import { IEventGroup } from '../list/event-groups.interaface';
 import { EventGroupsService } from '../list/event-groups.service';
@@ -61,6 +61,7 @@ export class EventGroupCreateComponent implements OnInit {
   constructor(private eventService: EventService,
               private eventGroupService: EventGroupsService,
               private router: Router,
+              private formBuilder: FormBuilder,
               private toastrService: ToastrService
   ) {
   }
@@ -80,6 +81,7 @@ export class EventGroupCreateComponent implements OnInit {
 
   public ngOnInit() {
     this.getEvents();
+    this.buildForm();
   }
 
   /**
@@ -90,6 +92,23 @@ export class EventGroupCreateComponent implements OnInit {
    */
   public tagTransformer(tag: string): string {
     return tag.replace(/\s/g, '');
+  }
+
+
+  /**
+   * Build eventGroup form
+   *
+   * @returns {ClientCreateComponent} - Component
+   */
+  public buildForm(): EventGroupCreateComponent {
+    this.eventGroupForm = this.formBuilder.group({
+      name: ['', [
+        Validators.required
+      ]],
+      events: ['']
+    });
+
+    return this;
   }
 
   /**

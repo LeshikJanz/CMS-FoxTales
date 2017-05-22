@@ -6,11 +6,13 @@ button {
 
   &:disabled {
     background-color: #919191;
+    border: solid 2px #919191;
     cursor: not-allowed;
   }
 
   &:hover:disabled {
     background-color: #919191;
+    border: solid 2px #919191;
     cursor: not-allowed;
   }
 }
