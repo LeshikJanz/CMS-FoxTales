@@ -1,0 +1,31 @@
+.icon-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 60px;
+
+  button {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    background-color: #ffffff;
+    border: solid 1px gray;
+    opacity: 0.5;
+    transition: opacity 0.5s;
+
+    &:hover {
+      opacity: 1;
+    }
+
+    &:hover + label {
+      opacity: 1;
+    }
+  }
+
+  label {
+    opacity: 0;
+    padding-top: 11px;
+    transition: opacity 0.5s;
+    color: #4b535c;
+  }
+}

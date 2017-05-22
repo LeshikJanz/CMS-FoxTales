@@ -5,6 +5,7 @@ import { IEvent } from '../../../event/event.interface';
 import { IEventGroup } from '../../../event-groups/list/event-groups.interaface';
 import { EventGroupsService } from '../../../event-groups/list/event-groups.service';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'events-to-cur-group-modal',
@@ -46,7 +47,8 @@ export class EventsToCurGroupModalComponent implements OnChanges {
    */
   constructor(private eventService: EventService,
               private eventGroupService: EventGroupsService,
-              private toastrService: ToastrService) {
+              private toastrService: ToastrService,
+              private router: Router) {
   }
 
   /**
@@ -101,10 +103,11 @@ export class EventsToCurGroupModalComponent implements OnChanges {
       .subscribe(() => {
         this.hide();
         this.toastrService.success('Event group has been updated successfully.');
+        this.router.navigate(['/events/event-groups']);
       });
   }
 
   public ngOnChanges() {
-    this.selectedEvents = this.group.events;
+    if(this.group) this.selectedEvents = this.group.events;
   }
 }

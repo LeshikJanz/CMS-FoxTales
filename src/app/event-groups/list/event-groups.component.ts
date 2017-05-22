@@ -55,6 +55,13 @@ export class EventGroupsComponent implements OnInit {
     this.getEventGroups();
   }
 
+  public ngOnChanges(): void {
+    console.log('this.eventGroups');
+    console.log(this.eventGroups);
+    console.log('this.events');
+    console.log(this.events);
+  }
+
   /**
    * Get event groups with list of events in each one
    *
@@ -68,6 +75,8 @@ export class EventGroupsComponent implements OnInit {
         this.eventService.getEvents()
           .subscribe((events: IEvent[]) => {
             this.events = events;
+            console.log('events');
+            console.log(events);
             this.eventGroups = eventGroups.map((eg: IEventGroup) =>
               ({
                 ...eg,
