@@ -5,7 +5,8 @@ import { TabsetComponent } from 'ngx-bootstrap';
 
 @Component({
   selector: 'ui-builder-component',
-  templateUrl: './ui-builder.component.html'
+  templateUrl: './ui-builder.component.html',
+  styleUrls: ['./ui-builder.component.scss']
 })
 
 export class UIBuilderComponent {
