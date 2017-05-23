@@ -1,4 +1,6 @@
 .regular-checkbox {
+  height: inherit;
+  width: inherit;
   -webkit-appearance: none;
   background-color: white;
   border: 2px solid #cacece;
@@ -22,7 +24,7 @@
 
 .regular-checkbox:checked:after {
   content: '\2714';
-  font-size: 10px;
+  font-size: inherit;
   position: absolute;
   top: 3px;
   left: 6px;

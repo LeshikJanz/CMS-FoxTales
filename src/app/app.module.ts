@@ -73,7 +73,7 @@ export class AppModule {
 
     // set state
     this.appState._state = store.state;
-    // set input values
+    // set fox-input values
     if ('restoreInputValues' in store) {
       let restoreInputValues = store.restoreInputValues;
       setTimeout(restoreInputValues);
@@ -91,7 +91,7 @@ export class AppModule {
     store.state = state;
     // recreate root elements
     store.disposeOldHosts = createNewHosts(cmpLocation);
-    // save input values
+    // save fox-input values
     store.restoreInputValues  = createInputTransfer();
     // remove styles
     removeNgStyles();
