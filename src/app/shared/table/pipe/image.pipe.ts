@@ -25,6 +25,6 @@ export class ImagePipe implements PipeTransform {
    * @returns {any} - Formatted value
    */
   public transform(value: any) {
-    return this.sanitizer.bypassSecurityTrustHtml(`<img src="${value}">`);
+    return this.sanitizer.bypassSecurityTrustHtml(`<img src="${value}" style="max-height: 50px;">`);
   }
 }
