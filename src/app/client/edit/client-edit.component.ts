@@ -253,6 +253,17 @@ export class ClientEditComponent implements OnInit {
   }
 
   /**
+   * Select license
+   *
+   * @param {number} index - Index
+   * @param {boolean} state - Is checked?
+   * @returns {void}
+   */
+  public selectLicense(index: number, state: boolean): void {
+    this.licenses[index].checked = state;
+  }
+
+  /**
    * Extract logo base64 encoded
    *
    * @param {Event} event - Event

@@ -135,12 +135,13 @@
 
     <!-- Licenses -->
     <div class="form-group">
-      <label *ngFor="let license of licenses">
+      <label *ngFor="let license of licenses; let i = index">
         <input
           type="checkbox"
           name="selectedLicenses[]"
           class="form-control input checkbox"
-          [(ngModel)]="license.checked">
+          (change)="selectLicense(i, $event.target.checked)"
+          [checked]="license.checked">
         {{ license.name }}
       </label>
     </div>
