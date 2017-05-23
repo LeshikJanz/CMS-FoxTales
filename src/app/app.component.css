@@ -56,6 +56,10 @@ div.modal div.ng2-dropdown-menu[style] {
   margin-top: -24px !important;
 }
 
+bar {
+  width: 100% !important;
+}
+
 .dropdown-toggle::after {
   display: inline-block;
   border-top: .6em solid;

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 import { IEvent } from '../../event/event.interface';
 import { EventGroupsService } from './event-groups.service';
 import { IEventGroup } from './event-groups.interaface';
@@ -11,7 +11,7 @@ import { IActionState } from '../../client/client.interface';
   styleUrls: ['event-groups.component.scss']
 })
 
-export class EventGroupsComponent implements OnInit {
+export class EventGroupsComponent implements OnInit, OnChanges {
   /**
    * Event groups
    *

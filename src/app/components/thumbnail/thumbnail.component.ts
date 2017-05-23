@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter, Input } from '@angular/core';
 
 /**
  * Upload Button component
@@ -9,5 +9,38 @@ import { Component, Output, EventEmitter } from '@angular/core';
   styleUrls: [ 'thumbnail.component.scss' ]
 })
 export class ThumbnailComponent {
+  public isChecked: boolean = false;
 
+  @Input() public title: string;
+
+  @Input() public type: string;
+
+  @Input() public progress: number = 0;
+
+  @Output() public toggle: EventEmitter<boolean> = new EventEmitter<boolean>();
+
+  @Output() public confirm: EventEmitter<any> = new EventEmitter();
+
+  @Output() public decline: EventEmitter<any> = new EventEmitter();
+
+  public onChecked(event) {
+    this.toggle.emit(event);
+  }
+
+  public onConfirm() {
+    this.confirm.emit();
+  }
+
+  public onDecline() {
+    this.decline.emit();
+  }
+
+  public ngOnInit() {
+    if (this.title == null) {
+      throw new Error("Attribute 'title' is required");
+    }
+    if (this.type == null) {
+      throw new Error("Attribute 'type' is required");
+    }
+  }
 }

@@ -94,7 +94,6 @@ export class EventGroupCreateComponent implements OnInit {
     return tag.replace(/\s/g, '');
   }
 
-
   /**
    * Build eventGroup form
    *

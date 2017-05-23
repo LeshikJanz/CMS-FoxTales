@@ -97,7 +97,7 @@ export class EventsToCurGroupModalComponent implements OnChanges {
   public updateGroup() {
     this.selectedEvents.forEach((e: IEvent) =>
       this.group.eventIds.push(e.id)
-  );
+    );
 
     this.eventGroupService.updateEventGroup(this.group)
       .subscribe(() => {
@@ -108,6 +108,6 @@ export class EventsToCurGroupModalComponent implements OnChanges {
   }
 
   public ngOnChanges() {
-    if(this.group) this.selectedEvents = this.group.events;
+    if (this.group) this.selectedEvents = this.group.events;
   }
 }

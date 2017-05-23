@@ -11,7 +11,7 @@ export default sandboxOf(FoxButtonComponent)
                [design]="'primary'"
                ></fox-button></div>`
   })
-  .add('primary button - big disabled', {
+  .add('primary button - big', {
     template: `
               <div>
                <fox-button 

@@ -10,18 +10,10 @@ import { TagInputModule } from 'ng2-tag-input';
 import { SharedModule } from '../shared';
 import { HttpService } from '../shared/core';
 
-import { EVENT_ROUTING } from './event.routes';
-
-import { EventService } from './event.service';
-import { EventListComponent } from './list';
-import { EventCreateComponent } from './create';
-
 import { FeatureModule } from '../components/feature.module';
-import { EventGroupsComponent } from '../event-groups/list/event-groups.component';
-import { EventGroupsService } from '../event-groups/list/event-groups.service';
-import { EventGroupCreateComponent } from '../event-groups/create/event-group-create.component';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
-import { GalleryModule } from '../gallery/gallery.module';
+import { GALLERY_ROUTING } from './gallery.routes';
+import { GalleryListComponent } from './list/gallery-list.component';
 
 @NgModule({
   imports: [
@@ -35,10 +27,9 @@ import { GalleryModule } from '../gallery/gallery.module';
     ToastContainerModule.forRoot(),
     TagInputModule,
     SharedModule,
-    EVENT_ROUTING,
     FeatureModule,
     InfiniteScrollModule,
-    GalleryModule
+    GALLERY_ROUTING
   ],
   providers: [
     {
@@ -46,17 +37,12 @@ import { GalleryModule } from '../gallery/gallery.module';
       useFactory: httpFactory,
       deps: [ XHRBackend, RequestOptions, Injector ]
     },
-    EventService,
-    EventGroupsService
   ],
   declarations: [
-    EventListComponent,
-    EventCreateComponent,
-    EventGroupsComponent,
-    EventGroupCreateComponent
+    GalleryListComponent
   ]
 })
-export class EventModule {
+export class GalleryModule {
 }
 
 /**
