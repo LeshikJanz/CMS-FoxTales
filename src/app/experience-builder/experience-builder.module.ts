@@ -7,7 +7,8 @@ import { NgxErrorsModule } from '@ultimate/ngxerrors';
 import { ToastrModule, ToastContainerModule } from 'ngx-toastr';
 import { TabsModule } from 'ngx-bootstrap';
 import { ModalModule } from 'ngx-bootstrap';
-import { ColorPickerModule } from 'ngx-color-picker'
+import { ColorPickerModule } from 'ngx-color-picker';
+import { TagInputModule } from 'ng2-tag-input';
 
 import { SharedModule } from '../shared';
 import { HttpService, AuthService, AuthRequestOptions } from '../shared/core';
@@ -23,7 +24,8 @@ import { EXPERIENCE_BUILDER_ROUTING } from './experience-builder.routes';
 
 import { FeatureModule } from '../components/feature.module';
 
-import { ExperienceBuilderService } from './experience-builder.service'
+import { ExperienceBuilderService } from './experience-builder.service';
+import { TimepickerModule } from 'ngx-bootstrap';
 
 @NgModule({
   imports: [
@@ -40,7 +42,9 @@ import { ExperienceBuilderService } from './experience-builder.service'
     FeatureModule,
     TabsModule.forRoot(),
     ModalModule.forRoot(),
-    ColorPickerModule
+    TagInputModule,
+    ColorPickerModule,
+    TimepickerModule.forRoot()
   ],
   providers: [
     {

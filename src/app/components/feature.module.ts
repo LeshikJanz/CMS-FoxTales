@@ -37,7 +37,8 @@ import { BsDropdownModule } from 'ngx-bootstrap';
 import { TabsModule } from 'ngx-bootstrap';
 import { ModalModule } from 'ngx-bootstrap';
 
-import { ColorPickerModule } from 'ngx-color-picker'
+import { ColorPickerModule } from 'ngx-color-picker';
+import { TimepickerModule } from 'ngx-bootstrap';
 
 @NgModule({
   imports: [
@@ -47,7 +48,8 @@ import { ColorPickerModule } from 'ngx-color-picker'
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
     ModalModule.forRoot(),
-    ColorPickerModule
+    ColorPickerModule,
+    TimepickerModule.forRoot()
   ],
   providers: [],
   declarations: [
