@@ -25,6 +25,9 @@ export class ImagePipe implements PipeTransform {
    * @returns {any} - Formatted value
    */
   public transform(value: any) {
-    return this.sanitizer.bypassSecurityTrustHtml(`<img src="${value}" style="max-height: 50px;">`);
+    const date = new Date();
+    return this.sanitizer.bypassSecurityTrustHtml(
+      `<img src="${value}?_=${date.getTime()}" style="max-height: 50px;">`
+    );
   }
 }
