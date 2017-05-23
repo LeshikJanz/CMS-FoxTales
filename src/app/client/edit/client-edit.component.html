@@ -3,8 +3,6 @@
 
   <h1>{{ client?.name }}</h1>
 
-  <img src="{{ client?.logo }}" alt="">
-
   <form
     (ngSubmit)="updateClient()"
     class="form"
@@ -13,6 +11,9 @@
     <div [formGroup]="clientForm">
       <!-- Logo -->
       <label style="font-size: 18px">Client logo</label>
+
+      <img src="{{ logoBytes || client?.logo }}" style="max-height: 50px;">
+
       <upload-button (imgUploaded)="onImgUploaded($event)"></upload-button>
 
       <!-- Name -->

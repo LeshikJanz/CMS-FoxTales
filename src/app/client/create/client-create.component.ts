@@ -69,6 +69,13 @@ export class ClientCreateComponent implements OnInit {
   };
 
   /**
+   * Base64 logo
+   *
+   * @type {string}
+   */
+  public logoBytes: string;
+
+  /**
    * File reader
    *
    * @type {FileReader}
@@ -257,6 +264,7 @@ export class ClientCreateComponent implements OnInit {
    * @returns {void}
    */
   public onImgUploaded(base64) {
+    this.logoBytes = base64;
     this.clientDetails.logoBytes = base64.replace(/data:image\/(png|jpg|jpeg|gif);base64,/, '');
   }
 
