@@ -61,7 +61,6 @@ export class ClientEditComponent implements OnInit {
     logo: null,
     logoBytes: null,
     name: null,
-    displayName: null,
     email: null,
     address: null,
     phone: null,
@@ -334,9 +333,6 @@ export class ClientEditComponent implements OnInit {
     this.clientForm = this.formBuilder.group({
       logoBytes: [''],
       name: ['', [
-        Validators.required
-      ]],
-      displayName: ['', [
         Validators.required
       ]],
       email: ['', [

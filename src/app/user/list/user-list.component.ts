@@ -36,13 +36,13 @@ export class UserListComponent implements OnInit {
    * @type {ICol[]}
    */
   public cols: ICol[] = [
-    { id: 'firstName',      title: 'First Name',  format: 'default',  searchable: true },
-    { id: 'lastName',       title: 'Last Name',   format: 'default',  searchable: true },
-    { id: 'email',          title: 'Email',       format: 'default',  searchable: true },
-    { id: 'phone',          title: 'Phone',       format: 'default',  searchable: true },
-    { id: 'clientName',     title: 'Client',      format: 'default',  searchable: true },
-    { id: 'location',       title: 'Location',    format: 'default',  searchable: true },
-    { id: 'lastActiveDate', title: 'Last Active', format: 'default',  searchable: true }
+    { id: 'firstName',      title: 'First Name',  format: 'default', searchable: true, sort: true },
+    { id: 'lastName',       title: 'Last Name',   format: 'default', searchable: true, sort: true },
+    { id: 'email',          title: 'Email',       format: 'default', searchable: true, sort: true },
+    { id: 'phone',          title: 'Phone',       format: 'default', searchable: true, sort: true },
+    { id: 'clientName',     title: 'Client',      format: 'default', searchable: true, sort: true },
+    { id: 'location',       title: 'Location',    format: 'default', searchable: true, sort: true },
+    { id: 'lastActiveDate', title: 'Last Active', format: 'default', searchable: true, sort: true }
   ];
 
   /**
