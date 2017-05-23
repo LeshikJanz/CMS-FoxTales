@@ -1,9 +1,9 @@
 <div id="sidebar">
   <div *ngFor="let option of options">
-    <input type="radio" id="{{option.name}}-option" name="selector"
-           [ngModel]="type" (ngModelChange)="onChose($event)"
-           value="{{option.name}}">
-    <label for="{{option.name}}-option">{{option.name}}</label>
+    <input type="radio" id="{{option.id}}-option" name="selector"
+           [(ngModel)]="type" (change)="onChose(option)"
+           value="{{option.id}}">
+    <label for="{{option.id}}-option">{{option.name}}</label>
 
   </div>
 </div>

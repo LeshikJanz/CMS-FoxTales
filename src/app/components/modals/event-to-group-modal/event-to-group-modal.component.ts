@@ -1,4 +1,7 @@
-import { Component, Input, ViewChild, OnInit, OnChanges } from '@angular/core';
+import {
+  Component, Input, ViewChild, OnInit,
+  OnChanges, Output, EventEmitter
+} from '@angular/core';
 import { ModalDirective } from 'ngx-bootstrap';
 import { ITag } from '../../../event/tag.interface';
 import { EventService } from '../../../event/event.service';
@@ -59,6 +62,13 @@ export class EventToGroupModalComponent implements OnInit, OnChanges {
    * @type {IEventGroup}
    */
   public selectedGroup: IEventGroup;
+
+  /**
+   * Save changes
+   *
+   * @type {EventEmitter}
+   */
+  @Output() public save: EventEmitter<any> = new EventEmitter();
 
   /**
    * Constructor
@@ -148,13 +158,14 @@ export class EventToGroupModalComponent implements OnInit, OnChanges {
    *
    * @return {void}
    */
-  public addEvent() {
-    this.selectedGroup.eventIds.push(this.event.id);
+  public addEvent(selectedGroup: IEventGroup) {
+    selectedGroup.eventIds.push(this.event.id);
 
-    this.eventGroupService.updateEventGroup(this.selectedGroup)
+    this.eventGroupService.updateEventGroup(selectedGroup)
       .subscribe(() => {
         this.hide();
         this.toastrService.success('Event group has been updated successfully.');
+        this.save.emit();
       });
   }
 }

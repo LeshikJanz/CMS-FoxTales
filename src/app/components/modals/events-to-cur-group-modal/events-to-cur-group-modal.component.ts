@@ -1,4 +1,4 @@
-import { Component, ViewChild, Input, OnChanges } from '@angular/core';
+import { Component, ViewChild, Input, OnChanges, Output, EventEmitter } from '@angular/core';
 import { ModalDirective } from 'ngx-bootstrap';
 import { EventService } from '../../../event/event.service';
 import { IEvent } from '../../../event/event.interface';
@@ -38,6 +38,13 @@ export class EventsToCurGroupModalComponent implements OnChanges {
    * @type {IEvent[]}
    */
   @Input() public selectedEvents: IEvent[];
+
+  /**
+   * Save changes
+   *
+   * @type {EventEmitter}
+   */
+  @Output() public save: EventEmitter<any> = new EventEmitter();
 
   /**
    * Constructor
@@ -103,11 +110,13 @@ export class EventsToCurGroupModalComponent implements OnChanges {
       .subscribe(() => {
         this.hide();
         this.toastrService.success('Event group has been updated successfully.');
-        this.router.navigate(['/events/event-groups']);
+        this.save.emit();
       });
   }
 
   public ngOnChanges() {
-    if (this.group) this.selectedEvents = this.group.events;
+    if (this.group) {
+      this.selectedEvents = this.group.events;
+    }
   }
 }

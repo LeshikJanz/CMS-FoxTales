@@ -26,4 +26,4 @@ export default sandboxOf(ThumbnailComponent, { declarations: [CheckboxComponent]
       },
       CheckboxComponent
     }
-  })
+  });

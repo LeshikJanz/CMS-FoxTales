@@ -37,4 +37,4 @@ export default sandboxOf(IconButtonComponent)
                <icon-button 
                [type]="'Social'"
                ></icon-button>`
-  })
+  });

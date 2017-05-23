@@ -1,4 +1,5 @@
-import { Component, Output, EventEmitter, Input } from '@angular/core';
+import { Component, Output, EventEmitter, Input, OnInit } from '@angular/core';
+import { IGalleryItem } from '../../gallery/gallery.interface';
 
 /**
  * Upload Button component
@@ -8,8 +9,10 @@ import { Component, Output, EventEmitter, Input } from '@angular/core';
   templateUrl: 'thumbnail.component.html',
   styleUrls: [ 'thumbnail.component.scss' ]
 })
-export class ThumbnailComponent {
+export class ThumbnailComponent implements OnInit {
   public isChecked: boolean = false;
+
+  @Input() public item: IGalleryItem;
 
   @Input() public title: string;
 

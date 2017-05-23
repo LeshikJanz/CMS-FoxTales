@@ -9,7 +9,7 @@ import { Component, Input, OnInit, OnChanges } from '@angular/core';
   styleUrls: [ 'fox-button.component.scss' ]
 })
 
-export class FoxButtonComponent implements OnInit, OnChanges {
+export class FoxButtonComponent implements OnInit {
   @Input() public value: string;
 
   @Input() public design: string;
@@ -23,10 +23,5 @@ export class FoxButtonComponent implements OnInit, OnChanges {
     if (this.design == null) {
       throw new Error("Attribute 'design' is required");
     }
-  }
-
-  public ngOnChanges() {
-    console.log('this.disabled');
-    console.log(this.disabled);
   }
 }

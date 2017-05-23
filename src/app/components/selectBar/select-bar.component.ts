@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, OnInit, HostListener } from '@angular/core';
+import { Component, Input, Output, EventEmitter, HostListener } from '@angular/core';
 
 @Component({
   selector: 'select-bar',
@@ -20,9 +20,11 @@ export class SelectBarComponent {
   public onDeleteSelected() {
     this.deleteSelected.emit();
   }
+
   public onCloneSelected() {
     this.cloneSelected.emit();
   }
+
   public onDeselectAll() {
     this.deselectAll.emit();
   }
@@ -31,6 +33,8 @@ export class SelectBarComponent {
   public keyboardInput(event: any) {
     event.preventDefault();
     event.stopPropagation();
-    if(event.keyCode === 27) this.onDeselectAll();
+    if (event.keyCode === 27) {
+      this.onDeselectAll();
+    }
   }
 }

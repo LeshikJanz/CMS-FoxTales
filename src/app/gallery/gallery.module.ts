@@ -14,6 +14,7 @@ import { FeatureModule } from '../components/feature.module';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { GALLERY_ROUTING } from './gallery.routes';
 import { GalleryListComponent } from './list/gallery-list.component';
+import { GalleryService } from './gallery.service';
 
 @NgModule({
   imports: [
@@ -37,6 +38,7 @@ import { GalleryListComponent } from './list/gallery-list.component';
       useFactory: httpFactory,
       deps: [ XHRBackend, RequestOptions, Injector ]
     },
+    GalleryService
   ],
   declarations: [
     GalleryListComponent

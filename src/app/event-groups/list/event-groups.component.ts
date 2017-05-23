@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IEvent } from '../../event/event.interface';
 import { EventGroupsService } from './event-groups.service';
 import { IEventGroup } from './event-groups.interaface';
@@ -11,7 +11,7 @@ import { IActionState } from '../../client/client.interface';
   styleUrls: ['event-groups.component.scss']
 })
 
-export class EventGroupsComponent implements OnInit, OnChanges {
+export class EventGroupsComponent implements OnInit {
   /**
    * Event groups
    *
@@ -48,18 +48,14 @@ export class EventGroupsComponent implements OnInit, OnChanges {
    */
   public onSortChanged(event: number): void {
     console.log('onSortChanged');
-    console.log(event);
   }
 
   public ngOnInit(): void {
     this.getEventGroups();
   }
 
-  public ngOnChanges(): void {
-    console.log('this.eventGroups');
-    console.log(this.eventGroups);
-    console.log('this.events');
-    console.log(this.events);
+  public onSave() {
+    this.getEventGroups();
   }
 
   /**
@@ -75,8 +71,6 @@ export class EventGroupsComponent implements OnInit, OnChanges {
         this.eventService.getEvents()
           .subscribe((events: IEvent[]) => {
             this.events = events;
-            console.log('events');
-            console.log(events);
             this.eventGroups = eventGroups.map((eg: IEventGroup) =>
               ({
                 ...eg,
