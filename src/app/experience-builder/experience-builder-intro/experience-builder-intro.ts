@@ -35,8 +35,14 @@ export class ExperienceBuilderIntroComponent implements OnInit {
  
 
   Next(){
-    this.experienceBuilderService.addExperience().subscribe((experience) => {
-     console.log(experience)
+    this.experienceBuilderService.addExperience({"name": this.experienceName,
+  "eventId": this.id, "productId": this.selectedValue}).subscribe((experience) => {
+    console.log(experience)
+     this.experienceBuilderService.experience["experienceId"] = experience.id;
+     this.experienceBuilderService.experience["eventId"] = experience.eventId;
+     this.experienceBuilderService.experience["productId"] = experience.productId;
+     this.experienceBuilderService.experience["displayName"] = experience.displayName;
+     this.router.navigate(['/experience-builder/container/basic-details']);
    })
     
 

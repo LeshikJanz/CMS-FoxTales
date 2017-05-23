@@ -8,14 +8,15 @@ https://projects.invisionapp.com/share/MKB9BD656#/screens/228718265
   <div>
   </div>
   <div>
-    <h3>What kind of Experience Are You Creating?</h3>
+    <h4>What kind of Experience Are You Creating?</h4>
     <select [(ngModel)]="selectedValue">
       <option [ngValue]="2">StoryStudio</option>
       <option [ngValue]="1">StoryRing</option>
     </select>
-    <p>Let's name the experience</p>
-    <input type="text" [(ngModel)]="experienceName" />
-
+    <hr>
+    <h4>Let's name the experience</h4>
+    <input class="experinceInput" type="text" placeholder="Experience Name" [(ngModel)]="experienceName" />
+<hr>
   </div>
   <button (click)="Next()" >Next</button>
 </div>
