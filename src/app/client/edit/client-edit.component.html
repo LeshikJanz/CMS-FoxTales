@@ -117,12 +117,14 @@
       <div class="form-element" formArrayName="socialAccounts">
         <label>Social Accounts</label>
 
-        <div *ngFor="let account of socialAccounts.controls">
+        <div *ngFor="let account of socialAccounts.controls; let i = index">
           <input
             type="text"
             class="form-control input"
+            [(ngModel)]="client.socialAccounts[i]"
             [formControl]="account"
             placeholder="Social Account Url">
+          <a href="javascript:void(0)" (click)="removeSocialAccount(i)">x</a>
         </div>
 
         <div>

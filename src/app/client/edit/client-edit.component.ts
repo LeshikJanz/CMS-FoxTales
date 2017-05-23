@@ -161,6 +161,17 @@ export class ClientEditComponent implements OnInit {
   }
 
   /**
+   * Remove social account control
+   *
+   * @param {number} index - Index
+   * @returns {void}
+   */
+  public removeSocialAccount(index: number): void {
+    this.client.socialAccounts.splice(index, 1);
+    this.socialAccounts.removeAt(index);
+  }
+
+  /**
    * Add client social accounts
    *
    * @param {IClient} client - Client

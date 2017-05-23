@@ -134,6 +134,16 @@ export class ClientCreateComponent implements OnInit {
   }
 
   /**
+   * Remove social account control
+   *
+   * @param {number} index - Index
+   * @returns {void}
+   */
+  public removeSocialAccount(index: number): void {
+    this.socialAccounts.removeAt(index);
+  }
+
+  /**
    * Get client licenses
    *
    * @returns {void}
