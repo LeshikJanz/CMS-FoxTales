@@ -15,8 +15,9 @@ import { ROUTES } from './app.routes';
 import { AppComponent } from './app.component';
 import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppState, InternalStateType } from './app.service';
-import { AuthGuard, AuthService } from './shared/core';
+import { AuthGuard, AuthService, PermissionService } from './shared/core';
 import { NoContentComponent } from './no-content';
+import { ForbiddenComponent } from './forbidden';
 
 import '../styles/styles.scss';
 import { FeatureModule } from './components/feature.module';
@@ -26,7 +27,8 @@ const APP_PROVIDERS = [
   ...APP_RESOLVER_PROVIDERS,
   AppState,
   AuthGuard,
-  AuthService
+  AuthService,
+  PermissionService
 ];
 
 type StoreType = {
@@ -42,7 +44,8 @@ type StoreType = {
   bootstrap: [ AppComponent ],
   declarations: [
     AppComponent,
-    NoContentComponent
+    NoContentComponent,
+    ForbiddenComponent
   ],
   imports: [ // import Angular's modules
     BrowserAnimationsModule,
