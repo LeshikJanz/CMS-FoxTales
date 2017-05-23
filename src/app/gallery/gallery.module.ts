@@ -11,7 +11,6 @@ import { SharedModule } from '../shared';
 import { HttpService } from '../shared/core';
 
 import { FeatureModule } from '../components/feature.module';
-import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { GALLERY_ROUTING } from './gallery.routes';
 import { GalleryListComponent } from './list/gallery-list.component';
 import { GalleryService } from './gallery.service';
@@ -29,7 +28,6 @@ import { GalleryService } from './gallery.service';
     TagInputModule,
     SharedModule,
     FeatureModule,
-    InfiniteScrollModule,
     GALLERY_ROUTING
   ],
   providers: [

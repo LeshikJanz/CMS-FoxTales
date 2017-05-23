@@ -20,7 +20,6 @@ import { FeatureModule } from '../components/feature.module';
 import { EventGroupsComponent } from '../event-groups/list/event-groups.component';
 import { EventGroupsService } from '../event-groups/list/event-groups.service';
 import { EventGroupCreateComponent } from '../event-groups/create/event-group-create.component';
-import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { GalleryModule } from '../gallery/gallery.module';
 
 @NgModule({
@@ -37,7 +36,6 @@ import { GalleryModule } from '../gallery/gallery.module';
     SharedModule,
     EVENT_ROUTING,
     FeatureModule,
-    InfiniteScrollModule,
     GalleryModule
   ],
   providers: [

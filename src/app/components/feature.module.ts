@@ -34,7 +34,6 @@ import { EventTagComponent } from './eventTag/event-tag.component';
 import { SwitcherComponent } from './toggles/switcher/switcher.component';
 import { ConfigureButtonComponent } from './buttons/configure-button/configure-button.component';
 import { TagInputModule } from 'ng2-tag-input';
-import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { ScrollComponent } from './scroll/scroll.component';
 import { GroupDropDownComponent } from './dropdowns/group-dropdown/group-dropdown.component';
 import {
@@ -53,8 +52,7 @@ import {
     RouterModule.forChild(FEATURE_ROUTES),
     BsDropdownModule.forRoot(),
     ModalModule.forRoot(),
-    TagInputModule,
-    InfiniteScrollModule
+    TagInputModule
   ],
   providers: [],
   declarations: [
