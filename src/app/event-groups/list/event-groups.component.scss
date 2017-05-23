@@ -1,0 +1,19 @@
+.group-container {
+  display: flex;
+  justify-content: space-between;
+
+  &:first-child {
+    display: flex;
+  }
+
+  add-button {
+    width: 200px;
+    height: 34px;
+    font-size: 14px;
+    border-radius: 6px;
+    color: white;
+    background-color: #2fd976;
+  }
+}
+
+

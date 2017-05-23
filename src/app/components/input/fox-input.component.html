@@ -1,0 +1,6 @@
+<div class="input-container">
+  <label *ngIf="value" for="text-input">{{title}}</label>
+  <input class="form-control input" type="text" id="text-input"
+         [ngModel]="value" (ngModelChange)="onChange($event)">
+</div>
+
