@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { EventService } from '../event.service';
+import { IActionState } from '../../client/client.interface';
+import { EventGroupsService } from '../../event-groups/list/event-groups.service';
 
 /**
  * Event list component
@@ -17,11 +19,33 @@ export class EventListComponent implements OnInit {
    */
   public Events: any[];
 
-  constructor(private eventService: EventService) {
+  /**
+   * Event
+   *
+   * @type {Event[]}
+   */
+  public eventGroups: any[];
+
+  /**
+   *  Event actions
+   *
+   * @type {IActionState[]}
+   */
+  public eventActions: IActionState[] = [
+    {id: 1, action: 'SETTINGS'},
+    {id: 2, action: 'CLONE'},
+    {id: 3, action: 'ARCHIEVE'},
+    {id: 4, action: 'ADD TO GROUP'},
+    {id: 5, action: 'ASSIGN USERS'},
+  ];
+
+  constructor(private eventService: EventService,
+              private eventGroupsService: EventGroupsService) {
   }
 
   public ngOnInit(): void {
     this.getEvents();
+    this.getEventGroups();
   }
 
   /**
@@ -32,8 +56,21 @@ export class EventListComponent implements OnInit {
   public getEvents(): void {
     this.eventService
       .getEvents()
-      .subscribe((event) => {
-        this.Events = event;
+      .subscribe((events) => {
+        this.Events = events;
+      });
+  }
+
+  /**
+   * Get event groups
+   *
+   * @returns {void}
+   */
+  public getEventGroups(): void {
+    this.eventGroupsService
+      .getEventGroups()
+      .subscribe((eventGroups) => {
+        this.eventGroups = eventGroups;
       });
   }
 }

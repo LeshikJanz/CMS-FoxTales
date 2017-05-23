@@ -61,13 +61,19 @@ export class ClientEditComponent implements OnInit {
     logo: null,
     logoBytes: null,
     name: null,
-    displayName: null,
     email: null,
     address: null,
     phone: null,
     freshBooks: null,
     socialAccounts: null
   };
+
+  /**
+   * Base64 logo
+   *
+   * @type {string}
+   */
+  public logoBytes: string;
 
   /**
    * Client licenses
@@ -139,6 +145,7 @@ export class ClientEditComponent implements OnInit {
    * @returns {void}
    */
   public onImgUploaded(base64) {
+    this.logoBytes = base64;
     this.client.logoBytes = base64.replace(/data:image\/(png|jpg|jpeg|gif);base64,/, '');
   }
 
@@ -151,6 +158,17 @@ export class ClientEditComponent implements OnInit {
   public addSocialAccount(url?: string): void {
     const accountUrl = url || '';
     this.socialAccounts.push(new FormControl(accountUrl, Validators.required));
+  }
+
+  /**
+   * Remove social account control
+   *
+   * @param {number} index - Index
+   * @returns {void}
+   */
+  public removeSocialAccount(index: number): void {
+    this.client.socialAccounts.splice(index, 1);
+    this.socialAccounts.removeAt(index);
   }
 
   /**
@@ -232,6 +250,17 @@ export class ClientEditComponent implements OnInit {
     this.client.selectedLicenses =  this.licenses
       .filter((license: IClientLicense) => license.checked)
       .map((license: IClientLicense) => license.id);
+  }
+
+  /**
+   * Select license
+   *
+   * @param {number} index - Index
+   * @param {boolean} state - Is checked?
+   * @returns {void}
+   */
+  public selectLicense(index: number, state: boolean): void {
+    this.licenses[index].checked = state;
   }
 
   /**
@@ -334,9 +363,6 @@ export class ClientEditComponent implements OnInit {
     this.clientForm = this.formBuilder.group({
       logoBytes: [''],
       name: ['', [
-        Validators.required
-      ]],
-      displayName: ['', [
         Validators.required
       ]],
       email: ['', [

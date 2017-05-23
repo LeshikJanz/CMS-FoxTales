@@ -83,7 +83,7 @@ export class UserCreateComponent implements OnInit {
     this.extractRoles();
 
     this.userService
-      .addUser({ ...user, ...this.userDetails })
+      .addUser(user)
       .subscribe(() => this.router.navigate(['/admin/users']));
   }
 
@@ -105,24 +105,9 @@ export class UserCreateComponent implements OnInit {
    */
   public buildUserForm(): UserCreateComponent {
     this.userForm = this.formBuilder.group({
-      firstName: ['', [
-        Validators.required
-      ]],
-      lastName: ['', [
-        Validators.required
-      ]],
       email: ['', [
         Validators.required,
         CustomValidators.email
-      ]],
-      phone: ['', [
-        Validators.required
-      ]],
-      location: ['', [
-        Validators.required
-      ]],
-      clientId: ['', [
-        Validators.required
       ]],
       selectedClientAccess: ['', [
         Validators.required

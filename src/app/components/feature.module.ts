@@ -12,8 +12,9 @@ import {
   from './navigations/experience-navigation/experience-navigation.component';
 import { MainNavigationComponent } from './navigations/main-navigation/main-navigation.component';
 import { EventComponent } from './event/event.component';
-import { CheckboxComponent } from './checkbox/checkbox.component';
+import { CheckboxComponent } from './toggles/checkbox/checkbox.component';
 import { DropDownComponent } from './dropdowns/dropdown/dropdown.component';
+
 import { ActionDropDownComponent } from './dropdowns/action-dropdown/action-dropdown.component';
 import { ProfileImgComponent } from './profile-img/profile-img.component';
 import {
@@ -27,6 +28,7 @@ import {
   EventNavigationComponent
 }
   from './navigations/event-navigation/event-navigation.component';
+
 import {
   ExperienceBuilderNavigationComponent
 }
@@ -40,6 +42,24 @@ import { ModalModule } from 'ngx-bootstrap';
 import { ColorPickerModule } from 'ngx-color-picker';
 import { TimepickerModule } from 'ngx-bootstrap';
 
+import { EventGroupComponent } from './eventGroup/event-group.component';
+import { FoxInputComponent } from './input/fox-input.component';
+import { EventTagComponent } from './eventTag/event-tag.component';
+import { SwitcherComponent } from './toggles/switcher/switcher.component';
+import { ConfigureButtonComponent } from './buttons/configure-button/configure-button.component';
+import { TagInputModule } from 'ng2-tag-input';
+import { ScrollComponent } from './scroll/scroll.component';
+import { GroupDropDownComponent } from './dropdowns/group-dropdown/group-dropdown.component';
+import {
+  EventsToCurGroupModalComponent
+}
+  from './modals/events-to-cur-group-modal/events-to-cur-group-modal.component';
+import {
+  EventToGroupModalComponent
+}
+  from './modals/event-to-group-modal/event-to-group-modal.component';
+
+
 @NgModule({
   imports: [
     CommonModule,
@@ -49,7 +69,9 @@ import { TimepickerModule } from 'ngx-bootstrap';
     TabsModule.forRoot(),
     ModalModule.forRoot(),
     ColorPickerModule,
-    TimepickerModule.forRoot()
+    TimepickerModule.forRoot(),
+    ModalModule.forRoot(),
+    TagInputModule
   ],
   providers: [],
   declarations: [
@@ -68,7 +90,16 @@ import { TimepickerModule } from 'ngx-bootstrap';
     ProfileImgComponent,
     TableDropDownComponent,
     FoxButtonComponent,
-    AddButtonComponent
+    AddButtonComponent,
+    EventGroupComponent,
+    FoxInputComponent,
+    EventTagComponent,
+    SwitcherComponent,
+    ConfigureButtonComponent,
+    EventsToCurGroupModalComponent,
+    EventToGroupModalComponent,
+    ScrollComponent,
+    GroupDropDownComponent
   ],
   exports: [
     CreationButtonComponent,
@@ -88,7 +119,16 @@ import { TimepickerModule } from 'ngx-bootstrap';
     ProfileImgComponent,
     TableDropDownComponent,
     FoxButtonComponent,
-    AddButtonComponent
+    AddButtonComponent,
+    EventGroupComponent,
+    FoxInputComponent,
+    EventTagComponent,
+    SwitcherComponent,
+    ConfigureButtonComponent,
+    EventsToCurGroupModalComponent,
+    EventToGroupModalComponent,
+    ScrollComponent,
+    GroupDropDownComponent
   ]
 })
 

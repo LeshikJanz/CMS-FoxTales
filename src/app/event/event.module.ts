@@ -18,6 +18,10 @@ import { EventListComponent } from './list';
 import { EventCreateComponent } from './create';
 
 import { FeatureModule } from '../components/feature.module';
+import { EventGroupsComponent } from '../event-groups/list/event-groups.component';
+import { EventGroupsService } from '../event-groups/list/event-groups.service';
+import { EventGroupCreateComponent } from '../event-groups/create/event-group-create.component';
+import { GalleryModule } from '../gallery/gallery.module';
 
 @NgModule({
   imports: [
@@ -32,7 +36,8 @@ import { FeatureModule } from '../components/feature.module';
     TagInputModule,
     SharedModule,
     EVENT_ROUTING,
-    FeatureModule
+    FeatureModule,
+    GalleryModule
   ],
   providers: [
     {
@@ -40,11 +45,14 @@ import { FeatureModule } from '../components/feature.module';
       useFactory: httpFactory,
       deps: [ XHRBackend, RequestOptions, Injector ]
     },
-    EventService
+    EventService,
+    EventGroupsService
   ],
   declarations: [
     EventListComponent,
-    EventCreateComponent
+    EventCreateComponent,
+    EventGroupsComponent,
+    EventGroupCreateComponent
   ]
 })
 export class EventModule {

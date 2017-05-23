@@ -35,6 +35,7 @@ export class ClientListComponent implements OnInit {
    * @type {ICol[]}
    */
   public cols: ICol[] = [
+    { id: 'logo',    title: 'Logo',        format: 'myImage' },
     { id: 'name',    title: 'Client Name', format: 'default',  searchable: true },
     { id: 'address', title: 'Address',     format: 'default',  searchable: true },
     { id: 'city',    title: 'City',        format: 'default',  searchable: true },
@@ -49,19 +50,7 @@ export class ClientListComponent implements OnInit {
    * @type {ITableAction[]}
    */
   public actions: ITableAction[] = [
-    { title: 'Edit',      callback: 'editClient' },
-    { title: 'Archive',   callback: 'archiveClient' },
-    { title: 'Unarchive', callback: 'unarchiveClient' }
-  ];
-
-  /**
-   * Archieve states
-   *
-   * @type {ITableAction[]}
-   */
-  public clientStates: IActionState[] = [
-    { id: 1, action: 'Unarchived'},
-    { id: 2, action: 'Archived'}
+    { title: 'Edit', callback: 'editClient' }
   ];
 
   /**
@@ -129,36 +118,6 @@ export class ClientListComponent implements OnInit {
   }
 
   /**
-   * Archive client by id
-   *
-   * @param {string} id - Client id
-   * @returns {void}
-   */
-  public archiveClient(id: string): void {
-    this.clientService
-      .archiveClient(id)
-      .subscribe(() => {
-        this.toastrService.success('Client has been archived successfully.');
-        this.getClients();
-      });
-  }
-
-  /**
-   * Unarchive client by id
-   *
-   * @param {string} id - Client id
-   * @returns {void}
-   */
-  public unarchiveClient(id: string): void {
-    this.clientService
-      .unarchiveClient(id)
-      .subscribe(() => {
-        this.toastrService.success('Client has been unarchived successfully.');
-        this.getClients();
-      });
-  }
-
-  /**
    * On sort changed
    *
    * @param {ICol} col - Table column
@@ -203,17 +162,6 @@ export class ClientListComponent implements OnInit {
    */
   public onPageChanged(page: number): void {
     this.filter.pageingInfo.currentPage = page - 1;
-    this.getClients();
-  }
-
-  /**
-   * On type changed
-   *
-   * @param {number} type - Client type
-   * @returns {void}
-   */
-  public onTypeChanged(type: number): void {
-    this.filter.currentFilter = type;
     this.getClients();
   }
 

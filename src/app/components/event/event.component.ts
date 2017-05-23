@@ -3,18 +3,11 @@ import { IActionState } from '../../client/client.interface';
 
 @Component({
   selector: 'event',
-  templateUrl: './event.component.html',
-  styleUrls: [ './event.component.scss' ]
+  templateUrl: 'event.component.html',
+  styleUrls: ['event.component.scss']
 })
 
 export class EventComponent {
-  public eventActions: IActionState[] = [
-    { id: 1, action: 'SETTINGS' },
-    { id: 2, action: 'CLONE' },
-    { id: 3, action: 'ARCHIEVE' },
-    { id: 4, action: 'ADD TO GROUP' },
-    { id: 5, action: 'ASSIGN USERS' },
-  ];
 
   /**
    * Event name
@@ -22,6 +15,20 @@ export class EventComponent {
    * @type string
    */
   @Input() public event: any[];
+
+  /**
+   * Actions for event
+   *
+   * @type IActionState[]
+   */
+  @Input() public eventActions: IActionState[];
+
+  /**
+   * Object controls Modal state
+   *
+   * @type {any}
+   */
+  @Input() public modal: any;
 
   /**
    * Event name
@@ -66,8 +73,8 @@ export class EventComponent {
    */
   public isChecked: boolean = false;
 
-  public onTypeChanged(event) {
-    switch (event) {
+  public onTypeChanged(type) {
+    switch (type.event) {
       case 1:
         console.log('settings');
         break;
@@ -78,7 +85,7 @@ export class EventComponent {
         console.log('archieve');
         break;
       case 4:
-        console.log('add to group');
+        this.modal.show(type.action);
         break;
       case 5:
         console.log('assign user');

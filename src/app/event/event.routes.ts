@@ -3,11 +3,24 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { EventListComponent } from './list';
 import { EventCreateComponent } from './create';
+import { EventGroupsComponent } from '../event-groups/list/event-groups.component';
+import { EventGroupCreateComponent } from '../event-groups/create/event-group-create.component';
+import { GalleryListComponent } from '../gallery/list/gallery-list.component';
 
 const EVENT_ROUTES: Routes = [
-  { path: '',    redirectTo: 'events' },
-  { path: 'events',    component: EventListComponent },
-  { path: 'event',    component: EventCreateComponent },
+  {path: '', redirectTo: 'events'},
+  {
+    path: 'events', component: EventListComponent
+  },
+  {
+    path: 'events/:id/gallery', component: EventListComponent,
+    children: [
+      GalleryListComponent
+    ]
+  },
+  {path: 'event', component: EventCreateComponent},
+  {path: 'event-groups', component: EventGroupsComponent},
+  {path: 'event-group', component: EventGroupCreateComponent}
 ];
 
 export const EVENT_ROUTING: ModuleWithProviders = RouterModule.forChild(EVENT_ROUTES);

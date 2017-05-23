@@ -1,8 +1,7 @@
 <div class="container">
+  <a href="javascript:void(0)" [routerLink]="['/admin/clients']">Back to all Clients</a>
 
-  <h1>{{ client?.displayName }}</h1>
-
-  <img src="{{ client?.logo }}" alt="">
+  <h1>{{ client?.name }}</h1>
 
   <form
     (ngSubmit)="updateClient()"
@@ -12,6 +11,9 @@
     <div [formGroup]="clientForm">
       <!-- Logo -->
       <label style="font-size: 18px">Client logo</label>
+
+      <img src="{{ logoBytes || client?.logo }}" style="max-height: 50px;">
+
       <upload-button (imgUploaded)="onImgUploaded($event)"></upload-button>
 
       <!-- Name -->
@@ -26,24 +28,6 @@
           placeholder="Name">
 
         <div ngxErrors="name">
-          <div class="field-error"  ngxError="required" when="touched">
-            Field is required
-          </div>
-        </div>
-      </div>
-
-      <!-- Display Name -->
-      <div class="form-element">
-        <label for="displayName">Display Name</label>
-        <input
-          id="displayName"
-          type="text"
-          class="form-control input"
-          [(ngModel)]="client.displayName"
-          formControlName="displayName"
-          placeholder="Display Name">
-
-        <div ngxErrors="displayName">
           <div class="field-error"  ngxError="required" when="touched">
             Field is required
           </div>
@@ -133,12 +117,14 @@
       <div class="form-element" formArrayName="socialAccounts">
         <label>Social Accounts</label>
 
-        <div *ngFor="let account of socialAccounts.controls">
+        <div *ngFor="let account of socialAccounts.controls; let i = index">
           <input
             type="text"
             class="form-control input"
+            [(ngModel)]="client.socialAccounts[i]"
             [formControl]="account"
             placeholder="Social Account Url">
+          <a href="javascript:void(0)" (click)="removeSocialAccount(i)">x</a>
         </div>
 
         <div>
@@ -149,12 +135,13 @@
 
     <!-- Licenses -->
     <div class="form-group">
-      <label *ngFor="let license of licenses">
+      <label *ngFor="let license of licenses; let i = index">
         <input
           type="checkbox"
           name="selectedLicenses[]"
           class="form-control input checkbox"
-          [(ngModel)]="license.checked">
+          (change)="selectLicense(i, $event.target.checked)"
+          [checked]="license.checked">
         {{ license.name }}
       </label>
     </div>

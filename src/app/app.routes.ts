@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { AuthGuard } from './shared/core';
 import { NoContentComponent } from './no-content';
+import { ForbiddenComponent } from './forbidden';
 
 export const ROUTES: Routes = [
 
@@ -24,6 +25,6 @@ export const ROUTES: Routes = [
     loadChildren: 'app/experience-builder/experience-builder.module#ExperienceBuilderModule', 
     canActivate: [ AuthGuard ] 
   },
+  { path: 'forbidden', component: ForbiddenComponent },
   { path: '**',    component: NoContentComponent }
-
 ];
