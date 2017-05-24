@@ -30,6 +30,7 @@ export class EventService {
   // }
 
     // 19.05
+    
     return this.http.get(`${process.env.API_URL}/Events`)
         // return this.http.get(`https://foxtalesdev.azurewebsites.net/api/events`)
         // return this.http.get(`assets/mock-data/event/events.json`)
@@ -38,7 +39,9 @@ export class EventService {
 
           return temp;
         });
+        
   };
+  
 
 
   /**
