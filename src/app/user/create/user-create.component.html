@@ -28,14 +28,14 @@
 
       <!-- Client Access -->
       <div>
-        <label for="selectedClientAccess">Client Access</label>
+        <label for="clientId">Client Access</label>
         <select
-          id="selectedClientAccess"
-          formControlName="selectedClientAccess">
-          <option value="0">Access 1</option>
+          id="clientId"
+          formControlName="clientId">
+          <option *ngFor="let client of clients" [ngValue]="client.id">{{ client.name }}</option>
         </select>
 
-        <div ngxErrors="selectedClientAccess">
+        <div ngxErrors="clientId">
           <div ngxError="required" when="touched">
             Field is required
           </div>

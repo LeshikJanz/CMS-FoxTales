@@ -5,6 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { CustomValidators } from 'ng2-validation';
 import { IUser } from '../user.interface';
 import { IUserRole } from '../user-role.interface';
+import { IUserClient } from '../user-client.interface';
 import { UserService } from '../user.service';
 
 /**
@@ -30,7 +31,7 @@ export class UserEditComponent implements OnInit {
   public user: IUser = {
     email: null,
     roles: [],
-    selectedClientAccess: null
+    clientId: null
   };
 
   /**
@@ -39,6 +40,13 @@ export class UserEditComponent implements OnInit {
    * @type {IUserRole[]}
    */
   public roles: IUserRole[];
+
+  /**
+   * Clients
+   *
+   * @type {IUserClient[]}
+   */
+  public clients: IUserClient[];
 
   /**
    * Constructor
@@ -67,6 +75,7 @@ export class UserEditComponent implements OnInit {
    */
   public ngOnInit(): void {
     this.buildUserForm();
+    this.getUserClients();
 
     this.route.params.subscribe((params: any) => {
       const id = params['id'];
@@ -92,6 +101,17 @@ export class UserEditComponent implements OnInit {
 
         this.roles = roles;
     });
+  }
+
+  /**
+   * Get user clients
+   *
+   * @returns {void}
+   */
+  public getUserClients(): void {
+    this.userService
+      .getClients()
+      .subscribe((clients: IUserClient[]) => this.clients = clients);
   }
 
   /**
@@ -150,7 +170,7 @@ export class UserEditComponent implements OnInit {
         Validators.required,
         CustomValidators.email
       ]],
-      selectedClientAccess: ['', [
+      clientId: ['', [
         Validators.required
       ]]
     });
