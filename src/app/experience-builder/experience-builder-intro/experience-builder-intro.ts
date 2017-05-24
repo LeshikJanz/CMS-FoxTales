@@ -2,10 +2,12 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { ExperienceBuilderService } from '../experience-builder.service';
+import { ButtonsModule } from 'ngx-bootstrap';
 
 @Component({
   selector: 'experience-builder-intro',
-  templateUrl: './experience-builder-intro.html'
+  templateUrl: './experience-builder-intro.html',
+   styleUrls: ['experience-builder-intro.scss']
 })
 
 export class ExperienceBuilderIntroComponent implements OnInit {
@@ -32,9 +34,10 @@ export class ExperienceBuilderIntroComponent implements OnInit {
 
 
    }
- 
+
 
   Next(){
+
     this.experienceBuilderService.addExperience({"name": this.experienceName,
   "eventId": this.id, "productId": this.selectedValue}).subscribe((experience) => {
     console.log(experience)
