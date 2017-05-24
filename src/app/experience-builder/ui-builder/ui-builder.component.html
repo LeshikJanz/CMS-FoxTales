@@ -10,7 +10,7 @@
            <input class="colorDisplayInput" [style.background]="backgroundColor"/><input class="colorSelectionInput" [(colorPicker)]="backgroundColor"  [value]="backgroundColor"  />
           <h4>Logo and Overlay</h4>
           <upload-button></upload-button>
-          <fox-button  [type]="'tertiary'" [value]="'Next'" (click)="Next();"></fox-button>
+          <button  [type]="'tertiary'" [value]="'Next'" (click)="Next();">Next</button>
       </div>
   </tab>
   <tab heading='Text'>
@@ -22,6 +22,6 @@
        <h5>Thank You Screen</h5>
       <textarea [(ngModel)]="thankYouText" cols="40" rows="5"></textarea>
       <br>
-    <fox-button  [type]="'tertiary'" [value]="'Finish'" (click)="Finish();"></fox-button>
+    <button  [type]="'tertiary'" [value]="'Finish'" (click)="Finish();">Finish</button>
   </tab>
 </tabset>
