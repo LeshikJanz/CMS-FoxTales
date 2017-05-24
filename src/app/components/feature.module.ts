@@ -58,6 +58,7 @@ import {
   EventToGroupModalComponent
 }
   from './modals/event-to-group-modal/event-to-group-modal.component';
+  import { DatepickerModule } from 'ngx-bootstrap';
 
 
 @NgModule({
@@ -71,7 +72,8 @@ import {
     ColorPickerModule,
     TimepickerModule.forRoot(),
     ModalModule.forRoot(),
-    TagInputModule
+    TagInputModule,
+    DatepickerModule.forRoot()
   ],
   providers: [],
   declarations: [
