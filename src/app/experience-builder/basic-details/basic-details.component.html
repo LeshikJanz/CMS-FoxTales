@@ -1,6 +1,9 @@
+<div class="basic-details-container">
 When is the experience happening?
-
+  <datepicker [(ngModel)]="dt" [minDate]="minDate" ></datepicker>
               
 <timepicker [(ngModel)]="mytime"></timepicker>
 
-<button (click)="Next()" [routerLink]="['/experience-builder/container/content-options']" >Next</button>
+<!--<button (click)="Next()" [routerLink]="['/experience-builder/container/content-options']" >Next</button>-->
+<button (click)="Next()" >Next</button>
+</div>

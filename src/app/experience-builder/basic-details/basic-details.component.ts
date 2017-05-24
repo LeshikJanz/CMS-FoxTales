@@ -12,9 +12,13 @@ import { ExperienceBuilderService } from '../experience-builder.service';
 
 export class BasicDetailsComponent implements OnInit {
    public mytime: Date = new Date();
+   public dt: Date = new Date();
+ public minDate: Date = void 0;
 
   constructor(private router: Router,
-              private experienceBuilderService: ExperienceBuilderService) {}
+              private experienceBuilderService: ExperienceBuilderService) {
+                  (this.minDate = new Date()).setDate(this.minDate.getDate() - 1000);
+              }
 
 
    public ngOnInit(){
@@ -23,6 +27,10 @@ export class BasicDetailsComponent implements OnInit {
 
 
   Next(){
-      console.log('waiting to choose timepicker to submit to BE ')
+      console.log("dt", this.dt,"mytime",this.mytime)
+  }
+
+    public getDate(): number {
+    return this.dt && this.dt.getTime() || new Date().getTime();
   }
 }
