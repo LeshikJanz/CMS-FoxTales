@@ -19,6 +19,9 @@ import { BasicDetailsComponent } from './basic-details';
 import { UIBuilderComponent } from './ui-builder';
 import { EmailBuilderComponent } from './email-builder';
 import { ContentOptionsComponent } from './content-options';
+import { SharingOptionsComponent } from './sharing-options';
+import { ContentGalleryComponent } from './content-gallery';
+import { ContentFeedsComponent } from './content-feeds';
 
 import { EXPERIENCE_BUILDER_ROUTING } from './experience-builder.routes';
 
@@ -26,6 +29,8 @@ import { FeatureModule } from '../components/feature.module';
 
 import { ExperienceBuilderService } from './experience-builder.service';
 import { TimepickerModule } from 'ngx-bootstrap';
+import { DatepickerModule } from 'ngx-bootstrap';
+import { ButtonsModule } from 'ngx-bootstrap';
 
 @NgModule({
   imports: [
@@ -44,7 +49,9 @@ import { TimepickerModule } from 'ngx-bootstrap';
     ModalModule.forRoot(),
     TagInputModule,
     ColorPickerModule,
-    TimepickerModule.forRoot()
+    TimepickerModule.forRoot(),
+    DatepickerModule.forRoot(),
+    ButtonsModule.forRoot()
   ],
   providers: [
     {
@@ -65,7 +72,10 @@ import { TimepickerModule } from 'ngx-bootstrap';
       BasicDetailsComponent,
       UIBuilderComponent,
       EmailBuilderComponent,
-      ContentOptionsComponent
+      ContentOptionsComponent,
+      SharingOptionsComponent,
+      ContentGalleryComponent,
+      ContentFeedsComponent
   ]
 })
 export class ExperienceBuilderModule {
