@@ -6,17 +6,17 @@ import { IUserRole } from './user-role.interface';
 export interface IUser {
   id?: string;
   userADId?: string;
-  clientId?: string;
+  clientId: string;
   clientName?: string;
   firstName?: string;
   lastName?: string;
   email: string;
   phone?: string;
-  roles: IUserRole[];
+  roles?: IUserRole[];
   isActive?: boolean;
   location?: string;
   lastActiveDate?: string;
-  selectedClientAccess: string;
+  selectedClientAccess?: string;
 }
 
 /**

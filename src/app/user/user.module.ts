@@ -5,6 +5,7 @@ import { Http, HttpModule, RequestOptions, XHRBackend } from '@angular/http';
 import { CustomFormsModule } from 'ng2-validation';
 import { NgxErrorsModule } from '@ultimate/ngxerrors';
 import { ToastrModule, ToastContainerModule } from 'ngx-toastr';
+import { Ng2BootstrapModule } from 'ngx-bootstrap';
 
 import { SharedModule } from '../shared';
 import { HttpService, AuthService, AuthRequestOptions } from '../shared/core';
@@ -27,6 +28,7 @@ import { FeatureModule } from '../components/feature.module';
     NgxErrorsModule,
     ToastrModule.forRoot(),
     ToastContainerModule.forRoot(),
+    Ng2BootstrapModule,
     SharedModule,
     USER_ROUTING,
     FeatureModule

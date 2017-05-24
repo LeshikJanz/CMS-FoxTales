@@ -24,7 +24,7 @@ export class User implements IUser {
    *
    * @type {string}
    */
-  public clientId?: string;
+  public clientId: string;
 
   /**
    * First name
@@ -59,7 +59,7 @@ export class User implements IUser {
    *
    * @type {IUserRole[]}
    */
-  public roles: IUserRole[];
+  public roles?: IUserRole[];
 
   /**
    * Is user active?
@@ -87,7 +87,7 @@ export class User implements IUser {
    *
    * @type {string}
    */
-  public selectedClientAccess: string;
+  public selectedClientAccess?: string;
 
   /**
    * Constructor
