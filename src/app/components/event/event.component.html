@@ -3,7 +3,6 @@
     <div class="main-info">
       <div>
         <checkbox></checkbox>
-
         <img *ngIf="status === -1" src="../../../assets/img/attention.svg" alt="">
         <img *ngIf="status === 1" src="../../../assets/img/complete.svg" alt="">
         <label class="name">{{event.name}}</label>
@@ -18,6 +17,11 @@
       </div>
     </div>
   </div>
-  <action-dropdown style="align-self: center" [options]="eventActions" (typeChanged)="onTypeChanged($event)"></action-dropdown>
+  <fox-button *ngIf="eventActions.length === 1"
+              [value]="eventActions[0].action"
+              [design]="'gray'"></fox-button>
+  <action-dropdown *ngIf="eventActions.length > 1" style="align-self: center" [options]="eventActions" (typeChanged)="onTypeChanged({action: event, event: $event})"></action-dropdown>
 </div>
-<hr>
+
+
+

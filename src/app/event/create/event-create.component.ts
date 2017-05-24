@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ITag } from '../tag.interface';
 import { EventService } from '../event.service';
+import { MOCK_TAGS } from '../tag.mock';
 
 @Component({
   selector: 'event-create',

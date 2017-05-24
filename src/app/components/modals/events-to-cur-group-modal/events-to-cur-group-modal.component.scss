@@ -1,0 +1,33 @@
+.modal-lg {
+  width: 60%;
+}
+
+.close img {
+  height: 30px;
+}
+
+.modal-body {
+
+  tag-input {
+    padding-top: 30px;
+  }
+
+  .btn-actions {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    padding-top: 60px;
+
+    fox-button {
+      height: 55px;
+      width: 120px;
+      font-size: 16px;
+    }
+
+    .cancel {
+      margin-left: 25px;
+      width: 150px;
+    }
+  }
+}

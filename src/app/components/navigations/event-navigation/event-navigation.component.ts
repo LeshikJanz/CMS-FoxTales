@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'event-navigation',
@@ -6,4 +8,14 @@ import { Component } from '@angular/core';
   styleUrls: ['event-navigation.component.scss']
 })
 
-export class EventNavigationComponent {}
+export class EventNavigationComponent {
+  public curLocation: string;
+
+  constructor(private location: Location,
+              private router: Router) {
+    this.router.events.subscribe((val) =>
+      this.curLocation = this.location.path()
+    );
+  }
+
+}

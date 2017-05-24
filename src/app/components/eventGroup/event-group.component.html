@@ -1,0 +1,20 @@
+<div *ngFor="let group of eventGroups">
+  <div class="group-container">
+    <div (click)="group.isOpen = !group.isOpen" class="info">
+      <img [hidden]="group.isOpen" class="circle" src="../../../assets/img/plus-outline.svg" alt="">
+      <img [hidden]="!group.isOpen" class="circle" src="../../../assets/img/minus-outline.svg" alt="">
+      <div>
+        <label class="group-name">{{group.name}}</label>
+        <label> {{group.events.length}} events</label>
+        <label>{{group.events.length && getMinDate(group)}} - {{group.events.length && getMaxDate(group)}}</label>
+      </div>
+
+    </div>
+    <group-dropdown style="align-self: center" [options]="groupActions"
+                    (typeChanged)="onTypeChanged({ group: group, event: $event})"></group-dropdown>
+  </div>
+  <div [hidden]="!group.isOpen" class="group-dropdown">
+    <event *ngFor="let event of group.events" [event]="event" [eventActions]="eventActions">
+    </event>
+  </div>
+</div>

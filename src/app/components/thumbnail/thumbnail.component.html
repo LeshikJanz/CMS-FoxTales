@@ -1,0 +1,33 @@
+<div class="thumbnail-container">
+  <div class="content">
+    <checkbox (toggle)="onChecked($event)"></checkbox>
+    <img
+      src="https://amazingcarousel.com/wp-content/uploads/amazingcarousel/3/images/lightbox/golden-wheat-field-lightbox.jpg"
+      alt="">
+    <div class="buttons">
+      <div class="confirm" (click)="onConfirm()">
+        <img src="../../../assets/img/completed-icon.svg" alt="">
+      </div>
+      <div class="decline" (click)="onDecline()">
+        <img src="../../../assets/img/declined-icon.svg" alt="">
+      </div>
+    </div>
+  </div>
+  <div class="info">
+    <div class="title">item.</div>
+    <div class="type">TYPE</div>
+    <div class="progress-container">
+      <div class="progress">
+        <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar"
+             [attr.aria-valuenow]="progress" aria-valuemin="0" aria-valuemax="100"
+             style="min-width: 2em;" [style.width]="(50/100)*100 + '%'">
+          {{50}}%
+        </div>
+        <div></div>
+      </div>
+      <div class="progress-value">{{50}}%</div>
+    </div>
+  </div>
+</div>
+
+

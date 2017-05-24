@@ -1,0 +1,41 @@
+<div *ngIf="isModalShown" [config]="{ show: true }" (onHidden)="onHidden()"
+     bsModal #aeModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">Add to {{group.name}}</h3>
+        <button type="button" class="close" (click)="lgModal.hide()" aria-label="Close">
+          <img src="assets/img/close.svg">
+        </button>
+      </div>
+      <div class="modal-body">
+          <tag-input
+            [transform]="tagTransformer"
+            [maxItems]="10"
+            [(ngModel)]="selectedEvents"
+          >
+            <tag-input-dropdown
+              [appendToBody]=false
+              [identifyBy]="'id'"
+              [displayBy]="'name'"
+              [autocompleteItems]="events">
+            </tag-input-dropdown>
+          </tag-input>
+
+        <div class="btn-actions">
+          <fox-button
+            [value]="'Save'"
+            [design]="'primary'"
+            (click)="updateGroup()"
+          ></fox-button>
+          <fox-button
+            class="cancel"
+            [value]="'CANCEL'"
+            [design]="'tertiary'"
+            (click)="lgModal.hide()"
+          ></fox-button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
