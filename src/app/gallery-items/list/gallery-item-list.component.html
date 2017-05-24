@@ -1,0 +1,15 @@
+<h1>It's gallery</h1>
+<h1>Gallery Id: {{galleryId}}</h1>
+
+<div class="gallery" >
+  <thumbnail
+    *ngFor="let item of galleryItems"
+    [item]="item"
+    [title]="'Title of Thumbnail'"
+    [type]="'Type'"
+    [progress]="80"
+    (toggle)="isChecked=$event"
+    (confirm)="onConfirm()"
+    (decline)="onDecline()"
+  ></thumbnail>
+</div>

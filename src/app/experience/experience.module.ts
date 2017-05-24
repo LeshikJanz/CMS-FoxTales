@@ -17,6 +17,8 @@ import { ExperienceListComponent } from './list';
 import { ExperienceCreateComponent } from './create';
 
 import { FeatureModule } from '../components/feature.module';
+import { ExperienceComponent } from './experience.component';
+import { GalleryModule } from '../gallery/gallery.module';
 
 @NgModule({
   imports: [
@@ -31,7 +33,8 @@ import { FeatureModule } from '../components/feature.module';
     TagInputModule,
     SharedModule,
     EXPERIENCE_ROUTING,
-    FeatureModule
+    FeatureModule,
+    GalleryModule
   ],
   providers: [
     {
@@ -43,7 +46,8 @@ import { FeatureModule } from '../components/feature.module';
   ],
   declarations: [
     ExperienceListComponent,
-    ExperienceCreateComponent
+    ExperienceCreateComponent,
+    ExperienceComponent
   ]
 })
 export class ExperienceModule {

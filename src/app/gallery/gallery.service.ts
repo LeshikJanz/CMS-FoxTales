@@ -22,8 +22,8 @@ export class GalleryService {
    * @param {IGalleryItem} filter - Filter
    * @returns {Observable<IGalleryItem>} - Gallery items
    */
-  public getGalleryItems(): Observable<IGalleryItem> {
+  public getGalleryItems(): Observable<IGalleryItem[]> {
     return this.http.get(`${process.env.API_URL}/Media`)
-      .map((response: Response) => <IGalleryItem> response.json());
+      .map((response: Response) => <IGalleryItem[]> response.json());
   }
 }

@@ -5,18 +5,11 @@ import { EventListComponent } from './list';
 import { EventCreateComponent } from './create';
 import { EventGroupsComponent } from '../event-groups/list/event-groups.component';
 import { EventGroupCreateComponent } from '../event-groups/create/event-group-create.component';
-import { GalleryListComponent } from '../gallery/list/gallery-list.component';
 
 const EVENT_ROUTES: Routes = [
   {path: '', redirectTo: 'events'},
   {
     path: 'events', component: EventListComponent
-  },
-  {
-    path: 'events/:id/gallery', component: EventListComponent,
-    children: [
-      GalleryListComponent
-    ]
   },
   {path: 'event', component: EventCreateComponent},
   {path: 'event-groups', component: EventGroupsComponent},

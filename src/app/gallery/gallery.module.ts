@@ -12,8 +12,9 @@ import { HttpService } from '../shared/core';
 
 import { FeatureModule } from '../components/feature.module';
 import { GALLERY_ROUTING } from './gallery.routes';
-import { GalleryListComponent } from './list/gallery-list.component';
 import { GalleryService } from './gallery.service';
+import { GalleryItemListComponent } from '../gallery-items/list/gallery-item-list.component';
+import { GalleryListComponent } from './list/gallery-list.component';
 
 @NgModule({
   imports: [
@@ -39,7 +40,8 @@ import { GalleryService } from './gallery.service';
     GalleryService
   ],
   declarations: [
-    GalleryListComponent
+    GalleryListComponent,
+    GalleryItemListComponent,
   ]
 })
 export class GalleryModule {

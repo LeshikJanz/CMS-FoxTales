@@ -20,7 +20,6 @@ import { FeatureModule } from '../components/feature.module';
 import { EventGroupsComponent } from '../event-groups/list/event-groups.component';
 import { EventGroupsService } from '../event-groups/list/event-groups.service';
 import { EventGroupCreateComponent } from '../event-groups/create/event-group-create.component';
-import { GalleryModule } from '../gallery/gallery.module';
 
 @NgModule({
   imports: [
@@ -35,8 +34,7 @@ import { GalleryModule } from '../gallery/gallery.module';
     TagInputModule,
     SharedModule,
     EVENT_ROUTING,
-    FeatureModule,
-    GalleryModule
+    FeatureModule
   ],
   providers: [
     {

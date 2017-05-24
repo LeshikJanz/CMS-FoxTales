@@ -44,6 +44,7 @@ import {
   EventToGroupModalComponent
 }
   from './modals/event-to-group-modal/event-to-group-modal.component';
+import { ThumbnailComponent } from './thumbnail/thumbnail.component';
 
 @NgModule({
   imports: [
@@ -79,7 +80,8 @@ import {
     EventsToCurGroupModalComponent,
     EventToGroupModalComponent,
     ScrollComponent,
-    GroupDropDownComponent
+    GroupDropDownComponent,
+    ThumbnailComponent
   ],
   exports: [
     CreationButtonComponent,
@@ -107,7 +109,8 @@ import {
     EventsToCurGroupModalComponent,
     EventToGroupModalComponent,
     ScrollComponent,
-    GroupDropDownComponent
+    GroupDropDownComponent,
+    ThumbnailComponent
   ]
 })
 
