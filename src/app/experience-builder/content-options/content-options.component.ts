@@ -1,11 +1,13 @@
 import { Component, Input, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { TabsetComponent } from 'ngx-bootstrap';
+import { ButtonsModule } from 'ngx-bootstrap';
 import { ExperienceBuilderService } from '../experience-builder.service';
 
 @Component({
   selector: 'content-options-component',
-  templateUrl: './content-options.component.html'
+  templateUrl: './content-options.component.html',
+     styleUrls: ['content-options.component.scss']
 })
 
 export class ContentOptionsComponent {
