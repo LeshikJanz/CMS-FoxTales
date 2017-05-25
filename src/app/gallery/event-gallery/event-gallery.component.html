@@ -21,6 +21,8 @@
         ></dropdown>
       </div>
       </div>
+      <switcher style="padding: 10px"
+                [options]="galleryTypes" (toggle)="onTypeChange($event)"></switcher>
 
       <input type="text" name="search" placeholder="find gallery" [(ngModel)]="search"
              (ngModelChange)="onSearchChange($event)">

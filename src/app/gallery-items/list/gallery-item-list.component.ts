@@ -7,7 +7,7 @@ import { GalleryService } from '../../gallery/gallery.service';
  * Gallery list component
  */
 @Component({
-  selector: 'gallery-list',
+  selector: 'gallery-item-list',
   templateUrl: 'gallery-item-list.component.html',
   styleUrls: ['gallery-item-list.component.scss']
 })

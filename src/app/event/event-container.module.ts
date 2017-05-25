@@ -9,6 +9,7 @@ import { ExperienceService } from '../experience/experience.service';
 import { GalleryItemListComponent } from '../gallery-items/list/gallery-item-list.component';
 import { GalleryService } from '../gallery/gallery.service';
 import { GalleryListComponent } from '../gallery/list/gallery-list.component';
+import { EventGalleryComponent } from '../gallery/event-gallery/event-gallery.component';
 
 @NgModule({
   imports: [
@@ -20,12 +21,14 @@ import { GalleryListComponent } from '../gallery/list/gallery-list.component';
     EventContainerComponent,
     ExperienceListComponent,
     GalleryItemListComponent,
-    GalleryListComponent
+    GalleryListComponent,
+    EventGalleryComponent
   ],
   exports: [
     ExperienceListComponent,
     GalleryItemListComponent,
-    GalleryListComponent
+    GalleryListComponent,
+    EventGalleryComponent
   ]
 })
 export class EventContainerModule {

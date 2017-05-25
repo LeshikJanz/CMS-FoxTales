@@ -16,8 +16,8 @@ const EXPERIENCE_ROUTES: Routes = [
     {path: 'content', component: ExperienceCreateComponent},
     {
       path: ':id', children: [
-      {path: 'exgalleries', component: ExperienceGalleryComponent},
-      {path: 'exgalleries/:id', component: GalleryItemListComponent},
+      {path: 'exgalleries', pathMatch: 'full', component: ExperienceGalleryComponent},
+      {path: 'exgalleries/:id', pathMatch: 'full', component: GalleryItemListComponent},
     ]
     },
   ]
