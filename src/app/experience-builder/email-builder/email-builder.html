@@ -39,23 +39,25 @@
             <button [type]="'tertiary'" [value]="'Finish'" (click)="Finish()" >Next</button>
           </tab>
               <tab heading='Part 3'>
-            <h3>Email Builder Name*</h3>
-            <input>
-            <hr>
-            <h3>Connect A Content Option</h3>
-            <input>
+            <h3>What Type Of Email Are You Sending?</h3>
+            <select>
+              <option>Image Based</option>
+              <option>Text Based</option>
+            </select>
+            <h3>Text Body (can include HTML)</h3>
+            <textarea></textarea>
+              <hr>
+              <h3>Call To Action Text</h3>
+              <input>
+              <h3>Call To Action Link</h3>
+              <input>
+
+  
+        
             <br>
             <button [type]="'tertiary'" [value]="'Finish'" (click)="Finish()" >Next</button>
           </tab>
-                   <tab heading='Part 4'>
-            <h3>Email Builder Name*</h3>
-            <input>
-            <hr>
-            <h3>Connect A Content Option</h3>
-            <input>
-            <br>
-            <button [type]="'tertiary'" [value]="'Finish'" (click)="Finish()" >Finish</button>
-          </tab>
+                 
         </tabset>
       </div>
     </div>
