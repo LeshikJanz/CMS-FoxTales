@@ -4,8 +4,8 @@ import { GalleryItemListComponent } from '../../gallery-items/list/gallery-item-
 import { GalleryListComponent } from '../list/gallery-list.component';
 
 const GALLERY_ROUTES: Routes = [
-  { path: '',    component: GalleryListComponent },
-  { path: ':id',    component: GalleryItemListComponent },
+  { path: '',  pathMatch: 'full',    component: GalleryItemListComponent },
+  { path: ':id', pathMatch: 'full',    component: GalleryItemListComponent },
 ];
 
 export const GALLERY_ROUTING: ModuleWithProviders = RouterModule.forChild(GALLERY_ROUTES);

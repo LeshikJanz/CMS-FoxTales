@@ -2,7 +2,9 @@ import { ModuleWithProviders } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ExperienceComponent } from './experience.component';
 import { EventContainerComponent } from './event-container.component';
-import { ExperienceListComponent } from "../experience/list/experience-list.component";
+import { ExperienceListComponent } from '../experience/list/experience-list.component';
+import { GalleryItemListComponent } from '../gallery-items/list/gallery-item-list.component';
+import { GalleryListComponent } from "../gallery/list/gallery-list.component";
 
 const EVENT_ROUTES: Routes = [
   {
@@ -10,7 +12,10 @@ const EVENT_ROUTES: Routes = [
     children: [
       {path: ':id/experiences', component: ExperienceListComponent},
       {
-        path: ':id/galleries', loadChildren: 'app/gallery/event-gallery/event-gallery.module#EventGalleryModule'
+        path: ':id', children: [
+        {path: 'galleries', pathMatch: 'full', component: GalleryListComponent},
+        {path: 'galleries/:id', pathMatch: 'full', component: GalleryItemListComponent},
+      ]
       },
     ]
   },

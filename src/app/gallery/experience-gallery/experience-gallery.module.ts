@@ -15,6 +15,7 @@ import { GalleryListComponent } from '../list/gallery-list.component';
 import { SharedModule } from '../../shared/shared.module';
 import { HttpService } from '../../shared/core/http/http.service';
 import { EventGalleryModule } from '../event-gallery/event-gallery.module';
+import { ExperienceGalleryComponent } from './experience-gallery.component';
 
 @NgModule({
   imports: [
@@ -40,7 +41,7 @@ import { EventGalleryModule } from '../event-gallery/event-gallery.module';
     },
     GalleryService
   ],
-  declarations: []
+  declarations: [ExperienceGalleryComponent]
 })
 export class ExperienceGalleryModule {
 }

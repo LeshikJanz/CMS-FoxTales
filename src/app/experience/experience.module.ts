@@ -20,6 +20,9 @@ import { FeatureModule } from '../components/feature.module';
 import { ExperienceComponent } from './experience.component';
 import { ExperienceContentComponent } from './content/experience-content';
 import { EventContainerModule } from '../event/event-container.module';
+import { ExperienceGalleryComponent } from '../gallery/experience-gallery/experience-gallery.component';
+import { GalleryItemListComponent } from '../gallery-items/list/gallery-item-list.component';
+import { GalleryService } from '../gallery/gallery.service';
 
 @NgModule({
   imports: [
@@ -43,12 +46,14 @@ import { EventContainerModule } from '../event/event-container.module';
       useFactory: httpFactory,
       deps: [ XHRBackend, RequestOptions, Injector ]
     },
-    ExperienceService
+    ExperienceService,
+    GalleryService
   ],
   declarations: [
     ExperienceCreateComponent,
     ExperienceComponent,
-    ExperienceContentComponent
+    ExperienceContentComponent,
+    ExperienceGalleryComponent,
   ]
 })
 export class ExperienceModule {

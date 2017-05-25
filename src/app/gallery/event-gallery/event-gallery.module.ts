@@ -38,10 +38,7 @@ import { HttpService } from '../../shared/core/http/http.service';
     },
     GalleryService
   ],
-  declarations: [
-    GalleryListComponent,
-    GalleryItemListComponent,
-  ]
+  declarations: []
 })
 export class EventGalleryModule {
 }

@@ -2,23 +2,30 @@ import { NgModule, Injector } from '@angular/core';
 import { RequestOptions, XHRBackend } from '@angular/http';
 import { HttpService } from '../shared/core';
 import { FeatureModule } from '../components/feature.module';
-import { EVENT_ROUTING } from "./event-container.routes";
+import { EVENT_ROUTING } from './event-container.routes';
 import { EventContainerComponent } from './event-container.component';
 import { ExperienceListComponent } from '../experience/list/experience-list.component';
 import { ExperienceService } from '../experience/experience.service';
+import { GalleryItemListComponent } from '../gallery-items/list/gallery-item-list.component';
+import { GalleryService } from '../gallery/gallery.service';
+import { GalleryListComponent } from '../gallery/list/gallery-list.component';
 
 @NgModule({
   imports: [
     EVENT_ROUTING,
     FeatureModule,
   ],
-  providers: [ExperienceService],
+  providers: [ExperienceService, GalleryService],
   declarations: [
     EventContainerComponent,
-    ExperienceListComponent
+    ExperienceListComponent,
+    GalleryItemListComponent,
+    GalleryListComponent
   ],
   exports: [
-    ExperienceListComponent
+    ExperienceListComponent,
+    GalleryItemListComponent,
+    GalleryListComponent
   ]
 })
 export class EventContainerModule {
