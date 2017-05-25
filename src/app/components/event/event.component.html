@@ -8,7 +8,7 @@
         <label class="name">{{event.name}}</label>
         <label class="date">{{ event.startTime | date}}</label>
         <label *ngIf="event.tags.length > 0">#{{event.tags}}</label>
-        <a style="text-decoration: none" [routerLink]="['/experience', event.id, 'content']">link to experience </a>
+        <a style="text-decoration: none" [routerLink]="['/event', event.id, 'experiences']">link to experience </a>
       </div>
       <div class="experience">
         <label name="experiences">

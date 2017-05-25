@@ -11,9 +11,9 @@ const EVENT_ROUTES: Routes = [
   {
     path: 'events', component: EventListComponent
   },
-  {path: 'event', component: EventCreateComponent},
+  {path: 'create-event', component: EventCreateComponent},
   {path: 'event-groups', component: EventGroupsComponent},
   {path: 'event-group', component: EventGroupCreateComponent}
 ];
 
-export const EVENT_ROUTING: ModuleWithProviders = RouterModule.forChild(EVENT_ROUTES);
+export const EVENTS_ROUTING: ModuleWithProviders = RouterModule.forChild(EVENT_ROUTES);

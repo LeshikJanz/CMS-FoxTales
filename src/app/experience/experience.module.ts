@@ -19,6 +19,8 @@ import { ExperienceCreateComponent } from './create';
 import { FeatureModule } from '../components/feature.module';
 import { ExperienceComponent } from './experience.component';
 import { GalleryModule } from '../gallery/gallery.module';
+import { ExperienceContentComponent } from './content/experience-content';
+import { EventContainerModule } from '../event/event-container.module';
 
 @NgModule({
   imports: [
@@ -34,7 +36,8 @@ import { GalleryModule } from '../gallery/gallery.module';
     SharedModule,
     EXPERIENCE_ROUTING,
     FeatureModule,
-    GalleryModule
+    GalleryModule,
+    EventContainerModule
   ],
   providers: [
     {
@@ -45,9 +48,9 @@ import { GalleryModule } from '../gallery/gallery.module';
     ExperienceService
   ],
   declarations: [
-    ExperienceListComponent,
     ExperienceCreateComponent,
-    ExperienceComponent
+    ExperienceComponent,
+    ExperienceContentComponent
   ]
 })
 export class ExperienceModule {

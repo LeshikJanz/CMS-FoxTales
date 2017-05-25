@@ -24,10 +24,9 @@ import {
 import { TableDropDownComponent } from './dropdowns/table-dropdown/table-dropdown.component';
 import { FoxButtonComponent } from './buttons/fox-button/fox-button.component';
 import { AddButtonComponent } from './buttons/add-button/add-button.component';
-import {
-  EventNavigationComponent
+import { EventsNavigationComponent
 }
-  from './navigations/event-navigation/event-navigation.component';
+  from './navigations/events-navigation/events-navigation.component';
 import { EventGroupComponent } from './eventGroup/event-group.component';
 import { FoxInputComponent } from './input/fox-input.component';
 import { EventTagComponent } from './eventTag/event-tag.component';
@@ -45,6 +44,7 @@ import {
 }
   from './modals/event-to-group-modal/event-to-group-modal.component';
 import { ThumbnailComponent } from './thumbnail/thumbnail.component';
+import { EventNavigationComponent } from './navigations/event-navigation/event-navigation.component';
 
 @NgModule({
   imports: [
@@ -64,6 +64,7 @@ import { ThumbnailComponent } from './thumbnail/thumbnail.component';
     AdminNavigationComponent,
     MainNavigationComponent,
     EventNavigationComponent,
+    EventsNavigationComponent,
     EventComponent,
     CheckboxComponent,
     DropDownComponent,
@@ -92,6 +93,7 @@ import { ThumbnailComponent } from './thumbnail/thumbnail.component';
     ExperienceNavigationComponent,
     MainNavigationComponent,
     EventNavigationComponent,
+    EventsNavigationComponent,
     EventComponent,
     AdminNavigationComponent,
     CheckboxComponent,

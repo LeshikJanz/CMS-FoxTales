@@ -7,7 +7,7 @@ import { ExperienceComponent } from './experience.component';
 
 const EXPERIENCE_ROUTES: Routes = [
   { path: '', component: ExperienceComponent, children: [
-    { path: '', redirectTo: 'content', pathMatch: 'full' },
+    { path: '', component: ExperienceListComponent, pathMatch: 'full' },
     { path: ':id/content',    component: ExperienceListComponent },
     { path: 'content', component: ExperienceCreateComponent },
     { path: ':id/galleries', loadChildren: 'app/gallery/gallery.module#GalleryModule'
