@@ -1,7 +1,7 @@
 import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { GalleryItemListComponent } from '../gallery-items/list/gallery-item-list.component';
-import { GalleryListComponent } from './list/gallery-list.component';
+import { GalleryItemListComponent } from '../../gallery-items/list/gallery-item-list.component';
+import { GalleryListComponent } from '../list/gallery-list.component';
 
 const GALLERY_ROUTES: Routes = [
   { path: '',    component: GalleryListComponent },

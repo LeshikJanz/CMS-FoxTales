@@ -1,5 +1,5 @@
 import { Component, Output, EventEmitter, Input, OnInit } from '@angular/core';
-import { IGalleryItem } from '../../gallery/gallery.interface';
+import { IGalleryItem } from '../../gallery/gallery-item.interface';
 
 /**
  * Upload Button component

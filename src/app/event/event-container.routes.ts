@@ -5,12 +5,14 @@ import { EventContainerComponent } from './event-container.component';
 import { ExperienceListComponent } from "../experience/list/experience-list.component";
 
 const EVENT_ROUTES: Routes = [
-  { path: '', component: EventContainerComponent
-    , children: [
-    { path: ':id/experiences',    component: ExperienceListComponent },
-    { path: ':id/galleries', loadChildren: 'app/gallery/gallery.module#GalleryModule'
-    },
-  ]
+  {
+    path: '', component: EventContainerComponent,
+    children: [
+      {path: ':id/experiences', component: ExperienceListComponent},
+      {
+        path: ':id/galleries', loadChildren: 'app/gallery/event-gallery/event-gallery.module#EventGalleryModule'
+      },
+    ]
   },
 
 ];

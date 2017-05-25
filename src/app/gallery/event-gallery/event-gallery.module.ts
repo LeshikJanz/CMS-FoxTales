@@ -7,19 +7,13 @@ import { NgxErrorsModule } from '@ultimate/ngxerrors';
 import { ToastrModule, ToastContainerModule } from 'ngx-toastr';
 import { TagInputModule } from 'ng2-tag-input';
 
-import { SharedModule } from '../shared';
-import { HttpService } from '../shared/core';
-
-import { EXPERIENCE_ROUTING } from './experience.routes';
-
-import { ExperienceService } from './experience.service';
-import { ExperienceListComponent } from './list';
-import { ExperienceCreateComponent } from './create';
-
-import { FeatureModule } from '../components/feature.module';
-import { ExperienceComponent } from './experience.component';
-import { ExperienceContentComponent } from './content/experience-content';
-import { EventContainerModule } from '../event/event-container.module';
+import { GALLERY_ROUTING } from './event-gallery.routes';
+import { GalleryListComponent } from '../list/gallery-list.component';
+import { GalleryItemListComponent } from '../../gallery-items/list/gallery-item-list.component';
+import { GalleryService } from '../gallery.service';
+import { FeatureModule } from '../../components/feature.module';
+import { SharedModule } from '../../shared/shared.module';
+import { HttpService } from '../../shared/core/http/http.service';
 
 @NgModule({
   imports: [
@@ -33,9 +27,8 @@ import { EventContainerModule } from '../event/event-container.module';
     ToastContainerModule.forRoot(),
     TagInputModule,
     SharedModule,
-    EXPERIENCE_ROUTING,
     FeatureModule,
-    EventContainerModule
+    GALLERY_ROUTING
   ],
   providers: [
     {
@@ -43,15 +36,14 @@ import { EventContainerModule } from '../event/event-container.module';
       useFactory: httpFactory,
       deps: [ XHRBackend, RequestOptions, Injector ]
     },
-    ExperienceService
+    GalleryService
   ],
   declarations: [
-    ExperienceCreateComponent,
-    ExperienceComponent,
-    ExperienceContentComponent
+    GalleryListComponent,
+    GalleryItemListComponent,
   ]
 })
-export class ExperienceModule {
+export class EventGalleryModule {
 }
 
 /**

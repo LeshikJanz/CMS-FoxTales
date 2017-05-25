@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { IGalleryItem } from '../../gallery/gallery.interface';
+import { IGalleryItem } from '../../gallery/gallery-item.interface';
 import { GalleryService } from '../../gallery/gallery.service';
 
 /**

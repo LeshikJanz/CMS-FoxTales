@@ -7,14 +7,14 @@ import { NgxErrorsModule } from '@ultimate/ngxerrors';
 import { ToastrModule, ToastContainerModule } from 'ngx-toastr';
 import { TagInputModule } from 'ng2-tag-input';
 
-import { SharedModule } from '../shared';
-import { HttpService } from '../shared/core';
-
-import { FeatureModule } from '../components/feature.module';
-import { GALLERY_ROUTING } from './gallery.routes';
-import { GalleryService } from './gallery.service';
-import { GalleryItemListComponent } from '../gallery-items/list/gallery-item-list.component';
-import { GalleryListComponent } from './list/gallery-list.component';
+import { FeatureModule } from '../../components/feature.module';
+import { GALLERY_ROUTING } from './experience-gallery.routes';
+import { GalleryService } from '../gallery.service';
+import { GalleryItemListComponent } from '../../gallery-items/list/gallery-item-list.component';
+import { GalleryListComponent } from '../list/gallery-list.component';
+import { SharedModule } from '../../shared/shared.module';
+import { HttpService } from '../../shared/core/http/http.service';
+import { EventGalleryModule } from '../event-gallery/event-gallery.module';
 
 @NgModule({
   imports: [
@@ -29,7 +29,8 @@ import { GalleryListComponent } from './list/gallery-list.component';
     TagInputModule,
     SharedModule,
     FeatureModule,
-    GALLERY_ROUTING
+    GALLERY_ROUTING,
+    EventGalleryModule
   ],
   providers: [
     {
@@ -39,12 +40,9 @@ import { GalleryListComponent } from './list/gallery-list.component';
     },
     GalleryService
   ],
-  declarations: [
-    GalleryListComponent,
-    GalleryItemListComponent,
-  ]
+  declarations: []
 })
-export class GalleryModule {
+export class ExperienceGalleryModule {
 }
 
 /**
