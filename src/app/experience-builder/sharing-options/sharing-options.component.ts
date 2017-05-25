@@ -14,10 +14,10 @@ export class SharingOptionsComponent {
     public twitter: boolean = false ;
     public tumblr: boolean = false ;
     public instagram: boolean = false ;
-    public facebookTextCopy: string;
-    public twitterTextCopy: string;
-    public instagramTextCopy: string;
-    public tumblrTextCopy: string;
+    public facebookTextCopy: string = null;
+    public twitterTextCopy: string = null;
+    public instagramTextCopy: string = null;
+    public tumblrTextCopy: string = null;
 
   constructor(private router: Router,
               private experienceBuilderService: ExperienceBuilderService) {}
@@ -44,7 +44,18 @@ generateTextArea(social){
 }
 
 Finish(){
-    console.log(this.facebookTextCopy, this.instagramTextCopy, this.tumblrTextCopy, this.twitterTextCopy)
+    this.experienceBuilderService.postSocialShareSettings({
+      "shareToTwitter": this.twitter,
+      "shareToFacebook": this.facebook,
+  		"shareToInstagram": this.instagram,
+  		"shareToTumblr": this.tumblr,
+  		"twitterCopy": this.twitterTextCopy,
+  		"facebookCopy": this.facebookTextCopy,
+  		"instagramCopy": this.instagramTextCopy,
+  		"tumblrCopy": this.tumblrTextCopy
+    }).subscribe((response) => {
+			console.log(response)
+		})
 }
 
 }

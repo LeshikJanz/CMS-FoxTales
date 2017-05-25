@@ -31,9 +31,11 @@ export class ContentOptionsComponent {
         "ConfigurationOptionId": 53
       }
     ]
+  }).subscribe((response) => {
+    console.log(response)
   })
                  
-                //   this.staticTabs.tabs[1].active = true;
+        this.staticTabs.tabs[1].active = true;
              }
 
              Finish(){

@@ -5,6 +5,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ExperienceBuilderService } from '../experience-builder.service';
 import { BsDropdownModule } from 'ngx-bootstrap';
 import { DateTimePickerModule } from 'ng-pick-datetime';
+import * as moment from 'moment';
 
 
 @Component({
@@ -13,14 +14,16 @@ import { DateTimePickerModule } from 'ng-pick-datetime';
 })
 
 export class BasicDetailsComponent implements OnInit {
-  public momentTime: string;
-  public momentDate: string;
+  public startMomentTime: string;
+  public startMomentDate: string;
+  public endMomentTime: string;
+  public endMomentDate: string;
 
 
 
   constructor(private router: Router,
               private experienceBuilderService: ExperienceBuilderService) {
-     
+
               }
 
 
@@ -30,7 +33,15 @@ export class BasicDetailsComponent implements OnInit {
 
 
   Next(){
-
+    this.experienceBuilderService.addRunTimesExperience(
+      [{
+        "startTime": moment(this.startMomentDate + this.startMomentTime, "MMM DD, YYYYHH:mm").format(),
+        "endTime": moment(this.endMomentDate + this.endMomentTime, "MMM DD, YYYYHH:mm").format()
+      }]
+    ).subscribe((runTimes) => {
+      console.log(runTimes)
+      this.router.navigate(['/experience-builder/container/content-options']);
+    })
   }
 
 

@@ -45,6 +45,29 @@ export class ExperienceBuilderService {
           
     });
   }
+  
+  public addRunTimesExperience(runTimes){
+ let headers = new Headers({ 'Content-Type': 'application/json' });
+    let headerOptions = new RequestOptions({ headers: headers });
+    console.log(this.experience.experienceId)
+       return this.http.post('https://foxtalesapi-dev.azurewebsites.net/api/Experiences/' + this.experience.experienceId + "/runtimes"  , JSON.stringify(runTimes), headerOptions)
+      .map((response: Response) => {
+          console.log(response.json())
+          return response.json()
+          
+    });
+  }
+
+  public postSocialShareSettings(settings){
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let headerOptions = new RequestOptions({ headers: headers });
+       return this.http.post('https://foxtalesapi-dev.azurewebsites.net/api/Experiences/' + this.experience.experienceId + "/socialsharesettings"  , JSON.stringify(settings), headerOptions)
+      .map((response: Response) => {
+          console.log(response.json())
+          return response.json()
+          
+    });
+  }
 
 
 
