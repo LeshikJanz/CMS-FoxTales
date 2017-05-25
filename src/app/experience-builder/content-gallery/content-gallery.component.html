@@ -1,1 +1,49 @@
-<h1>Content Gallery</h1>
+<button type="button" class="btn btn-primary" (click)="staticModal.show()">Create Content Gallery</button>
+ 
+<div class="modal fade" bsModal #staticModal="bs-modal" [config]="{backdrop: 'static'}"
+     tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title pull-left">Title of Email Builder</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="staticModal.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+               <tabset #staticTabs class='ui-builder-container'>
+          <tab heading='Part 1'>
+            <div class="part1-container">
+              <h3>Let's Name the Gallery*</h3>
+              <input [(ngModel)]="galleryName">
+              <hr>
+              <h3>Connect A Content Option</h3>
+              <br>
+              <button [type]="'tertiary'" [value]="'Next'" (click)="Next()" >Next</button>
+            </div>
+          </tab>
+          <tab heading='Part 2'>
+            <h3>Add Gallery Hashtags</h3>
+            import brand tags here
+            <br>
+            <h3>Provide A Custom URL?</h3>
+            <input>
+            <hr>
+            <button [type]="'tertiary'" [value]="'Finish'" (click)="Finish()" >Next</button>
+          </tab>
+              <tab heading='Part 3'>
+            <h3>Upload Background Image</h3>
+           <upload-button></upload-button>
+           <h3>Different Background for Mobile?</h3>
+            <upload-button></upload-button>
+            <h3>Background Style</h3>
+           <switcher style="padding: 10px" [options]="options" (toggle)="value=$event"></switcher>
+           <br>
+            <button [type]="'tertiary'" [value]="'Finish'" (click)="Finish()" >Next</button>
+          </tab>
+                 
+        </tabset>
+      </div>
+    </div>
+  </div>
+</div>
