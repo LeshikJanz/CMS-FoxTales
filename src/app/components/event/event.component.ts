@@ -91,7 +91,7 @@ export class EventComponent {
         console.log('assign user');
         break;
       default:
-        break;
+        console.log('default behavior');
     }
   }
 }

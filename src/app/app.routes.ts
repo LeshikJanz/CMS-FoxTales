@@ -21,6 +21,10 @@ export const ROUTES: Routes = [
     loadChildren: 'app/experience/experience.module#ExperienceModule',
     canActivate: [ AuthGuard ]
   },
+  { path: 'experience-builder', 
+    loadChildren: 'app/experience-builder/experience-builder.module#ExperienceBuilderModule', 
+    canActivate: [ AuthGuard ] 
+  },
   { path: 'forbidden', component: ForbiddenComponent },
   { path: '**',    component: NoContentComponent }
 ];

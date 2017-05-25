@@ -14,7 +14,7 @@ import { MainNavigationComponent } from './navigations/main-navigation/main-navi
 import { EventComponent } from './event/event.component';
 import { CheckboxComponent } from './toggles/checkbox/checkbox.component';
 import { DropDownComponent } from './dropdowns/dropdown/dropdown.component';
-import { BsDropdownModule, ModalModule } from 'ngx-bootstrap';
+
 import { ActionDropDownComponent } from './dropdowns/action-dropdown/action-dropdown.component';
 import { ProfileImgComponent } from './profile-img/profile-img.component';
 import {
@@ -28,6 +28,20 @@ import {
   EventNavigationComponent
 }
   from './navigations/event-navigation/event-navigation.component';
+
+import {
+  ExperienceBuilderNavigationComponent
+}
+  from './navigations/experience-builder-navigation/experience-builder-navigation.component';
+ 
+//UI components from ngx-bootstrap
+import { BsDropdownModule } from 'ngx-bootstrap';
+import { TabsModule } from 'ngx-bootstrap';
+import { ModalModule } from 'ngx-bootstrap';
+
+import { ColorPickerModule } from 'ngx-color-picker';
+import { TimepickerModule } from 'ngx-bootstrap';
+
 import { EventGroupComponent } from './eventGroup/event-group.component';
 import { FoxInputComponent } from './input/fox-input.component';
 import { EventTagComponent } from './eventTag/event-tag.component';
@@ -44,6 +58,8 @@ import {
   EventToGroupModalComponent
 }
   from './modals/event-to-group-modal/event-to-group-modal.component';
+  import { DatepickerModule } from 'ngx-bootstrap';
+
 
 @NgModule({
   imports: [
@@ -51,8 +67,13 @@ import {
     FormsModule,
     RouterModule.forChild(FEATURE_ROUTES),
     BsDropdownModule.forRoot(),
+    TabsModule.forRoot(),
     ModalModule.forRoot(),
-    TagInputModule
+    ColorPickerModule,
+    TimepickerModule.forRoot(),
+    ModalModule.forRoot(),
+    TagInputModule,
+    DatepickerModule.forRoot()
   ],
   providers: [],
   declarations: [
@@ -60,6 +81,7 @@ import {
     UploadButtonComponent,
     DropDownSelectComponent,
     ExperienceNavigationComponent,
+    ExperienceBuilderNavigationComponent,
     AdminNavigationComponent,
     MainNavigationComponent,
     EventNavigationComponent,
@@ -88,6 +110,7 @@ import {
     CommonModule,
     FormsModule,
     ExperienceNavigationComponent,
+    ExperienceBuilderNavigationComponent,
     MainNavigationComponent,
     EventNavigationComponent,
     EventComponent,

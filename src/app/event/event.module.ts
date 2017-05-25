@@ -5,6 +5,7 @@ import { Http, HttpModule, RequestOptions, XHRBackend } from '@angular/http';
 import { CustomFormsModule } from 'ng2-validation';
 import { NgxErrorsModule } from '@ultimate/ngxerrors';
 import { ToastrModule, ToastContainerModule } from 'ngx-toastr';
+
 import { TagInputModule } from 'ng2-tag-input';
 
 import { SharedModule } from '../shared';
