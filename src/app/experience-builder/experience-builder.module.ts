@@ -28,9 +28,10 @@ import { EXPERIENCE_BUILDER_ROUTING } from './experience-builder.routes';
 import { FeatureModule } from '../components/feature.module';
 
 import { ExperienceBuilderService } from './experience-builder.service';
-import { TimepickerModule } from 'ngx-bootstrap';
-import { DatepickerModule } from 'ngx-bootstrap';
+
 import { ButtonsModule } from 'ngx-bootstrap';
+import { DateTimePickerModule } from 'ng-pick-datetime';
+import { Angular2FontAwesomeModule } from 'angular2-font-awesome/angular2-font-awesome';
 
 @NgModule({
   imports: [
@@ -49,9 +50,10 @@ import { ButtonsModule } from 'ngx-bootstrap';
     ModalModule.forRoot(),
     TagInputModule,
     ColorPickerModule,
-    TimepickerModule.forRoot(),
-    DatepickerModule.forRoot(),
-    ButtonsModule.forRoot()
+    ButtonsModule.forRoot(),
+    DateTimePickerModule,
+    Angular2FontAwesomeModule
+
   ],
   providers: [
     {

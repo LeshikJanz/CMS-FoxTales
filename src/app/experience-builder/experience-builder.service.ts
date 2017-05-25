@@ -27,6 +27,7 @@ export class ExperienceBuilderService {
   public addExperience(experience){
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
+    console.log(experience)
     return this.http.post('https://foxtalesapi-dev.azurewebsites.net/api/Experiences/', JSON.stringify(experience), options)
       .map((response: Response) => {
           return response.json()
