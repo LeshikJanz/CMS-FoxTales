@@ -1,9 +1,11 @@
 <div class="basic-details-container">
 When is the experience happening?
-  <datepicker [(ngModel)]="dt" [minDate]="minDate" ></datepicker>
-              
-<timepicker [(ngModel)]="mytime"></timepicker>
 
+<h3>Date</h3>
+<input class="picker-input" [ngModel]="momentDate" [returnObject]=" 'string' " [(dateTimePicker)]="momentDate" [mode]="'dropdown'" [pickerType]="'date'" readonly>
+<h3>Time</h3>
+<input class="picker-input" [ngModel]="momentTime" [returnObject]=" 'string' " [viewFormat]= "'HH:mm'" [(dateTimePicker)]="momentTime" [pickerType]="'time'" [mode]="'dropdown'"  readonly>
 <!--<button (click)="Next()" [routerLink]="['/experience-builder/container/content-options']" >Next</button>-->
+<br>
 <button (click)="Next()" >Next</button>
 </div>
