@@ -59,6 +59,7 @@ import {
 }
   from './modals/event-to-group-modal/event-to-group-modal.component';
   import { DatepickerModule } from 'ngx-bootstrap';
+  import { Angular2FontAwesomeModule } from 'angular2-font-awesome/angular2-font-awesome';
 
 
 @NgModule({
@@ -73,7 +74,8 @@ import {
     TimepickerModule.forRoot(),
     ModalModule.forRoot(),
     TagInputModule,
-    DatepickerModule.forRoot()
+    DatepickerModule.forRoot(),
+    Angular2FontAwesomeModule
   ],
   providers: [],
   declarations: [
