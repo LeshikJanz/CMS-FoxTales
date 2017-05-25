@@ -14,6 +14,7 @@ import { GalleryService } from '../gallery.service';
 import { FeatureModule } from '../../components/feature.module';
 import { SharedModule } from '../../shared/shared.module';
 import { HttpService } from '../../shared/core/http/http.service';
+import { GalleryItemsContainerComponent } from "../../gallery-items/gallery-items-container.component";
 
 @NgModule({
   imports: [
@@ -38,7 +39,8 @@ import { HttpService } from '../../shared/core/http/http.service';
     },
     GalleryService
   ],
-  declarations: []
+  declarations: [
+  ]
 })
 export class EventGalleryModule {
 }

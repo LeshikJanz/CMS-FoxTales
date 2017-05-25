@@ -10,6 +10,7 @@ import { GalleryItemListComponent } from '../gallery-items/list/gallery-item-lis
 import { GalleryService } from '../gallery/gallery.service';
 import { GalleryListComponent } from '../gallery/list/gallery-list.component';
 import { EventGalleryComponent } from '../gallery/event-gallery/event-gallery.component';
+import { GalleryItemsContainerComponent } from '../gallery-items/gallery-items-container.component';
 
 @NgModule({
   imports: [
@@ -22,13 +23,15 @@ import { EventGalleryComponent } from '../gallery/event-gallery/event-gallery.co
     ExperienceListComponent,
     GalleryItemListComponent,
     GalleryListComponent,
-    EventGalleryComponent
+    EventGalleryComponent,
+    GalleryItemsContainerComponent
   ],
   exports: [
     ExperienceListComponent,
     GalleryItemListComponent,
     GalleryListComponent,
-    EventGalleryComponent
+    EventGalleryComponent,
+    GalleryItemsContainerComponent
   ]
 })
 export class EventContainerModule {
