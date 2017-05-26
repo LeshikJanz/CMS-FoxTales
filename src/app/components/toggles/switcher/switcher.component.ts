@@ -14,7 +14,7 @@ export class SwitcherComponent implements OnInit {
   @Output() public toggle: EventEmitter<string> = new EventEmitter<string>();
 
   public ngOnInit() {
-    this.type = this.options[1];
+    if(!this.type) this.type = this.options[1];
   }
 
   public onChange(value: any) {

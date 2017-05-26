@@ -34,6 +34,12 @@ export class EventGalleryContainerComponent {
   public galleryTypes: string[] = ['Event', 'Experience', 'All'];
 
   /**
+   * Selected gallery type
+   *
+   * @type {string}
+   */
+  public selectedType: string = 'Experience';
+  /**
    * Gallery items
    *
    * @type {IGalleryItem[]}
@@ -79,8 +85,7 @@ export class EventGalleryContainerComponent {
    * @return {void}
    */
   public onTypeChange(event) {
-    console.log('onTypeChange');
-    console.log(event);
+    this.selectedType = event;
   }
 
   /**
