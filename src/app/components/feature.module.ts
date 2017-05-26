@@ -24,7 +24,8 @@ import {
 import { TableDropDownComponent } from './dropdowns/table-dropdown/table-dropdown.component';
 import { FoxButtonComponent } from './buttons/fox-button/fox-button.component';
 import { AddButtonComponent } from './buttons/add-button/add-button.component';
-import { EventsNavigationComponent
+import {
+  EventsNavigationComponent
 }
   from './navigations/events-navigation/events-navigation.component';
 import { EventGroupComponent } from './eventGroup/event-group.component';
@@ -44,7 +45,9 @@ import {
 }
   from './modals/event-to-group-modal/event-to-group-modal.component';
 import { ThumbnailComponent } from './thumbnail/thumbnail.component';
-import { EventNavigationComponent } from './navigations/event-navigation/event-navigation.component';
+import {
+  EventNavigationComponent
+} from './navigations/event-navigation/event-navigation.component';
 
 @NgModule({
   imports: [

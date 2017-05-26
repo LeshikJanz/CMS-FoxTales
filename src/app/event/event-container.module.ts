@@ -11,13 +11,14 @@ import { GalleryService } from '../gallery/gallery.service';
 import { GalleryListComponent } from '../gallery/list/gallery-list.component';
 import { EventGalleryComponent } from '../gallery/event-gallery/components/event-gallery.component';
 import { EventGalleryContainerComponent } from '../gallery/event-gallery/container/event-gallery-container.component';
+import { EventService } from './event.service';
 
 @NgModule({
   imports: [
     EVENT_ROUTING,
     FeatureModule,
   ],
-  providers: [ExperienceService, GalleryService],
+  providers: [ExperienceService, GalleryService, EventService],
   declarations: [
     EventContainerComponent,
     ExperienceListComponent,

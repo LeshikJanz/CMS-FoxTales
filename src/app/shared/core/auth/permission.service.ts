@@ -24,6 +24,8 @@ export class PermissionService {
     private auth: AuthService) {
   }
 
+  static clientId: number = -1;
+
   /**
    * Get permissions
    *
@@ -43,6 +45,7 @@ export class PermissionService {
     return this.getPermissions()
       .map((permissions: IPermissions) => {
         const isValid: boolean = -1 === [ permissions.clientId, permissions.userId ].indexOf(-1);
+        PermissionService.clientId = permissions.clientId;
 
         if (!isValid) {
           this.router.navigate(['/forbidden']);

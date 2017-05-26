@@ -29,4 +29,16 @@ export class GalleryService {
     return this.http.get(`${process.env.API_URL}/Media`, options)
       .map((response: Response) => <IGalleryItem[]> response.json());
   }
+
+  /**
+   * Change favorite/unfavorite status
+   *
+   * @param {number} id - thumbnail id
+   * @param {boolean} status - favorite status
+   * @returns {Observable<IGalleryItem>} - Gallery items
+   */
+  public makeFavorite(id: number, status: boolean): Observable<Response> {
+    return this.http.post(`${process.env.API_URL}/Media/${id}/favorite`, {
+      status
+    });  }
 }

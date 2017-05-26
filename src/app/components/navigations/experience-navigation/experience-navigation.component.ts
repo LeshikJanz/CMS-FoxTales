@@ -15,7 +15,7 @@ export class ExperienceNavigationComponent {
 
   constructor(private location: Location,
               private router: Router) {
-    this.router.events.subscribe((val) =>{
+    this.router.events.subscribe((val) => {
       this.curLocation = this.location.path();
       this.experienceId = this.curLocation.split('/')[2];
     });

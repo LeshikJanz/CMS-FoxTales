@@ -7,6 +7,7 @@ import { EventGroupsService } from '../list/event-groups.service';
 import { IEvent } from '../../event/event.interface';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { PermissionService } from "../../shared/core/auth/permission.service";
 
 @Component({
   selector: 'event-group-create',
@@ -116,11 +117,10 @@ export class EventGroupCreateComponent implements OnInit {
    * @returns {void}
    */
   public addEventGroup(eventGroup: IEventGroup) {
-    // TODO: Save client id to local storage and take it from there
-    const clientId = 1;
     eventGroup.eventIds = eventGroup.events.map((e: IEvent) => e.id);
     delete eventGroup.events;
-    eventGroup.clientId = clientId;
+    eventGroup.clientId = PermissionService.clientId;
+
     this.eventGroupService.addEventGroup(eventGroup)
       .subscribe(() => {
         this.toastrService.success('Event group has been added successfully.');

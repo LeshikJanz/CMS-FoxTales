@@ -11,6 +11,12 @@ $imgHeight: 256.4px;
   justify-content: space-between;
   background-color: transparent;
 
+  &:hover {
+    .content div img {
+      display: block;
+    }
+  }
+
   div {
     padding-bottom: 12px;
   }
@@ -23,6 +29,18 @@ $imgHeight: 256.4px;
     justify-content: center;
     align-items: center;
     background-color: #f5f6f7;
+
+    div img {
+      cursor: pointer;
+      display: none;
+      position: absolute;
+      top: 11px;
+      right: 11px;
+      height: 32px;
+      width: 32px;
+      font-size: 18px;
+      transition: .3s all;
+    }
 
     checkbox {
       position: absolute;

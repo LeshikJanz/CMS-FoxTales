@@ -4,7 +4,8 @@ import { IGalleryItem, IGalleryFilter } from '../../gallery-item.interface';
 import { ActivatedRoute } from '@angular/router';
 import { GalleryService } from '../../gallery.service';
 import { ExperienceService } from '../../../experience/experience.service';
-import { IExperience } from "../../../event/event.interface";
+import { IExperience, IEventGallery } from "../../../event/event.interface";
+import { EventService } from "../../../event/event.service";
 
 
 /**
@@ -45,6 +46,7 @@ export class EventGalleryContainerComponent {
    * @type {IGalleryItem[]}
    */
   @Input() public galleryItems: IGalleryItem[];
+
   /**
    * Experience items
    *
@@ -58,6 +60,13 @@ export class EventGalleryContainerComponent {
    * @type {number}
    */
   public eventId: number;
+
+  /**
+   * Current event gallery properties
+   *
+   * @type {IEventGallery}
+   */
+  public eventGallery: IEventGallery;
 
   /**
    * Gallery filter
@@ -75,7 +84,8 @@ export class EventGalleryContainerComponent {
    */
   constructor(private route: ActivatedRoute,
               private experienceService: ExperienceService,
-              private galleryService: GalleryService) {
+              private galleryService: GalleryService,
+              private eventService: EventService) {
   }
 
   /**
@@ -107,6 +117,7 @@ export class EventGalleryContainerComponent {
     this.filter = {eventId: this.eventId}
     this.getGalleryItems(this.filter);
     this.getExperiences(this.eventId);
+    this.getEventGallery(this.eventId);
   }
 
   /**
@@ -120,6 +131,21 @@ export class EventGalleryContainerComponent {
       .subscribe((experiences: IExperience[]) =>
         this.experiences = experiences
       )
+  }
+
+  /**
+   * Get event gallery background properties
+   *
+   * @param {number} eventId
+   * @return {void}
+   */
+  public getEventGallery(eventId: number) {
+    this.eventService.getEventGallery(eventId)
+      .subscribe((gallery: IEventGallery) => {
+        this.eventGallery = gallery;
+        console.log('this.eventGallery');
+        console.log(this.eventGallery);
+      })
   }
 
   /**

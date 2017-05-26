@@ -1,5 +1,6 @@
 import { Component, Output, EventEmitter, Input, OnInit } from '@angular/core';
 import { IGalleryItem } from '../../gallery/gallery-item.interface';
+import { GalleryService } from '../../gallery/gallery.service';
 
 /**
  * Upload Button component
@@ -26,6 +27,10 @@ export class ThumbnailComponent implements OnInit {
 
   @Output() public decline: EventEmitter<any> = new EventEmitter();
 
+  @Input() public isFavorite: boolean;
+
+  constructor(private galleryService: GalleryService) {}
+
   public onChecked(event) {
     this.toggle.emit(event);
   }
@@ -36,6 +41,12 @@ export class ThumbnailComponent implements OnInit {
 
   public onDecline() {
     this.decline.emit();
+  }
+
+  public makeFavorite() {
+    this.isFavorite = !this.isFavorite;
+    this.galleryService.makeFavorite(this.item.id, this.isFavorite)
+      .subscribe(() => console.log('favorite is succeeded'))
   }
 
   public ngOnInit() {

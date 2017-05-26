@@ -1,6 +1,10 @@
 <div class="thumbnail-container">
   <div class="content">
-    <checkbox (toggle)="onChecked($event)"></checkbox>
+    <div>
+      <checkbox (toggle)="onChecked($event)"></checkbox>
+      <img (click)="makeFavorite()" [hidden]="!isFavorite" src="../../../assets/img/heart-active.svg" alt="">
+      <img (click)="makeFavorite()" [hidden]="isFavorite" src="../../../assets/img/heart-inactive.svg" alt="">
+    </div>
     <img
       [src]="item ? item.mediaPath :
        'https://amazingcarousel.com/wp-content/uploads/amazingcarousel/3/images/lightbox/golden-wheat-field-lightbox.jpg'"

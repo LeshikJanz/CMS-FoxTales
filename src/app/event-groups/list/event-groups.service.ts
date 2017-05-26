@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
-import { Response, Http } from '@angular/http';
+import { Response, Http, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs';
 import { IClientList, IClientFilter } from './client.interface';
 import { Client } from './client';
 import { ClientLicense } from './client-license';
 import { IEvent } from '../event/event.interface';
 import { IEventGroup } from './event-groups.interaface';
+import { PermissionService } from '../../shared/core/auth/permission.service';
 
 /**
  * Client service
@@ -29,7 +30,11 @@ export class EventGroupsService {
    * @returns IEventGroup[]
    */
   public getEventGroups(): Observable<IEventGroup[]> {
-    return this.http.get(`${process.env.API_URL}/EventGroups`)
+    let options = new RequestOptions({
+      params: { clientId: PermissionService.clientId }
+    });
+
+    return this.http.get(`${process.env.API_URL}/EventGroups`, options)
       .map((response: Response) => <IEventGroup[]> response.json())
       .catch(this.handleError);
   }
