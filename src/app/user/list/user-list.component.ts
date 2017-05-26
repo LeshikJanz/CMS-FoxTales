@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { ModalDirective } from 'ngx-bootstrap/modal';
 import { ICol, ITableAction } from '../../shared/table';
 import { IUserList, IUserFilter } from '../user.interface';
 import { User } from '../user';
@@ -17,11 +18,34 @@ import { IActionState } from '../../client/client.interface';
 })
 export class UserListComponent implements OnInit {
   /**
+   * Archive modal
+   *
+   * @type {ModalDirective}
+   */
+  @ViewChild('archiveModal')
+  public archiveModal: ModalDirective;
+
+  /**
+   * Unarchive modal
+   *
+   * @type {ModalDirective}
+   */
+  @ViewChild('unarchiveModal')
+  public unarchiveModal: ModalDirective;
+
+  /**
    * Users
    *
    * @type {User[]}
    */
   public users: User[];
+
+  /**
+   * Selected user id
+   *
+   * @type {string}
+   */
+  public selectedUser: string;
 
   /**
    * Total users
@@ -52,8 +76,8 @@ export class UserListComponent implements OnInit {
    */
   public actions: ITableAction[] = [
     { title: 'Edit',      callback: 'editUser' },
-    { title: 'Archive',   callback: 'archiveUser' },
-    { title: 'Unarchive', callback: 'unarchiveUser' }
+    { title: 'Archive',   callback: 'confirmArchive' },
+    { title: 'Unarchive', callback: 'confirmUnarchive' }
   ];
 
   /**
@@ -133,12 +157,11 @@ export class UserListComponent implements OnInit {
   /**
    * Archive user by id
    *
-   * @param {string} id - User id
    * @returns {void}
    */
-  public archiveUser(id: string): void {
+  public archiveUser(): void {
     this.userService
-      .archiveUser(id)
+      .archiveUser(this.selectedUser)
       .subscribe(() => {
         this.toastrService.success('User has been archived successfully.');
         this.getUsers();
@@ -148,16 +171,37 @@ export class UserListComponent implements OnInit {
   /**
    * Unarchive user by id
    *
-   * @param {string} id - User id
    * @returns {void}
    */
-  public unarchiveUser(id: string): void {
+  public unarchiveUser(): void {
     this.userService
-      .unarchiveUser(id)
+      .unarchiveUser(this.selectedUser)
       .subscribe(() => {
         this.toastrService.success('User has been unarchived successfully.');
         this.getUsers();
       });
+  }
+
+  /**
+   * Confirm archive user
+   *
+   * @param {string} id - User id
+   * @returns {void}
+   */
+  public confirmArchive(id: string): void {
+    this.selectedUser = id;
+    this.archiveModal.show();
+  }
+
+  /**
+   * Confirm unarchive user
+   *
+   * @param {string} id - User id
+   * @returns {void}
+   */
+  public confirmUnarchive(id: string): void {
+    this.selectedUser = id;
+    this.unarchiveModal.show();
   }
 
   /**

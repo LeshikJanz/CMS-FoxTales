@@ -31,18 +31,17 @@
       </div>
 
       <!-- Client Access -->
-      <div class="form-element">
-        <label for="selectedClientAccess">Client Access</label>
+      <div>
+        <label for="clientId">Client Access</label>
         <select
-          id="selectedClientAccess"
-          class="form-control input"
-          [(ngModel)]="user.selectedClientAccess"
-          formControlName="selectedClientAccess">
-          <option value="0">Access 1</option>
+          id="clientId"
+          [(ngModel)]="user.clientId"
+          formControlName="clientId">
+          <option *ngFor="let client of clients" [ngValue]="client.id">{{ client.name }}</option>
         </select>
 
-        <div ngxErrors="selectedClientAccess">
-          <div class="field-error"  ngxError="required" when="touched">
+        <div ngxErrors="clientId">
+          <div ngxError="required" when="touched">
             Field is required
           </div>
         </div>

@@ -3,6 +3,7 @@ import { Response, Http } from '@angular/http';
 import { Observable } from 'rxjs';
 import { IUserList, IUserFilter } from './user.interface';
 import { IUserRole } from './user-role.interface';
+import { IUserClient } from './user-client.interface';
 import { User } from './user';
 
 /**
@@ -111,5 +112,15 @@ export class UserService {
   public getUserRoles(): Observable<IUserRole[]> {
     return this.http.get(`${process.env.API_URL}/Role`)
       .map((response: Response) => response.json() as IUserRole[]);
+  }
+
+  /**
+   * Get client list
+   *
+   * @returns {Observable<IUserClient[]>} - Client list
+   */
+  public getClients(): Observable<IUserClient[]> {
+    return this.http.get(`${process.env.API_URL}/Clients/Lookup`)
+      .map((response: Response) => response.json().result as IUserClient[]);
   }
 }

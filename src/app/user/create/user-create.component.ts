@@ -4,6 +4,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { CustomValidators } from 'ng2-validation';
 import { IUser } from '../user.interface';
 import { IUserRole } from '../user-role.interface';
+import { IUserClient } from '../user-client.interface';
 import { UserService } from '../user.service';
 
 @Component({
@@ -25,6 +26,13 @@ export class UserCreateComponent implements OnInit {
    * @type {IUserRole[]}
    */
   public roles: IUserRole[];
+
+  /**
+   * Clients
+   *
+   * @type {IUserClient[]}
+   */
+  public clients: IUserClient[];
 
   /**
    * Additional user details
@@ -59,18 +67,34 @@ export class UserCreateComponent implements OnInit {
   public ngOnInit(): void {
     this
       .buildUserForm()
-      .getUserRoles();
+      .getUserRoles()
+      .getUserClients();
   }
 
   /**
    * Get user roles
    *
-   * @returns {void}
+   * @returns {UserCreateComponent} - Component
    */
-  public getUserRoles(): void {
+  public getUserRoles(): UserCreateComponent {
     this.userService
       .getUserRoles()
       .subscribe((roles: IUserRole[]) => this.roles = roles);
+
+    return this;
+  }
+
+  /**
+   * Get user clients
+   *
+   * @returns {UserCreateComponent} - Component
+   */
+  public getUserClients(): UserCreateComponent {
+    this.userService
+      .getClients()
+      .subscribe((clients: IUserClient[]) => this.clients = clients);
+
+    return this;
   }
 
   /**
@@ -109,7 +133,7 @@ export class UserCreateComponent implements OnInit {
         Validators.required,
         CustomValidators.email
       ]],
-      selectedClientAccess: ['', [
+      clientId: ['', [
         Validators.required
       ]]
     });
