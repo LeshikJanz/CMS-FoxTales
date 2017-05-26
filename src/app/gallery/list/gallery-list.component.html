@@ -1,5 +1,5 @@
 <div class="gallery">
-  <a *ngFor="let gallery of galleries" href="javascript:void(0)" [routerLink]="[curLocation, gallery.id]">
+  <a *ngFor="let gallery of galleries" href="javascript:void(0)" [routerLink]="[gallery.id]">
     <img src="http://www.justbooksalon.com/img/default-gallery-image.jpg">
     <label>{{gallery.name}} gallery</label>
   </a>

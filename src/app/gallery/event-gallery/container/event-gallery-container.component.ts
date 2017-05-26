@@ -31,14 +31,14 @@ export class EventGalleryContainerComponent implements OnInit {
    *
    * @type {string[]}
    */
-  public galleryTypes: string[] = ['Event', 'Experience', 'All'];
+  public galleryTypes: string[] = ['Event', 'Experiences', 'All'];
 
   /**
    * Selected gallery type
    *
    * @type {string}
    */
-  public selectedType: string = 'Experience';
+  public selectedType: string = 'Experiences';
   /**
    * Gallery items
    *

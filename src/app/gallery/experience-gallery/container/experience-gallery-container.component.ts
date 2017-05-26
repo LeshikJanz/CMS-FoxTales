@@ -29,7 +29,7 @@ export class ExperienceGalleryContainerComponent implements OnInit {
    *
    * @type {string[]}
    */
-  public galleryTypes: string[] = ['Event', 'Experience', 'All'];
+  public galleryTypes: string[] = ['Event', 'Experiences', 'All'];
 
   /**
    * Gallery items
