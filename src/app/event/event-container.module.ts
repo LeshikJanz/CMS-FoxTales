@@ -9,8 +9,8 @@ import { ExperienceService } from '../experience/experience.service';
 import { GalleryItemListComponent } from '../gallery-items/list/gallery-item-list.component';
 import { GalleryService } from '../gallery/gallery.service';
 import { GalleryListComponent } from '../gallery/list/gallery-list.component';
-import { EventGalleryComponent } from '../gallery/event-gallery/event-gallery.component';
-import { GalleryItemsContainerComponent } from '../gallery-items/gallery-items-container.component';
+import { EventGalleryComponent } from '../gallery/event-gallery/components/event-gallery.component';
+import { EventGalleryContainerComponent } from '../gallery/event-gallery/container/event-gallery-container.component';
 
 @NgModule({
   imports: [
@@ -24,14 +24,14 @@ import { GalleryItemsContainerComponent } from '../gallery-items/gallery-items-c
     GalleryItemListComponent,
     GalleryListComponent,
     EventGalleryComponent,
-    GalleryItemsContainerComponent
+    EventGalleryContainerComponent
   ],
   exports: [
     ExperienceListComponent,
     GalleryItemListComponent,
     GalleryListComponent,
     EventGalleryComponent,
-    GalleryItemsContainerComponent
+    EventGalleryContainerComponent
   ]
 })
 export class EventContainerModule {

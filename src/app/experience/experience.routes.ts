@@ -5,8 +5,8 @@ import { ExperienceListComponent } from './list';
 import { ExperienceCreateComponent } from './create';
 import { ExperienceComponent } from './experience.component';
 import { ExperienceContentComponent } from './content/experience-content';
-import { ExperienceGalleryComponent } from '../gallery/experience-gallery/experience-gallery.component';
-import { GalleryItemsContainerComponent } from '../gallery-items/gallery-items-container.component';
+import { ExperienceGalleryComponent } from '../gallery/experience-gallery/components/experience-gallery.component';
+import { ExperienceGalleryContainerComponent } from "../gallery/experience-gallery/container/experience-gallery-container.component";
 
 const EXPERIENCE_ROUTES: Routes = [
   {
@@ -16,8 +16,8 @@ const EXPERIENCE_ROUTES: Routes = [
     {path: 'content', component: ExperienceCreateComponent},
     {
       path: ':id', children: [
-      {path: 'exgalleries', pathMatch: 'full', component: ExperienceGalleryComponent},
-      {path: 'exgalleries/:id', pathMatch: 'full', component: GalleryItemsContainerComponent},
+      {path: 'exgalleries', pathMatch: 'full', component: ExperienceGalleryContainerComponent},
+      {path: 'exgalleries/:id', pathMatch: 'full', component: ExperienceGalleryContainerComponent},
     ]
     },
   ]

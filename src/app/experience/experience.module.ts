@@ -20,9 +20,10 @@ import { FeatureModule } from '../components/feature.module';
 import { ExperienceComponent } from './experience.component';
 import { ExperienceContentComponent } from './content/experience-content';
 import { EventContainerModule } from '../event/event-container.module';
-import { ExperienceGalleryComponent } from '../gallery/experience-gallery/experience-gallery.component';
+import { ExperienceGalleryComponent } from '../gallery/experience-gallery/components/experience-gallery.component';
 import { GalleryItemListComponent } from '../gallery-items/list/gallery-item-list.component';
 import { GalleryService } from '../gallery/gallery.service';
+import { ExperienceGalleryContainerComponent } from '../gallery/experience-gallery/container/experience-gallery-container.component';
 
 @NgModule({
   imports: [
@@ -54,6 +55,7 @@ import { GalleryService } from '../gallery/gallery.service';
     ExperienceComponent,
     ExperienceContentComponent,
     ExperienceGalleryComponent,
+    ExperienceGalleryContainerComponent
   ]
 })
 export class ExperienceModule {

@@ -1,21 +1,21 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { IActionState } from '../../client/client.interface';
-import { IGalleryItem, IGalleryFilter } from '../gallery-item.interface';
+import { IActionState } from '../../../client/client.interface';
+import { IGalleryItem, IGalleryFilter } from '../../gallery-item.interface';
 import { ActivatedRoute } from '@angular/router';
-import { GalleryService } from '../gallery.service';
-import { ExperienceService } from '../../experience/experience.service';
-import { IExperience } from "../../event/event.interface";
+import { GalleryService } from '../../gallery.service';
+import { ExperienceService } from '../../../experience/experience.service';
+import { IExperience } from "../../../event/event.interface";
 
 
 /**
  * Gallery list component
  */
 @Component({
-  selector: 'event-gallery',
-  templateUrl: 'event-gallery.component.html',
-  styleUrls: ['event-gallery.component.scss']
+  selector: 'event-gallery-container',
+  templateUrl: 'event-gallery-container.component.html',
+  styleUrls: ['event-gallery-container.component.scss']
 })
-export class EventGalleryComponent {
+export class EventGalleryContainerComponent {
   /**
    * Sort actions
    *

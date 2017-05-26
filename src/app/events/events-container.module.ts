@@ -15,7 +15,6 @@ import { TagInputModule } from 'ng2-tag-input';
 import { SharedModule } from '../shared/shared.module';
 import { EventService } from '../event/event.service';
 import { EventGroupsService } from '../event-groups/list/event-groups.service';
-import { GalleryItemsContainerComponent } from '../gallery-items/gallery-items-container.component';
 
 @NgModule({
   imports: [
