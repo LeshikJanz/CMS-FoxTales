@@ -9,14 +9,22 @@ import { TabsetComponent } from 'ngx-bootstrap';
 })
 
 export class ContentGalleryComponent {
-  public options:any;
+ public options: any;
+ public galleryName: string;
+
+ @ViewChild('staticTabs') public staticTabs: TabsetComponent;
+ public staticModal: any;
 
   constructor(private router: Router,
               private experienceBuilderService: ExperienceBuilderService) {
-                this.options = ["Tiled","Stretch","Fixed Scroll"]
+              this.options = ['Tiled', 'Stretch', 'Fixed Scroll'];
               }
 
+ public Next() {
+  console.log('next function');
+ };
 
-
-
+ public Finish() {
+  console.log(' finish function ');
+ };
 }

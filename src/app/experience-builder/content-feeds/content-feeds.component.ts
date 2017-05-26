@@ -9,11 +9,7 @@ import { ExperienceBuilderService } from '../experience-builder.service';
 
 export class ContentFeedsComponent {
 
-
   constructor(private router: Router,
               private experienceBuilderService: ExperienceBuilderService) {}
-
-
-
 
 }

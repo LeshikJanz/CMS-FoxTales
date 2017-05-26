@@ -22,27 +22,13 @@ export class EventService {
    */
   public getEvents() {
 
-  //       return this.http.get('https://foxtalesapi-dev.azurewebsites.net/api/events')
-  //       .map((response) => {
-  //         let temp = response.json();
-  //         return temp;
-  //       });
-  // }
-
-    // 19.05
-    
     return this.http.get(`${process.env.API_URL}/Events`)
         // return this.http.get(`https://foxtalesdev.azurewebsites.net/api/events`)
         // return this.http.get(`assets/mock-data/event/events.json`)
         .map((response: Response) => {
-          let temp = response.json();
-
-          return temp;
+          return response.json();
         });
-        
   };
-  
-
 
   /**
    * Get tags

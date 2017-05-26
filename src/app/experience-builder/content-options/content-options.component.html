@@ -20,29 +20,27 @@
               <h5>Content Type</h5>
               <br>
               <div class="btn-group">
-    <label class="btn" [(ngModel)]="contentTypeValue"
-         btnRadio=1>Still</label>
-  <label class="btn" [(ngModel)]="contentTypeValue" btnRadio=2>GIF</label>
-   <label class="btn" [(ngModel)]="contentTypeValue" btnRadio=4>GIF</label>
-</div>
+                <label class="btn" [(ngModel)]="contentTypeValue" btnRadio=1>Still</label>
+                <label class="btn" [(ngModel)]="contentTypeValue" btnRadio=2>GIF</label>
+                <label class="btn" [(ngModel)]="contentTypeValue" btnRadio=4>GIF</label>
+              </div>
 
               <br>
               <h5>Orientation Type</h5>
-                            <div class="btn-group">
-    <label class="btn" [(ngModel)]="orientattionTypeValue"
-         btnRadio=106>Landscape</label>
-  <label class="btn" [(ngModel)]="orientattionTypeValue" btnRadio=105>Portrait</label>
-   <label class="btn" [(ngModel)]="orientattionTypeValue" btnRadio=104>Square</label>
-</div>
-         <br>
-              <button [type]="'tertiary'" [value]="'Next'" (click)="Next()" >Next</button>
+              <div class="btn-group">
+                <label class="btn" [(ngModel)]="orientationTypeValue" btnRadio=106>Landscape</label>
+                <label class="btn" [(ngModel)]="orientationTypeValue" btnRadio=105>Portrait</label>
+                <label class="btn" [(ngModel)]="orientationTypeValue" btnRadio=104>Square</label>
+              </div>
+              <br>
+              <button [type]="'tertiary'" [value]="'Next'" (click)="Next()">Next</button>
             </div>
           </tab>
           <tab heading='Part 2'>
             <h3>Media Manipulation</h3>
             <upload-button></upload-button>
             <br>
-            <button [type]="'tertiary'" [value]="'Finish'" (click)="Finish()" >Finish</button>
+            <button [type]="'tertiary'" [value]="'Finish'" (click)="Finish()">Finish</button>
           </tab>
         </tabset>
 

@@ -11,7 +11,8 @@ import { ExperienceBuilderService } from '../experience-builder.service';
 })
 
 export class ContentOptionsComponent {
- @ViewChild('staticTabs') staticTabs: TabsetComponent;
+ @ViewChild('staticTabs') public staticTabs: TabsetComponent;
+ public staticModal: any;
  public contentName: string;
  public contentTypeValue: string;
  public orientationTypeValue: string;
@@ -19,27 +20,26 @@ export class ContentOptionsComponent {
   constructor(private router: Router,
               private experienceBuilderService: ExperienceBuilderService) {}
 
-             Next(){
-            
-                 this.experienceBuilderService.addContentOption({
-    "experienceId":  this.experienceBuilderService.experience.experienceId,
-    "name": this.contentName,
-    "captureTypeId": this.contentTypeValue,
-    "cameraSettings": [
+ public Next() {
+  this.experienceBuilderService.addContentOption({
+    experienceId:  this.experienceBuilderService.experience.experienceId,
+    name: this.contentName,
+    captureTypeId: this.contentTypeValue,
+    cameraSettings: [
       {
-        "settingValueId": this.orientationTypeValue,
-        "ConfigurationOptionId": 53
+        settingValueId: this.orientationTypeValue,
+        ConfigurationOptionId: 53
       }
-    ]
-  }).subscribe((response) => {
-    console.log(response)
-  })
-                 
-        this.staticTabs.tabs[1].active = true;
-             }
+      ]
+    }).subscribe((response) => {
+      console.log(response);
+    });
 
-             Finish(){
-                 console.log('finish behavior');
-             }
+  this.staticTabs.tabs[1].active = true;
+  }
+
+  public Finish() {
+    console.log('finish behavior ');
+  }
 
 }

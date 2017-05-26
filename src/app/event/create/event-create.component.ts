@@ -6,7 +6,6 @@ import { ITag } from '../tag.interface';
 import { EventService } from '../event.service';
 import { MOCK_TAGS } from '../tag.mock';
 
-
 @Component({
   selector: 'event-create',
   templateUrl: './event-create.component.html',

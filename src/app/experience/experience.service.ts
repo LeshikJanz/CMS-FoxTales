@@ -22,19 +22,10 @@ export class ExperienceService {
    */
 
     public getExperiences(id) {
-
-          return this.http.get(`${process.env.API_URL}/Experiences/?eventId=` + id)
+      return this.http.get(`${process.env.API_URL}/Experiences/?eventId=` + id)
         .map((response: Response) => {
-         
-          // let temp = response.json();
           return response.json();
         });
-
-      // return this.http.get('https://foxtalesapi-dev.azurewebsites.net/api/events/' + id)
-      //   .map((response) => {
-      //       let temp = response.json();
-      //       return temp.experiences;
-      //   });
     }
 
   /**

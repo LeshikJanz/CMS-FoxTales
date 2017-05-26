@@ -33,8 +33,8 @@ import {
   ExperienceBuilderNavigationComponent
 }
   from './navigations/experience-builder-navigation/experience-builder-navigation.component';
- 
-//UI components from ngx-bootstrap
+
+// UI components from ngx-bootstrap
 import { BsDropdownModule } from 'ngx-bootstrap';
 import { TabsModule } from 'ngx-bootstrap';
 import { ModalModule } from 'ngx-bootstrap';
@@ -60,7 +60,6 @@ import {
   from './modals/event-to-group-modal/event-to-group-modal.component';
   import { DatepickerModule } from 'ngx-bootstrap';
   import { Angular2FontAwesomeModule } from 'angular2-font-awesome/angular2-font-awesome';
-
 
 @NgModule({
   imports: [

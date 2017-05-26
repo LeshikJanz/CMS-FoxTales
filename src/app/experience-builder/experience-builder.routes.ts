@@ -13,8 +13,8 @@ import { ContentFeedsComponent } from './content-feeds';
 
 const EXPERIENCE_BUILDER_ROUTES: Routes = [
   { path: '',    redirectTo: 'intro' },
-  { path: 'intro',    component: ExperienceBuilderIntroComponent },
-  { path: 'container',component: ExperienceBuilderContainerComponent,
+  { path: 'intro',     component: ExperienceBuilderIntroComponent },
+  { path: 'container', component: ExperienceBuilderContainerComponent,
     children: [
         { path: 'basic-details', component: BasicDetailsComponent },
         { path: 'ui-builder', component: UIBuilderComponent },
@@ -26,5 +26,5 @@ const EXPERIENCE_BUILDER_ROUTES: Routes = [
     ] }
 ];
 
-export const EXPERIENCE_BUILDER_ROUTING: ModuleWithProviders = 
+export const EXPERIENCE_BUILDER_ROUTING: ModuleWithProviders =
     RouterModule.forChild(EXPERIENCE_BUILDER_ROUTES);
