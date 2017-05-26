@@ -7,7 +7,7 @@ import { EventGroupsService } from '../list/event-groups.service';
 import { IEvent } from '../../event/event.interface';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { PermissionService } from "../../shared/core/auth/permission.service";
+import { PermissionService } from '../../shared/core/auth/permission.service';
 
 @Component({
   selector: 'event-group-create',

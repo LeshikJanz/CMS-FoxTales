@@ -46,7 +46,7 @@ export class ThumbnailComponent implements OnInit {
   public makeFavorite() {
     this.isFavorite = !this.isFavorite;
     this.galleryService.makeFavorite(this.item.id, this.isFavorite)
-      .subscribe(() => console.log('favorite is succeeded'))
+      .subscribe(() => console.log('favorite is succeeded'));
   }
 
   public ngOnInit() {

@@ -10,6 +10,14 @@ import { IPermissions } from './permissions.interface';
  */
 @Injectable()
 export class PermissionService {
+
+  /**
+   * Global clientId variable
+   *
+   * @type {number}
+   */
+  public static clientId: number = -1;
+
   /**
    * Constructor
    *
@@ -23,8 +31,6 @@ export class PermissionService {
     private router: Router,
     private auth: AuthService) {
   }
-
-  static clientId: number = -1;
 
   /**
    * Get permissions

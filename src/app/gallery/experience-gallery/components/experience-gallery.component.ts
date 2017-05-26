@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { IActionState } from "../../../client/client.interface";
-import { ActivatedRoute } from "@angular/router";
-import { GalleryService } from "../../gallery.service";
-import { IGalleryFilter, IGalleryItem } from "../../gallery-item.interface";
+import { IActionState } from '../../../client/client.interface';
+import { ActivatedRoute } from '@angular/router';
+import { GalleryService } from '../../gallery.service';
+import { IGalleryFilter, IGalleryItem } from '../../gallery-item.interface';
 
 /**
  * Gallery list component
@@ -12,7 +12,7 @@ import { IGalleryFilter, IGalleryItem } from "../../gallery-item.interface";
   templateUrl: 'experience-gallery.component.html',
   styleUrls: ['experience-gallery.component.scss']
 })
-export class ExperienceGalleryComponent {
+export class ExperienceGalleryComponent implements OnInit {
   /**
    * Sort actions
    *

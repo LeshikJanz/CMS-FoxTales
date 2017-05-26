@@ -20,14 +20,12 @@ export class GalleryItemListComponent {
    */
   public galleryId: number;
 
-
   /**
    * Gallery items
    *
    * @type {IGalleryItem[]}
    */
   @Input() public galleryItems: IGalleryItem[];
-
 
   /**
    * Constructor

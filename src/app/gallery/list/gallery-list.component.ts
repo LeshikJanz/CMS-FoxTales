@@ -2,7 +2,6 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
 
-
 /**
  * Gallery list component
  */
@@ -25,7 +24,7 @@ export class GalleryListComponent {
    */
   constructor(private location: Location,
               private router: Router) {
-    this.router.events.subscribe((val) =>{
+    this.router.events.subscribe((val) => {
       this.curLocation = this.location.path();
     });
   }

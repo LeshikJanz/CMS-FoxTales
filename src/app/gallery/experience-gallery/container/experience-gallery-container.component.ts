@@ -3,9 +3,7 @@ import { IActionState } from '../../../client/client.interface';
 import { IGalleryItem, IGalleryFilter } from '../../gallery-item.interface';
 import { ActivatedRoute } from '@angular/router';
 import { GalleryService } from '../../gallery.service';
-import { ExperienceService } from '../../../experience/experience.service';
-import { IExperience } from "../../../event/event.interface";
-
+import { IExperience } from '../../../event/event.interface';
 
 /**
  * Gallery list component
@@ -15,7 +13,7 @@ import { IExperience } from "../../../event/event.interface";
   templateUrl: 'experience-gallery-container.component.html',
   styleUrls: ['experience-gallery-container.component.scss']
 })
-export class ExperienceGalleryContainerComponent {
+export class ExperienceGalleryContainerComponent implements OnInit {
   /**
    * Sort actions
    *
@@ -54,11 +52,18 @@ export class ExperienceGalleryContainerComponent {
   public experienceId: number;
 
   /**
+   * Search value
+   *
+   * @type {string}
+   */
+  public search: string;
+
+  /**
    * Gallery filter
    *
    * @type {IGalleryFilter}
    */
-  public filter:IGalleryFilter;
+  public filter: IGalleryFilter;
 
   /**
    * Constructor
@@ -68,7 +73,6 @@ export class ExperienceGalleryContainerComponent {
    * @returns {void}
    */
   constructor(private route: ActivatedRoute,
-              private experienceService: ExperienceService,
               private galleryService: GalleryService) {
   }
 
@@ -94,12 +98,23 @@ export class ExperienceGalleryContainerComponent {
     console.log(event);
   }
 
+  /**
+   * Handler sort action
+   *
+   * @param {string} event
+   * @return {void}
+   */
+  public onSortChanged(event) {
+    console.log('onSortChange');
+    console.log(event);
+  }
+
   public ngOnInit() {
     this.route.params.subscribe((params: any) =>
       this.experienceId = params['id']
-  );
+    );
 
-    this.filter = {experienceId: this.experienceId}
+    this.filter = {experienceId: this.experienceId};
     this.getGalleryItems(this.filter);
   }
 

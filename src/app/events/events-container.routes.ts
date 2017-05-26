@@ -1,10 +1,10 @@
 import { ModuleWithProviders } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { EventsComponent } from './events-container.component';
-import { EventListComponent } from "../event/list/event-list.component";
-import { EventCreateComponent } from "../event/create/event-create.component";
-import { EventGroupsComponent } from "../event-groups/list/event-groups.component";
-import { EventGroupCreateComponent } from "../event-groups/create/event-group-create.component";
+import { EventListComponent } from '../event/list/event-list.component';
+import { EventCreateComponent } from '../event/create/event-create.component';
+import { EventGroupsComponent } from '../event-groups/list/event-groups.component';
+import { EventGroupCreateComponent } from '../event-groups/create/event-group-create.component';
 
 const EVENTS_ROUTES: Routes = [
   {

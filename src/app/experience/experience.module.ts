@@ -13,17 +13,19 @@ import { HttpService } from '../shared/core';
 import { EXPERIENCE_ROUTING } from './experience.routes';
 
 import { ExperienceService } from './experience.service';
-import { ExperienceListComponent } from './list';
 import { ExperienceCreateComponent } from './create';
 
 import { FeatureModule } from '../components/feature.module';
 import { ExperienceComponent } from './experience.component';
 import { ExperienceContentComponent } from './content/experience-content';
 import { EventContainerModule } from '../event/event-container.module';
-import { ExperienceGalleryComponent } from '../gallery/experience-gallery/components/experience-gallery.component';
-import { GalleryItemListComponent } from '../gallery-items/list/gallery-item-list.component';
+import {
+  ExperienceGalleryComponent
+} from '../gallery/experience-gallery/components/experience-gallery.component';
 import { GalleryService } from '../gallery/gallery.service';
-import { ExperienceGalleryContainerComponent } from '../gallery/experience-gallery/container/experience-gallery-container.component';
+import {
+  ExperienceGalleryContainerComponent
+} from '../gallery/experience-gallery/container/experience-gallery-container.component';
 
 @NgModule({
   imports: [
@@ -45,7 +47,7 @@ import { ExperienceGalleryContainerComponent } from '../gallery/experience-galle
     {
       provide: Http,
       useFactory: httpFactory,
-      deps: [ XHRBackend, RequestOptions, Injector ]
+      deps: [XHRBackend, RequestOptions, Injector]
     },
     ExperienceService,
     GalleryService
