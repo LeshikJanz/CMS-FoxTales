@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
 
@@ -13,7 +13,7 @@ import { Location } from '@angular/common';
 })
 export class GalleryListComponent {
 
-  public galleries: any[] = [1, 2, 3];
+  @Input() public galleries: any[];
 
   public curLocation: string;
 

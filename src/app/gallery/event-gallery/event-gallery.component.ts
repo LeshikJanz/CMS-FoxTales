@@ -3,6 +3,8 @@ import { IActionState } from '../../client/client.interface';
 import { IGalleryItem, IGalleryFilter } from '../gallery-item.interface';
 import { ActivatedRoute } from '@angular/router';
 import { GalleryService } from '../gallery.service';
+import { ExperienceService } from '../../experience/experience.service';
+import { IExperience } from "../../event/event.interface";
 
 
 /**
@@ -20,8 +22,8 @@ export class EventGalleryComponent {
    * @type {IActionState[]}
    */
   public sortActions: IActionState[] = [
-    { id: 1, action: 'Upcoming' },
-    { id: 2, action: 'Descending' }
+    {id: 1, action: 'Upcoming'},
+    {id: 2, action: 'Descending'}
   ];
 
   /**
@@ -31,20 +33,32 @@ export class EventGalleryComponent {
    */
   public galleryTypes: string[] = ['Event', 'Experience', 'All'];
 
-
   /**
    * Gallery items
    *
    * @type {IGalleryItem[]}
    */
   @Input() public galleryItems: IGalleryItem[];
+  /**
+   * Experience items
+   *
+   * @type {IExperience[]}
+   */
+  @Input() public experiences: IExperience[];
 
   /**
    * Current event id
    *
-   * @type {string}
+   * @type {number}
    */
-  public eventId: string;
+  public eventId: number;
+
+  /**
+   * Gallery filter
+   *
+   * @type {IGalleryFilter}
+   */
+  public filter:IGalleryFilter;
 
   /**
    * Constructor
@@ -54,8 +68,10 @@ export class EventGalleryComponent {
    * @returns {void}
    */
   constructor(private route: ActivatedRoute,
+              private experienceService: ExperienceService,
               private galleryService: GalleryService) {
   }
+
   /**
    * Handler gallery type changing
    *
@@ -79,20 +95,38 @@ export class EventGalleryComponent {
   }
 
   public ngOnInit() {
-    this.route.params.subscribe((params: any) => {
-      this.eventId = params['id'];
-      console.log('this.eventId');
-      console.log(this.eventId);
-    });
+    this.route.params.subscribe((params: any) =>
+      this.eventId = params['id']
+    );
 
-    const filter = { eventId: +this.eventId }
-    this.getGalleryItems(filter);
+    this.filter = {eventId: this.eventId}
+    this.getGalleryItems(this.filter);
+    this.getExperiences(this.eventId);
   }
 
+  /**
+   * Get experience
+   *
+   * @param {number} id
+   * @return {void}
+   */
+  public getExperiences(id: number) {
+    this.experienceService.getExperiences(id)
+      .subscribe((experiences: IExperience[]) =>
+        this.experiences = experiences
+      )
+  }
+
+  /**
+   * Get gallery items
+   *
+   * @param {IGalleryFilter} filter
+   * @return {void}
+   */
   public getGalleryItems(filter: IGalleryFilter) {
     this.galleryService.getGalleryItems(filter)
-      .subscribe((items: IGalleryItem[]) => {
-        this.galleryItems = items;
-      });
+      .subscribe((items: IGalleryItem[]) =>
+        this.galleryItems = items
+      );
   };
 }

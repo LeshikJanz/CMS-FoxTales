@@ -21,7 +21,7 @@ export class GalleryService {
    * @param {IGalleryFilter} filter - Filter
    * @returns {Observable<IGalleryItem>} - Gallery items
    */
-  public getGalleryItems(filter: IGalleryFilter): Observable<IGalleryItem[]> {
+  public getGalleryItems(filter: IGalleryFilter = {}): Observable<IGalleryItem[]> {
     let options = new RequestOptions({
       params: filter
     });

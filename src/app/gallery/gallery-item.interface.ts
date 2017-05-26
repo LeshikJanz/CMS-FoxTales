@@ -17,5 +17,12 @@ export interface IGalleryItem {
  * Gallery interface filter
  */
 export interface IGalleryFilter {
-
+  id?: number;
+  eventId?: number;
+  experienceId?: number;
+  contentOptionIds?: number[];
+  skip?: any;
+  take?: any;
+  showOnFeed?: boolean;
+  approved?: boolean;
 }

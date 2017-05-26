@@ -19,5 +19,4 @@ export class EventNavigationComponent {
       this.eventId = this.curLocation.split('/')[2];
     });
   }
-
 }
