@@ -26,7 +26,7 @@ export class ExperienceGalleryComponent {
    *
    * @type {string[]}
    */
-  public galleryTypes: string[] = ['Event', 'Experiment', 'All'];
+  public galleryTypes: string[] = ['Event', 'Experience', 'All'];
 
   /**
    * Handler gallery type changing

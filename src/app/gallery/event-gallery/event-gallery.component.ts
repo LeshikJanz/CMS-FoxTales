@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { IActionState } from '../../client/client.interface';
+import { IGalleryItem, IGalleryFilter } from '../gallery-item.interface';
+import { ActivatedRoute } from '@angular/router';
+import { GalleryService } from '../gallery.service';
 
 
 /**
@@ -26,8 +29,33 @@ export class EventGalleryComponent {
    *
    * @type {string[]}
    */
-  public galleryTypes: string[] = ['Event', 'Experiment', 'All'];
+  public galleryTypes: string[] = ['Event', 'Experience', 'All'];
 
+
+  /**
+   * Gallery items
+   *
+   * @type {IGalleryItem[]}
+   */
+  @Input() public galleryItems: IGalleryItem[];
+
+  /**
+   * Current event id
+   *
+   * @type {string}
+   */
+  public eventId: string;
+
+  /**
+   * Constructor
+   *
+   * @param {Route} route - ActivatedRoute
+   * @param {GalleryService} galleryService - Gallery service
+   * @returns {void}
+   */
+  constructor(private route: ActivatedRoute,
+              private galleryService: GalleryService) {
+  }
   /**
    * Handler gallery type changing
    *
@@ -49,4 +77,22 @@ export class EventGalleryComponent {
     console.log('onSearchChange');
     console.log(event);
   }
+
+  public ngOnInit() {
+    this.route.params.subscribe((params: any) => {
+      this.eventId = params['id'];
+      console.log('this.eventId');
+      console.log(this.eventId);
+    });
+
+    const filter = { eventId: +this.eventId }
+    this.getGalleryItems(filter);
+  }
+
+  public getGalleryItems(filter: IGalleryFilter) {
+    this.galleryService.getGalleryItems(filter)
+      .subscribe((items: IGalleryItem[]) => {
+        this.galleryItems = items;
+      });
+  };
 }

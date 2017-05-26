@@ -1,12 +1,12 @@
 <nav class="slidemenu">
 
   <input type="radio" name="slideItem" id="slide-item-1" class="slide-toggle"
-         [routerLink]="['/event', eventId, 'experiences']"
+         [routerLink]="[eventId, 'experiences']"
          [attr.checked]="curLocation && curLocation.indexOf('/experiences') > 0 ? '' : null"/>
     <label for="slide-item-1"><span >Experiences</span></label>
 
   <input type="radio" name="slideItem" id="slide-item-2" class="slide-toggle"
-         [routerLink]="['/event', eventId, 'galleries']"
+         [routerLink]="[eventId, 'galleries']"
          [attr.checked]="curLocation && curLocation.indexOf('/galleries') > 0 ? '' : null"/>
   <label for="slide-item-2"><span >Galleries</span></label>
 
