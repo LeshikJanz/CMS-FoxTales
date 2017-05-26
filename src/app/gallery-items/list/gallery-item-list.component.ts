@@ -47,7 +47,7 @@ export class GalleryItemListComponent implements OnInit {
   public getGalleryItems() {
     this.galleryService.getGalleryItems()
       .subscribe((items: IGalleryItem[]) => {
-        this.galleryItems = items
+        this.galleryItems = items;
         console.log('this.galleryItems');
         console.log(this.galleryItems);
       });

@@ -12,3 +12,10 @@ export interface IGalleryItem {
   favorite: boolean;
   visible: boolean;
 }
+
+/**
+ * Gallery interface filter
+ */
+export interface IGalleryFilter {
+
+}

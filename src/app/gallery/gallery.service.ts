@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Response, Http } from '@angular/http';
-import { IGalleryItem } from "./gallery-item.interface";
+import { IGalleryItem, IGalleryFilter } from './gallery-item.interface';
 
 @Injectable()
 export class GalleryService {
@@ -18,7 +18,7 @@ export class GalleryService {
   /**
    * Get gallery items
    *
-   * @param {IGalleryItem} filter - Filter
+   * @param {IGalleryFilter} filter - Filter
    * @returns {Observable<IGalleryItem>} - Gallery items
    */
   public getGalleryItems(): Observable<IGalleryItem[]> {
