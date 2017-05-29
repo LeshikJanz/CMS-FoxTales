@@ -6,6 +6,12 @@
   margin-top: 20px;
   height: 65px;
 
+  checkbox {
+    height: 32px;
+    width: 32px;
+    font-size: 14px;
+  }
+
   & :first-child {
     margin-right: 20px;
   }
