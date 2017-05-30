@@ -8,6 +8,11 @@
 
 .modal-body {
 
+  .switch-container {
+    display: flex;
+    flex-direction: column;
+  }
+
   tag-input {
     padding-top: 30px;
   }

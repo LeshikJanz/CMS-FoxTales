@@ -4,8 +4,9 @@ import { EventsComponent } from './events-container.component';
 import { EventListComponent } from '../event/list/event-list.component';
 import { EventCreateComponent } from '../event/create/event-create.component';
 import { EventGroupsComponent } from '../event-groups/list/event-groups.component';
-import { EventGroupCreateComponent } from '../event-groups/create/event-group-create.component';
 import { FavoriteGalleryComponent } from '../gallery/favorite-gallery/favorite-gallery.component';
+import { EventGroupEditComponent } from '../event-groups/edit/event-group-edit.component';
+import { EventGroupCreateComponent } from '../event-groups/create/event-group-create.component';
 
 const EVENTS_ROUTES: Routes = [
   {
@@ -18,6 +19,7 @@ const EVENTS_ROUTES: Routes = [
       {path: 'create-event', component: EventCreateComponent},
       {path: 'event-groups', component: EventGroupsComponent},
       {path: 'event-group', component: EventGroupCreateComponent},
+      {path: 'event-group/:id', component: EventGroupEditComponent},
       {path: 'favorited-media', component: FavoriteGalleryComponent}
     ]
   },

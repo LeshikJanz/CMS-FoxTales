@@ -40,6 +40,17 @@ export class EventGroupsService {
   }
 
   /**
+   * Get Event group by id
+   *
+   * @returns IEventGroup
+   */
+  public getEventGroup(id: number): Observable<IEventGroup> {
+    return this.http.get(`${process.env.API_URL}/EventGroups/${id}`)
+      .map((response: Response) => <IEventGroup> response.json())
+      .catch(this.handleError);
+  }
+
+  /**
    * Add event group
    *
    * See: http://client2.dev.getfoxtales.com/swagger/#!/EventGroups/ApiEventGroupsPost

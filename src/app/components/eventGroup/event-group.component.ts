@@ -3,6 +3,7 @@ import { IActionState } from '../../client/client.interface';
 import { IEventGroup } from '../../event-groups/list/event-groups.interaface';
 import * as moment from 'moment';
 import { IEvent } from '../../event/event.interface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'event-group',
@@ -63,6 +64,25 @@ export class EventGroupComponent {
     {id: 2, action: 'Descending'}
   ];
 
+
+  /**
+   * Constructor
+   *
+   * @param {Router} router - Router
+   * @returns {void}
+   */
+  constructor(private router: Router) {
+  }
+
+  /**
+   * Edit event group
+   *
+   * @return {void}
+   */
+  public editEventGroup(group: IEventGroup) {
+    this.router.navigate(['events/event-group', group.id])
+  }
+
   /**
    * Handler on switching menu actions
    *
@@ -72,7 +92,7 @@ export class EventGroupComponent {
   public onTypeChanged(elem) {
     switch (elem.event.id) {
       case 1:
-        console.log('Edit');
+        this.editEventGroup(elem.group)
         break;
       case 2:
         console.log('Configure Gallery');

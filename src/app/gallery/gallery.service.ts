@@ -38,7 +38,6 @@ export class GalleryService {
    * @returns {Observable<IGalleryItem>} - Gallery items
    */
   public makeFavorite(id: number, status: boolean): Observable<Response> {
-    // const headers = new Headers({ 'Content-Type': 'application/json' });
-    return this.http.post(`${process.env.API_URL}/Media/${id}/favorite`, status);
+    return this.http.post(`${process.env.API_URL}/Media/${id}/favorite/${status}`, '');
   }
 }

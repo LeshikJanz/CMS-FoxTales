@@ -23,7 +23,14 @@ export class EventsToCurGroupModalComponent implements OnChanges {
    *
    * type {any}
    */
-  public group: IEventGroup;
+  public group: IEventGroup = {
+    id: null,
+    name: null,
+    clientId: null,
+    eventIds: [],
+    events: null,
+    gallery: null
+  };
 
   /**
    * Events
@@ -102,8 +109,10 @@ export class EventsToCurGroupModalComponent implements OnChanges {
    * @return {void}
    */
   public updateGroup() {
-    this.selectedEvents.forEach((e: IEvent) =>
-      this.group.eventIds.push(e.id)
+    this.group.eventIds = [];
+    this.group.events.forEach((e: IEvent) => {
+        this.group.eventIds.push(e.id)
+      }
     );
 
     this.eventGroupService.updateEventGroup(this.group)

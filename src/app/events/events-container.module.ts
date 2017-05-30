@@ -15,6 +15,7 @@ import { TagInputModule } from 'ng2-tag-input';
 import { SharedModule } from '../shared/shared.module';
 import { EventService } from '../event/event.service';
 import { EventGroupsService } from '../event-groups/list/event-groups.service';
+import { EventGroupEditComponent } from '../event-groups/edit/event-group-edit.component';
 
 @NgModule({
   imports: [
@@ -36,7 +37,8 @@ import { EventGroupsService } from '../event-groups/list/event-groups.service';
     EventListComponent,
     EventCreateComponent,
     EventGroupsComponent,
-    EventGroupCreateComponent
+    EventGroupCreateComponent,
+    EventGroupEditComponent
   ]
 })
 export class EventsModule {

@@ -1,7 +1,7 @@
 <div class="group-container">
   <h1>New Event Group</h1>
   <form
-    (ngSubmit)="addEventGroup(eventGroupForm.value)"
+    (ngSubmit)="updateEventGroup(eventGroupForm.value)"
     class="form"
     novalidate>
 
@@ -13,6 +13,7 @@
           id="name"
           class="form-control input"
           type="text"
+          [(ngModel)]="eventGroup.name"
           formControlName="name"
           placeholder="Group name">
       </div>
@@ -23,6 +24,7 @@
         <tag-input
           formControlName="events"
           [transform]="tagTransformer"
+          [ngModel]="events"
           [maxItems]="10">
           <tag-input-dropdown
             [identifyBy]="'id'"
@@ -47,7 +49,7 @@
       <fox-button
         type="submit"
         [disabled]="eventGroupForm.invalid"
-        [value]="'Save and Exit'"
+        [value]="'Update'"
         [design]="'special'"
       ></fox-button>
     </div>

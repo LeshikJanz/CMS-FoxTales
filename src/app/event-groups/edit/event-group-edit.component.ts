@@ -5,17 +5,17 @@ import { ITag } from '../../event/tag.interface';
 import { IEventGroup } from '../list/event-groups.interaface';
 import { EventGroupsService } from '../list/event-groups.service';
 import { IEvent } from '../../event/event.interface';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { PermissionService } from '../../shared/core/auth/permission.service';
 
 @Component({
-  selector: 'event-group-create',
-  templateUrl: 'event-group-create.component.html',
-  styleUrls: ['event-group-create.component.scss']
+  selector: 'event-group-edit',
+  templateUrl: 'event-group-edit.component.html',
+  styleUrls: ['event-group-edit.component.scss']
 })
 
-export class EventGroupCreateComponent implements OnInit {
+export class EventGroupEditComponent implements OnInit {
 
   /**
    * Event group form
@@ -32,13 +32,6 @@ export class EventGroupCreateComponent implements OnInit {
   public tags: ITag[];
 
   /**
-   * Events
-   *
-   * @type {IEvent[]}
-   */
-  public events: IEvent[];
-
-  /**
    * Event group
    *
    * @type {IEventGroup}
@@ -51,6 +44,13 @@ export class EventGroupCreateComponent implements OnInit {
     events: null,
     gallery: null
   };
+
+  /**
+   * Events
+   *
+   * @type {IEvent[]}
+   */
+  public events: IEvent[];
 
   /**
    * Gallery toggle options
@@ -66,6 +66,7 @@ export class EventGroupCreateComponent implements OnInit {
    */
 
   public isGalleryEnabled: string;
+
   /**
    * Constructor
    *
@@ -76,9 +77,37 @@ export class EventGroupCreateComponent implements OnInit {
   constructor(private eventService: EventService,
               private eventGroupService: EventGroupsService,
               private router: Router,
+              private route: ActivatedRoute,
               private formBuilder: FormBuilder,
-              private toastrService: ToastrService
-  ) {
+              private toastrService: ToastrService) {
+  }
+
+  /**
+   * Get client by id
+   *
+   * @param {number} id - Event group id
+   * @returns {void|Promise<boolean>}
+   */
+  public getEventGroup(id: number): void|Promise<boolean> {
+    this.eventGroupService
+      .getEventGroup(id)
+      .subscribe((eventGroup: IEventGroup) => {
+        if (!eventGroup) {
+          return this.router.navigate(['/events/event-groups']);
+        }
+
+        this.eventGroup = eventGroup[0];
+        this.eventGroup.id = id;
+      });
+  }
+
+  public ngOnInit() {
+    this.buildForm();
+    this.getEvents();
+
+    this.route.params.subscribe((params: any) => {
+      this.getEventGroup(params['id']);
+    });
   }
 
   /**
@@ -90,13 +119,8 @@ export class EventGroupCreateComponent implements OnInit {
     this.eventService
       .getEvents()
       .subscribe((events: IEvent[]) =>
-          this.events = events.filter((e: IEvent) => !!e.name)
+        this.events = events.filter((e: IEvent) => !!e.name)
       );
-  }
-
-  public ngOnInit() {
-    this.getEvents();
-    this.buildForm();
   }
 
   /**
@@ -112,9 +136,9 @@ export class EventGroupCreateComponent implements OnInit {
   /**
    * Build eventGroup form
    *
-   * @returns {ClientCreateComponent} - Component
+   * @returns {EventGroupEditComponent} - Component
    */
-  public buildForm(): EventGroupCreateComponent {
+  public buildForm(): EventGroupEditComponent {
     this.eventGroupForm = this.formBuilder.group({
       name: ['', [
         Validators.required
@@ -126,18 +150,16 @@ export class EventGroupCreateComponent implements OnInit {
   }
 
   /**
-   * Create new Event group
+   * Update Event group
    *
    * @returns {void}
    */
-  public addEventGroup(eventGroup: IEventGroup) {
+  public updateEventGroup(eventGroup: IEventGroup) {
     eventGroup.eventIds = eventGroup.events.map((e: IEvent) => e.id);
-    delete eventGroup.events;
-    eventGroup.clientId = PermissionService.clientId;
 
-    this.eventGroupService.addEventGroup(eventGroup)
+    this.eventGroupService.updateEventGroup(this.eventGroup)
       .subscribe(() => {
-        this.toastrService.success('Event group has been added successfully.');
+        this.toastrService.success('Event group has been updated successfully.');
         this.router.navigate(['/events/event-groups']);
       });
   }

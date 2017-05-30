@@ -64,14 +64,6 @@ export class DownloadModalComponent {
   @Output() public save: EventEmitter<any> = new EventEmitter();
 
   /**
-   * Constructor
-   *
-   * @return {void}
-   */
-  constructor() {
-  }
-
-  /**
    * Show modal
    *
    * @return {void}
@@ -114,5 +106,6 @@ export class DownloadModalComponent {
    * @return {void}
    */
   public startDownload() {
+    console.log('start download');
   }
 }
