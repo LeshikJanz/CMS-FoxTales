@@ -25,8 +25,7 @@ import { EventGroupsService } from '../event-groups/list/event-groups.service';
     ReactiveFormsModule,
     CustomFormsModule,
     TagInputModule,
-    SharedModule,
-    FeatureModule
+    SharedModule
   ],
   providers: [
     EventService,

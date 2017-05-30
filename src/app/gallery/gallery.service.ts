@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Response, Http, RequestOptions } from '@angular/http';
+import { Response, Http, RequestOptions, Headers } from '@angular/http';
 import { IGalleryItem, IGalleryFilter } from './gallery-item.interface';
 
 @Injectable()
@@ -38,7 +38,7 @@ export class GalleryService {
    * @returns {Observable<IGalleryItem>} - Gallery items
    */
   public makeFavorite(id: number, status: boolean): Observable<Response> {
-    return this.http.post(`${process.env.API_URL}/Media/${id}/favorite`, {
-      status
-    });  }
+    // const headers = new Headers({ 'Content-Type': 'application/json' });
+    return this.http.post(`${process.env.API_URL}/Media/${id}/favorite`, status);
+  }
 }

@@ -5,6 +5,7 @@ import { EventListComponent } from '../event/list/event-list.component';
 import { EventCreateComponent } from '../event/create/event-create.component';
 import { EventGroupsComponent } from '../event-groups/list/event-groups.component';
 import { EventGroupCreateComponent } from '../event-groups/create/event-group-create.component';
+import { FavoriteGalleryComponent } from '../gallery/favorite-gallery/favorite-gallery.component';
 
 const EVENTS_ROUTES: Routes = [
   {
@@ -16,7 +17,8 @@ const EVENTS_ROUTES: Routes = [
       },
       {path: 'create-event', component: EventCreateComponent},
       {path: 'event-groups', component: EventGroupsComponent},
-      {path: 'event-group', component: EventGroupCreateComponent}
+      {path: 'event-group', component: EventGroupCreateComponent},
+      {path: 'favorited-media', component: FavoriteGalleryComponent}
     ]
   },
 ];

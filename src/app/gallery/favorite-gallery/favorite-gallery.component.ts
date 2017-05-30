@@ -1,19 +1,19 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { IActionState } from '../../../client/client.interface';
-import { IGalleryItem, IGalleryFilter } from '../../gallery-item.interface';
 import { ActivatedRoute } from '@angular/router';
-import { GalleryService } from '../../gallery.service';
-import { IExperience } from '../../../event/event.interface';
+import { IActionState } from '../../client/client.interface';
+import { IGalleryItem, IGalleryFilter } from '../gallery-item.interface';
+import { IExperience } from '../../event/event.interface';
+import { GalleryService } from '../gallery.service';
 
 /**
- * Gallery list component
+ * Favorite gallery component
  */
 @Component({
-  selector: 'event-gallery-container',
-  templateUrl: 'experience-gallery-container.component.html',
-  styleUrls: ['experience-gallery-container.component.scss']
+  selector: 'favorite-gallery',
+  templateUrl: 'favorite-gallery.component.html',
+  styleUrls: ['favorite-gallery.component.scss']
 })
-export class ExperienceGalleryContainerComponent implements OnInit {
+export class FavoriteGalleryComponent implements OnInit {
   /**
    * Sort actions
    *
@@ -114,8 +114,7 @@ export class ExperienceGalleryContainerComponent implements OnInit {
       this.experienceId = params['id']
     );
 
-    this.filter = {experienceId: this.experienceId};
-    this.getGalleryItems(this.filter);
+    this.getGalleryItems();
   }
 
   /**
@@ -124,10 +123,10 @@ export class ExperienceGalleryContainerComponent implements OnInit {
    * @param {IGalleryFilter} filter
    * @return {void}
    */
-  public getGalleryItems(filter: IGalleryFilter) {
+  public getGalleryItems(filter: IGalleryFilter = {}) {
     this.galleryService.getGalleryItems(filter)
       .subscribe((items: IGalleryItem[]) =>
-          this.galleryItems = items
+          this.galleryItems = items.filter((i: IGalleryItem) => i.favorite)
       );
   };
 }

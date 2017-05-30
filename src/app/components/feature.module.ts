@@ -48,6 +48,10 @@ import { ThumbnailComponent } from './thumbnail/thumbnail.component';
 import {
   EventNavigationComponent
 } from './navigations/event-navigation/event-navigation.component';
+import { FavoriteGalleryComponent } from '../gallery/favorite-gallery/favorite-gallery.component';
+import { GalleryItemListComponent } from '../gallery-items/list/gallery-item-list.component';
+import { GalleryService } from '../gallery/gallery.service';
+import { DownloadModalComponent } from './modals/download-modal/download-modal.component';
 
 @NgModule({
   imports: [
@@ -58,7 +62,7 @@ import {
     ModalModule.forRoot(),
     TagInputModule
   ],
-  providers: [],
+  providers: [GalleryService],
   declarations: [
     CreationButtonComponent,
     UploadButtonComponent,
@@ -85,7 +89,10 @@ import {
     EventToGroupModalComponent,
     ScrollComponent,
     GroupDropDownComponent,
-    ThumbnailComponent
+    ThumbnailComponent,
+    FavoriteGalleryComponent,
+    GalleryItemListComponent,
+    DownloadModalComponent
   ],
   exports: [
     CreationButtonComponent,
@@ -115,7 +122,10 @@ import {
     EventToGroupModalComponent,
     ScrollComponent,
     GroupDropDownComponent,
-    ThumbnailComponent
+    ThumbnailComponent,
+    FavoriteGalleryComponent,
+    GalleryItemListComponent,
+    DownloadModalComponent
   ]
 })
 

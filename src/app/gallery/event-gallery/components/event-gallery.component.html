@@ -28,12 +28,13 @@
         <fox-button
           [value]="'Download Gallery'"
           [design]="'primary'"
+          (click)="atgModal.show()"
         ></fox-button>
       </div>
 
     </div>
     <gallery-item-list [galleryItems]="galleryItems"></gallery-item-list>
-
+    <download-modal #atgModal></download-modal>
   </div>
 
 </div>

@@ -10,7 +10,7 @@
 
   <input type="radio" name="slideItem" id="slide-item-3" class="slide-toggle"
          [attr.checked]="curLocation == '/events/favorited-media' ? '' : null"/>
-  <label for="slide-item-3"><span>Favorited Media</span></label>
+  <label for="slide-item-3"><span [routerLink]="['/events/favorited-media']">Favorited Media</span></label>
 
   <div class="clear"></div>
 
