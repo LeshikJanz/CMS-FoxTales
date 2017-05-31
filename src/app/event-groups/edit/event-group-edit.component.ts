@@ -25,13 +25,6 @@ export class EventGroupEditComponent implements OnInit {
   public eventGroupForm: FormGroup;
 
   /**
-   * Tags
-   *
-   * @type {ITag[]}
-   */
-  public tags: ITag[];
-
-  /**
    * Event group
    *
    * @type {IEventGroup}
@@ -86,9 +79,9 @@ export class EventGroupEditComponent implements OnInit {
    * Get client by id
    *
    * @param {number} id - Event group id
-   * @returns {void|Promise<boolean>}
+   * @returns {void}
    */
-  public getEventGroup(id: number): void|Promise<boolean> {
+  public getEventGroup(id: number) {
     this.eventGroupService
       .getEventGroup(id)
       .subscribe((eventGroup: IEventGroup) => {
@@ -97,7 +90,6 @@ export class EventGroupEditComponent implements OnInit {
         }
 
         this.eventGroup = eventGroup[0];
-        this.eventGroup.id = id;
       });
   }
 
@@ -154,8 +146,9 @@ export class EventGroupEditComponent implements OnInit {
    *
    * @returns {void}
    */
-  public updateEventGroup(eventGroup: IEventGroup) {
-    eventGroup.eventIds = eventGroup.events.map((e: IEvent) => e.id);
+  public updateEventGroup() {
+    this.eventGroup.eventIds = this.eventGroup.events.map((e: IEvent) => e.id);
+    delete this.eventGroup.events;
 
     this.eventGroupService.updateEventGroup(this.eventGroup)
       .subscribe(() => {

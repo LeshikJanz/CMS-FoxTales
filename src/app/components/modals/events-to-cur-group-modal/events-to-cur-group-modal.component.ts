@@ -109,8 +109,9 @@ export class EventsToCurGroupModalComponent implements OnChanges {
    * @return {void}
    */
   public updateGroup() {
+    console.log('updateGroup');
     this.group.eventIds = [];
-    this.group.events.forEach((e: IEvent) => {
+    this.selectedEvents.forEach((e: IEvent) => {
         this.group.eventIds.push(e.id)
       }
     );
