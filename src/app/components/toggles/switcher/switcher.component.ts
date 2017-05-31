@@ -13,6 +13,8 @@ export class SwitcherComponent implements OnInit {
 
   @Output() public toggle: EventEmitter<string> = new EventEmitter<string>();
 
+  @Input() public disabled: boolean;
+
   public ngOnInit() {
     if (!this.type) {
       this.type = this.options[1];

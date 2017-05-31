@@ -21,11 +21,16 @@
         ></dropdown>
       </div>
       </div>
-      <input type="text" name="search" placeholder="find gallery" [(ngModel)]="search"
-             (ngModelChange)="onSearchChange($event)">
+
+      <fox-button
+              [value]="'Download Gallery'"
+              [design]="'primary'"
+              (click)="atgModal.show()"
+      ></fox-button>
 
     </div>
     <gallery-item-list [galleryItems]="galleryItems" ></gallery-item-list>
+    <download-modal #atgModal></download-modal>
   </div>
 
 </div>

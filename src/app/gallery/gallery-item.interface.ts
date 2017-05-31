@@ -25,4 +25,5 @@ export interface IGalleryFilter {
   take?: any;
   showOnFeed?: boolean;
   approved?: boolean;
+  favoriteOnly?: boolean;
 }

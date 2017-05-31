@@ -78,16 +78,21 @@ ul li .check::before {
 
 input[type=radio]:checked ~ .check {
   border: 2px solid #7a8693;
-  background-color: #7a8693;
+  background-color: #f57f17;
   color: white;
 }
+
+input[type=radio]:checked:disabled ~ .check {
+  background-color: #7a8693;
+}
+
 
 input[type=radio]:checked ~ .check label {
   color: white;
 }
 
 
-input[type=radio]:checked ~ .check::before{
+input[type=radio]:checked ~ .check::before {
   background: #7a8693;
   color: white;
 }
