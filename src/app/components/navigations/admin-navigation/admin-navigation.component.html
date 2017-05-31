@@ -8,7 +8,8 @@
          [attr.checked]="curLocation == '/admin/clients' ? '' : null"/>
   <label for="slide-item-2"><span [routerLink]="['/admin/clients']">Clients</span></label>
 
-  <input type="radio" name="slideItem" id="slide-item-3" class="slide-toggle"/>
+  <input type="radio" name="slideItem" id="slide-item-3" class="slide-toggle"
+         [attr.checked]="curLocation == '/admin/favorited-media' ? '' : null"/>
   <label for="slide-item-3"><span>Locations</span></label>
 
   <input type="radio" name="slideItem" id="slide-item-4" class="slide-toggle"/>

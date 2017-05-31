@@ -16,6 +16,13 @@ export class DownloadModalComponent {
   public isModalShown: boolean = false;
 
   /**
+   * is email sent?
+   *
+   * type {boolean}
+   */
+  public isEmailSent: boolean = false;
+
+  /**
    * Event
    *
    * type {IEvent}
@@ -67,6 +74,7 @@ export class DownloadModalComponent {
    * @return {void}
    */
   public onHidden() {
+    this.isEmailSent = false;
     this.isModalShown = false;
   }
 
@@ -86,6 +94,6 @@ export class DownloadModalComponent {
    * @return {void}
    */
   public startDownload() {
-    console.log('start download');
+    this.isEmailSent = true;
   }
 }

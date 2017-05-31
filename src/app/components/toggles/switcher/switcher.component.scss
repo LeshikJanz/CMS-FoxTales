@@ -77,8 +77,10 @@ ul li .check::before {
 }
 
 input[type=radio]:checked ~ .check {
-  border: 2px solid #7a8693;
-  background-color: #f57f17;
+  //Just uncomment it to enable orange switcher
+  //border: 2px solid #f57f17;
+  //background-color: #f57f17;
+  background-color: #7a8693;
   color: white;
 }
 

@@ -4,8 +4,9 @@
 
   .filters {
     display: flex;
-    padding: 20px 0;
-    justify-content: space-between;
+    justify-content: space-around;
+    align-items: center;
+    width: 400px;
 
     div {
       display: flex;
