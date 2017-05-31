@@ -1,14 +1,8 @@
 import {
-  Component, Input, ViewChild, OnInit,
-  OnChanges, Output, EventEmitter
+  Component, Input, ViewChild, Output, EventEmitter
 } from '@angular/core';
 import { ModalDirective } from 'ngx-bootstrap';
-import { ITag } from '../../../event/tag.interface';
-import { EventService } from '../../../event/event.service';
-import { IEventGroup } from '../../../event-groups/list/event-groups.interaface';
 import { IEvent } from '../../../event/event.interface';
-import { EventGroupsService } from '../../../event-groups/list/event-groups.service';
-import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'download-modal',
@@ -18,7 +12,7 @@ import { ToastrService } from 'ngx-toastr';
 
 export class DownloadModalComponent {
 
-  @ViewChild('atgModal') public lgModal: ModalDirective;
+  @ViewChild('aeModal') public lgModal: ModalDirective;
   public isModalShown: boolean = false;
 
   /**
@@ -27,20 +21,6 @@ export class DownloadModalComponent {
    * type {IEvent}
    */
   public event: IEvent;
-
-  /**
-   * Event groups
-   *
-   * type {IEventGroup[]}
-   */
-  @Input() public eventGroups: IEventGroup[];
-
-  /**
-   * Filtered event groups
-   *
-   * type {IEventGroup[]}
-   */
-  public eventGroupList: IEventGroup[];
 
   /**
    * Search value

@@ -1,15 +1,30 @@
-.modal-lg {
-  width: 60%;
+.modal-dialog {
+  .modal-content {
+    width: 600px;
+  }
 }
 
 .close img {
   height: 30px;
 }
 
+.modal-header {
+  padding: 15px 40px;
+}
+
 .modal-body {
+  position: relative;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 250px;
 
   .switch-container {
     display: flex;
+    justify-content: space-between;
+    padding-left: 40px;
+    height: 80px;
     flex-direction: column;
   }
 
@@ -22,11 +37,10 @@
     width: 100%;
     justify-content: center;
     align-items: center;
-    padding-top: 60px;
 
     fox-button {
       height: 55px;
-      width: 120px;
+      width: 180px;
       font-size: 16px;
     }
 
