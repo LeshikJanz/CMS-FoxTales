@@ -15,7 +15,7 @@
         <input type="text" name="search" placeholder="search for a group" [(ngModel)]="search"
                (ngModelChange)="onSearchChange($event)">
         <hr>
-        <scroll [options]="eventGroupList" (chose)="selectedGroup = $event"></scroll>
+        <scroll [options]="eventGroups" (chose)="selectedGroup = $event"></scroll>
         <hr>
         <div class="btn-actions">
           <fox-button

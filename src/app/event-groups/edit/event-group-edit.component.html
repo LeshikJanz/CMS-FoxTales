@@ -24,6 +24,7 @@
         <tag-input
           formControlName="events"
           [transform]="tagTransformer"
+          [displayBy]="'name'"
           [(ngModel)]="eventGroup.events"
           [maxItems]="10">
           <tag-input-dropdown

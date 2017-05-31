@@ -127,6 +127,6 @@ export class EventGroupComponent {
     return moment(eventGroup.events.map((e: IEvent) =>
       moment(e.startTime).format('YYYY/MM/DD/hh/mm/ss'))
       .reduce((a, b) => a > b ? a : b), 'YYYY/MM/DD/hh/mm/ss')
-      .format('DD, YYYY');
+      .format('MMMM DD, YYYY');
   }
 }
