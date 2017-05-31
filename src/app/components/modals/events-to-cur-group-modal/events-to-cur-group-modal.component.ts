@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
   styleUrls: ['events-to-cur-group-modal.component.scss']
 })
 
-export class EventsToCurGroupModalComponent implements OnChanges {
+export class EventsToCurGroupModalComponent {
 
   @ViewChild('aeModal') public lgModal: ModalDirective;
   public isModalShown: boolean = false;
@@ -59,11 +59,8 @@ export class EventsToCurGroupModalComponent implements OnChanges {
    * @param {EventService} eventService - event service
    * @return {void}
    */
-  constructor(private eventService: EventService,
-              private eventGroupService: EventGroupsService,
-              private toastrService: ToastrService,
-              private router: Router) {
-  }
+  constructor(private eventGroupService: EventGroupsService,
+              private toastrService: ToastrService) {}
 
   /**
    * Tag transformer
@@ -81,6 +78,7 @@ export class EventsToCurGroupModalComponent implements OnChanges {
    * @return {void}
    */
   public show(group: IEventGroup) {
+    this.selectedEvents = [];
     this.group = group;
     this.isModalShown = true;
   }
@@ -109,12 +107,8 @@ export class EventsToCurGroupModalComponent implements OnChanges {
    * @return {void}
    */
   public updateGroup() {
-    console.log('updateGroup');
-    this.group.eventIds = [];
-    this.selectedEvents.forEach((e: IEvent) => {
-        this.group.eventIds.push(e.id)
-      }
-    );
+    this.group.eventIds = this.group.events.map((e: IEvent) => e.id);
+    this.selectedEvents.forEach((e: IEvent) => this.group.eventIds.push(e.id));
 
     this.eventGroupService.updateEventGroup(this.group)
       .subscribe(() => {
@@ -122,11 +116,5 @@ export class EventsToCurGroupModalComponent implements OnChanges {
         this.toastrService.success('Event group has been updated successfully.');
         this.save.emit();
       });
-  }
-
-  public ngOnChanges() {
-    if (this.group) {
-      this.selectedEvents = this.group.events;
-    }
   }
 }

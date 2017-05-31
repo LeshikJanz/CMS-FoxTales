@@ -64,7 +64,6 @@ export class EventGroupComponent {
     {id: 2, action: 'Descending'}
   ];
 
-
   /**
    * Constructor
    *
@@ -80,7 +79,7 @@ export class EventGroupComponent {
    * @return {void}
    */
   public editEventGroup(group: IEventGroup) {
-    this.router.navigate(['events/event-group', group.id])
+    this.router.navigate(['events/event-group', group.id]);
   }
 
   /**
@@ -92,7 +91,7 @@ export class EventGroupComponent {
   public onTypeChanged(elem) {
     switch (elem.event.id) {
       case 1:
-        this.editEventGroup(elem.group)
+        this.editEventGroup(elem.group);
         break;
       case 2:
         console.log('Configure Gallery');
