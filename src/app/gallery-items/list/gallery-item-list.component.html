@@ -1,6 +1,7 @@
 <div class="gallery">
   <div class="thumbnail-container" *ngFor="let item of galleryItems">
     <thumbnail
+      (favorite)="onFavorite($event)"
       [item]="item"
       [title]="'Title of Thumbnail'"
       [type]="'Type'"
