@@ -36,6 +36,15 @@ $imgHeight: 256.4px;
     align-items: center;
     background-color: #f5f6f7;
 
+    .actions {
+      z-index: 10;
+    }
+
+    video {
+      width: inherit;
+      height: inherit;
+    }
+
     div img {
       cursor: pointer;
       display: none;

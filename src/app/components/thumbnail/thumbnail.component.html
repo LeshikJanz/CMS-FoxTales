@@ -1,14 +1,19 @@
 <div class="thumbnail-container">
   <div class="content">
-    <div>
+    <div class="actions">
       <checkbox (toggle)="onChecked($event)"></checkbox>
       <img (click)="makeFavorite()" [hidden]="!item.favorite" src="../../../assets/img/heart-active.svg" alt="">
       <img (click)="makeFavorite()" [hidden]="item.favorite" src="../../../assets/img/heart-inactive.svg" alt="">
     </div>
-    <img
+    <img *ngIf="item.mediaPath.indexOf('.png') > 0"
       [src]="item ? item.mediaPath :
        'https://amazingcarousel.com/wp-content/uploads/amazingcarousel/3/images/lightbox/golden-wheat-field-lightbox.jpg'"
       alt="">
+    <vg-player *ngIf="item.mediaPath.indexOf('.mp4') > 0" (onPlayerReady)="onPlayerReady($event)">
+      <video preload="true" loop="true" [vgMedia]="media" #media id="singleVideo" preload="auto" controls>
+        <source [src]="item.mediaPath" type="video/mp4">
+      </video>
+    </vg-player>
     <div [hidden]="true" class="buttons">
       <div class="confirm" (click)="onConfirm()">
         <img src="../../../assets/img/completed-icon.svg" alt="">
@@ -34,7 +39,8 @@
     </div>
   </div>
   <div class="action-menu">
-    <img (click)="downloadItem(item)" src="../../../assets/img/download-icon.svg">
+    <img  *ngIf="item.mediaPath.indexOf('.png') > 0"
+          (click)="downloadItem(item)" src="../../../assets/img/download-icon.svg">
   </div>
 
 </div>

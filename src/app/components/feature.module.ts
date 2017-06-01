@@ -52,8 +52,11 @@ import { FavoriteGalleryComponent } from '../gallery/favorite-gallery/favorite-g
 import { GalleryItemListComponent } from '../gallery-items/list/gallery-item-list.component';
 import { GalleryService } from '../gallery/gallery.service';
 import { DownloadModalComponent } from './modals/download-modal/download-modal.component';
-import { SelectModule } from 'ng2-select';
-
+import { BrowserModule } from '@angular/platform-browser';
+import { VgCoreModule } from 'videogular2/core';
+import { VgControlsModule } from 'videogular2/controls';
+import { VgOverlayPlayModule } from 'videogular2/overlay-play';
+import { VgBufferingModule } from 'videogular2/buffering';
 @NgModule({
   imports: [
     CommonModule,
@@ -61,7 +64,11 @@ import { SelectModule } from 'ng2-select';
     RouterModule.forChild(FEATURE_ROUTES),
     BsDropdownModule.forRoot(),
     ModalModule.forRoot(),
-    TagInputModule
+    TagInputModule,
+    VgCoreModule,
+    VgControlsModule,
+    VgOverlayPlayModule,
+    VgBufferingModule
   ],
   providers: [GalleryService],
   declarations: [

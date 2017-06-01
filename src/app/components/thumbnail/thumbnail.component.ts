@@ -32,6 +32,12 @@ export class ThumbnailComponent implements OnInit {
 
   constructor(private galleryService: GalleryService) {}
 
+  public onPlayerReady(event) {
+    console.log('onPlayerReady');
+    console.log(event);
+    event.play();
+  }
+
   public onChecked(event) {
     this.toggle.emit(event);
   }
