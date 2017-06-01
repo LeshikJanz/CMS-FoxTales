@@ -15,6 +15,13 @@ import { AuthService } from './shared/core';
 })
 export class AppComponent implements OnInit {
   /**
+   * App version
+   *
+   * @type {string}
+   */
+  public version: string = '2.1.4';
+
+  /**
    * Constructor
    *
    * @param {Router} router - Router
@@ -22,6 +29,13 @@ export class AppComponent implements OnInit {
    * @returns {void}
    */
   constructor(private router: Router, private auth: AuthService) {
+    // Redirect not CMS users to forbidden page
+    // TODO: research better solution
+    if (window.location.href.match(/error/)) {
+      this.router.navigate(['/forbidden']);
+      return;
+    }
+
     if (!this.auth.loggedIn()) {
       this.router.navigate(['/auth']);
     }

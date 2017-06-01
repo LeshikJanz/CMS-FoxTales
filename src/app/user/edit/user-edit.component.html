@@ -32,19 +32,8 @@
 
       <!-- Client Access -->
       <div>
-        <label for="clientId">Client Access</label>
-        <select
-          id="clientId"
-          [(ngModel)]="user.clientId"
-          formControlName="clientId">
-          <option *ngFor="let client of clients" [ngValue]="client.id">{{ client.name }}</option>
-        </select>
-
-        <div ngxErrors="clientId">
-          <div ngxError="required" when="touched">
-            Field is required
-          </div>
-        </div>
+        <label>Client Access</label>
+        {{ client?.name }}
       </div>
     </div>
 

@@ -280,6 +280,17 @@ export class ClientEditComponent implements OnInit {
   }
 
   /**
+   * Remove logo
+   *
+   * @return {void}
+   */
+  public removeLogo(): void {
+    this.logoBytes = null;
+    this.client.logo = null;
+    this.client.logoBytes = null;
+  }
+
+  /**
    * Extract location details
    *
    * @param {google.maps.places.PlaceResult} place - Place results

@@ -12,7 +12,8 @@
       <!-- Logo -->
       <label style="font-size: 18px">Client logo</label>
 
-      <img src="{{ logoBytes || client?.logo }}" style="max-height: 50px;">
+      <img src="{{ logoBytes || client?.logo }}" *ngIf="logoBytes || client?.logo" style="max-height: 50px;">
+      <a href="javascript:void(0)" *ngIf="logoBytes || client?.logo" (click)="removeLogo()">x</a>
 
       <upload-button (imgUploaded)="onImgUploaded($event)"></upload-button>
 
