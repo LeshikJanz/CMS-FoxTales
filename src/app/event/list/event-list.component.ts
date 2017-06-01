@@ -41,6 +41,16 @@ export class EventListComponent implements OnInit {
   ];
 
   /**
+   * Initial sort object
+   *
+   * @type {IEventFilter}
+   */
+  public initialSorting: IEventFilter = {
+    sortBy: 'StartTime',
+    sortAscending: true
+  };
+
+  /**
    * Sort actions
    *
    * @type {IActionState[]}
@@ -87,8 +97,7 @@ export class EventListComponent implements OnInit {
    * @returns {void}
    */
   public onStartDateSort() {
-    const filter = {sortBy: 'StartTime', sortAscending: true};
-    this.getEvents(filter);
+    this.getEvents(this.initialSorting);
   }
 
   /**
@@ -128,7 +137,7 @@ export class EventListComponent implements OnInit {
    *
    * @returns {void}
    */
-  public getEvents(filter: IEventFilter = {}): void {
+  public getEvents(filter: IEventFilter = this.initialSorting): void {
     this.eventService
       .getEvents(filter)
       .subscribe((events) => {
