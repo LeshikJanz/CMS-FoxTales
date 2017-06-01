@@ -5,7 +5,7 @@ import { HttpModule } from '@angular/http';
 import { NgModule, ApplicationRef } from '@angular/core';
 import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularclass/hmr';
 import { RouterModule, PreloadAllModules } from '@angular/router';
-import "./../../node_modules/videogular2/fonts/videogular.css"
+import './../../node_modules/videogular2/fonts/videogular.css';
 /*
  * Platform and Environment providers/directives/pipes
  */
