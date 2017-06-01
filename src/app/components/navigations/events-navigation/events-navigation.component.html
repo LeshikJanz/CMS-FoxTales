@@ -1,0 +1,23 @@
+<nav class="slidemenu">
+
+  <input type="radio" name="slideItem" id="slide-item-1" class="slide-toggle"
+          [attr.checked]="curLocation == '/events/events' ? '' : null"/>
+  <label for="slide-item-1"><span [routerLink]="['/events/events']">Events</span></label>
+
+  <input type="radio" name="slideItem" id="slide-item-2" class="slide-toggle"
+         [attr.checked]="curLocation == '/events/event-groups' ? '' : null"/>
+  <label for="slide-item-2"><span [routerLink]="['/events/event-groups']">Event Groups</span></label>
+
+  <input type="radio" name="slideItem" id="slide-item-3" class="slide-toggle"
+         [attr.checked]="curLocation == '/events/favorited-media' ? '' : null"/>
+  <label for="slide-item-3"><span [routerLink]="['/events/favorited-media']">Favorited Media</span></label>
+
+  <div class="clear"></div>
+
+  <div class="slider">
+    <div class="slide-line">
+      <div class="bar"></div>
+    </div>
+  </div>
+</nav>
+<router-outlet></router-outlet>

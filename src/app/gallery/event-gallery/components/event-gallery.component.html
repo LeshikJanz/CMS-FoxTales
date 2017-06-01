@@ -1,0 +1,40 @@
+<h3>{{galleryId}}</h3>
+
+<div>
+  <div class="group-container">
+    <div class="filters">
+      <div class="main-filters">
+        <div>
+          <div>
+            <label>Sort by</label>
+            <dropdown
+              [title]="'Upcoming'"
+              [options]="sortActions"
+              [size]="'medium'"
+              (typeChanged)="onSortChanged($event)"
+            ></dropdown>
+          </div>
+          <div>
+            <label>Filter by</label>
+            <dropdown
+              [title]="'Upcoming'"
+              [options]="sortActions"
+              [size]="'medium'"
+              (typeChanged)="onSortChanged($event)"
+            ></dropdown>
+          </div>
+        </div>
+
+        <fox-button
+          [value]="'Download Gallery'"
+          [design]="'primary'"
+          (click)="atgModal.show()"
+        ></fox-button>
+      </div>
+
+    </div>
+    <gallery-item-list [galleryItems]="galleryItems"></gallery-item-list>
+    <download-modal #atgModal></download-modal>
+  </div>
+
+</div>

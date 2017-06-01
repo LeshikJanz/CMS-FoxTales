@@ -8,7 +8,7 @@ export default sandboxOf(ThumbnailComponent, { declarations: [CheckboxComponent]
   imports: [FormsModule, ProgressbarModule.forRoot()] })
   .add('thumbnail component', {
     template: `<thumbnail 
-                style="height: 362px; width: 250px; background-color: transparent;"
+                style="height: 262px; width: 250px; background-color: transparent;"
                 [title]="'Title of Thumbnail'"
                 [type]="'Type'"
                 [progress]="80"

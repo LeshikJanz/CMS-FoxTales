@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
   styleUrls: ['events-to-cur-group-modal.component.scss']
 })
 
-export class EventsToCurGroupModalComponent implements OnChanges {
+export class EventsToCurGroupModalComponent {
 
   @ViewChild('aeModal') public lgModal: ModalDirective;
   public isModalShown: boolean = false;
@@ -23,7 +23,14 @@ export class EventsToCurGroupModalComponent implements OnChanges {
    *
    * type {any}
    */
-  public group: IEventGroup;
+  public group: IEventGroup = {
+    id: null,
+    name: null,
+    clientId: null,
+    eventIds: [],
+    events: null,
+    gallery: null
+  };
 
   /**
    * Events
@@ -52,11 +59,8 @@ export class EventsToCurGroupModalComponent implements OnChanges {
    * @param {EventService} eventService - event service
    * @return {void}
    */
-  constructor(private eventService: EventService,
-              private eventGroupService: EventGroupsService,
-              private toastrService: ToastrService,
-              private router: Router) {
-  }
+  constructor(private eventGroupService: EventGroupsService,
+              private toastrService: ToastrService) {}
 
   /**
    * Tag transformer
@@ -74,6 +78,7 @@ export class EventsToCurGroupModalComponent implements OnChanges {
    * @return {void}
    */
   public show(group: IEventGroup) {
+    this.selectedEvents = [];
     this.group = group;
     this.isModalShown = true;
   }
@@ -102,9 +107,8 @@ export class EventsToCurGroupModalComponent implements OnChanges {
    * @return {void}
    */
   public updateGroup() {
-    this.selectedEvents.forEach((e: IEvent) =>
-      this.group.eventIds.push(e.id)
-    );
+    this.group.eventIds = this.group.events.map((e: IEvent) => e.id);
+    this.selectedEvents.forEach((e: IEvent) => this.group.eventIds.push(e.id));
 
     this.eventGroupService.updateEventGroup(this.group)
       .subscribe(() => {
@@ -112,11 +116,5 @@ export class EventsToCurGroupModalComponent implements OnChanges {
         this.toastrService.success('Event group has been updated successfully.');
         this.save.emit();
       });
-  }
-
-  public ngOnChanges() {
-    if (this.group) {
-      this.selectedEvents = this.group.events;
-    }
   }
 }

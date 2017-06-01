@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { IGalleryItem } from './gallery.interface';
 import { Observable } from 'rxjs';
-import { Response, Http } from '@angular/http';
+import { Response, Http, RequestOptions, Headers } from '@angular/http';
+import { IGalleryItem, IGalleryFilter } from './gallery-item.interface';
 
 @Injectable()
 export class GalleryService {
@@ -18,12 +18,26 @@ export class GalleryService {
   /**
    * Get gallery items
    *
-   *
-   * @param {IGalleryItem} filter - Filter
+   * @param {IGalleryFilter} filter - Filter
    * @returns {Observable<IGalleryItem>} - Gallery items
    */
-  public getGalleryItems(): Observable<IGalleryItem> {
-    return this.http.get(`${process.env.API_URL}/Media`)
-      .map((response: Response) => <IGalleryItem> response.json());
+  public getGalleryItems(filter: IGalleryFilter = {}): Observable<IGalleryItem[]> {
+    let options = new RequestOptions({
+      params: filter
+    });
+
+    return this.http.get(`${process.env.API_URL}/Media`, options)
+      .map((response: Response) => <IGalleryItem[]> response.json());
+  }
+
+  /**
+   * Change favorite/unfavorite status
+   *
+   * @param {number} id - thumbnail id
+   * @param {boolean} status - favorite status
+   * @returns {Observable<IGalleryItem>} - Gallery items
+   */
+  public makeFavorite(id: number, status: boolean): Observable<Response> {
+    return this.http.post(`${process.env.API_URL}/Media/${id}/favorite/${status}`, '');
   }
 }

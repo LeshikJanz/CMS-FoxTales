@@ -21,10 +21,6 @@ export class ScrollComponent implements OnInit {
   }
 
   public onChose(elem: IEventGroup) {
-    console.log('this.type');
-    console.log(this.type);
-    console.log('elem');
-    console.log(elem);
     this.chose.emit(elem);
   }
 }
