@@ -15,6 +15,13 @@ import { AuthService } from './shared/core';
 })
 export class AppComponent implements OnInit {
   /**
+   * App version
+   *
+   * @type {string}
+   */
+  public version: string = '2.1.4';
+
+  /**
    * Constructor
    *
    * @param {Router} router - Router
