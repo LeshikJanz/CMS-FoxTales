@@ -79,7 +79,6 @@ export class ExperienceCreateComponent implements OnInit {
    */
   public addExperience(experience): void {
     experience.tags = experience.tags.map((tag: ITag) => tag.name);
-    console.log(experience);
   }
 
   /**

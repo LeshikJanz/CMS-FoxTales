@@ -1,0 +1,60 @@
+<div class="group-container">
+  <h1>New Event Group</h1>
+  <form
+    (ngSubmit)="updateEventGroup()"
+    class="form"
+    novalidate>
+
+    <div [formGroup]="eventGroupForm">
+      <!-- Name -->
+      <div class="form-element">
+        <label for="name">Client Name *</label>
+        <input
+          id="name"
+          class="form-control input"
+          type="text"
+          [(ngModel)]="eventGroup.name"
+          formControlName="name"
+          placeholder="Group name">
+      </div>
+
+      <!-- Events -->
+      <div class="form-element">
+        <label>Add events</label>
+        <tag-input
+          formControlName="events"
+          [transform]="tagTransformer"
+          [displayBy]="'name'"
+          [(ngModel)]="eventGroup.events"
+          [maxItems]="10">
+          <tag-input-dropdown
+            [identifyBy]="'id'"
+            [displayBy]="'name'"
+            [autocompleteItems]="events">
+          </tag-input-dropdown>
+        </tag-input>
+      </div>
+
+      <div class="form-element">
+        <label for="groupGallery">Enable Group Gallery</label>
+        <switcher id="groupGallery" [options]="galleryOptions" (toggle)="isGalleryEnabled=$event"></switcher>
+        <configure-button
+          *ngIf="isGalleryEnabled === 'Yes'"
+          [value]="'Configure Gallery'"
+        ></configure-button>
+
+      </div>
+    </div>
+    <div>
+
+      <fox-button
+        type="submit"
+        [disabled]="eventGroupForm.invalid"
+        [value]="'Update'"
+        [design]="'special'"
+      ></fox-button>
+    </div>
+  </form>
+
+</div>
+

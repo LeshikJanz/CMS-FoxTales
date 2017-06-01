@@ -1,5 +1,5 @@
-<h1>New Event Group</h1>
-<div class="container">
+<div class="group-container">
+  <h1>New Event Group</h1>
   <form
     (ngSubmit)="addEventGroup(eventGroupForm.value)"
     class="form"
@@ -15,12 +15,6 @@
           type="text"
           formControlName="name"
           placeholder="Group name">
-
-        <div ngxErrors="name">
-          <div class="field-error" ngxError="required" when="touched">
-            Field is required
-          </div>
-        </div>
       </div>
 
       <!-- Events -->

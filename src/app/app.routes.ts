@@ -17,6 +17,11 @@ export const ROUTES: Routes = [
     canActivate: [ AuthGuard ]
   },
   {
+    path: 'event',
+    loadChildren: 'app/event/event-container.module#EventContainerModule',
+    canActivate: [ AuthGuard ]
+  },
+  {
     path: 'experience',
     loadChildren: 'app/experience/experience.module#ExperienceModule',
     canActivate: [ AuthGuard ]

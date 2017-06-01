@@ -25,3 +25,24 @@ export interface IEvent {
   startTime: string;
   tags: any[];
 }
+
+/**
+ * Event interface
+ */
+export interface IEventGallery {
+  id: number;
+  name: string;
+  hashtag: string;
+  shortUrl: string;
+  backgroundColor: string;
+  backgroundImage: string;
+  backgroundFit: string;
+  backgroundPosition: string;
+  showMobileBackground: boolean;
+  mobileBackgroundImage: string;
+  primaryColor: string;
+  secondaryColor: string;
+  logo: string;
+  navigationEnabled: string;
+  contentOptionIds: number[];
+}

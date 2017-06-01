@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
-import { Response, Http } from '@angular/http';
+import { Response, Http, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs';
 import { Tag } from './tag';
+import { PermissionService } from '../shared/core/auth/permission.service';
+import { IEventGallery } from './event.interface';
 
 @Injectable()
 export class EventService {
@@ -21,16 +23,26 @@ export class EventService {
    *
    */
   public getEvents() {
-    // 19.05
-    return this.http.get(`${process.env.API_URL}/Events`)
-        // return this.http.get(`https://foxtalesdev.azurewebsites.net/api/events`)
-        // return this.http.get(`assets/mock-data/event/events.json`)
+    let options = new RequestOptions({
+      params: { clientId: PermissionService.clientId }
+    });
+
+    return this.http.get(`${process.env.API_URL}/Events`, options)
         .map((response: Response) => {
           let temp = response.json();
 
           return temp;
         });
   };
+
+  /**
+   * Get Event gallery
+   *
+   */
+  public getEventGallery(id: number): Observable<IEventGallery> {
+    return this.http.get(`${process.env.API_URL}/Events/${id}/gallery`)
+      .map((response: Response) => response.json());
+  }
 
   /**
    * Get tags

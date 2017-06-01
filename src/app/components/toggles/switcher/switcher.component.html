@@ -1,6 +1,7 @@
 <ul>
   <li *ngFor="let option of options">
-    <input type="radio" id="{{option}}-option" name="selector" [ngModel]="type"
+    <input [attr.disabled]="disabled ? '' : null"
+             type="radio" id="{{option}}-option" name="selector" [ngModel]="type"
            (ngModelChange)="onChange($event)" value="{{option}}">
 
     <div class="check">

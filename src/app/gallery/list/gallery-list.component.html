@@ -1,2 +1,6 @@
-<h1>It's gallery</h1>
-<h1>id: {{id}}</h1>
+<div class="gallery">
+  <a *ngFor="let gallery of galleries" href="javascript:void(0)" [routerLink]="[gallery.id]">
+    <img src="http://www.justbooksalon.com/img/default-gallery-image.jpg">
+    <label>{{gallery.name}} gallery</label>
+  </a>
+</div>

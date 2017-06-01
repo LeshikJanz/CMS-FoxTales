@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { GalleryService } from '../gallery.service';
-import { IGalleryItem } from '../gallery.interface';
+import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 /**
  * Gallery list component
@@ -11,9 +10,11 @@ import { IGalleryItem } from '../gallery.interface';
   templateUrl: 'gallery-list.component.html',
   styleUrls: ['gallery-list.component.scss']
 })
-export class GalleryListComponent implements OnInit {
+export class GalleryListComponent {
 
-  public id: string;
+  @Input() public galleries: any[];
+
+  public curLocation: string;
 
   /**
    * Constructor
@@ -21,22 +22,10 @@ export class GalleryListComponent implements OnInit {
    * @param {Route} route - ActivatedRoute
    * @returns {void}
    */
-  constructor(private route: ActivatedRoute,
-              private galleryService: GalleryService) {
-  }
-
-  public ngOnInit() {
-    this.route.params.subscribe((params: any) => {
-      this.id = params['id'];
+  constructor(private location: Location,
+              private router: Router) {
+    this.router.events.subscribe((val) => {
+      this.curLocation = this.location.path();
     });
-    this.getGalleryItems();
   }
-
-  public getGalleryItems() {
-    this.galleryService.getGalleryItems()
-      .subscribe((items: IGalleryItem) => {
-        console.log('items');
-        console.log(items);
-      });
-  };
 }

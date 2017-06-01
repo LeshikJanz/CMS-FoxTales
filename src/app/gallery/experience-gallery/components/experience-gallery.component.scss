@@ -1,0 +1,27 @@
+.group-container {
+  display: flex;
+  flex-direction: column;
+
+  .filters {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 400px;
+
+    div {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    div.main-filters {
+      width: 100%;
+    }
+  }
+
+  fox-button {
+    height: 36px;
+    width: 178px;
+    font-size: 14px;
+  };
+}

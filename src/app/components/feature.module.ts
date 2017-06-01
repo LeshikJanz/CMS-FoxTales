@@ -25,9 +25,9 @@ import { TableDropDownComponent } from './dropdowns/table-dropdown/table-dropdow
 import { FoxButtonComponent } from './buttons/fox-button/fox-button.component';
 import { AddButtonComponent } from './buttons/add-button/add-button.component';
 import {
-  EventNavigationComponent
+  EventsNavigationComponent
 }
-  from './navigations/event-navigation/event-navigation.component';
+  from './navigations/events-navigation/events-navigation.component';
 import { EventGroupComponent } from './eventGroup/event-group.component';
 import { FoxInputComponent } from './input/fox-input.component';
 import { EventTagComponent } from './eventTag/event-tag.component';
@@ -44,6 +44,14 @@ import {
   EventToGroupModalComponent
 }
   from './modals/event-to-group-modal/event-to-group-modal.component';
+import { ThumbnailComponent } from './thumbnail/thumbnail.component';
+import {
+  EventNavigationComponent
+} from './navigations/event-navigation/event-navigation.component';
+import { FavoriteGalleryComponent } from '../gallery/favorite-gallery/favorite-gallery.component';
+import { GalleryItemListComponent } from '../gallery-items/list/gallery-item-list.component';
+import { GalleryService } from '../gallery/gallery.service';
+import { DownloadModalComponent } from './modals/download-modal/download-modal.component';
 
 @NgModule({
   imports: [
@@ -54,7 +62,7 @@ import {
     ModalModule.forRoot(),
     TagInputModule
   ],
-  providers: [],
+  providers: [GalleryService],
   declarations: [
     CreationButtonComponent,
     UploadButtonComponent,
@@ -63,6 +71,7 @@ import {
     AdminNavigationComponent,
     MainNavigationComponent,
     EventNavigationComponent,
+    EventsNavigationComponent,
     EventComponent,
     CheckboxComponent,
     DropDownComponent,
@@ -79,7 +88,11 @@ import {
     EventsToCurGroupModalComponent,
     EventToGroupModalComponent,
     ScrollComponent,
-    GroupDropDownComponent
+    GroupDropDownComponent,
+    ThumbnailComponent,
+    FavoriteGalleryComponent,
+    GalleryItemListComponent,
+    DownloadModalComponent
   ],
   exports: [
     CreationButtonComponent,
@@ -90,6 +103,7 @@ import {
     ExperienceNavigationComponent,
     MainNavigationComponent,
     EventNavigationComponent,
+    EventsNavigationComponent,
     EventComponent,
     AdminNavigationComponent,
     CheckboxComponent,
@@ -107,7 +121,11 @@ import {
     EventsToCurGroupModalComponent,
     EventToGroupModalComponent,
     ScrollComponent,
-    GroupDropDownComponent
+    GroupDropDownComponent,
+    ThumbnailComponent,
+    FavoriteGalleryComponent,
+    GalleryItemListComponent,
+    DownloadModalComponent
   ]
 })
 
