@@ -46,3 +46,16 @@ export interface IEventGallery {
   navigationEnabled: string;
   contentOptionIds: number[];
 }
+
+/**
+ * Event filter
+ */
+export interface IEventFilter {
+  EventGroupID?: boolean;
+  LocationId?: boolean;
+  Name?: boolean;
+  DisplayName?: boolean;
+  Address?: boolean;
+  StartTime?: boolean;
+  EndTime?: boolean;
+}

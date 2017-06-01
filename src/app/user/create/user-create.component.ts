@@ -6,6 +6,8 @@ import { IUser } from '../user.interface';
 import { IUserRole } from '../user-role.interface';
 import { IUserClient } from '../user-client.interface';
 import { UserService } from '../user.service';
+import { IClient } from "../../client/client.interface";
+import { INgSelect } from "../../app.interface";
 
 @Component({
   selector: 'user-create',
@@ -33,6 +35,20 @@ export class UserCreateComponent implements OnInit {
    * @type {IUserClient[]}
    */
   public clients: IUserClient[];
+
+  /**
+   * Value
+   *
+   * @type {INgSelect}
+   */
+  private value: INgSelect;
+
+  /**
+   * Items
+   *
+   * @type {string[]}
+   */
+  public items: INgSelect[];
 
   /**
    * Additional user details
@@ -92,9 +108,33 @@ export class UserCreateComponent implements OnInit {
   public getUserClients(): UserCreateComponent {
     this.userService
       .getClients()
-      .subscribe((clients: IUserClient[]) => this.clients = clients);
+      .subscribe((clients: IUserClient[]) => {
+          this.clients = clients;
+          this.items = this.clients.map((c: any) => ({
+            id: c.id,
+            text: c.name
+          }));
+      });
 
     return this;
+  }
+
+  /**
+   * Select client
+   *
+   * @returns {void}
+   */
+  public selected(value:any):void {
+    console.log('Selected value is: ', value);
+  }
+
+  /**
+   * Refresh value
+   *
+   * @returns {void}
+   */
+  public refreshValue(value:any):void {
+    this.value = value;
   }
 
   /**

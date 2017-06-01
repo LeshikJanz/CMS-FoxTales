@@ -1,22 +1,21 @@
-<div class="container">
-  <a href="javascript:void(0)" [routerLink]="['/admin/users']">Back to all Users</a>
+<div class="user-container">
 
   <form
     (ngSubmit)="addUser(userForm.value)"
     class="form"
     novalidate>
 
-    <div [formGroup]="userForm">
+    <div class="form-group" [formGroup]="userForm">
       <!-- Email -->
       <div class="form-element">
-      <label for="email">Email</label>
+      <label for="email">Email/Username*</label>
         <input
           id="email"
           type="email"
           formControlName="email"
           placeholder="Email">
 
-        <div ngxErrors="email">
+        <div class="field-error" ngxErrors="email">
           <div ngxError="required" when="touched">
             Field is required
           </div>
@@ -27,7 +26,7 @@
       </div>
 
       <!-- Client Access -->
-      <div>
+      <div class="form-element">
         <label for="clientId">Client Access</label>
         <select
           id="clientId"
@@ -35,19 +34,29 @@
           <option *ngFor="let client of clients" [ngValue]="client.id">{{ client.name }}</option>
         </select>
 
-        <div ngxErrors="clientId">
+        <div class="field-error" ngxErrors="clientId">
           <div ngxError="required" when="touched">
             Field is required
           </div>
         </div>
       </div>
+
+      <ng-select [allowClear]="true"
+                 [items]="items"
+                 [disabled]="disabled"
+                 (data)="refreshValue($event)"
+                 (selected)="selected($event)"
+                 (removed)="removed($event)"
+                 (typed)="typed($event)"
+                 placeholder="No city selected">
+      </ng-select>
     </div>
 
     <div>
       <button
         type="submit"
         [disabled]="userForm.invalid"
-        class="create-button">CREATE</button>
+        class="create-button">DONE</button>
     </div>
   </form>
 </div>

@@ -52,6 +52,7 @@ import { FavoriteGalleryComponent } from '../gallery/favorite-gallery/favorite-g
 import { GalleryItemListComponent } from '../gallery-items/list/gallery-item-list.component';
 import { GalleryService } from '../gallery/gallery.service';
 import { DownloadModalComponent } from './modals/download-modal/download-modal.component';
+import { SelectModule } from 'ng2-select';
 
 @NgModule({
   imports: [

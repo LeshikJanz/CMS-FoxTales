@@ -3,7 +3,7 @@ import { Response, Http, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs';
 import { Tag } from './tag';
 import { PermissionService } from '../shared/core/auth/permission.service';
-import { IEventGallery } from './event.interface';
+import { IEventGallery, IEventFilter } from './event.interface';
 
 @Injectable()
 export class EventService {
@@ -22,9 +22,9 @@ export class EventService {
    * Currently using the old endpoints for mock data, will be replacing to process.env.API_URL
    *
    */
-  public getEvents() {
+  public getEvents(filter: IEventFilter = {}) {
     let options = new RequestOptions({
-      params: { clientId: PermissionService.clientId }
+      params: { clientId: PermissionService.clientId, ...filter }
     });
 
     return this.http.get(`${process.env.API_URL}/Events`, options)
