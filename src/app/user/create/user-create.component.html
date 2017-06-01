@@ -32,7 +32,8 @@
         <select
           id="clientId"
           formControlName="clientId">
-          <option *ngFor="let client of clients" [ngValue]="client.id">{{ client.name }}</option>
+          <option [ngValue]="null">Select</option>
+          <option *ngFor="let client of clients; let i = index" [selected]="0 === i" [ngValue]="client.id">{{ client.name }}</option>
         </select>
 
         <div ngxErrors="clientId">
