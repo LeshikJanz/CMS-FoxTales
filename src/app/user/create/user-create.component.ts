@@ -6,13 +6,12 @@ import { IUser } from '../user.interface';
 import { IUserRole } from '../user-role.interface';
 import { IUserClient } from '../user-client.interface';
 import { UserService } from '../user.service';
-import { IClient } from "../../client/client.interface";
-import { INgSelect } from "../../app.interface";
+import { INgSelect } from '../../app.interface';
 
 @Component({
   selector: 'user-create',
   templateUrl: './user-create.component.html',
-  styleUrls: [ './user-create.component.scss' ]
+  styleUrls: ['./user-create.component.scss']
 })
 export class UserCreateComponent implements OnInit {
   /**
@@ -37,20 +36,6 @@ export class UserCreateComponent implements OnInit {
   public clients: IUserClient[];
 
   /**
-   * Value
-   *
-   * @type {INgSelect}
-   */
-  private value: INgSelect;
-
-  /**
-   * Items
-   *
-   * @type {string[]}
-   */
-  public items: INgSelect[];
-
-  /**
    * Additional user details
    *
    * @type {any}
@@ -67,11 +52,9 @@ export class UserCreateComponent implements OnInit {
    * @param {UserService} userService - User service
    * @returns {void}
    */
-  constructor(
-    private router: Router,
-    private formBuilder: FormBuilder,
-    private userService: UserService
-  ) {
+  constructor(private router: Router,
+              private formBuilder: FormBuilder,
+              private userService: UserService) {
   }
 
   /**
@@ -109,32 +92,10 @@ export class UserCreateComponent implements OnInit {
     this.userService
       .getClients()
       .subscribe((clients: IUserClient[]) => {
-          this.clients = clients;
-          this.items = this.clients.map((c: any) => ({
-            id: c.id,
-            text: c.name
-          }));
+        this.clients = clients;
       });
 
     return this;
-  }
-
-  /**
-   * Select client
-   *
-   * @returns {void}
-   */
-  public selected(value:any):void {
-    console.log('Selected value is: ', value);
-  }
-
-  /**
-   * Refresh value
-   *
-   * @returns {void}
-   */
-  public refreshValue(value:any):void {
-    this.value = value;
   }
 
   /**

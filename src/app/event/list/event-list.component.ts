@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { EventService } from '../event.service';
 import { IActionState } from '../../client/client.interface';
 import { EventGroupsService } from '../../event-groups/list/event-groups.service';
-import { filter } from "rxjs/operator/filter";
-import { IEventFilter } from "../event.interface";
+import { IEventFilter } from '../event.interface';
 
 /**
  * Event list component
@@ -68,7 +67,8 @@ export class EventListComponent implements OnInit {
    * @returns {void}
    */
   public onUpcomingSort() {
-    this.getEvents({ StartTime: true });
+    const filter = {sortBy: 'Name', sortAscending: true};
+    this.getEvents(filter);
   }
 
   /**
@@ -77,7 +77,8 @@ export class EventListComponent implements OnInit {
    * @returns {void}
    */
   public onDescendingSort() {
-    console.log('onDescendingSort')
+    const filter = {sortBy: 'Name', sortAscending: false};
+    this.getEvents(filter);
   }
 
   /**
@@ -86,7 +87,8 @@ export class EventListComponent implements OnInit {
    * @returns {void}
    */
   public onStartDateSort() {
-    // this.getEvents({ sortBy: 'StartTime' });
+    const filter = {sortBy: 'StartTime', sortAscending: true};
+    this.getEvents(filter);
   }
 
   /**
@@ -95,7 +97,8 @@ export class EventListComponent implements OnInit {
    * @returns {void}
    */
   public onEndDateSort() {
-    this.getEvents({ StartTime: false });
+    const filter = {sortBy: 'EndTime', sortAscending: true};
+    this.getEvents(filter);
   }
 
   /**
@@ -117,7 +120,7 @@ export class EventListComponent implements OnInit {
    * @returns {void}
    */
   public onActionChanged(action: any): void {
-
+    console.log('onActionChanged');
   }
 
   /**
@@ -130,8 +133,6 @@ export class EventListComponent implements OnInit {
       .getEvents(filter)
       .subscribe((events) => {
         this.Events = events;
-        console.log('this.Events');
-        console.log(this.Events);
       });
   }
 

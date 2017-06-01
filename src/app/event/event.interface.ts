@@ -51,11 +51,6 @@ export interface IEventGallery {
  * Event filter
  */
 export interface IEventFilter {
-  EventGroupID?: boolean;
-  LocationId?: boolean;
-  Name?: boolean;
-  DisplayName?: boolean;
-  Address?: boolean;
-  StartTime?: boolean;
-  EndTime?: boolean;
+  sortBy?: string;
+  sortAscending?: boolean;
 }
