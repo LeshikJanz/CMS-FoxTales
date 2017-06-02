@@ -52,7 +52,12 @@ import { FavoriteGalleryComponent } from '../gallery/favorite-gallery/favorite-g
 import { GalleryItemListComponent } from '../gallery-items/list/gallery-item-list.component';
 import { GalleryService } from '../gallery/gallery.service';
 import { DownloadModalComponent } from './modals/download-modal/download-modal.component';
-
+import { BrowserModule } from '@angular/platform-browser';
+import { VgCoreModule } from 'videogular2/core';
+import { VgControlsModule } from 'videogular2/controls';
+import { VgOverlayPlayModule } from 'videogular2/overlay-play';
+import { VgBufferingModule } from 'videogular2/buffering';
+import { DeviceInfoComponent } from './device-info/device-info.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -60,7 +65,11 @@ import { DownloadModalComponent } from './modals/download-modal/download-modal.c
     RouterModule.forChild(FEATURE_ROUTES),
     BsDropdownModule.forRoot(),
     ModalModule.forRoot(),
-    TagInputModule
+    TagInputModule,
+    VgCoreModule,
+    VgControlsModule,
+    VgOverlayPlayModule,
+    VgBufferingModule
   ],
   providers: [GalleryService],
   declarations: [
@@ -92,7 +101,8 @@ import { DownloadModalComponent } from './modals/download-modal/download-modal.c
     ThumbnailComponent,
     FavoriteGalleryComponent,
     GalleryItemListComponent,
-    DownloadModalComponent
+    DownloadModalComponent,
+    DeviceInfoComponent
   ],
   exports: [
     CreationButtonComponent,
@@ -125,7 +135,8 @@ import { DownloadModalComponent } from './modals/download-modal/download-modal.c
     ThumbnailComponent,
     FavoriteGalleryComponent,
     GalleryItemListComponent,
-    DownloadModalComponent
+    DownloadModalComponent,
+    DeviceInfoComponent
   ]
 })
 

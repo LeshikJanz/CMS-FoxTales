@@ -17,12 +17,12 @@ export class DropDownComponent {
 
   @Input() public title: string = 'DropDown';
 
-  @Output() public typeChanged: EventEmitter<number> = new EventEmitter();
+  @Output() public typeChanged: EventEmitter<IActionState> = new EventEmitter();
 
   public curentAction = null;
 
   public onTypeChanged(option: IActionState) {
     this.curentAction = option.action;
-    this.typeChanged.emit(option.id);
+    this.typeChanged.emit(option);
   }
 }

@@ -32,10 +32,10 @@ export class EventGroupsComponent implements OnInit {
    * @type {IActionState[]}
    */
   public sortActions: IActionState[] = [
-    {id: 1, action: 'Upcoming'},
-    {id: 2, action: 'Descending'},
-    {id: 3, action: 'Start date'},
-    {id: 4, action: 'End date'},
+    {id: 1, action: 'Upcoming', callback: 'upcomingSort'},
+    {id: 2, action: 'Descending', callback: 'descendingSort'},
+    {id: 3, action: 'Start date', callback: 'startDateSort'},
+    {id: 4, action: 'End date', callback: 'endDateSort'},
   ];
 
   constructor(private eventGroupsService: EventGroupsService,

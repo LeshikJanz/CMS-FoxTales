@@ -8,6 +8,8 @@
           <img src="assets/img/close.svg">
         </button>
       </div>
+
+      <!--First slide of download modal-->
       <div class="modal-body" [hidden]="isEmailSent">
         <div class="switch-container">
           <label>What would you like to download?</label>
@@ -28,10 +30,15 @@
           ></fox-button>
         </div>
       </div>
+
+      <!--Second slide of download modal-->
       <div class="modal-body" [hidden]="!isEmailSent">
         <div class="email-confirmation">
           <div>Your download has started! We'll send an email to</div>
-          <div class="email">email</div>
+          <div class="email">
+            <a [hidden]="loading" href="{{zipLink}}">{{zipLink}}</a>
+            <img [hidden]="!loading" src="../../../../assets/img/spinner.gif" alt="">
+          </div>
           <div>as soon as your files are ready.</div>
           <fox-button
               class="cancel"

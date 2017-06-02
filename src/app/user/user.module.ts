@@ -17,6 +17,7 @@ import { UserListComponent } from './list';
 import { UserCreateComponent } from './create';
 import { UserEditComponent } from './edit';
 import { FeatureModule } from '../components/feature.module';
+import { SelectModule } from 'ng2-select';
 
 @NgModule({
   imports: [
@@ -31,7 +32,8 @@ import { FeatureModule } from '../components/feature.module';
     Ng2BootstrapModule,
     SharedModule,
     USER_ROUTING,
-    FeatureModule
+    FeatureModule,
+    SelectModule
   ],
   providers: [
     {

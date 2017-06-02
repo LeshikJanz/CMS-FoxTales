@@ -8,6 +8,9 @@ import { ExperienceContentComponent } from './content/experience-content';
 import {
   ExperienceGalleryContainerComponent
 } from '../gallery/experience-gallery/container/experience-gallery-container.component';
+import {
+  ExperienceGalleryComponent
+} from '../gallery/experience-gallery/components/experience-gallery.component';
 
 const EXPERIENCE_ROUTES: Routes = [
   {
@@ -23,7 +26,7 @@ const EXPERIENCE_ROUTES: Routes = [
       },
       {
         path: 'exgalleries/:id', pathMatch: 'full',
-        component: ExperienceGalleryContainerComponent
+        component: ExperienceGalleryComponent
       },
     ]
     },

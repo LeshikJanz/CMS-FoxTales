@@ -46,3 +46,11 @@ export interface IEventGallery {
   navigationEnabled: string;
   contentOptionIds: number[];
 }
+
+/**
+ * Event filter
+ */
+export interface IEventFilter {
+  sortBy?: string;
+  sortAscending?: boolean;
+}
