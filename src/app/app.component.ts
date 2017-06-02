@@ -38,10 +38,7 @@ export class AppComponent implements OnInit {
 
     if (!this.auth.loggedIn()) {
       this.router.navigate(['/auth']);
-      return;
     }
-
-    this.router.navigate(['/admin/clients']);
   }
 
   /**
