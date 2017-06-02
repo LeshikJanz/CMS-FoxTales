@@ -3,6 +3,9 @@ import {
 } from '@angular/core';
 import { ModalDirective } from 'ngx-bootstrap';
 import { IEvent } from '../../../event/event.interface';
+import { GalleryService } from '../../../gallery/gallery.service';
+import { ToastrService } from 'ngx-toastr';
+import { IGalleryItem } from '../../../gallery/gallery-item.interface';
 
 @Component({
   selector: 'download-modal',
@@ -23,32 +26,64 @@ export class DownloadModalComponent {
   public isEmailSent: boolean = false;
 
   /**
+   * link to zip archive with media content
+   *
+   * @type {string}
+   */
+  public zipLink: string;
+
+  /**
+   * Media items for downloading
+   *
+   * @type {number[]}
+   */
+  @Input() public galleryItems: IGalleryItem[];
+
+  /**
    * Event
    *
-   * type {IEvent}
+   * @type {IEvent}
    */
   public event: IEvent;
 
   /**
    * Search value
    *
-   * type {string}
+   * @type {string}
    */
   public search: string = '';
 
   /**
    * Search value
    *
-   * type {string}
+   * @type {string}
    */
   public options: string[] = ['Filtered Gallery Result', 'Entire Gallery'];
 
   /**
-   * Save changes
+   * Run generating zip link
    *
    * @type {EventEmitter}
    */
-  @Output() public save: EventEmitter<any> = new EventEmitter();
+  @Output() public download: EventEmitter<any> = new EventEmitter();
+
+  /**
+   * Control loading spinner
+   *
+   * @type {boolean}
+   */
+  public loading: boolean = false;
+
+  /**
+   * Constructor
+   *
+   * @param {ToastrService} toastrService - Toastr service
+   * @param {GalleryService} galleryService - gallery service
+   * @return {void}
+   */
+  constructor(private toastrService: ToastrService,
+              private galleryService: GalleryService) {
+  }
 
   /**
    * Show modal
@@ -89,11 +124,19 @@ export class DownloadModalComponent {
   }
 
   /**
-   * Run download
+   * Run generating zip link
    *
    * @return {void}
    */
   public startDownload() {
+    this.loading = true;
     this.isEmailSent = true;
+    const mediaIds = this.galleryItems.map((gi: IGalleryItem) => gi.id);
+
+    this.galleryService.getArchive(mediaIds)
+      .subscribe((link: any) => {
+        this.loading = false;
+        this.zipLink = link;
+      });
   }
 }

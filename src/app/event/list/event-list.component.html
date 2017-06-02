@@ -1,6 +1,15 @@
 <div toastContainer class="toast-top-center"></div>
 
 <div class="list-container">
+  <div>
+    <label>Sort by</label>
+    <dropdown
+      [title]="'Start Date'"
+      [options]="sortActions"
+      [size]="'medium'"
+      (typeChanged)="onSortChanged($event)"
+    ></dropdown>
+  </div>
   <div class="list-menu">
     <div>
       <h2 class="main-label">Event List</h2>

@@ -24,6 +24,8 @@ export class ThumbnailComponent implements OnInit {
 
   @Output() public toggle: EventEmitter<boolean> = new EventEmitter<boolean>();
 
+  @Output() public favorite: EventEmitter<IGalleryItem> = new EventEmitter();
+
   @Output() public confirm: EventEmitter<any> = new EventEmitter();
 
   @Output() public decline: EventEmitter<any> = new EventEmitter();
@@ -31,6 +33,10 @@ export class ThumbnailComponent implements OnInit {
   @Input() public isFavorite: boolean;
 
   constructor(private galleryService: GalleryService) {}
+
+  public onPlayerReady(event) {
+    event.play();
+  }
 
   public onChecked(event) {
     this.toggle.emit(event);
@@ -45,6 +51,7 @@ export class ThumbnailComponent implements OnInit {
   }
 
   public makeFavorite() {
+    this.favorite.emit(this.item);
     this.item.favorite = !this.item.favorite;
     this.galleryService.makeFavorite(this.item.id, this.item.favorite)
       .subscribe(() => console.log('favorite is succeeded'));

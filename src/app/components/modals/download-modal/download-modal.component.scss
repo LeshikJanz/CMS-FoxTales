@@ -23,7 +23,7 @@
   .switch-container {
     display: flex;
     justify-content: space-between;
-    padding-left: 40px;
+    padding-left: 20px;
     height: 80px;
     flex-direction: column;
 
@@ -68,6 +68,9 @@
     }
 
     .email {
+      width: 500px;
+      text-align: center;
+      overflow-wrap: break-word;
       font-family: Avenir-Bold;
     }
 

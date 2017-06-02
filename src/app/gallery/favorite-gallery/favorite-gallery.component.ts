@@ -117,6 +117,16 @@ export class FavoriteGalleryComponent implements OnInit {
         this.getGalleryItems({ favoriteOnly: true });
     }
 
+  /**
+   * Hide item from gallery if it was favorited
+   *
+   * item {IGalleryItem} - gallery item
+   * @returns {void}
+   */
+  public onFavorite(item: IGalleryItem) {
+    this.galleryItems = this.galleryItems.filter((gItem: IGalleryItem) => gItem !== item);
+  }
+
     /**
      * Get gallery items
      *

@@ -5,7 +5,8 @@ import { ForbiddenComponent } from './forbidden';
 
 export const ROUTES: Routes = [
 
-  { path: '', loadChildren: 'app/auth/auth.module#AuthModule' },
+  { path: '', loadChildren: 'app/auth/auth.module#AuthModule',
+  },
   {
     path: 'admin',
     loadChildren: 'app/admin/admin.module#AdminModule',
