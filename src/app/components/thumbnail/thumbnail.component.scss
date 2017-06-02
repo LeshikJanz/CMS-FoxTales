@@ -174,3 +174,9 @@ $imgHeight: 256.4px;
     }
   }
 }
+
+device-info {
+  position: absolute;
+  z-index: 100;
+  margin-top: -300px;
+}

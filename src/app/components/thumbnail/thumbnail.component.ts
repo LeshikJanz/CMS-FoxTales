@@ -9,10 +9,12 @@ import 'rxjs/Rx' ;
 @Component({
   selector: 'thumbnail',
   templateUrl: 'thumbnail.component.html',
-  styleUrls: [ 'thumbnail.component.scss' ]
+  styleUrls: ['thumbnail.component.scss']
 })
 export class ThumbnailComponent implements OnInit {
   public isChecked: boolean = false;
+
+  public isInfoOpen: boolean = false;
 
   @Input() public item: IGalleryItem;
 
@@ -32,7 +34,8 @@ export class ThumbnailComponent implements OnInit {
 
   @Input() public isFavorite: boolean;
 
-  constructor(private galleryService: GalleryService) {}
+  constructor(private galleryService: GalleryService) {
+  }
 
   public onPlayerReady(event) {
     event.play();

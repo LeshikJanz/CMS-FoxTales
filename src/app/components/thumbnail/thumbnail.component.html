@@ -39,11 +39,12 @@
     </div>
   </div>
   <div class="action-menu">
-    <img src="../../../assets/img/info.svg" alt="">
+    <img (click)="isInfoOpen = !isInfoOpen" src="../../../assets/img/info.svg">
     <img  *ngIf="item.mediaPath.indexOf('.png') > 0"
           (click)="downloadItem(item)" src="../../../assets/img/download-icon.svg">
   </div>
 
 </div>
 
+<device-info (close)="isInfoOpen = false" [hidden]="!isInfoOpen"></device-info>
 
