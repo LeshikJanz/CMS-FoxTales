@@ -19,7 +19,6 @@ export interface IProfile {
   selectedIUserTypes: number;
   isActive: boolean;
   userADId: string;
-  logo: string;
 }
 
 export interface IProfileRole {

@@ -61,8 +61,14 @@ export class ProfileComponent implements OnInit {
    * @returns {void}
    */
   public updateProfile(): void {
+    let logo = null;
+
+    if (this.logo) {
+      logo = this.logo.replace(/data:image\/(png|jpg|jpeg|gif);base64,/, '');
+    }
+
     this.profile
-      .updateProfile(this.profileData.id, this.logo)
+      .updateProfile(logo)
       .subscribe(() => {
         this.toastrService.success('User profile has been updated successfully.');
       });
@@ -84,7 +90,7 @@ export class ProfileComponent implements OnInit {
    * @return {void}
    */
   public removeLogo(): void {
-    this.profileData.logo = null;
+    this.profileData.profileImagePath = null;
     this.logo = null;
   }
 }

@@ -30,12 +30,11 @@ export class ProfileService {
   /**
    * Update profile
    *
-   * @param {number} id - Profile id
    * @param {string} logoBytes - Base64 encoded logo
    * @returns {Observable<Response>} - Response
    */
-  public updateProfile(id: number, logoBytes: string): Observable<Response> {
-    return this.http.put(`${process.env.API_URL}/Profile/${id}/logo`, {
+  public updateProfile(logoBytes: string): Observable<Response> {
+    return this.http.put(`${process.env.API_URL}/Profile/logo`, {
       logo: logoBytes
     });
   }

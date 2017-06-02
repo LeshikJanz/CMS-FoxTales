@@ -16,9 +16,14 @@
     <p>{{ profileData?.lastName}}</p>
   </div>
 
-  <label style="font-size: 18px">Client logo</label>
-  <img *ngIf="profileData?.logo || logo" src="{{ profileData.logo || logo }}" style="max-height: 50px;">
-  <a href="javascript:void(0)" *ngIf="profileData.logo || logo" (click)="removeLogo()">x</a>
+  <div class="form-element">
+    <label>Profile Image</label>
+    <img *ngIf="profileData?.profileImagePath || logo" src="{{ profileData?.profileImagePath || logo }}" style="max-height: 50px;">
+    <a href="javascript:void(0)" *ngIf="profileData?.profileImagePath || logo" (click)="removeLogo()">x</a>
+    <upload-button (imgUploaded)="onImgUploaded($event)"></upload-button>
+  </div>
 
-  <upload-button (imgUploaded)="onImgUploaded($event)"></upload-button>
+  <div class="form-element">
+    <button (click)="updateProfile()">Save</button>
+  </div>
 </div>
