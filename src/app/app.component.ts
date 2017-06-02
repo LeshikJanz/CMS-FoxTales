@@ -1,7 +1,7 @@
 import { Component, ViewEncapsulation, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Authentication } from 'adal-ts';
-import { AuthService } from './shared/core';
+import { AuthService, PermissionService } from './shared/core';
 
 /*
  * App Component
@@ -31,14 +31,17 @@ export class AppComponent implements OnInit {
   constructor(private router: Router, private auth: AuthService) {
     // Redirect not CMS users to forbidden page
     // TODO: research better solution
-    if (window.location.href.match(/error/)) {
+    if (window.location.href.match(/access_denied/)) {
       this.router.navigate(['/forbidden']);
       return;
     }
 
     if (!this.auth.loggedIn()) {
       this.router.navigate(['/auth']);
+      return;
     }
+
+    this.router.navigate(['/admin/clients']);
   }
 
   /**
@@ -56,7 +59,7 @@ export class AppComponent implements OnInit {
    * @returns {boolean} - Is logged in
    */
   public loggedIn(): boolean {
-    return null !== this.auth.getContext().getUser();
+    return -1 !== PermissionService.clientId && null !== this.auth.getContext().getUser();
   }
 
   /**
