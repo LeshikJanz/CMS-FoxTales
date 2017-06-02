@@ -5,7 +5,6 @@ import { NoContentComponent } from './no-content';
 import { ForbiddenComponent } from './forbidden';
 
 export const ROUTES: Routes = [
-
   { path: '', loadChildren: 'app/auth/auth.module#AuthModule' },
   { path: 'profile', component: ProfileComponent, canActivate: [ AuthGuard ] },
   {

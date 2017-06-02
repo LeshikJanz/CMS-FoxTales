@@ -3,13 +3,17 @@
   flex-wrap: wrap;
   width: 100%;
 
-  thumbnail {
+  .thumbnail-container {
+    margin: 20px;
     height: 262px;
     width: 250px;
-    margin: 20px;
-    background-color: transparent;
-    cursor: pointer;
   }
+
+    thumbnail {
+      background-color: transparent;
+      cursor: pointer;
+    }
+
 }
 
 

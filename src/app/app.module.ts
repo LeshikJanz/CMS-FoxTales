@@ -22,7 +22,9 @@ import { NoContentComponent } from './no-content';
 import { ProfileComponent, ProfileService } from './profile';
 import { ForbiddenComponent } from './forbidden';
 
+import './../../node_modules/videogular2/fonts/videogular.css';
 import '../styles/styles.scss';
+
 import { FeatureModule } from './components/feature.module';
 
 // Application wide providers
