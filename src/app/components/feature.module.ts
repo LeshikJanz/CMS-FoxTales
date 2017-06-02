@@ -57,6 +57,7 @@ import { VgCoreModule } from 'videogular2/core';
 import { VgControlsModule } from 'videogular2/controls';
 import { VgOverlayPlayModule } from 'videogular2/overlay-play';
 import { VgBufferingModule } from 'videogular2/buffering';
+import { DeviceInfoComponent } from './device-info/device-info.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -100,7 +101,8 @@ import { VgBufferingModule } from 'videogular2/buffering';
     ThumbnailComponent,
     FavoriteGalleryComponent,
     GalleryItemListComponent,
-    DownloadModalComponent
+    DownloadModalComponent,
+    DeviceInfoComponent
   ],
   exports: [
     CreationButtonComponent,
@@ -133,7 +135,8 @@ import { VgBufferingModule } from 'videogular2/buffering';
     ThumbnailComponent,
     FavoriteGalleryComponent,
     GalleryItemListComponent,
-    DownloadModalComponent
+    DownloadModalComponent,
+    DeviceInfoComponent
   ]
 })
 
