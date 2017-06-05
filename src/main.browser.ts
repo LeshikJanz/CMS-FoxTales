@@ -12,6 +12,9 @@ import hello from 'hellojs';
  */
 import { AppModule } from './app';
 
+window['hello'] = hello;
+require('hellojs/src/modules/tumblr.js');
+
 /**
  * Init hello.js
  */

@@ -10,6 +10,9 @@ import hello from 'hellojs';
  */
 import { AppModuleNgFactory } from '../compiled/src/app/app.module.ngfactory';
 
+window['hello'] = hello;
+require('hellojs/src/modules/tumblr.js');
+
 /**
  * Init hello.js
  */
