@@ -64,7 +64,6 @@ export class UserCreateComponent implements OnInit {
               private userService: UserService) {
   }
 
-
   /**
    * Is form invalid
    *
@@ -141,15 +140,6 @@ export class UserCreateComponent implements OnInit {
     this.userDetails.roles = this.roles
       .filter((role: IUserRole) => role.checked)
       .map((role: IUserRole) => role.id);
-  }
-
-  public cliendIdValidator(control: FormControl): {[s: string]: number} {
-    console.log('clientIdValidator');
-
-    if (control.value === "нет") {
-      return {"clientId": control.value};
-    }
-    return null;
   }
 
   /**

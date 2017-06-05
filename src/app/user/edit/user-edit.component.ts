@@ -13,7 +13,8 @@ import { UserService } from '../user.service';
  */
 @Component({
   selector: 'user-edit',
-  templateUrl: './user-edit.component.html'
+  templateUrl: './user-edit.component.html',
+  styleUrls: ['user-edit.component.scss']
 })
 export class UserEditComponent implements OnInit {
   /**
@@ -47,6 +48,13 @@ export class UserEditComponent implements OnInit {
    * @type {IUserClient[]}
    */
   public clients: IUserClient[];
+
+  /**
+   * Client Id
+   *
+   * @type {number}
+   */
+  public clientId: number;
 
   /**
    * Constructor
@@ -160,6 +168,18 @@ export class UserEditComponent implements OnInit {
   }
 
   /**
+   * Is form invalid
+   *
+   * @return {boolean}
+   */
+  public isFormInvalid(): boolean {
+    if (this.userForm.valid && this.clientId) {
+      return false;
+    }
+    return true;
+  }
+
+  /**
    * Build user form
    *
    * @returns {void}
@@ -169,9 +189,6 @@ export class UserEditComponent implements OnInit {
       email: ['', [
         Validators.required,
         CustomValidators.email
-      ]],
-      clientId: ['', [
-        Validators.required
       ]]
     });
   }

@@ -1,31 +1,75 @@
-.container {
-  margin: 50px 70px;
-}
-
 .form {
+  display: flex;
+  flex-direction: column;
   width: 400px;
+  height: 400px;
+  justify-content: space-between;
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 250px;
+  }
+
+  fox-select {
+    width: 300px;
+  }
+
+  fox-button {
+    height: 55px;
+    width: 120px;
+    font-size: 16px;
+  }
 }
 
 .form-element {
   display: flex;
   flex-direction: column;
-  margin-top: 25px;
-  margin-bottom: 10px;
+
+  label {
+    font-family: Avenir;
+    font-size: 20px;
+    font-weight: 900;
+    line-height: 2.4;
+    letter-spacing: 1px;
+    color: #343a40;
+  }
+
+  input {
+    width: 400px;
+    height: 45px;
+    font-family: OpenSans;
+    font-size: 18px;
+    color: #3d3d3d;
+    border-radius: 5px;
+    border-style: double;
+    border-color: #b4b4b4;
+    padding-left: 15px;
+  }
+
+  input:focus {
+    border-color: gray;
+  }
+
+  .ng-touched.ng-invalid {
+    border-color: red;
+  }
+
+  .error-text {
+    color: red;
+    font-family: Avenir;
+    font-size: 10px;
+  }
 }
 
-.ng-touched.ng-invalid {
-  border-color: red;
-}
-
-.error-text {
-  color: red;
-  font-family: Avenir;
-  font-size: 10px;
-}
-
-.form-element .input {
-  height: 30px;
-  font-size: 14px;
+.create-button {
+  width: 204px;
+  height: 54px;
+  border-radius: 6px;
+  background-color: #2fd976;
+  color: white;
+  font-size: 16px;
 }
 
 button.create-button[disabled] {
@@ -47,3 +91,4 @@ button.create-button[disabled] {
     padding-right: 15px;
   }
 }
+
