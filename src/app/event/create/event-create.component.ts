@@ -5,6 +5,8 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ITag } from '../tag.interface';
 import { EventService } from '../event.service';
 import { MOCK_TAGS } from '../tag.mock';
+import { DateTimePickerModule } from 'ng-pick-datetime';
+import * as moment from 'moment';
 
 @Component({
   selector: 'event-create',
@@ -12,6 +14,10 @@ import { MOCK_TAGS } from '../tag.mock';
   styleUrls: [ './event-create.component.scss' ]
 })
 export class EventCreateComponent implements OnInit {
+    public startMomentTime: string;
+  public startMomentDate: string;
+  public endMomentTime: string;
+  public endMomentDate: string;
   /**
    * Event form
    *
@@ -81,7 +87,15 @@ export class EventCreateComponent implements OnInit {
    */
   public addEvent(event): void {
     event.tags = event.tags.map((tag: ITag) => tag.name);
+   
+    event["startTime"] = "2017-06-05T18:00:29.319Z";
+    event["endTime"] = "2017-06-05T18:00:29.319Z";
     console.log(event);
+
+    this.event.createEvent(event).subscribe((response) =>{
+      console.log(response)
+      this.router.navigate(['/events/events']);
+    })
   }
 
   /**
@@ -91,10 +105,10 @@ export class EventCreateComponent implements OnInit {
    */
   public buildEventForm(): EventCreateComponent {
     this.eventForm = this.formBuilder.group({
-      eventName: ['', [
+      name: ['', [
         Validators.required
       ]],
-      location: ['', [
+      address: ['', [
         Validators.required
       ]],
       tags: ['', [

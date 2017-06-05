@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Response, Http, RequestOptions } from '@angular/http';
+import { Response, Http, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs';
 import { Tag } from './tag';
 import { PermissionService } from '../shared/core/auth/permission.service';
@@ -56,5 +56,16 @@ export class EventService {
   public  getTags(): Observable<Tag[]> {
     return this.http.get(`${process.env.API_URL}/Tags`)
       .map((response: Response) => response.json() as Tag[]);
+  }
+
+    /**
+   * Create Event
+   */
+  public createEvent(event) {
+    return this.http.post(`${process.env.API_URL}/Events`,
+      event)
+        .map((response: Response) => {
+          return response.json();
+    });
   }
 }

@@ -22,6 +22,7 @@ import { EventGroupsComponent } from '../event-groups/list/event-groups.componen
 import { EventGroupsService } from '../event-groups/list/event-groups.service';
 import { EventGroupCreateComponent } from '../event-groups/create/event-group-create.component';
 import { GalleryModule } from '../gallery/gallery.module';
+import { DateTimePickerModule } from 'ng-pick-datetime';
 
 @NgModule({
   imports: [
@@ -37,7 +38,8 @@ import { GalleryModule } from '../gallery/gallery.module';
     SharedModule,
     EVENT_ROUTING,
     FeatureModule,
-    GalleryModule
+    GalleryModule,
+    DateTimePickerModule
   ],
   providers: [
     {

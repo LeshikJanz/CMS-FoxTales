@@ -9,6 +9,7 @@ import {
 import {
   EventGalleryComponent
 } from '../gallery/event-gallery/components/event-gallery.component';
+import { EventCreateComponent } from './create/event-create.component';
 
 const EVENT_ROUTES: Routes = [
   {
@@ -23,6 +24,7 @@ const EVENT_ROUTES: Routes = [
       },
     ]
   },
+
 
 ];
 
