@@ -11,6 +11,18 @@ $imgHeight: 256.4px;
   justify-content: space-between;
   background-color: transparent;
 
+  &:hover {
+    .content div img {
+      display: block;
+    }
+
+    .action-menu {
+      display: flex;
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+
   div {
     padding-bottom: 12px;
   }
@@ -23,6 +35,27 @@ $imgHeight: 256.4px;
     justify-content: center;
     align-items: center;
     background-color: #f5f6f7;
+
+    .actions {
+      z-index: 10;
+    }
+
+    video {
+      width: inherit;
+      height: inherit;
+    }
+
+    div img {
+      cursor: pointer;
+      display: none;
+      position: absolute;
+      top: 11px;
+      right: 11px;
+      height: 32px;
+      width: 32px;
+      font-size: 18px;
+      transition: .3s all;
+    }
 
     checkbox {
       position: absolute;
@@ -96,6 +129,7 @@ $imgHeight: 256.4px;
       align-self: flex-start;
       padding-bottom: 24px;
     }
+
   }
 
   .progress-container {
@@ -123,6 +157,20 @@ $imgHeight: 256.4px;
       line-height: 1;
       letter-spacing: 0.6px;
       color: #b2bac4;
+    }
+  }
+
+  .action-menu {
+    display: none;
+    flex-direction: row-reverse;
+    justify-content: space-around;
+    height: 30px;
+    opacity: 0;
+    bottom: -20px;
+
+    img {
+      height: 25px;
+      width: 25px;
     }
   }
 }

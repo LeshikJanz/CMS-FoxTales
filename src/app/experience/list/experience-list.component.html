@@ -20,7 +20,9 @@
 
             <img *ngIf="status === -1" src="../../../assets/img/attention.svg" alt="">
             <img *ngIf="status === 1" src="../../../assets/img/complete.svg" alt="">
-            <label class="name">{{experiences.name}}</label>
+            <a [routerLink]="['/experience', experiences.id, 'content']">{{experiences.name}}</a>
+
+            <!--<a [routerLink]="['/experience', experiences.id, 'content']"><label class="name">{{experiences.name}}</label></a>-->
             <label *ngFor="let brand of experiences.brands">#{{brand}}</label>
           </div>
         </div>

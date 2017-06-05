@@ -1,0 +1,19 @@
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+
+  .thumbnail-container {
+    margin: 20px;
+    height: 262px;
+    width: 250px;
+  }
+
+    thumbnail {
+      background-color: transparent;
+      cursor: pointer;
+    }
+
+}
+
+

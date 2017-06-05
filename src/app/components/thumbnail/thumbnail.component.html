@@ -1,10 +1,20 @@
 <div class="thumbnail-container">
   <div class="content">
-    <checkbox (toggle)="onChecked($event)"></checkbox>
-    <img
-      src="https://amazingcarousel.com/wp-content/uploads/amazingcarousel/3/images/lightbox/golden-wheat-field-lightbox.jpg"
+    <div class="actions">
+      <checkbox (toggle)="onChecked($event)"></checkbox>
+      <img (click)="makeFavorite()" [hidden]="!item.favorite" src="../../../assets/img/heart-active.svg" alt="">
+      <img (click)="makeFavorite()" [hidden]="item.favorite" src="../../../assets/img/heart-inactive.svg" alt="">
+    </div>
+    <img *ngIf="item.mediaPath.indexOf('.png') > 0"
+      [src]="item ? item.mediaPath :
+       'https://amazingcarousel.com/wp-content/uploads/amazingcarousel/3/images/lightbox/golden-wheat-field-lightbox.jpg'"
       alt="">
-    <div class="buttons">
+    <vg-player *ngIf="item.mediaPath.indexOf('.mp4') > 0" (onPlayerReady)="onPlayerReady($event)">
+      <video preload="true" loop="true" [vgMedia]="media" #media id="singleVideo" preload="auto" controls>
+        <source [src]="item.mediaPath" type="video/mp4">
+      </video>
+    </vg-player>
+    <div [hidden]="true" class="buttons">
       <div class="confirm" (click)="onConfirm()">
         <img src="../../../assets/img/completed-icon.svg" alt="">
       </div>
@@ -13,7 +23,7 @@
       </div>
     </div>
   </div>
-  <div class="info">
+  <div [hidden]="true" class="info">
     <div class="title">item.</div>
     <div class="type">TYPE</div>
     <div class="progress-container">
@@ -28,6 +38,15 @@
       <div class="progress-value">{{50}}%</div>
     </div>
   </div>
+  <div class="action-menu">
+    <img src="../../../assets/img/info.svg" alt="">
+    <img  *ngIf="item.mediaPath.indexOf('.png') > 0"
+          (click)="downloadItem(item)" src="../../../assets/img/download-icon.svg">
+    <a href="javascript:void(0)" (click)="share(item, 'facebook')">facebook</a>
+    <a href="javascript:void(0)" (click)="share(item, 'twitter')">twitter</a>
+    <a href="javascript:void(0)" (click)="share(item, 'tumblr')">tumblr</a>
+  </div>
+
 </div>
 
 

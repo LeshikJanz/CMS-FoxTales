@@ -1,0 +1,83 @@
+.modal-dialog {
+  .modal-content {
+    width: 600px;
+  }
+}
+
+.close img {
+  height: 30px;
+}
+
+.modal-header {
+  padding: 15px 40px;
+}
+
+.modal-body {
+  position: relative;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 250px;
+
+  .switch-container {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 20px;
+    height: 80px;
+    flex-direction: column;
+
+    switcher {
+      font-size: 13px;
+    }
+  }
+
+  tag-input {
+    padding-top: 30px;
+  }
+
+  .btn-actions {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+
+    fox-button {
+      height: 55px;
+      width: 180px;
+      font-size: 16px;
+    }
+
+    .cancel {
+      margin-left: 25px;
+      width: 150px;
+    }
+  }
+
+  .email-confirmation {
+    height: inherit;
+    width: inherit;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+
+    div {
+      font-size: 16px;
+      font-family: Avenir-Book;
+    }
+
+    .email {
+      width: 500px;
+      text-align: center;
+      overflow-wrap: break-word;
+      font-family: Avenir-Bold;
+    }
+
+    fox-button {
+      height: 55px;
+      width: 180px;
+      font-size: 16px;
+    }
+  }
+}

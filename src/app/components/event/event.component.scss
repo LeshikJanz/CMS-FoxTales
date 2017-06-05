@@ -1,16 +1,24 @@
 .event-container {
-  padding: inherit;
+  margin: inherit;
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
-  margin-top: 20px;
-  height: 65px;
+  align-items: center;
+  height: 85px;
+  border-bottom: medium solid #b2bac4;
+  border-width: 1px;
+
+  checkbox {
+    height: 32px;
+    width: 32px;
+    font-size: 14px;
+  }
 
   & :first-child {
     margin-right: 20px;
   }
 
   .main-info {
+    display: flex;
 
     & :first-child {
       > * {
@@ -42,7 +50,6 @@
     label{
       font-size: 16px;
       font-family: Avenir-Book;
-      margin-left: 45px;
     }
   }
 

@@ -32,8 +32,10 @@ export class EventGroupsComponent implements OnInit {
    * @type {IActionState[]}
    */
   public sortActions: IActionState[] = [
-    { id: 1, action: 'Upcoming' },
-    { id: 2, action: 'Descending' }
+    {id: 1, action: 'Upcoming', callback: 'upcomingSort'},
+    {id: 2, action: 'Descending', callback: 'descendingSort'},
+    {id: 3, action: 'Start date', callback: 'startDateSort'},
+    {id: 4, action: 'End date', callback: 'endDateSort'},
   ];
 
   constructor(private eventGroupsService: EventGroupsService,
@@ -52,6 +54,7 @@ export class EventGroupsComponent implements OnInit {
 
   public ngOnInit(): void {
     this.getEventGroups();
+    this.getEvents();
   }
 
   public onSave() {
@@ -59,7 +62,7 @@ export class EventGroupsComponent implements OnInit {
   }
 
   /**
-   * Get event groups with list of events in each one
+   * Get event groups
    *
    * @return {void}
    */
@@ -68,17 +71,21 @@ export class EventGroupsComponent implements OnInit {
       .getEventGroups()
       .subscribe((eventGroups: IEventGroup[]) => {
 
-        this.eventService.getEvents()
-          .subscribe((events: IEvent[]) => {
-            this.events = events;
-            this.eventGroups = eventGroups.map((eg: IEventGroup) =>
-              ({
-                ...eg,
-                events: events.filter((e: IEvent) => eg.eventIds.some((eId: number) => eId === e.id)
-                )
-              })
-            );
-          });
+        this.eventGroups = eventGroups;
+
       });
+  };
+
+  /**
+   * Get events
+   *
+   * @return {void}
+   */
+  public getEvents() {
+    this.eventService
+      .getEvents()
+      .subscribe((events: IEvent[]) =>
+        this.events = events
+      );
   };
 }

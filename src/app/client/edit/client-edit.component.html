@@ -12,7 +12,8 @@
       <!-- Logo -->
       <label style="font-size: 18px">Client logo</label>
 
-      <img src="{{ logoBytes || client?.logo }}" style="max-height: 50px;">
+      <img src="{{ logoBytes || client?.logo }}" *ngIf="logoBytes || client?.logo" style="max-height: 50px;">
+      <a href="javascript:void(0)" *ngIf="logoBytes || client?.logo" (click)="removeLogo()">x</a>
 
       <upload-button (imgUploaded)="onImgUploaded($event)"></upload-button>
 
@@ -130,6 +131,11 @@
         <div>
           <a href="javascript:void(0)" (click)="addSocialAccount()">add</a>
         </div>
+      </div>
+
+      <div class="form-element">
+        <label>Social Integrations</label>
+        <a href="javascript:void(0)" *ngFor="let social of socialIntegrations" (click)="auth(social)">{{ social.name }}</a>
       </div>
     </div>
 

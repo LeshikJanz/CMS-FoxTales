@@ -2,6 +2,7 @@ import { UploadButtonComponent } from './uploadButton/upload-button.component';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { FEATURE_ROUTES } from './feature.routing';
+import { ToastrModule, ToastContainerModule } from 'ngx-toastr';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { CreationButtonComponent } from './creationButton/creation-button.component';
@@ -25,9 +26,9 @@ import { TableDropDownComponent } from './dropdowns/table-dropdown/table-dropdow
 import { FoxButtonComponent } from './buttons/fox-button/fox-button.component';
 import { AddButtonComponent } from './buttons/add-button/add-button.component';
 import {
-  EventNavigationComponent
+  EventsNavigationComponent
 }
-  from './navigations/event-navigation/event-navigation.component';
+  from './navigations/events-navigation/events-navigation.component';
 
 import {
   ExperienceBuilderNavigationComponent
@@ -58,8 +59,25 @@ import {
   EventToGroupModalComponent
 }
   from './modals/event-to-group-modal/event-to-group-modal.component';
+
   import { DatepickerModule } from 'ngx-bootstrap';
   import { Angular2FontAwesomeModule } from 'angular2-font-awesome/angular2-font-awesome';
+
+import { ThumbnailComponent } from './thumbnail/thumbnail.component';
+import {
+  EventNavigationComponent
+} from './navigations/event-navigation/event-navigation.component';
+import { FavoriteGalleryComponent } from '../gallery/favorite-gallery/favorite-gallery.component';
+import { GalleryItemListComponent } from '../gallery-items/list/gallery-item-list.component';
+import { GalleryService } from '../gallery/gallery.service';
+import { DownloadModalComponent } from './modals/download-modal/download-modal.component';
+import { BrowserModule } from '@angular/platform-browser';
+import { VgCoreModule } from 'videogular2/core';
+import { VgControlsModule } from 'videogular2/controls';
+import { VgOverlayPlayModule } from 'videogular2/overlay-play';
+import { VgBufferingModule } from 'videogular2/buffering';
+import { DeviceInfoComponent } from './device-info/device-info.component';
+import { ClientService } from '../client/client.service';
 
 @NgModule({
   imports: [
@@ -74,9 +92,18 @@ import {
     ModalModule.forRoot(),
     TagInputModule,
     DatepickerModule.forRoot(),
-    Angular2FontAwesomeModule
+    Angular2FontAwesomeModule,
+    VgCoreModule,
+    VgControlsModule,
+    VgOverlayPlayModule,
+    VgBufferingModule,
+    ToastrModule.forRoot(),
+    ToastContainerModule.forRoot()
   ],
-  providers: [],
+  providers: [
+    GalleryService,
+    ClientService
+  ],
   declarations: [
     CreationButtonComponent,
     UploadButtonComponent,
@@ -86,6 +113,7 @@ import {
     AdminNavigationComponent,
     MainNavigationComponent,
     EventNavigationComponent,
+    EventsNavigationComponent,
     EventComponent,
     CheckboxComponent,
     DropDownComponent,
@@ -102,7 +130,12 @@ import {
     EventsToCurGroupModalComponent,
     EventToGroupModalComponent,
     ScrollComponent,
-    GroupDropDownComponent
+    GroupDropDownComponent,
+    ThumbnailComponent,
+    FavoriteGalleryComponent,
+    GalleryItemListComponent,
+    DownloadModalComponent,
+    DeviceInfoComponent
   ],
   exports: [
     CreationButtonComponent,
@@ -114,6 +147,7 @@ import {
     ExperienceBuilderNavigationComponent,
     MainNavigationComponent,
     EventNavigationComponent,
+    EventsNavigationComponent,
     EventComponent,
     AdminNavigationComponent,
     CheckboxComponent,
@@ -131,7 +165,12 @@ import {
     EventsToCurGroupModalComponent,
     EventToGroupModalComponent,
     ScrollComponent,
-    GroupDropDownComponent
+    GroupDropDownComponent,
+    ThumbnailComponent,
+    FavoriteGalleryComponent,
+    GalleryItemListComponent,
+    DownloadModalComponent,
+    DeviceInfoComponent
   ]
 })
 

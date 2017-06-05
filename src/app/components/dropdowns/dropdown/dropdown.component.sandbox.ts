@@ -9,7 +9,7 @@ export default sandboxOf(DropDownComponent, { imports: [ BsDropdownModule.forRoo
                <dropdown 
                [title]="title"
                [options]="options"
-               [size]="size"
+               [size]="'small'"
                (typeChanged)="onTypeChanged($event)"
                ></dropdown></div>`,
     context: {
@@ -26,17 +26,35 @@ export default sandboxOf(DropDownComponent, { imports: [ BsDropdownModule.forRoo
   .add('medium', {
     template: `<div style="margin-left: 100px"><dropdown 
                [title]="'Action'"
-               [options]="[{ id: 1, action: 'Unarchived' },{ id: 2, action: 'Archived' }]"
+               [options]="options"
                [size]="'medium'"
                (typeChanged)="onTypeChanged($event)"
-               ></dropdown></div>`
+               ></dropdown></div>`,
+    context: {
+      title: 'Most recent',
+      options: [ { id: 1, action: 'Unarchived' }, { id: 2, action: 'Archived' } ],
+      size: 'small',
+      onTypeChanged(event) {
+        console.log('onTypeChanged');
+        console.log(event);
+      }
+    }
   })
 
   .add('big', {
     template: `<div style="margin-left: 100px"><dropdown 
                [title]="'Action'"
-               [options]="[{ id: 1, action: 'Unarchived' },{ id: 2, action: 'Archived' }]"
+               [options]="options"
                [size]="'big'"
                (typeChanged)="onTypeChanged($event)"
-               ></dropdown></div>`
+               ></dropdown></div>`,
+    context: {
+      title: 'Most recent',
+      options: [ { id: 1, action: 'Unarchived' }, { id: 2, action: 'Archived' } ],
+      size: 'small',
+      onTypeChanged(event) {
+        console.log('onTypeChanged');
+        console.log(event);
+      }
+    }
   });

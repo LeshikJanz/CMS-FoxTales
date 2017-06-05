@@ -6,11 +6,12 @@ import { IUser } from '../user.interface';
 import { IUserRole } from '../user-role.interface';
 import { IUserClient } from '../user-client.interface';
 import { UserService } from '../user.service';
+import { INgSelect } from '../../app.interface';
 
 @Component({
   selector: 'user-create',
   templateUrl: './user-create.component.html',
-  styleUrls: [ './user-create.component.scss' ]
+  styleUrls: ['./user-create.component.scss']
 })
 export class UserCreateComponent implements OnInit {
   /**
@@ -51,11 +52,9 @@ export class UserCreateComponent implements OnInit {
    * @param {UserService} userService - User service
    * @returns {void}
    */
-  constructor(
-    private router: Router,
-    private formBuilder: FormBuilder,
-    private userService: UserService
-  ) {
+  constructor(private router: Router,
+              private formBuilder: FormBuilder,
+              private userService: UserService) {
   }
 
   /**
@@ -92,7 +91,9 @@ export class UserCreateComponent implements OnInit {
   public getUserClients(): UserCreateComponent {
     this.userService
       .getClients()
-      .subscribe((clients: IUserClient[]) => this.clients = clients);
+      .subscribe((clients: IUserClient[]) => {
+        this.clients = clients;
+      });
 
     return this;
   }

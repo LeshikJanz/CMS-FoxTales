@@ -1,0 +1,41 @@
+.group-container {
+  display: flex;
+  flex-direction: column;
+
+  .filters {
+    display: flex;
+    padding: 20px 0;
+    justify-content: space-between;
+
+    div {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+
+  input {
+    width: 30%;
+    background-image: url(../../../assets/img/search.svg);
+    background-repeat: no-repeat;
+    background-size: 15px 18px;
+    outline: 0;
+    border-width: 0 0 2px 0;
+    border-color: #F2F2F2;
+    font-family: WorkSans;
+    font-size: 16px;
+    padding-left: 50px;
+    color: #b2bac4;
+    height: 30px;
+    align-self: center;
+  }
+  input:focus {
+    border-color: green
+  }
+
+  fox-button {
+    height: 36px;
+    width: 178px;
+    font-size: 14px;
+  };
+}

@@ -35,18 +35,18 @@ export class UserEditComponent implements OnInit {
   };
 
   /**
+   * User client
+   *
+   * @type {IUserClient}
+   */
+  public client: IUserClient;
+
+  /**
    * User roles
    *
    * @type {IUserRole[]}
    */
   public roles: IUserRole[];
-
-  /**
-   * Clients
-   *
-   * @type {IUserClient[]}
-   */
-  public clients: IUserClient[];
 
   /**
    * Constructor
@@ -75,7 +75,6 @@ export class UserEditComponent implements OnInit {
    */
   public ngOnInit(): void {
     this.buildUserForm();
-    this.getUserClients();
 
     this.route.params.subscribe((params: any) => {
       const id = params['id'];
@@ -104,14 +103,17 @@ export class UserEditComponent implements OnInit {
   }
 
   /**
-   * Get user clients
+   * Get client by id
    *
-   * @returns {void}
+   * @param {string} id - Client id
+   * @returns {void|Promise<boolean>}
    */
-  public getUserClients(): void {
+  public getClient(id: string): void|Promise<boolean> {
     this.userService
-      .getClients()
-      .subscribe((clients: IUserClient[]) => this.clients = clients);
+      .getClient(id)
+      .subscribe((client: IUserClient) => {
+        this.client = client;
+      });
   }
 
   /**
@@ -129,6 +131,7 @@ export class UserEditComponent implements OnInit {
 
         this.user = user;
         this.getUserRoles();
+        this.getClient(user.clientId);
       });
   }
 
@@ -169,9 +172,6 @@ export class UserEditComponent implements OnInit {
       email: ['', [
         Validators.required,
         CustomValidators.email
-      ]],
-      clientId: ['', [
-        Validators.required
       ]]
     });
   }

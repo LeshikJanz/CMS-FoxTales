@@ -14,10 +14,19 @@ import { HttpService } from '../shared/core';
 import { EXPERIENCE_ROUTING } from './experience.routes';
 
 import { ExperienceService } from './experience.service';
-import { ExperienceListComponent } from './list';
 import { ExperienceCreateComponent } from './create';
 
 import { FeatureModule } from '../components/feature.module';
+import { ExperienceComponent } from './experience.component';
+import { ExperienceContentComponent } from './content/experience-content';
+import { EventContainerModule } from '../event/event-container.module';
+import {
+  ExperienceGalleryComponent
+} from '../gallery/experience-gallery/components/experience-gallery.component';
+import { GalleryService } from '../gallery/gallery.service';
+import {
+  ExperienceGalleryContainerComponent
+} from '../gallery/experience-gallery/container/experience-gallery-container.component';
 
 @NgModule({
   imports: [
@@ -32,19 +41,24 @@ import { FeatureModule } from '../components/feature.module';
     TagInputModule,
     SharedModule,
     EXPERIENCE_ROUTING,
-    FeatureModule
+    FeatureModule,
+    EventContainerModule
   ],
   providers: [
     {
       provide: Http,
       useFactory: httpFactory,
-      deps: [ XHRBackend, RequestOptions, Injector ]
+      deps: [XHRBackend, RequestOptions, Injector]
     },
-    ExperienceService
+    ExperienceService,
+    GalleryService
   ],
   declarations: [
-    ExperienceListComponent,
-    ExperienceCreateComponent
+    ExperienceCreateComponent,
+    ExperienceComponent,
+    ExperienceContentComponent,
+    ExperienceGalleryComponent,
+    ExperienceGalleryContainerComponent
   ]
 })
 export class ExperienceModule {
