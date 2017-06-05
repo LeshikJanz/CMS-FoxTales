@@ -121,7 +121,9 @@ export class ClientService {
    * @param {string} authResponse - Response data
    * @returns {Observable<Response>} - Response
    */
-  public addSocialIntegration(id: number, name: string, authResponse: string): Observable<Response> {
+  public addSocialIntegration(
+    id: number, name: string, authResponse: string
+  ): Observable<Response> {
     return this.http.post(`${process.env.API_URL}/SocialIntegrations/${name}`, {
       platformID: id,
       token: authResponse
@@ -141,5 +143,21 @@ export class ClientService {
           return integration.platformID === id;
         }).pop();
       });
+  }
+
+  /**
+   * Get social token
+   *
+   * @param {number} platformId - Platform id
+   * @param {number} integrationId - Integration id
+   * @returns {Observable<string>} - Token details
+   */
+  public getSocialToken(platformId: number, integrationId: number): Observable<string> {
+    return this.http.get(
+      `${process.env.API_URL}/SocialIntegrations/${platformId}/${integrationId}`
+    ).map((response: Response) => {
+      const tokenData = response.json();
+      return tokenData.token;
+    });
   }
 }

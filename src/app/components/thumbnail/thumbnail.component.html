@@ -42,6 +42,9 @@
     <img src="../../../assets/img/info.svg" alt="">
     <img  *ngIf="item.mediaPath.indexOf('.png') > 0"
           (click)="downloadItem(item)" src="../../../assets/img/download-icon.svg">
+    <a href="javascript:void(0)" (click)="share(item, 'facebook')">facebook</a>
+    <a href="javascript:void(0)" (click)="share(item, 'twitter')">twitter</a>
+    <a href="javascript:void(0)" (click)="share(item, 'tumblr')">tumblr</a>
   </div>
 
 </div>
