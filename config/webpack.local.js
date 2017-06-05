@@ -188,7 +188,8 @@ module.exports = function (options) {
             '@ultimate/ngxerrors',
             'ng2-validation',
             'ngx-toastr',
-            'ng2-tag-input'
+            'ng2-tag-input',
+            'hellojs'
           ]
         },
         dllDir: helpers.root('dll'),
