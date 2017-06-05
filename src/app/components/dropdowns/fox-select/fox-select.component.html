@@ -1,6 +1,7 @@
 <div class="ng-select-container">
   <ng-select [allowClear]="true"
-             [items]="items"
+             [active]="activeItem ? [activeItem] : null"
+             [items]="items && items"
              [disabled]="disabled"
              (data)="refreshValue($event)"
              (selected)="selected($event)"

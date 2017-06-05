@@ -54,7 +54,7 @@ export class UserEditComponent implements OnInit {
    *
    * @type {number}
    */
-  public clientId: number;
+  public clientId: string;
 
   /**
    * Constructor
@@ -148,6 +148,8 @@ export class UserEditComponent implements OnInit {
   public updateUser(): void {
     // this.extractRoles();
 
+    this.user.clientId = this.clientId;
+
     this.userService
       .updateUser(this.user)
       .subscribe(() => {
@@ -173,7 +175,7 @@ export class UserEditComponent implements OnInit {
    * @return {boolean}
    */
   public isFormInvalid(): boolean {
-    if (this.userForm.valid && this.clientId) {
+    if (this.clientId) {
       return false;
     }
     return true;

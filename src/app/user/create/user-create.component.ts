@@ -39,7 +39,7 @@ export class UserCreateComponent implements OnInit {
    *
    * @type {number}
    */
-  public clientId: number;
+  public clientId: string;
 
 
   /**
@@ -125,6 +125,8 @@ export class UserCreateComponent implements OnInit {
    */
   public addUser(user: IUser): void {
     this.extractRoles();
+
+    user.clientId = this.clientId;
 
     this.userService
       .addUser(user)

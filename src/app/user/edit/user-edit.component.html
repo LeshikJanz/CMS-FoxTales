@@ -32,6 +32,7 @@
       <div class="form-element">
         <label>Client Access*</label>
         <fox-select
+          [active]="user.clientId"
           (change)="clientId = $event.id"
           [items]="clients"
         >
@@ -39,10 +40,10 @@
       </div>
     </div>
 
-      <fox-button
-        [value]="'Update'"
-        [disabled]="isFormInvalid()"
-        [design]="'special'"
-      ></fox-button>
+    <fox-button
+      [value]="'Update'"
+      [disabled]="isFormInvalid()"
+      [design]="'special'"
+    ></fox-button>
   </form>
 </div>
