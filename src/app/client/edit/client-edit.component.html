@@ -132,6 +132,11 @@
           <a href="javascript:void(0)" (click)="addSocialAccount()">add</a>
         </div>
       </div>
+
+      <div class="form-element">
+        <label>Social Integrations</label>
+        <a href="javascript:void(0)" *ngFor="let social of socialIntegrations" (click)="auth(social)">{{ social.name }}</a>
+      </div>
     </div>
 
     <!-- Licenses -->
