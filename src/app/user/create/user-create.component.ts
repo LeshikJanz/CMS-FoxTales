@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { CustomValidators } from 'ng2-validation';
 import { IUser } from '../user.interface';
 import { IUserRole } from '../user-role.interface';
 import { IUserClient } from '../user-client.interface';
 import { UserService } from '../user.service';
-import { INgSelect } from '../../app.interface';
 
 @Component({
   selector: 'user-create',
@@ -36,6 +35,14 @@ export class UserCreateComponent implements OnInit {
   public clients: IUserClient[];
 
   /**
+   * Client Id
+   *
+   * @type {number}
+   */
+  public clientId: number;
+
+
+  /**
    * Additional user details
    *
    * @type {any}
@@ -55,6 +62,19 @@ export class UserCreateComponent implements OnInit {
   constructor(private router: Router,
               private formBuilder: FormBuilder,
               private userService: UserService) {
+  }
+
+
+  /**
+   * Is form invalid
+   *
+   * @return {boolean}
+   */
+  public isFormInvalid(): boolean {
+    if (this.userForm.valid && this.clientId) {
+      return false;
+    }
+    return true;
   }
 
   /**
@@ -123,6 +143,15 @@ export class UserCreateComponent implements OnInit {
       .map((role: IUserRole) => role.id);
   }
 
+  public cliendIdValidator(control: FormControl): {[s: string]: number} {
+    console.log('clientIdValidator');
+
+    if (control.value === "нет") {
+      return {"clientId": control.value};
+    }
+    return null;
+  }
+
   /**
    * Build user form
    *
@@ -133,9 +162,6 @@ export class UserCreateComponent implements OnInit {
       email: ['', [
         Validators.required,
         CustomValidators.email
-      ]],
-      clientId: ['', [
-        Validators.required
       ]]
     });
 

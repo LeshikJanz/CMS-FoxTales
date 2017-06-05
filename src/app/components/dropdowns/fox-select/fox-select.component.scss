@@ -1,0 +1,63 @@
+.ng-select-container {
+  width: inherit;
+  height: inherit;
+  margin-bottom: inherit;
+  border-radius: inherit;
+  border: inherit;
+}
+
+i > * {
+  display: none !important;
+}
+
+:host /deep/ .caret {
+  display: none;
+}
+
+:host /deep/ .ui-select-toggle {
+  font-family: OpenSans;
+  font-size: 18px;
+  width: 320px;
+  border-radius: 5px;
+  border-style: double;
+  border-color: #b4b4b4;
+  height: 40px;
+}
+
+:host /deep/ .ui-select-search {
+  font-family: OpenSans;
+  font-size: 18px;
+  width: 320px;
+  border-radius: 5px;
+  border-style: double;
+  border-color: #b4b4b4;
+  height: 40px;
+}
+
+:host /deep/ .dropdown-toggle {
+  font-size: 16px;
+}
+
+:host /deep/ .ui-select-choices.dropdown-menu {
+  width: 320px;
+}
+
+:host /deep/ .ui-select-choices-row > a {
+  font-family: WorkSans-Regular;
+  font-size: 16px;
+  display: flex !important;
+  align-items: center !important;
+  height: 46px;
+  border-bottom: 1px solid #d8dce1;
+}
+
+:host /deep/ .ui-select-choices-row.active > a {
+  color: #f57f17 !important;
+  background-color: transparent !important;
+  height: 46px;
+}
+
+
+:host /deep/ .btn-link, .btn-link:hover, .btn-link:focus, .btn-link:active {
+  display: none;
+}

@@ -58,6 +58,8 @@ import { VgControlsModule } from 'videogular2/controls';
 import { VgOverlayPlayModule } from 'videogular2/overlay-play';
 import { VgBufferingModule } from 'videogular2/buffering';
 import { DeviceInfoComponent } from './device-info/device-info.component';
+import { FoxSelectComponent } from './dropdowns/fox-select/fox-select.component';
+import { SelectModule } from 'ng2-select';
 @NgModule({
   imports: [
     CommonModule,
@@ -69,7 +71,8 @@ import { DeviceInfoComponent } from './device-info/device-info.component';
     VgCoreModule,
     VgControlsModule,
     VgOverlayPlayModule,
-    VgBufferingModule
+    VgBufferingModule,
+    SelectModule
   ],
   providers: [GalleryService],
   declarations: [
@@ -102,7 +105,8 @@ import { DeviceInfoComponent } from './device-info/device-info.component';
     FavoriteGalleryComponent,
     GalleryItemListComponent,
     DownloadModalComponent,
-    DeviceInfoComponent
+    DeviceInfoComponent,
+    FoxSelectComponent
   ],
   exports: [
     CreationButtonComponent,
@@ -136,7 +140,8 @@ import { DeviceInfoComponent } from './device-info/device-info.component';
     FavoriteGalleryComponent,
     GalleryItemListComponent,
     DownloadModalComponent,
-    DeviceInfoComponent
+    DeviceInfoComponent,
+    FoxSelectComponent
   ]
 })
 
