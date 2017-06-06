@@ -129,8 +129,9 @@ export class ClientCreateComponent implements OnInit {
    *
    * @returns {void}
    */
-  public addSocialAccount(): void {
+  public addSocialAccount(event): void {
     this.socialAccounts.push(new FormControl('', Validators.required));
+    event.preventDefault();
   }
 
   /**
@@ -294,12 +295,8 @@ export class ClientCreateComponent implements OnInit {
         CustomValidators.email
       ]],
       address: this.addressControl,
-      phone: ['', [
-        Validators.required
-      ]],
-      freshBooks: ['', [
-        Validators.required
-      ]],
+      phone: ['', ],
+      freshBooks: ['', ],
       socialAccounts: new FormArray([])
     });
 
