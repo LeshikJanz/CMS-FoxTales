@@ -7,6 +7,7 @@ import { ToastrModule, ToastContainerModule } from 'ngx-toastr';
 import { AuthService, HttpService, PermissionService, AuthRequestOptions } from './core';
 import { TableComponent, FormatPipe, ImagePipe } from './table';
 import { FeatureModule } from '../components/feature.module';
+import { DefaultPipe } from './table/pipe/default.pipe';
 
 @NgModule({
   imports: [
@@ -35,7 +36,8 @@ import { FeatureModule } from '../components/feature.module';
     },
     AuthService,
     PermissionService,
-    ImagePipe
+    ImagePipe,
+    DefaultPipe
   ],
   exports: [
     CommonModule,

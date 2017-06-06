@@ -2,6 +2,7 @@
   <table style="width: 100%">
     <thead>
     <tr>
+      <th></th>
       <th class="table-header" *ngFor="let col of cols">
         <div>
           <img (click)="openSearch(col)" [hidden]="!col.searchable" style="cursor: pointer" src="../../../assets/img/column-search.svg">
@@ -19,6 +20,14 @@
     </thead>
     <tbody>
     <tr class="table-row" *ngFor="let row of rows">
+      <td>
+        <input
+          type="checkbox"
+          name="checkbox"
+          class="regular-checkbox"
+          [(ngModel)]="row.checked">
+        <br>
+      </td>
       <td
         *ngFor="let col of cols"
         (click)="clickRow(row)"

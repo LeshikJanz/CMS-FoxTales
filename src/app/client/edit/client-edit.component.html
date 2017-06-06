@@ -1,8 +1,4 @@
-<div class="container">
-  <a href="javascript:void(0)" [routerLink]="['/admin/clients']">Back to all Clients</a>
-
-  <h1>{{ client?.name }}</h1>
-
+<div class="client-container">
   <form
     (ngSubmit)="updateClient()"
     class="form"
@@ -10,12 +6,13 @@
 
     <div [formGroup]="clientForm">
       <!-- Logo -->
-      <label style="font-size: 18px">Client logo</label>
-
-      <img src="{{ logoBytes || client?.logo }}" style="max-height: 50px;">
-
-      <upload-button (imgUploaded)="onImgUploaded($event)"></upload-button>
-
+      <div class="form-element">
+        <div>
+          <label style="font-size: 22px">Client logo</label>
+          <img src="{{ logoBytes || client?.logo }}" style="max-height: 50px;">
+        </div>
+        <upload-button (imgUploaded)="onImgUploaded($event)"></upload-button>
+      </div>
       <!-- Name -->
       <div class="form-element">
         <label for="name">Client Name</label>
@@ -112,38 +109,23 @@
           </div>
         </div>
       </div>
-
-      <!-- Social Accounts -->
-      <div class="form-element" formArrayName="socialAccounts">
-        <label>Social Accounts</label>
-
-        <div *ngFor="let account of socialAccounts.controls; let i = index">
-          <input
-            type="text"
-            class="form-control input"
-            [(ngModel)]="client.socialAccounts[i]"
-            [formControl]="account"
-            placeholder="Social Account Url">
-          <a href="javascript:void(0)" (click)="removeSocialAccount(i)">x</a>
-        </div>
-
-        <div>
-          <a href="javascript:void(0)" (click)="addSocialAccount()">add</a>
-        </div>
-      </div>
     </div>
 
     <!-- Licenses -->
     <div class="form-group">
-      <label *ngFor="let license of licenses; let i = index">
+      <div class="license">
+      <div *ngFor="let license of licenses; let i = index">
         <input
           type="checkbox"
           name="selectedLicenses[]"
-          class="form-control input checkbox"
+          class="regular-checkbox"
           (change)="selectLicense(i, $event.target.checked)"
           [checked]="license.checked">
-        {{ license.name }}
-      </label>
+        <label>
+          {{ license.name }}
+        </label>
+      </div>
+    </div>
     </div>
 
     <div>

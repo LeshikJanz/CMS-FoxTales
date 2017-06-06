@@ -1,6 +1,6 @@
-import { Component, Output, EventEmitter, Input } from '@angular/core';
+import { Component, Output, EventEmitter, Input, OnInit } from '@angular/core';
 
-interface ICheckbox {
+export interface ICheckbox {
   name: string;
   isChecked: boolean;
 }
@@ -11,14 +11,20 @@ interface ICheckbox {
   styleUrls: ['checkbox.component.scss']
 })
 
-export class CheckboxComponent {
+export class CheckboxComponent implements OnInit {
   @Output() public toggle: EventEmitter<ICheckbox> = new EventEmitter<ICheckbox>();
 
   @Input() public name: string;
 
-  public isChecked: boolean;
+  public isChecked: boolean = false;
+
+  public checkbox: ICheckbox;
 
   public onChange(event: boolean) {
     this.toggle.emit({ name: name, isChecked: event });
+  }
+
+  ngOnInit() {
+    this.toggle.emit({ name: name, isChecked: this.isChecked });
   }
 }

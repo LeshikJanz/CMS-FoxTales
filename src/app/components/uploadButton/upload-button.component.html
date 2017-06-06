@@ -3,7 +3,7 @@
          (change)="handlePictureChange($event)"
          required="required" multiple="multiple"/>
   <div class="btn upload-button" [class.success]="uploadState == 1" [class.fail]="uploadState == 2">
-    <div class="fail" [hidden]="uploadState != 2 || isLoading">
+    <div class="fail" [hidden]="uploadState != 2">
       <label class="input-block">
         <img src="../../../assets/img/attention.svg" alt="">
         <strong class="inner-text">Please
@@ -11,23 +11,19 @@
           {{error}}</strong>
       </label>
     </div>
-    <div class="success" [hidden]="uploadState == 2 || uploadState == 0 || isLoading">
+    <div class="success" [hidden]="uploadState == 2 || uploadState == 0">
       <label class="input-block">
         <img src="../../../assets/img/complete.svg" alt="">
         <strong class="inner-text">Item uploaded successfully!</strong>
       </label>
     </div>
-    <div class="default" [hidden]="uploadState != 0 || isLoading">
+    <div class="default" [hidden]="uploadState != 0">
       <label class="input-block">
         <img src="../../../assets/img/arrows-24-px-outline-1-cloud-upload-94.svg" alt="">
         <label class="inner-text default">Drag n drop an image here or
           <ins> browse for one on your computer</ins>
         </label>
       </label>
-    </div>
-    <div class="loading" *ngIf="isLoading">
-      <img src="../../../assets/img/in-progress.svg" alt=""><br>
-      Uploading...
     </div>
   </div>
 </div>

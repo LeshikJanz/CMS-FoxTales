@@ -7,9 +7,10 @@
     <div [formGroup]="clientForm">
       <!-- Logo -->
       <div class="form-element">
+        <div>
         <label style="font-size: 22px">Client logo</label>
-        <img *ngIf="logoBytes" src="{{ logoBytes }}" style="max-height: 50px;">
-
+        <img src="{{ logoBytes || client?.logo }}" style="max-height: 50px;">
+        </div>
         <upload-button (imgUploaded)="onImgUploaded($event)"></upload-button>
       </div>
       <!-- Name -->
@@ -107,7 +108,7 @@
 
     <!-- Licenses -->
     <div class="form-group">
-      <label for="freshBooks">Licenses</label>
+      <label>Licenses</label>
       <div class="license">
         <div *ngFor="let license of licenses">
           <input
