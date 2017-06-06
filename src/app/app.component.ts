@@ -19,7 +19,7 @@ export class AppComponent implements OnInit {
    *
    * @type {string}
    */
-  public version: string = '2.1.4';
+  public version: string = '2.2.1';
 
   /**
    * Constructor
