@@ -57,6 +57,25 @@ i > * {
   height: 46px;
 }
 
+:host /deep/ .ui-select-search {
+  width: 320px;
+  background-image: url(../../../../assets/img/search.svg);
+  background-repeat: no-repeat;
+  background-size: 13px 13px;
+  background-position-y: center;
+  background-position-x: 12px;
+  margin: auto;
+  font-family: WorkSans;
+  font-size: 16px;
+  padding-left: 40px;
+  color: #b2bac4;
+  height: inherit;
+  align-self: center;
+}
+
+:host /deep/ .ui-select-choices::-webkit-scrollbar {
+  display: none;
+}
 
 :host /deep/ .btn-link, .btn-link:hover, .btn-link:focus, .btn-link:active {
   display: none;
