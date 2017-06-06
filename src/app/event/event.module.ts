@@ -23,6 +23,7 @@ import { EventGroupsService } from '../event-groups/list/event-groups.service';
 import { EventGroupCreateComponent } from '../event-groups/create/event-group-create.component';
 import { GalleryModule } from '../gallery/gallery.module';
 import { DateTimePickerModule } from 'ng-pick-datetime';
+import * as moment from 'moment';
 
 @NgModule({
   imports: [

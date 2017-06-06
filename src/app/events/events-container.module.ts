@@ -16,6 +16,7 @@ import { SharedModule } from '../shared/shared.module';
 import { EventService } from '../event/event.service';
 import { EventGroupsService } from '../event-groups/list/event-groups.service';
 import { EventGroupEditComponent } from '../event-groups/edit/event-group-edit.component';
+import { DateTimePickerModule } from 'ng-pick-datetime';
 
 @NgModule({
   imports: [
@@ -26,7 +27,8 @@ import { EventGroupEditComponent } from '../event-groups/edit/event-group-edit.c
     ReactiveFormsModule,
     CustomFormsModule,
     TagInputModule,
-    SharedModule
+    SharedModule,
+    DateTimePickerModule
   ],
   providers: [
     EventService,

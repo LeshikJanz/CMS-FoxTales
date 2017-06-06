@@ -1,51 +1,36 @@
 <div class="container">
-  <form
-    (ngSubmit)="addEvent(eventForm.value)"
-    class="form"
-    novalidate>
+  <form (ngSubmit)="addEvent(eventForm.value)" class="form" novalidate>
 
     <div [formGroup]="eventForm">
       <!-- Event Name -->
       <div class="form-element">
-      <label for="eventName">Event Name</label>
-        <input
-          id="ame"
-          formControlName="name"
-          type="text"
-          placeholder="Event Name">
+        <label for="eventName">Event Name</label>
+        <input id="ame" formControlName="name" type="text" placeholder="Event Name">
       </div>
 
       <!-- Location -->
       <div class="form-element">
-      <label for="location">Location</label>
-        <input
-          id="address"
-          formControlName="address"
-          type="text"
-          placeholder="Address">
+        <label for="location">Location</label>
+        <input id="address" formControlName="address" type="text" placeholder="Address">
       </div>
 
-      <!--<h3>Start Date and Time</h3>
-<input class="picker-input" [ngModel]="startMomentDate" [returnObject]=" 'string' " [(dateTimePicker)]="startMomentDate" [mode]="'dropdown'" [pickerType]="'date'" placeholder="Date" readonly>
-<input class="picker-input" [ngModel]="startMomentTime" [returnObject]=" 'string' " [viewFormat]= "'HH:mm'" [(dateTimePicker)]="startMomentTime" [pickerType]="'time'" [mode]="'dropdown'" placeholder="Time"  readonly>
-<h3>End Date and Time</h3>
-<input class="picker-input" [ngModel]="endMomentDate" [returnObject]=" 'string' " [(dateTimePicker)]="endMomentDate" [mode]="'dropdown'" [pickerType]="'date'" placeholder="Date" readonly>
-<input class="picker-input" [ngModel]="endMomentTime" [returnObject]=" 'string' " [viewFormat]= "'HH:mm'" [(dateTimePicker)]="endMomentTime" [pickerType]="'time'" [mode]="'dropdown'" placeholder="Time"  readonly>-->
+      <label>Start Date</label>
+      <input class="picker-input" [ngModel]="startMomentDate" [ngModelOptions]="{standalone: true}" [returnObject]=" 'string' "
+        [(dateTimePicker)]="startMomentDate" [mode]="'dropdown'" [pickerType]="'date'" placeholder="Start Date" readonly>
+      <label>End Date</label>
+      <input class="picker-input" [ngModel]="endMomentDate" [ngModelOptions]="{standalone: true}" [returnObject]=" 'string' " [(dateTimePicker)]="endMomentDate"
+        [mode]="'dropdown'" [pickerType]="'date'" placeholder="End Date" readonly>
+
+
 
 
 
       <!-- Tags -->
       <div class="form-element">
         <label>Tags</label>
-        <tag-input
-          formControlName="tags"
-          [transform]="tagTransformer"
-          [maxItems]="10">
-            <tag-input-dropdown
-              [identifyBy]="'id'"
-              [displayBy]="'name'"
-              [autocompleteItems]="tags">
-            </tag-input-dropdown>
+        <tag-input formControlName="tags" [transform]="tagTransformer" [maxItems]="10">
+          <tag-input-dropdown [identifyBy]="'id'" [displayBy]="'name'" [autocompleteItems]="tags">
+          </tag-input-dropdown>
         </tag-input>
 
         <div ngxErrors="tags">
@@ -59,11 +44,8 @@
 
 
       <div>
-      <button
-        type="submit"
-        [disabled]="eventForm.invalid"
-        class="create-button">CREATE</button>
-    </div>
+        <button type="submit" [disabled]="eventForm.invalid" class="create-button">CREATE</button>
+      </div>
     </div>
   </form>
 </div>

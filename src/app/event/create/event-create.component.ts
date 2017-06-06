@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
@@ -14,10 +14,11 @@ import * as moment from 'moment';
   styleUrls: [ './event-create.component.scss' ]
 })
 export class EventCreateComponent implements OnInit {
-    public startMomentTime: string;
+      public startMomentTime: string;
   public startMomentDate: string;
   public endMomentTime: string;
   public endMomentDate: string;
+
   /**
    * Event form
    *
@@ -87,15 +88,15 @@ export class EventCreateComponent implements OnInit {
    */
   public addEvent(event): void {
     event.tags = event.tags.map((tag: ITag) => tag.name);
-   
-    event["startTime"] = "2017-06-05T18:00:29.319Z";
-    event["endTime"] = "2017-06-05T18:00:29.319Z";
+
+    event['startTime'] = moment(this.startMomentDate, 'MMM DD').format();
+    event['endTime'] = moment(this.endMomentDate, 'MMM DD').format();
     console.log(event);
 
-    this.event.createEvent(event).subscribe((response) =>{
-      console.log(response)
+    this.event.createEvent(event).subscribe((response) => {
+      console.log(response);
       this.router.navigate(['/events/events']);
-    })
+    });
   }
 
   /**
