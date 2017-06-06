@@ -1,0 +1,29 @@
+<div class="container">
+  <h1>Edit Profile</h1>
+
+  <div class="form-element">
+    <label>Email / Username</label>
+    <p>{{ profileData?.email }}</p>
+  </div>
+
+  <div class="form-element">
+    <label>First Name</label>
+    <p>{{ profileData?.firstName}}</p>
+  </div>
+
+  <div class="form-element">
+    <label>Last Name</label>
+    <p>{{ profileData?.lastName}}</p>
+  </div>
+
+  <div class="form-element">
+    <label>Profile Image</label>
+    <img *ngIf="profileData?.profileImagePath || logo" src="{{ profileData?.profileImagePath || logo }}" style="max-height: 50px;">
+    <a href="javascript:void(0)" *ngIf="profileData?.profileImagePath || logo" (click)="removeLogo()">x</a>
+    <upload-button (imgUploaded)="onImgUploaded($event)"></upload-button>
+  </div>
+
+  <div class="form-element">
+    <button (click)="updateProfile()">Save</button>
+  </div>
+</div>

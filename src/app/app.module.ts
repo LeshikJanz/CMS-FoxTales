@@ -5,7 +5,8 @@ import { HttpModule } from '@angular/http';
 import { NgModule, ApplicationRef } from '@angular/core';
 import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularclass/hmr';
 import { RouterModule, PreloadAllModules } from '@angular/router';
-import './../../node_modules/videogular2/fonts/videogular.css';
+import { ToastrModule, ToastContainerModule } from 'ngx-toastr';
+
 /*
  * Platform and Environment providers/directives/pipes
  */
@@ -18,9 +19,12 @@ import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppState, InternalStateType } from './app.service';
 import { AuthGuard, AuthService, PermissionService } from './shared/core';
 import { NoContentComponent } from './no-content';
+import { ProfileComponent, ProfileService } from './profile';
 import { ForbiddenComponent } from './forbidden';
 
+import './../../node_modules/videogular2/fonts/videogular.css';
 import '../styles/styles.scss';
+
 import { FeatureModule } from './components/feature.module';
 
 // Application wide providers
@@ -29,7 +33,8 @@ const APP_PROVIDERS = [
   AppState,
   AuthGuard,
   AuthService,
-  PermissionService
+  PermissionService,
+  ProfileService
 ];
 
 type StoreType = {
@@ -45,6 +50,7 @@ type StoreType = {
   bootstrap: [ AppComponent ],
   declarations: [
     AppComponent,
+    ProfileComponent,
     NoContentComponent,
     ForbiddenComponent
   ],
@@ -54,6 +60,8 @@ type StoreType = {
     FormsModule,
     HttpModule,
     RouterModule.forRoot(ROUTES, { useHash: true, preloadingStrategy: PreloadAllModules }),
+    ToastrModule.forRoot(),
+    ToastContainerModule.forRoot(),
     SharedModule,
     FeatureModule
   ],

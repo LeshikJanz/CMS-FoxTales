@@ -1,6 +1,8 @@
 import { Component, Output, EventEmitter, Input, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { IGalleryItem } from '../../gallery/gallery-item.interface';
 import { GalleryService } from '../../gallery/gallery.service';
+import hello from 'hellojs';
 import 'rxjs/Rx' ;
 
 /**
@@ -32,7 +34,11 @@ export class ThumbnailComponent implements OnInit {
 
   @Input() public isFavorite: boolean;
 
-  constructor(private galleryService: GalleryService) {}
+  constructor(
+    private toastrService: ToastrService,
+    private galleryService: GalleryService
+  ) {
+  }
 
   public onPlayerReady(event) {
     event.play();
@@ -69,5 +75,27 @@ export class ThumbnailComponent implements OnInit {
     if (this.type == null) {
       throw new Error("Attribute 'type' is required");
     }
+  }
+
+  /**
+   * Share to social platforms
+   *
+   * @param {IGalleryItem} item - Gallery item
+   * @param {string} network - Social network name
+   * @returns {void}
+   */
+  public share(item: IGalleryItem, network: string): void {
+    const social = hello(network);
+
+    social.login({force: false}, () => {
+      social.api('me/share', 'post', {
+        message: '',
+        picture: item.mediaPath
+      }).then(() => {
+        this.toastrService.success('Image has been published successfully.');
+      }, (r) => {
+        this.toastrService.error(`Unable to publish image. ${r.error.message}`);
+      });
+    });
   }
 }

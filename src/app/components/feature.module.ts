@@ -2,6 +2,7 @@ import { UploadButtonComponent } from './uploadButton/upload-button.component';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { FEATURE_ROUTES } from './feature.routing';
+import { ToastrModule, ToastContainerModule } from 'ngx-toastr';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { CreationButtonComponent } from './creationButton/creation-button.component';
@@ -58,6 +59,7 @@ import { VgControlsModule } from 'videogular2/controls';
 import { VgOverlayPlayModule } from 'videogular2/overlay-play';
 import { VgBufferingModule } from 'videogular2/buffering';
 import { DeviceInfoComponent } from './device-info/device-info.component';
+import { ClientService } from '../client/client.service';
 @NgModule({
   imports: [
     CommonModule,
@@ -69,9 +71,14 @@ import { DeviceInfoComponent } from './device-info/device-info.component';
     VgCoreModule,
     VgControlsModule,
     VgOverlayPlayModule,
-    VgBufferingModule
+    VgBufferingModule,
+    ToastrModule.forRoot(),
+    ToastContainerModule.forRoot()
   ],
-  providers: [GalleryService],
+  providers: [
+    GalleryService,
+    ClientService
+  ],
   declarations: [
     CreationButtonComponent,
     UploadButtonComponent,
