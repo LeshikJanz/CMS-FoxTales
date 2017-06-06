@@ -24,8 +24,6 @@ const EVENT_ROUTES: Routes = [
       },
     ]
   },
-
-
 ];
 
 export const EVENT_ROUTING: ModuleWithProviders = RouterModule.forChild(EVENT_ROUTES);

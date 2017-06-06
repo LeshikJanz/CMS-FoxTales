@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Response, Http, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs';
 import { Tag } from './tag';
@@ -13,7 +14,8 @@ export class EventService {
    * @param {Http} http
    * @returns {void}
    */
-  constructor(private http: Http) {
+  constructor(private http: Http,
+              private router: Router) {
   }
 
   /**
@@ -58,7 +60,7 @@ export class EventService {
       .map((response: Response) => response.json() as Tag[]);
   }
 
-    /**
+  /**
    * Create Event
    */
   public createEvent(event) {

@@ -18,6 +18,8 @@ export class EventCreateComponent implements OnInit {
   public startMomentDate: string;
   public endMomentTime: string;
   public endMomentDate: string;
+    public isNotificationEnabled: string;
+      public notificationOptions = ['Yes', 'No'];
 
   /**
    * Event form
@@ -88,10 +90,14 @@ export class EventCreateComponent implements OnInit {
    */
   public addEvent(event): void {
     event.tags = event.tags.map((tag: ITag) => tag.name);
-
+    if (this.isNotificationEnabled === 'Yes') {
+      event['sendNotifications'] = true;
+    }
+    if (this.isNotificationEnabled === 'No' ) {
+      event['sendNotifications'] = false;
+    }
     event['startTime'] = moment(this.startMomentDate, 'MMM DD').format();
     event['endTime'] = moment(this.endMomentDate, 'MMM DD').format();
-    console.log(event);
 
     this.event.createEvent(event).subscribe((response) => {
       console.log(response);
