@@ -17,6 +17,7 @@ import { EventService } from '../event/event.service';
 import { EventGroupsService } from '../event-groups/list/event-groups.service';
 import { EventGroupEditComponent } from '../event-groups/edit/event-group-edit.component';
 import { DateTimePickerModule } from 'ng-pick-datetime';
+import { EventEditComponent } from  '../event/edit/event-edit.component';
 
 @NgModule({
   imports: [
@@ -40,7 +41,8 @@ import { DateTimePickerModule } from 'ng-pick-datetime';
     EventCreateComponent,
     EventGroupsComponent,
     EventGroupCreateComponent,
-    EventGroupEditComponent
+    EventGroupEditComponent,
+    EventEditComponent
   ]
 })
 export class EventsModule {

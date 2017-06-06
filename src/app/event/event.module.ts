@@ -16,6 +16,7 @@ import { EVENT_ROUTING } from './event.routes';
 import { EventService } from './event.service';
 import { EventListComponent } from './list';
 import { EventCreateComponent } from './create';
+import { EventEditComponent } from './edit';
 
 import { FeatureModule } from '../components/feature.module';
 import { EventGroupsComponent } from '../event-groups/list/event-groups.component';
@@ -55,7 +56,8 @@ import * as moment from 'moment';
     EventListComponent,
     EventCreateComponent,
     EventGroupsComponent,
-    EventGroupCreateComponent
+    EventGroupCreateComponent,
+    EventEditComponent
   ]
 })
 export class EventModule {

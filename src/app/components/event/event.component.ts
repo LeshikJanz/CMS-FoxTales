@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { IActionState } from '../../client/client.interface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'event',
@@ -73,10 +74,12 @@ export class EventComponent {
    */
   public isChecked: boolean = false;
 
+  constructor(private router: Router) {}
+
   public onTypeChanged(type) {
     switch (type.event) {
       case 1:
-        console.log('settings');
+      this.router.navigate(['/events/edit-event', this.event['id']]);
         break;
       case 2:
         console.log('clone');

@@ -70,4 +70,24 @@ export class EventService {
           return response.json();
     });
   }
+
+  /**
+   * Update Event
+   */
+  public updateEvent(event) {
+    return this.http.put(`${process.env.API_URL}/Events/${event.id}`,
+      event)
+        .map((response: Response) => {
+          return response.json();
+    });
+  }
+  /**
+   * Update Event
+   */
+  public getEvent(event) {
+    return this.http.get(`${process.env.API_URL}/Events/${event}`)
+        .map((response: Response) => {
+          return response.json();
+    });
+  }
 }
