@@ -19,16 +19,20 @@ export class AppComponent implements OnInit {
    *
    * @type {string}
    */
-  public version: string = '2.1.4';
+  public version: string = '2.2.1';
 
   /**
    * Constructor
    *
    * @param {Router} router - Router
    * @param {AuthService} auth - Auth service
+   * @param {PermissionService} permissions - Permissions service
    * @returns {void}
    */
-  constructor(private router: Router, private auth: AuthService) {
+  constructor(
+    private router: Router,
+    private auth: AuthService,
+    private permissions: PermissionService) {
     // Redirect not CMS users to forbidden page
     // TODO: research better solution
     if (window.location.href.match(/access_denied/)) {
@@ -36,7 +40,7 @@ export class AppComponent implements OnInit {
       return;
     }
 
-    if (!this.auth.loggedIn()) {
+    if (!this.loggedIn()) {
       this.router.navigate(['/auth']);
     }
   }
@@ -56,7 +60,7 @@ export class AppComponent implements OnInit {
    * @returns {boolean} - Is logged in
    */
   public loggedIn(): boolean {
-    return -1 !== PermissionService.clientId && null !== this.auth.getContext().getUser();
+    return this.auth.loggedIn();
   }
 
   /**

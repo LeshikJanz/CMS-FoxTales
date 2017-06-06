@@ -20,8 +20,7 @@ export class AuthComponent {
    */
   constructor(private router: Router, private auth: AuthService) {
     if (this.auth.loggedIn()) {
-      this.router.navigate(['/admin/clients']);
-      return;
+      this.router.navigate(['/']);
     }
   }
 
