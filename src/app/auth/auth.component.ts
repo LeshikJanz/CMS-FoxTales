@@ -20,8 +20,7 @@ export class AuthComponent {
    */
   constructor(private router: Router, private auth: AuthService) {
     if (this.auth.loggedIn()) {
-      // router.navigate doesn't work
-      window.location.href = '/#/admin/clients';
+      this.router.navigate(['/']);
     }
   }
 

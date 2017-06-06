@@ -90,7 +90,7 @@ export class ThumbnailComponent implements OnInit {
     social.login({force: false}, () => {
       social.api('me/share', 'post', {
         message: '',
-        link: item.mediaPath
+        picture: item.mediaPath
       }).then(() => {
         this.toastrService.success('Image has been published successfully.');
       }, (r) => {
