@@ -20,6 +20,14 @@
   .main-info {
     display: flex;
 
+    .event-name {
+      font-size: 16px;
+      font-weight: bold;
+      font-family: Avenir-Book;
+      line-height: 1.38;
+      color: #343a40;
+    }
+
     & :first-child {
       > * {
         margin: auto;

@@ -6,11 +6,9 @@
                 <div>
                     <img *ngIf="status === -1" src="../../../assets/img/attention.svg" alt="">
                     <img *ngIf="status === 1" src="../../../assets/img/complete.svg" alt="">
-                    <label class="name">{{event.name}}</label>
+                    <a [routerLink]="['/event', event.id, 'experiences']" class="event-name">{{event.name}}</a>
                     <label class="date">{{ event.startTime | date}}</label>
                     <label *ngIf="event.tags.length > 0">#{{event.tags}}</label>
-                    <a style="text-decoration: none" [routerLink]="['/event', event.id, 'experiences']">link to
-                        experience </a>
                 </div>
                 <div class="experience">
                     <label name="experiences">
