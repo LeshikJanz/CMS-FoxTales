@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Authentication, AuthenticationContext, AdalConfig } from 'adal-ts';
+import { PermissionService } from './permission.service';
 
 /**
  * Auth service

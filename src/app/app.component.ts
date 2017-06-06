@@ -36,9 +36,7 @@ export class AppComponent implements OnInit {
       return;
     }
 
-    if (!this.auth.loggedIn()) {
-      this.router.navigate(['/auth']);
-    }
+    this.router.navigate(['/auth']);
   }
 
   /**
