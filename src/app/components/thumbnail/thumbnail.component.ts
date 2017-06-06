@@ -38,7 +38,6 @@ export class ThumbnailComponent implements OnInit {
   }
 
   public onPlayerReady(event) {
-    event.play();
   }
 
   public onChecked(event) {

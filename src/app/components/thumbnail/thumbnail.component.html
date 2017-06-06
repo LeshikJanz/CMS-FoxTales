@@ -10,7 +10,7 @@
        'https://amazingcarousel.com/wp-content/uploads/amazingcarousel/3/images/lightbox/golden-wheat-field-lightbox.jpg'"
       alt="">
     <vg-player *ngIf="item.mediaPath.indexOf('.mp4') > 0" (onPlayerReady)="onPlayerReady($event)">
-      <video preload="true" loop="true" [vgMedia]="media" #media id="singleVideo" preload="auto" controls>
+      <video loop="true" [vgMedia]="media" #media id="singleVideo" controls>
         <source [src]="item.mediaPath" type="video/mp4">
       </video>
     </vg-player>
