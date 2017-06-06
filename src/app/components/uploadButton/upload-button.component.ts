@@ -6,7 +6,7 @@ import { Component, Output, EventEmitter } from '@angular/core';
 @Component({
   selector: 'upload-button',
   templateUrl: 'upload-button.component.html',
-  styleUrls: [ 'upload-button.component.scss' ]
+  styleUrls: ['upload-button.component.scss']
 })
 export class UploadButtonComponent {
   public uploadState: number = 0;
@@ -16,7 +16,7 @@ export class UploadButtonComponent {
   @Output() public imgUploaded: EventEmitter<string> = new EventEmitter();
 
   public handlePictureChange(event) {
-    this.getBase64(event.target.files[ 0 ]);
+    this.getBase64(event.target.files[0]);
   }
 
   public handleLoading = () => this.isLoading = true;
@@ -29,7 +29,7 @@ export class UploadButtonComponent {
         this.uploadState = 1;
         this.isLoading = false;
         this.imgUploaded.emit(reader.result);
-      }else {
+      } else {
         this.error = 'Chosen file is not an image';
         this.isLoading = false;
         this.uploadState = 2;

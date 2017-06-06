@@ -107,15 +107,18 @@
 
     <!-- Licenses -->
     <div class="form-group">
-      <div *ngFor="let license of licenses" class="license">
-        <input
-          type="checkbox"
-          name="selectedLicenses[]"
-          class="form-control input checkbox"
-          [(ngModel)]="license.checked">
-        <label>
-          {{ license.name }}
-        </label>
+      <label for="freshBooks">Licenses</label>
+      <div class="license">
+        <div *ngFor="let license of licenses">
+          <input
+            type="checkbox"
+            name="selectedLicenses[]"
+            class="regular-checkbox"
+            [(ngModel)]="license.checked">
+          <label>
+            {{ license.name }}
+          </label>
+        </div>
       </div>
     </div>
 
