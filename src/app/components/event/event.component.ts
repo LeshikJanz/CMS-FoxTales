@@ -1,5 +1,7 @@
 import { Component, Input } from '@angular/core';
+import { ITableAction } from '../../shared/table/action.interface';
 import { IActionState } from '../../client/client.interface';
+import { IEvent } from '../../event/event.interface';
 
 @Component({
   selector: 'event',
@@ -19,9 +21,9 @@ export class EventComponent {
   /**
    * Actions for event
    *
-   * @type IActionState[]
+   * @type ITableAction[]
    */
-  @Input() public eventActions: IActionState[];
+  @Input() public eventActions: ITableAction[];
 
   /**
    * Object controls Modal state
@@ -73,25 +75,26 @@ export class EventComponent {
    */
   public isChecked: boolean = false;
 
-  public onTypeChanged(type) {
-    switch (type.event) {
-      case 1:
-        console.log('settings');
-        break;
-      case 2:
-        console.log('clone');
-        break;
-      case 3:
-        console.log('archieve');
-        break;
-      case 4:
-        this.modal.show(type.action);
-        break;
-      case 5:
-        console.log('assign user');
-        break;
-      default:
-        break;
+  /**
+   * On Add event to group
+   *
+   * @param {IEvent} event - event
+   * @return {void}
+   */
+  public onAddToGroup(event: IEvent) {
+    this.modal.show(event);
+  }
+
+  /**
+   * On event action changed
+   *
+   * @param {IEvent} event - event
+   * @param {IActionState} action - event action
+   * @return {void}
+   */
+  public onActionChanged(event: IEvent, action: IActionState) {
+    if (this[action.callback]) {
+      this[action.callback](event);
     }
   }
 }

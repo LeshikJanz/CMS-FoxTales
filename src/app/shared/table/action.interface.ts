@@ -2,7 +2,7 @@
  * Table action interface
  */
 export interface ITableAction {
-  id?: string;
+  id?: number;
   title: string;
-  callback: string;
+  callback?: string;
 }
