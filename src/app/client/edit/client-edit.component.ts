@@ -409,8 +409,8 @@ export class ClientEditComponent implements OnInit {
   public auth(social: IClientSocial): void {
     const name: string = social.name.toLocaleLowerCase();
 
-    hello
-      .login(name, { scope: 'publish, photos' }, () => {
+    hello(name)
+      .login({ scope: 'publish, photos' }, () => {
         const response = hello(name).getAuthResponse();
 
         this.clientService

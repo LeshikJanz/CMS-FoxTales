@@ -20,9 +20,9 @@ const PORT = process.env.PORT || 3000;
 const API_URL = process.env.API_URL = 'http://dev.getfoxtales.com/api';
 const AD_TENANT = process.env.AD_TENANT = 'common';
 const AD_CLIENT = process.env.AD_CLIENT = '018ba0b5-782f-405b-82c3-871178e219ad';
-const FACEBOOK_ID = process.env.FACEBOOK_ID = '345799732489998';
-const TWITTER_ID = process.env.TWITTER_ID = 'a1mlndTaxVag8Y6N9srRRhtNM';
-const TUMBLR_ID = process.env.TUMBLR_ID = '129b6caCkciQVCFOlVG5dzUk8VgsAxTPcMc1EWqCnJtFlTjlIH';
+const FACEBOOK_ID = process.env.FACEBOOK_ID = '138371986719204';
+const TWITTER_ID = process.env.TWITTER_ID = 'dYwfwIRNmhhcleI0lWYJyby8v';
+const TUMBLR_ID = process.env.TUMBLR_ID = 'USVEg5yTqC536m3d32J60rpR1XovZ3cBE2Vl1EGa3Uwwk1F1WY';
 const AUTH_PROXY = process.env.AUTH_PROXY = 'https://auth-server.herokuapp.com/proxy';
 const HMR = helpers.hasProcessFlag('hot');
 const METADATA = webpackMerge(commonConfig({env: ENV}).metadata, {

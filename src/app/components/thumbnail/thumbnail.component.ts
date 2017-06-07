@@ -1,5 +1,6 @@
-import { Component, Output, EventEmitter, Input, OnInit } from '@angular/core';
+import { Component, Output, EventEmitter, Input, OnInit, ViewChild } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
+import { ModalDirective } from 'ngx-bootstrap/modal';
 import { IGalleryItem } from '../../gallery/gallery-item.interface';
 import { GalleryService } from '../../gallery/gallery.service';
 import hello from 'hellojs';
@@ -14,7 +15,14 @@ import 'rxjs/Rx' ;
   styleUrls: [ 'thumbnail.component.scss' ]
 })
 export class ThumbnailComponent implements OnInit {
+  @ViewChild('shareModal')
+  public shareModal: ModalDirective;
+
   public isChecked: boolean = false;
+
+  public selectedNetwork: string;
+
+  public selectedMedia: IGalleryItem;
 
   @Input() public item: IGalleryItem;
 
@@ -77,25 +85,30 @@ export class ThumbnailComponent implements OnInit {
     }
   }
 
+  public selectMediaToShare(media: IGalleryItem, network: string): void {
+    this.selectedMedia = media;
+    this.selectedNetwork = network;
+    this.shareModal.show();
+  }
+
   /**
    * Share to social platforms
    *
-   * @param {IGalleryItem} item - Gallery item
-   * @param {string} network - Social network name
+   * @param {string} comment - Comment
    * @returns {void}
    */
-  public share(item: IGalleryItem, network: string): void {
-    const social = hello(network);
+  public share(comment: string): void {
+    const social = hello(this.selectedNetwork);
 
-    social.login({force: false}, () => {
-      social.api('me/share', 'post', {
-        message: '',
-        picture: item.mediaPath
-      }).then(() => {
-        this.toastrService.success('Image has been published successfully.');
-      }, (r) => {
-        this.toastrService.error(`Unable to publish image. ${r.error.message}`);
-      });
+    social.api('me/share', 'post', {
+      message: comment,
+      link: this.selectedMedia.mediaPath
+    }).then(() => {
+      this.toastrService.success('Image has been published successfully.');
+      this.shareModal.hide();
+    }, (r) => {
+      this.toastrService.error(`Unable to publish image. ${r.error.message}`);
+      this.shareModal.hide();
     });
   }
 }
