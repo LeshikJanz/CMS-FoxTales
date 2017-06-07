@@ -12,13 +12,15 @@ import 'rxjs/Rx' ;
 @Component({
   selector: 'thumbnail',
   templateUrl: 'thumbnail.component.html',
-  styleUrls: [ 'thumbnail.component.scss' ]
+  styleUrls: ['thumbnail.component.scss']
 })
 export class ThumbnailComponent implements OnInit {
   @ViewChild('shareModal')
   public shareModal: ModalDirective;
 
   public isChecked: boolean = false;
+
+  public isInfoOpen: boolean = false;
 
   public selectedNetwork: string;
 
@@ -49,7 +51,7 @@ export class ThumbnailComponent implements OnInit {
   }
 
   public onPlayerReady(event) {
-    event.play();
+    console.log('onPlayerReady');
   }
 
   public onChecked(event) {

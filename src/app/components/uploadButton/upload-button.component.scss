@@ -1,8 +1,8 @@
 .upload-button {
   display: flex;
   flex-direction: row;
-  height: 139px;
-  width: 545px;
+  height: inherit;
+  width: inherit;
   background-color: white;
   border: 1px solid #ccc;
   border-radius: 16px;
@@ -13,6 +13,11 @@
   font-size: 16px;
   justify-content: center;
   align-items: center;
+
+}
+
+.file-area {
+  height: inherit;
 }
 
 .inputfile {
@@ -45,6 +50,8 @@
 }
 
 .inner-text.default {
+  display: flex;
+  flex-wrap: wrap;
   font-size: 12px;
 }
 

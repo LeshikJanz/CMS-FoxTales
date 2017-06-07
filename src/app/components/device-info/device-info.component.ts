@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, OnChanges } from '@angular/core';
+import { Component, Input, OnInit, OnChanges, Output, EventEmitter } from '@angular/core';
 import { IDeviceInfo } from './device-info.interface';
 
 /**
@@ -13,4 +13,10 @@ import { IDeviceInfo } from './device-info.interface';
 export class DeviceInfoComponent {
 
   @Input() public deviceInfo: IDeviceInfo;
+
+  @Output() public close: EventEmitter<any> = new EventEmitter();
+
+  public onClose() {
+    this.close.emit();
+  }
 }

@@ -13,7 +13,8 @@ import { UserService } from '../user.service';
  */
 @Component({
   selector: 'user-edit',
-  templateUrl: './user-edit.component.html'
+  templateUrl: './user-edit.component.html',
+  styleUrls: ['user-edit.component.scss']
 })
 export class UserEditComponent implements OnInit {
   /**
@@ -47,6 +48,13 @@ export class UserEditComponent implements OnInit {
    * @type {IUserRole[]}
    */
   public roles: IUserRole[];
+
+  /**
+   * Client Id
+   *
+   * @type {number}
+   */
+  public clientId: string;
 
   /**
    * Constructor
@@ -143,6 +151,8 @@ export class UserEditComponent implements OnInit {
   public updateUser(): void {
     // this.extractRoles();
 
+    this.user.clientId = this.clientId;
+
     this.userService
       .updateUser(this.user)
       .subscribe(() => {
@@ -160,6 +170,18 @@ export class UserEditComponent implements OnInit {
     this.user.roles = this.roles
       .filter((role: IUserRole) => role.checked)
       .map((role: IUserRole) => role);
+  }
+
+  /**
+   * Is form invalid
+   *
+   * @return {boolean}
+   */
+  public isFormInvalid(): boolean {
+    if (this.clientId) {
+      return false;
+    }
+    return true;
   }
 
   /**
