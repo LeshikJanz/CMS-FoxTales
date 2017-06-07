@@ -5,7 +5,8 @@
       <th></th>
       <th class="table-header" *ngFor="let col of cols">
         <div>
-          <img (click)="openSearch(col)" [hidden]="!col.searchable" style="cursor: pointer" src="../../../assets/img/column-search.svg">
+          <img (click)="openSearch(col)" [hidden]="!col.searchable" style="cursor: pointer"
+               src="../../../assets/img/column-search.svg">
           <label [hidden]="col.isSearchOpen" (click)="changeSort(col)">{{ col.title }}</label>
           <input *ngIf="col.searchable && col.isSearchOpen"
                  type="text"
@@ -31,7 +32,9 @@
       <td
         *ngFor="let col of cols"
         (click)="clickRow(row)"
-        [innerHtml]="row[col.id] | myFormatCell:col.format:col.formatOptions">
+        [innerHtml]="col.format == 'firstName' ? (row | myFormatCell:col.format:col.formatOptions)
+                                          : (row[col.id] | myFormatCell:col.format:col.formatOptions)"
+      >
       </td>
       <td *ngIf="actions">
         <table-dropdown

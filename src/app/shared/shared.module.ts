@@ -8,6 +8,7 @@ import { AuthService, HttpService, PermissionService, AuthRequestOptions } from 
 import { TableComponent, FormatPipe, ImagePipe } from './table';
 import { FeatureModule } from '../components/feature.module';
 import { DefaultPipe } from './table/pipe/default.pipe';
+import { FirstNamePipe } from './table/pipe/firstName.pipe';
 
 @NgModule({
   imports: [
@@ -37,7 +38,8 @@ import { DefaultPipe } from './table/pipe/default.pipe';
     AuthService,
     PermissionService,
     ImagePipe,
-    DefaultPipe
+    DefaultPipe,
+    FirstNamePipe
   ],
   exports: [
     CommonModule,

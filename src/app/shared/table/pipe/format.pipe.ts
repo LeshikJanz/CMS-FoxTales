@@ -2,6 +2,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { ImagePipe } from './image.pipe';
 import { DefaultPipe } from "./default.pipe";
 import { DomSanitizer } from "@angular/platform-browser";
+import { FirstNamePipe } from "./firstName.pipe";
 
 /**
  * Format cell pipe
@@ -27,11 +28,13 @@ export class FormatPipe implements PipeTransform {
    *
    * @param sanitizer
    * @param myImage
-   * @param defaultPipe
+   * @param myDefault
+   * @param firstName
    */
   constructor(private sanitizer: DomSanitizer,
               private myImage: ImagePipe,
-              private defaultPipe: DefaultPipe
+              private myDefault: DefaultPipe,
+              private firstName: FirstNamePipe
 ) {
 }
 
@@ -54,10 +57,6 @@ public transform(value:any, format:string, formatOptions ? : string[])
     return this[format].transform(value, ...formatOptions);
   }
 
-  // return value;
-  return this.sanitizer.bypassSecurityTrustHtml(
-    `<div title="${value}" style="overflow: hidden;
-        text-overflow: ellipsis; white-space: nowrap;">${value}</div>`
-  );
+  return value;
 }
 }

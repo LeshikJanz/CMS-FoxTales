@@ -5,9 +5,9 @@ import { DomSanitizer } from '@angular/platform-browser';
  * Default pipe
  */
 @Pipe({
-  name: 'myDefault'
+  name: 'firstName'
 })
-export class DefaultPipe implements PipeTransform {
+export class FirstNamePipe implements PipeTransform {
   /**
    * Constructor
    *
@@ -25,9 +25,14 @@ export class DefaultPipe implements PipeTransform {
    * @returns {any} - Formatted value
    */
   public transform(value: any) {
+    const date = new Date();
     return this.sanitizer.bypassSecurityTrustHtml(
-      `<div title="${value}" style="overflow: hidden;
-        text-overflow: ellipsis; white-space: nowrap;">${value}</div>`
+      `<div class="first-name">
+          <img src="${value.logo}?_=${date.getTime()}"
+           onError="this.src='https://cdn3.iconfinder.com/data/icons/rcons-user-action/32/boy-512.png'">
+          <div title="${value.name}">${value.name}
+          </div>
+        </div>`
     );
   }
 }
