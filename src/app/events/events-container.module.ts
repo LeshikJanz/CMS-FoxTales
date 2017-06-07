@@ -18,6 +18,8 @@ import { EventGroupsService } from '../event-groups/list/event-groups.service';
 import { EventGroupEditComponent } from '../event-groups/edit/event-group-edit.component';
 import { DateTimePickerModule } from 'ng-pick-datetime';
 import { EventEditComponent } from  '../event/edit/event-edit.component';
+import { EventRecapReportComponent } from '../event/recap-report/event-recap-report.component';
+import { ChartModule } from 'angular2-highcharts';
 
 @NgModule({
   imports: [
@@ -29,7 +31,8 @@ import { EventEditComponent } from  '../event/edit/event-edit.component';
     CustomFormsModule,
     TagInputModule,
     SharedModule,
-    DateTimePickerModule
+    DateTimePickerModule,
+    ChartModule.forRoot(require('highcharts'))
   ],
   providers: [
     EventService,
@@ -42,7 +45,8 @@ import { EventEditComponent } from  '../event/edit/event-edit.component';
     EventGroupsComponent,
     EventGroupCreateComponent,
     EventGroupEditComponent,
-    EventEditComponent
+    EventEditComponent,
+    EventRecapReportComponent
   ]
 })
 export class EventsModule {

@@ -78,6 +78,7 @@ import { VgOverlayPlayModule } from 'videogular2/overlay-play';
 import { VgBufferingModule } from 'videogular2/buffering';
 import { DeviceInfoComponent } from './device-info/device-info.component';
 import { ClientService } from '../client/client.service';
+import { ChartModule } from 'angular2-highcharts';
 
 @NgModule({
   imports: [
@@ -98,7 +99,8 @@ import { ClientService } from '../client/client.service';
     VgOverlayPlayModule,
     VgBufferingModule,
     ToastrModule.forRoot(),
-    ToastContainerModule.forRoot()
+    ToastContainerModule.forRoot(),
+    ChartModule.forRoot(require('highcharts'))
   ],
   providers: [
     GalleryService,

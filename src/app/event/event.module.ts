@@ -25,6 +25,7 @@ import { EventGroupCreateComponent } from '../event-groups/create/event-group-cr
 import { GalleryModule } from '../gallery/gallery.module';
 import { DateTimePickerModule } from 'ng-pick-datetime';
 import * as moment from 'moment';
+import { EventRecapReportComponent } from '../event/recap-report/event-recap-report.component';
 
 @NgModule({
   imports: [
@@ -41,7 +42,8 @@ import * as moment from 'moment';
     EVENT_ROUTING,
     FeatureModule,
     GalleryModule,
-    DateTimePickerModule
+    DateTimePickerModule,
+
   ],
   providers: [
     {
@@ -57,7 +59,8 @@ import * as moment from 'moment';
     EventCreateComponent,
     EventGroupsComponent,
     EventGroupCreateComponent,
-    EventEditComponent
+    EventEditComponent,
+    EventRecapReportComponent
   ]
 })
 export class EventModule {
