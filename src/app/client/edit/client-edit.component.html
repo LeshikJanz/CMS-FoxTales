@@ -6,7 +6,6 @@
 
     <div [formGroup]="clientForm">
       <!-- Logo -->
-
       <div class="form-element">
         <div>
           <label style="font-size: 22px">Client logo</label>
@@ -112,8 +111,6 @@
           </div>
         </div>
       </div>
-<<<<<<< HEAD
-=======
 
       <!-- Social Accounts -->
       <div class="form-element" formArrayName="socialAccounts">
@@ -138,7 +135,6 @@
         <label>Social Integrations</label>
         <a href="javascript:void(0)" *ngFor="let social of socialIntegrations" (click)="auth(social)">{{ social.name }}</a>
       </div>
->>>>>>> develop
     </div>
 
     <!-- Licenses -->
