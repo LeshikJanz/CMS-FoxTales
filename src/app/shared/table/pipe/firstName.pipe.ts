@@ -26,11 +26,13 @@ export class FirstNamePipe implements PipeTransform {
    */
   public transform(value: any) {
     const date = new Date();
+    const logo = value.logo ? `${value.logo}?_=${date.getTime()}`
+      : 'https://cdn3.iconfinder.com/data/icons/rcons-user-action/32/boy-512.png';
+    const name = value.name ? value.name : value.firstName ? value.firstName : '-';
     return this.sanitizer.bypassSecurityTrustHtml(
       `<div class="first-name">
-          <img src="${value.logo}?_=${date.getTime()}"
-    onError="this.src='https://cdn3.iconfinder.com/data/icons/rcons-user-action/32/boy-512.png'">
-          <div title="${value.name}">${value.name}
+          <img src="${logo}">
+          <div title="${name}">${name}
           </div>
         </div>`
     );
