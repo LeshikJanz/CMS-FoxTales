@@ -30,54 +30,46 @@ export class ExperienceBuilderService {
    * Add Experience
    */
   public addExperience(experience) {
-    let header = new Headers({ 'Content-Type': 'application/json' });
-    let options = new RequestOptions({ headers: header });
-    return this.http.post('https://foxtalesapi-dev.azurewebsites.net/api/Experiences/',
-      JSON.stringify(experience), options)
+    return this.http.post(`${process.env.API_URL}/Experiences/`,
+      experience)
         .map((response: Response) => {
           return response.json();
     });
   }
 
   public addContentOption(contentOptions) {
-    let header = new Headers({ 'Content-Type': 'application/json' });
-    let headerOptions = new RequestOptions({ headers: header });
-    return this.http.post('https://foxtalesapi-dev.azurewebsites.net/api/ContentOptions/' ,
-      JSON.stringify(contentOptions), headerOptions)
+    return this.http.post(`${process.env.API_URL}/ContentOptions/`, contentOptions)
         .map((response: Response) => {
           return response.json();
         });
   }
 
   public addRunTimesExperience(runTimes) {
-    let header = new Headers({ 'Content-Type': 'application/json' });
-    let headerOptions = new RequestOptions({ headers: header });
-
-    return this.http.post('https://foxtalesapi-dev.azurewebsites.net/api/Experiences/'
-      + this.experience.experienceId + '/runtimes'  , JSON.stringify(runTimes), headerOptions)
+    return this.http.post(`${process.env.API_URL}/Experiences/`
+      + this.experience.experienceId + `/runtimes`, runTimes)
         .map((response: Response) => {
           return response.json();
         });
   }
 
   public postSocialShareSettings(settings) {
-    let header = new Headers({ 'Content-Type': 'application/json' });
-    let headerOptions = new RequestOptions({ headers: header });
-    return this.http.post('https://foxtalesapi-dev.azurewebsites.net/api/Experiences/'
-      + this.experience.experienceId + '/socialsharesettings',
-      JSON.stringify(settings), headerOptions)
+    return this.http.post(`${process.env.API_URL}/Experiences/`
+      + this.experience.experienceId + `/socialsharesettings`, settings)
       .map((response: Response) => {
         return response.json();
       });
   }
 
   public postUIBuilderSettings(config) {
-    let header = new Headers({ 'Content-Type': 'application/json' });
-    let headerOptions = new RequestOptions({ headers: header });
-    let temp = JSON.stringify(config).replace("'", "\'");
-    return this.http.post('https://foxtalesapi-dev.azurewebsites.net/api/Experiences/'
-      + this.experience.experienceId + '/config'  , temp, headerOptions)
+    // let header = new Headers({ 'Content-Type': 'application/json' });
+    // let headerOptions = new RequestOptions({ headers: header });
+    // let temp = JSON.stringify(config).replace(/"/g, '\\"');
+    let temp = JSON.stringify(config)
+    console.log(JSON.stringify(temp))
+    return this.http.post(`${process.env.API_URL}/Experiences/`
+      + this.experience.experienceId + `/config`,config)
       .map((response: Response) => {
+        console.log(response)
           return response;
       });
   }

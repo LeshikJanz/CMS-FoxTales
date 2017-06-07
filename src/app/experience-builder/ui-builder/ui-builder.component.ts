@@ -25,11 +25,11 @@ export class UIBuilderComponent {
               private experienceBuilderService: ExperienceBuilderService) {}
 
   public Next() {
-    this.experienceBuilderService.postUIBuilderSettings(JSON.stringify({
+    this.experienceBuilderService.postUIBuilderSettings({
       primaryColor: this.primaryColor,
       secondaryColor: this.secondaryColor,
       backgroundColor: this.backgroundColor
-    }))
+    })
     .subscribe((configs) => {
       this.experienceBuilderService.experience.primaryColor = this.primaryColor;
       this.experienceBuilderService.experience.secondaryColor = this.secondaryColor;
