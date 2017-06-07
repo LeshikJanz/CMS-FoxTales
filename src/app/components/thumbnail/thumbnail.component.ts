@@ -103,8 +103,14 @@ export class ThumbnailComponent implements OnInit {
     social.api('me/share', 'post', {
       message: comment,
       link: this.selectedMedia.mediaPath
-    }).then(() => {
-      this.toastrService.success('Image has been published successfully.');
+    }).then((response) => {
+      if ('undefined' !== typeof response['error']
+        || ('undefined' !== typeof response['errors'] && response['errors'].length)) {
+        this.toastrService.error(`Unable to publish image.`);
+      } else {
+        this.toastrService.success('Image has been published successfully.');
+      }
+
       this.shareModal.hide();
     }, (r) => {
       this.toastrService.error(`Unable to publish image. ${r.error.message}`);
