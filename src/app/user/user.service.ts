@@ -123,4 +123,17 @@ export class UserService {
     return this.http.get(`${process.env.API_URL}/Clients/Lookup`)
       .map((response: Response) => response.json().result as IUserClient[]);
   }
+
+  /**
+   * Get client by id
+   *
+   * See: http://client2.dev.getfoxtales.com/swagger/#!/Clients/ApiClientsByIdGet
+   *
+   * @param {string} id - Client id
+   * @returns {Observable<IUserClient>} - Client
+   */
+  public getClient(id: string): Observable<IUserClient> {
+    return this.http.get(`${process.env.API_URL}/Clients/${id}`)
+      .map((response: Response) => <IUserClient> response.json());
+  }
 }

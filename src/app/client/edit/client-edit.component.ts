@@ -16,8 +16,9 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { MapsAPILoader } from '@agm/core';
 import {  } from '@types/googlemaps';
+import hello from 'hellojs';
 import { CustomValidators } from 'ng2-validation';
-import { IClient } from '../client.interface';
+import { IClient, IClientSocial } from '../client.interface';
 import { IClientLicense } from '../client-license.interface';
 import { ClientService } from '../client.service';
 
@@ -81,6 +82,12 @@ export class ClientEditComponent implements OnInit {
    * @type {IClientLicense[]}
    */
   public licenses: IClientLicense[];
+
+  public socialIntegrations: IClientSocial[] = [
+    { id: 1, name: 'Facebook' },
+    { id: 2, name: 'Twitter' },
+    { id: 4, name: 'Tumblr' }
+  ];
 
   /**
    * File reader
@@ -280,6 +287,17 @@ export class ClientEditComponent implements OnInit {
   }
 
   /**
+   * Remove logo
+   *
+   * @return {void}
+   */
+  public removeLogo(): void {
+    this.logoBytes = null;
+    this.client.logo = null;
+    this.client.logoBytes = null;
+  }
+
+  /**
    * Extract location details
    *
    * @param {google.maps.places.PlaceResult} place - Place results
@@ -380,5 +398,26 @@ export class ClientEditComponent implements OnInit {
     });
 
     return this;
+  }
+
+  /**
+   * Social auth
+   *
+   * @param {IClientSocial} social - Social account
+   * @returns {void}
+   */
+  public auth(social: IClientSocial): void {
+    const name: string = social.name.toLocaleLowerCase();
+
+    hello(name)
+      .login({ scope: 'publish, photos' }, () => {
+        const response = hello(name).getAuthResponse();
+
+        this.clientService
+          .addSocialIntegration(social.id, name, JSON.stringify(response))
+          .subscribe(() => {
+            this.toastrService.success('Social auth has been updated successfully.');
+          });
+      });
   }
 }

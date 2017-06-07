@@ -8,11 +8,13 @@
       <!-- Logo -->
       <div class="form-element">
         <div>
-        <label style="font-size: 22px">Client logo</label>
-        <img src="{{ logoBytes || client?.logo }}" style="max-height: 50px;">
+          <label style="font-size: 22px">Client logo</label>
+          <img src="{{ logoBytes }}" style="max-height: 50px;">
+          <a href="javascript:void(0)" *ngIf="logoBytes" (click)="removeLogo()">x</a>
         </div>
         <upload-button (imgUploaded)="onImgUploaded($event)"></upload-button>
       </div>
+
       <!-- Name -->
       <div class="form-element">
         <label for="name">Client Name*</label>

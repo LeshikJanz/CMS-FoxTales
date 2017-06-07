@@ -54,3 +54,21 @@ export interface IActionState {
   action: string;
   callback?: string;
 }
+
+/**
+ * Social networks interface
+ */
+export interface IClientSocial {
+  id: number;
+  name: string;
+}
+
+/**
+ * Social integration interface
+ */
+export interface IClientSocialIntegration {
+  platformID: number;
+  platformName: string;
+  integrationID: number;
+  token?: string;
+}

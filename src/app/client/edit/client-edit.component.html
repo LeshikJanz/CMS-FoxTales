@@ -6,13 +6,16 @@
 
     <div [formGroup]="clientForm">
       <!-- Logo -->
+
       <div class="form-element">
         <div>
           <label style="font-size: 22px">Client logo</label>
-          <img src="{{ logoBytes || client?.logo }}" style="max-height: 50px;">
+          <img src="{{ logoBytes || client?.logo }}" *ngIf="logoBytes || client?.logo" style="max-height: 50px;">
+          <a href="javascript:void(0)" *ngIf="logoBytes || client?.logo" (click)="removeLogo()">x</a>
         </div>
         <upload-button (imgUploaded)="onImgUploaded($event)"></upload-button>
       </div>
+
       <!-- Name -->
       <div class="form-element">
         <label for="name">Client Name</label>
@@ -109,6 +112,33 @@
           </div>
         </div>
       </div>
+<<<<<<< HEAD
+=======
+
+      <!-- Social Accounts -->
+      <div class="form-element" formArrayName="socialAccounts">
+        <label>Social Accounts</label>
+
+        <div *ngFor="let account of socialAccounts.controls; let i = index">
+          <input
+            type="text"
+            class="form-control input"
+            [(ngModel)]="client.socialAccounts[i]"
+            [formControl]="account"
+            placeholder="Social Account Url">
+          <a href="javascript:void(0)" (click)="removeSocialAccount(i)">x</a>
+        </div>
+
+        <div>
+          <a href="javascript:void(0)" (click)="addSocialAccount()">add</a>
+        </div>
+      </div>
+
+      <div class="form-element">
+        <label>Social Integrations</label>
+        <a href="javascript:void(0)" *ngFor="let social of socialIntegrations" (click)="auth(social)">{{ social.name }}</a>
+      </div>
+>>>>>>> develop
     </div>
 
     <!-- Licenses -->

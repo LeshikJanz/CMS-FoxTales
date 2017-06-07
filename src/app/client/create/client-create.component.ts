@@ -213,6 +213,16 @@ export class ClientCreateComponent implements OnInit {
   }
 
   /**
+   * Remove logo
+   *
+   * @return {void}
+   */
+  public removeLogo(): void {
+    this.logoBytes = null;
+    this.clientDetails.logoBytes = null;
+  }
+
+  /**
    * Extract location details
    *
    * @param {google.maps.places.PlaceResult} place - Place results
