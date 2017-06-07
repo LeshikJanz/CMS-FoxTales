@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, OnChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ModalDirective } from 'ngx-bootstrap/modal';
@@ -141,6 +141,8 @@ export class UserListComponent implements OnInit {
       .getUsers(this.filter)
       .subscribe((users: IUserList) => {
         this.users = users.result;
+        console.log('this.users');
+        console.log(this.users);
         this.totalUsers = users.totalRowCount;
       });
   }

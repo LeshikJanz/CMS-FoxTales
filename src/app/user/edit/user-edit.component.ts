@@ -43,6 +43,13 @@ export class UserEditComponent implements OnInit {
   public client: IUserClient;
 
   /**
+   * Clients
+   *
+   * @type {IUserClient[]}
+   */
+  public clients: IUserClient[];
+
+  /**
    * User roles
    *
    * @type {IUserRole[]}
@@ -87,7 +94,23 @@ export class UserEditComponent implements OnInit {
     this.route.params.subscribe((params: any) => {
       const id = params['id'];
       this.getUser(id);
+      this.getUserClients();
     });
+  }
+
+  /**
+   * Get user clients
+   *
+   * @returns {UserEditComponent} - Component
+   */
+  public getUserClients(): UserEditComponent {
+    this.userService
+      .getClients()
+      .subscribe((clients: IUserClient[]) => {
+        this.clients = clients;
+      });
+
+    return this;
   }
 
   /**
