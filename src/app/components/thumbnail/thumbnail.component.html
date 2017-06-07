@@ -40,8 +40,7 @@
   </div>
   <div class="action-menu">
     <img (click)="isInfoOpen = !isInfoOpen" src="../../../assets/img/info.svg">
-    <img  *ngIf="item.mediaPath.indexOf('.png') > 0"
-          (click)="downloadItem(item)" src="../../../assets/img/download-icon.svg">
+    <img (click)="downloadItem(item)" src="../../../assets/img/download-icon.svg">
   </div>
 
 </div>

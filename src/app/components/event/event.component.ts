@@ -94,4 +94,9 @@ export class EventComponent {
         break;
     }
   }
+
+  public ngOnChanges() {
+    console.log('this.event');
+    console.log(this.event);
+  }
 }

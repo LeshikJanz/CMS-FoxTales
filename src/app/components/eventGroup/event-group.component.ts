@@ -129,4 +129,9 @@ export class EventGroupComponent {
       .reduce((a, b) => a > b ? a : b), 'YYYY/MM/DD/hh/mm/ss')
       .format('MMMM DD, YYYY');
   }
+
+  public ngOnChanges() {
+    console.log('this.eventGroups');
+    console.log(this.eventGroups);
+  }
 }
