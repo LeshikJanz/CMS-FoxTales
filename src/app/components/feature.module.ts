@@ -61,7 +61,7 @@ import {
   from './modals/event-to-group-modal/event-to-group-modal.component';
 
   import { DatepickerModule } from 'ngx-bootstrap';
-  import { Angular2FontAwesomeModule } from 'angular2-font-awesome/angular2-font-awesome';
+  import { AngularFontAwesomeModule } from 'angular-font-awesome/angular-font-awesome';
 
 import { ThumbnailComponent } from './thumbnail/thumbnail.component';
 import {
@@ -92,7 +92,7 @@ import { ClientService } from '../client/client.service';
     ModalModule.forRoot(),
     TagInputModule,
     DatepickerModule.forRoot(),
-    Angular2FontAwesomeModule,
+    AngularFontAwesomeModule,
     VgCoreModule,
     VgControlsModule,
     VgOverlayPlayModule,

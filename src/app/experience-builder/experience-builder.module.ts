@@ -31,7 +31,7 @@ import { ExperienceBuilderService } from './experience-builder.service';
 
 import { ButtonsModule } from 'ngx-bootstrap';
 import { DateTimePickerModule } from 'ng-pick-datetime';
-import { Angular2FontAwesomeModule } from 'angular2-font-awesome/angular2-font-awesome';
+import { AngularFontAwesomeModule } from 'angular-font-awesome/angular-font-awesome';
 
 @NgModule({
   imports: [
@@ -52,7 +52,7 @@ import { Angular2FontAwesomeModule } from 'angular2-font-awesome/angular2-font-a
     ColorPickerModule,
     ButtonsModule.forRoot(),
     DateTimePickerModule,
-    Angular2FontAwesomeModule
+    AngularFontAwesomeModule
 
   ],
   providers: [
