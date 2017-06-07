@@ -1,66 +1,127 @@
-.input-container {
-  display: flex;
-  flex-direction: column;
+.group {
+  position: relative;
   width: inherit;
-  height: inherit;
 
-  label {
-    font-family: AvenirNext;
-    font-size: 16px;
-    font-weight: 600;
-    line-height: 1;
-    color: #4b535c;
+  img {
+    position: absolute;
+    top: 10px;
+    width: 13px;
+    height: 13px;
   }
 }
 
-.form-element {
-  display: flex;
-  flex-direction: column;
-  margin-top: 25px;
-  margin-bottom: 10px;
+input {
+  font-size: 18px;
+  padding: 5px 10px 10px 20px;
+  display: block;
+  width: inherit;
+  border: none;
 }
 
-.ng-touched.ng-invalid {
-  border-color: red;
+input:focus {
+  outline: none;
 }
 
-.error-text {
-  color: red;
-  font-family: Avenir;
-  font-size: 10px;
-}
-
-.form-element .input {
-  height: 30px;
-  font-size: 14px;
-}
-
-.create-button {
-  width: 204px;
-  height: 54px;
-  border-radius: 6px;
-  background-color: #2fd976;
-  color: white;
+/* LABEL ======================================= */
+label {
+  color: black;
+  font-family: Avenir-Bold;
   font-size: 16px;
-  margin-top: 30px;
+  font-weight: normal;
+  position: absolute;
+  pointer-events: none;
+  left: 20px;
+  top: 10px;
+  transition: 0.2s ease all;
+  -moz-transition: 0.2s ease all;
+  -webkit-transition: 0.2s ease all;
 }
 
-button.create-button[disabled] {
-  background-color: gray;
-  cursor: not-allowed;
+/* active state */
+input:focus ~ label, input:valid ~ label {
+  top: -10px;
+  left: -2px;
+  font-size: 12px;
+  color: #5264AE;
 }
 
-.field-error {
-  font-style: italic;
-  color: red;
+/* BOTTOM BARS ================================= */
+.bar {
+  position: relative;
+  display: block;
+  width: inherit;
 }
 
-.form-group {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+.bar:before, .bar:after {
+  content: '';
+  height: 2px;
+  width: 0;
+  bottom: 5px;
+  position: absolute;
+  background: #5264AE;
+  transition: 0.2s ease all;
+  -moz-transition: 0.2s ease all;
+  -webkit-transition: 0.2s ease all;
+}
 
-  .license {
-    padding-right: 15px;
+.bar:before {
+  left: 50%;
+}
+
+.bar:after {
+  right: 50%;
+}
+
+/* active state */
+input:focus ~ .bar:before, input:focus ~ .bar:after {
+  width: 50%;
+}
+
+/* HIGHLIGHTER ================================== */
+.highlight {
+  position: absolute;
+  height: 60%;
+  width: 100px;
+  top: 25%;
+  left: 0;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+/* active state */
+input:focus ~ .highlight {
+  -webkit-animation: inputHighlighter 0.3s ease;
+  -moz-animation: inputHighlighter 0.3s ease;
+  animation: inputHighlighter 0.3s ease;
+}
+
+/* ANIMATIONS ================ */
+@-webkit-keyframes inputHighlighter {
+  from {
+    background: #5264AE;
+  }
+  to {
+    width: 0;
+    background: transparent;
+  }
+}
+
+@-moz-keyframes inputHighlighter {
+  from {
+    background: #5264AE;
+  }
+  to {
+    width: 0;
+    background: transparent;
+  }
+}
+
+@keyframes inputHighlighter {
+  from {
+    background: #5264AE;
+  }
+  to {
+    width: 0;
+    background: transparent;
   }
 }

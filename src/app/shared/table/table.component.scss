@@ -8,6 +8,24 @@
     max-width: 80px;
     border: none;
   }
+
+  fox-input {
+    width: 80px;
+  }
+
+  & > div {
+    display: flex;
+    align-items: center;
+
+    & > * {
+      margin-right: 5px;
+    }
+
+    div:last-child {
+      margin-left: 5px;
+      cursor: pointer;
+    }
+  }
 }
 
 
