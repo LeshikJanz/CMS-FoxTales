@@ -1,18 +1,17 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { EventService } from '../event.service';
-
 
 @Component({
   selector: 'recap-report',
   templateUrl: './event-recap-report.component.html',
   styleUrls: ['./event-recap-report.component.scss']
 })
-export class EventRecapReportComponent implements OnInit {
-public options: Object;
- 
+export class EventRecapReportComponent {
+    public options: Object;
+
   /**
    * Constructor
    *
@@ -25,7 +24,6 @@ public options: Object;
     private event: EventService,
     private route: ActivatedRoute
   ) {
-
         this.options = {
             title : { text : 'simple chart' },
             series: [{
@@ -33,17 +31,4 @@ public options: Object;
             }]
         };
   }
-
-  /**
-   * Lifecycle hook that is called after data-bound properties of a directive are
-   * initialized
-   *
-   * @returns {void}
-   */
-  public ngOnInit(): void {
-    
-  }
-
-
-
 }

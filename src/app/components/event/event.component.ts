@@ -94,8 +94,7 @@ export class EventComponent {
         console.log('assign user');
         break;
       case 6:
-       this.router.navigate(['/events/recap-report', this.event['id']]);
-        console.log('recap report');
+      this.router.navigate(['/events/recap-report', this.event['id']]);
         break;
       case 7:
         console.log('export crm data');
