@@ -64,12 +64,12 @@ export class UserListComponent implements OnInit {
       id: 'firstName', title: 'First Name', format: 'myFirstName',
       searchable: true, sort: true
     },
-    {id: 'lastName', title: 'Last Name', format: 'default', searchable: true, sort: true},
-    {id: 'email', title: 'Email', format: 'default', searchable: true, sort: true},
-    {id: 'phone', title: 'Phone', format: 'default', searchable: true, sort: true},
-    {id: 'clientName', title: 'Client', format: 'default', searchable: true, sort: true},
-    {id: 'location', title: 'Location', format: 'default', searchable: true, sort: true},
-    {id: 'lastActiveDate', title: 'Last Active', format: 'default', searchable: true, sort: true}
+    {id: 'lastName', title: 'Last Name', format: 'myDefault', searchable: true, sort: true},
+    {id: 'email', title: 'Email', format: 'myDefault', searchable: true, sort: true},
+    {id: 'phone', title: 'Phone', format: 'myDefault', searchable: true, sort: true},
+    {id: 'clientName', title: 'Client', format: 'myDefault', searchable: true, sort: true},
+    {id: 'location', title: 'Location', format: 'myDefault', searchable: true, sort: true},
+    {id: 'lastActiveDate', title: 'Last Active', format: 'myDefault', searchable: true, sort: true}
   ];
 
   /**
