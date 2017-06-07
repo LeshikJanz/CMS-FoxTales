@@ -36,7 +36,7 @@ export class ClientListComponent implements OnInit {
    */
   public cols: ICol[] = [
     // { id: 'logo',    title: 'Logo',        format: 'myImage' },
-    { id: 'name',    title: 'Client Name', format: 'firstName',  searchable: true },
+    { id: 'name',    title: 'Client Name', format: 'myFirstName',  searchable: true },
     { id: 'address', title: 'Address',     format: 'myDefault',  searchable: true },
     { id: 'city',    title: 'City',        format: 'myDefault',  searchable: true },
     { id: 'state',   title: 'State',       format: 'myDefault',  searchable: true },

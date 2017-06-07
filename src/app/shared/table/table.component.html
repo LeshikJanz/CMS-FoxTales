@@ -32,7 +32,7 @@
       <td
         *ngFor="let col of cols"
         (click)="clickRow(row)"
-        [innerHtml]="col.format == 'firstName' ? (row | myFormatCell:col.format:col.formatOptions)
+        [innerHtml]="col.format == 'myFirstName' ? (row | myFormatCell:col.format:col.formatOptions)
                                           : (row[col.id] | myFormatCell:col.format:col.formatOptions)"
       >
       </td>

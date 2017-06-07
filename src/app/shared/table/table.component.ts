@@ -172,13 +172,6 @@ export class TableComponent implements OnInit {
     this.buildSearch();
   }
 
-  public ngOnChanges(): void {
-    console.log('rows');
-    console.log(this.rows);
-    console.log('cols');
-    console.log(this.cols);
-  }
-
   /**
    * Emit open search field
    *

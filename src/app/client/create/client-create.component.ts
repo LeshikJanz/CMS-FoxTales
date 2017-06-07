@@ -69,6 +69,22 @@ export class ClientCreateComponent implements OnInit {
   };
 
   /**
+   * Client
+   *
+   * @type {IClient}
+   */
+  public client: IClient = {
+    logo: null,
+    logoBytes: null,
+    name: null,
+    email: null,
+    address: null,
+    phone: null,
+    freshBooks: null,
+    socialAccounts: null
+  };
+
+  /**
    * Base64 logo
    *
    * @type {string}

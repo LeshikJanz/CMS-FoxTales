@@ -1,5 +1,5 @@
-import { Component, ViewEncapsulation, Output, EventEmitter, Input, OnInit, OnChanges } from '@angular/core';
-import { IClient } from "../../../client/client.interface";
+import { Component, Output, EventEmitter, Input, OnChanges } from '@angular/core';
+import { IClient } from '../../../client/client.interface';
 
 @Component({
   selector: 'fox-select',
@@ -7,17 +7,18 @@ import { IClient } from "../../../client/client.interface";
   styleUrls: ['fox-select.component.scss']
 })
 export class FoxSelectComponent implements OnChanges {
-  @Output() change: EventEmitter<any> = new EventEmitter();
+  @Output() public  change: EventEmitter<any> = new EventEmitter();
 
-  @Input() public items: Array<any>;
-
+  @Input() public items: any[];
   @Input() public active: string;
 
   public activeItem: IClient;
 
+  public disabled: boolean = false;
+
   private value: any = {};
+
   private _disabledV: string = '0';
-  private disabled: boolean = false;
 
   private get disabledV(): string {
     return this._disabledV;
@@ -53,7 +54,7 @@ export class FoxSelectComponent implements OnChanges {
 
       if (this.active) {
         this.activeItem = this.items.find((i: IClient) => i.id === this.active);
-        this.change.emit({ id: this.activeItem.id });
+        this.change.emit({id: this.activeItem.id});
       }
     }
   }

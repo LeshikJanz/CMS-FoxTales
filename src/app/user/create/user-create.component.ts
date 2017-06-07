@@ -41,7 +41,6 @@ export class UserCreateComponent implements OnInit {
    */
   public clientId: string;
 
-
   /**
    * Additional user details
    *

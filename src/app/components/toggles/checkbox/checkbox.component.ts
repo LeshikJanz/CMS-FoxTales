@@ -21,10 +21,10 @@ export class CheckboxComponent implements OnInit {
   public checkbox: ICheckbox;
 
   public onChange(event: boolean) {
-    this.toggle.emit({ name: name, isChecked: event });
+    this.toggle.emit({name, isChecked: event});
   }
 
-  ngOnInit() {
-    this.toggle.emit({ name: name, isChecked: this.isChecked });
+  public ngOnInit() {
+    this.toggle.emit({name, isChecked: this.isChecked});
   }
 }

@@ -5,7 +5,7 @@ import { DomSanitizer } from '@angular/platform-browser';
  * Default pipe
  */
 @Pipe({
-  name: 'firstName'
+  name: 'myFirstName'
 })
 export class FirstNamePipe implements PipeTransform {
   /**
@@ -29,7 +29,7 @@ export class FirstNamePipe implements PipeTransform {
     return this.sanitizer.bypassSecurityTrustHtml(
       `<div class="first-name">
           <img src="${value.logo}?_=${date.getTime()}"
-           onError="this.src='https://cdn3.iconfinder.com/data/icons/rcons-user-action/32/boy-512.png'">
+    onError="this.src='https://cdn3.iconfinder.com/data/icons/rcons-user-action/32/boy-512.png'">
           <div title="${value.name}">${value.name}
           </div>
         </div>`

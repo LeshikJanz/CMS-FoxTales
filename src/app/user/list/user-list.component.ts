@@ -14,7 +14,7 @@ import { IActionState } from '../../client/client.interface';
 @Component({
   selector: 'user-list',
   templateUrl: './user-list.component.html',
-  styleUrls: [ './user-list.component.scss']
+  styleUrls: ['./user-list.component.scss']
 })
 export class UserListComponent implements OnInit {
   /**
@@ -60,13 +60,16 @@ export class UserListComponent implements OnInit {
    * @type {ICol[]}
    */
   public cols: ICol[] = [
-    { id: 'firstName',      title: 'First Name',  format: 'default', searchable: true, sort: true },
-    { id: 'lastName',       title: 'Last Name',   format: 'default', searchable: true, sort: true },
-    { id: 'email',          title: 'Email',       format: 'default', searchable: true, sort: true },
-    { id: 'phone',          title: 'Phone',       format: 'default', searchable: true, sort: true },
-    { id: 'clientName',     title: 'Client',      format: 'default', searchable: true, sort: true },
-    { id: 'location',       title: 'Location',    format: 'default', searchable: true, sort: true },
-    { id: 'lastActiveDate', title: 'Last Active', format: 'default', searchable: true, sort: true }
+    {
+      id: 'firstName', title: 'First Name', format: 'myFirstName',
+      searchable: true, sort: true
+    },
+    {id: 'lastName', title: 'Last Name', format: 'default', searchable: true, sort: true},
+    {id: 'email', title: 'Email', format: 'default', searchable: true, sort: true},
+    {id: 'phone', title: 'Phone', format: 'default', searchable: true, sort: true},
+    {id: 'clientName', title: 'Client', format: 'default', searchable: true, sort: true},
+    {id: 'location', title: 'Location', format: 'default', searchable: true, sort: true},
+    {id: 'lastActiveDate', title: 'Last Active', format: 'default', searchable: true, sort: true}
   ];
 
   /**
@@ -75,9 +78,9 @@ export class UserListComponent implements OnInit {
    * @type {ITableAction[]}
    */
   public actions: ITableAction[] = [
-    { title: 'Edit',      callback: 'editUser' },
-    { title: 'Archive',   callback: 'confirmArchive' },
-    { title: 'Unarchive', callback: 'confirmUnarchive' }
+    {title: 'Edit', callback: 'editUser'},
+    {title: 'Archive', callback: 'confirmArchive'},
+    {title: 'Unarchive', callback: 'confirmUnarchive'}
   ];
 
   /**
@@ -101,8 +104,8 @@ export class UserListComponent implements OnInit {
    * @type {ITableAction[]}
    */
   public clientStates: IActionState[] = [
-    { id: 1, action: 'Unarchived'},
-    { id: 2, action: 'Archived'}
+    {id: 1, action: 'Unarchived'},
+    {id: 2, action: 'Archived'}
   ];
 
   /**
@@ -113,11 +116,9 @@ export class UserListComponent implements OnInit {
    * @param {UserService} userService - User service
    * @returns {void}
    */
-  constructor(
-    private router: Router,
-    private toastrService: ToastrService,
-    private userService: UserService
-  ) {
+  constructor(private router: Router,
+              private toastrService: ToastrService,
+              private userService: UserService) {
   }
 
   /**
