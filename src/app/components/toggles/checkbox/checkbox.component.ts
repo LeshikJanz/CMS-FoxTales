@@ -1,17 +1,30 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter, Input, OnInit } from '@angular/core';
+
+export interface ICheckbox {
+  name: string;
+  isChecked: boolean;
+}
 
 @Component({
   selector: 'checkbox',
   templateUrl: 'checkbox.component.html',
-  styleUrls: [ 'checkbox.component.scss' ]
+  styleUrls: ['checkbox.component.scss']
 })
 
-export class CheckboxComponent {
-  @Output() public toggle: EventEmitter<string> = new EventEmitter<string>();
+export class CheckboxComponent implements OnInit {
+  @Output() public toggle: EventEmitter<ICheckbox> = new EventEmitter<ICheckbox>();
 
-  public isChecked: boolean;
+  @Input() public name: string;
 
-  public onChange(value: string) {
-    this.toggle.emit(value);
+  public isChecked: boolean = false;
+
+  public checkbox: ICheckbox;
+
+  public onChange(event: boolean) {
+    this.toggle.emit({name, isChecked: event});
+  }
+
+  public ngOnInit() {
+    this.toggle.emit({name, isChecked: this.isChecked});
   }
 }

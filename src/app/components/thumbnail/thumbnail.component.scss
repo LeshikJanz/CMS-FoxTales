@@ -12,9 +12,6 @@ $imgHeight: 256.4px;
   background-color: transparent;
 
   &:hover {
-    .content div img {
-      display: block;
-    }
 
     .action-menu {
       display: flex;
@@ -36,9 +33,20 @@ $imgHeight: 256.4px;
     align-items: center;
     background-color: #f5f6f7;
 
+    .actions {
+      & > * {
+        z-index: 10;
+      }
+    }
+
+    video {
+      width: inherit;
+      height: inherit;
+    }
+
     div img {
       cursor: pointer;
-      display: none;
+      display: flex;
       position: absolute;
       top: 11px;
       right: 11px;
@@ -154,16 +162,20 @@ $imgHeight: 256.4px;
   .action-menu {
     display: none;
     flex-direction: row-reverse;
-    justify-content: space-between;
+    justify-content: space-around;
     height: 30px;
-    position: absolute;
     opacity: 0;
-    bottom: 1px;
-    right: 1px;
+    bottom: -20px;
 
     img {
       height: 25px;
       width: 25px;
     }
   }
+}
+
+device-info {
+  position: absolute;
+  z-index: 100;
+  margin-top: -300px;
 }

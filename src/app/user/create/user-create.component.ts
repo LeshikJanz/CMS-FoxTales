@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { CustomValidators } from 'ng2-validation';
 import { IUser } from '../user.interface';
 import { IUserRole } from '../user-role.interface';
@@ -10,7 +10,7 @@ import { UserService } from '../user.service';
 @Component({
   selector: 'user-create',
   templateUrl: './user-create.component.html',
-  styleUrls: [ './user-create.component.scss' ]
+  styleUrls: ['./user-create.component.scss']
 })
 export class UserCreateComponent implements OnInit {
   /**
@@ -35,6 +35,13 @@ export class UserCreateComponent implements OnInit {
   public clients: IUserClient[];
 
   /**
+   * Client Id
+   *
+   * @type {number}
+   */
+  public clientId: string;
+
+  /**
    * Additional user details
    *
    * @type {any}
@@ -51,11 +58,21 @@ export class UserCreateComponent implements OnInit {
    * @param {UserService} userService - User service
    * @returns {void}
    */
-  constructor(
-    private router: Router,
-    private formBuilder: FormBuilder,
-    private userService: UserService
-  ) {
+  constructor(private router: Router,
+              private formBuilder: FormBuilder,
+              private userService: UserService) {
+  }
+
+  /**
+   * Is form invalid
+   *
+   * @return {boolean}
+   */
+  public isFormInvalid(): boolean {
+    if (this.userForm.valid && this.clientId) {
+      return false;
+    }
+    return true;
   }
 
   /**
@@ -92,7 +109,9 @@ export class UserCreateComponent implements OnInit {
   public getUserClients(): UserCreateComponent {
     this.userService
       .getClients()
-      .subscribe((clients: IUserClient[]) => this.clients = clients);
+      .subscribe((clients: IUserClient[]) => {
+        this.clients = clients;
+      });
 
     return this;
   }
@@ -105,6 +124,8 @@ export class UserCreateComponent implements OnInit {
    */
   public addUser(user: IUser): void {
     this.extractRoles();
+
+    user.clientId = this.clientId;
 
     this.userService
       .addUser(user)
@@ -132,9 +153,6 @@ export class UserCreateComponent implements OnInit {
       email: ['', [
         Validators.required,
         CustomValidators.email
-      ]],
-      clientId: ['', [
-        Validators.required
       ]]
     });
 

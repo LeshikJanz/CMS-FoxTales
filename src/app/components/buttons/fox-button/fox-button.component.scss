@@ -3,6 +3,7 @@ button {
   height: inherit;
   font-size: inherit;
   background-color: white;
+  border: transparent;
 
   &:disabled {
     background-color: #919191;

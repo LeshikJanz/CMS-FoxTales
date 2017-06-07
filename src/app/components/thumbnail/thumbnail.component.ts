@@ -1,6 +1,9 @@
-import { Component, Output, EventEmitter, Input, OnInit } from '@angular/core';
+import { Component, Output, EventEmitter, Input, OnInit, ViewChild } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
+import { ModalDirective } from 'ngx-bootstrap/modal';
 import { IGalleryItem } from '../../gallery/gallery-item.interface';
 import { GalleryService } from '../../gallery/gallery.service';
+import hello from 'hellojs';
 import 'rxjs/Rx' ;
 
 /**
@@ -9,10 +12,19 @@ import 'rxjs/Rx' ;
 @Component({
   selector: 'thumbnail',
   templateUrl: 'thumbnail.component.html',
-  styleUrls: [ 'thumbnail.component.scss' ]
+  styleUrls: ['thumbnail.component.scss']
 })
 export class ThumbnailComponent implements OnInit {
+  @ViewChild('shareModal')
+  public shareModal: ModalDirective;
+
   public isChecked: boolean = false;
+
+  public isInfoOpen: boolean = false;
+
+  public selectedNetwork: string;
+
+  public selectedMedia: IGalleryItem;
 
   @Input() public item: IGalleryItem;
 
@@ -24,13 +36,23 @@ export class ThumbnailComponent implements OnInit {
 
   @Output() public toggle: EventEmitter<boolean> = new EventEmitter<boolean>();
 
+  @Output() public favorite: EventEmitter<IGalleryItem> = new EventEmitter();
+
   @Output() public confirm: EventEmitter<any> = new EventEmitter();
 
   @Output() public decline: EventEmitter<any> = new EventEmitter();
 
   @Input() public isFavorite: boolean;
 
-  constructor(private galleryService: GalleryService) {}
+  constructor(
+    private toastrService: ToastrService,
+    private galleryService: GalleryService
+  ) {
+  }
+
+  public onPlayerReady(event) {
+    console.log('onPlayerReady');
+  }
 
   public onChecked(event) {
     this.toggle.emit(event);
@@ -45,6 +67,7 @@ export class ThumbnailComponent implements OnInit {
   }
 
   public makeFavorite() {
+    this.favorite.emit(this.item);
     this.item.favorite = !this.item.favorite;
     this.galleryService.makeFavorite(this.item.id, this.item.favorite)
       .subscribe(() => console.log('favorite is succeeded'));
@@ -62,5 +85,38 @@ export class ThumbnailComponent implements OnInit {
     if (this.type == null) {
       throw new Error("Attribute 'type' is required");
     }
+  }
+
+  public selectMediaToShare(media: IGalleryItem, network: string): void {
+    this.selectedMedia = media;
+    this.selectedNetwork = network;
+    this.shareModal.show();
+  }
+
+  /**
+   * Share to social platforms
+   *
+   * @param {string} comment - Comment
+   * @returns {void}
+   */
+  public share(comment: string): void {
+    const social = hello(this.selectedNetwork);
+
+    social.api('me/share', 'post', {
+      message: comment,
+      link: this.selectedMedia.mediaPath
+    }).then((response) => {
+      if ('undefined' !== typeof response['error']
+        || ('undefined' !== typeof response['errors'] && response['errors'].length)) {
+        this.toastrService.error(`Unable to publish image.`);
+      } else {
+        this.toastrService.success('Image has been published successfully.');
+      }
+
+      this.shareModal.hide();
+    }, (r) => {
+      this.toastrService.error(`Unable to publish image. ${r.error.message}`);
+      this.shareModal.hide();
+    });
   }
 }

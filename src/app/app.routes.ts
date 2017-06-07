@@ -1,11 +1,12 @@
 import { Routes } from '@angular/router';
 import { AuthGuard } from './shared/core';
+import { ProfileComponent } from './profile';
 import { NoContentComponent } from './no-content';
 import { ForbiddenComponent } from './forbidden';
 
 export const ROUTES: Routes = [
-
   { path: '', loadChildren: 'app/auth/auth.module#AuthModule' },
+  { path: 'profile', component: ProfileComponent, canActivate: [ AuthGuard ] },
   {
     path: 'admin',
     loadChildren: 'app/admin/admin.module#AdminModule',

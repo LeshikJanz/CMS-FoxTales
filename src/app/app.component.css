@@ -34,6 +34,11 @@
   src: url(../assets/fonts/WorkSans/WorkSans-Bold.otf);
 }
 
+@font-face {
+  font-family: WorkSans-Medium;
+  src: url(../assets/fonts/WorkSans/WorkSans-Medium.otf);
+}
+
 .mainContent {
   padding: 0 106px 0 106px;
 }

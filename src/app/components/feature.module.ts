@@ -2,6 +2,7 @@ import { UploadButtonComponent } from './uploadButton/upload-button.component';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { FEATURE_ROUTES } from './feature.routing';
+import { ToastrModule, ToastContainerModule } from 'ngx-toastr';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { CreationButtonComponent } from './creationButton/creation-button.component';
@@ -52,7 +53,14 @@ import { FavoriteGalleryComponent } from '../gallery/favorite-gallery/favorite-g
 import { GalleryItemListComponent } from '../gallery-items/list/gallery-item-list.component';
 import { GalleryService } from '../gallery/gallery.service';
 import { DownloadModalComponent } from './modals/download-modal/download-modal.component';
-
+import { VgCoreModule } from 'videogular2/core';
+import { VgControlsModule } from 'videogular2/controls';
+import { VgOverlayPlayModule } from 'videogular2/overlay-play';
+import { VgBufferingModule } from 'videogular2/buffering';
+import { DeviceInfoComponent } from './device-info/device-info.component';
+import { FoxSelectComponent } from './dropdowns/fox-select/fox-select.component';
+import { SelectModule } from 'ng2-select';
+import { ClientService } from '../client/client.service';
 @NgModule({
   imports: [
     CommonModule,
@@ -60,9 +68,19 @@ import { DownloadModalComponent } from './modals/download-modal/download-modal.c
     RouterModule.forChild(FEATURE_ROUTES),
     BsDropdownModule.forRoot(),
     ModalModule.forRoot(),
-    TagInputModule
+    TagInputModule,
+    VgCoreModule,
+    VgControlsModule,
+    VgOverlayPlayModule,
+    VgBufferingModule,
+    SelectModule,
+    ToastrModule.forRoot(),
+    ToastContainerModule.forRoot()
   ],
-  providers: [GalleryService],
+  providers: [
+    GalleryService,
+    ClientService
+  ],
   declarations: [
     CreationButtonComponent,
     UploadButtonComponent,
@@ -92,7 +110,9 @@ import { DownloadModalComponent } from './modals/download-modal/download-modal.c
     ThumbnailComponent,
     FavoriteGalleryComponent,
     GalleryItemListComponent,
-    DownloadModalComponent
+    DownloadModalComponent,
+    DeviceInfoComponent,
+    FoxSelectComponent
   ],
   exports: [
     CreationButtonComponent,
@@ -125,7 +145,9 @@ import { DownloadModalComponent } from './modals/download-modal/download-modal.c
     ThumbnailComponent,
     FavoriteGalleryComponent,
     GalleryItemListComponent,
-    DownloadModalComponent
+    DownloadModalComponent,
+    DeviceInfoComponent,
+    FoxSelectComponent
   ]
 })
 

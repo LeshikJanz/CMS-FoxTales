@@ -20,6 +20,10 @@ const PORT = process.env.PORT || 3000;
 const API_URL = process.env.API_URL = 'http://dev.getfoxtales.com/api';
 const AD_TENANT = process.env.AD_TENANT = 'common';
 const AD_CLIENT = process.env.AD_CLIENT = 'dce90867-97f5-42cd-b3e4-013ed22c1824';
+const FACEBOOK_ID = process.env.FACEBOOK_ID = '1048861148580315';
+const TWITTER_ID = process.env.TWITTER_ID = '9fXKtpT6Ph72Dx2Ryd9RodZnx';
+const TUMBLR_ID = process.env.TUMBLR_ID = 'atD7mScvXiMBY5vbv43bpptyKbGM4eaX3hhwOi78AOdEwksU03';
+const AUTH_PROXY = process.env.AUTH_PROXY = 'https://auth-server.herokuapp.com/proxy';
 const HMR = helpers.hasProcessFlag('hot');
 const METADATA = webpackMerge(commonConfig({env: ENV}).metadata, {
   host: HOST,
@@ -27,6 +31,10 @@ const METADATA = webpackMerge(commonConfig({env: ENV}).metadata, {
   API_URL: API_URL,
   AD_TENANT: AD_TENANT,
   AD_CLIENT: AD_CLIENT,
+  FACEBOOK_ID: FACEBOOK_ID,
+  TWITTER_ID: TWITTER_ID,
+  TUMBLR_ID: TUMBLR_ID,
+  AUTH_PROXY: AUTH_PROXY,
   ENV: ENV,
   HMR: HMR
 });
@@ -150,12 +158,20 @@ module.exports = function (options) {
         'API_URL': JSON.stringify(METADATA.API_URL),
         'AD_TENANT': JSON.stringify(METADATA.AD_TENANT),
         'AD_CLIENT': JSON.stringify(METADATA.AD_CLIENT),
+        'FACEBOOK_ID': JSON.stringify(METADATA.FACEBOOK_ID),
+        'TWITTER_ID': JSON.stringify(METADATA.TWITTER_ID),
+        'TUMBLR_ID': JSON.stringify(METADATA.TUMBLR_ID),
+        'AUTH_PROXY': JSON.stringify(METADATA.AUTH_PROXY),
         'HMR': METADATA.HMR,
         'process.env': {
           'ENV': JSON.stringify(METADATA.ENV),
           'API_URL' : JSON.stringify(METADATA.API_URL),
           'AD_TENANT': JSON.stringify(METADATA.AD_TENANT),
           'AD_CLIENT': JSON.stringify(METADATA.AD_CLIENT),
+          'FACEBOOK_ID': JSON.stringify(METADATA.FACEBOOK_ID),
+          'TWITTER_ID': JSON.stringify(METADATA.TWITTER_ID),
+          'TUMBLR_ID': JSON.stringify(METADATA.TUMBLR_ID),
+          'AUTH_PROXY': JSON.stringify(METADATA.AUTH_PROXY),
           'NODE_ENV': JSON.stringify(METADATA.ENV),
           'HMR': METADATA.HMR,
         }
@@ -188,7 +204,8 @@ module.exports = function (options) {
             '@ultimate/ngxerrors',
             'ng2-validation',
             'ngx-toastr',
-            'ng2-tag-input'
+            'ng2-tag-input',
+            'hellojs'
           ]
         },
         dllDir: helpers.root('dll'),

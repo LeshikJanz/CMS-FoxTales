@@ -10,7 +10,7 @@ import { TagInputModule } from 'ng2-tag-input';
 import { SharedModule } from '../shared';
 import { HttpService } from '../shared/core';
 
-import { EXPERIENCE_ROUTING } from './experience.routes';
+// import { EXPERIENCE_ROUTING } from './experience.routes';
 
 import { ExperienceService } from './experience.service';
 import { ExperienceCreateComponent } from './create';
@@ -39,7 +39,7 @@ import {
     ToastContainerModule.forRoot(),
     TagInputModule,
     SharedModule,
-    EXPERIENCE_ROUTING,
+    // EXPERIENCE_ROUTING,
     FeatureModule,
     EventContainerModule
   ],

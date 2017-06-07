@@ -29,8 +29,8 @@
       ></fox-button>
 
     </div>
-    <gallery-item-list [galleryItems]="galleryItems" ></gallery-item-list>
-    <download-modal #atgModal></download-modal>
+    <gallery-item-list (favorite)="onFavorite($event)" [galleryItems]="galleryItems"></gallery-item-list>
+    <download-modal [galleryItems]="galleryItems" #atgModal></download-modal>
   </div>
 
 </div>
