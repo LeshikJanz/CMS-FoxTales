@@ -4,12 +4,24 @@
     height: 13px;
   }
 
-  input {
-    max-width: 80px;
-    border: none;
+  fox-input {
+    width: 120px;
+  }
+
+  & > div {
+    display: flex;
+    align-items: center;
+
+    & > * {
+      margin-right: 5px;
+    }
+
+    div:last-child {
+      margin-left: 5px;
+      cursor: pointer;
+    }
   }
 }
-
 
 .asc {
   display: inline-block;
@@ -41,7 +53,7 @@
 }
 
 table {
-  border:none;
+  border: none;
   border-collapse: collapse;
   min-width: 1100px;
 }
@@ -168,4 +180,55 @@ checkbox {
   top: -1px;
   left: 4px;
   color: #2dcc70;
+}
+
+div.pagination {
+  display: flex;
+  justify-content: center;
+  font-family: WorkSans-Regular;
+  font-size: 16px;
+  color: #b2bac4;
+  transition: all 500ms ease-in-out;
+
+  &:hover {
+    color: black;
+  }
+
+  section:last-child {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 259px;
+    height: 50px;
+    border-radius: 3px;
+    border: solid 1px #aab3bd;
+
+    input.paging {
+      width: 40px;
+      height: 30px;
+      border: solid 1px #aab3bd;
+      text-align: center;
+    }
+  }
+}
+
+
+.arrow-right {
+  cursor: pointer;
+  width: 0;
+  height: 0;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+
+  border-left: 8px solid #6a8186;
+}
+
+.arrow-left {
+  cursor: pointer;
+  width: 0;
+  height: 0;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+
+  border-right: 8px solid #6a8186;
 }

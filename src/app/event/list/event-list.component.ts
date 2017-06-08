@@ -33,13 +33,13 @@ export class EventListComponent implements OnInit {
    * @type {IActionState[]}
    */
   public eventActions: IActionState[] = [
-    {id: 1, action: 'EDIT'},
-    {id: 2, action: 'CLONE'},
-    {id: 3, action: 'ARCHIEVE'},
-    {id: 4, action: 'ADD TO GROUP'},
-    {id: 5, action: 'ASSIGN USERS'},
-    {id: 6, action: 'RECAP REPORT'},
-    {id: 7, action: 'EXPORT CRM DATA'}
+    { id: 1, action: 'EDIT', callback: 'onEdit' },
+    { id: 2, action: 'CLONE', callback: 'onClone' },
+    { id: 3, action: 'ARCHIEVE', callback: 'onArchieve' },
+    { id: 4, action: 'ADD TO GROUP', callback: 'onAddToGroup' },
+    { id: 5, action: 'ASSIGN USERS', callback: 'onAssignUsers' },
+    {id: 6, action: 'RECAP REPORT', callback: 'onRecapReport'},
+    {id: 7, action: 'EXPORT CRM DATA', callback: 'onExportCrmData'}
   ];
 
   /**
@@ -58,10 +58,10 @@ export class EventListComponent implements OnInit {
    * @type {IActionState[]}
    */
   public sortActions: IActionState[] = [
-    {id: 1, action: 'Upcoming', callback: 'onUpcomingSort'},
-    {id: 2, action: 'Descending', callback: 'onDescendingSort'},
-    {id: 3, action: 'Start date', callback: 'onStartDateSort'},
-    {id: 4, action: 'End date', callback: 'onEndDateSort'},
+    { id: 1, action: 'Upcoming', callback: 'onUpcomingSort' },
+    { id: 2, action: 'Descending', callback: 'onDescendingSort' },
+    { id: 3, action: 'Start date', callback: 'onStartDateSort' },
+    { id: 4, action: 'End date', callback: 'onEndDateSort' },
   ];
 
   constructor(private eventService: EventService,
@@ -79,7 +79,7 @@ export class EventListComponent implements OnInit {
    * @returns {void}
    */
   public onUpcomingSort() {
-    const filter = {sortBy: 'Name', sortAscending: true};
+    const filter = { sortBy: 'Name', sortAscending: true };
     this.getEvents(filter);
   }
 
@@ -89,7 +89,7 @@ export class EventListComponent implements OnInit {
    * @returns {void}
    */
   public onDescendingSort() {
-    const filter = {sortBy: 'Name', sortAscending: false};
+    const filter = { sortBy: 'Name', sortAscending: false };
     this.getEvents(filter);
   }
 
@@ -108,7 +108,7 @@ export class EventListComponent implements OnInit {
    * @returns {void}
    */
   public onEndDateSort() {
-    const filter = {sortBy: 'EndTime', sortAscending: true};
+    const filter = { sortBy: 'EndTime', sortAscending: true };
     this.getEvents(filter);
   }
 

@@ -15,7 +15,7 @@ import { MainNavigationComponent } from './navigations/main-navigation/main-navi
 import { EventComponent } from './event/event.component';
 import { CheckboxComponent } from './toggles/checkbox/checkbox.component';
 import { DropDownComponent } from './dropdowns/dropdown/dropdown.component';
-
+import { BsDropdownModule, ModalModule } from 'ngx-bootstrap';
 import { ActionDropDownComponent } from './dropdowns/action-dropdown/action-dropdown.component';
 import { ProfileImgComponent } from './profile-img/profile-img.component';
 import {
@@ -36,9 +36,7 @@ import {
   from './navigations/experience-builder-navigation/experience-builder-navigation.component';
 
 // UI components from ngx-bootstrap
-import { BsDropdownModule } from 'ngx-bootstrap';
 import { TabsModule } from 'ngx-bootstrap';
-import { ModalModule } from 'ngx-bootstrap';
 
 import { ColorPickerModule } from 'ngx-color-picker';
 import { TimepickerModule } from 'ngx-bootstrap';
@@ -81,6 +79,8 @@ import { SelectModule } from 'ng2-select';
 import { ClientService } from '../client/client.service';
 import { ChartModule } from 'angular2-highcharts';
 
+import { PaginationModule } from 'ngx-bootstrap/pagination';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -102,7 +102,9 @@ import { ChartModule } from 'angular2-highcharts';
     SelectModule,
     ToastrModule.forRoot(),
     ToastContainerModule.forRoot(),
-    ChartModule.forRoot(require('highcharts'))
+    ChartModule.forRoot(require('highcharts')),
+    ToastContainerModule.forRoot(),
+    PaginationModule.forRoot()
   ],
   providers: [
     GalleryService,

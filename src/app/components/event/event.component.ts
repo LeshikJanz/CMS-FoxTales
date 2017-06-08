@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { IActionState } from '../../client/client.interface';
 import { Router } from '@angular/router';
+import { IEvent } from '../../event/event.interface';
 
 @Component({
   selector: 'event',
@@ -76,31 +77,44 @@ export class EventComponent {
 
   constructor(private router: Router) {}
 
-  public onTypeChanged(type) {
-    switch (type.event) {
-      case 1:
-      this.router.navigate(['/events/edit-event', this.event['id']]);
-        break;
-      case 2:
-        console.log('clone');
-        break;
-      case 3:
-        console.log('archieve');
-        break;
-      case 4:
-        this.modal.show(type.action);
-        break;
-      case 5:
-        console.log('assign user');
-        break;
-      case 6:
-      this.router.navigate(['/events/recap-report', this.event['id']]);
-        break;
-      case 7:
-        console.log('export crm data');
-        break;
-      default:
-        console.log('default behavior');
+  /**
+   * On Add event to group
+   *
+   * @param {IEvent} event - event
+   * @return {void}
+   */
+  public onAddToGroup(event: IEvent) {
+    this.modal.show(event);
+  }
+
+  /**
+   * On Edit event
+   *
+   * @return {void}
+   */
+  public onEdit() {
+    this.router.navigate(['/events/edit-event', this.event['id']]);
+  }
+
+  /**
+   * On Recap report
+   *
+   * @return {void}
+   */
+  public onRecapReport() {
+    this.router.navigate(['/events/recap-report', this.event['id']]);
+  }
+
+  /**
+   * On event action changed
+   *
+   * @param {IEvent} event - event
+   * @param {IActionState} action - event action
+   * @return {void}
+   */
+  public onActionChanged(event: IEvent, action: IActionState) {
+    if (this[action.callback]) {
+      this[action.callback](event);
     }
   }
 }
