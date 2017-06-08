@@ -9,7 +9,7 @@ ul.dropdown-menu {
   min-width: $small-width;
 
   li {
-    height: 46px;
+    height: 36px;
     display: flex;
     align-items: center;
     padding-left: 20px;
@@ -53,6 +53,7 @@ ul.dropdown-menu {
   }
 
   label {
+    padding-left: 10px;
     font-weight: 100;
     font-family: WorkSans;
     font-size: 16px;
