@@ -1,5 +1,8 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { ImagePipe } from './image.pipe';
+import { DefaultPipe } from './default.pipe';
+import { DomSanitizer } from '@angular/platform-browser';
+import { FirstNamePipe } from './firstName.pipe';
 
 /**
  * Format cell pipe
@@ -23,9 +26,15 @@ export class FormatPipe implements PipeTransform {
   /**
    * Constructor
    *
-   * @param {ImagePipe} myImage - Image pipe
+   * @param sanitizer
+   * @param myImage
+   * @param myDefault
+   * @param firstName
    */
-  constructor(private myImage: ImagePipe) {
+  constructor(private sanitizer: DomSanitizer,
+              private myImage: ImagePipe,
+              private myDefault: DefaultPipe,
+              private myFirstName: FirstNamePipe) {
   }
 
   /**
@@ -37,7 +46,7 @@ export class FormatPipe implements PipeTransform {
    * @param {string[]} formatOptions - Pipe options
    * @returns {any} - Formatted value
    */
-  public transform(value: any, format: string, formatOptions?: string[]) {
+  public transform(value: any, format: string, formatOptions ?: string[]) {
     if (undefined === value || null === value) {
       return '-';
     }

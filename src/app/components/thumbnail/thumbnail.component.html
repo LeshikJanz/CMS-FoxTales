@@ -10,7 +10,7 @@
        'https://amazingcarousel.com/wp-content/uploads/amazingcarousel/3/images/lightbox/golden-wheat-field-lightbox.jpg'"
       alt="">
     <vg-player *ngIf="item.mediaPath.indexOf('.mp4') > 0" (onPlayerReady)="onPlayerReady($event)">
-      <video preload="true" loop="true" [vgMedia]="media" #media id="singleVideo" preload="auto" controls>
+      <video loop="true" [vgMedia]="media" #media id="singleVideo" controls>
         <source [src]="item.mediaPath" type="video/mp4">
       </video>
     </vg-player>
@@ -39,14 +39,43 @@
     </div>
   </div>
   <div class="action-menu">
-    <img src="../../../assets/img/info.svg" alt="">
-    <img  *ngIf="item.mediaPath.indexOf('.png') > 0"
-          (click)="downloadItem(item)" src="../../../assets/img/download-icon.svg">
-    <a href="javascript:void(0)" (click)="share(item, 'facebook')">facebook</a>
-    <a href="javascript:void(0)" (click)="share(item, 'twitter')">twitter</a>
-    <a href="javascript:void(0)" (click)="share(item, 'tumblr')">tumblr</a>
-  </div>
+    <img (click)="isInfoOpen = !isInfoOpen" src="../../../assets/img/info.svg">
+    <img (click)="downloadItem(item)" src="../../../assets/img/download-icon.svg">
 
+    <a href="javascript:void(0)" (click)="selectMediaToShare(item, 'facebook')">facebook</a>
+    <a href="javascript:void(0)" (click)="selectMediaToShare(item, 'twitter')">twitter</a>
+    <a href="javascript:void(0)" (click)="selectMediaToShare(item, 'tumblr')">tumblr</a>
+  </div>
 </div>
 
+<device-info (close)="isInfoOpen = false" [hidden]="!isInfoOpen"></device-info>
 
+<div
+  bsModal
+  #shareModal="bs-modal"
+  class="modal fade"
+  tabindex="-1"
+  role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" (click)="shareModal.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title">Share Media</h4>
+      </div>
+      <div class="modal-body">
+        <p>
+          <textarea #shareComment style="width: 100%; height: 200px;" placeholder="Comment"></textarea>
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" (click)="shareModal.hide()">Close</button>
+        <button
+          type="button"
+          class="btn btn-primary"
+          (click)="share(shareComment.value); shareModal.hide()">Confirm</button>
+      </div>
+    </div>
+  </div>
+</div>
