@@ -33,11 +33,13 @@ export class EventListComponent implements OnInit {
    * @type {IActionState[]}
    */
   public eventActions: IActionState[] = [
-    {id: 1, action: 'SETTINGS'},
+    {id: 1, action: 'EDIT'},
     {id: 2, action: 'CLONE'},
     {id: 3, action: 'ARCHIEVE'},
     {id: 4, action: 'ADD TO GROUP'},
     {id: 5, action: 'ASSIGN USERS'},
+    {id: 6, action: 'RECAP REPORT'},
+    {id: 7, action: 'EXPORT CRM DATA'}
   ];
 
   /**

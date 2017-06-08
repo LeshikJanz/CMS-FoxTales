@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { IActionState } from '../../client/client.interface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'event',
@@ -73,10 +74,12 @@ export class EventComponent {
    */
   public isChecked: boolean = false;
 
+  constructor(private router: Router) {}
+
   public onTypeChanged(type) {
     switch (type.event) {
       case 1:
-        console.log('settings');
+      this.router.navigate(['/events/edit-event', this.event['id']]);
         break;
       case 2:
         console.log('clone');
@@ -90,8 +93,14 @@ export class EventComponent {
       case 5:
         console.log('assign user');
         break;
-      default:
+      case 6:
+      this.router.navigate(['/events/recap-report', this.event['id']]);
         break;
+      case 7:
+        console.log('export crm data');
+        break;
+      default:
+        console.log('default behavior');
     }
   }
 }

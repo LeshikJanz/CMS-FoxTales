@@ -15,7 +15,7 @@ import { MainNavigationComponent } from './navigations/main-navigation/main-navi
 import { EventComponent } from './event/event.component';
 import { CheckboxComponent } from './toggles/checkbox/checkbox.component';
 import { DropDownComponent } from './dropdowns/dropdown/dropdown.component';
-import { BsDropdownModule, ModalModule } from 'ngx-bootstrap';
+
 import { ActionDropDownComponent } from './dropdowns/action-dropdown/action-dropdown.component';
 import { ProfileImgComponent } from './profile-img/profile-img.component';
 import {
@@ -29,6 +29,20 @@ import {
   EventsNavigationComponent
 }
   from './navigations/events-navigation/events-navigation.component';
+
+import {
+  ExperienceBuilderNavigationComponent
+}
+  from './navigations/experience-builder-navigation/experience-builder-navigation.component';
+
+// UI components from ngx-bootstrap
+import { BsDropdownModule } from 'ngx-bootstrap';
+import { TabsModule } from 'ngx-bootstrap';
+import { ModalModule } from 'ngx-bootstrap';
+
+import { ColorPickerModule } from 'ngx-color-picker';
+import { TimepickerModule } from 'ngx-bootstrap';
+
 import { EventGroupComponent } from './eventGroup/event-group.component';
 import { FoxInputComponent } from './input/fox-input.component';
 import { EventTagComponent } from './eventTag/event-tag.component';
@@ -45,6 +59,10 @@ import {
   EventToGroupModalComponent
 }
   from './modals/event-to-group-modal/event-to-group-modal.component';
+
+  import { DatepickerModule } from 'ngx-bootstrap';
+  import { AngularFontAwesomeModule } from 'angular-font-awesome/angular-font-awesome';
+
 import { ThumbnailComponent } from './thumbnail/thumbnail.component';
 import {
   EventNavigationComponent
@@ -61,21 +79,30 @@ import { DeviceInfoComponent } from './device-info/device-info.component';
 import { FoxSelectComponent } from './dropdowns/fox-select/fox-select.component';
 import { SelectModule } from 'ng2-select';
 import { ClientService } from '../client/client.service';
+import { ChartModule } from 'angular2-highcharts';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     RouterModule.forChild(FEATURE_ROUTES),
     BsDropdownModule.forRoot(),
+    TabsModule.forRoot(),
+    ModalModule.forRoot(),
+    ColorPickerModule,
+    TimepickerModule.forRoot(),
     ModalModule.forRoot(),
     TagInputModule,
+    DatepickerModule.forRoot(),
+    AngularFontAwesomeModule,
     VgCoreModule,
     VgControlsModule,
     VgOverlayPlayModule,
     VgBufferingModule,
     SelectModule,
     ToastrModule.forRoot(),
-    ToastContainerModule.forRoot()
+    ToastContainerModule.forRoot(),
+    ChartModule.forRoot(require('highcharts'))
   ],
   providers: [
     GalleryService,
@@ -86,6 +113,7 @@ import { ClientService } from '../client/client.service';
     UploadButtonComponent,
     DropDownSelectComponent,
     ExperienceNavigationComponent,
+    ExperienceBuilderNavigationComponent,
     AdminNavigationComponent,
     MainNavigationComponent,
     EventNavigationComponent,
@@ -121,6 +149,7 @@ import { ClientService } from '../client/client.service';
     CommonModule,
     FormsModule,
     ExperienceNavigationComponent,
+    ExperienceBuilderNavigationComponent,
     MainNavigationComponent,
     EventNavigationComponent,
     EventsNavigationComponent,

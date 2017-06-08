@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Response, Http, RequestOptions } from '@angular/http';
+import { Router } from '@angular/router';
+import { Response, Http, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs';
 import { Tag } from './tag';
 import { PermissionService } from '../shared/core/auth/permission.service';
@@ -13,7 +14,8 @@ export class EventService {
    * @param {Http} http
    * @returns {void}
    */
-  constructor(private http: Http) {
+  constructor(private http: Http,
+              private router: Router) {
   }
 
   /**
@@ -22,6 +24,12 @@ export class EventService {
    * Currently using the old endpoints for mock data, will be replacing to process.env.API_URL
    *
    */
+  // public getEvents() {
+
+  //   return this.http.get(`${process.env.API_URL}/Events`)
+        // return this.http.get(`https://foxtalesdev.azurewebsites.net/api/events`)
+        // return this.http.get(`assets/mock-data/event/events.json`)
+
   public getEvents(filter: IEventFilter = {}) {
     let options = new RequestOptions({
       params: { clientId: PermissionService.clientId, ...filter }
@@ -29,9 +37,7 @@ export class EventService {
 
     return this.http.get(`${process.env.API_URL}/Events`, options)
         .map((response: Response) => {
-          let temp = response.json();
-
-          return temp;
+          return response.json();
         });
   };
 
@@ -52,5 +58,36 @@ export class EventService {
   public  getTags(): Observable<Tag[]> {
     return this.http.get(`${process.env.API_URL}/Tags`)
       .map((response: Response) => response.json() as Tag[]);
+  }
+
+  /**
+   * Create Event
+   */
+  public createEvent(event) {
+    return this.http.post(`${process.env.API_URL}/Events`,
+      event)
+        .map((response: Response) => {
+          return response.json();
+    });
+  }
+
+  /**
+   * Update Event
+   */
+  public updateEvent(event) {
+    return this.http.put(`${process.env.API_URL}/Events/${event.id}`,
+      event)
+        .map((response: Response) => {
+          return response.json();
+    });
+  }
+  /**
+   * Update Event
+   */
+  public getEvent(event) {
+    return this.http.get(`${process.env.API_URL}/Events/${event}`)
+        .map((response: Response) => {
+          return response.json();
+    });
   }
 }
