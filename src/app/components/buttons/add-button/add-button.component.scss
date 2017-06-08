@@ -10,16 +10,19 @@ button {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  color: white;
-  font-family: Avenir-Book;
+  font-family: OpenSans;
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 1;
+  letter-spacing: 0.5px;
+  text-align: center;
+  color: #ffffff;
   border-radius: 6px;
-  background-color: #f57f17;
   cursor: pointer;
-
 
   &:hover {
     transition: .3s all;
-    background-color: #ffb536;
+    background-color: #4fd976;
   }
 
   &:active {
