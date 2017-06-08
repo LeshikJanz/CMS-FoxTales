@@ -141,8 +141,6 @@ export class UserListComponent implements OnInit {
       .getUsers(this.filter)
       .subscribe((users: IUserList) => {
         this.users = users.result;
-        console.log('this.users');
-        console.log(this.users);
         this.totalUsers = users.totalRowCount;
       });
   }

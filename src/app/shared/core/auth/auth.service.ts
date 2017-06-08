@@ -36,6 +36,8 @@ export class AuthService {
    * @returns {boolean} - Is logged in
    */
   public loggedIn(): boolean {
+    console.log('this.getContext().getUser()');
+    console.log(this.getContext().getUser());
     return !!this.getContext().getUser();
   }
 }
