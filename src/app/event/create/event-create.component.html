@@ -1,44 +1,36 @@
 <div class="container">
-  <form
-    (ngSubmit)="addEvent(eventForm.value)"
-    class="form"
-    novalidate>
+  <form (ngSubmit)="addEvent(eventForm.value)" class="form" novalidate>
 
     <div [formGroup]="eventForm">
       <!-- Event Name -->
       <div class="form-element">
-      <label for="eventName">Event Name</label>
-        <input
-          id="eventName"
-          formControlName="eventName"
-          type="text"
-          placeholder="Event Name">
+        <label for="eventName">Event Name</label>
+        <input id="ame" formControlName="name" type="text" placeholder="Event Name">
       </div>
 
       <!-- Location -->
       <div class="form-element">
-      <label for="location">Location</label>
-        <input
-          id="location"
-          formControlName="location"
-          type="text"
-          placeholder="Location">
+        <label for="location">Location</label>
+        <input id="address" formControlName="address" type="text" placeholder="Address">
       </div>
+
+      <label>Start Date</label>
+      <input class="picker-input" [ngModel]="startMomentDate" [ngModelOptions]="{standalone: true}" [returnObject]=" 'string' "
+        [(dateTimePicker)]="startMomentDate" [mode]="'dropdown'" [pickerType]="'date'" placeholder="Start Date" readonly>
+      <label>End Date</label>
+      <input class="picker-input" [ngModel]="endMomentDate" [ngModelOptions]="{standalone: true}" [returnObject]=" 'string' " [(dateTimePicker)]="endMomentDate"
+        [mode]="'dropdown'" [pickerType]="'date'" placeholder="End Date" readonly>
+
+
 
 
 
       <!-- Tags -->
       <div class="form-element">
         <label>Tags</label>
-        <tag-input
-          formControlName="tags"
-          [transform]="tagTransformer"
-          [maxItems]="10">
-            <tag-input-dropdown
-              [identifyBy]="'id'"
-              [displayBy]="'name'"
-              [autocompleteItems]="tags">
-            </tag-input-dropdown>
+        <tag-input formControlName="tags" [transform]="tagTransformer" [maxItems]="10">
+          <tag-input-dropdown [identifyBy]="'id'" [displayBy]="'name'" [autocompleteItems]="tags">
+          </tag-input-dropdown>
         </tag-input>
 
         <div ngxErrors="tags">
@@ -47,16 +39,16 @@
           </div>
         </div>
       </div>
-
-
+      <div>
+  <h4>Notifications</h4>
+  <switcher  [options]="notificationOptions" (toggle)="isNotificationEnabled=$event"></switcher>
+      </div>
+  <br>
 
 
       <div>
-      <button
-        type="submit"
-        [disabled]="eventForm.invalid"
-        class="create-button">CREATE</button>
-    </div>
+        <button type="submit" [disabled]="eventForm.invalid" class="create-button">CREATE</button>
+      </div>
     </div>
   </form>
 </div>

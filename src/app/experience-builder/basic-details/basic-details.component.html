@@ -1,0 +1,13 @@
+<div class="basic-details-container">
+When is the experience happening?
+
+<h3>Start Date and Time</h3>
+<input class="picker-input" [ngModel]="startMomentDate" [returnObject]=" 'string' " [(dateTimePicker)]="startMomentDate" [mode]="'dropdown'" [pickerType]="'date'" placeholder="Date" readonly>
+<input class="picker-input" [ngModel]="startMomentTime" [returnObject]=" 'string' " [viewFormat]= "'HH:mm'" [(dateTimePicker)]="startMomentTime" [pickerType]="'time'" [mode]="'dropdown'" placeholder="Time"  readonly>
+<h3>End Date and Time</h3>
+<input class="picker-input" [ngModel]="endMomentDate" [returnObject]=" 'string' " [(dateTimePicker)]="endMomentDate" [mode]="'dropdown'" [pickerType]="'date'" placeholder="Date" readonly>
+<input class="picker-input" [ngModel]="endMomentTime" [returnObject]=" 'string' " [viewFormat]= "'HH:mm'" [(dateTimePicker)]="endMomentTime" [pickerType]="'time'" [mode]="'dropdown'" placeholder="Time"  readonly>
+
+<br>
+<button (click)="Next()" >Next</button>
+</div>

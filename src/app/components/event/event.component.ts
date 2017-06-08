@@ -1,7 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { ITableAction } from '../../shared/table/action.interface';
 import { IActionState } from '../../client/client.interface';
-import { IEvent } from '../../event/event.interface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'event',
@@ -21,9 +20,9 @@ export class EventComponent {
   /**
    * Actions for event
    *
-   * @type ITableAction[]
+   * @type IActionState[]
    */
-  @Input() public eventActions: ITableAction[];
+  @Input() public eventActions: IActionState[];
 
   /**
    * Object controls Modal state
@@ -75,6 +74,8 @@ export class EventComponent {
    */
   public isChecked: boolean = false;
 
+  constructor(private router: Router) {}
+
   /**
    * On Add event to group
    *
@@ -83,6 +84,24 @@ export class EventComponent {
    */
   public onAddToGroup(event: IEvent) {
     this.modal.show(event);
+  }
+
+  /**
+   * On Edit event
+   *
+   * @return {void}
+   */
+  public onEdit() {
+    this.router.navigate(['/events/edit-event', this.event['id']]);
+  }
+
+  /**
+   * On Recap report
+   *
+   * @return {void}
+   */
+  public onRecapReport() {
+    this.router.navigate(['/events/recap-report', this.event['id']]);
   }
 
   /**
