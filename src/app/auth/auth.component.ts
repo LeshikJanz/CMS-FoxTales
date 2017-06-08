@@ -20,7 +20,7 @@ export class AuthComponent {
    */
   constructor(private router: Router, private auth: AuthService) {
     if (this.auth.loggedIn()) {
-      this.router.navigate(['/']);
+      this.router.navigate(['/dashboard']);
     }
   }
 
@@ -32,5 +32,14 @@ export class AuthComponent {
   public login(): void {
     const context = this.auth.getContext();
     context.login();
+  }
+
+  /**
+   * Is logged in?
+   *
+   * @returns {boolean} - Is logged in
+   */
+  public loggedIn(): boolean {
+    return this.auth.loggedIn();
   }
 }
