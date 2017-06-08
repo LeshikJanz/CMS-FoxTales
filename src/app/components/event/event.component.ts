@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { IActionState } from '../../client/client.interface';
 import { Router } from '@angular/router';
+import { IEvent } from '../../event/event.interface';
 
 @Component({
   selector: 'event',
