@@ -15,6 +15,7 @@ import {
 import { Router } from '@angular/router';
 import { CustomValidators } from 'ng2-validation';
 import { MapsAPILoader } from '@agm/core';
+import { ToastrService } from 'ngx-toastr';
 import {  } from '@types/googlemaps';
 import * as moment from 'moment';
 import { IClient } from '../client.interface';
@@ -104,6 +105,7 @@ export class ClientCreateComponent implements OnInit {
    * @param {MapsAPILoader} mapsAPILoader - Maps API loader
    * @param {NgZone} ngZone - Zone
    * @param {Router} router - Router
+   * @param {ToastrService} toastrService - Toastr service
    * @param {FormBuilder} formBuilder
    * @param {ClientService} clientService - Client service
    * @returns {void}
@@ -112,6 +114,7 @@ export class ClientCreateComponent implements OnInit {
     private mapsAPILoader: MapsAPILoader,
     private ngZone: NgZone,
     private router: Router,
+    private toastrService: ToastrService,
     private formBuilder: FormBuilder,
     private clientService: ClientService
   ) {
@@ -182,7 +185,14 @@ export class ClientCreateComponent implements OnInit {
 
     this.clientService
       .addClient({ ...client, ...this.clientDetails })
-      .subscribe(() => this.router.navigate(['/admin/clients']));
+      .subscribe((response: any) => {
+        if (response.success) {
+          this.router.navigate(['/admin/clients']);
+          return;
+        }
+
+        this.toastrService.error(response.message);
+      });
   }
 
   /**
