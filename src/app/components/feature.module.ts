@@ -61,6 +61,8 @@ import { DeviceInfoComponent } from './device-info/device-info.component';
 import { FoxSelectComponent } from './dropdowns/fox-select/fox-select.component';
 import { SelectModule } from 'ng2-select';
 import { ClientService } from '../client/client.service';
+import { PaginationModule } from 'ngx-bootstrap/pagination';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -75,7 +77,8 @@ import { ClientService } from '../client/client.service';
     VgBufferingModule,
     SelectModule,
     ToastrModule.forRoot(),
-    ToastContainerModule.forRoot()
+    ToastContainerModule.forRoot(),
+    PaginationModule.forRoot()
   ],
   providers: [
     GalleryService,

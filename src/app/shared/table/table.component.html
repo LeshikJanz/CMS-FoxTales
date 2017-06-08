@@ -5,8 +5,11 @@
       <th></th>
       <th class="table-header" *ngFor="let col of cols">
         <div>
-          <fox-input [title]="col.title" (input)="searchQuery[col.id].next(searchValue)" (Change)="searchValue=$event"></fox-input>
-          <div (click)="changeSort(col)"><div  [class]="col.sort ? 'asc' : 'desc'"></div></div>
+          <fox-input [title]="col.title" (input)="searchQuery[col.id].next(searchValue)"
+                     (Change)="searchValue=$event"></fox-input>
+          <div (click)="changeSort(col)">
+            <div [class]="col.sort ? 'asc' : 'desc'"></div>
+          </div>
         </div>
       </th>
       <th *ngIf="actions"></th>
@@ -42,28 +45,14 @@
   </table>
 </section>
 
-<section>
-  Rows per page:
+<div class="pagination">
+  <section>
+    <div class="arrow-left" (click)="prevPage()"></div>
+    <input class="paging" type="number"
+           (change)="changeLimit($event.target.value)" [(ngModel)]="limit">
 
-  <select (change)="changeLimit($event.target.value)" [(ngModel)]="limit">
-    <option
-      *ngFor="let limit of limits"
-      [value]="limit">
-      {{ limit }}
-    </option>
-  </select>
+    {{ startOffset }}-{{ endOffset }} of {{ rowsCount }}
 
-  {{ startOffset }}-{{ endOffset }} of {{ rowsCount }}
-
-  <a
-    href="javascript:void(0);"
-    (click)="prevPage()">
-    prev
-  </a>
-
-  <a
-    href="javascript:void(0);"
-    (click)="nextPage()">
-    next
-  </a>
-</section>
+    <div class="arrow-right" (click)="nextPage()"></div>
+  </section>
+</div>
