@@ -14,6 +14,6 @@ export class MainNavigationComponent implements OnInit {
     }
 
     public ngOnInit() {
-        this.clientName = this.authService.getContext().getUser().name
+        this.clientName = this.authService.getContext().getUser().name;
     }
 }
