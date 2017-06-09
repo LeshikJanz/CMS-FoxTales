@@ -4,6 +4,7 @@ import { EventGroupsService } from './event-groups.service';
 import { IEventGroup } from './event-groups.interaface';
 import { EventService } from '../../event/event.service';
 import { IActionState } from '../../client/client.interface';
+import { RouteData } from '../../shared/core/routing/route-data.service';
 
 @Component({
   selector: 'event-groups',
@@ -39,7 +40,9 @@ export class EventGroupsComponent implements OnInit {
   ];
 
   constructor(private eventGroupsService: EventGroupsService,
-              private eventService: EventService) {
+              private eventService: EventService,
+              private _routeData: RouteData) {
+    _routeData.name.next('Event Groups');
   }
 
   /**

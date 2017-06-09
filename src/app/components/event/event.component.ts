@@ -2,7 +2,6 @@ import { Component, Input } from '@angular/core';
 import { IActionState } from '../../client/client.interface';
 import { Router } from '@angular/router';
 import { IEvent } from '../../event/event.interface';
-import { ITableAction } from "../../shared/table/action.interface";
 
 @Component({
   selector: 'event',
@@ -22,9 +21,9 @@ export class EventComponent {
   /**
    * Actions for event
    *
-   * @type ITableAction[]
+   * @type IActionState[]
    */
-  @Input() public eventActions: ITableAction[];
+  @Input() public eventActions: IActionState[];
 
   /**
    * Object controls Modal state

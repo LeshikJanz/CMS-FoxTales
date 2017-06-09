@@ -3,7 +3,8 @@ import { EventService } from '../event.service';
 import { IActionState } from '../../client/client.interface';
 import { EventGroupsService } from '../../event-groups/list/event-groups.service';
 import { IEventFilter } from '../event.interface';
-import { ITableAction } from "../../shared/table/action.interface";
+import { ITableAction } from '../../shared/table/action.interface';
+import { RouteData } from '../../shared/core/routing/route-data.service';
 
 /**
  * Event list component
@@ -66,9 +67,10 @@ export class EventListComponent implements OnInit {
   ];
 
   constructor(private eventService: EventService,
-              private eventGroupsService: EventGroupsService) {
+              private eventGroupsService: EventGroupsService,
+              private _routeData: RouteData) {
+    _routeData.name.next('Event Management');
   }
-
   public ngOnInit(): void {
     this.getEvents();
     this.getEventGroups();
@@ -133,6 +135,15 @@ export class EventListComponent implements OnInit {
    */
   public onActionChanged(action: any): void {
     console.log('onActionChanged');
+  }
+  /**
+   * On search changed
+   *
+   * @param {string} event - Search string
+   * @returns {void}
+   */
+  public onSearchChange(event: string): void {
+    console.log('onSearchChange');
   }
 
   /**

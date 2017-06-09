@@ -4,6 +4,7 @@ import { IActionState } from '../../client/client.interface';
 import { IGalleryItem, IGalleryFilter } from '../gallery-item.interface';
 import { IExperience } from '../../event/event.interface';
 import { GalleryService } from '../gallery.service';
+import { RouteData } from '../../shared/core/routing/route-data.service';
 
 /**
  * Favorite gallery component
@@ -70,13 +71,17 @@ export class FavoriteGalleryComponent implements OnInit {
      *
      * @param {Route} route - ActivatedRoute
      * @param {GalleryService} galleryService - Gallery service
+     * @param _routeData
      * @returns {void}
      */
     constructor(private route: ActivatedRoute,
-                private galleryService: GalleryService) {
-    }
+                private galleryService: GalleryService,
+                private _routeData: RouteData) {
+          _routeData.name.next('Favorited Media');
+}
 
-    /**
+
+  /**
      * Handler gallery type changing
      *
      * @param {string} event

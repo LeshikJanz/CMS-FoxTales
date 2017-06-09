@@ -24,23 +24,4 @@
   </div>
   <experience *ngFor="let experience of Experience" [experience]="experience"
               [experienceActions]="experienceActions"></experience>
-  <div>
-    <div class="experience-container">
-      <div>
-        <div class="main-info">
-          <div>
-            <checkbox></checkbox>
-
-            <img *ngIf="status === -1" src="../../../assets/img/attention.svg" alt="">
-            <img *ngIf="status === 1" src="../../../assets/img/complete.svg" alt="">
-            <!--<a [routerLink]="['/experience', experiences.id, 'content']">{{experiences.name}}</a>-->
-
-            <!--<a [routerLink]="['/experience', experiences.id, 'content']"><label class="name">{{experiences.name}}</label></a>-->
-            <!--<label *ngFor="let brand of experiences.brands">#{{brand}}</label>-->
-          </div>
-        </div>
-      </div>
-    </div>
-    <hr>
-  </div>
 </div>
