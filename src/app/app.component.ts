@@ -2,6 +2,7 @@ import { Component, ViewEncapsulation, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Authentication } from 'adal-ts';
 import { AuthService, PermissionService } from './shared/core';
+import { RouteData } from './shared/core/routing/route-data.service';
 
 /*
  * App Component
@@ -21,18 +22,25 @@ export class AppComponent implements OnInit {
    */
   public version: string = '2.2.1';
 
+  public routeName: any = '';
+
+
   /**
    * Constructor
    *
    * @param {Router} router - Router
    * @param {AuthService} auth - Auth service
    * @param {PermissionService} permissions - Permissions service
+   * @param _routeData
    * @returns {void}
    */
-  constructor(
-    private router: Router,
-    private auth: AuthService,
-    private permissions: PermissionService) {
+  constructor(private router: Router,
+              private auth: AuthService,
+              private permissions: PermissionService,
+              private _routeData: RouteData) {
+
+    this._routeData.name.subscribe(n => this.routeName = n);
+
     // Redirect not CMS users to forbidden page
     // TODO: research better solution
     if (window.location.href.match(/access_denied/)) {

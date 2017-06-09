@@ -26,6 +26,7 @@ import './../../node_modules/videogular2/fonts/videogular.css';
 import '../styles/styles.scss';
 
 import { FeatureModule } from './components/feature.module';
+import { RouteData } from './shared/core/routing/route-data.service';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -67,7 +68,8 @@ type StoreType = {
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,
-    APP_PROVIDERS
+    APP_PROVIDERS,
+    RouteData
   ]
 })
 export class AppModule {
