@@ -4,30 +4,31 @@ button {
   font-size: inherit;
   background-color: inherit;
   cursor: pointer;
+  border: transparent;
 }
 
 .add-btn {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  font-family: OpenSans;
+  font-family: Avenir;
   font-size: 16px;
-  font-weight: bold;
+  font-weight: 600;
   line-height: 1;
   letter-spacing: 0.5px;
   text-align: center;
   color: #ffffff;
-  border-radius: 6px;
   cursor: pointer;
+  border-radius: 6px;
 
   &:hover {
     transition: .3s all;
-    background-color: #4fd976;
+    background-color: #7de2a7;
   }
 
   &:active {
     transition: .3s all;
-    background-color: #f56c17;
+    background-color: #26bb65;
   }
 
   img {

@@ -1,30 +1,32 @@
 <div toastContainer class="toast-top-center"></div>
 
 <div class="list-container">
-  <div>
-    <label>Sort by</label>
-    <dropdown
-      [title]="'Start Date'"
-      [options]="sortActions"
-      [size]="'big'"
-      (typeChanged)="onSortChanged($event)"
-    ></dropdown>
+  <div class="create-event">
+    <add-button
+      [routerLink]="['../','create-event']"
+      [value]="'Create New Event'"
+    ></add-button>
   </div>
-  <div class="list-menu">
+  <div class="actions">
     <div>
-      <h2 class="main-label">Event List</h2>
+      <label>Sort by</label>
+      <dropdown
+        [title]="'Start Date'"
+        [options]="sortActions"
+        [size]="'big'"
+        (typeChanged)="onSortChanged($event)"
+      ></dropdown>
     </div>
-    <div>
-      <div class="create-event">
-        <button type="button" class="creation-button" [routerLink]="['../','create-event']">
-          <label>Create New Event</label></button>
-      </div>
-    </div>
+    <div class="list-menu">
+      <search-input [title]="'search event name, location, tag, or date'"
+                    (Change)="onSearchChange($event)"></search-input>
 
+
+    </div>
   </div>
 
   <event *ngFor="let event of Events" [modal]="atgModal" [event]="event" [eventActions]="eventActions">
-    </event>
+  </event>
 
   <event-to-group-modal #atgModal [eventGroups]="eventGroups"></event-to-group-modal>
 

@@ -15,16 +15,21 @@
   }
 
   label {
-    font-family: Avenir-Book;
-    font-size: 16px;
-    font-weight: 900;
+    font-family: WorkSans;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: 0.6px;
+    color: #b2bac4;
+    margin-bottom: 5px;
     margin-left: 20px;
-    align-self: flex-end;
   }
 
   .group-name {
-    font-size: 20px;
-  }
+    font-size: 24px;
+    font-family: Avenir-Book;
+    line-height: 1.38;
+    color: #343a40;  }
 
    fox-button {
      height: 36px;

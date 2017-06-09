@@ -26,6 +26,7 @@ ul.dropdown-menu {
 
 .btn.drop-button {
   display: inline-flex;
+  cursor: pointer;
   justify-content: space-between;
   padding-top: 4%;
   border-radius: 0;
@@ -53,6 +54,7 @@ ul.dropdown-menu {
   }
 
   label {
+    cursor: pointer;
     padding-left: 10px;
     font-weight: 100;
     font-family: WorkSans;

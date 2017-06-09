@@ -1,6 +1,39 @@
-.list-container > div:first-child {
+.list-container .actions {
   display: flex;
-  width: 240px;
-  align-items: center;
   justify-content: space-between;
+  align-items: flex-start;
+  padding-top: 20px;
+
+  & > div:first-child {
+    display: flex;
+    width: 240px;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+}
+
+.list-menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+  height: inherit;
+
+  search-input {
+    width: 400px;
+    height: 65px;
+  }
+}
+
+.create-event {
+  display: flex;
+  justify-content: flex-end;
+
+add-button {
+    background-color: #2fd976;
+    width: 204px;
+    height: 54px;
+    font-size: 16px;
+  border-radius: 6px;
+}
 }

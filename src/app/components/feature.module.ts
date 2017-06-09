@@ -80,6 +80,9 @@ import { ClientService } from '../client/client.service';
 import { ChartModule } from 'angular2-highcharts';
 
 import { PaginationModule } from 'ngx-bootstrap/pagination';
+import { SearchInputComponent } from './search/search-input.component';
+import { ExperienceComponent } from './experience/experience.component';
+import { IconButtonComponent } from './buttons/icon-button/icon-button.component';
 
 @NgModule({
   imports: [
@@ -142,7 +145,10 @@ import { PaginationModule } from 'ngx-bootstrap/pagination';
     GalleryItemListComponent,
     DownloadModalComponent,
     DeviceInfoComponent,
-    FoxSelectComponent
+    FoxSelectComponent,
+    SearchInputComponent,
+    ExperienceComponent,
+    IconButtonComponent
   ],
   exports: [
     CreationButtonComponent,
@@ -178,7 +184,10 @@ import { PaginationModule } from 'ngx-bootstrap/pagination';
     GalleryItemListComponent,
     DownloadModalComponent,
     DeviceInfoComponent,
-    FoxSelectComponent
+    FoxSelectComponent,
+    SearchInputComponent,
+    ExperienceComponent,
+    IconButtonComponent
   ]
 })
 

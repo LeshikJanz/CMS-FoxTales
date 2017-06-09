@@ -25,9 +25,7 @@
       </div>
       <switcher style="padding: 10px" [type]="selectedType"
                 [options]="galleryTypes" (toggle)="onTypeChange($event)"></switcher>
-
-      <input type="text" name="search" placeholder="find gallery" [(ngModel)]="search"
-             (ngModelChange)="onSearchChange($event)">
+      <search-input [title]="'find gallery'" (Change)="onSearchChange($event)"></search-input>
 
     </div>
     <gallery-list *ngIf="selectedType == 'Experiences'" [galleries]="experiences" ></gallery-list>
