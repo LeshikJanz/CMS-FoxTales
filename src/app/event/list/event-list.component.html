@@ -3,12 +3,7 @@
 <div class="list-container">
   <div>
     <label>Sort by</label>
-    <dropdown
-      [title]="'Start Date'"
-      [options]="sortActions"
-      [size]="'medium'"
-      (typeChanged)="onSortChanged($event)"
-    ></dropdown>
+    <dropdown [title]="'Start Date'" [options]="sortActions" [size]="'medium'" (typeChanged)="onSortChanged($event)"></dropdown>
   </div>
   <div class="list-menu">
     <div>
@@ -24,8 +19,6 @@
   </div>
 
   <event *ngFor="let event of Events" [modal]="atgModal" [event]="event" [eventActions]="eventActions">
-    </event>
+  </event>
 
   <event-to-group-modal #atgModal [eventGroups]="eventGroups"></event-to-group-modal>
-
-</div>

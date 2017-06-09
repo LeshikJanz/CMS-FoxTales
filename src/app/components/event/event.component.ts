@@ -85,6 +85,7 @@ export class EventComponent {
         console.log('clone');
         break;
       case 3:
+        console.log(type)
         console.log('archieve');
         break;
       case 4:
