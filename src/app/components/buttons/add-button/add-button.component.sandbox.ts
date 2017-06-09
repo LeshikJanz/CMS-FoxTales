@@ -6,7 +6,7 @@ export default sandboxOf(AddButtonComponent)
     template: `
               <div>
                <add-button 
-               style="height: 55px; width: 120px; font-size: 16px"
+               style="background-color: #2fd976; height: 55px; width: 120px; font-size: 16px"
                [value]="'ADD'"
                ></add-button></div>`
   })

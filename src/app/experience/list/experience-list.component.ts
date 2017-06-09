@@ -33,6 +33,16 @@ export class ExperienceListComponent implements OnInit {
       private route: ActivatedRoute) {
     }
 
+  /**
+   * Search handler
+   *
+   * @param {string} value
+   * @returns {void}
+   */
+  public onSearchChange(value: string): void {
+    console.log("onSearchChange");
+  }
+
     public ngOnInit(): void {
       this.sub = this.route.params.subscribe((params) => {
         this.id = params['id'];

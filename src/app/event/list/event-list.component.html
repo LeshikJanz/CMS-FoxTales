@@ -14,17 +14,17 @@
     <div>
       <h2 class="main-label">Event List</h2>
     </div>
-    <div>
-      <div class="create-event">
-        <button type="button" class="creation-button" [routerLink]="['../','create-event']">
-          <label>Create New Event</label></button>
-      </div>
+    <div class="create-event">
+      <add-button
+        [routerLink]="['../','create-event']"
+        [value]="'Create New Event'"
+      ></add-button>
     </div>
 
   </div>
 
   <event *ngFor="let event of Events" [modal]="atgModal" [event]="event" [eventActions]="eventActions">
-    </event>
+  </event>
 
   <event-to-group-modal #atgModal [eventGroups]="eventGroups"></event-to-group-modal>
 

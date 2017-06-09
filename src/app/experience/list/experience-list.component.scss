@@ -1,0 +1,24 @@
+.list-menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  & > div:first-child {
+    display: flex;
+    flex-direction: column;
+    width: 240px;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .create-experience {
+    add-button {
+      width: 254px;
+      height: 54px;
+      font-size: 15px;
+      border-radius: 6px;
+      color: white;
+      background-color: #2fd976;
+    }
+  }
+}

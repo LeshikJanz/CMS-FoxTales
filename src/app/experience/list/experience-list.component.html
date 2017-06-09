@@ -4,10 +4,22 @@
   <div class="list-menu">
     <div>
       <h2 class="main-label">Experience List</h2>
+      <div>
+        <label>Sort by</label>
+        <dropdown
+          [title]="'Start Date'"
+          [options]="sortActions"
+          [size]="'big'"
+          (typeChanged)="onSortChanged($event)"
+        ></dropdown>
+      </div>
     </div>
     <div class="create-experience">
-      <button type="button" class="creation-button" [routerLink]="['/experience-builder/intro']" [queryParams]="{ id: this.id  }">
-          <label>Create New Experience</label></button>
+      <add-button
+        [routerLink]="['/experience-builder/intro']"
+        [value]="'Create New Experience'"
+      ></add-button>
+      <search-input [title]="'find experience'" (Change)="onSearchChange($event)"></search-input>
     </div>
 
   </div>
