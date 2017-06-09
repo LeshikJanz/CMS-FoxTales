@@ -17,6 +17,7 @@
     </div>
   </div>
   <fox-button *ngIf="eventActions.length === 1"
+              [routerLink]="['/events/edit-event', this.event['id']]"
               [value]="eventActions[0].action"
               [design]="'gray'"></fox-button>
 
