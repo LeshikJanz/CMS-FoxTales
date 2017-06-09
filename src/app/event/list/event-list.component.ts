@@ -3,6 +3,7 @@ import { EventService } from '../event.service';
 import { IActionState } from '../../client/client.interface';
 import { EventGroupsService } from '../../event-groups/list/event-groups.service';
 import { IEventFilter } from '../event.interface';
+import { ITableAction } from "../../shared/table/action.interface";
 
 /**
  * Event list component
@@ -30,16 +31,16 @@ export class EventListComponent implements OnInit {
   /**
    *  Event actions
    *
-   * @type {IActionState[]}
+   * @type {ITableAction[]}
    */
-  public eventActions: IActionState[] = [
-    { id: 1, action: 'EDIT', callback: 'onEdit' },
-    { id: 2, action: 'CLONE', callback: 'onClone' },
-    { id: 3, action: 'ARCHIEVE', callback: 'onArchieve' },
-    { id: 4, action: 'ADD TO GROUP', callback: 'onAddToGroup' },
-    { id: 5, action: 'ASSIGN USERS', callback: 'onAssignUsers' },
-    {id: 6, action: 'RECAP REPORT', callback: 'onRecapReport'},
-    {id: 7, action: 'EXPORT CRM DATA', callback: 'onExportCrmData'}
+  public eventActions: ITableAction[] = [
+    { id: 1, title: 'EDIT', callback: 'onEdit' },
+    { id: 2, title: 'CLONE', callback: 'onClone' },
+    { id: 3, title: 'ARCHIEVE', callback: 'onArchieve' },
+    { id: 4, title: 'ADD TO GROUP', callback: 'onAddToGroup' },
+    { id: 5, title: 'ASSIGN USERS', callback: 'onAssignUsers' },
+    {id: 6, title: 'RECAP REPORT', callback: 'onRecapReport'},
+    {id: 7, title: 'EXPORT CRM DATA', callback: 'onExportCrmData'}
   ];
 
   /**

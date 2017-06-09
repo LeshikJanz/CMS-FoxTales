@@ -1,0 +1,38 @@
+<div class="experience-container">
+  <div>
+    <div class="main-info">
+      <checkbox [name]="first"
+                (toggle)="checkbox=$event">
+      </checkbox>
+      <div>
+        <div>
+          <a class="experience-name">{{experience.name}}</a>
+        </div>
+        <div>
+          Live
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="actions">
+    <icon-button
+      [type]="'Content'"
+    ></icon-button>
+    <icon-button
+      [type]="'Email'"
+    ></icon-button>
+    <icon-button
+      [type]="'Feeds'"
+    ></icon-button>
+    <icon-button
+      [type]="'Gallery'"
+    ></icon-button>
+    <icon-button
+      [type]="'Interface'"
+    ></icon-button>
+    <icon-button
+      [type]="'Social'"
+    ></icon-button>
+  </div>
+</div>

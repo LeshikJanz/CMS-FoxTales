@@ -1,30 +1,29 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 import { IActionState } from '../../client/client.interface';
 import { Router } from '@angular/router';
-import { IEvent } from '../../event/event.interface';
-import { ITableAction } from "../../shared/table/action.interface";
+import { IEvent, IExperience } from '../../event/event.interface';
 
 @Component({
-  selector: 'event',
-  templateUrl: 'event.component.html',
-  styleUrls: ['event.component.scss']
+  selector: 'experience',
+  templateUrl: 'experience.component.html',
+  styleUrls: ['experience.component.scss']
 })
 
-export class EventComponent {
+export class ExperienceComponent implements OnChanges {
 
   /**
-   * Event name
+   * Experience
    *
-   * @type string
+   * @type IExperience
    */
-  @Input() public event: any[];
+  @Input() public experience: IExperience;
 
   /**
-   * Actions for event
+   * Actions for experience
    *
-   * @type ITableAction[]
+   * @type IActionState[]
    */
-  @Input() public eventActions: ITableAction[];
+  @Input() public experienceActions: IActionState[];
 
   /**
    * Object controls Modal state
@@ -39,6 +38,13 @@ export class EventComponent {
    * @type string
    */
   @Input() public name: string;
+
+  /**
+   * Checkbox status
+   *
+   * @type boolean
+   */
+  @Input() public checkbox: boolean;
 
   /**
    * Event date
@@ -79,43 +85,20 @@ export class EventComponent {
   constructor(private router: Router) {}
 
   /**
-   * On Add event to group
-   *
-   * @param {IEvent} event - event
-   * @return {void}
-   */
-  public onAddToGroup(event: IEvent) {
-    this.modal.show(event);
-  }
-
-  /**
-   * On Edit event
-   *
-   * @return {void}
-   */
-  public onEdit() {
-    this.router.navigate(['/events/edit-event', this.event['id']]);
-  }
-
-  /**
-   * On Recap report
-   *
-   * @return {void}
-   */
-  public onRecapReport() {
-    this.router.navigate(['/events/recap-report', this.event['id']]);
-  }
-
-  /**
    * On event action changed
    *
    * @param {IEvent} event - event
    * @param {IActionState} action - event action
    * @return {void}
    */
-  public onActionChanged(event: IEvent, action: IActionState) {
+  public onActionChanged(experience: IExperience, action: IActionState) {
     if (this[action.callback]) {
-      this[action.callback](event);
+      this[action.callback](experience);
     }
+  }
+
+  public ngOnChanges() {
+    console.log('this.experience');
+    console.log(this.experience);
   }
 }

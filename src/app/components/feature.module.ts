@@ -81,6 +81,8 @@ import { ChartModule } from 'angular2-highcharts';
 
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { SearchInputComponent } from './search/search-input.component';
+import { ExperienceComponent } from './experience/experience.component';
+import { IconButtonComponent } from './buttons/icon-button/icon-button.component';
 
 @NgModule({
   imports: [
@@ -144,7 +146,9 @@ import { SearchInputComponent } from './search/search-input.component';
     DownloadModalComponent,
     DeviceInfoComponent,
     FoxSelectComponent,
-    SearchInputComponent
+    SearchInputComponent,
+    ExperienceComponent,
+    IconButtonComponent
   ],
   exports: [
     CreationButtonComponent,
@@ -181,7 +185,9 @@ import { SearchInputComponent } from './search/search-input.component';
     DownloadModalComponent,
     DeviceInfoComponent,
     FoxSelectComponent,
-    SearchInputComponent
+    SearchInputComponent,
+    ExperienceComponent,
+    IconButtonComponent
   ]
 })
 

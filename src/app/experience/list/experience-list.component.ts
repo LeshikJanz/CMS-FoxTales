@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ExperienceService } from '../experience.service';
 import { ActivatedRoute } from '@angular/router';
+import { IActionState } from '../../client/client.interface';
 
 /**
  * Experience list component
@@ -40,13 +41,15 @@ export class ExperienceListComponent implements OnInit {
    * @returns {void}
    */
   public onSearchChange(value: string): void {
-    console.log("onSearchChange");
+    console.log('onSearchChange');
   }
 
     public ngOnInit(): void {
       this.sub = this.route.params.subscribe((params) => {
         this.id = params['id'];
       });
+      console.log('this.id');
+      console.log(this.id);
 
       this.getExperiences();
     }

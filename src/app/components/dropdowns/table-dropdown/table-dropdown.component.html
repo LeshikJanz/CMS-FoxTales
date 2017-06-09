@@ -8,6 +8,6 @@
     <span class="caret fox-caret"></span>
   </button>
   <ul *dropdownMenu class="dropdown-menu dropdown-menu-right" role="menu">
-    <li *ngFor="let option of options" role="menuitem"><a class="dropdown-item" (click)="onTypeChanged(option)" href="javascript:void(0)">{{option.title}}</a></li>
+    <li *ngFor="let option of options" (click)="onTypeChanged(option)" role="menuitem">{{option.title}}</li>
   </ul>
 </div>

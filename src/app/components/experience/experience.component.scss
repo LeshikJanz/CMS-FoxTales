@@ -1,4 +1,4 @@
-.event-container {
+.experience-container {
   margin: inherit;
   display: flex;
   justify-content: space-between;
@@ -7,20 +7,24 @@
   border-bottom: medium solid #b2bac4;
   border-width: 1px;
 
+  & :first-child {
+    margin-right: 20px;
+  }
+
   checkbox {
     height: 32px;
     width: 32px;
     font-size: 14px;
   }
 
-  & :first-child {
-    margin-right: 20px;
+  .actions {
+    display: flex;
   }
 
   .main-info {
     display: flex;
 
-    .event-name {
+    .experience-name {
       font-size: 26px;
       font-family: Avenir-Book;
       line-height: 1.38;
@@ -49,18 +53,17 @@
         line-height: 1;
         letter-spacing: 0.6px;
         color: #b2bac4;
-        margin-bottom: 5px;
+        margin-bottom: 0;
       }
     }
   }
-  label {
-    font-size: 14px;
-    font-family: WorkSans;
-    font-weight: 600;
-    line-height: 1;
-    letter-spacing: 0.6px;
-    color: #b2bac4;
-    margin-bottom: 0;
+
+  .experience {
+
+    label{
+      font-size: 16px;
+      font-family: Avenir-Book;
+    }
   }
 
   fox-button {
