@@ -138,8 +138,7 @@ module.exports = function (options) {
         },
         {
           test: /\.(eot|woff2?|svg|ttf|otf)([\?]?.*)$/,
-          use: 'file-loader',
-          include: [helpers.root('src', 'assets')]
+          use: 'file-loader'
         }
 
       ]
