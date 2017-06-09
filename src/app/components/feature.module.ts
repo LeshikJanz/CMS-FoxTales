@@ -15,7 +15,7 @@ import { MainNavigationComponent } from './navigations/main-navigation/main-navi
 import { EventComponent } from './event/event.component';
 import { CheckboxComponent } from './toggles/checkbox/checkbox.component';
 import { DropDownComponent } from './dropdowns/dropdown/dropdown.component';
-
+import { BsDropdownModule, ModalModule } from 'ngx-bootstrap';
 import { ActionDropDownComponent } from './dropdowns/action-dropdown/action-dropdown.component';
 import { ProfileImgComponent } from './profile-img/profile-img.component';
 import {
@@ -36,9 +36,7 @@ import {
   from './navigations/experience-builder-navigation/experience-builder-navigation.component';
 
 // UI components from ngx-bootstrap
-import { BsDropdownModule } from 'ngx-bootstrap';
 import { TabsModule } from 'ngx-bootstrap';
-import { ModalModule } from 'ngx-bootstrap';
 
 import { ColorPickerModule } from 'ngx-color-picker';
 import { TimepickerModule } from 'ngx-bootstrap';
@@ -71,14 +69,20 @@ import { FavoriteGalleryComponent } from '../gallery/favorite-gallery/favorite-g
 import { GalleryItemListComponent } from '../gallery-items/list/gallery-item-list.component';
 import { GalleryService } from '../gallery/gallery.service';
 import { DownloadModalComponent } from './modals/download-modal/download-modal.component';
-import { BrowserModule } from '@angular/platform-browser';
 import { VgCoreModule } from 'videogular2/core';
 import { VgControlsModule } from 'videogular2/controls';
 import { VgOverlayPlayModule } from 'videogular2/overlay-play';
 import { VgBufferingModule } from 'videogular2/buffering';
 import { DeviceInfoComponent } from './device-info/device-info.component';
+import { FoxSelectComponent } from './dropdowns/fox-select/fox-select.component';
+import { SelectModule } from 'ng2-select';
 import { ClientService } from '../client/client.service';
 import { ChartModule } from 'angular2-highcharts';
+
+import { PaginationModule } from 'ngx-bootstrap/pagination';
+import { SearchInputComponent } from './search/search-input.component';
+import { ExperienceComponent } from './experience/experience.component';
+import { IconButtonComponent } from './buttons/icon-button/icon-button.component';
 
 @NgModule({
   imports: [
@@ -98,9 +102,12 @@ import { ChartModule } from 'angular2-highcharts';
     VgControlsModule,
     VgOverlayPlayModule,
     VgBufferingModule,
+    SelectModule,
     ToastrModule.forRoot(),
     ToastContainerModule.forRoot(),
-    ChartModule.forRoot(require('highcharts'))
+    ChartModule.forRoot(require('highcharts')),
+    ToastContainerModule.forRoot(),
+    PaginationModule.forRoot()
   ],
   providers: [
     GalleryService,
@@ -137,7 +144,11 @@ import { ChartModule } from 'angular2-highcharts';
     FavoriteGalleryComponent,
     GalleryItemListComponent,
     DownloadModalComponent,
-    DeviceInfoComponent
+    DeviceInfoComponent,
+    FoxSelectComponent,
+    SearchInputComponent,
+    ExperienceComponent,
+    IconButtonComponent
   ],
   exports: [
     CreationButtonComponent,
@@ -172,7 +183,11 @@ import { ChartModule } from 'angular2-highcharts';
     FavoriteGalleryComponent,
     GalleryItemListComponent,
     DownloadModalComponent,
-    DeviceInfoComponent
+    DeviceInfoComponent,
+    FoxSelectComponent,
+    SearchInputComponent,
+    ExperienceComponent,
+    IconButtonComponent
   ]
 })
 

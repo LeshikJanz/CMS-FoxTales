@@ -1,30 +1,33 @@
 <div class="event-container">
-    <div>
-        <div class="main-info">
-            <checkbox></checkbox>
-            <div>
-                <div>
-                    <img *ngIf="status === -1" src="../../../assets/img/attention.svg" alt="">
-                    <img *ngIf="status === 1" src="../../../assets/img/complete.svg" alt="">
-                    <label class="name">{{event.name}}</label>
-                    <label class="date">{{ event.startTime | date}}</label>
-                    <label *ngIf="event.tags.length > 0">#{{event.tags}}</label>
-                    <a style="text-decoration: none" [routerLink]="['/event', event.id, 'experiences']">link to
-                        experience </a>
-                </div>
-                <div class="experience">
-                    <label name="experiences">
-                        {{ event.experiences.length}} Experiences
-                    </label>
-                </div>
-            </div>
+  <div>
+    <div class="main-info">
+      <checkbox></checkbox>
+      <div>
+        <div>
+          <img *ngIf="status === -1" src="../../../assets/img/attention.svg" alt="">
+          <img *ngIf="status === 1" src="../../../assets/img/complete.svg" alt="">
+          <a [routerLink]="['/event', event.id, 'experiences']" class="event-name">{{event.name}}</a>
+          <label class="date">{{ event.startTime | date}}</label>
+          <label *ngFor="let tag of event.tags">#{{tag}} </label>
         </div>
+        <label name="experiences">
+          {{ event.experiences.length}} Experiences
+        </label>
+      </div>
     </div>
-    <fox-button *ngIf="eventActions.length === 1"
-                [value]="eventActions[0].action"
-                [design]="'gray'"></fox-button>
-    <action-dropdown *ngIf="eventActions.length > 1" style="align-self: center" [options]="eventActions"
-                     (typeChanged)="onTypeChanged({action: event, event: $event})"></action-dropdown>
+  </div>
+  <fox-button *ngIf="eventActions.length === 1"
+              [routerLink]="['/events/edit-event', this.event['id']]"
+              [value]="eventActions[0].action"
+              [design]="'gray'"></fox-button>
+
+  <table-dropdown
+    *ngIf="eventActions.length > 1"
+    [title]="'Action'"
+    [options]="eventActions"
+    [size]="'medium'"
+    (typeChanged)="onActionChanged(event, $event)"
+  ></table-dropdown>
 </div>
 
 

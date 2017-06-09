@@ -1,0 +1,83 @@
+.experience-container {
+  margin: inherit;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 85px;
+  border-bottom: medium solid #b2bac4;
+  border-width: 1px;
+
+  .actions {
+    display: flex;
+    icon-button {
+      padding-right: 0;
+    }
+  }
+
+  checkbox {
+    height: 32px;
+    width: 32px;
+    font-size: 14px;
+  }
+
+  .main-info {
+    display: flex;
+
+    .second-level {
+      font-family: WorkSans;
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 1;
+      letter-spacing: 0.6px;
+      color: #b2bac4;
+    }
+
+    & > * {
+      margin-right: 20px;
+    }
+
+    .experience-name {
+      font-size: 26px;
+      font-family: Avenir-Book;
+      line-height: 1.38;
+      color: #343a40;
+    }
+
+    & :first-child {
+      > * {
+        margin: auto;
+        margin-right: 20px;
+        padding-bottom: 5px;
+      }
+
+      display: flex;
+      align-items: center;
+
+      img {
+        height: 35px;
+        width: 35px;
+      }
+
+      label {
+        font-family: WorkSans;
+        font-size: 12px;
+        font-weight: 600;
+        line-height: 1;
+        letter-spacing: 0.6px;
+        color: #b2bac4;
+        margin-bottom: 5px;
+      }
+    }
+  }
+
+  table-dropdown {
+    margin-left: 30px;
+  }
+
+  fox-button {
+    height: 36px;
+    width: 118px;
+    font-size: 14px;
+    align-self: center;
+  }
+}

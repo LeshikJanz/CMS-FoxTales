@@ -5,8 +5,28 @@ $mid-height: 38px;
 $big-width: 177px;
 $big-height: 38px;
 
+ul.dropdown-menu {
+  min-width: $small-width;
+
+  li {
+    height: 36px;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    cursor: pointer;
+    font-family: WorkSans;
+    font-size: 16px;
+    color: #343a40;
+  }
+
+  li:hover {
+    color: #f57f17;
+  }
+}
+
 .btn.drop-button {
   display: inline-flex;
+  cursor: pointer;
   justify-content: space-between;
   padding-top: 4%;
   border-radius: 0;
@@ -34,7 +54,12 @@ $big-height: 38px;
   }
 
   label {
+    cursor: pointer;
+    padding-left: 10px;
     font-weight: 100;
+    font-family: WorkSans;
+    font-size: 16px;
+    color: #343a40;
   }
 
   .caret.fox-caret {
@@ -61,9 +86,7 @@ $big-height: 38px;
     }
   }
 
-  .dropdown-menu {
-    min-width: $small-width;
-  }
+
 }
 
 .medium {

@@ -86,7 +86,7 @@ export class ClientEditComponent implements OnInit {
   public socialIntegrations: IClientSocial[] = [
     { id: 1, name: 'Facebook' },
     { id: 2, name: 'Twitter' },
-    { id: 4, name: 'Tumblr' }
+    { id: 5, name: 'Tumblr' }
   ];
 
   /**
@@ -409,8 +409,8 @@ export class ClientEditComponent implements OnInit {
   public auth(social: IClientSocial): void {
     const name: string = social.name.toLocaleLowerCase();
 
-    hello
-      .login(name, { scope: 'publish, photos' }, () => {
+    hello(name)
+      .login({ scope: 'publish, photos' }, () => {
         const response = hello(name).getAuthResponse();
 
         this.clientService

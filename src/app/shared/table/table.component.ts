@@ -5,11 +5,12 @@ import 'rxjs/add/operator/distinctUntilChanged';
 import { ICol } from './col.interface';
 import { ITableAction } from './action.interface';
 import { IActionState } from '../../client/client.interface';
+import { ICheckbox } from '../../components/toggles/checkbox/checkbox.component';
 
 @Component({
   selector: 'data-table',
   templateUrl: './table.component.html',
-  styleUrls: ['./styles/style.scss']
+  styleUrls: ['table.component.scss']
 })
 export class TableComponent implements OnInit {
   /**
@@ -91,6 +92,13 @@ export class TableComponent implements OnInit {
    */
   @Output()
   public actionChanged: EventEmitter<any> = new EventEmitter();
+
+  /**
+   * Table search input value
+   *
+   * @type {string}
+   */
+  public searchValue: string;
 
   /**
    * Search query
@@ -216,6 +224,17 @@ export class TableComponent implements OnInit {
    */
   public clickRow(row: any): void {
     this.rowClicked.emit(row);
+  }
+
+  /**
+   * Emit row clicked event
+   *
+   * @param {any} row
+   * @returns {void}
+   */
+  public onToggle(event: ICheckbox): void {
+    console.log('You chouse');
+    console.log(event);
   }
 
   /**

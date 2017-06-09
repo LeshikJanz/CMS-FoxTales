@@ -20,6 +20,13 @@
   .main-info {
     display: flex;
 
+    .event-name {
+      font-size: 26px;
+      font-family: Avenir-Book;
+      line-height: 1.38;
+      color: #343a40;
+    }
+
     & :first-child {
       > * {
         margin: auto;
@@ -36,21 +43,24 @@
       }
 
       label {
-        font-size: 16px;
-        font-weight: bold;
-        font-family: Avenir-Book;
-        line-height: 1.38;
-        color: #343a40;
+        font-family: WorkSans;
+        font-size: 12px;
+        font-weight: 600;
+        line-height: 1;
+        letter-spacing: 0.6px;
+        color: #b2bac4;
+        margin-bottom: 5px;
       }
     }
   }
-
-  .experience {
-
-    label{
-      font-size: 16px;
-      font-family: Avenir-Book;
-    }
+  label {
+    font-size: 14px;
+    font-family: WorkSans;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: 0.6px;
+    color: #b2bac4;
+    margin-bottom: 0;
   }
 
   fox-button {

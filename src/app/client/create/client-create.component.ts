@@ -15,6 +15,7 @@ import {
 import { Router } from '@angular/router';
 import { CustomValidators } from 'ng2-validation';
 import { MapsAPILoader } from '@agm/core';
+import { ToastrService } from 'ngx-toastr';
 import {  } from '@types/googlemaps';
 import * as moment from 'moment';
 import { IClient } from '../client.interface';
@@ -69,6 +70,22 @@ export class ClientCreateComponent implements OnInit {
   };
 
   /**
+   * Client
+   *
+   * @type {IClient}
+   */
+  public client: IClient = {
+    logo: null,
+    logoBytes: null,
+    name: null,
+    email: null,
+    address: null,
+    phone: null,
+    freshBooks: null,
+    socialAccounts: null
+  };
+
+  /**
    * Base64 logo
    *
    * @type {string}
@@ -88,6 +105,7 @@ export class ClientCreateComponent implements OnInit {
    * @param {MapsAPILoader} mapsAPILoader - Maps API loader
    * @param {NgZone} ngZone - Zone
    * @param {Router} router - Router
+   * @param {ToastrService} toastrService - Toastr service
    * @param {FormBuilder} formBuilder
    * @param {ClientService} clientService - Client service
    * @returns {void}
@@ -96,6 +114,7 @@ export class ClientCreateComponent implements OnInit {
     private mapsAPILoader: MapsAPILoader,
     private ngZone: NgZone,
     private router: Router,
+    private toastrService: ToastrService,
     private formBuilder: FormBuilder,
     private clientService: ClientService
   ) {
@@ -129,8 +148,9 @@ export class ClientCreateComponent implements OnInit {
    *
    * @returns {void}
    */
-  public addSocialAccount(): void {
+  public addSocialAccount(event): void {
     this.socialAccounts.push(new FormControl('', Validators.required));
+    event.preventDefault();
   }
 
   /**
@@ -165,7 +185,14 @@ export class ClientCreateComponent implements OnInit {
 
     this.clientService
       .addClient({ ...client, ...this.clientDetails })
-      .subscribe(() => this.router.navigate(['/admin/clients']));
+      .subscribe((response: any) => {
+        if (response.success) {
+          this.router.navigate(['/admin/clients']);
+          return;
+        }
+
+        this.toastrService.error(response.message);
+      });
   }
 
   /**
@@ -304,12 +331,8 @@ export class ClientCreateComponent implements OnInit {
         CustomValidators.email
       ]],
       address: this.addressControl,
-      phone: ['', [
-        Validators.required
-      ]],
-      freshBooks: ['', [
-        Validators.required
-      ]],
+      phone: ['', ],
+      freshBooks: ['', ],
       socialAccounts: new FormArray([])
     });
 

@@ -157,7 +157,7 @@ export class ClientService {
       `${process.env.API_URL}/SocialIntegrations/${platformId}/${integrationId}`
     ).map((response: Response) => {
       const tokenData = response.json();
-      return tokenData.token;
+      return (tokenData) ? tokenData.token : '';
     });
   }
 }

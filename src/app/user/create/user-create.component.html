@@ -1,4 +1,5 @@
 <div class="user-container">
+  <a href="javascript:void(0)" [routerLink]="['/admin/users']">Back to all Users</a>
 
   <form
     (ngSubmit)="addUser(userForm.value)"
@@ -8,7 +9,7 @@
     <div class="form-group" [formGroup]="userForm">
       <!-- Email -->
       <div class="form-element">
-      <label for="email">Email/Username*</label>
+        <label for="email">Email/Username*</label>
         <input
           id="email"
           type="email"
@@ -25,29 +26,22 @@
         </div>
       </div>
 
-      <!-- Client Access -->
+       <!--Client Access -->
       <div class="form-element">
-        <label for="clientId">Client Access</label>
-        <select
-          id="clientId"
-          formControlName="clientId">
-          <option [ngValue]="null">Select</option>
-          <option *ngFor="let client of clients; let i = index" [selected]="0 === i" [ngValue]="client.id">{{ client.name }}</option>
-        </select>
-
-        <div class="field-error" ngxErrors="clientId">
-          <div ngxError="required" when="touched">
-            Field is required
-          </div>
-        </div>
+        <label>Client Access*</label>
+        <fox-select
+          (change)="clientId = $event.id"
+          [items]="clients"
+        >
+        </fox-select>
       </div>
+
     </div>
 
-    <div>
-      <button
-        type="submit"
-        [disabled]="userForm.invalid"
-        class="create-button">DONE</button>
-    </div>
+      <fox-button
+        [value]="'Done'"
+        [disabled]="isFormInvalid()"
+        [design]="'special'"
+      ></fox-button>
   </form>
 </div>

@@ -1,8 +1,11 @@
 <div class="login-container">
   <fox-button
     class="login-btn"
+    *ngIf="!loggedIn()"
     (click)="login()"
     [value]="'Login'"
     [design]="'tertiary'"
   ></fox-button>
 </div>
+
+<div *ngIf="loggedIn()">Redirecting ...</div>

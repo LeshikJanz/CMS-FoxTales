@@ -23,8 +23,7 @@ hello.init({
   twitter: process.env.TWITTER_ID,
   tumblr: process.env.TUMBLR_ID
 }, {
-  oauth_proxy: process.env.AUTH_PROXY,
-  redirect_uri: '/#/redirect'
+  oauth_proxy: process.env.AUTH_PROXY
 });
 
 /*

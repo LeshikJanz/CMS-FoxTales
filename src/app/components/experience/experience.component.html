@@ -1,0 +1,46 @@
+<div class="experience-container">
+  <div>
+    <div class="main-info">
+      <checkbox [name]="'first'"
+                (toggle)="checkbox=$event">
+      </checkbox>
+      <div>
+        <div>
+          <a [routerLink]="['/experience', experience.id, 'content']" class="experience-name">{{experience.name}}</a>
+          <label *ngFor="let brand of experience.brands">#{{brand}} ></label>
+        </div>
+        <div class="second-level">
+          Live
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="actions">
+    <icon-button
+      [type]="'Content'"
+    ></icon-button>
+    <icon-button
+      [type]="'Email'"
+    ></icon-button>
+    <icon-button
+      [type]="'Feeds'"
+    ></icon-button>
+    <icon-button
+      [type]="'Gallery'"
+    ></icon-button>
+    <icon-button
+      [type]="'Interface'"
+    ></icon-button>
+    <icon-button
+      [type]="'Social'"
+    ></icon-button>
+    <table-dropdown
+      *ngIf="experienceActions.length > 1"
+      [title]="'Action'"
+      [options]="experienceActions"
+      [size]="'medium'"
+      (typeChanged)="onActionChanged(event, $event)"
+    ></table-dropdown>
+  </div>
+</div>

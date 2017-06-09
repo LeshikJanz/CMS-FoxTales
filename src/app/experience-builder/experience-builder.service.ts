@@ -61,16 +61,11 @@ export class ExperienceBuilderService {
   }
 
   public postUIBuilderSettings(config) {
-    // let header = new Headers({ 'Content-Type': 'application/json' });
-    // let headerOptions = new RequestOptions({ headers: header });
-    // let temp = JSON.stringify(config).replace(/"/g, '\\"');
-    let temp = JSON.stringify(config)
-    console.log(JSON.stringify(temp))
     return this.http.post(`${process.env.API_URL}/Experiences/`
-      + this.experience.experienceId + `/config`,config)
+      + this.experience.experienceId + `/config`, config)
       .map((response: Response) => {
-        console.log(response)
-          return response;
+        console.log(response);
+        return response;
       });
   }
 }

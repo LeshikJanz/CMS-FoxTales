@@ -1,5 +1,6 @@
-import { Component, Output, EventEmitter, Input, OnInit } from '@angular/core';
+import { Component, Output, EventEmitter, Input, OnInit, ViewChild } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
+import { ModalDirective } from 'ngx-bootstrap/modal';
 import { IGalleryItem } from '../../gallery/gallery-item.interface';
 import { GalleryService } from '../../gallery/gallery.service';
 import hello from 'hellojs';
@@ -11,10 +12,19 @@ import 'rxjs/Rx' ;
 @Component({
   selector: 'thumbnail',
   templateUrl: 'thumbnail.component.html',
-  styleUrls: [ 'thumbnail.component.scss' ]
+  styleUrls: ['thumbnail.component.scss']
 })
 export class ThumbnailComponent implements OnInit {
+  @ViewChild('shareModal')
+  public shareModal: ModalDirective;
+
   public isChecked: boolean = false;
+
+  public isInfoOpen: boolean = false;
+
+  public selectedNetwork: string;
+
+  public selectedMedia: IGalleryItem;
 
   @Input() public item: IGalleryItem;
 
@@ -41,7 +51,7 @@ export class ThumbnailComponent implements OnInit {
   }
 
   public onPlayerReady(event) {
-    event.play();
+    console.log('onPlayerReady');
   }
 
   public onChecked(event) {
@@ -77,25 +87,70 @@ export class ThumbnailComponent implements OnInit {
     }
   }
 
+  public selectMediaToShare(media: IGalleryItem, network: string): void {
+    this.selectedMedia = media;
+    this.selectedNetwork = network;
+    this.shareModal.show();
+  }
+
   /**
    * Share to social platforms
    *
-   * @param {IGalleryItem} item - Gallery item
-   * @param {string} network - Social network name
+   * @param {string} comment - Comment
    * @returns {void}
    */
-  public share(item: IGalleryItem, network: string): void {
-    const social = hello(network);
+  public share(comment: string): void {
+    const social = hello(this.selectedNetwork);
 
-    social.login({force: false}, () => {
-      social.api('me/share', 'post', {
-        message: '',
-        picture: item.mediaPath
-      }).then(() => {
-        this.toastrService.success('Image has been published successfully.');
-      }, (r) => {
-        this.toastrService.error(`Unable to publish image. ${r.error.message}`);
-      });
-    });
+    if ('tumblr' === this.selectedNetwork) {
+      social
+        .api('me')
+        .then((response) => {
+          const name = response['name'];
+
+          social
+            .api(`blog/${name}/post`, 'post', {
+              type: 'photo',
+              caption: comment,
+              source: this.selectedMedia.mediaPath
+            })
+            .then(this.shareSuccessCallback, this.shareErrorCallback);
+        });
+    } else {
+      social
+        .api('me/share', 'post', {
+          message: comment,
+          link: this.selectedMedia.mediaPath
+        })
+        .then(this.shareSuccessCallback, this.shareErrorCallback);
+    }
+  }
+
+  /**
+   * Share success callback
+   *
+   * @param {any} response - Response
+   * @returns {void}
+   */
+  public shareSuccessCallback(response: any): void {
+    if ('undefined' !== typeof response['error']
+      || ('undefined' !== typeof response['errors'] && response['errors'].length)) {
+      this.toastrService.error(`Unable to publish image.`);
+    } else {
+      this.toastrService.success('Image has been published successfully.');
+    }
+
+    this.shareModal.hide();
+  }
+
+  /**
+   * Share error callback
+   *
+   * @param {any} response - Response
+   * @returns {void}
+   */
+  public shareErrorCallback(response: any): void {
+    this.toastrService.error(`Unable to publish image. ${response.error.message}`);
+    this.shareModal.hide();
   }
 }
