@@ -53,4 +53,5 @@ export interface IEventGallery {
 export interface IEventFilter {
   sortBy?: string;
   sortAscending?: boolean;
+  ignoreEventGroupFilter?: boolean;
 }

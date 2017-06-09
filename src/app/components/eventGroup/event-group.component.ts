@@ -4,6 +4,7 @@ import { IEventGroup } from '../../event-groups/list/event-groups.interaface';
 import * as moment from 'moment';
 import { IEvent } from '../../event/event.interface';
 import { Router } from '@angular/router';
+import { ITableAction } from "../../shared/table/action.interface";
 
 @Component({
   selector: 'event-group',
@@ -37,12 +38,12 @@ export class EventGroupComponent {
   /**
    * Actions for each event group
    *
-   * @type {IActionState[]}
+   * @type {ITableAction[]}
    */
-  public groupActions: IActionState[] = [
-    {id: 1, action: 'EDIT', callback: 'editEventGroup'},
-    {id: 2, action: 'CONFIGURE GALLERY', callback: 'configureGallery'},
-    {id: 3, action: 'ADD EVENTS TO GROUP', callback: 'addEventsToGroup'}
+  public groupActions: ITableAction[] = [
+    {id: 1, title: 'Edit', callback: 'editEventGroup'},
+    {id: 2, title: 'Configure gallery', callback: 'configureGallery'},
+    {id: 3, title: 'Add events to group', callback: 'addEventsToGroup'}
   ];
 
   /**
@@ -83,24 +84,25 @@ export class EventGroupComponent {
   }
 
   /**
-   * Handler on switching menu actions
+   * Add events to group
    *
-   * @param{any} - {IEvent, IActionState}
+   * @param {IEventGroup} group - event group
    * @return {void}
    */
-  public onTypeChanged(elem) {
-    switch (elem.event.id) {
-      case 1:
-        this.editEventGroup(elem.group);
-        break;
-      case 2:
-        console.log('Configure Gallery');
-        break;
-      case 3:
-        this.modal.show(elem.group);
-        break;
-      default:
-        break;
+  public addEventsToGroup(group: IEventGroup) {
+    this.modal.show(group);
+  }
+
+  /**
+   * On event group action changed
+   *
+   * @param eventGroup
+   * @param {IActionState} action - event group action
+   * @return {void}
+   */
+  public onActionChanged(eventGroup: IEventGroup, action: IActionState) {
+    if (this[action.callback]) {
+      this[action.callback](eventGroup);
     }
   }
 
