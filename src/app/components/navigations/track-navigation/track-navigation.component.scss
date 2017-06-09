@@ -94,12 +94,10 @@
 
 /*Toggle*/
 
-.slidemenu .slide-toggle:checked + label{
+.slidemenu .slide-toggle:checked + label span {
   opacity: 1;
   color: #f57f17;
 }
-
-
 
 .slidemenu #slide-item-1:checked ~ .slider .bar{ margin-left: 3%; }
 .slidemenu #slide-item-2:checked ~ .slider .bar{ margin-left: 13%; }
