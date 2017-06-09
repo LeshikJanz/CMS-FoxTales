@@ -21,6 +21,7 @@ import { AuthGuard, AuthService, PermissionService } from './shared/core';
 import { NoContentComponent } from './no-content';
 import { ProfileComponent, ProfileService } from './profile';
 import { ForbiddenComponent } from './forbidden';
+import { DashboardComponent } from './dashboard';
 
 import './../../node_modules/videogular2/fonts/videogular.css';
 import '../styles/styles.scss';
@@ -53,7 +54,8 @@ type StoreType = {
     AppComponent,
     ProfileComponent,
     NoContentComponent,
-    ForbiddenComponent
+    ForbiddenComponent,
+    DashboardComponent
   ],
   imports: [ // import Angular's modules
     BrowserAnimationsModule,
