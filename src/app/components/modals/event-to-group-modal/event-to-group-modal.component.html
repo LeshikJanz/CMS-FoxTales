@@ -12,10 +12,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <fox-input style="width: 300px; height: 65px;"
-                   [title]="'title'" (Change)="onSearchChange($event)"></fox-input>
-        <!--<input type="text" name="search" placeholder="search for a group" [(ngModel)]="search"-->
-               <!--(ngModelChange)="onSearchChange($event)">-->
+        <search-input [title]="'title'" (Change)="onSearchChange($event)"></search-input>
         <hr>
         <scroll [options]="eventGroupList" (chose)="selectedGroup = $event"></scroll>
         <hr>

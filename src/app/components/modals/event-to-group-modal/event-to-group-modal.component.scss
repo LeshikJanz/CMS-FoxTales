@@ -12,6 +12,11 @@
 
 .modal-body {
 
+  search-input {
+    width: 100%;
+    height: 65px;
+  }
+
   tag-input {
     padding-top: 30px;
   }
@@ -56,6 +61,7 @@ input {
   padding-left: 50px;
   color: #b2bac4;
 }
+
 input:focus {
   border-color: green
 }
