@@ -2,6 +2,7 @@ import { Component, Input, OnChanges } from '@angular/core';
 import { IActionState } from '../../client/client.interface';
 import { Router } from '@angular/router';
 import { IEvent, IExperience } from '../../event/event.interface';
+import { RouteData } from '../../shared/core/routing/route-data.service';
 
 @Component({
   selector: 'experience',
@@ -82,7 +83,10 @@ export class ExperienceComponent implements OnChanges {
    */
   public isChecked: boolean = false;
 
-  constructor(private router: Router) {}
+  constructor(private _routeData: RouteData){
+    _routeData.name.next('Experience List');
+  }
+
 
   /**
    * On event action changed

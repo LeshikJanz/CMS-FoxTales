@@ -3,7 +3,6 @@
 <div class="list-container">
   <div class="list-menu">
     <div>
-      <h2 class="main-label">Experience List</h2>
       <div>
         <label>Sort by</label>
         <dropdown
@@ -23,7 +22,8 @@
     </div>
 
   </div>
-  <experience *ngFor="let experience of Experience" [experience]="experience"></experience>
+  <experience *ngFor="let experience of Experience" [experience]="experience"
+              [experienceActions]="experienceActions"></experience>
   <div>
     <div class="experience-container">
       <div>

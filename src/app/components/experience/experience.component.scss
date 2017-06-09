@@ -7,8 +7,11 @@
   border-bottom: medium solid #b2bac4;
   border-width: 1px;
 
-  & :first-child {
-    margin-right: 20px;
+  .actions {
+    display: flex;
+    icon-button {
+      padding-right: 0;
+    }
   }
 
   checkbox {
@@ -17,12 +20,21 @@
     font-size: 14px;
   }
 
-  .actions {
-    display: flex;
-  }
-
   .main-info {
     display: flex;
+
+    .second-level {
+      font-family: WorkSans;
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 1;
+      letter-spacing: 0.6px;
+      color: #b2bac4;
+    }
+
+    & > * {
+      margin-right: 20px;
+    }
 
     .experience-name {
       font-size: 26px;
@@ -53,17 +65,13 @@
         line-height: 1;
         letter-spacing: 0.6px;
         color: #b2bac4;
-        margin-bottom: 0;
+        margin-bottom: 5px;
       }
     }
   }
 
-  .experience {
-
-    label{
-      font-size: 16px;
-      font-family: Avenir-Book;
-    }
+  table-dropdown {
+    margin-left: 30px;
   }
 
   fox-button {

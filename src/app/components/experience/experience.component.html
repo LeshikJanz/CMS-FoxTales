@@ -6,9 +6,10 @@
       </checkbox>
       <div>
         <div>
-          <a class="experience-name">{{experience.name}}</a>
+          <a [routerLink]="['/experience', experience.id, 'content']" class="experience-name">{{experience.name}}</a>
+          <label *ngFor="let brand of experience.brands">#{{brand}} ></label>
         </div>
-        <div>
+        <div class="second-level">
           Live
         </div>
       </div>
@@ -34,5 +35,12 @@
     <icon-button
       [type]="'Social'"
     ></icon-button>
+    <table-dropdown
+      *ngIf="experienceActions.length > 1"
+      [title]="'Action'"
+      [options]="experienceActions"
+      [size]="'medium'"
+      (typeChanged)="onActionChanged(event, $event)"
+    ></table-dropdown>
   </div>
 </div>
