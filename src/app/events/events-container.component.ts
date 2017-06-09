@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Router } from '@angular/router';
+import { RouteData } from '../shared/core/routing/route-data.service';
 
 @Component({
   selector: 'events',
@@ -7,5 +7,7 @@ import { Router } from '@angular/router';
 })
 
 export class EventsComponent {
-  constructor(private router: Router) {}
+  constructor(private _routeData: RouteData) {
+    _routeData.name.next('Event Management');
+  }
 }

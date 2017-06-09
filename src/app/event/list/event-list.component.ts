@@ -3,6 +3,8 @@ import { EventService } from '../event.service';
 import { IActionState } from '../../client/client.interface';
 import { EventGroupsService } from '../../event-groups/list/event-groups.service';
 import { IEventFilter } from '../event.interface';
+import { ITableAction } from '../../shared/table/action.interface';
+import { RouteData } from '../../shared/core/routing/route-data.service';
 
 /**
  * Event list component
@@ -30,14 +32,16 @@ export class EventListComponent implements OnInit {
   /**
    *  Event actions
    *
-   * @type {IActionState[]}
+   * @type {ITableAction[]}
    */
-  public eventActions: IActionState[] = [
-    {id: 1, action: 'SETTINGS'},
-    {id: 2, action: 'CLONE'},
-    {id: 3, action: 'ARCHIEVE'},
-    {id: 4, action: 'ADD TO GROUP'},
-    {id: 5, action: 'ASSIGN USERS'},
+  public eventActions: ITableAction[] = [
+    { id: 1, title: 'EDIT', callback: 'onEdit' },
+    { id: 2, title: 'CLONE', callback: 'onClone' },
+    { id: 3, title: 'ARCHIEVE', callback: 'onArchieve' },
+    { id: 4, title: 'ADD TO GROUP', callback: 'onAddToGroup' },
+    { id: 5, title: 'ASSIGN USERS', callback: 'onAssignUsers' },
+    {id: 6, title: 'RECAP REPORT', callback: 'onRecapReport'},
+    {id: 7, title: 'EXPORT CRM DATA', callback: 'onExportCrmData'}
   ];
 
   /**
@@ -56,16 +60,17 @@ export class EventListComponent implements OnInit {
    * @type {IActionState[]}
    */
   public sortActions: IActionState[] = [
-    {id: 1, action: 'Upcoming', callback: 'onUpcomingSort'},
-    {id: 2, action: 'Descending', callback: 'onDescendingSort'},
-    {id: 3, action: 'Start date', callback: 'onStartDateSort'},
-    {id: 4, action: 'End date', callback: 'onEndDateSort'},
+    { id: 1, action: 'Upcoming', callback: 'onUpcomingSort' },
+    { id: 2, action: 'Descending', callback: 'onDescendingSort' },
+    { id: 3, action: 'Start date', callback: 'onStartDateSort' },
+    { id: 4, action: 'End date', callback: 'onEndDateSort' },
   ];
 
   constructor(private eventService: EventService,
-              private eventGroupsService: EventGroupsService) {
+              private eventGroupsService: EventGroupsService,
+              private _routeData: RouteData) {
+    _routeData.name.next('Event Management');
   }
-
   public ngOnInit(): void {
     this.getEvents();
     this.getEventGroups();
@@ -77,7 +82,7 @@ export class EventListComponent implements OnInit {
    * @returns {void}
    */
   public onUpcomingSort() {
-    const filter = {sortBy: 'Name', sortAscending: true};
+    const filter = { sortBy: 'Name', sortAscending: true };
     this.getEvents(filter);
   }
 
@@ -87,7 +92,7 @@ export class EventListComponent implements OnInit {
    * @returns {void}
    */
   public onDescendingSort() {
-    const filter = {sortBy: 'Name', sortAscending: false};
+    const filter = { sortBy: 'Name', sortAscending: false };
     this.getEvents(filter);
   }
 
@@ -106,7 +111,7 @@ export class EventListComponent implements OnInit {
    * @returns {void}
    */
   public onEndDateSort() {
-    const filter = {sortBy: 'EndTime', sortAscending: true};
+    const filter = { sortBy: 'EndTime', sortAscending: true };
     this.getEvents(filter);
   }
 
@@ -130,6 +135,15 @@ export class EventListComponent implements OnInit {
    */
   public onActionChanged(action: any): void {
     console.log('onActionChanged');
+  }
+  /**
+   * On search changed
+   *
+   * @param {string} event - Search string
+   * @returns {void}
+   */
+  public onSearchChange(event: string): void {
+    console.log('onSearchChange');
   }
 
   /**

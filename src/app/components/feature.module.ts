@@ -29,6 +29,18 @@ import {
   EventsNavigationComponent
 }
   from './navigations/events-navigation/events-navigation.component';
+
+import {
+  ExperienceBuilderNavigationComponent
+}
+  from './navigations/experience-builder-navigation/experience-builder-navigation.component';
+
+// UI components from ngx-bootstrap
+import { TabsModule } from 'ngx-bootstrap';
+
+import { ColorPickerModule } from 'ngx-color-picker';
+import { TimepickerModule } from 'ngx-bootstrap';
+
 import { EventGroupComponent } from './eventGroup/event-group.component';
 import { FoxInputComponent } from './input/fox-input.component';
 import { EventTagComponent } from './eventTag/event-tag.component';
@@ -45,6 +57,10 @@ import {
   EventToGroupModalComponent
 }
   from './modals/event-to-group-modal/event-to-group-modal.component';
+
+  import { DatepickerModule } from 'ngx-bootstrap';
+  import { AngularFontAwesomeModule } from 'angular-font-awesome/angular-font-awesome';
+
 import { ThumbnailComponent } from './thumbnail/thumbnail.component';
 import {
   EventNavigationComponent
@@ -61,21 +77,37 @@ import { DeviceInfoComponent } from './device-info/device-info.component';
 import { FoxSelectComponent } from './dropdowns/fox-select/fox-select.component';
 import { SelectModule } from 'ng2-select';
 import { ClientService } from '../client/client.service';
+import { ChartModule } from 'angular2-highcharts';
+
+import { PaginationModule } from 'ngx-bootstrap/pagination';
+import { SearchInputComponent } from './search/search-input.component';
+import { ExperienceComponent } from './experience/experience.component';
+import { IconButtonComponent } from './buttons/icon-button/icon-button.component';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     RouterModule.forChild(FEATURE_ROUTES),
     BsDropdownModule.forRoot(),
+    TabsModule.forRoot(),
+    ModalModule.forRoot(),
+    ColorPickerModule,
+    TimepickerModule.forRoot(),
     ModalModule.forRoot(),
     TagInputModule,
+    DatepickerModule.forRoot(),
+    AngularFontAwesomeModule,
     VgCoreModule,
     VgControlsModule,
     VgOverlayPlayModule,
     VgBufferingModule,
     SelectModule,
     ToastrModule.forRoot(),
-    ToastContainerModule.forRoot()
+    ToastContainerModule.forRoot(),
+    ChartModule.forRoot(require('highcharts')),
+    ToastContainerModule.forRoot(),
+    PaginationModule.forRoot()
   ],
   providers: [
     GalleryService,
@@ -86,6 +118,7 @@ import { ClientService } from '../client/client.service';
     UploadButtonComponent,
     DropDownSelectComponent,
     ExperienceNavigationComponent,
+    ExperienceBuilderNavigationComponent,
     AdminNavigationComponent,
     MainNavigationComponent,
     EventNavigationComponent,
@@ -112,7 +145,10 @@ import { ClientService } from '../client/client.service';
     GalleryItemListComponent,
     DownloadModalComponent,
     DeviceInfoComponent,
-    FoxSelectComponent
+    FoxSelectComponent,
+    SearchInputComponent,
+    ExperienceComponent,
+    IconButtonComponent
   ],
   exports: [
     CreationButtonComponent,
@@ -121,6 +157,7 @@ import { ClientService } from '../client/client.service';
     CommonModule,
     FormsModule,
     ExperienceNavigationComponent,
+    ExperienceBuilderNavigationComponent,
     MainNavigationComponent,
     EventNavigationComponent,
     EventsNavigationComponent,
@@ -147,7 +184,10 @@ import { ClientService } from '../client/client.service';
     GalleryItemListComponent,
     DownloadModalComponent,
     DeviceInfoComponent,
-    FoxSelectComponent
+    FoxSelectComponent,
+    SearchInputComponent,
+    ExperienceComponent,
+    IconButtonComponent
   ]
 })
 

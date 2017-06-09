@@ -94,6 +94,13 @@ export class TableComponent implements OnInit {
   public actionChanged: EventEmitter<any> = new EventEmitter();
 
   /**
+   * Table search input value
+   *
+   * @type {string}
+   */
+  public searchValue: string;
+
+  /**
    * Search query
    *
    * @type {Object}

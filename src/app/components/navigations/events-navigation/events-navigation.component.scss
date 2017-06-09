@@ -37,6 +37,12 @@
 
 .slidemenu label span{
   display: block;
+  font-family: WorkSans-Medium;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0.5px;
+  color: #626d78;
   padding: 10px;
 }
 
@@ -88,7 +94,7 @@
 
 /*Toggle*/
 
-.slidemenu .slide-toggle:checked + label{
+.slidemenu .slide-toggle:checked + label span {
   opacity: 1;
   color: #f57f17;
 }

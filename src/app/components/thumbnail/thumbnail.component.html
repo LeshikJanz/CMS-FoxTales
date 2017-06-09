@@ -41,10 +41,13 @@
   <div class="action-menu">
     <img (click)="isInfoOpen = !isInfoOpen" src="../../../assets/img/info.svg">
     <img (click)="downloadItem(item)" src="../../../assets/img/download-icon.svg">
+    <img (click)="selectMediaToShare(item, 'facebook')" src="../../../assets/img/social/facebook.svg">
+    <img (click)="selectMediaToShare(item, 'twitter')" src="../../../assets/img/social/twitter.svg">
+    <img (click)="selectMediaToShare(item, 'tumblr')" src="../../../assets/img/social/tumblr.svg">
 
-    <a href="javascript:void(0)" (click)="selectMediaToShare(item, 'facebook')">facebook</a>
-    <a href="javascript:void(0)" (click)="selectMediaToShare(item, 'twitter')">twitter</a>
-    <a href="javascript:void(0)" (click)="selectMediaToShare(item, 'tumblr')">tumblr</a>
+    <!--<a href="javascript:void(0)" (click)="selectMediaToShare(item, 'facebook')">facebook</a>-->
+    <!--<a href="javascript:void(0)" (click)="selectMediaToShare(item, 'twitter')">twitter</a>-->
+    <!--<a href="javascript:void(0)" (click)="selectMediaToShare(item, 'tumblr')">tumblr</a>-->
   </div>
 </div>
 

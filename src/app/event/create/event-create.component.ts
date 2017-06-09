@@ -1,9 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+
 import { ITag } from '../tag.interface';
 import { EventService } from '../event.service';
 import { MOCK_TAGS } from '../tag.mock';
+import { DateTimePickerModule } from 'ng-pick-datetime';
+import * as moment from 'moment';
 
 @Component({
   selector: 'event-create',
@@ -11,6 +14,13 @@ import { MOCK_TAGS } from '../tag.mock';
   styleUrls: [ './event-create.component.scss' ]
 })
 export class EventCreateComponent implements OnInit {
+      public startMomentTime: string;
+  public startMomentDate: string;
+  public endMomentTime: string;
+  public endMomentDate: string;
+    public isNotificationEnabled: string;
+      public notificationOptions = ['Yes', 'No'];
+
   /**
    * Event form
    *
@@ -80,7 +90,19 @@ export class EventCreateComponent implements OnInit {
    */
   public addEvent(event): void {
     event.tags = event.tags.map((tag: ITag) => tag.name);
-    console.log(event);
+    if (this.isNotificationEnabled === 'Yes') {
+      event['sendNotifications'] = true;
+    }
+    if (this.isNotificationEnabled === 'No' ) {
+      event['sendNotifications'] = false;
+    }
+    event['startTime'] = moment(this.startMomentDate, 'MMM DD').format();
+    event['endTime'] = moment(this.endMomentDate, 'MMM DD').format();
+
+    this.event.createEvent(event).subscribe((response) => {
+      console.log(response);
+      this.router.navigate(['/events/events']);
+    });
   }
 
   /**
@@ -90,10 +112,10 @@ export class EventCreateComponent implements OnInit {
    */
   public buildEventForm(): EventCreateComponent {
     this.eventForm = this.formBuilder.group({
-      eventName: ['', [
+      name: ['', [
         Validators.required
       ]],
-      location: ['', [
+      address: ['', [
         Validators.required
       ]],
       tags: ['', [

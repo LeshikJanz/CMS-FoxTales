@@ -41,7 +41,7 @@ export class GalleryItemListComponent implements OnInit {
   public socialIntegrations: IClientSocial[] = [
     { id: 1, name: 'Facebook' },
     { id: 2, name: 'Twitter' },
-    { id: 4, name: 'Tumblr' }
+    { id: 5, name: 'Tumblr' }
   ];
 
   /**

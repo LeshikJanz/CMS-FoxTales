@@ -20,13 +20,13 @@ export class ExperienceService {
    *
    * Currently using the old endpoints for mock data, will be replacing to process.env.API_URL
    */
-  public getExperiences(id) {
-    return this.http.get('https://foxtalesdev.azurewebsites.net/api/events/' + id)
-      .map((response) => {
-        let temp = response.json();
-        return temp.experiences;
-      });
-  }
+
+    public getExperiences(id) {
+      return this.http.get(`${process.env.API_URL}/Experiences/?eventId=` + id)
+        .map((response: Response) => {
+          return response.json();
+        });
+    }
 
   /**
    * Get tags

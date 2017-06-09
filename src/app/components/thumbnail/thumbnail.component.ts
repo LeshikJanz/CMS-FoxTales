@@ -102,21 +102,55 @@ export class ThumbnailComponent implements OnInit {
   public share(comment: string): void {
     const social = hello(this.selectedNetwork);
 
-    social.api('me/share', 'post', {
-      message: comment,
-      link: this.selectedMedia.mediaPath
-    }).then((response) => {
-      if ('undefined' !== typeof response['error']
-        || ('undefined' !== typeof response['errors'] && response['errors'].length)) {
-        this.toastrService.error(`Unable to publish image.`);
-      } else {
-        this.toastrService.success('Image has been published successfully.');
-      }
+    if ('tumblr' === this.selectedNetwork) {
+      social
+        .api('me')
+        .then((response) => {
+          const name = response['name'];
 
-      this.shareModal.hide();
-    }, (r) => {
-      this.toastrService.error(`Unable to publish image. ${r.error.message}`);
-      this.shareModal.hide();
-    });
+          social
+            .api(`blog/${name}/post`, 'post', {
+              type: 'photo',
+              caption: comment,
+              source: this.selectedMedia.mediaPath
+            })
+            .then(this.shareSuccessCallback, this.shareErrorCallback);
+        });
+    } else {
+      social
+        .api('me/share', 'post', {
+          message: comment,
+          link: this.selectedMedia.mediaPath
+        })
+        .then(this.shareSuccessCallback, this.shareErrorCallback);
+    }
+  }
+
+  /**
+   * Share success callback
+   *
+   * @param {any} response - Response
+   * @returns {void}
+   */
+  public shareSuccessCallback(response: any): void {
+    if ('undefined' !== typeof response['error']
+      || ('undefined' !== typeof response['errors'] && response['errors'].length)) {
+      this.toastrService.error(`Unable to publish image.`);
+    } else {
+      this.toastrService.success('Image has been published successfully.');
+    }
+
+    this.shareModal.hide();
+  }
+
+  /**
+   * Share error callback
+   *
+   * @param {any} response - Response
+   * @returns {void}
+   */
+  public shareErrorCallback(response: any): void {
+    this.toastrService.error(`Unable to publish image. ${response.error.message}`);
+    this.shareModal.hide();
   }
 }

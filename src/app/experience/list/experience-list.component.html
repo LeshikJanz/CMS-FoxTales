@@ -3,31 +3,25 @@
 <div class="list-container">
   <div class="list-menu">
     <div>
-      <h2 class="main-label">Experience List</h2>
-    </div>
-    <div class="create-experience">
-      <button type="button" class="creation-button">
-          <label>Create New Experience</label></button>
-    </div>
-
-  </div>
-  <div *ngFor="let experiences of Experience">
-    <div class="experience-container">
       <div>
-        <div class="main-info">
-          <div>
-            <checkbox></checkbox>
-
-            <img *ngIf="status === -1" src="../../../assets/img/attention.svg" alt="">
-            <img *ngIf="status === 1" src="../../../assets/img/complete.svg" alt="">
-            <a [routerLink]="['/experience', experiences.id, 'content']">{{experiences.name}}</a>
-
-            <!--<a [routerLink]="['/experience', experiences.id, 'content']"><label class="name">{{experiences.name}}</label></a>-->
-            <label *ngFor="let brand of experiences.brands">#{{brand}}</label>
-          </div>
-        </div>
+        <label>Sort by</label>
+        <dropdown
+          [title]="'Start Date'"
+          [options]="sortActions"
+          [size]="'big'"
+          (typeChanged)="onSortChanged($event)"
+        ></dropdown>
       </div>
     </div>
-    <hr>
+    <div class="create-experience">
+      <add-button
+        [routerLink]="['/experience-builder/intro']"
+        [value]="'Create New Experience'"
+      ></add-button>
+      <search-input [title]="'find experience'" (Change)="onSearchChange($event)"></search-input>
+    </div>
+
   </div>
+  <experience *ngFor="let experience of Experience" [experience]="experience"
+              [experienceActions]="experienceActions"></experience>
 </div>

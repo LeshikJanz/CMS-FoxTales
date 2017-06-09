@@ -136,6 +136,10 @@ module.exports = function (options) {
           use: ['style-loader', 'css-loader', 'sass-loader'],
           include: [helpers.root('src', 'styles')]
         },
+        {
+          test: /\.(eot|woff2?|svg|ttf|otf)([\?]?.*)$/,
+          use: 'file-loader'
+        }
 
       ]
 
