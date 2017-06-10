@@ -24,5 +24,7 @@
 
   </div>
   <experience *ngFor="let experience of Experience" [experience]="experience"
-              [experienceActions]="experienceActions"></experience>
+              [experienceActions]="experienceActions" [deleteModal]="deleteModal"></experience>
+
+<experience-delete-modal #deleteModal (delete)="onDeleteExperience()"></experience-delete-modal>
 </div>

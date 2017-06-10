@@ -35,7 +35,7 @@ export class ExperienceListComponent implements OnInit {
   public experienceActions: ITableAction[] = [
     {id: 1, title: 'EDIT', callback: 'onEdit'},
     {id: 2, title: 'CLONE', callback: 'onClone'},
-    {id: 3, title: 'ARCHIEVE', callback: 'onArchieve'},
+    {id: 3, title: 'DELETE', callback: 'onDelete'},
     {id: 4, title: 'ADD TO GROUP', callback: 'onAddToGroup'},
     {id: 5, title: 'ASSIGN USERS', callback: 'onAssignUsers'},
     {id: 6, title: 'RECAP REPORT', callback: 'onRecapReport'},
@@ -89,5 +89,9 @@ export class ExperienceListComponent implements OnInit {
       .subscribe((experiences) => {
         this.Experience = experiences;
       });
+  }
+
+  onDeleteExperience(){
+    this.getExperiences();
   }
 }
