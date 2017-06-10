@@ -17,7 +17,14 @@ export class ExperienceBuilderService {
     backgroundColor: '',
     uiBuilderText: '',
     uiBuilderOptInText: '',
-    uiBuilderThankYouText: ''
+    uiBuilderThankYouText: '',
+    emailBuilderName: '',
+    fromEmailAddress: '',
+    senderName: '',
+    emailSubject: '',
+    emailPreviewText: '',
+    emailBodyText: '',
+    ctaText: ''
     };
 
   /**
@@ -67,5 +74,23 @@ export class ExperienceBuilderService {
         console.log(response);
         return response;
       });
+  }
+
+  public postEmailSettings(){
+    return this.http.post(`${process.env.API_URL}/Experiences/`
+      + this.experience.experienceId + `/emailSettings`, {
+        name: this.experience.emailBuilderName,
+        senderName: this.experience.senderName,
+        senderAddress: this.experience.fromEmailAddress,
+        subject: this.experience.emailSubject,
+        emailBody: this.experience.emailBodyText,
+        previewText: this.experience.emailPreviewText,
+        callToActionText: this.experience.ctaText
+      })
+      .map((response: Response) => {
+        console.log(response);
+        return response;
+      });
+
   }
 }
