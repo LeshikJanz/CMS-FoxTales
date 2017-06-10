@@ -83,6 +83,14 @@ import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { SearchInputComponent } from './search/search-input.component';
 import { ExperienceComponent } from './experience/experience.component';
 import { IconButtonComponent } from './buttons/icon-button/icon-button.component';
+import {
+  EventDeleteModalComponent
+}
+  from './modals/event-delete-modal/event-delete-modal.component';
+  import {
+  ExperienceDeleteModalComponent
+}
+  from './modals/experience-delete-modal/experience-delete-modal.component';
 
 @NgModule({
   imports: [
@@ -148,7 +156,9 @@ import { IconButtonComponent } from './buttons/icon-button/icon-button.component
     FoxSelectComponent,
     SearchInputComponent,
     ExperienceComponent,
-    IconButtonComponent
+    IconButtonComponent,
+    EventDeleteModalComponent,
+    ExperienceDeleteModalComponent
   ],
   exports: [
     CreationButtonComponent,
@@ -187,7 +197,9 @@ import { IconButtonComponent } from './buttons/icon-button/icon-button.component
     FoxSelectComponent,
     SearchInputComponent,
     ExperienceComponent,
-    IconButtonComponent
+    IconButtonComponent,
+    EventDeleteModalComponent,
+    ExperienceDeleteModalComponent
   ]
 })
 
