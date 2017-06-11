@@ -5,9 +5,14 @@
       <th></th>
       <th class="table-header" *ngFor="let col of cols">
         <div>
+          <!--<table-input [title]="col.title" [col]="col"-->
+                       <!--(input)="searchQuery[col.id].next(searchValue)"-->
+                       <!--(Change)="searchValue=$event"-->
+                       <!--(sortChange)="changeSort($event)"-->
+          <!--&gt;</table-input>-->
           <fox-input [title]="col.title" (input)="searchQuery[col.id].next(searchValue)"
                      (Change)="searchValue=$event"></fox-input>
-          <div (click)="changeSort(col)">
+          <div class="sorting" (click)="changeSort(col)">
             <div [class]="col.sort ? 'asc' : 'desc'"></div>
           </div>
         </div>
@@ -18,11 +23,8 @@
     <tbody>
     <tr class="table-row" *ngFor="let row of rows">
       <td>
-        <input
-          type="checkbox"
-          name="checkbox"
-          class="regular-checkbox"
-          [(ngModel)]="row.checked">
+        <checkbox
+            (toggle)="row.checked=$event"></checkbox>
         <br>
       </td>
       <td

@@ -42,7 +42,7 @@ import { ColorPickerModule } from 'ngx-color-picker';
 import { TimepickerModule } from 'ngx-bootstrap';
 
 import { EventGroupComponent } from './eventGroup/event-group.component';
-import { FoxInputComponent } from './input/fox-input.component';
+import { FoxInputComponent } from './input/fox-input/fox-input.component';
 import { EventTagComponent } from './eventTag/event-tag.component';
 import { SwitcherComponent } from './toggles/switcher/switcher.component';
 import { ConfigureButtonComponent } from './buttons/configure-button/configure-button.component';
@@ -83,6 +83,7 @@ import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { SearchInputComponent } from './search/search-input.component';
 import { ExperienceComponent } from './experience/experience.component';
 import { IconButtonComponent } from './buttons/icon-button/icon-button.component';
+import { TableInputComponent } from './input/table-input/table-input.component';
 
 @NgModule({
   imports: [
@@ -148,7 +149,8 @@ import { IconButtonComponent } from './buttons/icon-button/icon-button.component
     FoxSelectComponent,
     SearchInputComponent,
     ExperienceComponent,
-    IconButtonComponent
+    IconButtonComponent,
+    TableInputComponent
   ],
   exports: [
     CreationButtonComponent,
@@ -187,7 +189,8 @@ import { IconButtonComponent } from './buttons/icon-button/icon-button.component
     FoxSelectComponent,
     SearchInputComponent,
     ExperienceComponent,
-    IconButtonComponent
+    IconButtonComponent,
+    TableInputComponent
   ]
 })
 

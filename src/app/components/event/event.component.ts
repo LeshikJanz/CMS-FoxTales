@@ -31,7 +31,7 @@ export class EventComponent {
    * @type {any}
    */
   @Input() public modal: any;
-
+е
   /**
    * Event name
    *
