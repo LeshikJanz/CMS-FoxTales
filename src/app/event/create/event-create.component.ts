@@ -11,7 +11,7 @@ import * as moment from 'moment';
 @Component({
   selector: 'event-create',
   templateUrl: './event-create.component.html',
-  styleUrls: [ './event-create.component.scss' ]
+  styleUrls: [ 'event-create.component.scss' ]
 })
 export class EventCreateComponent implements OnInit {
       public startMomentTime: string;
@@ -34,6 +34,13 @@ export class EventCreateComponent implements OnInit {
    * @type {ITag[]}
    */
   public tags: ITag[];
+
+  /**
+   * Selected Tags
+   *
+   * @type {ITag[]}
+   */
+  @Input() public selectedTags: ITag[];
 
   /**
    * Constructor
@@ -70,7 +77,11 @@ export class EventCreateComponent implements OnInit {
   public getTags(): void {
     this.event
       .getTags()
-      .subscribe((tags: ITag[]) => this.tags = tags);
+      .subscribe((tags: ITag[]) => {
+        this.tags = tags;
+        console.log('this.tags');
+        console.log(this.tags);
+      });
   }
 
   /**

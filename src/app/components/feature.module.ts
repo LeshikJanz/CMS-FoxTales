@@ -42,7 +42,7 @@ import { ColorPickerModule } from 'ngx-color-picker';
 import { TimepickerModule } from 'ngx-bootstrap';
 
 import { EventGroupComponent } from './eventGroup/event-group.component';
-import { FoxInputComponent } from './input/fox-input.component';
+import { FoxInputComponent } from './input/fox-input/fox-input.component';
 import { EventTagComponent } from './eventTag/event-tag.component';
 import { SwitcherComponent } from './toggles/switcher/switcher.component';
 import { ConfigureButtonComponent } from './buttons/configure-button/configure-button.component';
@@ -91,6 +91,7 @@ import {
   ExperienceDeleteModalComponent
 }
   from './modals/experience-delete-modal/experience-delete-modal.component';
+import { TableInputComponent } from './input/table-input/table-input.component';
 
 @NgModule({
   imports: [
@@ -158,7 +159,8 @@ import {
     ExperienceComponent,
     IconButtonComponent,
     EventDeleteModalComponent,
-    ExperienceDeleteModalComponent
+    ExperienceDeleteModalComponent,
+    TableInputComponent
   ],
   exports: [
     CreationButtonComponent,
@@ -199,7 +201,8 @@ import {
     ExperienceComponent,
     IconButtonComponent,
     EventDeleteModalComponent,
-    ExperienceDeleteModalComponent
+    ExperienceDeleteModalComponent,
+    TableInputComponent
   ]
 })
 

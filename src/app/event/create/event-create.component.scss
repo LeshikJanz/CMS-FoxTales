@@ -1,0 +1,139 @@
+.event-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin: 30px 0;
+
+  form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .create {
+    padding-top: 30px;
+  }
+
+  .map {
+
+  }
+}
+
+:host /deep/ .form-element switcher {
+  ul li {
+    width: 100px;
+  }
+}
+
+.form-element {
+  display: flex;
+  flex-direction: column;
+  margin-top: 15px;
+
+  label {
+    font-family: Avenir;
+    font-size: 16px;
+    font-weight: 900;
+    line-height: 2.4;
+    letter-spacing: 1px;
+    color: #343a40;
+  }
+
+  &.dates {
+    display: flex;
+    flex-direction: row;
+
+    .picker-input {
+      max-width: 150px;
+    }
+
+    input {
+      display: block;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    & > div {
+      display: flex;
+      flex-direction: column;
+      width: 190px;
+    }
+  }
+
+  &.location {
+    width: 100%;
+
+    input {
+      width: 90%;
+    }
+  }
+
+  input {
+    width: 300px;
+    height: 65px;
+    font-family: OpenSans;
+    font-size: 18px;
+    color: #3d3d3d;
+    border-radius: 3px;
+    border: solid 1px #3d3d3d;
+    padding-left: 15px;
+  }
+
+  input:focus {
+    border-color: gray;
+  }
+
+  .ng-touched.ng-invalid {
+    border-color: red;
+  }
+
+  .error-text {
+    color: red;
+    font-family: Avenir;
+    font-size: 10px;
+  }
+
+  button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+    height: 88px;
+    border-radius: 6px;
+    background-color: #ffffff;
+    border: dashed 1px #7a8693;
+
+    img {
+      width: 33px;
+      height: 33px;
+    }
+
+    a {
+      margin-left: 10px;
+      font-family: WorkSans;
+      font-size: 16px;
+      line-height: 1;
+      color: #626d78;
+    }
+  }
+
+  .social-accounts {
+    display: flex;
+    padding-bottom: 20px;
+
+    img {
+      margin: 10px;
+    }
+
+    a {
+      align-self: center;
+    }
+  }
+}
+
+fox-button {
+  height: 55px;
+  width: 120px;
+  font-size: 16px;
+}
