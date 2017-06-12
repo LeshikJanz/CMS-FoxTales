@@ -82,10 +82,11 @@ export class EventEditComponent implements OnInit {
         return tag;
       }
     });
-    if (this.isNotificationEnabled === 'Yes') {
+
+    if (this.isNotificationEnabled === 'Yes' || this.defaultNotification === 'Yes') {
       this.defaultNotification = true;
     }
-    if (this.isNotificationEnabled === 'No') {
+    if (this.isNotificationEnabled === 'No' || this.defaultNotification === 'No') {
       this.defaultNotification = false;
     }
 

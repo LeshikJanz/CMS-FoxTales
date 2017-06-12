@@ -33,6 +33,8 @@ export class ExperienceComponent implements OnChanges {
    */
   @Input() public modal: any;
 
+  @Input() public deleteModal: any;
+
   /**
    * Event name
    *
@@ -100,8 +102,19 @@ export class ExperienceComponent implements OnChanges {
     }
   }
 
+    /**
+   * On Delete experience
+   *
+   * @return {void}
+   */
+  public onDelete() {
+    this.deleteModal.show(this.experience);
+    // console.log(this.experience)
+    // this.deleteModal.show(event);
+  }
+
   public ngOnChanges() {
-    console.log('this.experience');
-    console.log(this.experience);
+    // console.log('this.experience');
+    // console.log(this.experience);
   }
 }
