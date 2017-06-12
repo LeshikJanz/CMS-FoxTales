@@ -1,4 +1,5 @@
 import { Component, Output, EventEmitter, Input, OnInit } from '@angular/core';
+import { ISwitcher } from './switcher.interface';
 
 @Component({
   selector: 'switcher',
@@ -7,11 +8,11 @@ import { Component, Output, EventEmitter, Input, OnInit } from '@angular/core';
 })
 
 export class SwitcherComponent implements OnInit {
-  @Input() public type: string;
+  @Input() public type: any;
 
-  @Input() public options: any[];
+  @Input() public options: ISwitcher[];
 
-  @Output() public toggle: EventEmitter<string> = new EventEmitter<string>();
+  @Output() public toggle: EventEmitter<ISwitcher> = new EventEmitter<ISwitcher>();
 
   @Input() public disabled: boolean;
 
@@ -21,7 +22,7 @@ export class SwitcherComponent implements OnInit {
     }
   }
 
-  public onChange(value: any) {
+  public onChange(value: ISwitcher) {
     this.toggle.emit(value);
   }
 }

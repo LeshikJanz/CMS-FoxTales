@@ -7,19 +7,20 @@ import { EventService } from '../event.service';
 import { MOCK_TAGS } from '../tag.mock';
 import { DateTimePickerModule } from 'ng-pick-datetime';
 import * as moment from 'moment';
+import { ISwitcher } from '../../components/toggles/switcher/switcher.interface';
 
 @Component({
   selector: 'event-create',
   templateUrl: './event-create.component.html',
-  styleUrls: [ 'event-create.component.scss' ]
+  styleUrls: ['event-create.component.scss']
 })
 export class EventCreateComponent implements OnInit {
-      public startMomentTime: string;
+  public startMomentTime: string;
   public startMomentDate: string;
   public endMomentTime: string;
   public endMomentDate: string;
-    public isNotificationEnabled: string;
-      public notificationOptions = ['Yes', 'No'];
+  public isNotificationEnabled: string;
+  public notificationOptions: ISwitcher[] = [{id: 1, name: 'Yes'}, {id: 2, name: 'No'}];
 
   /**
    * Event form
@@ -50,11 +51,9 @@ export class EventCreateComponent implements OnInit {
    * @param {EventService} event - Event service
    * @returns {void}
    */
-  constructor(
-    private router: Router,
-    private formBuilder: FormBuilder,
-    private event: EventService
-  ) {
+  constructor(private router: Router,
+              private formBuilder: FormBuilder,
+              private event: EventService) {
   }
 
   /**
@@ -77,11 +76,9 @@ export class EventCreateComponent implements OnInit {
   public getTags(): void {
     this.event
       .getTags()
-      .subscribe((tags: ITag[]) => {
-        this.tags = tags;
-        console.log('this.tags');
-        console.log(this.tags);
-      });
+      .subscribe((tags: ITag[]) =>
+        this.tags = tags
+      );
   }
 
   /**
@@ -105,7 +102,7 @@ export class EventCreateComponent implements OnInit {
     if (this.isNotificationEnabled === 'Yes') {
       event['sendNotifications'] = true;
     }
-    if (this.isNotificationEnabled === 'No' ) {
+    if (this.isNotificationEnabled === 'No') {
       event['sendNotifications'] = false;
     }
     event['startTime'] = moment(this.startMomentDate, 'MMM DD').format();

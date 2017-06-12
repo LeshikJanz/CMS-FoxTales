@@ -1,13 +1,69 @@
 .experience-builder-container {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
+  padding-top: 50px;
 
-  div {
-    padding-bottom: 20px;
+  div:first-child {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
 
-    > p {
-      width: 70%;
+    > div {
+      padding-bottom: 40px;
     }
+
+    .welcome {
+      width: 100%;
+    }
+
+    .routing {
+      display: flex;
+      width: 100%;
+      height: 140px;
+      justify-content: space-between;
+      align-items: center;
+
+      > div {
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+      }
+
+      img {
+        height: 10px;
+        width: 15px;
+      }
+
+      a {
+        font-family: WorkSans;
+        font-weight: 600;
+        line-height: 4;
+        letter-spacing: 0.4px;
+        color: #777c84;
+        font-size: 12px;
+      }
+    }
+  }
+
+  fox-button {
+    height: 40px;
+    width: 130px;
+    font-size: 18px;
+  }
+
+  > div:last-child {
+    align-self: center;
+    width: 20%;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  switcher {
+    font-size: 14px;
+    height: 50px;
+    width: 150px;
   }
 
   > :first-child {
@@ -22,7 +78,7 @@
     font-family: Avenir;
     font-size: 20px;
     font-weight: 900;
-    line-height: 2.4;
+    line-height: 1.8;
     letter-spacing: 1px;
     color: #343a40;
   }
@@ -36,4 +92,78 @@
 .btn.active{
     color:white;
     background-color: #7A8693;
+}
+
+hr {
+  margin-bottom: 0;
+  border: 1px solid #ececec;
+}
+
+.form-element {
+  display: flex;
+  flex-direction: column;
+
+  label {
+    font-family: Avenir;
+    font-size: 16px;
+    font-weight: 900;
+    line-height: 2.4;
+    letter-spacing: 1px;
+    color: #343a40;
+  }
+
+  &.dates {
+    display: flex;
+    flex-direction: row;
+
+    .picker-input {
+      max-width: 150px;
+    }
+
+    input {
+      display: block;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    & > div {
+      display: flex;
+      flex-direction: column;
+      width: 190px;
+    }
+  }
+
+  &.location {
+    width: 100%;
+
+    input {
+      width: 90%;
+    }
+  }
+
+  input {
+    width: 300px;
+    height: 65px;
+    font-family: OpenSans;
+    font-size: 18px;
+    color: #3d3d3d;
+    border-radius: 3px;
+    border: solid 1px #3d3d3d;
+    padding-left: 15px;
+  }
+
+  input:focus {
+    border-color: gray;
+  }
+
+  .ng-touched.ng-invalid {
+    border-color: red;
+  }
+
+  .error-text {
+    color: red;
+    font-family: Avenir;
+    font-size: 10px;
+  }
 }
