@@ -17,12 +17,23 @@
     font-size: 14px;
   }
 
-  & :first-child {
+  > :first-child {
     margin-right: 20px;
   }
 
   .main-info {
     display: flex;
+    width: 100%;
+
+    div:first-child {
+      margin-left: 20px;
+    }
+
+    .brands {
+      display: flex;
+      flex-wrap: wrap;
+      margin-right: 0;
+    }
 
     .event-name {
       font-size: 26px;
@@ -31,16 +42,27 @@
       color: #343a40;
     }
 
-    & :first-child {
+    .main-content {
+      display: flex;
+      align-items: flex-end;
+
       > * {
-        margin: auto;
         margin-right: 20px;
-        padding-bottom: 5px;
       }
 
-      display: flex;
-      align-items: center;
-      flex-wrap: wrap;
+      > label {
+        min-width: 100px;
+      }
+
+      > a {
+        display: block;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+    }
+
+    > * :first-child {
 
       img {
         height: 35px;
@@ -66,6 +88,7 @@
     letter-spacing: 0.6px;
     color: #b2bac4;
     margin-bottom: 0;
+    margin-left: 20px;
   }
 
   fox-button {
