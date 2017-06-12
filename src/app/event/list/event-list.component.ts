@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { ModalDirective } from 'ngx-bootstrap/modal';
 import { EventService } from '../event.service';
 import { IActionState } from '../../client/client.interface';
 import { EventGroupsService } from '../../event-groups/list/event-groups.service';
-import { IEventFilter } from '../event.interface';
+import { IEventFilter, IEvent } from '../event.interface';
 import { ITableAction } from '../../shared/table/action.interface';
 import { RouteData } from '../../shared/core/routing/route-data.service';
+import * as moment from 'moment';
 
 /**
  * Event list component
@@ -16,11 +18,33 @@ import { RouteData } from '../../shared/core/routing/route-data.service';
 })
 export class EventListComponent implements OnInit {
   /**
+   * Clone modal
+   *
+   * @type {ModalDirective}
+   */
+  @ViewChild('cloneModal')
+  public cloneModal: ModalDirective;
+
+  /**
    * Event
    *
    * @type {Event[]}
    */
   public Events: any[];
+
+  /**
+   * Cloned event
+   *
+   * @type {IEvent}
+   */
+  public clonedEvent: IEvent;
+
+  /**
+   * Cloned event start date
+   *
+   * @type {string}
+   */
+  public startDate: string;
 
   /**
    * Event
@@ -174,5 +198,44 @@ export class EventListComponent implements OnInit {
 
   onDeleteEvent(){
     this.getEvents();
+  }
+
+  /**
+   * Clone event action
+   *
+   * @param {IEvent} event - Event
+   * @returns {void}
+   */
+  public onClone(event: IEvent): void {
+    this.cloneModal.show();
+
+    event.name += ' clone';
+
+    this.eventService
+      .cloneEvent(event)
+      .subscribe((clonedEvent: IEvent) => {
+        this.clonedEvent = clonedEvent;
+      });
+  }
+
+  /**
+   * Update cloned event
+   *
+   * @returns {void}
+   */
+  public saveClonedEvent(): void {
+    let requestParams = {
+      id: this.clonedEvent.id,
+      name: this.clonedEvent.name,
+      startTime: moment(this.startDate).toISOString()
+    };
+
+    this.eventService
+      .updateEvent(requestParams)
+      .subscribe(() => {
+        this.clonedEvent = null;
+        this.cloneModal.hide();
+        this.getEvents();
+      });
   }
 }
