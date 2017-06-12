@@ -1,5 +1,13 @@
 <button type="button" class="btn btn-primary" (click)="staticModal.show()">Create New Content</button>
 
+ <gallery-item-list [galleryItems]="galleryItems"></gallery-item-list>
+
+
+
+
+
+
+
 <div class="modal fade" bsModal #staticModal="bs-modal" [config]="{backdrop: 'static'}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
   aria-hidden="true">
   <div class="modal-dialog modal-lg">
@@ -22,7 +30,7 @@
               <div class="btn-group">
                 <label class="btn" [(ngModel)]="contentTypeValue" btnRadio=1>Still</label>
                 <label class="btn" [(ngModel)]="contentTypeValue" btnRadio=2>GIF</label>
-                <label class="btn" [(ngModel)]="contentTypeValue" btnRadio=4>GIF</label>
+                <label class="btn" [(ngModel)]="contentTypeValue" btnRadio=4>Burst</label>
               </div>
 
               <br>
@@ -40,6 +48,13 @@
             <h3>Media Manipulation</h3>
             <upload-button></upload-button>
             <br>
+            <h5>Animated Overlay?</h5>
+
+            <hr>
+            <h3>Blend Mode</h3>
+            select input
+            <br>
+             <upload-button></upload-button>
             <button [type]="'tertiary'" [value]="'Finish'" (click)="Finish()">Finish</button>
           </tab>
         </tabset>
