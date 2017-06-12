@@ -47,6 +47,13 @@
       max-width: 150px;
     }
 
+    input {
+      display: block;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
     & > div {
       display: flex;
       flex-direction: column;

@@ -9,7 +9,7 @@
       </div>
 
       <div class="form-element dates">
-        <div>
+          <div>
           <label>Start Date</label>
           <input class="picker-input" [ngModel]="startMomentDate" [ngModelOptions]="{standalone: true}"
                  [returnObject]=" 'string' "
@@ -50,7 +50,8 @@
       <!--</div>-->
       <div class="form-element">
         <label>Notifications</label>
-        <switcher id="groupGallery" [options]="notificationOptions" (toggle)="isNotificationEnabled=$event"></switcher>
+        <switcher id="groupGallery" [options]="notificationOptions"
+                  (toggle)="isNotificationEnabled=$event"></switcher>
       </div>
       <br>
 

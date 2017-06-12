@@ -17,10 +17,6 @@
     font-size: 14px;
   }
 
-  > :first-child {
-    margin-right: 20px;
-  }
-
   .main-info {
     display: flex;
     width: 100%;
@@ -45,9 +41,10 @@
     .main-content {
       display: flex;
       align-items: flex-end;
+      width: 90%;
 
       > * {
-        margin-right: 20px;
+        //margin-right: 20px;
       }
 
       > label {
