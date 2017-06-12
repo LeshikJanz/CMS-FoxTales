@@ -413,11 +413,27 @@ export class ClientEditComponent implements OnInit {
       .login({ scope: 'publish, photos' }, () => {
         const response = hello(name).getAuthResponse();
 
+        if (!response) {
+          return;
+        }
+
         this.clientService
           .addSocialIntegration(social.id, name, JSON.stringify(response))
           .subscribe(() => {
             this.toastrService.success('Social auth has been updated successfully.');
           });
       });
+  }
+
+  public cancelAuth(social: IClientSocial): void {
+    const name: string = social.name.toLocaleLowerCase();
+
+    hello.logout(name, { force: true }, () => {
+      this.clientService
+        .addSocialIntegration(social.id, name, null)
+        .subscribe(() => {
+          this.toastrService.success('Social auth has been removed successfully.');
+        });
+    });
   }
 }
