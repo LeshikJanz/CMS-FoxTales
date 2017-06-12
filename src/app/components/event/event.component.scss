@@ -1,3 +1,7 @@
+:host /deep/ table-dropdown ul.dropdown-menu {
+  width: 187px !important;
+}
+
 .event-container {
   margin: inherit;
   display: flex;
@@ -36,6 +40,7 @@
 
       display: flex;
       align-items: center;
+      flex-wrap: wrap;
 
       img {
         height: 35px;

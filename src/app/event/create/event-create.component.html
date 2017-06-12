@@ -1,4 +1,4 @@
-<div class="container">
+<div class="event-container">
   <form (ngSubmit)="addEvent(eventForm.value)" class="form" novalidate>
 
     <div [formGroup]="eventForm">
@@ -8,47 +8,62 @@
         <input id="ame" formControlName="name" type="text" placeholder="Event Name">
       </div>
 
+      <div class="form-element dates">
+        <div>
+          <label>Start Date</label>
+          <input class="picker-input" [ngModel]="startMomentDate" [ngModelOptions]="{standalone: true}"
+                 [returnObject]=" 'string' "
+                 [(dateTimePicker)]="startMomentDate" [mode]="'dropdown'" [pickerType]="'date'" placeholder="Start Date"
+                 readonly>
+        </div>
+        <div>
+          <label>End Date</label>
+          <input class="picker-input" [ngModel]="endMomentDate" [ngModelOptions]="{standalone: true}"
+                 [returnObject]=" 'string' " [(dateTimePicker)]="endMomentDate"
+                 [mode]="'dropdown'" [pickerType]="'date'" placeholder="End Date" readonly>
+        </div>
+      </div>
+
       <!-- Location -->
-      <div class="form-element">
+      <div class="form-element location">
         <label for="location">Location</label>
         <input id="address" formControlName="address" type="text" placeholder="Address">
       </div>
 
-      <label>Start Date</label>
-      <input class="picker-input" [ngModel]="startMomentDate" [ngModelOptions]="{standalone: true}" [returnObject]=" 'string' "
-        [(dateTimePicker)]="startMomentDate" [mode]="'dropdown'" [pickerType]="'date'" placeholder="Start Date" readonly>
-      <label>End Date</label>
-      <input class="picker-input" [ngModel]="endMomentDate" [ngModelOptions]="{standalone: true}" [returnObject]=" 'string' " [(dateTimePicker)]="endMomentDate"
-        [mode]="'dropdown'" [pickerType]="'date'" placeholder="End Date" readonly>
-
-
-
-
 
       <!-- Tags -->
-      <!--<div class="form-element">
-        <label>Tags</label>
-        <tag-input formControlName="tags" [transform]="tagTransformer" [maxItems]="10">
-          <tag-input-dropdown [identifyBy]="'id'" [displayBy]="'name'" [autocompleteItems]="tags">
-          </tag-input-dropdown>
-        </tag-input>
-
-        <div ngxErrors="tags">
-          <div class="field-error" ngxError="required" when="touched">
-            Field is required
-          </div>
-        </div>
-      </div>-->
-      <div>
-  <h4>Notifications</h4>
-  <switcher  [options]="notificationOptions" (toggle)="isNotificationEnabled=$event"></switcher>
+      <!--<div class="form-element">-->
+      <!--<label>Tags</label>-->
+      <!--<tag-input-->
+      <!--[transform]="tagTransformer"-->
+      <!--[maxItems]="10"-->
+      <!--[(ngModel)]="selectedTags"-->
+      <!--[ngModelOptions]="{standalone: true}"-->
+      <!--&gt;-->
+      <!--<tag-input-dropdown-->
+      <!--[appendToBody]=false-->
+      <!--[identifyBy]="'id'"-->
+      <!--[displayBy]="'name'"-->
+      <!--[autocompleteItems]="tags">-->
+      <!--</tag-input-dropdown>-->
+      <!--</tag-input>-->
+      <!--</div>-->
+      <div class="form-element">
+        <label>Notifications</label>
+        <switcher id="groupGallery" [options]="notificationOptions" (toggle)="isNotificationEnabled=$event"></switcher>
       </div>
-  <br>
+      <br>
 
-
-      <div>
-        <button type="submit" [disabled]="eventForm.invalid" class="create-button">CREATE</button>
+      <div class="create">
+        <fox-button
+          [value]="'CREATE'"
+          [disabled]="eventForm.invalid"
+          [design]="'special'"
+        ></fox-button>
       </div>
     </div>
   </form>
+  <div class="map">
+    <img src="http://staticmapmaker.com/img/bing.png" alt="Bing map">
+  </div>
 </div>
