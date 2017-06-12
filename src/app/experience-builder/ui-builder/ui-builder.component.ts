@@ -25,11 +25,11 @@ export class UIBuilderComponent {
               private experienceBuilderService: ExperienceBuilderService) {}
 
   public Next() {
-    this.experienceBuilderService.postUIBuilderSettings({
+    this.experienceBuilderService.postUIBuilderSettings({config: JSON.stringify({
       primaryColor: this.primaryColor,
       secondaryColor: this.secondaryColor,
       backgroundColor: this.backgroundColor
-    })
+    })})
     .subscribe((configs) => {
       this.experienceBuilderService.experience.primaryColor = this.primaryColor;
       this.experienceBuilderService.experience.secondaryColor = this.secondaryColor;
@@ -40,14 +40,14 @@ export class UIBuilderComponent {
   };
 
   public finish() {
-    this.experienceBuilderService.postUIBuilderSettings(JSON.stringify({
+    this.experienceBuilderService.postUIBuilderSettings({config: JSON.stringify({
       primaryColor: this.experienceBuilderService.experience.primaryColor,
       secondaryColor: this.experienceBuilderService.experience.secondaryColor,
       backgroundColor: this.experienceBuilderService.experience.backgroundColor,
       engagementText: this.text,
       engagementOptInText: this.optInText,
       engagementThankYouText: this.thankYouText
-    }))
+    })})
     .subscribe((configs) => {
       console.log(configs);
     });

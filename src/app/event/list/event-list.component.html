@@ -25,9 +25,81 @@
     </div>
   </div>
 
-  <event *ngFor="let event of Events" [modal]="atgModal" [event]="event" [eventActions]="eventActions">
+  <event
+    *ngFor="let event of Events"
+    [atgModal]="atgModal"
+    [deleteModal]="deleteModal"
+    [event]="event"
+    [eventActions]="eventActions"
+    (cloneAction)="onClone($event)"
+  >
   </event>
 
   <event-to-group-modal #atgModal [eventGroups]="eventGroups"></event-to-group-modal>
+  <event-delete-modal #deleteModal (delete)="onDeleteEvent()"></event-delete-modal>
 
+</div>
+
+<div
+  bsModal
+  #cloneModal="bs-modal"
+  class="modal fade"
+  tabindex="-1"
+  role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" (click)="cloneModal.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title">
+          <span *ngIf="!isCloned">Clone Event</span>
+          <span *ngIf="isCloned">Event Cloned!</span>
+        </h4>
+      </div>
+      <div class="modal-body">
+        <div *ngIf="showCloneAnimation">Cloning ...</div>
+
+        <div *ngIf="!showCloneAnimation">
+          <div class="form-element">
+            <label>Name</label>
+            <input type="text" [(ngModel)]="cloneName">
+          </div>
+          <div class="form-element">
+            <label>Start Date</label>
+            <input
+              class="picker-input"
+              [ngModel]="cloneStartDate"
+              [returnObject]="'string'"
+              [(dateTimePicker)]="cloneStartDate"
+              [mode]="'dropdown'"
+              [pickerType]="'date'"
+              placeholder="Start Date"
+              readonly>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button
+          *ngIf="!isCloned"
+          [disabled]="!cloneName || !cloneStartDate"
+          type="button"
+          class="btn btn-primary"
+          (click)="saveClone()">Clone</button>
+
+        <button
+          *ngIf="isCloned"
+          [disabled]="!cloneName || !cloneStartDate"
+          type="button"
+          class="btn btn-primary"
+          (click)="updateClone()">Save & Close</button>
+
+        <button
+          *ngIf="isCloned"
+          type="button"
+          class="btn btn-default"
+          [routerLink]="['/events/edit-event', clonedEvent.id]">Edit Event</button>
+      </div>
+    </div>
+  </div>
 </div>

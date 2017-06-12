@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { IActionState } from '../../client/client.interface';
 import { Router } from '@angular/router';
 import { IEvent } from '../../event/event.interface';
@@ -30,7 +30,9 @@ export class EventComponent {
    *
    * @type {any}
    */
-  @Input() public modal: any;
+  @Input() public atgModal: any;
+
+  @Input() public deleteModal: any;
 
   /**
    * Event name
@@ -69,6 +71,14 @@ export class EventComponent {
   @Input() public status: number = 0;
 
   /**
+   * Clone event emitter
+   *
+   * @type {EventEmitter}
+   */
+  @Output()
+  public cloneAction: EventEmitter<any> = new EventEmitter();
+
+  /**
    * is event checked?
    *
    * @type boolean
@@ -84,7 +94,7 @@ export class EventComponent {
    * @return {void}
    */
   public onAddToGroup(event: IEvent) {
-    this.modal.show(event);
+    this.atgModal.show(event);
   }
 
   /**
@@ -97,12 +107,27 @@ export class EventComponent {
   }
 
   /**
+   * On Delete event
+   *
+   * @return {void}
+   */
+  public onDelete(event) {
+    // console.log(event)
+    this.deleteModal.show(event);
+  }
+
+  /**
    * On Recap report
    *
    * @return {void}
    */
   public onRecapReport() {
     this.router.navigate(['/events/recap-report', this.event['id']]);
+  }
+
+
+  public onClone(event: IEvent): void {
+    this.cloneAction.emit(event);
   }
 
   /**

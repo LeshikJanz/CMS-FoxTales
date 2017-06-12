@@ -2,7 +2,8 @@ $small-width: 132px;
 $small-height: 26px;
 $mid-width: 117px;
 $mid-height: 38px;
-$big-width: 177px;
+$big-width: 187px;
+$big-ul-width: 200px;
 $big-height: 38px;
 
 ul.dropdown-menu {
@@ -55,6 +56,7 @@ ul.dropdown-menu {
 
   label {
     cursor: pointer;
+
     padding-left: 10px;
     font-weight: 100;
     font-family: WorkSans;
@@ -109,6 +111,31 @@ ul.dropdown-menu {
   .dropdown-menu {
     min-width:$mid-width;
     width: $big-width;
+  }
+}
+
+
+
+.big-ul {
+  .btn.drop-button {
+    height: $mid-height;
+    width: $mid-width;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.58;
+    color: #626d78;
+
+    .fox-caret {
+      border-width: 0 2px 2px 0;
+      margin-bottom: 5%;
+      margin-right: 1%;
+    }
+  }
+
+  .dropdown-menu {
+    min-width:$mid-width;
+    width: $big-ul-width;
   }
 }
 

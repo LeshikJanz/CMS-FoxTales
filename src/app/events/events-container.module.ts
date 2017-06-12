@@ -12,6 +12,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CustomFormsModule } from 'ng2-validation';
 import { TagInputModule } from 'ng2-tag-input';
+import { Ng2BootstrapModule } from 'ngx-bootstrap';
 import { SharedModule } from '../shared/shared.module';
 import { EventService } from '../event/event.service';
 import { EventGroupsService } from '../event-groups/list/event-groups.service';
@@ -27,6 +28,7 @@ import { ChartModule } from 'angular2-highcharts';
     FormsModule,
     EVENTS_ROUTING,
     FeatureModule,
+    Ng2BootstrapModule,
     ReactiveFormsModule,
     CustomFormsModule,
     TagInputModule,

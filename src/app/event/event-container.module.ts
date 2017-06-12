@@ -1,5 +1,8 @@
 import { NgModule, Injector } from '@angular/core';
 import { RequestOptions, XHRBackend } from '@angular/http';
+import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Ng2BootstrapModule } from 'ngx-bootstrap';
 import { HttpService } from '../shared/core';
 import { FeatureModule } from '../components/feature.module';
 import { EVENT_ROUTING } from './event-container.routes';
@@ -18,6 +21,10 @@ import { FavoriteGalleryComponent } from '../gallery/favorite-gallery/favorite-g
 
 @NgModule({
   imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    Ng2BootstrapModule,
     EVENT_ROUTING,
     FeatureModule,
   ],
