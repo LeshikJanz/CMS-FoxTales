@@ -9,7 +9,7 @@ import { ISwitcher } from '../../components/toggles/switcher/switcher.interface'
 @Component({
   selector: 'experience-builder-intro',
   templateUrl: './experience-builder-intro.html',
-  styleUrls: ['experience-builder-intro.scss']
+  styleUrls: ['styles/experience-builder-intro.scss', 'styles/animations.scss']
 })
 
 export class ExperienceBuilderIntroComponent implements OnInit {
