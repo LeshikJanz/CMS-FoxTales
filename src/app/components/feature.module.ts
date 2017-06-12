@@ -42,7 +42,7 @@ import { ColorPickerModule } from 'ngx-color-picker';
 import { TimepickerModule } from 'ngx-bootstrap';
 
 import { EventGroupComponent } from './eventGroup/event-group.component';
-import { FoxInputComponent } from './input/fox-input/fox-input.component';
+import { FoxInputComponent } from './input/fox-input.component';
 import { EventTagComponent } from './eventTag/event-tag.component';
 import { SwitcherComponent } from './toggles/switcher/switcher.component';
 import { ConfigureButtonComponent } from './buttons/configure-button/configure-button.component';
@@ -83,7 +83,14 @@ import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { SearchInputComponent } from './search/search-input.component';
 import { ExperienceComponent } from './experience/experience.component';
 import { IconButtonComponent } from './buttons/icon-button/icon-button.component';
-import { TableInputComponent } from './input/table-input/table-input.component';
+import {
+  EventDeleteModalComponent
+}
+  from './modals/event-delete-modal/event-delete-modal.component';
+  import {
+  ExperienceDeleteModalComponent
+}
+  from './modals/experience-delete-modal/experience-delete-modal.component';
 
 @NgModule({
   imports: [
@@ -150,6 +157,8 @@ import { TableInputComponent } from './input/table-input/table-input.component';
     SearchInputComponent,
     ExperienceComponent,
     IconButtonComponent,
+    EventDeleteModalComponent,
+    ExperienceDeleteModalComponent,
     TableInputComponent
   ],
   exports: [
@@ -190,6 +199,8 @@ import { TableInputComponent } from './input/table-input/table-input.component';
     SearchInputComponent,
     ExperienceComponent,
     IconButtonComponent,
+    EventDeleteModalComponent,
+    ExperienceDeleteModalComponent,
     TableInputComponent
   ]
 })

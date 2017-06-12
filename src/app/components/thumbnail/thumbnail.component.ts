@@ -101,6 +101,22 @@ export class ThumbnailComponent implements OnInit {
    */
   public share(comment: string): void {
     const social = hello(this.selectedNetwork);
+    const isImage = /\.(jpe?g|gif|png)$/.test(this.selectedMedia.mediaPath);
+
+    let tumblrRequest = {
+      type: isImage ? 'photo' : 'video',
+      caption: comment
+    };
+
+    if (isImage) {
+      tumblrRequest['source'] = this.selectedMedia.mediaPath;
+    } else {
+      tumblrRequest['embed'] = `
+        <video autoplay controls>
+          <source src="${this.selectedMedia.mediaPath}" type="video/mp4">
+        </video>
+      `;
+    }
 
     if ('tumblr' === this.selectedNetwork) {
       social
@@ -109,11 +125,7 @@ export class ThumbnailComponent implements OnInit {
           const name = response['name'];
 
           social
-            .api(`blog/${name}/post`, 'post', {
-              type: 'photo',
-              caption: comment,
-              source: this.selectedMedia.mediaPath
-            })
+            .api(`blog/${name}/post`, 'post', tumblrRequest)
             .then(this.shareSuccessCallback, this.shareErrorCallback);
         });
     } else {

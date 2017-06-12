@@ -84,4 +84,11 @@ export class EventService {
           return response.json();
     });
   }
+
+  public deleteEvent(event){
+    return this.http.delete(`${process.env.API_URL}/Events/${event.id}`)
+        .map((response: Response) => {
+          return response.json();
+        })
+  }
 }

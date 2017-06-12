@@ -20,13 +20,22 @@ export class EmailBuilderComponent {
    public emailBodyText: string;
    public ctaText: string;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router,
+              private experienceBuilderService: ExperienceBuilderService) {}
 
  public Next() {
-  console.log('next function');
+  this.experienceBuilderService.experience.emailBuilderName = this.emailBuilderName;
+  this.experienceBuilderService.experience.fromEmailAddress = this.fromEmailAddress;
+  this.experienceBuilderService.experience.senderName = this.senderName;
+  this.experienceBuilderService.experience.emailSubject = this.emailSubject;
+  this.experienceBuilderService.experience.emailPreviewText = this.emailPreviewText;
  };
 
  public Finish() {
-  console.log('finish function');
+  this.experienceBuilderService.experience.emailBodyText = this.emailBodyText;
+  this.experienceBuilderService.experience.ctaText = this.ctaText;
+  this.experienceBuilderService.postEmailSettings().subscribe((response) => {
+    console.log(response)
+  })
  };
 }

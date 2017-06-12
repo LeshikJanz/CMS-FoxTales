@@ -30,8 +30,10 @@ export class EventComponent {
    *
    * @type {any}
    */
-  @Input() public modal: any;
-е
+  @Input() public atgModal: any;
+
+  @Input() public deleteModal: any;
+
   /**
    * Event name
    *
@@ -84,7 +86,7 @@ export class EventComponent {
    * @return {void}
    */
   public onAddToGroup(event: IEvent) {
-    this.modal.show(event);
+    this.atgModal.show(event);
   }
 
   /**
@@ -94,6 +96,16 @@ export class EventComponent {
    */
   public onEdit() {
     this.router.navigate(['/events/edit-event', this.event['id']]);
+  }
+
+  /**
+   * On Delete event
+   *
+   * @return {void}
+   */
+  public onDelete(event) {
+    // console.log(event)
+    this.deleteModal.show(event);
   }
 
   /**

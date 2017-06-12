@@ -57,6 +57,7 @@ export class EventCreateComponent implements OnInit {
    * @returns {void}
    */
   public ngOnInit(): void {
+
     this.getTags();
     this.buildEventForm();
   }
@@ -89,7 +90,7 @@ export class EventCreateComponent implements OnInit {
    * @returns {void}
    */
   public addEvent(event): void {
-    event.tags = event.tags.map((tag: ITag) => tag.name);
+    // event.tags = event.tags.map((tag: ITag) => tag.name);
     if (this.isNotificationEnabled === 'Yes') {
       event['sendNotifications'] = true;
     }
@@ -118,9 +119,9 @@ export class EventCreateComponent implements OnInit {
       address: ['', [
         Validators.required
       ]],
-      tags: ['', [
-        Validators.required
-      ]]
+      // tags: ['', [
+      //   Validators.required
+      // ]]
     });
 
     return this;
