@@ -25,9 +25,10 @@
     </div>
   </div>
 
-  <event *ngFor="let event of Events" [modal]="atgModal" [event]="event" [eventActions]="eventActions">
+  <event *ngFor="let event of Events" [atgModal]="atgModal" [deleteModal]="deleteModal" [event]="event" [eventActions]="eventActions">
   </event>
 
   <event-to-group-modal #atgModal [eventGroups]="eventGroups"></event-to-group-modal>
+  <event-delete-modal #deleteModal (delete)="onDeleteEvent()"></event-delete-modal>
 
 </div>

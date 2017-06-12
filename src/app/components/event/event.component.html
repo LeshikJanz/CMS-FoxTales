@@ -17,6 +17,7 @@
     </div>
   </div>
   <fox-button *ngIf="eventActions.length === 1"
+              [routerLink]="['/events/edit-event', this.event['id']]"
               [value]="eventActions[0].action"
               [design]="'gray'"></fox-button>
 
@@ -27,9 +28,6 @@
     [size]="'medium'"
     (typeChanged)="onActionChanged(event, $event)"
   ></table-dropdown>
-
-  <!--<action-dropdown *ngIf="eventActions.length > 1" style="align-self: center" [options]="eventActions"-->
-  <!--(typeChanged)="onTypeChanged({action: event, event: $event})"></action-dropdown>-->
 </div>
 
 

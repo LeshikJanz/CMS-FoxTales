@@ -37,4 +37,11 @@ export class ExperienceService {
     return this.http.get(`${process.env.API_URL}/Tags/brands`)
       .map((response: Response) => response.json() as Tag[]);
   }
+
+    public deleteExperience(experience){
+    return this.http.delete(`${process.env.API_URL}/Experiences/${experience.id}`)
+        .map((response: Response) => {
+          return response
+        })
+  }
 }

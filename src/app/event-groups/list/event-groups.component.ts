@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { IEvent } from '../../event/event.interface';
+import { Component, OnInit, OnChanges } from '@angular/core';
+import { IEvent, IEventFilter } from '../../event/event.interface';
 import { EventGroupsService } from './event-groups.service';
 import { IEventGroup } from './event-groups.interaface';
 import { EventService } from '../../event/event.service';
@@ -26,6 +26,13 @@ export class EventGroupsComponent implements OnInit {
    * @type {IEvent[]}
    */
   public events: IEvent[];
+
+  /**
+   * Unused Events
+   *
+   * @type {IEvent[]}
+   */
+  public unusedEvents: IEvent[];
 
   /**
    * Sort actions
@@ -57,11 +64,13 @@ export class EventGroupsComponent implements OnInit {
 
   public ngOnInit(): void {
     this.getEventGroups();
+    this.getUnusedEvents();
     this.getEvents();
   }
 
   public onSave() {
     this.getEventGroups();
+    this.getUnusedEvents();
   }
 
   /**
@@ -89,6 +98,23 @@ export class EventGroupsComponent implements OnInit {
       .getEvents()
       .subscribe((events: IEvent[]) =>
         this.events = events
+      );
+  };
+
+  /**
+   * Get unused events (aren't included to any event group)
+   *
+   * @return {void}
+   */
+  public getUnusedEvents() {
+    const filter: IEventFilter = {
+      ignoreEventGroupFilter: false
+    };
+
+    this.eventService
+      .getEvents(filter)
+      .subscribe((events: IEvent[]) =>
+        this.unusedEvents = events
       );
   };
 }

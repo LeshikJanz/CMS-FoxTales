@@ -24,7 +24,6 @@ export class AppComponent implements OnInit {
 
   public routeName: any = '';
 
-
   /**
    * Constructor
    *
@@ -39,7 +38,7 @@ export class AppComponent implements OnInit {
               private permissions: PermissionService,
               private _routeData: RouteData) {
 
-    this._routeData.name.subscribe(n => this.routeName = n);
+    this._routeData.name.subscribe((n: any) => this.routeName = n);
 
     // Redirect not CMS users to forbidden page
     // TODO: research better solution

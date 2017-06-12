@@ -10,8 +10,8 @@
       </div>
 
     </div>
-    <group-dropdown style="align-self: center" [options]="groupActions"
-                    (typeChanged)="onTypeChanged({ group: group, event: $event})"></group-dropdown>
+    <table-dropdown [options]="groupActions" [title]="'Action'" [size]="'big-ul'"
+                    (typeChanged)="onActionChanged(group, $event)"></table-dropdown>
   </div>
   <div [hidden]="!group.isOpen" class="group-dropdown">
     <event *ngFor="let event of group.events" [event]="event" [eventActions]="eventActions">

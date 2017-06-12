@@ -24,12 +24,6 @@ export class EventService {
    * Currently using the old endpoints for mock data, will be replacing to process.env.API_URL
    *
    */
-  // public getEvents() {
-
-  //   return this.http.get(`${process.env.API_URL}/Events`)
-        // return this.http.get(`https://foxtalesdev.azurewebsites.net/api/events`)
-        // return this.http.get(`assets/mock-data/event/events.json`)
-
   public getEvents(filter: IEventFilter = {}) {
     let options = new RequestOptions({
       params: { clientId: PermissionService.clientId, ...filter }
@@ -89,5 +83,12 @@ export class EventService {
         .map((response: Response) => {
           return response.json();
     });
+  }
+
+  public deleteEvent(event){
+    return this.http.delete(`${process.env.API_URL}/Events/${event.id}`)
+        .map((response: Response) => {
+          return response.json();
+        })
   }
 }
