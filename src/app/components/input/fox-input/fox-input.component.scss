@@ -67,6 +67,10 @@ input:focus ~ label, input:valid ~ label {
 /* active state */
 input:focus ~ .bar:before, input:focus ~ .bar:after {
   width: 100%;
+
+  :host .sorting {
+    display: none;
+  }
 }
 
 /* active state */
