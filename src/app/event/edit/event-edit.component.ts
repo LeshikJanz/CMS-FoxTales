@@ -126,4 +126,23 @@ export class EventEditComponent implements OnInit {
     return tag.replace(/\s/g, '');
   }
 
+
+  /**
+   * Search tags
+   *
+   * @param {string} value - Value
+   * @param {any} target - Tag
+   * @returns {boolean}
+   */
+  public matchingFn(value: string, target: any): boolean {
+    if (!target['name']) {
+      return false;
+    }
+
+    const targetValue = target['name'].toString();
+    return targetValue && targetValue
+      .toLowerCase()
+      .indexOf(value.toLowerCase()) >= 0;
+  }
+
 }
