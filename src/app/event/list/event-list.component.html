@@ -53,25 +53,25 @@
           <span aria-hidden="true">&times;</span>
         </button>
         <h4 class="modal-title">
-          <span *ngIf="!clonedEvent">Clone Event</span>
-          <span *ngIf="clonedEvent">Event Cloned!</span>
+          <span *ngIf="!isCloned">Clone Event</span>
+          <span *ngIf="isCloned">Event Cloned!</span>
         </h4>
       </div>
       <div class="modal-body">
-        <p *ngIf="!clonedEvent">Cloning ...</p>
+        <div *ngIf="showCloneAnimation">Cloning ...</div>
 
-        <div *ngIf="clonedEvent">
+        <div *ngIf="!showCloneAnimation">
           <div class="form-element">
             <label>Name</label>
-            <input type="text" [(ngModel)]="clonedEvent.name">
+            <input type="text" [(ngModel)]="cloneName">
           </div>
           <div class="form-element">
             <label>Start Date</label>
             <input
               class="picker-input"
-              [ngModel]="startDate"
+              [ngModel]="cloneStartDate"
               [returnObject]="'string'"
-              [(dateTimePicker)]="startDate"
+              [(dateTimePicker)]="cloneStartDate"
               [mode]="'dropdown'"
               [pickerType]="'date'"
               placeholder="Start Date"
@@ -81,13 +81,21 @@
       </div>
       <div class="modal-footer">
         <button
-          *ngIf="clonedEvent"
+          *ngIf="!isCloned"
+          [disabled]="!cloneName || !cloneStartDate"
           type="button"
           class="btn btn-primary"
-          (click)="saveClonedEvent()">Save & Close</button>
+          (click)="saveClone()">Clone</button>
 
         <button
-          *ngIf="clonedEvent"
+          *ngIf="isCloned"
+          [disabled]="!cloneName || !cloneStartDate"
+          type="button"
+          class="btn btn-primary"
+          (click)="updateClone()">Save & Close</button>
+
+        <button
+          *ngIf="isCloned"
           type="button"
           class="btn btn-default"
           [routerLink]="['/events/edit-event', clonedEvent.id]">Edit Event</button>

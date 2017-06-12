@@ -95,14 +95,16 @@ export class EventService {
   /**
    * Clone event
    *
-   * @param {IEvent} event - Event
+   * @param {number} id - Event id
+   * @param {string} newName - Name
+   * @param {startDate} newStartDate - Start date
    * @returns {Observable<IEvent>} - Cloned event
    */
-  public cloneEvent(event: IEvent): Observable<IEvent> {
+  public cloneEvent(id: number, newName: string, newStartDate: string): Observable<IEvent> {
     return this.http
-      .post(`${process.env.API_URL}/Events/${event.id}/clone`, {
-        name: event.name,
-        startDate: event.startTime
+      .post(`${process.env.API_URL}/Events/${id}/clone`, {
+        name: newName,
+        startDate: newStartDate
       })
       .map((response: Response) => {
         return <IEvent> response.json();

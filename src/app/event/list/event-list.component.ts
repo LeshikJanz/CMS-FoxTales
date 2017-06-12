@@ -33,6 +33,13 @@ export class EventListComponent implements OnInit {
   public Events: any[];
 
   /**
+   * Event to be cloned
+   *
+   * @type {IEvent}
+   */
+  public eventToClone: IEvent;
+
+  /**
    * Cloned event
    *
    * @type {IEvent}
@@ -40,11 +47,32 @@ export class EventListComponent implements OnInit {
   public clonedEvent: IEvent;
 
   /**
+   * Is cloned?
+   *
+   * @type {boolean}
+   */
+  public isCloned: boolean = false;
+
+  /**
    * Cloned event start date
    *
    * @type {string}
    */
-  public startDate: string;
+  public cloneStartDate: string;
+
+  /**
+   * Clone name
+   *
+   * @type {string}
+   */
+  public cloneName: string;
+
+  /**
+   * Show clone animation?
+   *
+   * @type {boolean}
+   */
+  public showCloneAnimation: boolean = false;
 
   /**
    * Event
@@ -207,35 +235,46 @@ export class EventListComponent implements OnInit {
    * @returns {void}
    */
   public onClone(event: IEvent): void {
+    this.isCloned = false;
+    this.eventToClone = event;
     this.cloneModal.show();
+  }
 
-    event.name += ' clone';
+  /**
+   * Save clone
+   *
+   * @returns {void}
+   */
+  public saveClone(): void {
+    this.showCloneAnimation = true;
 
     this.eventService
-      .cloneEvent(event)
+      .cloneEvent(this.eventToClone.id, this.cloneName, moment(this.cloneStartDate).toISOString())
       .subscribe((clonedEvent: IEvent) => {
+        this.isCloned = true;
+        this.showCloneAnimation = false;
         this.clonedEvent = clonedEvent;
+
+        this.getEvents();
       });
   }
 
   /**
-   * Update cloned event
+   * Update clone
    *
    * @returns {void}
    */
-  public saveClonedEvent(): void {
-    let requestParams = {
+  public updateClone(): void {
+    let requestData = {
       id: this.clonedEvent.id,
-      name: this.clonedEvent.name,
-      startTime: moment(this.startDate).toISOString()
+      name: this.cloneName,
+      startTime: moment(this.cloneStartDate).toISOString()
     };
 
     this.eventService
-      .updateEvent(requestParams)
+      .updateEvent(requestData)
       .subscribe(() => {
-        this.clonedEvent = null;
         this.cloneModal.hide();
-        this.getEvents();
       });
   }
 }
