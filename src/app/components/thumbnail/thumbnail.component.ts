@@ -126,7 +126,13 @@ export class ThumbnailComponent implements OnInit {
 
           social
             .api(`blog/${name}/post`, 'post', tumblrRequest)
-            .then(this.shareSuccessCallback, this.shareErrorCallback);
+            .then((response) => {
+              this.shareSuccessCallback(response);
+            }, (response) => {
+              this.shareErrorCallback(response);
+            });
+        }, (response) => {
+          this.shareErrorCallback(response);
         });
     } else {
       social
@@ -134,7 +140,11 @@ export class ThumbnailComponent implements OnInit {
           message: comment,
           link: this.selectedMedia.mediaPath
         })
-        .then(this.shareSuccessCallback, this.shareErrorCallback);
+        .then((response) => {
+          this.shareSuccessCallback(response);
+        }, (response) => {
+          this.shareErrorCallback(response);
+        });
     }
   }
 
@@ -147,7 +157,7 @@ export class ThumbnailComponent implements OnInit {
   public shareSuccessCallback(response: any): void {
     if ('undefined' !== typeof response['error']
       || ('undefined' !== typeof response['errors'] && response['errors'].length)) {
-      this.toastrService.error(`Unable to publish image.`);
+      this.toastrService.error(`Unable to publish image. You are not authorized or token has been expired.`);
     } else {
       this.toastrService.success('Image has been published successfully.');
     }
@@ -162,7 +172,7 @@ export class ThumbnailComponent implements OnInit {
    * @returns {void}
    */
   public shareErrorCallback(response: any): void {
-    this.toastrService.error(`Unable to publish image. ${response.error.message}`);
+    this.toastrService.error(`Unable to publish image. You are not authorized or token has been expired.`);
     this.shareModal.hide();
   }
 }
