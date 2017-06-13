@@ -1,4 +1,4 @@
-import { Directive, ElementRef, Input } from '@angular/core';
+import { Directive, ElementRef, Input, OnInit } from '@angular/core';
 import { PermissionService } from '../auth/permission.service';
 
 /**
@@ -7,13 +7,14 @@ import { PermissionService } from '../auth/permission.service';
 @Directive({
   selector: '[isAllowed]'
 })
-export class IsAllowedDirective {
+export class IsAllowedDirective implements OnInit {
   /**
    * Operation name
    *
    * @type {string}
    */
-  @Input() operation: string;
+  @Input('isAllowed')
+  public operation: string;
 
   /**
    * Constructor
@@ -22,8 +23,11 @@ export class IsAllowedDirective {
    * @param {PermissionService} permission - Permission service
    */
   constructor(private el: ElementRef, private permission: PermissionService) {
+  }
+
+  public ngOnInit(): void {
     if (!this.permission.isAllowed(this.operation)) {
-      el.nativeElement.style.display = 'none';
+      this.el.nativeElement.style.display = 'none';
     }
   }
 }
