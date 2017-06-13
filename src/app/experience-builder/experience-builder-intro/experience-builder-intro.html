@@ -9,8 +9,7 @@ https://projects.invisionapp.com/share/MKB9BD656#/screens/228718265
     <div>
       <h4>What kind of Experience Are You Creating?</h4>
       <div class="btn-group">
-        <switcher [type]="switchOptions[0]"
-                  [options]="switchOptions" (toggle)="selectedValue = $event.id"></switcher>
+        <switcher [options]="switchOptions" (toggle)="selectedValue = $event"></switcher>
       </div>
     </div>
     <hr align="left" style="width: inherit">

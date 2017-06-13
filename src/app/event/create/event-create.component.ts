@@ -20,6 +20,7 @@ export class EventCreateComponent implements OnInit {
   public endMomentTime: string;
   public endMomentDate: string;
   public isNotificationEnabled: string;
+  public notification: number;
   public notificationOptions: ISwitcher[] = [{id: 1, name: 'Yes'}, {id: 2, name: 'No'}];
 
   /**
@@ -99,11 +100,14 @@ export class EventCreateComponent implements OnInit {
    */
   public addEvent(event): void {
     // event.tags = event.tags.map((tag: ITag) => tag.name);
-    if (this.isNotificationEnabled === 'Yes') {
-      event['sendNotifications'] = true;
-    }
-    if (this.isNotificationEnabled === 'No') {
-      event['sendNotifications'] = false;
+
+    switch (this.notification) {
+      case 1:
+        event['sendNotifications'] = true;
+        break;
+      case 2:
+        event['sendNotifications'] = false;
+        break;
     }
     event['startTime'] = moment(this.startMomentDate, 'MMM DD').format();
     event['endTime'] = moment(this.endMomentDate, 'MMM DD').format();
@@ -127,9 +131,9 @@ export class EventCreateComponent implements OnInit {
       address: ['', [
         Validators.required
       ]],
-      // tags: ['', [
-      //   Validators.required
-      // ]]
+      tags: ['', [
+        Validators.required
+      ]]
     });
 
     return this;

@@ -120,6 +120,17 @@ hr {
       max-width: 150px;
     }
 
+    #wrap:after {
+      content: "";
+      position: absolute;
+      left: 125px;
+      bottom: 23px;
+      border-left: 8px solid transparent;
+      border-right: 8px solid transparent;
+      border-top: 12px solid gray;
+      pointer-events: none;
+    }
+
     input {
       display: block;
       overflow: hidden;
