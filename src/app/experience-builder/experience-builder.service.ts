@@ -24,7 +24,9 @@ export class ExperienceBuilderService {
     emailSubject: '',
     emailPreviewText: '',
     emailBodyText: '',
-    ctaText: ''
+    ctaText: '',
+    runTimes: '',
+    brands: ''
     };
 
   /**
@@ -103,4 +105,16 @@ export class ExperienceBuilderService {
     return this.http.get(`${process.env.API_URL}/Tags`)
       .map((response: Response) => response.json() as Tag[]);
   }
+
+    /**
+   * Get Experience
+   *
+   */
+
+    public getExperience(id) {
+      return this.http.get(`${process.env.API_URL}/Experiences/`+ id)
+        .map((response: Response) => {
+          return response.json();
+        });
+    }
 }

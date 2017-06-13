@@ -224,7 +224,7 @@ export class EventListComponent implements OnInit {
       });
   }
 
-  onDeleteEvent(){
+  public onDeleteEvent() {
     this.getEvents();
   }
 

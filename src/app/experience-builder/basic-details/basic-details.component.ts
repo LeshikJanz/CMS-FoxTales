@@ -1,12 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { ITag } from '../tag.interface';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ExperienceBuilderService } from '../experience-builder.service';
 import { BsDropdownModule } from 'ngx-bootstrap';
 import { DateTimePickerModule } from 'ng-pick-datetime';
 import * as moment from 'moment';
-
 
 @Component({
   selector: 'basic-details',
@@ -20,17 +19,25 @@ export class BasicDetailsComponent implements OnInit {
   public endMomentDate: string;
   public defaultTags: any[];
     public tags: ITag[];
+  public sub: any;
+  public id: any;
 
   constructor(private router: Router,
+              private route: ActivatedRoute,
               private experienceBuilderService: ExperienceBuilderService) {}
 
-   public ngOnInit() {
-        this.getTags();
-    console.log(this.experienceBuilderService.experience);
-   }
+  public ngOnInit() {
+    if(this.route.queryParams.value.experience !== undefined) {
+      this.sub = this.route.queryParams.subscribe((params) => {
+        this.id = +params['experience'];
+      });
+      this.getExperience();
+     }
+    this.getTags();
+  }
 
   public Next() {
-        this.defaultTags = this.defaultTags.map((tag: ITag) => {
+    this.defaultTags = this.defaultTags.map((tag: ITag) => {
       if (tag.name) {
         return tag.name;
       } else {
@@ -38,12 +45,12 @@ export class BasicDetailsComponent implements OnInit {
       }
     });
     this.experienceBuilderService.addBasicDetailsExperience(
-      { 
+      {
         name: this.experienceBuilderService.experience.displayName,
         eventId: this.experienceBuilderService.experience.eventId,
         productId: this.experienceBuilderService.experience.productId,
-        config: "{}",
-        brands:this.defaultTags,
+        config: '{}',
+        brands: this.defaultTags,
         runTimes:
         [{
           startTime: moment(this.startMomentDate +
@@ -55,13 +62,13 @@ export class BasicDetailsComponent implements OnInit {
     });
   };
 
-    public getTags(): void {
+  public getTags(): void {
     this.experienceBuilderService
       .getTags()
       .subscribe((tags: ITag[]) => this.tags = tags);
   }
 
-    /**
+  /**
    * Tag transformer
    *
    * @param {string} tag - Tag
@@ -71,7 +78,7 @@ export class BasicDetailsComponent implements OnInit {
     return tag.replace(/\s/g, '');
   }
 
-    /**
+  /**
    * Search tags
    *
    * @param {string} value - Value
@@ -87,6 +94,28 @@ export class BasicDetailsComponent implements OnInit {
     return targetValue && targetValue
       .toLowerCase()
       .indexOf(value.toLowerCase()) >= 0;
+  }
+
+  public getExperience() {
+    this.experienceBuilderService
+    .getExperience(this.id)
+    .subscribe((experience) => {
+      this.experienceBuilderService.experience.experienceId = this.id;
+      this.experienceBuilderService.experience.displayName = experience.name,
+      this.experienceBuilderService.experience.eventId = experience.eventId,
+      this.experienceBuilderService.experience.productId = experience.productId,
+      this.startMomentDate = moment(experience.runTimes[0].startTime).format('MMM DD, YYYY');
+      this.endMomentDate = moment(experience.runTimes[0].endTime).format('MMM DD, YYYY');
+      this.startMomentTime = moment(experience.runTimes[0].startTime).format('hh:mm');
+      this.endMomentTime = moment(experience.runTimes[0].endTime).format('hh:mm');
+      this.defaultTags = experience.brands.map((tag: ITag) => {
+      if (tag.name) {
+        return tag.name;
+      } else {
+        return tag;
+      }
+    });
+    });
   }
 
 }
