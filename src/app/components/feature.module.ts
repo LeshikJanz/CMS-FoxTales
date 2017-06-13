@@ -93,6 +93,7 @@ import {
   from './modals/experience-delete-modal/experience-delete-modal.component';
 import { RegularInputComponent } from './input/regular-input/regular-input.component';
 import { SearchBarComponent } from './search/search-bar/search-bar.component';
+import { ConnectContentOptionComponent } from './experience/connect-content-option/connect-content-option.component';
 
 @NgModule({
   imports: [
@@ -162,7 +163,8 @@ import { SearchBarComponent } from './search/search-bar/search-bar.component';
     EventDeleteModalComponent,
     ExperienceDeleteModalComponent,
     RegularInputComponent,
-    SearchBarComponent
+    SearchBarComponent,
+    ConnectContentOptionComponent
   ],
   exports: [
     CreationButtonComponent,
@@ -205,7 +207,8 @@ import { SearchBarComponent } from './search/search-bar/search-bar.component';
     EventDeleteModalComponent,
     ExperienceDeleteModalComponent,
     RegularInputComponent,
-    SearchBarComponent
+    SearchBarComponent,
+    ConnectContentOptionComponent
   ]
 })
 
