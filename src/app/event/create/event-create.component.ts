@@ -98,7 +98,13 @@ export class EventCreateComponent implements OnInit {
    * @returns {void}
    */
   public addEvent(event): void {
-    // event.tags = event.tags.map((tag: ITag) => tag.name);
+    event.tags = event.tags.map((tag: ITag) => {
+      if (tag.name) {
+        return tag.name;
+      } else {
+        return tag;
+      }
+    });
     if (this.isNotificationEnabled === 'Yes') {
       event['sendNotifications'] = true;
     }
