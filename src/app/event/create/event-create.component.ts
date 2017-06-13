@@ -64,7 +64,6 @@ export class EventCreateComponent implements OnInit {
    * @returns {void}
    */
   public ngOnInit(): void {
-
     this.getTags();
     this.buildEventForm();
   }
@@ -79,8 +78,6 @@ export class EventCreateComponent implements OnInit {
       .getTags()
       .subscribe((tags: ITag[]) => {
         this.tags = tags;
-        console.log('this.tags');
-        console.log(this.tags);
       });
   }
 
@@ -101,7 +98,13 @@ export class EventCreateComponent implements OnInit {
    * @returns {void}
    */
   public addEvent(event): void {
-    // event.tags = event.tags.map((tag: ITag) => tag.name);
+    event.tags = event.tags.map((tag: ITag) => {
+      if (tag.name) {
+        return tag.name;
+      } else {
+        return tag;
+      }
+    });
     if (this.isNotificationEnabled === 'Yes') {
       event['sendNotifications'] = true;
     }
@@ -130,11 +133,29 @@ export class EventCreateComponent implements OnInit {
       address: ['', [
         Validators.required
       ]],
-      // tags: ['', [
-      //   Validators.required
-      // ]]
+      tags: ['', [
+        Validators.required
+      ]]
     });
 
     return this;
+  }
+
+  /**
+   * Search tags
+   *
+   * @param {string} value - Value
+   * @param {any} target - Tag
+   * @returns {boolean}
+   */
+  public matchingFn(value: string, target: any): boolean {
+    if (!target['name']) {
+      return false;
+    }
+
+    const targetValue = target['name'].toString();
+    return targetValue && targetValue
+      .toLowerCase()
+      .indexOf(value.toLowerCase()) >= 0;
   }
 }

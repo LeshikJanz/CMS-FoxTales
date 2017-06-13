@@ -19,9 +19,11 @@ export class AuthComponent {
    * @returns {void}
    */
   constructor(private router: Router, private auth: AuthService) {
-    if (this.auth.loggedIn()) {
-      this.router.navigate(['/dashboard']);
-    }
+    setTimeout(() => {
+      if (this.auth.loggedIn()) {
+        this.router.navigate(['/dashboard']);
+      }
+    }, 1000);
   }
 
   /**

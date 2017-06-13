@@ -35,7 +35,7 @@ export class EmailBuilderComponent {
   this.experienceBuilderService.experience.emailBodyText = this.emailBodyText;
   this.experienceBuilderService.experience.ctaText = this.ctaText;
   this.experienceBuilderService.postEmailSettings().subscribe((response) => {
-    console.log(response)
-  })
+    console.log(response);
+  });
  };
 }

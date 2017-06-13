@@ -62,8 +62,8 @@ export class EventEditComponent implements OnInit {
       console.log(event);
       this.eventName = event.name;
       this.eventAddress = event.address;
-      this.startMomentDate = event.startTime;
-      this.endMomentDate = event.endTime;
+      this.startMomentDate = moment(event.startTime).format('MMM DD YYYY');
+      this.endMomentDate = moment(event.endTime).format('MMM DD YYYY');
       this.defaultTags = event.tags;
       if (event.sendNotifications === true) {
         this.defaultNotification = this.notificationOptions[0];
@@ -124,6 +124,25 @@ export class EventEditComponent implements OnInit {
    */
   public tagTransformer(tag: string): string {
     return tag.replace(/\s/g, '');
+  }
+
+
+  /**
+   * Search tags
+   *
+   * @param {string} value - Value
+   * @param {any} target - Tag
+   * @returns {boolean}
+   */
+  public matchingFn(value: string, target: any): boolean {
+    if (!target['name']) {
+      return false;
+    }
+
+    const targetValue = target['name'].toString();
+    return targetValue && targetValue
+      .toLowerCase()
+      .indexOf(value.toLowerCase()) >= 0;
   }
 
 }

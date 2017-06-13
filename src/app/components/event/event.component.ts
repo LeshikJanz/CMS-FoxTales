@@ -125,7 +125,6 @@ export class EventComponent {
     this.router.navigate(['/events/recap-report', this.event['id']]);
   }
 
-
   public onClone(event: IEvent): void {
     this.cloneAction.emit(event);
   }

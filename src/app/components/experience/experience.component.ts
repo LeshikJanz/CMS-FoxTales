@@ -85,7 +85,8 @@ export class ExperienceComponent implements OnChanges {
    */
   public isChecked: boolean = false;
 
-  constructor(private _routeData: RouteData) {
+  constructor(private _routeData: RouteData,
+              private router: Router) {
     _routeData.name.next('Experience List');
   }
 
@@ -102,19 +103,22 @@ export class ExperienceComponent implements OnChanges {
     }
   }
 
-    /**
+  /**
    * On Delete experience
    *
    * @return {void}
    */
   public onDelete() {
     this.deleteModal.show(this.experience);
-    // console.log(this.experience)
-    // this.deleteModal.show(event);
+  }
+
+  public onEdit() {
+     this.router.navigate(['/experience-builder/container/basic-details'],
+     { queryParams: { experience: this.experience.id } });
   }
 
   public ngOnChanges() {
-    // console.log('this.experience');
+    console.log('this.experience');
     // console.log(this.experience);
   }
 }
