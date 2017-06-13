@@ -66,9 +66,9 @@ export class EventEditComponent implements OnInit {
       this.endMomentDate = moment(event.endTime).format('MMM DD, YYYY');
       this.defaultTags = event.tags;
       if (event.sendNotifications === true) {
-        this.defaultNotification = this.notificationOptions[0];
+        this.defaultNotification = this.notificationOptions[0].id;
       } else {
-        this.defaultNotification = this.notificationOptions[1];
+        this.defaultNotification = this.notificationOptions[1].id;
       }
 
     });
