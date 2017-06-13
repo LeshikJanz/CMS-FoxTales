@@ -8,7 +8,7 @@ import { ToastrModule, ToastContainerModule } from 'ngx-toastr';
 import { AgmCoreModule } from '@agm/core';
 
 import { SharedModule } from '../shared';
-import { HttpService, AuthService, AuthRequestOptions } from '../shared/core';
+import { HttpService, AuthService, AuthRequestOptions, IsAllowedDirective } from '../shared/core';
 
 import { CLIENT_ROUTING } from './client.routes';
 
@@ -50,6 +50,7 @@ import { FeatureModule } from '../components/feature.module';
     ClientService
   ],
   declarations: [
+    IsAllowedDirective,
     ClientListComponent,
     ClientCreateComponent,
     ClientEditComponent

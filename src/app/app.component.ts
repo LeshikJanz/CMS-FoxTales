@@ -1,5 +1,5 @@
 import { Component, ViewEncapsulation, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 import { Authentication } from 'adal-ts';
 import { AuthService, PermissionService } from './shared/core';
 import { RouteData } from './shared/core/routing/route-data.service';
@@ -22,34 +22,38 @@ export class AppComponent implements OnInit {
    */
   public version: string = '2.2.3';
 
+  /**
+   * Route name
+   *
+   * @type {string}
+   */
   public routeName: any = '';
 
   /**
    * Constructor
    *
    * @param {Router} router - Router
+   * @param {ActivatedRoute} activatedRoute - Activated route
    * @param {AuthService} auth - Auth service
    * @param {PermissionService} permissions - Permissions service
-   * @param _routeData
+   * @param {RouteData} routeData - Route data service
    * @returns {void}
    */
-  constructor(private router: Router,
-              private auth: AuthService,
-              private permissions: PermissionService,
-              private _routeData: RouteData) {
+  constructor(
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
+    private auth: AuthService,
+    private permissions: PermissionService,
+    private routeData: RouteData) {
 
-    this._routeData.name.subscribe((n: any) => this.routeName = n);
+    setTimeout(() => {
+      this.redirect();
+    }, 1000);
 
-    // Redirect not CMS users to forbidden page
-    // TODO: research better solution
-    if (window.location.href.match(/access_denied/)) {
-      this.router.navigate(['/forbidden']);
-      return;
-    }
-
-    if (!this.loggedIn()) {
-      this.router.navigate(['/auth']);
-    }
+    this
+      .routeData
+      .name
+      .subscribe((n: any) => this.routeName = n);
   }
 
   /**
@@ -59,6 +63,9 @@ export class AppComponent implements OnInit {
    */
   public ngOnInit() {
     Authentication.getAadRedirectProcessor().process();
+
+    this.permissions.setAccessData();
+    this.checkAcl();
   }
 
   /**
@@ -78,5 +85,59 @@ export class AppComponent implements OnInit {
   public logout(): void {
     const context = this.auth.getContext();
     context.logout();
+  }
+
+  /**
+   * Is permissions valid?
+   *
+   * @returns {boolean}
+   */
+  public validPermissions(): boolean {
+    return this.permissions.validPermissions();
+  }
+
+  /**
+   * Check user ACL
+   *
+   * @returns {void}
+   */
+  public checkAcl(): void {
+    this.router.events
+      .filter(event => event instanceof NavigationEnd)
+      .map(() => this.activatedRoute)
+      .map(route => {
+        while (route.firstChild) route = route.firstChild;
+        return route;
+      })
+      .filter(route => route.outlet === 'primary')
+      .mergeMap(route => route.data)
+      .subscribe((event) => {
+        const acl = event['acl'];
+
+        if (!acl) {
+          return;
+        }
+
+        if (!this.permissions.isAllowed(acl)) {
+          this.router.navigate(['/forbidden']);
+        }
+      });
+  }
+
+  /**
+   * Redirect not CMS users to forbidden page
+   *
+   * @returns {void}
+   */
+  public redirect(): void {
+    if (window.location.href.match(/access_denied/)
+      || (this.loggedIn() && !this.permissions.validPermissions())) {
+      this.router.navigate(['/forbidden']);
+      return;
+    }
+
+    if (!this.loggedIn()) {
+      this.router.navigate(['/auth']);
+    }
   }
 }
