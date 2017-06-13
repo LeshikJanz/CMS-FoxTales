@@ -21,9 +21,12 @@ export class SharingOptionsComponent {
  public instagramTextCopy: string = null;
  public tumblrTextCopy: string = null;
  public sharingOptionName: string = null;
+ public experience: any;
 
   constructor(private router: Router,
-              private experienceBuilderService: ExperienceBuilderService) {}
+              private experienceBuilderService: ExperienceBuilderService) {
+        this.experience = this.experienceBuilderService.experience;
+              }
 
  public generateTextArea(social) {
   switch (social) {
@@ -43,7 +46,11 @@ export class SharingOptionsComponent {
     alert('please choose a valid option');
     break;
  };
- };
+};
+
+public checkedContentOption(event) {
+  console.log(event);
+};
 
  public finish() {
   this.experienceBuilderService.postSocialShareSettings({
