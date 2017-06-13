@@ -27,9 +27,8 @@ export class BasicDetailsComponent implements OnInit {
 
   constructor(private router: Router,
               private experienceBuilderService: ExperienceBuilderService,
-              private _location: Location) {}
-              private route: ActivatedRoute,
-              private experienceBuilderService: ExperienceBuilderService) {}
+              private _location: Location,
+              private route: ActivatedRoute) {}
 
   public ngOnInit() {
     // if(this.route.queryParams.value.experience !== undefined) {
