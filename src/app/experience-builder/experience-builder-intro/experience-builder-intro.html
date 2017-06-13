@@ -3,26 +3,34 @@ https://projects.invisionapp.com/share/MKB9BD656#/screens/228718265
 -->
 <div class="experience-builder-container">
   <div>
-    <div>
+    <div class="welcome">
       <p>Hi, Aaron! Let's take a moment to create an experience for <i>"Aaron's Awesome Aventure"</i>.</p>
     </div>
     <div>
       <h4>What kind of Experience Are You Creating?</h4>
       <div class="btn-group">
-        <label class="btn" [(ngModel)]="selectedValue"
-               btnRadio=2>StoryStudio</label>
-        <label class="btn" [(ngModel)]="selectedValue" btnRadio=1>StoryRing</label>
+        <switcher [options]="switchOptions" (toggle)="selectedValue = $event"></switcher>
       </div>
     </div>
-    <div>
-      <hr>
+    <hr align="left" style="width: inherit">
+    <div class="form-element">
       <h4>Let's name the experience</h4>
       <input class="experinceInput" type="text" placeholder="Experience Name" [(ngModel)]="experienceName"/>
-      <hr>
     </div>
-    <button (click)="Next()">Next</button>
+    <hr align="left" width="100%">
+    <div class="routing">
+      <div>
+        <img src="assets/img/arrow-left.svg">
+        <a [routerLink]="['/event', id, 'experiences']">BACK TO EVENT</a>
+      </div>
+      <fox-button
+        [value]="'Next'"
+        [design]="'special'"
+        (click)="Next()"
+      ></fox-button>
+    </div>
   </div>
   <div>
-    <img src="" alt="">
+    <img src="https://letsdutch.com/static/img/empty-user-img.png">
   </div>
 </div>
