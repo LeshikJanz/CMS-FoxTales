@@ -43,6 +43,13 @@
     </div>
   </div>
   <br>
+  <hr>
+  <h3>Let's Add Some Brand Tags</h3>
+  <label>Brand Tags</label>
+  <tag-input [(ngModel)]="defaultTags" [transform]="tagTransformer" [maxItems]="10">
+    <tag-input-dropdown [matchingFn]="matchingFn" [identifyBy]="'id'" [displayBy]="'name'" [autocompleteItems]="tags">
+    </tag-input-dropdown>
+  </tag-input>
   <div class="routing">
     <div>
       <a (click)="_location.back()" class="hvr-icon-wobble-horizontal">BACK</a>

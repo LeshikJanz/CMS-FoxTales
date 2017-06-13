@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AuthService, PermissionService } from '../shared/core';
+import { AuthService } from '../shared/core';
 
 /**
  * Forbidden page component
@@ -33,6 +33,7 @@ export class ForbiddenComponent {
    * @returns {void}
    */
   public logout(): void {
+    console.log('aaa');
     const context = this.auth.getContext();
     context.logout();
   }

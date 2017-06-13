@@ -24,7 +24,9 @@ export class ExperienceBuilderService {
     emailSubject: '',
     emailPreviewText: '',
     emailBodyText: '',
-    ctaText: ''
+    ctaText: '',
+    runTimes: '',
+    brands: ''
     };
 
   /**
@@ -51,9 +53,9 @@ export class ExperienceBuilderService {
         });
   }
 
-  public addRunTimesExperience(runTimes) {
-    return this.http.post(`${process.env.API_URL}/Experiences/`
-      + this.experience.experienceId + `/runtimes`, runTimes)
+  public addBasicDetailsExperience(details) {
+    return this.http.put(`${process.env.API_URL}/Experiences/`
+      + this.experience.experienceId, details)
         .map((response: Response) => {
           return response.json();
         });
@@ -93,4 +95,26 @@ export class ExperienceBuilderService {
       });
 
   }
+
+    /**
+   * Get tags
+   *
+   * @returns {Observable<Tag[]>} - Tags
+   */
+  public  getTags(): Observable<Tag[]> {
+    return this.http.get(`${process.env.API_URL}/Tags`)
+      .map((response: Response) => response.json() as Tag[]);
+  }
+
+    /**
+   * Get Experience
+   *
+   */
+
+    public getExperience(id) {
+      return this.http.get(`${process.env.API_URL}/Experiences/`+ id)
+        .map((response: Response) => {
+          return response.json();
+        });
+    }
 }

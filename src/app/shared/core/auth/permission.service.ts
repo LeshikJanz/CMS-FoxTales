@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
-import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { AuthService } from './auth.service';
-import { IPermissions } from './permissions.interface';
+import { IPermissions, IPermissionMatrixItem } from './permissions.interface';
 
 /**
  * Permission service
@@ -19,17 +17,19 @@ export class PermissionService {
   public static clientId: number = -1;
 
   /**
+   * Local storage access key
+   *
+   * @type {string}
+   */
+  public accessKey: string = 'access_data';
+
+  /**
    * Constructor
    *
    * @param {Http} http - Http service
-   * @param {Router} router - Router
-   * @param {AuthService} auth - Auth service
    * @returns {void}
    */
-  constructor(
-    private http: Http,
-    private router: Router,
-    private auth: AuthService) {
+  constructor(private http: Http) {
   }
 
   /**
@@ -45,19 +45,52 @@ export class PermissionService {
   /**
    * Is permissions valid?
    *
-   * @returns {Observable<boolean>} - Is valid
+   * @returns {boolean} - Is valid
    */
-  public validPermissions(): Observable<boolean> {
-    return this.getPermissions()
-      .map((permissions: IPermissions) => {
-        const isValid: boolean = -1 === [ permissions.clientId, permissions.userId ].indexOf(-1);
-        PermissionService.clientId = permissions.clientId;
+  public validPermissions(): boolean {
+    const permissions = this.getAccessData();
+    const isValid: boolean = -1 === [ permissions.clientId, permissions.userId ].indexOf(-1);
 
-        if (!isValid) {
-          this.router.navigate(['/forbidden']);
-        }
+    PermissionService.clientId = permissions.clientId;
 
-        return isValid;
+    return isValid;
+  }
+
+  /**
+   * Store access data
+   *
+   * @returns {void}
+   */
+  public setAccessData(): void {
+    this
+      .getPermissions()
+      .subscribe((accessData: IPermissions) => {
+        localStorage.setItem(this.accessKey, JSON.stringify(accessData));
       });
+  }
+
+  /**
+   * Get access data
+   *
+   * @returns {IPermissions} - Permissions
+   */
+  public getAccessData(): IPermissions {
+    return JSON.parse(localStorage.getItem(this.accessKey));
+  }
+
+  /**
+   * Is operation allowed?
+   *
+   * @param {string} operationName - Operation
+   */
+  public isAllowed(operationName: string): boolean {
+    const accessData: IPermissions = this.getAccessData();
+    const permissionMatrix: IPermissionMatrixItem[] = accessData.permissionMatrix;
+
+    const operations = permissionMatrix.filter((operation: IPermissionMatrixItem) => {
+      return operation.operationName === operationName;
+    });
+
+    return !!operations.length;
   }
 }

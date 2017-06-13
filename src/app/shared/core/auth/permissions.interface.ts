@@ -9,5 +9,10 @@ export interface IPermissions {
   globalAccess: boolean;
   isClientAdmin: boolean;
   isUser: boolean;
-  permissionMatrix: any[];
+  permissionMatrix: IPermissionMatrixItem[];
+}
+
+export interface IPermissionMatrixItem {
+  operationId: number;
+  operationName: string;
 }

@@ -1,6 +1,6 @@
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { NgModule, ApplicationRef } from '@angular/core';
 import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularclass/hmr';
@@ -61,6 +61,7 @@ type StoreType = {
     BrowserAnimationsModule,
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpModule,
     RouterModule.forRoot(ROUTES, { useHash: true, preloadingStrategy: PreloadAllModules }),
     ToastrModule.forRoot(),
