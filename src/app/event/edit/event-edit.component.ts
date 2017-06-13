@@ -62,8 +62,8 @@ export class EventEditComponent implements OnInit {
       console.log(event);
       this.eventName = event.name;
       this.eventAddress = event.address;
-      this.startMomentDate = moment(event.startTime).format('MMM DD YYYY');
-      this.endMomentDate = moment(event.endTime).format('MMM DD YYYY');
+      this.startMomentDate = moment(event.startTime).format('MMM DD, YYYY');
+      this.endMomentDate = moment(event.endTime).format('MMM DD, YYYY');
       this.defaultTags = event.tags;
       if (event.sendNotifications === true) {
         this.defaultNotification = this.notificationOptions[0];
