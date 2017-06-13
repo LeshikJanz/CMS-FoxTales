@@ -22,22 +22,21 @@
                for="name">Client Name*</label>
         <div [ngClass]="{'plus-wrap': clientForm.get('name').touched &&
                                  !clientForm.get('name').hasError('required')}"
-        >
-          <input
+             >
+        <input
             id="name"
             type="text"
             class="form-control"
             formControlName="name"
             placeholder="Name"/>
-        </div>
-        <div ngxErrors="name">
+      </div>
+      <div ngxErrors="name">
           <div class="field-error" ngxError="required" when="touched">
             <button class="close-icon" type="reset"></button>
             Field is required
           </div>
         </div>
       </div>
-
 
       <!-- Email -->
       <div class="form-element">

@@ -2,14 +2,14 @@ import { Component, OnChanges, Output, EventEmitter, Input } from '@angular/core
 import { ICol } from '../../../shared/table/col.interface';
 
 @Component({
-  selector: 'table-input',
-  templateUrl: 'table-input.component.html',
-  styleUrls: ['table-input.component.scss']
+  selector: 'regular-input',
+  templateUrl: 'regular-input.component.html',
+  styleUrls: ['regular-input.component.scss']
 })
 
-export class TableInputComponent {
+export class RegularInputComponent {
   @Input() public title = '';
-  
+
   @Input() public col: ICol;
 
   @Output() public Change: EventEmitter<string> = new EventEmitter<string>();

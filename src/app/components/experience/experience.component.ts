@@ -86,7 +86,7 @@ export class ExperienceComponent implements OnChanges {
   public isChecked: boolean = false;
 
   constructor(private _routeData: RouteData) {
-    _routeData.name.next('Experience List');
+    // _routeData.name.next('Experience List');
   }
 
   /**

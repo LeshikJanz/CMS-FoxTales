@@ -121,7 +121,7 @@ export class EventListComponent implements OnInit {
   constructor(private eventService: EventService,
               private eventGroupsService: EventGroupsService,
               private _routeData: RouteData) {
-    _routeData.name.next('Event Management');
+    // _routeData.name.next('Event Management');
   }
   public ngOnInit(): void {
     this.getEvents();

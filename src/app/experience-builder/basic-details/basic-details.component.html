@@ -36,11 +36,21 @@
       <div>
         <div class="wrap">
           <input class="picker-input" [ngModel]="endMomentTime" [returnObject]=" 'string' " [viewFormat]="'HH:mm'"
-                 [(dateTimePicker)]="endMomentTime" [pickerType]="'time'" [mode]="'dropdown'" placeholder="Time" readonly>
+                 [(dateTimePicker)]="endMomentTime" [pickerType]="'time'" [mode]="'dropdown'" placeholder="Time"
+                 readonly>
         </div>
       </div>
     </div>
   </div>
   <br>
-  <button (click)="Next()">Next</button>
+  <div class="routing">
+    <div>
+      <a (click)="_location.back()" class="hvr-icon-wobble-horizontal">BACK</a>
+    </div>
+    <fox-button
+      [value]="'Next'"
+      [design]="'special'"
+      (click)="Next()"
+    ></fox-button>
+  </div>
 </div>

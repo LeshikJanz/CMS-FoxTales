@@ -1,11 +1,14 @@
-<button type="button" class="btn btn-primary" (click)="staticModal.show()">Create New Content</button>
+<add-button
+  (click)="staticModal.show()"
+  [value]="'Create New Content'"
+></add-button>
 
 <div class="modal fade" bsModal #staticModal="bs-modal" [config]="{backdrop: 'static'}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
   aria-hidden="true">
-  <div class="modal-dialog modal-lg">
+  <div class="bsmodal">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title pull-left">Title of Content Creator</h4>
+        <h1 class="modal-title pull-left">Travel the USA Content Builder</h1>
         <button type="button" class="close pull-right" aria-label="Close" (click)="staticModal.hide()">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -14,15 +17,11 @@
         <tabset #staticTabs class='ui-builder-container'>
           <tab heading='Part 1'>
             <div class="part1-container">
-              <h3>Let's Name the Content</h3>
-              <input [(ngModel)]="contentName">
+
               <hr>
               <h5>Content Type</h5>
-              <br>
               <div class="btn-group">
-                <label class="btn" [(ngModel)]="contentTypeValue" btnRadio=1>Still</label>
-                <label class="btn" [(ngModel)]="contentTypeValue" btnRadio=2>GIF</label>
-                <label class="btn" [(ngModel)]="contentTypeValue" btnRadio=4>GIF</label>
+                <switcher [options]="contentSwitchOptions" (toggle)="contentTypeValue = $event"></switcher>
               </div>
 
               <br>
@@ -32,6 +31,10 @@
                 <label class="btn" [(ngModel)]="orientationTypeValue" btnRadio=105>Portrait</label>
                 <label class="btn" [(ngModel)]="orientationTypeValue" btnRadio=104>Square</label>
               </div>
+              <hr>
+
+              <h3>Let's Name the Content</h3>
+              <input [(ngModel)]="contentName">
               <br>
               <button [type]="'tertiary'" [value]="'Next'" (click)="Next()">Next</button>
             </div>

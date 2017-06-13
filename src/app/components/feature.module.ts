@@ -91,7 +91,7 @@ import {
   ExperienceDeleteModalComponent
 }
   from './modals/experience-delete-modal/experience-delete-modal.component';
-import { TableInputComponent } from './input/table-input/table-input.component';
+import { RegularInputComponent } from './input/regular-input/regular-input.component';
 
 @NgModule({
   imports: [
@@ -160,7 +160,7 @@ import { TableInputComponent } from './input/table-input/table-input.component';
     IconButtonComponent,
     EventDeleteModalComponent,
     ExperienceDeleteModalComponent,
-    TableInputComponent
+    RegularInputComponent
   ],
   exports: [
     CreationButtonComponent,
@@ -202,7 +202,7 @@ import { TableInputComponent } from './input/table-input/table-input.component';
     IconButtonComponent,
     EventDeleteModalComponent,
     ExperienceDeleteModalComponent,
-    TableInputComponent
+    RegularInputComponent
   ]
 })
 

@@ -9,7 +9,8 @@ import { ISwitcher } from '../../components/toggles/switcher/switcher.interface'
 @Component({
   selector: 'experience-builder-intro',
   templateUrl: './experience-builder-intro.html',
-  styleUrls: ['styles/experience-builder-intro.scss', 'styles/animations.scss']
+  styleUrls: ['experience-builder-intro.scss',
+    '../../shared/styles/animations.scss']
 })
 
 export class ExperienceBuilderIntroComponent implements OnInit {
@@ -54,9 +55,6 @@ export class ExperienceBuilderIntroComponent implements OnInit {
   }
 
   public Next() {
-console.log('this.selectedValue');
-console.log(this.selectedValue);
-
     this.experienceBuilderService.addExperience({
       name: this.experienceName,
       eventId: this.id,
