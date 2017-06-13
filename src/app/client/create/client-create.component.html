@@ -17,20 +17,27 @@
 
       <!-- Name -->
       <div class="form-element">
-        <label for="name">Client Name*</label>
-        <input
-          id="name"
-          class="form-control input"
-          type="text"
-          formControlName="name"
-          placeholder="Name">
-
+        <label [ngClass]="{'label-error': clientForm.get('name').touched &&
+                                          clientForm.get('name').hasError('required')}"
+               for="name">Client Name*</label>
+        <div [ngClass]="{'plus-wrap': clientForm.get('name').touched &&
+                                 !clientForm.get('name').hasError('required')}"
+        >
+          <input
+            id="name"
+            type="text"
+            class="form-control"
+            formControlName="name"
+            placeholder="Name"/>
+        </div>
         <div ngxErrors="name">
           <div class="field-error" ngxError="required" when="touched">
+            <button class="close-icon" type="reset"></button>
             Field is required
           </div>
         </div>
       </div>
+
 
       <!-- Email -->
       <div class="form-element">
