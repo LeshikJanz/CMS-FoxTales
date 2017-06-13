@@ -49,7 +49,7 @@ export class EventGroupsComponent implements OnInit {
   constructor(private eventGroupsService: EventGroupsService,
               private eventService: EventService,
               private _routeData: RouteData) {
-    _routeData.name.next('Event Groups');
+    // _routeData.name.next('Event Groups');
   }
 
   /**

@@ -5,11 +5,11 @@
       <th></th>
       <th class="table-header" *ngFor="let col of cols">
         <div>
-          <!--<table-input [title]="col.title" [col]="col"-->
+          <!--<regular-input [title]="col.title" [col]="col"-->
                        <!--(input)="searchQuery[col.id].next(searchValue)"-->
                        <!--(Change)="searchValue=$event"-->
                        <!--(sortChange)="changeSort($event)"-->
-          <!--&gt;</table-input>-->
+          <!--&gt;</regular-input>-->
           <fox-input [title]="col.title" (input)="searchQuery[col.id].next(searchValue)"
                      (Change)="searchValue=$event"></fox-input>
           <div class="sorting" (click)="changeSort(col)">

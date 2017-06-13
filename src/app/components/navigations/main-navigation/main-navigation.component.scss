@@ -3,9 +3,16 @@
   align-items: center;
   justify-content: space-between;
   height: 75px;
-  background-color: white;
-  font-family: Avenir;
+  background-color: #f8f8f8;
+  font-family: Avenir-Medium;
   color: #687078;
+
+  > div:nth-child(2) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 5%;
+  }
 
   .link-bar {
     display: flex;
@@ -47,38 +54,60 @@
 
   .profile {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
+    align-items: center;
+    width: 270px;
 
     .user-img {
       cursor: pointer;
-      width: 40px;
-      height: 40px;
+      width: 30px;
+      height: 30px;
     }
-
-    > * {
-       margin-left: 20px;
-     }
 
     .user-profile {
       display: flex;
       justify-content: space-between;
-      min-width: 150px;
+      width: 170px;
 
       img {
         cursor: pointer;
-        margin: auto;
         width: 30px;
         height: 30px;
       }
 
-      .user-name {
-        font-family: Avenir-Medium;
-        font-size: 14px;
-      }
+      div {
+        div.user-name {
+          font-family: Avenir-Medium;
+          font-size: 16px;
+          font-weight: 500;
+          line-height: 1;
+          letter-spacing: 0.5px;
+          color: #343a40;
+          cursor: pointer;
+        }
 
-      .user-design-name {
-        font-family: WorkSans-Regular;
-        font-size: 12px;
+        div.user-name:after {
+          position: relative;
+          content: "";
+          display: inline-block;
+          bottom: 4px;
+          left: 11px;
+          width: 0.4em;
+          height: 0.4em;
+          border-right: 0.1em solid  #37394c;
+          border-top: 0.1em solid  #37394c;
+          transform: rotate(135deg);
+          opacity: 0.8;
+          margin-right: 0.5em;
+        }
+
+        div.user-design-name {
+          font-family: WorkSans;
+          font-size: 12px;
+          line-height: 1;
+          letter-spacing: 0.4px;
+          color: #7a8693;
+        }
       }
     }
   }
@@ -96,9 +125,10 @@
     -webkit-border-radius: 5px;
     border-radius: 5px;
   }
-}
 
-.nav-container:hover {
-  background-color: #f8f8f8;
+  search-bar {
+    width: 0;
+    height: 40px;
+  }
 }
 

@@ -1,4 +1,5 @@
 import { Component, Output, EventEmitter, Input, OnInit } from '@angular/core';
+import { ISwitcher } from './switcher.interface';
 
 @Component({
   selector: 'switcher',
@@ -7,21 +8,23 @@ import { Component, Output, EventEmitter, Input, OnInit } from '@angular/core';
 })
 
 export class SwitcherComponent implements OnInit {
-  @Input() public type: string;
+  @Input() public type: number;
 
-  @Input() public options: any[];
+  @Input() public options: ISwitcher[];
 
-  @Output() public toggle: EventEmitter<string> = new EventEmitter<string>();
+  @Output() public toggle: EventEmitter<number> = new EventEmitter<number>();
 
   @Input() public disabled: boolean;
 
   public ngOnInit() {
     if (!this.type) {
-      this.type = this.options[1];
+      this.type = this.options[1].id;
     }
+    this.onChange(this.type);
   }
 
-  public onChange(value: any) {
-    this.toggle.emit(value);
+  public onChange(id: number) {
+    this.type = id;
+    this.toggle.emit(id);
   }
 }

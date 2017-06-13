@@ -10,26 +10,27 @@
     <div class="form-element dates">
       <div>
         <label>Start Date</label>
-        <input class="picker-input" [(ngModel)]="startMomentDate" title="{{startMomentDate}}" [ngModelOptions]="{standalone: true}"
-               [returnObject]=" 'string' "
-               [(dateTimePicker)]="startMomentDate" [mode]="'dropdown'" [pickerType]="'date'" placeholder="Start Date"
-               readonly>
+          <input class="picker-input" [(ngModel)]="startMomentDate" title="{{startMomentDate}}"
+                 [ngModelOptions]="{standalone: true}"
+                 [returnObject]=" 'string' "
+                 [(dateTimePicker)]="startMomentDate" [mode]="'dropdown'" [pickerType]="'date'" placeholder="Start Date"
+                 readonly>
       </div>
       <div>
         <label>End Date</label>
-        <input class="picker-input" [(ngModel)]="endMomentDate" [ngModelOptions]="{standalone: true}"
-               [returnObject]=" 'string' " [(dateTimePicker)]="endMomentDate"
-               [mode]="'dropdown'" [pickerType]="'date'" placeholder="End Date" readonly>
+          <input class="picker-input" [(ngModel)]="endMomentDate" [ngModelOptions]="{standalone: true}"
+                 [returnObject]=" 'string' " [(dateTimePicker)]="endMomentDate"
+                 [mode]="'dropdown'" [pickerType]="'date'" placeholder="End Date" readonly>
       </div>
     </div>
     <!-- Location -->
     <div class="form-element location">
-    <label>Location</label>
+      <label>Location</label>
       <input id="address" [(ngModel)]="eventAddress" type="text" placeholder="Address">
     </div>
 
     <!-- Tags -->
-    <div  class="form-element">
+    <div class="form-element">
       <label>Tags</label>
       <tag-input [(ngModel)]="defaultTags" [transform]="tagTransformer" [maxItems]="10">
         <tag-input-dropdown [matchingFn]="matchingFn"  [identifyBy]="'id'" [displayBy]="'name'" [autocompleteItems]="tags">
@@ -44,8 +45,8 @@
     </div>
     <div class="form-element">
       <label>Notifications</label>
-      <switcher [type]="defaultNotification" [options]="notificationOptions"
-                (toggle)="isNotificationEnabled=$event"></switcher>
+      <switcher [type]="notificationOptions[0].id" [options]="notificationOptions"
+                (toggle)="notification=$event"></switcher>
     </div>
     <br>
 
@@ -63,7 +64,6 @@
   <div class="map">
     <img src="http://staticmapmaker.com/img/bing.png" alt="Bing map">
   </div>
-
 
 
 </div>

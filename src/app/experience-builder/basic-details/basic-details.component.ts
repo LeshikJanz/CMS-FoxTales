@@ -6,10 +6,13 @@ import { ExperienceBuilderService } from '../experience-builder.service';
 import { BsDropdownModule } from 'ngx-bootstrap';
 import { DateTimePickerModule } from 'ng-pick-datetime';
 import * as moment from 'moment';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'basic-details',
-  templateUrl: './basic-details.component.html'
+  templateUrl: './basic-details.component.html',
+  styleUrls: ['basic-details.component.scss',
+    '../../shared/styles/animations.scss']
 })
 
 export class BasicDetailsComponent implements OnInit {
@@ -23,8 +26,9 @@ export class BasicDetailsComponent implements OnInit {
   public id: any;
 
   constructor(private router: Router,
-              private route: ActivatedRoute,
-              private experienceBuilderService: ExperienceBuilderService) {}
+              private experienceBuilderService: ExperienceBuilderService,
+              private _location: Location,
+              private route: ActivatedRoute) {}
 
   public ngOnInit() {
     // if(this.route.queryParams.value.experience !== undefined) {

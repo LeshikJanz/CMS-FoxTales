@@ -87,7 +87,7 @@ export class ExperienceComponent implements OnChanges {
 
   constructor(private _routeData: RouteData,
               private router: Router) {
-    _routeData.name.next('Experience List');
+    // _routeData.name.next('Experience List');
   }
 
   /**
