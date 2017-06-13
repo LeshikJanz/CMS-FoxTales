@@ -5,6 +5,7 @@ import { Http, HttpModule, RequestOptions, XHRBackend } from '@angular/http';
 import { CustomFormsModule } from 'ng2-validation';
 import { NgxErrorsModule } from '@ultimate/ngxerrors';
 import { ToastrModule, ToastContainerModule } from 'ngx-toastr';
+import { Ng2BootstrapModule } from 'ngx-bootstrap';
 
 import { TagInputModule } from 'ng2-tag-input';
 
@@ -33,6 +34,7 @@ import { EventRecapReportComponent } from '../event/recap-report/event-recap-rep
     FormsModule,
     ReactiveFormsModule,
     CustomFormsModule,
+    Ng2BootstrapModule,
     HttpModule,
     NgxErrorsModule,
     ToastrModule.forRoot(),

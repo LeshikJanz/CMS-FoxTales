@@ -9,7 +9,8 @@ import * as moment from 'moment';
 
 @Component({
   selector: 'basic-details',
-  templateUrl: './basic-details.component.html'
+  templateUrl: './basic-details.component.html',
+  styleUrls: ['basic-details.component.scss']
 })
 
 export class BasicDetailsComponent implements OnInit {

@@ -7,6 +7,7 @@ import { EventService } from '../event.service';
 import { MOCK_TAGS } from '../tag.mock';
 import { DateTimePickerModule } from 'ng-pick-datetime';
 import * as moment from 'moment';
+import { ISwitcher } from '../../components/toggles/switcher/switcher.interface';
 
 @Component({
   selector: 'event-edit',
@@ -17,8 +18,9 @@ export class EventEditComponent implements OnInit {
 
   public startMomentDate: string;
   public endMomentDate: string;
+  public notification: number;
   public isNotificationEnabled: string;
-  public notificationOptions = ['Yes', 'No'];
+  public notificationOptions: ISwitcher[] = [{id: 1, name: 'Yes'}, {id: 2, name: 'No'}];
   public eventName: string;
   public eventAddress: string;
   public eventTags: any;
@@ -36,11 +38,9 @@ export class EventEditComponent implements OnInit {
    * @param {EventService} event - Event service
    * @returns {void}
    */
-  constructor(
-    private router: Router,
-    private event: EventService,
-    private route: ActivatedRoute
-  ) {
+  constructor(private router: Router,
+              private event: EventService,
+              private route: ActivatedRoute) {
   }
 
   /**
@@ -83,11 +83,13 @@ export class EventEditComponent implements OnInit {
       }
     });
 
-    if (this.isNotificationEnabled === 'Yes' || this.defaultNotification === 'Yes') {
-      this.defaultNotification = true;
-    }
-    if (this.isNotificationEnabled === 'No' || this.defaultNotification === 'No') {
-      this.defaultNotification = false;
+    switch (this.notification) {
+      case 1:
+        this.defaultNotification = true;
+        break;
+      case 2:
+        this.defaultNotification = false;
+        break;
     }
 
     this.event.updateEvent({
@@ -124,6 +126,25 @@ export class EventEditComponent implements OnInit {
    */
   public tagTransformer(tag: string): string {
     return tag.replace(/\s/g, '');
+  }
+
+
+  /**
+   * Search tags
+   *
+   * @param {string} value - Value
+   * @param {any} target - Tag
+   * @returns {boolean}
+   */
+  public matchingFn(value: string, target: any): boolean {
+    if (!target['name']) {
+      return false;
+    }
+
+    const targetValue = target['name'].toString();
+    return targetValue && targetValue
+      .toLowerCase()
+      .indexOf(value.toLowerCase()) >= 0;
   }
 
 }

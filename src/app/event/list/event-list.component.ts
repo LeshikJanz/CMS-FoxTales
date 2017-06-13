@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { ModalDirective } from 'ngx-bootstrap/modal';
 import { EventService } from '../event.service';
 import { IActionState } from '../../client/client.interface';
 import { EventGroupsService } from '../../event-groups/list/event-groups.service';
-import { IEventFilter } from '../event.interface';
+import { IEventFilter, IEvent } from '../event.interface';
 import { ITableAction } from '../../shared/table/action.interface';
 import { RouteData } from '../../shared/core/routing/route-data.service';
+import * as moment from 'moment';
 
 /**
  * Event list component
@@ -16,11 +18,61 @@ import { RouteData } from '../../shared/core/routing/route-data.service';
 })
 export class EventListComponent implements OnInit {
   /**
+   * Clone modal
+   *
+   * @type {ModalDirective}
+   */
+  @ViewChild('cloneModal')
+  public cloneModal: ModalDirective;
+
+  /**
    * Event
    *
    * @type {Event[]}
    */
   public Events: any[];
+
+  /**
+   * Event to be cloned
+   *
+   * @type {IEvent}
+   */
+  public eventToClone: IEvent;
+
+  /**
+   * Cloned event
+   *
+   * @type {IEvent}
+   */
+  public clonedEvent: IEvent;
+
+  /**
+   * Is cloned?
+   *
+   * @type {boolean}
+   */
+  public isCloned: boolean = false;
+
+  /**
+   * Cloned event start date
+   *
+   * @type {string}
+   */
+  public cloneStartDate: string;
+
+  /**
+   * Clone name
+   *
+   * @type {string}
+   */
+  public cloneName: string;
+
+  /**
+   * Show clone animation?
+   *
+   * @type {boolean}
+   */
+  public showCloneAnimation: boolean = false;
 
   /**
    * Event
@@ -174,5 +226,55 @@ export class EventListComponent implements OnInit {
 
   onDeleteEvent(){
     this.getEvents();
+  }
+
+  /**
+   * Clone event action
+   *
+   * @param {IEvent} event - Event
+   * @returns {void}
+   */
+  public onClone(event: IEvent): void {
+    this.isCloned = false;
+    this.eventToClone = event;
+    this.cloneModal.show();
+  }
+
+  /**
+   * Save clone
+   *
+   * @returns {void}
+   */
+  public saveClone(): void {
+    this.showCloneAnimation = true;
+
+    this.eventService
+      .cloneEvent(this.eventToClone.id, this.cloneName, moment(this.cloneStartDate).toISOString())
+      .subscribe((clonedEvent: IEvent) => {
+        this.isCloned = true;
+        this.showCloneAnimation = false;
+        this.clonedEvent = clonedEvent;
+
+        this.getEvents();
+      });
+  }
+
+  /**
+   * Update clone
+   *
+   * @returns {void}
+   */
+  public updateClone(): void {
+    let requestData = {
+      id: this.clonedEvent.id,
+      name: this.cloneName,
+      startTime: moment(this.cloneStartDate).toISOString()
+    };
+
+    this.eventService
+      .updateEvent(requestData)
+      .subscribe(() => {
+        this.cloneModal.hide();
+      });
   }
 }

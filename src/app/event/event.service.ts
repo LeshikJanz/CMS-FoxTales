@@ -4,7 +4,7 @@ import { Response, Http, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs';
 import { Tag } from './tag';
 import { PermissionService } from '../shared/core/auth/permission.service';
-import { IEventGallery, IEventFilter } from './event.interface';
+import { IEventGallery, IEventFilter, IEvent } from './event.interface';
 
 @Injectable()
 export class EventService {
@@ -90,5 +90,24 @@ export class EventService {
         .map((response: Response) => {
           return response.json();
         })
+  }
+
+  /**
+   * Clone event
+   *
+   * @param {number} id - Event id
+   * @param {string} newName - Name
+   * @param {startDate} newStartDate - Start date
+   * @returns {Observable<IEvent>} - Cloned event
+   */
+  public cloneEvent(id: number, newName: string, newStartDate: string): Observable<IEvent> {
+    return this.http
+      .post(`${process.env.API_URL}/Events/${id}/clone`, {
+        name: newName,
+        startDate: newStartDate
+      })
+      .map((response: Response) => {
+        return <IEvent> response.json();
+      });
   }
 }

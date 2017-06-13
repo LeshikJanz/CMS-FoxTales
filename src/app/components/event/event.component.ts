@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { IActionState } from '../../client/client.interface';
 import { Router } from '@angular/router';
 import { IEvent } from '../../event/event.interface';
@@ -71,6 +71,14 @@ export class EventComponent {
   @Input() public status: number = 0;
 
   /**
+   * Clone event emitter
+   *
+   * @type {EventEmitter}
+   */
+  @Output()
+  public cloneAction: EventEmitter<any> = new EventEmitter();
+
+  /**
    * is event checked?
    *
    * @type boolean
@@ -115,6 +123,11 @@ export class EventComponent {
    */
   public onRecapReport() {
     this.router.navigate(['/events/recap-report', this.event['id']]);
+  }
+
+
+  public onClone(event: IEvent): void {
+    this.cloneAction.emit(event);
   }
 
   /**
