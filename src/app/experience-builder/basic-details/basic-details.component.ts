@@ -27,12 +27,12 @@ export class BasicDetailsComponent implements OnInit {
               private experienceBuilderService: ExperienceBuilderService) {}
 
   public ngOnInit() {
-    if(this.route.queryParams.value.experience !== undefined) {
-      this.sub = this.route.queryParams.subscribe((params) => {
-        this.id = +params['experience'];
-      });
-      this.getExperience();
-     }
+    // if(this.route.queryParams.value.experience !== undefined) {
+    //   this.sub = this.route.queryParams.subscribe((params) => {
+    //     this.id = +params['experience'];
+    //   });
+    //   this.getExperience();
+    //  }
     this.getTags();
   }
 
