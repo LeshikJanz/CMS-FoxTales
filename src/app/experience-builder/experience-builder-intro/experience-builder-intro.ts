@@ -18,10 +18,10 @@ export class ExperienceBuilderIntroComponent implements OnInit {
   public selectedValue: any;
 
   public switchOptions: ISwitcher[] = [{
-    id: 1,
+    id: 2,
     name: 'StoryStudio'
   }, {
-    id: 2,
+    id: 1,
     name: 'StoryRing'
   }];
 

@@ -120,6 +120,6 @@ export class BasicDetailsComponent implements OnInit {
       }
     });
     });
-  }
+  };
 
 }
