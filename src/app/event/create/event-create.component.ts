@@ -98,7 +98,7 @@ export class EventCreateComponent implements OnInit {
    * @returns {void}
    */
   public addEvent(event): void {
-    // event.tags = event.tags.map((tag: ITag) => tag.name);
+    event.tags = event.tags.map((tag: ITag) => tag.name);
 
     switch (this.notification) {
       case 1:

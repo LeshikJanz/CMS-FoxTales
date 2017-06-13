@@ -80,7 +80,7 @@ import { ClientService } from '../client/client.service';
 import { ChartModule } from 'angular2-highcharts';
 
 import { PaginationModule } from 'ngx-bootstrap/pagination';
-import { SearchInputComponent } from './search/search-input.component';
+import { SearchInputComponent } from './search/search-input/search-input.component';
 import { ExperienceComponent } from './experience/experience.component';
 import { IconButtonComponent } from './buttons/icon-button/icon-button.component';
 import {
@@ -92,6 +92,7 @@ import {
 }
   from './modals/experience-delete-modal/experience-delete-modal.component';
 import { RegularInputComponent } from './input/regular-input/regular-input.component';
+import { SearchBarComponent } from './search/search-bar/search-bar.component';
 
 @NgModule({
   imports: [
@@ -160,7 +161,8 @@ import { RegularInputComponent } from './input/regular-input/regular-input.compo
     IconButtonComponent,
     EventDeleteModalComponent,
     ExperienceDeleteModalComponent,
-    RegularInputComponent
+    RegularInputComponent,
+    SearchBarComponent
   ],
   exports: [
     CreationButtonComponent,
@@ -202,7 +204,8 @@ import { RegularInputComponent } from './input/regular-input/regular-input.compo
     IconButtonComponent,
     EventDeleteModalComponent,
     ExperienceDeleteModalComponent,
-    RegularInputComponent
+    RegularInputComponent,
+    SearchBarComponent
   ]
 })
 
