@@ -38,10 +38,10 @@ export class ExperienceService {
       .map((response: Response) => response.json() as Tag[]);
   }
 
-    public deleteExperience(experience){
+    public deleteExperience(experience) {
     return this.http.delete(`${process.env.API_URL}/Experiences/${experience.id}`)
         .map((response: Response) => {
-          return response
-        })
+          return response;
+        });
   }
 }

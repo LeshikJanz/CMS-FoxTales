@@ -22,7 +22,7 @@
               <div class="btn-group">
                 <label class="btn" [(ngModel)]="contentTypeValue" btnRadio=1>Still</label>
                 <label class="btn" [(ngModel)]="contentTypeValue" btnRadio=2>GIF</label>
-                <label class="btn" [(ngModel)]="contentTypeValue" btnRadio=4>GIF</label>
+                <label class="btn" [(ngModel)]="contentTypeValue" btnRadio=4>BurstGIF</label>
               </div>
 
               <br>
@@ -40,6 +40,13 @@
             <h3>Media Manipulation</h3>
             <upload-button></upload-button>
             <br>
+            <h5>Animated Overlay?</h5>
+
+            <hr>
+            <h3>Blend Mode</h3>
+            select input
+            <br>
+             <upload-button></upload-button>
             <button [type]="'tertiary'" [value]="'Finish'" (click)="Finish()">Finish</button>
           </tab>
         </tabset>

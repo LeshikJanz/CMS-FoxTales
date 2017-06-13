@@ -4,7 +4,7 @@ import { IEventGroup } from '../../event-groups/list/event-groups.interaface';
 import * as moment from 'moment';
 import { IEvent } from '../../event/event.interface';
 import { Router } from '@angular/router';
-import { ITableAction } from "../../shared/table/action.interface";
+import { ITableAction } from '../../shared/table/action.interface';
 
 @Component({
   selector: 'event-group',
