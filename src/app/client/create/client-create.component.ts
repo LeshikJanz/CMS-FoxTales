@@ -332,15 +332,16 @@ export class ClientCreateComponent implements OnInit {
     this.clientForm = this.formBuilder.group({
       logoBytes: [''],
       name: ['', [
-        Validators.required
+        Validators.required,
+        Validators.pattern('^\\S*')
       ]],
       email: ['', [
         Validators.required,
         CustomValidators.email
       ]],
       address: this.addressControl,
-      phone: ['', ],
-      freshBooks: ['', ],
+      phone: ['', Validators.pattern('^\\S*')],
+      freshBooks: ['', Validators.pattern('^\\S*')],
       socialAccounts: new FormArray([])
     });
 

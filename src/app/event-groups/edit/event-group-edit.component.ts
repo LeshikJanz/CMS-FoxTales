@@ -66,8 +66,6 @@ export class EventGroupEditComponent implements OnInit {
 
   public tagInputValue: string;
 
-  public validators = [this.emptyFormValidator];
-
   /**
    * Constructor
    *
@@ -82,21 +80,6 @@ export class EventGroupEditComponent implements OnInit {
               private formBuilder: FormBuilder,
               private toastrService: ToastrService) {
   }
-
-  public emptyFormValidator(control: FormControl) {
-    if (control.value.charAt(control.value.length - 1) !== '$') {
-      return {
-        'endsWith$': true
-      };
-    }
-
-    return null;
-  }
-
-  public errorMessages = {
-    'startsWithAt@': 'Your items need to start with "@"',
-    'endsWith$': 'Your items need to end with "$"'
-  };
 
   /**
    * Get client by id

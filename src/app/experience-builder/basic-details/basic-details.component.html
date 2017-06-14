@@ -46,7 +46,7 @@
   <hr>
   <h3>Let's Add Some Brand Tags</h3>
   <label>Brand Tags</label>
-  <tag-input [(ngModel)]="defaultTags" [transform]="tagTransformer">
+  <tag-input [(ngModel)]="defaultTags" [transform]="tagTransformer" >
     <tag-input-dropdown [matchingFn]="matchingFn" [identifyBy]="'id'" [displayBy]="'name'" [autocompleteItems]="tags">
     </tag-input-dropdown>
   </tag-input>

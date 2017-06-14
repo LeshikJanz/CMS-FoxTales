@@ -382,7 +382,8 @@ export class ClientEditComponent implements OnInit {
     this.clientForm = this.formBuilder.group({
       logoBytes: [''],
       name: ['', [
-        Validators.required
+        Validators.required,
+        Validators.pattern('^\\S*')
       ]],
       email: ['', [
         Validators.required,
@@ -390,10 +391,12 @@ export class ClientEditComponent implements OnInit {
       ]],
       address: this.addressControl,
       phone: ['', [
-        Validators.required
+        Validators.required,
+        Validators.pattern('^\\S*')
       ]],
       freshBooks: ['', [
-        Validators.required
+        Validators.required,
+        Validators.pattern('^\\S*')
       ]],
       socialAccounts: new FormArray([])
     });

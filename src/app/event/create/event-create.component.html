@@ -53,7 +53,9 @@
         [transform]="tagTransformer"
         [formControlName]="'tags'"
         [maxItems]="365"
-        [(ngModel)]="selectedTags">
+        [(ngModel)]="selectedTags"
+        [(inputText)]='tagInputValue'
+      >
         <tag-input-dropdown
           [appendToBody]="false"
           [identifyBy]="'id'"
@@ -73,7 +75,7 @@
       <div class="create">
         <fox-button
           [value]="'CREATE'"
-          [disabled]="eventForm.invalid"
+          [disabled]="eventForm.invalid || tagInputValue"
           [design]="'special'"
         ></fox-button>
       </div>
