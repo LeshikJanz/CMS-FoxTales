@@ -16,9 +16,9 @@
     <search-bar (Change)="onSearch($event)"></search-bar>
     <div class="profile">
       <div class="user-profile">
-        <img class="user-img" src="assets/img/default-user-icon.png">
+        <img class="user-img" [src]="user && user.profileImagePath">
         <div [routerLink]="['/profile']">
-          <div class="user-name">{{clientName}}</div>
+          <div class="user-name">{{user && user.firstName}} {{user && user.lastName}}</div>
           <div class="user-design-name">Aaron Dodson design</div>
         </div>
       </div>

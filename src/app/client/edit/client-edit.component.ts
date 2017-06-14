@@ -28,7 +28,8 @@ import { ClientService } from '../client.service';
 @Component({
   selector: 'client-edit',
   templateUrl: './client-edit.component.html',
-  styleUrls: [ './client-edit.component.scss' ]
+  styleUrls: [ './client-edit.component.scss',
+    '../../shared/styles/form-element.scss']
 })
 export class ClientEditComponent implements OnInit {
   /**
