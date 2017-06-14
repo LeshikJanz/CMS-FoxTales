@@ -39,12 +39,11 @@ export class AppComponent implements OnInit {
    * @param {RouteData} routeData - Route data service
    * @returns {void}
    */
-  constructor(
-    private router: Router,
-    private activatedRoute: ActivatedRoute,
-    private auth: AuthService,
-    private permissions: PermissionService,
-    private routeData: RouteData) {
+  constructor(private router: Router,
+              private activatedRoute: ActivatedRoute,
+              private auth: AuthService,
+              private permissions: PermissionService,
+              private routeData: RouteData) {
 
     setTimeout(() => {
       this.redirect();

@@ -4,6 +4,7 @@ import { PermissionService } from '../../../shared/core/auth/permission.service'
 import { UserService } from '../../../user/user.service';
 import { IUser } from '../../../user/user.interface';
 import { IActionState } from '../../../client/client.interface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'main-navigation',
@@ -15,27 +16,40 @@ export class MainNavigationComponent implements OnInit {
   public user: IUser;
 
   public options: IActionState[] = [
-    {id: 1, action: 'Edit profile', callback: 'editProfile'},
-    {id: 2, action: 'Log out', callback: 'logOut'}
+    { id: 1, action: 'Edit profile', callback: 'editProfile' },
+    { id: 2, action: 'Log out', callback: 'logout' }
   ];
 
-  constructor(private authService: AuthService,
-              private userService: UserService) {
+  constructor(private auth: AuthService,
+              private userService: UserService,
+              private router: Router) {
   }
 
   public ngOnInit() {
     this.userService.getUser(PermissionService.userId.toString())
-      .subscribe((user: IUser) => {
-          this.user = user;
-          console.log('this.user');
-          console.log(this.user);
-        }
+      .subscribe((user: IUser) =>
+        this.user = user
       )
   }
 
-  public onTypeChanged(event: IActionState) {
-    console.log('onTypeChanged');
-    console.log(event);
+  public editProfile() {
+    this.router.navigate(['/profile']);
+  }
+
+  /**
+   * Log out
+   *
+   * @returns {void}
+   */
+  public logout(): void {
+    const context = this.auth.getContext();
+    context.logout();
+  }
+
+  public onTypeChanged(action: IActionState) {
+    if (this[action.callback]) {
+      this[action.callback]();
+    }
   }
 
   public onSearch(event: string) {

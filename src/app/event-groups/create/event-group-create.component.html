@@ -8,7 +8,7 @@
     <div [formGroup]="eventGroupForm">
       <!-- Name -->
       <div class="form-element">
-        <label for="name">Client Name *</label>
+        <label for="name">Group Name *</label>
         <input
           id="name"
           class="form-control input"
@@ -24,6 +24,7 @@
           formControlName="events"
           [transform]="tagTransformer"
           [(inputText)]='tagInputValue'
+          [secondaryPlaceholder]="'Start typing event name'"
         >
           <tag-input-dropdown
             [identifyBy]="'id'"

@@ -17,7 +17,7 @@
     <div class="profile">
       <div class="user-profile">
         <img class="user-img" [src]="user && user.profileImagePath">
-        <div [routerLink]="['/profile']">
+        <div>
           <dropdown
             title="{{user && user.firstName}} {{user && user.lastName}}"
             [options]="options"

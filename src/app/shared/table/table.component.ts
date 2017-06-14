@@ -249,7 +249,7 @@ export class TableComponent implements OnInit {
    * @returns {void}
    */
   public onToggle(event: ICheckbox): void {
-    console.log('You chouse');
+    console.log('You choise');
     console.log(event);
   }
 
@@ -350,10 +350,5 @@ export class TableComponent implements OnInit {
    */
   public isNextPage(): boolean {
     return this.page < Math.ceil(this.rowsCount / this.limit);
-  }
-
-  public ngOnChanges() {
-    console.log('this.rows');
-    console.log(this.rows);
   }
 }

@@ -41,9 +41,9 @@ export class EventGroupComponent implements OnChanges {
    * @type {ITableAction[]}
    */
   public groupActions: ITableAction[] = [
-    {id: 1, title: 'Edit', callback: 'editEventGroup'},
-    {id: 2, title: 'Configure gallery', callback: 'configureGallery'},
-    {id: 3, title: 'Add events to group', callback: 'addEventsToGroup'}
+    { id: 1, title: 'Edit', callback: 'editEventGroup' },
+    { id: 2, title: 'Configure gallery', callback: 'configureGallery' },
+    { id: 3, title: 'Add events to group', callback: 'addEventsToGroup' }
   ];
 
   /**
@@ -52,7 +52,7 @@ export class EventGroupComponent implements OnChanges {
    * @type {IActionState[]}
    */
   public eventActions: IActionState[] = [
-    {id: 1, action: 'Edit'},
+    { id: 1, action: 'Edit' },
   ];
 
   /**
@@ -61,8 +61,8 @@ export class EventGroupComponent implements OnChanges {
    * @type {IActionState[]}
    */
   public sortActions: IActionState[] = [
-    {id: 1, action: 'Upcoming'},
-    {id: 2, action: 'Descending'}
+    { id: 1, action: 'Upcoming' },
+    { id: 2, action: 'Descending' }
   ];
 
   /**
@@ -74,8 +74,9 @@ export class EventGroupComponent implements OnChanges {
   constructor(private router: Router) {
   }
 
+
   public ngOnChanges() {
-    if(this.eventGroups) {
+    if (this.eventGroups) {
       this.eventGroups = this.eventGroups.map((e: IEventGroup) => ({
         ...e,
         timePeriod: e.events.length && this.getTimePeriod(e)
@@ -149,19 +150,22 @@ export class EventGroupComponent implements OnChanges {
    */
   public getTimePeriod(eventGroup: IEventGroup): string {
     let startDate: string = this.getMinDate(eventGroup);
-    let startDateFormat ='MMM DD, YYYY';
+    let startDateFormat = 'MMM DD, YYYY';
     let endDate: string = this.getMaxDate(eventGroup);
     let endDateFormat = 'MMM DD, YYYY';
 
-    if(moment(startDate, startDateFormat).get('year') === moment(endDate, endDateFormat).get('year')) {
+    if (moment(startDate, startDateFormat).get('year') ===
+        moment(endDate, endDateFormat).get('year')) {
       startDateFormat = 'MMM DD';
       startDate = moment(startDate).format(startDateFormat);
     }
 
-    if(moment(startDate, startDateFormat).get('month') === moment(endDate, endDateFormat).get('month')) {
+    if (moment(startDate, startDateFormat).get('month') ===
+        moment(endDate, endDateFormat).get('month')) {
       endDateFormat = 'DD, YYYY';
 
-      if(moment(startDate, startDateFormat).get('date') === moment(endDate, endDateFormat).get('date')) {
+      if (moment(startDate, startDateFormat).get('date') ===
+          moment(endDate, endDateFormat).get('date')) {
         return endDate;
       }
       endDate = moment(endDate).format(endDateFormat);
