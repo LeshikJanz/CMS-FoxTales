@@ -42,7 +42,8 @@ export class EventGalleryContainerComponent implements OnInit {
    *
    * @type {string}
    */
-  public selectedType: string = 'Experiences';
+  public selectedType: number = this.galleryTypes[1].id;  //Experience
+
   /**
    * Gallery items
    *

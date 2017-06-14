@@ -390,14 +390,8 @@ export class ClientEditComponent implements OnInit {
         CustomValidators.email
       ]],
       address: this.addressControl,
-      phone: ['', [
-        Validators.required,
-        Validators.pattern('^\\S*')
-      ]],
-      freshBooks: ['', [
-        Validators.required,
-        Validators.pattern('^\\S*')
-      ]],
+      phone: [''],
+      freshBooks: [''],
       socialAccounts: new FormArray([])
     });
 

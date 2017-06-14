@@ -340,8 +340,8 @@ export class ClientCreateComponent implements OnInit {
         CustomValidators.email
       ]],
       address: this.addressControl,
-      phone: ['', Validators.pattern('^\\S*')],
-      freshBooks: ['', Validators.pattern('^\\S*')],
+      phone: [''],
+      freshBooks: [''],
       socialAccounts: new FormArray([])
     });
 
