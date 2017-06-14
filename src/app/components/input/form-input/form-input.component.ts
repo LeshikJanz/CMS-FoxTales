@@ -16,8 +16,8 @@ export class FormInputComponent implements OnChanges {
   @Input() public title: string;
 
   public ngOnChanges() {
-    console.log('this.form');
-    console.log(this.form);
+    console.log('this.form.controls');
+    console.log(this.form.controls);
 
     console.log('this.form.get(name)');
     console.log(this.form.get('name'));

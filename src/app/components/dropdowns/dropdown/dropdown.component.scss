@@ -85,8 +85,23 @@ ul.dropdown-menu {
       margin-bottom: 10%;
     }
   }
+}
 
-
+.slim {
+  .btn.drop-button {
+    height: $small-height;
+    width: $small-width;
+    border-radius: 3px;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.58;
+    color: #626d78;
+    margin-top: 0;
+    .fox-caret {
+      border-width: 0 1px 1px 0;
+      margin-bottom: 10%;
+    }
+  }
 }
 
 .medium {

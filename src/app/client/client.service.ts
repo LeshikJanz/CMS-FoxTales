@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Response, Http } from '@angular/http';
 import { Observable } from 'rxjs';
-import { IClientList, IClientFilter, IClientSocialIntegration } from './client.interface';
+import { IClientList, IClientFilter, IClientSocialIntegration, IClientSocial } from './client.interface';
 import { Client } from './client';
 import { ClientLicense } from './client-license';
 
@@ -159,5 +159,18 @@ export class ClientService {
       const tokenData = response.json();
       return (tokenData) ? tokenData.token : '';
     });
+  }
+
+  /**
+   * Get list of clients as [{ {id}, {name} }]
+   *
+   * @returns {Observable<IClientSocial>} - clients
+   */
+  public clientsLookup() : Observable<IClientSocial[]> {
+    return this.http.get(
+      `${process.env.API_URL}/Clients/Lookup`
+    ).map((response: Response) =>
+      response.json()
+    );
   }
 }

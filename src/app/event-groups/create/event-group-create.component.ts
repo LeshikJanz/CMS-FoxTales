@@ -57,7 +57,7 @@ export class EventGroupCreateComponent implements OnInit {
    *
    * @type {string}
    */
-  public galleryOptions = ['Yes', 'No'];
+  public galleryOptions = [{id: 1, name: 'Yes'},{ id: 2, name: 'No'}];
 
   /**
    * Is Gallery Enabled (yes/no)

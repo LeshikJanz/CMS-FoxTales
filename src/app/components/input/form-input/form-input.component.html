@@ -1,6 +1,6 @@
 <div class="form-element">
-  <label [ngClass]="{'label-error': form && form.get(name).touched &&
-                                          form.get(name).hasError('required')}"
+  <label [ngClass]="{'label-error': form && form.get('name').touched &&
+                                          form.get('name').hasError('required')}"
          for="{{name}}">{{title}}</label>
   <div [ngClass]="{'plus-wrap': form && form.get('name').touched &&
                                  !form.get('name').hasError('required')}"
@@ -13,8 +13,8 @@
       placeholder="{{title}}"/>
   </div>
   <div ngxErrors="{{name}}">
-    <div class="field-error" *ngIf="form && form.get(name).touched &&
-                                          form.get(name).hasError('required')">
+    <div class="field-error" *ngIf="form && form.get('name').touched &&
+                                          form.get('name').hasError('required')">
       <button class="close-icon" type="reset"></button>
       Field is required
     </div>

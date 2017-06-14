@@ -28,8 +28,8 @@
       <search-input [title]="'find gallery'" (Change)="onSearchChange($event)"></search-input>
 
     </div>
-    <gallery-list *ngIf="selectedType == 'Experiences'" [galleries]="experiences" ></gallery-list>
-    <gallery-item-list *ngIf="selectedType == 'All'" [galleryItems]="galleryItems"></gallery-item-list>
+    <gallery-list *ngIf="selectedType == 2" [galleries]="experiences" ></gallery-list>
+    <gallery-item-list *ngIf="selectedType == 3" [galleryItems]="galleryItems"></gallery-item-list>
   </div>
 
 </div>

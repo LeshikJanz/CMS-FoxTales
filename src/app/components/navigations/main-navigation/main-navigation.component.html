@@ -18,7 +18,11 @@
       <div class="user-profile">
         <img class="user-img" [src]="user && user.profileImagePath">
         <div [routerLink]="['/profile']">
-          <div class="user-name">{{user && user.firstName}} {{user && user.lastName}}</div>
+          <dropdown
+            title="{{user && user.firstName}} {{user && user.lastName}}"
+            [options]="options"
+            [size]="'slim'"
+            (typeChanged)="onTypeChanged($event)"></dropdown>
           <div class="user-design-name">Aaron Dodson design</div>
         </div>
       </div>
