@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit, OnChanges } from '@angular/core';
 import { IActionState } from '../../client/client.interface';
 import { IEventGroup } from '../../event-groups/list/event-groups.interaface';
 import * as moment from 'moment';
@@ -12,14 +12,14 @@ import { ITableAction } from '../../shared/table/action.interface';
   styleUrls: ['event-group.component.scss']
 })
 
-export class EventGroupComponent {
+export class EventGroupComponent implements OnChanges {
 
   /**
    * Event groups
    *
    * @type {IEventGroup[]}
    */
-  @Input() public eventGroups: IEventGroup[];
+  @Input() public eventGroups: any[];
 
   /**
    * Object controls Modal state
@@ -74,6 +74,15 @@ export class EventGroupComponent {
   constructor(private router: Router) {
   }
 
+  public ngOnChanges() {
+    if(this.eventGroups) {
+      this.eventGroups = this.eventGroups.map((e: IEventGroup) => ({
+        ...e,
+        timePeriod: e.events.length && this.getTimePeriod(e)
+      }));
+    }
+  }
+
   /**
    * Edit event group
    *
@@ -112,11 +121,11 @@ export class EventGroupComponent {
    * @param {IEventGroup} eventGroup
    * @return {string} min date
    */
-  public getMinDate(eventGroup: IEventGroup) {
+  public getMinDate(eventGroup: IEventGroup): string {
     return moment(eventGroup.events.map((e: IEvent) =>
       moment(e.startTime).format('YYYY/MM/DD/hh/mm/ss'))
       .reduce((a, b) => a < b ? a : b), 'YYYY/MM/DD/hh/mm/ss')
-      .format('MMMM DD');
+      .format('MMM DD, YYYY');
   }
 
   /**
@@ -125,10 +134,39 @@ export class EventGroupComponent {
    * @param {IEventGroup} eventGroup
    * @return {string} max date
    */
-  public getMaxDate(eventGroup: IEventGroup) {
+  public getMaxDate(eventGroup: IEventGroup): string {
     return moment(eventGroup.events.map((e: IEvent) =>
       moment(e.startTime).format('YYYY/MM/DD/hh/mm/ss'))
       .reduce((a, b) => a > b ? a : b), 'YYYY/MM/DD/hh/mm/ss')
-      .format('MMMM DD, YYYY');
+      .format('MMM DD, YYYY');
+  }
+
+  /**
+   * Get time period
+   *
+   * @param {IEventGroup} eventGroup
+   * @return {string} max date
+   */
+  public getTimePeriod(eventGroup: IEventGroup): string {
+    let startDate: string = this.getMinDate(eventGroup);
+    let startDateFormat ='MMM DD, YYYY';
+    let endDate: string = this.getMaxDate(eventGroup);
+    let endDateFormat = 'MMM DD, YYYY';
+
+    if(moment(startDate, startDateFormat).get('year') === moment(endDate, endDateFormat).get('year')) {
+      startDateFormat = 'MMM DD';
+      startDate = moment(startDate).format(startDateFormat);
+    }
+
+    if(moment(startDate, startDateFormat).get('month') === moment(endDate, endDateFormat).get('month')) {
+      endDateFormat = 'DD, YYYY';
+
+      if(moment(startDate, startDateFormat).get('date') === moment(endDate, endDateFormat).get('date')) {
+        return endDate;
+      }
+      endDate = moment(endDate).format(endDateFormat);
+    }
+
+    return `${startDate} - ${endDate}`;
   }
 }

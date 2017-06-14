@@ -10,4 +10,5 @@ export interface IEventGroup {
   eventIds: number[];
   events?: IEvent[];
   gallery?: any;
+  timePeriod?: string;
 }
