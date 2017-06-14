@@ -94,6 +94,7 @@ import {
 import { RegularInputComponent } from './input/regular-input/regular-input.component';
 import { SearchBarComponent } from './search/search-bar/search-bar.component';
 import { ConnectContentOptionComponent } from './experience/connect-content-option/connect-content-option.component';
+import { BingMapComponent } from './bing-map/bing-map.component';
 
 @NgModule({
   imports: [
@@ -118,7 +119,7 @@ import { ConnectContentOptionComponent } from './experience/connect-content-opti
     ToastContainerModule.forRoot(),
     ChartModule.forRoot(require('highcharts')),
     ToastContainerModule.forRoot(),
-    PaginationModule.forRoot()
+    PaginationModule.forRoot(),
   ],
   providers: [
     GalleryService,
@@ -164,7 +165,8 @@ import { ConnectContentOptionComponent } from './experience/connect-content-opti
     ExperienceDeleteModalComponent,
     RegularInputComponent,
     SearchBarComponent,
-    ConnectContentOptionComponent
+    ConnectContentOptionComponent,
+    BingMapComponent
   ],
   exports: [
     CreationButtonComponent,
@@ -208,7 +210,8 @@ import { ConnectContentOptionComponent } from './experience/connect-content-opti
     ExperienceDeleteModalComponent,
     RegularInputComponent,
     SearchBarComponent,
-    ConnectContentOptionComponent
+    ConnectContentOptionComponent,
+    BingMapComponent
   ]
 })
 

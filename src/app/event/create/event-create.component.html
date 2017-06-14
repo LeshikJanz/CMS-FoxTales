@@ -21,10 +21,10 @@
         <div>
           <label>Start Date</label>
           <div class="wrap">
-            <input class="picker-input" [ngModel]="startMomentDate" [ngModelOptions]="{standalone: true}"
+            <input class="picker-input" [ngModel]="startMomentDate"
                    [returnObject]=" 'string' "
                    [(dateTimePicker)]="startMomentDate" [mode]="'dropdown'" [pickerType]="'date'"
-                   placeholder="Start Date"
+                   placeholder="Start Date" [formControlName]="'startDate'"
                    readonly>
           </div>
         </div>
@@ -32,9 +32,10 @@
           <label>End Date</label>
           <div>
             <div class="wrap">
-            <input class="picker-input" [ngModel]="endMomentDate" [ngModelOptions]="{standalone: true}"
+            <input class="picker-input" [ngModel]="endMomentDate" 
                    [returnObject]=" 'string' " [(dateTimePicker)]="endMomentDate"
-                   [mode]="'dropdown'" [pickerType]="'date'" placeholder="End Date" readonly>
+                   [mode]="'dropdown'" [pickerType]="'date'" placeholder="End Date"
+                   [formControlName]="'endDate'" readonly>
             </div>
           </div>
         </div>
@@ -47,7 +48,7 @@
       </div>
 
       <!-- Tags -->
-      <div class="form-element">
+      <div class="form-element tags">
       <label>Tags</label>
       <tag-input
         [transform]="tagTransformer"
@@ -80,6 +81,7 @@
     </div>
   </form>
   <div class="map">
+    <!--<bing-map></bing-map>-->
     <img src="http://staticmapmaker.com/img/bing.png" alt="Bing map">
   </div>
 </div>

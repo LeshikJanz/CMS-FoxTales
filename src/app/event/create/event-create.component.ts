@@ -98,6 +98,10 @@ export class EventCreateComponent implements OnInit {
    * @returns {void}
    */
   public addEvent(event): void {
+    if(event.tags === undefined){
+      event.tags = [];
+    }
+ 
     event.tags = event.tags.map((tag: ITag) => tag.name);
 
     switch (this.notification) {
@@ -130,9 +134,9 @@ export class EventCreateComponent implements OnInit {
       address: ['', [
         Validators.required
       ]],
-      tags: ['', [
-        Validators.required
-      ]]
+      tags: ['', this.selectedTags],
+      startDate: ['',[Validators.required]],
+      endDate: ['',[Validators.required]]
     });
 
     return this;
