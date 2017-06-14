@@ -11,8 +11,8 @@
       <div class="modal-body">
           <tag-input
             [transform]="tagTransformer"
-            [maxItems]="1000"
             [(ngModel)]="selectedEvents"
+            [maxItems]="365"
           >
             <tag-input-dropdown
               [appendToBody]=false

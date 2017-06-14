@@ -37,7 +37,7 @@
       <td *ngIf="actions">
         <table-dropdown
           [title]="'Action'"
-          [options]="actions"
+          [options]="row.id === userId ? activeUserActions : actions"
           [size]="'medium'"
           (typeChanged)="changeAction(row.id, $event)"
         ></table-dropdown>

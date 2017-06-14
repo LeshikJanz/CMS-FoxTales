@@ -51,8 +51,8 @@
       <label>Tags</label>
       <tag-input
         [transform]="tagTransformer"
-        [maxItems]="1000"
         [formControlName]="'tags'"
+        [maxItems]="365"
         [(ngModel)]="selectedTags">
         <tag-input-dropdown
           [appendToBody]="false"
