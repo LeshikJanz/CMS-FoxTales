@@ -26,6 +26,7 @@
           <fox-button
             [value]="'Save'"
             [design]="'primary'"
+            [disabled]="!selectedEvents.length"
             (click)="updateGroup()"
           ></fox-button>
           <fox-button

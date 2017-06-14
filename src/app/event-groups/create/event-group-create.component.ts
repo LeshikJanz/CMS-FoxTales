@@ -4,7 +4,7 @@ import { FormGroup, Validators, FormBuilder, FormArray } from '@angular/forms';
 import { ITag } from '../../event/tag.interface';
 import { IEventGroup } from '../list/event-groups.interaface';
 import { EventGroupsService } from '../list/event-groups.service';
-import { IEvent } from '../../event/event.interface';
+import { IEvent, IEventFilter } from '../../event/event.interface';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { PermissionService } from '../../shared/core/auth/permission.service';
@@ -48,7 +48,7 @@ export class EventGroupCreateComponent implements OnInit {
     name: null,
     clientId: null,
     eventIds: null,
-    events: null,
+    events: [],
     gallery: null
   };
 
@@ -57,7 +57,7 @@ export class EventGroupCreateComponent implements OnInit {
    *
    * @type {string}
    */
-  public galleryOptions = [{id: 1, name: 'Yes'},{ id: 2, name: 'No'}];
+  public galleryOptions = [{ id: 1, name: 'Yes' }, { id: 2, name: 'No' }];
 
   /**
    * Is Gallery Enabled (yes/no)
@@ -66,6 +66,15 @@ export class EventGroupCreateComponent implements OnInit {
    */
 
   public isGalleryEnabled: string;
+
+  /**
+   * tag-input value
+   *
+   * @type {string}
+   */
+
+  public tagInputValue: string;
+
   /**
    * Constructor
    *
@@ -77,8 +86,7 @@ export class EventGroupCreateComponent implements OnInit {
               private eventGroupService: EventGroupsService,
               private router: Router,
               private formBuilder: FormBuilder,
-              private toastrService: ToastrService
-  ) {
+              private toastrService: ToastrService) {
   }
 
   /**
@@ -87,10 +95,14 @@ export class EventGroupCreateComponent implements OnInit {
    * @return {void}
    */
   public getEvents() {
+    const filter: IEventFilter = {
+      ignoreEventGroupFilter: false
+    };
+
     this.eventService
-      .getEvents()
+      .getEvents(filter)
       .subscribe((events: IEvent[]) =>
-          this.events = events.filter((e: IEvent) => !!e.name)
+        this.events = events.filter((e: IEvent) => !!e.name)
       );
   }
 
@@ -131,7 +143,9 @@ export class EventGroupCreateComponent implements OnInit {
    * @returns {void}
    */
   public addEventGroup(eventGroup: IEventGroup) {
-    eventGroup.eventIds = eventGroup.events.map((e: IEvent) => e.id);
+    if (eventGroup.events) {
+      eventGroup.eventIds = eventGroup.events.map((e: IEvent) => e.id);
+    }
     delete eventGroup.events;
     eventGroup.clientId = PermissionService.clientId;
 

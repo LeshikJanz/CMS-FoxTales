@@ -1,13 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { EventService } from '../../event/event.service';
-import { FormGroup, Validators, FormBuilder, FormArray } from '@angular/forms';
-import { ITag } from '../../event/tag.interface';
+import { FormGroup, Validators, FormBuilder, FormControl } from '@angular/forms';
 import { IEventGroup } from '../list/event-groups.interaface';
 import { EventGroupsService } from '../list/event-groups.service';
-import { IEvent } from '../../event/event.interface';
+import { IEvent, IEventFilter } from '../../event/event.interface';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { PermissionService } from '../../shared/core/auth/permission.service';
 
 @Component({
   selector: 'event-group-edit',
@@ -50,7 +48,7 @@ export class EventGroupEditComponent implements OnInit {
    *
    * @type {string}
    */
-  public galleryOptions = ['Yes', 'No'];
+  public galleryOptions = [{ id: 1, name: 'Yes' }, { id: 2, name: 'No' }];
 
   /**
    * Is Gallery Enabled (yes/no)
@@ -59,6 +57,16 @@ export class EventGroupEditComponent implements OnInit {
    */
 
   public isGalleryEnabled: string;
+
+  /**
+   * tag-input value
+   *
+   * @type {string}
+   */
+
+  public tagInputValue: string;
+
+  public validators = [this.emptyFormValidator];
 
   /**
    * Constructor
@@ -74,6 +82,21 @@ export class EventGroupEditComponent implements OnInit {
               private formBuilder: FormBuilder,
               private toastrService: ToastrService) {
   }
+
+  public emptyFormValidator(control: FormControl) {
+    if (control.value.charAt(control.value.length - 1) !== '$') {
+      return {
+        'endsWith$': true
+      };
+    }
+
+    return null;
+  }
+
+  public errorMessages = {
+    'startsWithAt@': 'Your items need to start with "@"',
+    'endsWith$': 'Your items need to end with "$"'
+  };
 
   /**
    * Get client by id
@@ -108,8 +131,12 @@ export class EventGroupEditComponent implements OnInit {
    * @return {void}
    */
   public getEvents() {
+    const filter: IEventFilter = {
+      ignoreEventGroupFilter: false
+    };
+
     this.eventService
-      .getEvents()
+      .getEvents(filter)
       .subscribe((events: IEvent[]) =>
         this.events = events.filter((e: IEvent) => !!e.name)
       );

@@ -26,7 +26,8 @@
           [transform]="tagTransformer"
           [displayBy]="'name'"
           [(ngModel)]="eventGroup.events"
-          [maxItems]="1000">
+          [maxItems]="1000"
+          [(inputText)]='tagInputValue'>
           <tag-input-dropdown
             [identifyBy]="'id'"
             [displayBy]="'name'"
@@ -39,7 +40,7 @@
         <label for="groupGallery">Enable Group Gallery</label>
         <switcher id="groupGallery" [options]="galleryOptions" (toggle)="isGalleryEnabled=$event"></switcher>
         <configure-button
-          *ngIf="isGalleryEnabled === 'Yes'"
+          *ngIf="isGalleryEnabled === 1"
           [value]="'Configure Gallery'"
         ></configure-button>
 
@@ -49,7 +50,7 @@
 
       <fox-button
         type="submit"
-        [disabled]="eventGroupForm.invalid"
+        [disabled]="eventGroupForm.invalid || tagInputValue"
         [value]="'Update'"
         [design]="'special'"
       ></fox-button>
