@@ -84,6 +84,15 @@ export class UserListComponent implements OnInit {
   ];
 
   /**
+   * Row actions
+   *
+   * @type {ITableAction[]}
+   */
+  public activeUserActions: ITableAction[] = [
+    {title: 'Edit', callback: 'editUser'}
+  ];
+
+  /**
    * Filter
    *
    * @type {IUserFilter}

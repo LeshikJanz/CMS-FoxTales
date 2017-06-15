@@ -16,6 +16,9 @@
       </div>
 
       <!-- Name -->
+      <!--<div >-->
+        <!--<form-input [form]="clientForm" [name]="name" title="Client Name*"></form-input>-->
+      <!--</div>-->
       <div class="form-element">
         <label [ngClass]="{'label-error': clientForm.get('name').touched &&
                                           clientForm.get('name').hasError('required')}"
@@ -45,7 +48,7 @@
           id="email"
           type="email"
           formControlName="email"
-          class="form-control input"
+          class="form-control"
           placeholder="Email">
 
         <div ngxErrors="email">
@@ -63,7 +66,7 @@
         <label for="address">Address</label>
         <input
           id="address"
-          class="form-control input"
+          class="form-control"
           type="text"
           formControlName="address"
           autocorrect="off"
@@ -84,7 +87,7 @@
         <label for="phone">Phone</label>
         <input
           id="phone"
-          class="form-control input"
+          class="form-control"
           type="text"
           formControlName="phone"
           placeholder="Phone">
@@ -101,7 +104,7 @@
         <label for="freshBooks">FreshBook Url</label>
         <input
           id="freshBooks"
-          class="form-control input"
+          class="form-control"
           type="text"
           formControlName="freshBooks"
           placeholder="FreshBook Url">

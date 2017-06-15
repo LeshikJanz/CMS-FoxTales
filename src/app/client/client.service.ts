@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Response, Http } from '@angular/http';
 import { Observable } from 'rxjs';
-import { IClientList, IClientFilter, IClientSocialIntegration } from './client.interface';
+import {
+  IClientList, IClientFilter, IClientSocialIntegration, IClientSocial
+} from './client.interface';
 import { Client } from './client';
 import { ClientLicense } from './client-license';
 
@@ -69,7 +71,7 @@ export class ClientService {
    * @returns {Observable<Client>} - Client
    */
   public updateClient(client: Client): Observable<Client> {
-    return this.http.put(`${process.env.API_URL}/Clients/Update`, [ client ])
+    return this.http.put(`${process.env.API_URL}/Clients/Update`, [client])
       .map((response: Response) => <Client> response.json());
   }
 
@@ -83,7 +85,7 @@ export class ClientService {
    */
   public archiveClient(id: string): Observable<Response> {
     return this.http.post(`${process.env.API_URL}/Clients/Archive`, {
-      selectedIds: [ id ]
+      selectedIds: [id]
     });
   }
 
@@ -97,7 +99,7 @@ export class ClientService {
    */
   public unarchiveClient(id: string): Observable<Response> {
     return this.http.post(`${process.env.API_URL}/Clients/UnArchive`, {
-      selectedIds: [ id ]
+      selectedIds: [id]
     });
   }
 
@@ -121,9 +123,7 @@ export class ClientService {
    * @param {string} authResponse - Response data
    * @returns {Observable<Response>} - Response
    */
-  public addSocialIntegration(
-    id: number, name: string, authResponse: string
-  ): Observable<Response> {
+  public addSocialIntegration(id: number, name: string, authResponse: string): Observable<Response> {
     return this.http.post(`${process.env.API_URL}/SocialIntegrations/${name}`, {
       platformID: id,
       token: authResponse
@@ -159,5 +159,18 @@ export class ClientService {
       const tokenData = response.json();
       return (tokenData) ? tokenData.token : '';
     });
+  }
+
+  /**
+   * Get list of clients as [{ {id}, {name} }]
+   *
+   * @returns {Observable<IClientSocial>} - clients
+   */
+  public clientsLookup(): Observable<IClientSocial[]> {
+    return this.http.get(
+      `${process.env.API_URL}/Clients/Lookup`
+    ).map((response: Response) =>
+      response.json()
+    );
   }
 }

@@ -13,8 +13,7 @@
       <div class="modal-body" [hidden]="isEmailSent">
         <div class="switch-container">
           <label>What would you like to download?</label>
-          <switcher [type]="options[1]"
-                    [options]="options" (toggle)="onSwitch($event)"></switcher>
+          <switcher [options]="options" (toggle)="onSwitch($event)"></switcher>
         </div>
         <div class="btn-actions">
           <fox-button

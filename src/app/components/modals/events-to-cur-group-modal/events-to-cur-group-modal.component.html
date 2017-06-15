@@ -11,8 +11,8 @@
       <div class="modal-body">
           <tag-input
             [transform]="tagTransformer"
-            [maxItems]="10"
             [(ngModel)]="selectedEvents"
+            [maxItems]="365"
           >
             <tag-input-dropdown
               [appendToBody]=false
@@ -26,6 +26,7 @@
           <fox-button
             [value]="'Save'"
             [design]="'primary'"
+            [disabled]="!selectedEvents.length"
             (click)="updateGroup()"
           ></fox-button>
           <fox-button

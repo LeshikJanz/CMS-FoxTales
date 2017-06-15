@@ -188,3 +188,11 @@ device-info {
   z-index: 100;
   margin-top: -300px;
 }
+
+video::-internal-media-controls-download-button {
+  display:none;
+}
+
+video::-webkit-media-controls-enclosure {
+  overflow: hidden !important
+}
