@@ -173,6 +173,8 @@ export class UserEditComponent implements OnInit {
    * @return {boolean}
    */
   public isFormInvalid(): boolean {
+    console.log('this.user.clientId')
+    console.log(this.user.clientId)
     if (this.user.clientId && this.user.roles.length) {
       return false;
     }
