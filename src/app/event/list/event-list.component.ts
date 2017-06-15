@@ -121,7 +121,7 @@ export class EventListComponent implements OnInit {
   constructor(private eventService: EventService,
               private eventGroupsService: EventGroupsService,
               private _routeData: RouteData) {
-    _routeData.name.next('Event Management');
+    // _routeData.name.next('Event Management');
   }
   public ngOnInit(): void {
     this.getEvents();
@@ -249,7 +249,11 @@ export class EventListComponent implements OnInit {
     this.showCloneAnimation = true;
 
     this.eventService
-      .cloneEvent(this.eventToClone.id, this.cloneName, moment(this.cloneStartDate).toISOString())
+      .cloneEvent(
+        this.eventToClone.id,
+        this.cloneName,
+        moment(this.cloneStartDate).add(1, 'day').toISOString()
+      )
       .subscribe((clonedEvent: IEvent) => {
         this.isCloned = true;
         this.showCloneAnimation = false;
@@ -268,7 +272,7 @@ export class EventListComponent implements OnInit {
     let requestData = {
       id: this.clonedEvent.id,
       name: this.cloneName,
-      startTime: moment(this.cloneStartDate).toISOString()
+      startTime: moment(this.cloneStartDate).add(1, 'day').toISOString()
     };
 
     this.eventService

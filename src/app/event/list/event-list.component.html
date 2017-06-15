@@ -82,7 +82,7 @@
       <div class="modal-footer">
         <button
           *ngIf="!isCloned"
-          [disabled]="!cloneName || !cloneStartDate"
+          [disabled]="!cloneName || !cloneStartDate || showCloneAnimation"
           type="button"
           class="btn btn-primary"
           (click)="saveClone()">Clone</button>

@@ -17,6 +17,13 @@ export class PermissionService {
   public static clientId: number = -1;
 
   /**
+   * Global userId variable
+   *
+   * @type {number}
+   */
+  public static userId: number = -1;
+
+  /**
    * Local storage access key
    *
    * @type {string}
@@ -52,6 +59,7 @@ export class PermissionService {
     const isValid: boolean = -1 === [ permissions.clientId, permissions.userId ].indexOf(-1);
 
     PermissionService.clientId = permissions.clientId;
+    PermissionService.userId = permissions.userId;
 
     return isValid;
   }

@@ -8,7 +8,7 @@
     <div [formGroup]="eventGroupForm">
       <!-- Name -->
       <div class="form-element">
-        <label for="name">Client Name *</label>
+        <label for="name">Group Name *</label>
         <input
           id="name"
           class="form-control input"
@@ -26,7 +26,9 @@
           [transform]="tagTransformer"
           [displayBy]="'name'"
           [(ngModel)]="eventGroup.events"
-          [maxItems]="10">
+          [maxItems]="365"
+          [(inputText)]='tagInputValue'
+          [secondaryPlaceholder]="'Start typing event name'">
           <tag-input-dropdown
             [identifyBy]="'id'"
             [displayBy]="'name'"
@@ -39,7 +41,7 @@
         <label for="groupGallery">Enable Group Gallery</label>
         <switcher id="groupGallery" [options]="galleryOptions" (toggle)="isGalleryEnabled=$event"></switcher>
         <configure-button
-          *ngIf="isGalleryEnabled === 'Yes'"
+          *ngIf="isGalleryEnabled === 1"
           [value]="'Configure Gallery'"
         ></configure-button>
 
@@ -49,7 +51,7 @@
 
       <fox-button
         type="submit"
-        [disabled]="eventGroupForm.invalid"
+        [disabled]="eventGroupForm.invalid || tagInputValue"
         [value]="'Update'"
         [design]="'special'"
       ></fox-button>

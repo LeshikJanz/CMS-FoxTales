@@ -8,6 +8,6 @@ import { RouteData } from '../shared/core/routing/route-data.service';
 
 export class EventsComponent {
   constructor(private _routeData: RouteData) {
-    _routeData.name.next('Event Management');
+    // _routeData.name.next('Event Management');
   }
 }

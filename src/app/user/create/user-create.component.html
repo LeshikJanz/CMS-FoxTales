@@ -13,14 +13,15 @@
         <input
           id="email"
           type="email"
+          class="form-control"
           formControlName="email"
           placeholder="Email">
 
-        <div class="field-error" ngxErrors="email">
-          <div ngxError="required" when="touched">
+        <div ngxErrors="email">
+          <div class="field-error" ngxError="required" when="touched">
             Field is required
           </div>
-          <div ngxError="email" when="dirty">
+          <div class="field-error" ngxError="email" when="dirty">
             Invalid value
           </div>
         </div>
@@ -30,15 +31,21 @@
       <div class="form-element">
         <label>Client Access*</label>
         <fox-select
-          (change)="clientId = $event.id"
+          (change)="userDetails.clientId = $event.id"
           [items]="clients"
         >
         </fox-select>
       </div>
 
+      <!-- Roles -->
+      <div class="form-element">
+        <label>User Type*</label>
+        <fox-select [items]="roles" [multiple]="true" (data)="rolesSelected($event)">
+        </fox-select>
+      </div>
     </div>
 
-      <fox-button
+    <fox-button
         [value]="'Done'"
         [disabled]="isFormInvalid()"
         [design]="'special'"

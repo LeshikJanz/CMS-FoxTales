@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { TabsetComponent } from 'ngx-bootstrap';
 import { ButtonsModule } from 'ngx-bootstrap';
 import { ExperienceBuilderService } from '../experience-builder.service';
+import { ISwitcher } from "../../components/toggles/switcher/switcher.interface";
 
 @Component({
   selector: 'content-options-component',
@@ -16,6 +17,11 @@ export class ContentOptionsComponent {
  public contentName: string;
  public contentTypeValue: string;
  public orientationTypeValue: string;
+ public contentSwitchOptions: ISwitcher[] = [
+   { id: 1, name: 'Still' },
+   { id: 2, name: 'GIF' },
+   { id: 4, name: 'GIF' }
+ ]
 
   constructor(private router: Router,
               private experienceBuilderService: ExperienceBuilderService) {}

@@ -131,7 +131,7 @@
         </div>
       </div>
 
-      <div class="form-element">
+      <div class="form-element" isAllowed="CreateEditSocialIntegrations">
         <label>Social Integrations</label>
         <div *ngFor="let social of socialIntegrations">
           <a href="javascript:void(0)" (click)="auth(social)">{{ social.name }}</a>

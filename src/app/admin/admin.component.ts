@@ -8,6 +8,6 @@ import { RouteData } from '../shared/core/routing/route-data.service';
 
 export class AdminComponent {
   constructor(private _routeData: RouteData) {
-    _routeData.name.next('Admin Management');
+    // _routeData.name.next('Admin Management');
   }
 }

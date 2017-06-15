@@ -28,7 +28,8 @@ import { ClientService } from '../client.service';
 @Component({
   selector: 'client-edit',
   templateUrl: './client-edit.component.html',
-  styleUrls: [ './client-edit.component.scss' ]
+  styleUrls: [ './client-edit.component.scss',
+    '../../shared/styles/form-element.scss']
 })
 export class ClientEditComponent implements OnInit {
   /**
@@ -381,19 +382,16 @@ export class ClientEditComponent implements OnInit {
     this.clientForm = this.formBuilder.group({
       logoBytes: [''],
       name: ['', [
-        Validators.required
+        Validators.required,
+        Validators.pattern('^\\S*')
       ]],
       email: ['', [
         Validators.required,
         CustomValidators.email
       ]],
       address: this.addressControl,
-      phone: ['', [
-        Validators.required
-      ]],
-      freshBooks: ['', [
-        Validators.required
-      ]],
+      phone: [''],
+      freshBooks: [''],
       socialAccounts: new FormArray([])
     });
 

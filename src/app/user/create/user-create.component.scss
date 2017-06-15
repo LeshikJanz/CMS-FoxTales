@@ -9,7 +9,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    height: 250px;
+    height: 375px;
   }
 
   fox-select {
@@ -20,46 +20,6 @@
     height: 55px;
     width: 120px;
     font-size: 16px;
-  }
-}
-
-.form-element {
-  display: flex;
-  flex-direction: column;
-
-  label {
-    font-family: Avenir;
-    font-size: 20px;
-    font-weight: 900;
-    line-height: 2.4;
-    letter-spacing: 1px;
-    color: #343a40;
-  }
-
-  input {
-    width: 400px;
-    height: 45px;
-    font-family: OpenSans;
-    font-size: 18px;
-    color: #3d3d3d;
-    border-radius: 5px;
-    border-style: double;
-    border-color: #b4b4b4;
-    padding-left: 15px;
-  }
-
-  input:focus {
-    border-color: gray;
-  }
-
-  .ng-touched.ng-invalid {
-     border-color: red;
-   }
-
-  .error-text {
-    color: red;
-    font-family: Avenir;
-    font-size: 10px;
   }
 }
 
@@ -77,18 +37,7 @@ button.create-button[disabled] {
   cursor: not-allowed;
 }
 
-.field-error {
-  font-style: italic;
-  color: red;
-}
-
-.form-group {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-
-  .license {
-    padding-right: 15px;
-  }
+.license {
+  padding-right: 15px;
 }
 

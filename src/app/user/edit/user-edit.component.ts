@@ -14,7 +14,8 @@ import { UserService } from '../user.service';
 @Component({
   selector: 'user-edit',
   templateUrl: './user-edit.component.html',
-  styleUrls: ['user-edit.component.scss']
+  styleUrls: ['user-edit.component.scss',
+    '../../shared/styles/form-element.scss']
 })
 export class UserEditComponent implements OnInit {
   /**
@@ -31,7 +32,7 @@ export class UserEditComponent implements OnInit {
    */
   public user: IUser = {
     email: null,
-    roles: [],
+    roles: null,
     clientId: null
   };
 
@@ -55,13 +56,6 @@ export class UserEditComponent implements OnInit {
    * @type {IUserRole[]}
    */
   public roles: IUserRole[];
-
-  /**
-   * Client Id
-   *
-   * @type {number}
-   */
-  public clientId: string;
 
   /**
    * Constructor
@@ -122,13 +116,6 @@ export class UserEditComponent implements OnInit {
     this.userService
       .getUserRoles()
       .subscribe((roles: IUserRole[]) => {
-        // Check selected roles
-        if (this.user.roles) {
-          roles.forEach((role: IUserRole) => {
-            role.checked = -1 !== this.user.roles.indexOf(role);
-          });
-        }
-
         this.roles = roles;
     });
   }
@@ -172,10 +159,6 @@ export class UserEditComponent implements OnInit {
    * @returns {void}
    */
   public updateUser(): void {
-    // this.extractRoles();
-
-    this.user.clientId = this.clientId;
-
     this.userService
       .updateUser(this.user)
       .subscribe(() => {
@@ -185,26 +168,25 @@ export class UserEditComponent implements OnInit {
   }
 
   /**
-   * Extract selected roles
-   *
-   * @returns {void}
-   */
-  public extractRoles(): void {
-    this.user.roles = this.roles
-      .filter((role: IUserRole) => role.checked)
-      .map((role: IUserRole) => role);
-  }
-
-  /**
    * Is form invalid
    *
    * @return {boolean}
    */
   public isFormInvalid(): boolean {
-    if (this.clientId) {
+    if (this.user.clientId && this.user.roles.length) {
       return false;
     }
+
     return true;
+  }
+
+  /**
+   * User role selected
+   *
+   * @param {any[]} roles - Roles
+   */
+  public rolesSelected(roles: any[]): void {
+    this.user.roles = roles;
   }
 
   /**

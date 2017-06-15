@@ -110,7 +110,7 @@ export class UserService {
    * @returns {Observable<IUserRole[]>}
    */
   public getUserRoles(): Observable<IUserRole[]> {
-    return this.http.get(`${process.env.API_URL}/Role`)
+    return this.http.get(`${process.env.API_URL}/Role/PossibleRoleTransitions`)
       .map((response: Response) => response.json() as IUserRole[]);
   }
 

@@ -43,8 +43,29 @@
     display: flex;
     flex-direction: row;
 
+    > div {
+      position: relative;
+    }
+
     .picker-input {
       max-width: 150px;
+    }
+
+    .wrap:after {
+      content: "";
+      position: absolute;
+      left: 125px;
+      bottom: 23px;
+      border-left: 8px solid transparent;
+      border-right: 8px solid transparent;
+      border-top: 12px solid gray;
+      pointer-events: none;
+    }
+
+    & > div {
+      display: flex;
+      flex-direction: column;
+      width: 190px;
     }
 
     input {
@@ -53,16 +74,11 @@
       text-overflow: ellipsis;
       white-space: nowrap;
     }
-
-    & > div {
-      display: flex;
-      flex-direction: column;
-      width: 190px;
-    }
   }
 
   &.location {
     width: 100%;
+    max-width: 400px;
 
     input {
       width: 90%;

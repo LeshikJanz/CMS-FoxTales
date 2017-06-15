@@ -1,4 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
+import { DatePipe } from '@angular/common';
 import { ImagePipe } from './image.pipe';
 import { DefaultPipe } from './default.pipe';
 import { DomSanitizer } from '@angular/platform-browser';
@@ -30,11 +31,13 @@ export class FormatPipe implements PipeTransform {
    * @param myImage
    * @param myDefault
    * @param firstName
+   * @param date
    */
   constructor(private sanitizer: DomSanitizer,
               private myImage: ImagePipe,
               private myDefault: DefaultPipe,
-              private myFirstName: FirstNamePipe) {
+              private myFirstName: FirstNamePipe,
+              private date: DatePipe) {
   }
 
   /**

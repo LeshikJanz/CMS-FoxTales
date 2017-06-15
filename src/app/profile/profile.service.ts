@@ -35,7 +35,7 @@ export class ProfileService {
    */
   public updateProfile(logoBytes: string): Observable<Response> {
     return this.http.put(`${process.env.API_URL}/Profile/logo`, {
-      logo: logoBytes
+      byteString: logoBytes
     });
   }
 }
