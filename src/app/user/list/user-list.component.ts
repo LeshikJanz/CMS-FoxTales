@@ -69,7 +69,10 @@ export class UserListComponent implements OnInit {
     {id: 'phone', title: 'Phone', format: 'myDefault', searchable: true, sort: true},
     {id: 'clientName', title: 'Client', format: 'myDefault', searchable: true, sort: true},
     {id: 'location', title: 'Location', format: 'myDefault', searchable: true, sort: true},
-    {id: 'lastActiveDate', title: 'Last Active', format: 'myDefault', searchable: true, sort: true}
+    {
+      id: 'lastActivity', title: 'Last Active', format: 'date',
+      formatOptions: ['short'], searchable: true, sort: true
+    }
   ];
 
   /**

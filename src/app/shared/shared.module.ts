@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Http, HttpModule, RequestOptions, XHRBackend } from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule, ToastContainerModule } from 'ngx-toastr';
+import { DatePipe } from '@angular/common';
 
 import { AuthService, HttpService, AuthRequestOptions, IsAllowedDirective } from './core';
 import { TableComponent, FormatPipe, ImagePipe } from './table';
@@ -39,7 +40,8 @@ import { FirstNamePipe } from './table/pipe/firstName.pipe';
     AuthService,
     ImagePipe,
     DefaultPipe,
-    FirstNamePipe
+    FirstNamePipe,
+    DatePipe
   ],
   exports: [
     CommonModule,
