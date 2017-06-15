@@ -94,7 +94,6 @@ import {
 import { RegularInputComponent } from './input/regular-input/regular-input.component';
 import { SearchBarComponent } from './search/search-bar/search-bar.component';
 import { ConnectContentOptionComponent } from './experience/connect-content-option/connect-content-option.component';
-import { BingMapComponent } from './bing-map/bing-map.component';
 import { UserService } from '../user/user.service';
 import { FormInputComponent } from './input/form-input/form-input.component';
 import { NgxErrorsModule } from '@ultimate/ngxerrors';
@@ -126,7 +125,7 @@ import { CustomFormsModule } from 'ng2-validation';
     ToastContainerModule.forRoot(),
     ChartModule.forRoot(require('highcharts')),
     ToastContainerModule.forRoot(),
-    PaginationModule.forRoot(),
+    PaginationModule.forRoot()
   ],
   providers: [
     GalleryService,
@@ -174,7 +173,6 @@ import { CustomFormsModule } from 'ng2-validation';
     RegularInputComponent,
     SearchBarComponent,
     ConnectContentOptionComponent,
-    BingMapComponent,
     FormInputComponent
   ],
   exports: [
@@ -220,7 +218,6 @@ import { CustomFormsModule } from 'ng2-validation';
     RegularInputComponent,
     SearchBarComponent,
     ConnectContentOptionComponent,
-    BingMapComponent,
     FormInputComponent
   ]
 })
