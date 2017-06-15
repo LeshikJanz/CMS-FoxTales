@@ -1,0 +1,29 @@
+<div *ngIf="isModalShown" [config]="{ show: true }" (onHidden)="onHidden()"
+     bsModal #atgModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div>
+          <h4>{{event.name}}</h4>
+          <h1 class="modal-title">Add to Group</h1>
+        </div>
+        <button type="button" class="close" (click)="lgModal.hide()" aria-label="Close">
+          <img src="assets/img/close.svg">
+        </button>
+      </div>
+      <div class="modal-body">
+        <search-input [title]="'search for element...'" (Change)="onSearchChange($event)"></search-input>
+        <hr>
+        <scroll [options]="eventGroupList" (chose)="selectedGroup = $event"></scroll>
+        <hr>
+        <div class="btn-actions">
+          <fox-button
+            [value]="'Add to group'"
+            [design]="'primary'"
+            (click)="addEvent(selectedGroup)"
+          ></fox-button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

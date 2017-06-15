@@ -1,31 +1,26 @@
-.container {
-  margin: 50px 70px;
-}
-
 .form {
-  width: 400px;
-}
-
-.form-element {
   display: flex;
   flex-direction: column;
-  margin-top: 25px;
-  margin-bottom: 10px;
-}
+  width: 400px;
+  height: 400px;
+  justify-content: space-between;
 
-.ng-touched.ng-invalid {
-  border-color: red;
-}
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 375px;
+  }
 
-.error-text {
-  color: red;
-  font-family: Avenir;
-  font-size: 10px;
-}
+  fox-select {
+    width: 300px;
+  }
 
-.form-element .input {
-  height: 30px;
-  font-size: 14px;
+  fox-button {
+    height: 55px;
+    width: 120px;
+    font-size: 16px;
+  }
 }
 
 .create-button {
@@ -35,7 +30,6 @@
   background-color: #2fd976;
   color: white;
   font-size: 16px;
-  margin-top: 30px;
 }
 
 button.create-button[disabled] {
@@ -43,18 +37,7 @@ button.create-button[disabled] {
   cursor: not-allowed;
 }
 
-.field-error {
-  font-style: italic;
-  color: red;
-}
-
-.form-group {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-
-  .license {
-    padding-right: 15px;
-  }
+.license {
+  padding-right: 15px;
 }
 

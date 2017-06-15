@@ -1,0 +1,87 @@
+<div class="event-container">
+  <form
+    (ngSubmit)="addEvent(eventForm.value)"
+    class="form"
+    novalidate>
+
+    <div [formGroup]="eventForm">
+      <!-- Event Name -->
+      <!-- Name -->
+      <div class="form-element">
+        <label for="name">Client Name*</label>
+        <input
+          id="name"
+          class="form-control input"
+          type="text"
+          formControlName="name"
+          placeholder="Name">
+      </div>
+
+      <div class="form-element dates">
+        <div>
+          <label>Start Date</label>
+          <div class="wrap">
+            <input class="picker-input" [ngModel]="startMomentDate" [ngModelOptions]="{standalone: true}"
+                   [returnObject]=" 'string' "
+                   [(dateTimePicker)]="startMomentDate" [mode]="'dropdown'" [pickerType]="'date'"
+                   placeholder="Start Date"
+                   readonly>
+          </div>
+        </div>
+        <div>
+          <label>End Date</label>
+          <div>
+            <div class="wrap">
+            <input class="picker-input" [ngModel]="endMomentDate" [ngModelOptions]="{standalone: true}"
+                   [returnObject]=" 'string' " [(dateTimePicker)]="endMomentDate"
+                   [mode]="'dropdown'" [pickerType]="'date'" placeholder="End Date" readonly>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Location -->
+      <div class="form-element location">
+        <label for="address">Location</label>
+        <input id="address" formControlName="address" type="text" placeholder="Address">
+      </div>
+
+      <!-- Tags -->
+      <div class="form-element">
+      <label>Tags</label>
+      <tag-input
+        [transform]="tagTransformer"
+        [formControlName]="'tags'"
+        [maxItems]="365"
+        [(ngModel)]="selectedTags"
+        [(inputText)]='tagInputValue'
+      >
+        <tag-input-dropdown
+          [appendToBody]="false"
+          [identifyBy]="'id'"
+          [displayBy]="'name'"
+          [matchingFn]="matchingFn"
+          [autocompleteItems]="tags">
+        </tag-input-dropdown>
+      </tag-input>
+      </div>
+      <div class="form-element">
+        <label>Notifications</label>
+        <switcher id="groupGallery" [options]="notificationOptions"
+                  (toggle)="notification=$event"></switcher>
+      </div>
+      <br>
+
+      <div class="create">
+        <fox-button
+          [value]="'CREATE'"
+          [disabled]="eventForm.invalid || tagInputValue"
+          [design]="'special'"
+        ></fox-button>
+      </div>
+    </div>
+  </form>
+  <div class="map">
+    <img src="http://staticmapmaker.com/img/bing.png" alt="Bing map">
+  </div>
+</div>

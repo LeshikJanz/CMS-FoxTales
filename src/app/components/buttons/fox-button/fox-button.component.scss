@@ -2,11 +2,25 @@ button {
   width: inherit;
   height: inherit;
   font-size: inherit;
+  background-color: white;
+  border: transparent;
+
+  &:disabled {
+    background-color: #919191;
+    border: solid 2px #919191;
+    cursor: not-allowed;
+  }
+
+  &:hover:disabled {
+    background-color: #919191;
+    border: solid 2px #919191;
+    cursor: not-allowed;
+  }
 }
 
 .primary {
   color: white;
-  font-family: OpenSans-Bold;
+  font-family: WorkSans-Bold;
   border-radius: 6px;
   background-color: #f57f17;
 
@@ -75,14 +89,14 @@ button {
 
 .special {
   border-radius: 6px;
-  background-color: transparent;
+  background-color: #2fd976;
   border: solid 2px #2fd976;
+  color: white;
   font-family: WorkSans-Bold;
   font-weight: bold;
   line-height: 1;
   letter-spacing: 0.5px;
   text-align: center;
-  color: #2fd976;
 
   &:hover {
     transition: .3s all;

@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, OnChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { ModalDirective } from 'ngx-bootstrap/modal';
 import { ICol, ITableAction } from '../../shared/table';
 import { IUserList, IUserFilter } from '../user.interface';
 import { User } from '../user';
@@ -13,15 +14,38 @@ import { IActionState } from '../../client/client.interface';
 @Component({
   selector: 'user-list',
   templateUrl: './user-list.component.html',
-  styleUrls: [ './user-list.component.scss']
+  styleUrls: ['./user-list.component.scss']
 })
 export class UserListComponent implements OnInit {
+  /**
+   * Archive modal
+   *
+   * @type {ModalDirective}
+   */
+  @ViewChild('archiveModal')
+  public archiveModal: ModalDirective;
+
+  /**
+   * Unarchive modal
+   *
+   * @type {ModalDirective}
+   */
+  @ViewChild('unarchiveModal')
+  public unarchiveModal: ModalDirective;
+
   /**
    * Users
    *
    * @type {User[]}
    */
   public users: User[];
+
+  /**
+   * Selected user id
+   *
+   * @type {string}
+   */
+  public selectedUser: string;
 
   /**
    * Total users
@@ -36,13 +60,19 @@ export class UserListComponent implements OnInit {
    * @type {ICol[]}
    */
   public cols: ICol[] = [
-    { id: 'firstName',      title: 'First Name',  format: 'default',  searchable: true },
-    { id: 'lastName',       title: 'Last Name',   format: 'default',  searchable: true },
-    { id: 'email',          title: 'Email',       format: 'default',  searchable: true },
-    { id: 'phone',          title: 'Phone',       format: 'default',  searchable: true },
-    { id: 'clientName',     title: 'Client',      format: 'default',  searchable: true },
-    { id: 'location',       title: 'Location',    format: 'default',  searchable: true },
-    { id: 'lastActiveDate', title: 'Last Active', format: 'default',  searchable: true }
+    {
+      id: 'firstName', title: 'First Name', format: 'myFirstName',
+      searchable: true, sort: true
+    },
+    {id: 'lastName', title: 'Last Name', format: 'myDefault', searchable: true, sort: true},
+    {id: 'email', title: 'Email', format: 'myDefault', searchable: true, sort: true},
+    {id: 'phone', title: 'Phone', format: 'myDefault', searchable: true, sort: true},
+    {id: 'clientName', title: 'Client', format: 'myDefault', searchable: true, sort: true},
+    {id: 'location', title: 'Location', format: 'myDefault', searchable: true, sort: true},
+    {
+      id: 'lastActivity', title: 'Last Active', format: 'date',
+      formatOptions: ['short'], searchable: true, sort: true
+    }
   ];
 
   /**
@@ -51,9 +81,18 @@ export class UserListComponent implements OnInit {
    * @type {ITableAction[]}
    */
   public actions: ITableAction[] = [
-    { title: 'Edit',      callback: 'editUser' },
-    { title: 'Archive',   callback: 'archiveUser' },
-    { title: 'Unarchive', callback: 'unarchiveUser' }
+    {title: 'Edit', callback: 'editUser'},
+    {title: 'Archive', callback: 'confirmArchive'},
+    {title: 'Unarchive', callback: 'confirmUnarchive'}
+  ];
+
+  /**
+   * Row actions
+   *
+   * @type {ITableAction[]}
+   */
+  public activeUserActions: ITableAction[] = [
+    {title: 'Edit', callback: 'editUser'}
   ];
 
   /**
@@ -77,8 +116,8 @@ export class UserListComponent implements OnInit {
    * @type {ITableAction[]}
    */
   public clientStates: IActionState[] = [
-    { id: 1, action: 'Unarchived'},
-    { id: 2, action: 'Archived'}
+    {id: 1, action: 'Unarchived'},
+    {id: 2, action: 'Archived'}
   ];
 
   /**
@@ -89,11 +128,9 @@ export class UserListComponent implements OnInit {
    * @param {UserService} userService - User service
    * @returns {void}
    */
-  constructor(
-    private router: Router,
-    private toastrService: ToastrService,
-    private userService: UserService
-  ) {
+  constructor(private router: Router,
+              private toastrService: ToastrService,
+              private userService: UserService) {
   }
 
   /**
@@ -133,12 +170,11 @@ export class UserListComponent implements OnInit {
   /**
    * Archive user by id
    *
-   * @param {string} id - User id
    * @returns {void}
    */
-  public archiveUser(id: string): void {
+  public archiveUser(): void {
     this.userService
-      .archiveUser(id)
+      .archiveUser(this.selectedUser)
       .subscribe(() => {
         this.toastrService.success('User has been archived successfully.');
         this.getUsers();
@@ -148,16 +184,37 @@ export class UserListComponent implements OnInit {
   /**
    * Unarchive user by id
    *
-   * @param {string} id - User id
    * @returns {void}
    */
-  public unarchiveUser(id: string): void {
+  public unarchiveUser(): void {
     this.userService
-      .unarchiveUser(id)
+      .unarchiveUser(this.selectedUser)
       .subscribe(() => {
         this.toastrService.success('User has been unarchived successfully.');
         this.getUsers();
       });
+  }
+
+  /**
+   * Confirm archive user
+   *
+   * @param {string} id - User id
+   * @returns {void}
+   */
+  public confirmArchive(id: string): void {
+    this.selectedUser = id;
+    this.archiveModal.show();
+  }
+
+  /**
+   * Confirm unarchive user
+   *
+   * @param {string} id - User id
+   * @returns {void}
+   */
+  public confirmUnarchive(id: string): void {
+    this.selectedUser = id;
+    this.unarchiveModal.show();
   }
 
   /**

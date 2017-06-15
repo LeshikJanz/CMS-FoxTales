@@ -1,0 +1,63 @@
+<div class="basic-details-container">
+  <h4>When is the experience happening?</h4>
+
+  <div class="form-element dates">
+    <div>
+      <label>Start Date</label>
+      <div class="wrap">
+        <input class="picker-input" [ngModel]="startMomentDate" [returnObject]=" 'string' "
+               [(dateTimePicker)]="startMomentDate" [mode]="'dropdown'" [pickerType]="'date'" placeholder="Date"
+               readonly>
+      </div>
+    </div>
+    <div>
+      <label>Start Time</label>
+      <div>
+        <div class="wrap">
+          <input class="picker-input" [ngModel]="startMomentTime" [returnObject]=" 'string' " [viewFormat]="'HH:mm'"
+                 [(dateTimePicker)]="startMomentTime" [pickerType]="'time'" [mode]="'dropdown'" placeholder="Time"
+                 readonly>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-element dates">
+    <div>
+      <label>End Date</label>
+      <div class="wrap">
+        <input class="picker-input" [ngModel]="endMomentDate" [returnObject]=" 'string' "
+               [(dateTimePicker)]="endMomentDate"
+               [mode]="'dropdown'" [pickerType]="'date'" placeholder="Date" readonly>
+      </div>
+    </div>
+    <div>
+      <label>End Time</label>
+      <div>
+        <div class="wrap">
+          <input class="picker-input" [ngModel]="endMomentTime" [returnObject]=" 'string' " [viewFormat]="'HH:mm'"
+                 [(dateTimePicker)]="endMomentTime" [pickerType]="'time'" [mode]="'dropdown'" placeholder="Time"
+                 readonly>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+  <hr>
+  <h3>Let's Add Some Brand Tags</h3>
+  <label>Brand Tags</label>
+  <tag-input [(ngModel)]="defaultTags" [transform]="tagTransformer" >
+    <tag-input-dropdown [matchingFn]="matchingFn" [identifyBy]="'id'" [displayBy]="'name'" [autocompleteItems]="tags">
+    </tag-input-dropdown>
+  </tag-input>
+  <div class="routing">
+    <div>
+      <a (click)="_location.back()" class="hvr-icon-wobble-horizontal">BACK</a>
+    </div>
+    <fox-button
+      [value]="'Next'"
+      [design]="'special'"
+      (click)="Next()"
+    ></fox-button>
+  </div>
+</div>

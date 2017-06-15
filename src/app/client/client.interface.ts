@@ -8,7 +8,6 @@ export interface IClient {
   logo?: string;
   logoBytes?: string;
   name: string;
-  displayName: string;
   email: string;
   address: string;
   phone: string;
@@ -17,11 +16,6 @@ export interface IClient {
   freshBooks: string;
   socialAccounts: string[];
   selectedLicenses?: string[];
-  tenant?: string;
-  domain?: string;
-  clientId?: string;
-  clientSecret?: string;
-  clientSecretValidTo?: string;
 }
 
 /**
@@ -52,11 +46,29 @@ export interface IClientFilter {
   };
 }
 
+/**
+ * Client state interface
+ */
+export interface IActionState {
+  id: number;
+  action: string;
+  callback?: string;
+}
 
 /**
- * CLient state interface
- * */
-export interface IActionState {
-  id: number,
-  action: string
+ * Social networks interface
+ */
+export interface IClientSocial {
+  id: number;
+  name: string;
+}
+
+/**
+ * Social integration interface
+ */
+export interface IClientSocialIntegration {
+  platformID: number;
+  platformName: string;
+  integrationID: number;
+  token?: string;
 }

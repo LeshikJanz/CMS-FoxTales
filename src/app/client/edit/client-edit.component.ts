@@ -16,8 +16,9 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { MapsAPILoader } from '@agm/core';
 import {  } from '@types/googlemaps';
+import hello from 'hellojs';
 import { CustomValidators } from 'ng2-validation';
-import { IClient } from '../client.interface';
+import { IClient, IClientSocial } from '../client.interface';
 import { IClientLicense } from '../client-license.interface';
 import { ClientService } from '../client.service';
 
@@ -27,7 +28,8 @@ import { ClientService } from '../client.service';
 @Component({
   selector: 'client-edit',
   templateUrl: './client-edit.component.html',
-  styleUrls: [ './client-edit.component.scss' ]
+  styleUrls: [ './client-edit.component.scss',
+    '../../shared/styles/form-element.scss']
 })
 export class ClientEditComponent implements OnInit {
   /**
@@ -61,7 +63,6 @@ export class ClientEditComponent implements OnInit {
     logo: null,
     logoBytes: null,
     name: null,
-    displayName: null,
     email: null,
     address: null,
     phone: null,
@@ -70,11 +71,24 @@ export class ClientEditComponent implements OnInit {
   };
 
   /**
+   * Base64 logo
+   *
+   * @type {string}
+   */
+  public logoBytes: string;
+
+  /**
    * Client licenses
    *
    * @type {IClientLicense[]}
    */
   public licenses: IClientLicense[];
+
+  public socialIntegrations: IClientSocial[] = [
+    { id: 1, name: 'Facebook' },
+    { id: 2, name: 'Twitter' },
+    { id: 5, name: 'Tumblr' }
+  ];
 
   /**
    * File reader
@@ -139,6 +153,7 @@ export class ClientEditComponent implements OnInit {
    * @returns {void}
    */
   public onImgUploaded(base64) {
+    this.logoBytes = base64;
     this.client.logoBytes = base64.replace(/data:image\/(png|jpg|jpeg|gif);base64,/, '');
   }
 
@@ -151,6 +166,17 @@ export class ClientEditComponent implements OnInit {
   public addSocialAccount(url?: string): void {
     const accountUrl = url || '';
     this.socialAccounts.push(new FormControl(accountUrl, Validators.required));
+  }
+
+  /**
+   * Remove social account control
+   *
+   * @param {number} index - Index
+   * @returns {void}
+   */
+  public removeSocialAccount(index: number): void {
+    this.client.socialAccounts.splice(index, 1);
+    this.socialAccounts.removeAt(index);
   }
 
   /**
@@ -235,6 +261,17 @@ export class ClientEditComponent implements OnInit {
   }
 
   /**
+   * Select license
+   *
+   * @param {number} index - Index
+   * @param {boolean} state - Is checked?
+   * @returns {void}
+   */
+  public selectLicense(index: number, state: boolean): void {
+    this.licenses[index].checked = state;
+  }
+
+  /**
    * Extract logo base64 encoded
    *
    * @param {Event} event - Event
@@ -248,6 +285,17 @@ export class ClientEditComponent implements OnInit {
     }
 
     this.fileReader.readAsDataURL(files.item(0));
+  }
+
+  /**
+   * Remove logo
+   *
+   * @return {void}
+   */
+  public removeLogo(): void {
+    this.logoBytes = null;
+    this.client.logo = null;
+    this.client.logoBytes = null;
   }
 
   /**
@@ -334,25 +382,56 @@ export class ClientEditComponent implements OnInit {
     this.clientForm = this.formBuilder.group({
       logoBytes: [''],
       name: ['', [
-        Validators.required
-      ]],
-      displayName: ['', [
-        Validators.required
+        Validators.required,
+        Validators.pattern('^\\S*')
       ]],
       email: ['', [
         Validators.required,
         CustomValidators.email
       ]],
       address: this.addressControl,
-      phone: ['', [
-        Validators.required
-      ]],
-      freshBooks: ['', [
-        Validators.required
-      ]],
+      phone: [''],
+      freshBooks: [''],
       socialAccounts: new FormArray([])
     });
 
     return this;
+  }
+
+  /**
+   * Social auth
+   *
+   * @param {IClientSocial} social - Social account
+   * @returns {void}
+   */
+  public auth(social: IClientSocial): void {
+    const name: string = social.name.toLocaleLowerCase();
+
+    hello(name)
+      .login({ scope: 'publish, photos' }, () => {
+        const response = hello(name).getAuthResponse();
+
+        if (!response) {
+          return;
+        }
+
+        this.clientService
+          .addSocialIntegration(social.id, name, JSON.stringify(response))
+          .subscribe(() => {
+            this.toastrService.success('Social auth has been updated successfully.');
+          });
+      });
+  }
+
+  public cancelAuth(social: IClientSocial): void {
+    const name: string = social.name.toLocaleLowerCase();
+
+    hello.logout(name, { force: true }, () => {
+      this.clientService
+        .addSocialIntegration(social.id, name, null)
+        .subscribe(() => {
+          this.toastrService.success('Social auth has been removed successfully.');
+        });
+    });
   }
 }

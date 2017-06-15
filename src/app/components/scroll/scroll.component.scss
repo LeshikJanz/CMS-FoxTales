@@ -1,0 +1,83 @@
+label {
+  font-weight: 300;
+}
+
+#sidebar {
+  background-color: white;
+  width: inherit;
+  max-height: inherit;
+  overflow: auto;
+
+  div:hover {
+    background-color: #F2F2F2;
+    transition: border .25s linear;
+    font-weight: 600;
+  }
+}
+
+#sidebar::-webkit-scrollbar {
+  width: 0;
+}
+
+h2 {
+  color: #AAAAAA;
+}
+
+@import url(http://fonts.googleapis.com/css?family=Lato:300);
+
+input[type="radio"] {
+  display: none;
+
+  & + label {
+    display: block;
+    cursor: pointer;
+    padding: 10px;
+    font-size: 18px;
+
+    &:before {
+      content: "";
+      display: block;
+      position: relative;
+      border: 1px solid transparent;
+      width: 10px;
+      height: 10px;
+      float: right;
+    }
+  }
+
+  &:checked + label {
+    &:before {
+      content: "\2713";
+      font-family: 'lucida grande';
+      font-size: 25px;
+      line-height: 20px;
+      text-align: center;
+      font-weight: 900;
+      padding-right: 30px;
+    }
+    transition: border .25s linear;
+    font-weight: 600;
+  }
+}
+
+label {
+  position: relative;
+
+  span {
+    border: 1px solid #fff;
+    display: block;
+    float: left;
+    margin-right: 1rem;
+    padding: 1rem;
+  }
+
+  em {
+    border: 1px solid #fff;
+    display: block;
+    height: 60px;
+    line-height: 2.3;
+    padding: 0 20px;
+    position: absolute;
+    width: auto;
+  }
+}

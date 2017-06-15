@@ -4,11 +4,14 @@ import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
 import { ICol } from './col.interface';
 import { ITableAction } from './action.interface';
+import { IActionState } from '../../client/client.interface';
+import { ICheckbox } from '../../components/toggles/checkbox/checkbox.component';
+import { PermissionService } from "../core/auth/permission.service";
 
 @Component({
   selector: 'data-table',
   templateUrl: './table.component.html',
-  styleUrls: ['./styles/style.scss']
+  styleUrls: ['table.component.scss']
 })
 export class TableComponent implements OnInit {
   /**
@@ -42,6 +45,14 @@ export class TableComponent implements OnInit {
    */
   @Input()
   public actions: ITableAction[];
+
+  /**
+   * Current user actions
+   *
+   * @type {ITableAction[]}
+   */
+  @Input()
+  public activeUserActions: ITableAction[];
 
   /**
    * Row click event emitter
@@ -90,6 +101,20 @@ export class TableComponent implements OnInit {
    */
   @Output()
   public actionChanged: EventEmitter<any> = new EventEmitter();
+
+  /**
+   * Table search input value
+   *
+   * @type {string}
+   */
+  public searchValue: string;
+
+  /**
+   * Active user id
+   *
+   * @type {number}
+   */
+  public userId: number = PermissionService.userId;
 
   /**
    * Search query
@@ -218,6 +243,17 @@ export class TableComponent implements OnInit {
   }
 
   /**
+   * Emit row clicked event
+   *
+   * @param {any} row
+   * @returns {void}
+   */
+  public onToggle(event: ICheckbox): void {
+    console.log('You choise');
+    console.log(event);
+  }
+
+  /**
    * Emit sort changed event
    *
    * @param {ICol} sortCol
@@ -267,7 +303,7 @@ export class TableComponent implements OnInit {
    *
    * @returns {void}
    */
-  public changeAction(id: string, event: ITableAction): void {
+  public changeAction(id: number, event: IActionState): void {
     event.id = id;
     this.actionChanged.emit(event);
   }

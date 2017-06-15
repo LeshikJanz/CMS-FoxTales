@@ -1,10 +1,11 @@
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { NgModule, ApplicationRef } from '@angular/core';
 import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularclass/hmr';
 import { RouterModule, PreloadAllModules } from '@angular/router';
+import { ToastrModule, ToastContainerModule } from 'ngx-toastr';
 
 /*
  * Platform and Environment providers/directives/pipes
@@ -12,20 +13,30 @@ import { RouterModule, PreloadAllModules } from '@angular/router';
 import { ENV_PROVIDERS } from './environment';
 import { ROUTES } from './app.routes';
 
+import { SharedModule } from './shared/shared.module';
 import { AppComponent } from './app.component';
 import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppState, InternalStateType } from './app.service';
-import { AuthGuard, AuthService } from './shared/core';
+import { AuthGuard, AuthService, PermissionService } from './shared/core';
 import { NoContentComponent } from './no-content';
+import { ProfileComponent, ProfileService } from './profile';
+import { ForbiddenComponent } from './forbidden';
+import { DashboardComponent } from './dashboard';
+
+import './../../node_modules/videogular2/fonts/videogular.css';
 import '../styles/styles.scss';
+
 import { FeatureModule } from './components/feature.module';
+import { RouteData } from './shared/core/routing/route-data.service';
 
 // Application wide providers
 const APP_PROVIDERS = [
   ...APP_RESOLVER_PROVIDERS,
   AppState,
   AuthGuard,
-  AuthService
+  AuthService,
+  PermissionService,
+  ProfileService
 ];
 
 type StoreType = {
@@ -41,19 +52,27 @@ type StoreType = {
   bootstrap: [ AppComponent ],
   declarations: [
     AppComponent,
-    NoContentComponent
+    ProfileComponent,
+    NoContentComponent,
+    ForbiddenComponent,
+    DashboardComponent
   ],
   imports: [ // import Angular's modules
     BrowserAnimationsModule,
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpModule,
     RouterModule.forRoot(ROUTES, { useHash: true, preloadingStrategy: PreloadAllModules }),
+    ToastrModule.forRoot(),
+    ToastContainerModule.forRoot(),
+    SharedModule,
     FeatureModule
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,
-    APP_PROVIDERS
+    APP_PROVIDERS,
+    RouteData
   ]
 })
 export class AppModule {
@@ -67,7 +86,7 @@ export class AppModule {
 
     // set state
     this.appState._state = store.state;
-    // set input values
+    // set fox-input values
     if ('restoreInputValues' in store) {
       let restoreInputValues = store.restoreInputValues;
       setTimeout(restoreInputValues);
@@ -85,7 +104,7 @@ export class AppModule {
     store.state = state;
     // recreate root elements
     store.disposeOldHosts = createNewHosts(cmpLocation);
-    // save input values
+    // save fox-input values
     store.restoreInputValues  = createInputTransfer();
     // remove styles
     removeNgStyles();

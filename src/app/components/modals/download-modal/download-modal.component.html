@@ -1,0 +1,52 @@
+<div *ngIf="isModalShown" [config]="{ show: true }" (onHidden)="onHidden()"
+     bsModal #aeModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">Download Gallery</h3>
+        <button type="button" class="close" (click)="lgModal.hide()" aria-label="Close">
+          <img src="assets/img/close.svg">
+        </button>
+      </div>
+
+      <!--First slide of download modal-->
+      <div class="modal-body" [hidden]="isEmailSent">
+        <div class="switch-container">
+          <label>What would you like to download?</label>
+          <switcher [options]="options" (toggle)="onSwitch($event)"></switcher>
+        </div>
+        <div class="btn-actions">
+          <fox-button
+              [value]="'START DOWNLOAD'"
+              [design]="'primary'"
+              (click)="startDownload()"
+          ></fox-button>
+          <fox-button
+              class="cancel"
+              [value]="'CANCEL'"
+              [design]="'tertiary'"
+              (click)="lgModal.hide()"
+          ></fox-button>
+        </div>
+      </div>
+
+      <!--Second slide of download modal-->
+      <div class="modal-body" [hidden]="!isEmailSent">
+        <div class="email-confirmation">
+          <div>Your download has started! We'll send an email to</div>
+          <div class="email">
+            <a [hidden]="loading" href="{{zipLink}}">{{zipLink}}</a>
+            <img [hidden]="!loading" src="../../../../assets/img/spinner.gif" alt="">
+          </div>
+          <div>as soon as your files are ready.</div>
+          <fox-button
+              class="cancel"
+              [value]="'CLOSE'"
+              [design]="'tertiary'"
+              (click)="lgModal.hide()"
+          ></fox-button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

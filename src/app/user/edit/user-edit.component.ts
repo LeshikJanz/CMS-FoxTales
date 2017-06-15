@@ -5,6 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { CustomValidators } from 'ng2-validation';
 import { IUser } from '../user.interface';
 import { IUserRole } from '../user-role.interface';
+import { IUserClient } from '../user-client.interface';
 import { UserService } from '../user.service';
 
 /**
@@ -12,7 +13,9 @@ import { UserService } from '../user.service';
  */
 @Component({
   selector: 'user-edit',
-  templateUrl: './user-edit.component.html'
+  templateUrl: './user-edit.component.html',
+  styleUrls: ['user-edit.component.scss',
+    '../../shared/styles/form-element.scss']
 })
 export class UserEditComponent implements OnInit {
   /**
@@ -28,14 +31,24 @@ export class UserEditComponent implements OnInit {
    * @type {IUser}
    */
   public user: IUser = {
-    firstName: null,
-    lastName: null,
     email: null,
-    phone: null,
-    location: null,
-    roles: [],
-    selectedClientAccess: null
+    roles: null,
+    clientId: null
   };
+
+  /**
+   * User client
+   *
+   * @type {IUserClient}
+   */
+  public client: IUserClient;
+
+  /**
+   * Clients
+   *
+   * @type {IUserClient[]}
+   */
+  public clients: IUserClient[];
 
   /**
    * User roles
@@ -75,7 +88,23 @@ export class UserEditComponent implements OnInit {
     this.route.params.subscribe((params: any) => {
       const id = params['id'];
       this.getUser(id);
+      this.getUserClients();
     });
+  }
+
+  /**
+   * Get user clients
+   *
+   * @returns {UserEditComponent} - Component
+   */
+  public getUserClients(): UserEditComponent {
+    this.userService
+      .getClients()
+      .subscribe((clients: IUserClient[]) => {
+        this.clients = clients;
+      });
+
+    return this;
   }
 
   /**
@@ -87,15 +116,22 @@ export class UserEditComponent implements OnInit {
     this.userService
       .getUserRoles()
       .subscribe((roles: IUserRole[]) => {
-        // Check selected roles
-        if (this.user.roles) {
-          roles.forEach((role: IUserRole) => {
-            role.checked = -1 !== this.user.roles.indexOf(role);
-          });
-        }
-
         this.roles = roles;
     });
+  }
+
+  /**
+   * Get client by id
+   *
+   * @param {string} id - Client id
+   * @returns {void|Promise<boolean>}
+   */
+  public getClient(id: string): void|Promise<boolean> {
+    this.userService
+      .getClient(id)
+      .subscribe((client: IUserClient) => {
+        this.client = client;
+      });
   }
 
   /**
@@ -113,6 +149,7 @@ export class UserEditComponent implements OnInit {
 
         this.user = user;
         this.getUserRoles();
+        this.getClient(user.clientId);
       });
   }
 
@@ -122,8 +159,6 @@ export class UserEditComponent implements OnInit {
    * @returns {void}
    */
   public updateUser(): void {
-    this.extractRoles();
-
     this.userService
       .updateUser(this.user)
       .subscribe(() => {
@@ -133,14 +168,25 @@ export class UserEditComponent implements OnInit {
   }
 
   /**
-   * Extract selected roles
+   * Is form invalid
    *
-   * @returns {void}
+   * @return {boolean}
    */
-  public extractRoles(): void {
-    this.user.roles = this.roles
-      .filter((role: IUserRole) => role.checked)
-      .map((role: IUserRole) => role);
+  public isFormInvalid(): boolean {
+    if (this.user.clientId && this.user.roles.length) {
+      return false;
+    }
+
+    return true;
+  }
+
+  /**
+   * User role selected
+   *
+   * @param {any[]} roles - Roles
+   */
+  public rolesSelected(roles: any[]): void {
+    this.user.roles = roles;
   }
 
   /**
@@ -150,24 +196,9 @@ export class UserEditComponent implements OnInit {
    */
   public buildUserForm(): void {
     this.userForm = this.formBuilder.group({
-      firstName: ['', [
-        Validators.required
-      ]],
-      lastName: ['', [
-        Validators.required
-      ]],
       email: ['', [
         Validators.required,
         CustomValidators.email
-      ]],
-      phone: ['', [
-        Validators.required
-      ]],
-      location: ['', [
-        Validators.required
-      ]],
-      selectedClientAccess: ['', [
-        Validators.required
       ]]
     });
   }

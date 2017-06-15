@@ -1,0 +1,36 @@
+<div>
+  <div class="group-container">
+    <div class="filters">
+      <div>
+      <div>
+        <label>Sort by</label>
+        <dropdown
+          [title]="'Upcoming'"
+          [options]="sortActions"
+          [size]="'big'"
+          (typeChanged)="onSortChanged($event)"
+        ></dropdown>
+      </div>
+      <div>
+        <label>Filter by</label>
+        <dropdown
+          [title]="'Upcoming'"
+          [options]="sortActions"
+          [size]="'big'"
+          (typeChanged)="onSortChanged($event)"
+        ></dropdown>
+      </div>
+      </div>
+
+      <fox-button
+              [value]="'Download Media'"
+              [design]="'primary'"
+              (click)="atgModal.show()"
+      ></fox-button>
+
+    </div>
+    <gallery-item-list (favorite)="onFavorite($event)" [galleryItems]="galleryItems"></gallery-item-list>
+    <download-modal [galleryItems]="galleryItems" #atgModal></download-modal>
+  </div>
+
+</div>

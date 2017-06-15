@@ -1,0 +1,35 @@
+<div>
+  <div
+    class="group-container"
+  >
+    <div class="filters">
+      <div>
+      <div>
+        <label>Sort by</label>
+        <dropdown
+          [title]="'Upcoming'"
+          [options]="sortActions"
+          [size]="'big'"
+          (typeChanged)="onSortChanged($event)"
+        ></dropdown>
+      </div>
+      <div>
+        <label>Filter by</label>
+        <dropdown
+          [title]="'Upcoming'"
+          [options]="sortActions"
+          [size]="'big'"
+          (typeChanged)="onSortChanged($event)"
+        ></dropdown>
+      </div>
+      </div>
+      <switcher style="padding: 10px" [type]="selectedType"
+                [options]="galleryTypes" (toggle)="onTypeChange($event)"></switcher>
+      <search-input [title]="'find gallery'" (Change)="onSearchChange($event)"></search-input>
+
+    </div>
+    <gallery-list *ngIf="selectedType == 2" [galleries]="experiences" ></gallery-list>
+    <gallery-item-list *ngIf="selectedType == 3" [galleryItems]="galleryItems"></gallery-item-list>
+  </div>
+
+</div>

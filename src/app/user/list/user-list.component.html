@@ -5,7 +5,7 @@
     [title]="'Action'"
     [options]="clientStates"
     [size]="'big'"
-    (typeChanged)="onTypeChanged($event)"
+    (typeChanged)="onTypeChanged($event.id)"
   ></dropdown>
 </div>
 <div class="list-container">
@@ -16,7 +16,6 @@
     <div class="">
       <add-button
         [routerLink]="['/admin/user']"
-        class="creation-button"
         [value]="'Create New User'"
       ></add-button>
 
@@ -27,10 +26,71 @@
     [cols]="cols"
     [rowsCount]="totalUsers"
     [actions]="actions"
+    [activeUserActions]="activeUserActions"
     (sortChanged)="onSortChanged($event)"
     (limitChanged)="onLimitChanged($event)"
     (searchChanged)="onSearchChanged($event)"
     (pageChanged)="onPageChanged($event)"
     (actionChanged)="onActionChanged($event)">
   </data-table>
+</div>
+
+<div
+  bsModal
+  #archiveModal="bs-modal"
+  class="modal fade"
+  tabindex="-1"
+  role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" (click)="archiveModal.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title">Are you sure?</h4>
+      </div>
+      <div class="modal-body">
+        <p>
+          Are you sure you want to archive user?
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" (click)="archiveModal.hide()">Close</button>
+        <button
+          type="button"
+          class="btn btn-primary"
+          (click)="archiveUser(); archiveModal.hide()">Confirm</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div
+  bsModal
+  #unarchiveModal="bs-modal"
+  class="modal fade"
+  tabindex="-1"
+  role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" (click)="unarchiveModal.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title">Are you sure?</h4>
+      </div>
+      <div class="modal-body">
+        <p>
+          Are you sure you want to unarchive user?
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" (click)="unarchiveModal.hide()">Close</button>
+        <button
+          type="button"
+          class="btn btn-primary"
+          (click)="unarchiveUser(); unarchiveModal.hide()">Confirm</button>
+      </div>
+    </div>
+  </div>
 </div>

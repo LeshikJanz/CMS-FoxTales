@@ -1,0 +1,30 @@
+<div toastContainer class="toast-top-center"></div>
+
+<div class="list-container">
+  <div class="list-menu">
+    <div>
+      <div>
+        <label>Sort by</label>
+        <dropdown
+          [title]="'Start Date'"
+          [options]="sortActions"
+          [size]="'big'"
+          (typeChanged)="onSortChanged($event)"
+        ></dropdown>
+      </div>
+    </div>
+    <div class="create-experience">
+      <add-button
+        [routerLink]="['/experience-builder/intro']"
+        [queryParams]="{ id: this.id  }"
+        [value]="'Create New Experience'"
+      ></add-button>
+      <search-input [title]="'find experience'" (Change)="onSearchChange($event)"></search-input>
+    </div>
+
+  </div>
+  <experience *ngFor="let experience of Experience" [experience]="experience"
+              [experienceActions]="experienceActions" [deleteModal]="deleteModal"></experience>
+
+<experience-delete-modal #deleteModal (delete)="onDeleteExperience()"></experience-delete-modal>
+</div>

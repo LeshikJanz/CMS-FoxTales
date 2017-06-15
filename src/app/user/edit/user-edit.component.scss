@@ -1,31 +1,35 @@
-.container {
-  margin: 50px 70px;
-}
-
 .form {
-  width: 400px;
-}
-
-.form-element {
   display: flex;
   flex-direction: column;
-  margin-top: 25px;
-  margin-bottom: 10px;
+  width: 400px;
+  height: 400px;
+  justify-content: space-between;
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 250px;
+  }
+
+  fox-select {
+    width: 300px;
+  }
+
+  fox-button {
+    height: 55px;
+    width: 120px;
+    font-size: 16px;
+  }
 }
 
-.ng-touched.ng-invalid {
-  border-color: red;
-}
-
-.error-text {
-  color: red;
-  font-family: Avenir;
-  font-size: 10px;
-}
-
-.form-element .input {
-  height: 30px;
-  font-size: 14px;
+.create-button {
+  width: 204px;
+  height: 54px;
+  border-radius: 6px;
+  background-color: #2fd976;
+  color: white;
+  font-size: 16px;
 }
 
 button.create-button[disabled] {
@@ -47,3 +51,4 @@ button.create-button[disabled] {
     padding-right: 15px;
   }
 }
+

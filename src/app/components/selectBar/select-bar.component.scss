@@ -1,0 +1,43 @@
+.selectbar {
+  display: flex;
+  justify-content: space-between;
+  height: 75px;
+  align-items: center;
+  margin: 0 5%;
+  font-family: WorkSans;
+
+  div button.delete-selected {
+    width: 135px;
+    height: 38px;
+    border-radius: 6px;
+    border: solid 1px #ff3328;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.36;
+    color: #ff3328;
+    background-color: white;
+  }
+
+  div button.clone-selected {
+    width: 135px;
+    height: 38px;
+    border-radius: 6px;
+    border: solid 1px #2fd976;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.36;
+    color: #2fd976;
+    background-color: white;
+  }
+
+  div button.deselect-all {
+    width: 117px;
+    height: 30px;
+    border: solid 1px transparent;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.36;
+    color: #272c31;
+    background-color: white;
+  }
+}

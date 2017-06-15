@@ -24,21 +24,21 @@ export class User implements IUser {
    *
    * @type {string}
    */
-  public clientId?: string;
+  public clientId: string;
 
   /**
    * First name
    *
    * @type {string}
    */
-  public firstName: string;
+  public firstName?: string;
 
   /**
    * Last name
    *
    * @type {string}
    */
-  public lastName: string;
+  public lastName?: string;
 
   /**
    * Email
@@ -52,14 +52,14 @@ export class User implements IUser {
    *
    * @type {string}
    */
-  public phone: string;
+  public phone?: string;
 
   /**
    * Roles
    *
    * @type {IUserRole[]}
    */
-  public roles: IUserRole[];
+  public roles?: IUserRole[];
 
   /**
    * Is user active?
@@ -73,7 +73,7 @@ export class User implements IUser {
    *
    * @type {string}
    */
-  public location: string;
+  public location?: string;
 
   /**
    * Last active date
@@ -87,7 +87,7 @@ export class User implements IUser {
    *
    * @type {string}
    */
-  public selectedClientAccess: string;
+  public selectedClientAccess?: string;
 
   /**
    * Constructor

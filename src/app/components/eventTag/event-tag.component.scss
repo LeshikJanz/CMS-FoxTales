@@ -1,0 +1,21 @@
+.tag-container {
+  display: flex;
+  background-color: #7a8693;
+  padding: 10px;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  width: 160px;
+  height: 40px;
+
+  label {
+    font-family: Helvetica;
+    font-size: 14px;
+  }
+
+  img {
+    cursor: pointer;
+    height: 20px;
+    width: 20px;
+  }
+}

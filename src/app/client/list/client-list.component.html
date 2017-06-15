@@ -1,36 +1,28 @@
 <div toastContainer class="toast-top-center"></div>
 
-<div class="dr-actions">
-  <dropdown
-    [title]="'Action'"
-    [options]="clientStates"
-    [size]="'big'"
-    (typeChanged)="onTypeChanged($event)"
-  ></dropdown>
-</div>
-
-  <div class="list-container">
-    <div class="list-menu">
-      <div>
-        <h2 class="main-label">Client List</h2>
-      </div>
-      <div>
-        <add-button
-          [routerLink]="['/admin/client']"
-          class="creation-button"
-          [value]="'Create New Client'"
-        ></add-button>
-      </div>
+<div class="list-container">
+  <div class="list-menu">
+    <div>
+      <h2 class="main-label">Client List</h2>
     </div>
-    <data-table
-      [rows]="clients"
-      [cols]="cols"
-      [rowsCount]="totalClients"
-      [actions]="actions"
-      (sortChanged)="onSortChanged($event)"
-      (limitChanged)="onLimitChanged($event)"
-      (searchChanged)="onSearchChanged($event)"
-      (pageChanged)="onPageChanged($event)"
-      (actionChanged)="onActionChanged($event)">
-    </data-table>
+    <div>
+      <add-button
+        isAllowed="ClientCreate"
+        [routerLink]="['/admin/client']"
+        class="creation-button"
+        [value]="'Create New Client'"
+      ></add-button>
+    </div>
   </div>
+  <data-table
+    [rows]="clients"
+    [cols]="cols"
+    [rowsCount]="totalClients"
+    [actions]="actions"
+    (sortChanged)="onSortChanged($event)"
+    (limitChanged)="onLimitChanged($event)"
+    (searchChanged)="onSearchChanged($event)"
+    (pageChanged)="onPageChanged($event)"
+    (actionChanged)="onActionChanged($event)">
+  </data-table>
+</div>

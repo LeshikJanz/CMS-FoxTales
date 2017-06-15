@@ -3,6 +3,7 @@ import { Response, Http } from '@angular/http';
 import { Observable } from 'rxjs';
 import { IUserList, IUserFilter } from './user.interface';
 import { IUserRole } from './user-role.interface';
+import { IUserClient } from './user-client.interface';
 import { User } from './user';
 
 /**
@@ -109,7 +110,30 @@ export class UserService {
    * @returns {Observable<IUserRole[]>}
    */
   public getUserRoles(): Observable<IUserRole[]> {
-    return this.http.get(`${process.env.API_URL}/Role`)
+    return this.http.get(`${process.env.API_URL}/Role/PossibleRoleTransitions`)
       .map((response: Response) => response.json() as IUserRole[]);
+  }
+
+  /**
+   * Get client list
+   *
+   * @returns {Observable<IUserClient[]>} - Client list
+   */
+  public getClients(): Observable<IUserClient[]> {
+    return this.http.get(`${process.env.API_URL}/Clients/Lookup`)
+      .map((response: Response) => response.json().result as IUserClient[]);
+  }
+
+  /**
+   * Get client by id
+   *
+   * See: http://client2.dev.getfoxtales.com/swagger/#!/Clients/ApiClientsByIdGet
+   *
+   * @param {string} id - Client id
+   * @returns {Observable<IUserClient>} - Client
+   */
+  public getClient(id: string): Observable<IUserClient> {
+    return this.http.get(`${process.env.API_URL}/Clients/${id}`)
+      .map((response: Response) => <IUserClient> response.json());
   }
 }

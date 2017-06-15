@@ -12,13 +12,17 @@
     </nav>
   </div>
 
-  <div style="margin-right: 5%">
+  <div>
+    <search-bar (Change)="onSearch($event)"></search-bar>
     <div class="profile">
-      <img src="assets/img/column-search.svg">
       <div class="user-profile">
-        <img class="user-img" src="assets/img/default-user-icon.png">
+        <img class="user-img" [src]="user && user.profileImagePath">
         <div>
-          <div class="user-name">Aaron Dodson</div>
+          <dropdown
+            title="{{user && user.firstName}} {{user && user.lastName}}"
+            [options]="options"
+            [size]="'slim'"
+            (typeChanged)="onTypeChanged($event)"></dropdown>
           <div class="user-design-name">Aaron Dodson design</div>
         </div>
       </div>

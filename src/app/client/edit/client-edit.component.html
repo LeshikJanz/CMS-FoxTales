@@ -1,9 +1,4 @@
-<div class="container">
-
-  <h1>{{ client?.displayName }}</h1>
-
-  <img src="{{ client?.logo }}" alt="">
-
+<div class="client-container">
   <form
     (ngSubmit)="updateClient()"
     class="form"
@@ -11,8 +6,14 @@
 
     <div [formGroup]="clientForm">
       <!-- Logo -->
-      <label style="font-size: 18px">Client logo</label>
-      <upload-button (imgUploaded)="onImgUploaded($event)"></upload-button>
+      <div class="form-element">
+        <div>
+          <label style="font-size: 22px">Client logo</label>
+          <img src="{{ logoBytes || client?.logo }}" *ngIf="logoBytes || client?.logo" style="max-height: 50px;">
+          <a href="javascript:void(0)" *ngIf="logoBytes || client?.logo" (click)="removeLogo()">x</a>
+        </div>
+        <upload-button (imgUploaded)="onImgUploaded($event)"></upload-button>
+      </div>
 
       <!-- Name -->
       <div class="form-element">
@@ -26,24 +27,6 @@
           placeholder="Name">
 
         <div ngxErrors="name">
-          <div class="field-error"  ngxError="required" when="touched">
-            Field is required
-          </div>
-        </div>
-      </div>
-
-      <!-- Display Name -->
-      <div class="form-element">
-        <label for="displayName">Display Name</label>
-        <input
-          id="displayName"
-          type="text"
-          class="form-control input"
-          [(ngModel)]="client.displayName"
-          formControlName="displayName"
-          placeholder="Display Name">
-
-        <div ngxErrors="displayName">
           <div class="field-error"  ngxError="required" when="touched">
             Field is required
           </div>
@@ -133,30 +116,45 @@
       <div class="form-element" formArrayName="socialAccounts">
         <label>Social Accounts</label>
 
-        <div *ngFor="let account of socialAccounts.controls">
+        <div *ngFor="let account of socialAccounts.controls; let i = index">
           <input
             type="text"
             class="form-control input"
+            [(ngModel)]="client.socialAccounts[i]"
             [formControl]="account"
             placeholder="Social Account Url">
+          <a href="javascript:void(0)" (click)="removeSocialAccount(i)">x</a>
         </div>
 
         <div>
           <a href="javascript:void(0)" (click)="addSocialAccount()">add</a>
         </div>
       </div>
+
+      <div class="form-element" isAllowed="CreateEditSocialIntegrations">
+        <label>Social Integrations</label>
+        <div *ngFor="let social of socialIntegrations">
+          <a href="javascript:void(0)" (click)="auth(social)">{{ social.name }}</a>
+          <a href="javascript:void(0)" (click)="cancelAuth(social)">x</a>
+        </div>
+      </div>
     </div>
 
     <!-- Licenses -->
     <div class="form-group">
-      <label *ngFor="let license of licenses">
+      <div class="license">
+      <div *ngFor="let license of licenses; let i = index">
         <input
           type="checkbox"
           name="selectedLicenses[]"
-          class="form-control input checkbox"
-          [(ngModel)]="license.checked">
-        {{ license.name }}
-      </label>
+          class="regular-checkbox"
+          (change)="selectLicense(i, $event.target.checked)"
+          [checked]="license.checked">
+        <label>
+          {{ license.name }}
+        </label>
+      </div>
+    </div>
     </div>
 
     <div>

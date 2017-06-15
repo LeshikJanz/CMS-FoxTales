@@ -37,6 +37,12 @@
 
 .slidemenu label span{
   display: block;
+  font-family: WorkSans-Medium;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0.5px;
+  color: #626d78;
   padding: 10px;
 }
 
@@ -81,14 +87,14 @@
 
 /*Animations*/
 .slidemenu label, .slider .bar {
-  transition: all 500ms ease-in-out;
-  -webkit-transition: all 500ms ease-in-out;
-  -moz-transition: all 500ms ease-in-out;
+  transition: all 200ms ease-in-out;
+  -webkit-transition: all 200ms ease-in-out;
+  -moz-transition: all 200ms ease-in-out;
 }
 
 /*Toggle*/
 
-.slidemenu .slide-toggle:checked + label{
+.slidemenu .slide-toggle:checked + label span {
   opacity: 1;
   color: #f57f17;
 }

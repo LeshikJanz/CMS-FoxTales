@@ -1,0 +1,31 @@
+<div>
+  <div class="group-container">
+    <div class="filters">
+      <div>
+      <div>
+        <label>Sort by</label>
+        <dropdown
+          [title]="'Upcoming'"
+          [options]="sortActions"
+          [size]="'big'"
+          (typeChanged)="onSortChanged($event)"
+        ></dropdown>
+      </div>
+      <div>
+        <label>Filter by</label>
+        <dropdown
+          [title]="'Upcoming'"
+          [options]="sortActions"
+          [size]="'big'"
+          (typeChanged)="onSortChanged($event)"
+        ></dropdown>
+      </div>
+      </div>
+      <input type="text" name="search" placeholder="find gallery" [(ngModel)]="search"
+             (ngModelChange)="onSearchChange($event)">
+
+    </div>
+    <gallery-item-list [galleryItems]="galleryItems" ></gallery-item-list>
+  </div>
+
+</div>
