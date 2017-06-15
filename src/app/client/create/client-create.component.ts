@@ -187,11 +187,11 @@ export class ClientCreateComponent implements OnInit {
       .addClient({ ...client, ...this.clientDetails })
       .subscribe((response: any) => {
         if (response.success) {
+          this.toastrService.success('Client has been created successfully.');
           this.router.navigate(['/admin/clients']);
-          return;
+        } else {
+          this.toastrService.error(response.message);
         }
-
-        this.toastrService.error(response.message);
       });
   }
 
