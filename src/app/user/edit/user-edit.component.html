@@ -34,9 +34,16 @@
         <label>Client Access*</label>
         <fox-select
           [active]="user.clientId"
-          (change)="clientId = $event.id"
+          (change)="user.clientId = $event.id"
           [items]="clients"
         >
+        </fox-select>
+      </div>
+
+      <!-- Roles -->
+      <div class="form-element">
+        <label>User Type*</label>
+        <fox-select [items]="roles" [active]="user.roles" [multiple]="true" (data)="rolesSelected($event)">
         </fox-select>
       </div>
     </div>

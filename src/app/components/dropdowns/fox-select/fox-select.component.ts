@@ -8,11 +8,13 @@ import { IClient } from '../../../client/client.interface';
 })
 export class FoxSelectComponent implements OnChanges {
   @Output() public  change: EventEmitter<any> = new EventEmitter();
+  @Output() public  data: EventEmitter<any> = new EventEmitter();
 
   @Input() public items: any[];
-  @Input() public active: string;
+  @Input() public active: any;
+  @Input() public multiple: boolean = false;
 
-  public activeItem: IClient;
+  public activeItem: any;
 
   public disabled: boolean = false;
 
@@ -43,11 +45,12 @@ export class FoxSelectComponent implements OnChanges {
 
   public refreshValue(value: any): void {
     this.value = value;
+    this.data.emit(value);
   }
 
   public ngOnChanges() {
     if (this.items) {
-      this.items = this.items.map((c: IClient) => ({
+      this.items = this.items.map((c: any) => ({
         ...c,
         text: c.name
       }));

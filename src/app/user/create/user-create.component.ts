@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { CustomValidators } from 'ng2-validation';
 import { IUser } from '../user.interface';
 import { IUserRole } from '../user-role.interface';
@@ -35,19 +35,13 @@ export class UserCreateComponent implements OnInit {
   public clients: IUserClient[];
 
   /**
-   * Client Id
-   *
-   * @type {number}
-   */
-  public clientId: string;
-
-  /**
    * Additional user details
    *
    * @type {any}
    */
   public userDetails: any = {
-    roles: []
+    roles: [],
+    clientId: null
   };
 
   /**
@@ -69,7 +63,7 @@ export class UserCreateComponent implements OnInit {
    * @return {boolean}
    */
   public isFormInvalid(): boolean {
-    if (this.userForm.valid && this.clientId) {
+    if (this.userForm.valid && this.userDetails.clientId && this.userDetails.roles.length) {
       return false;
     }
     return true;
@@ -123,11 +117,20 @@ export class UserCreateComponent implements OnInit {
    * @returns {void}
    */
   public addUser(user: IUser): void {
-    user.clientId = this.clientId;
-
     this.userService
-      .addUser(user)
+      .addUser({ ...user, ...this.userDetails })
       .subscribe(() => this.router.navigate(['/admin/users']));
+  }
+
+  /**
+   * User role selected
+   *
+   * @param {any[]} roles - Roles
+   */
+  public rolesSelected(roles: any[]): void {
+    this.userDetails.roles = roles.map((role: IUserRole) => {
+      return role.id;
+    });
   }
 
   /**

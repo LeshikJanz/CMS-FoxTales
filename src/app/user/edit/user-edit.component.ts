@@ -31,7 +31,7 @@ export class UserEditComponent implements OnInit {
    */
   public user: IUser = {
     email: null,
-    roles: [],
+    roles: null,
     clientId: null
   };
 
@@ -55,13 +55,6 @@ export class UserEditComponent implements OnInit {
    * @type {IUserRole[]}
    */
   public roles: IUserRole[];
-
-  /**
-   * Client Id
-   *
-   * @type {number}
-   */
-  public clientId: string;
 
   /**
    * Constructor
@@ -165,8 +158,6 @@ export class UserEditComponent implements OnInit {
    * @returns {void}
    */
   public updateUser(): void {
-    this.user.clientId = this.clientId;
-
     this.userService
       .updateUser(this.user)
       .subscribe(() => {
@@ -181,10 +172,20 @@ export class UserEditComponent implements OnInit {
    * @return {boolean}
    */
   public isFormInvalid(): boolean {
-    if (this.clientId) {
+    if (this.user.clientId && this.user.roles.length) {
       return false;
     }
+
     return true;
+  }
+
+  /**
+   * User role selected
+   *
+   * @param {any[]} roles - Roles
+   */
+  public rolesSelected(roles: any[]): void {
+    this.user.roles = roles;
   }
 
   /**
