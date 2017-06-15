@@ -44,10 +44,8 @@ export class ThumbnailComponent implements OnInit {
 
   @Input() public isFavorite: boolean;
 
-  constructor(
-    private toastrService: ToastrService,
-    private galleryService: GalleryService
-  ) {
+  constructor(private toastrService: ToastrService,
+              private galleryService: GalleryService) {
   }
 
   public onPlayerReady(event) {
@@ -157,7 +155,8 @@ export class ThumbnailComponent implements OnInit {
   public shareSuccessCallback(response: any): void {
     if ('undefined' !== typeof response['error']
       || ('undefined' !== typeof response['errors'] && response['errors'].length)) {
-      this.toastrService.error(`Unable to publish image. You are not authorized or token has been expired.`);
+      this.toastrService.error(`Unable to publish image.
+       You are not authorized or token has been expired.`);
     } else {
       this.toastrService.success('Image has been published successfully.');
     }
@@ -172,7 +171,8 @@ export class ThumbnailComponent implements OnInit {
    * @returns {void}
    */
   public shareErrorCallback(response: any): void {
-    this.toastrService.error(`Unable to publish image. You are not authorized or token has been expired.`);
+    this.toastrService.error(`Unable to publish image.
+     You are not authorized or token has been expired.`);
     this.shareModal.hide();
   }
 }

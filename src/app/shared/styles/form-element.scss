@@ -1,0 +1,139 @@
+.form-element {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  margin-top: 15px;
+
+  label {
+    font-family: Avenir;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1;
+    color: #4b535c;
+    margin-bottom: 10px;
+  }
+
+  label.label-error {
+    color: #ff3328;
+  }
+
+  input {
+    width: 400px;
+    height: 65px;
+    border-radius: 3px;
+    background-color: #ffffff;
+    border: solid 1px #3d3d3d;
+    font-family: OpenSans;
+    font-size: 16px;
+    color: #3d3d3d;
+  }
+
+  input:focus {
+    border-radius: 3px;
+    background-color: #ffffff;
+    border: solid 1px #3d3d3d;
+  }
+
+  .search-box,.close-icon,.search-wrapper {
+    position: relative;
+    padding: 10px;
+  }
+  .search-wrapper {
+    width: 500px;
+    margin: auto;
+    margin-top: 50px;
+  }
+
+  .close-icon {
+    border:1px solid transparent;
+    background-color: transparent;
+    display: inline-block;
+    position: absolute;
+    vertical-align: middle;
+    outline: 0;
+    height: 0;
+    cursor: pointer;
+  }
+  .close-icon:after {
+    content: "X";
+    position: absolute;
+    z-index: 1;
+    right: 15px;
+    bottom: 53px;
+    margin: auto;
+    color: #ff3328;
+    cursor: pointer;
+    font-size: 14px;
+  }
+
+  .ng-touched.ng-invalid {
+    border-color: #ff3328;
+    border-radius: 3px;
+    border: solid 1px #ff3328;
+    font-family: OpenSans;
+    font-size: 16px;
+    color: #ff3328;
+  }
+
+  .plus-wrap:after {
+    content: '\2714';
+    font-size: inherit;
+    position: absolute;
+    height: 5px;
+    width: 5px;
+    top: 50px;
+    right: 20px;
+    color: #2dcc70;
+  }
+
+  input:disabled {
+    background-color: #ffffff;
+    border: solid 1px #b2bac4;
+    font-family: OpenSans;
+    font-size: 16px;
+    color: #b2bac4;
+  }
+
+  .error-text {
+    color: #ff3328;
+    font-family: Avenir;
+    font-size: 10px;
+  }
+
+  button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+    height: 88px;
+    border-radius: 6px;
+    background-color: #ffffff;
+    border: dashed 1px #7a8693;
+
+    img {
+      width: 33px;
+      height: 33px;
+    }
+
+    a {
+      margin-left: 10px;
+      font-family: WorkSans;
+      font-size: 16px;
+      line-height: 1;
+      color: #626d78;
+    }
+  }
+
+  .social-accounts {
+    display: flex;
+    padding-bottom: 20px;
+
+    img {
+      margin: 10px;
+    }
+
+    a {
+      align-self: center;
+    }
+  }
+}

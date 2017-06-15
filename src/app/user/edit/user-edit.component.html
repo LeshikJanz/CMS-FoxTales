@@ -20,7 +20,7 @@
           placeholder="Email">
 
         <div ngxErrors="email">
-          <div ngxError="required" when="touched">
+          <div class="field-error" ngxError="required" when="touched">
             Field is required
           </div>
           <div class="field-error"  ngxError="email" when="dirty">
@@ -33,10 +33,17 @@
       <div class="form-element">
         <label>Client Access*</label>
         <fox-select
-          [active]="user.clientId"
-          (change)="clientId = $event.id"
+          [active]="client"
+          (change)="user.clientId = $event.id"
           [items]="clients"
         >
+        </fox-select>
+      </div>
+
+      <!-- Roles -->
+      <div class="form-element">
+        <label>User Type*</label>
+        <fox-select [items]="roles" [active]="user.roles" [multiple]="true" (data)="rolesSelected($event)">
         </fox-select>
       </div>
     </div>

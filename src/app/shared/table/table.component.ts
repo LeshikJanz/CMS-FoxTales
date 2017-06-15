@@ -6,6 +6,7 @@ import { ICol } from './col.interface';
 import { ITableAction } from './action.interface';
 import { IActionState } from '../../client/client.interface';
 import { ICheckbox } from '../../components/toggles/checkbox/checkbox.component';
+import { PermissionService } from "../core/auth/permission.service";
 
 @Component({
   selector: 'data-table',
@@ -44,6 +45,14 @@ export class TableComponent implements OnInit {
    */
   @Input()
   public actions: ITableAction[];
+
+  /**
+   * Current user actions
+   *
+   * @type {ITableAction[]}
+   */
+  @Input()
+  public activeUserActions: ITableAction[];
 
   /**
    * Row click event emitter
@@ -99,6 +108,13 @@ export class TableComponent implements OnInit {
    * @type {string}
    */
   public searchValue: string;
+
+  /**
+   * Active user id
+   *
+   * @type {number}
+   */
+  public userId: number = PermissionService.userId;
 
   /**
    * Search query
@@ -233,7 +249,7 @@ export class TableComponent implements OnInit {
    * @returns {void}
    */
   public onToggle(event: ICheckbox): void {
-    console.log('You chouse');
+    console.log('You choise');
     console.log(event);
   }
 

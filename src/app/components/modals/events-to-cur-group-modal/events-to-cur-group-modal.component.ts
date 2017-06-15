@@ -117,9 +117,4 @@ export class EventsToCurGroupModalComponent {
         this.save.emit();
       });
   }
-
-  ngOnChanges() {
-    console.log('this.events');
-    console.log(this.events);
-  }
 }

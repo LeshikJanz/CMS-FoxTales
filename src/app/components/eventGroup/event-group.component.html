@@ -6,14 +6,14 @@
       <div>
         <label class="group-name">{{group.name}}</label>
         <label> {{group.events.length}} events</label>
-        <label>{{group.events.length && getMinDate(group)}} - {{group.events.length && getMaxDate(group)}}</label>
+        <label [hidden]="!group.events.length">{{group.timePeriod}}</label>
       </div>
 
     </div>
     <table-dropdown [options]="groupActions" [title]="'Action'" [size]="'big-ul'"
                     (typeChanged)="onActionChanged(group, $event)"></table-dropdown>
   </div>
-  <div [hidden]="!group.isOpen" class="group-dropdown">
+  <div [hidden]="!group.isOpen" *ngIf="group.events" class="group-dropdown">
     <event *ngFor="let event of group.events" [event]="event" [eventActions]="eventActions">
     </event>
   </div>

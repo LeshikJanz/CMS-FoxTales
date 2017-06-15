@@ -1,7 +1,8 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnChanges, OnInit } from '@angular/core';
 import { IActionState } from '../../client/client.interface';
 import { Router } from '@angular/router';
 import { IEvent } from '../../event/event.interface';
+import * as moment from 'moment';
 
 @Component({
   selector: 'event',
@@ -9,14 +10,28 @@ import { IEvent } from '../../event/event.interface';
   styleUrls: ['event.component.scss']
 })
 
-export class EventComponent {
+export class EventComponent implements OnInit {
 
   /**
-   * Event name
+   * Event
+   *
+   * @type IEvent
+   */
+  @Input() public event: IEvent;
+
+  /**
+   * is event ended?
+   *
+   * @type boolean
+   */
+  public isEnded: boolean;
+
+  /**
+   * Event's end time
    *
    * @type string
    */
-  @Input() public event: any[];
+  public endTime: string;
 
   /**
    * Actions for event
@@ -140,5 +155,10 @@ export class EventComponent {
     if (this[action.callback]) {
       this[action.callback](event);
     }
+  }
+
+  public ngOnInit() {
+    this.endTime = moment(this.event.endTime).format('MMMM D, YYYY');
+    this.isEnded = moment(this.event.endTime).isBefore(moment());
   }
 }

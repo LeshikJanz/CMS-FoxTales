@@ -62,12 +62,14 @@
       cursor: pointer;
       width: 30px;
       height: 30px;
+      border-radius: 5px;
+      align-self: flex-end;
     }
 
     .user-profile {
       display: flex;
       justify-content: space-between;
-      width: 170px;
+      width: 180px;
 
       img {
         cursor: pointer;

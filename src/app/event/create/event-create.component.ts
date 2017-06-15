@@ -45,6 +45,14 @@ export class EventCreateComponent implements OnInit {
   @Input() public selectedTags: ITag[];
 
   /**
+   * tag-input value
+   *
+   * @type {string}
+   */
+
+  public tagInputValue: string;
+
+  /**
    * Constructor
    *
    * @param {Router} router - Router
@@ -129,10 +137,12 @@ export class EventCreateComponent implements OnInit {
   public buildEventForm(): EventCreateComponent {
     this.eventForm = this.formBuilder.group({
       name: ['', [
-        Validators.required
+        Validators.required,
+        Validators.pattern('^\\S*')
       ]],
       address: ['', [
-        Validators.required
+        Validators.required,
+        Validators.pattern('^\\S*')
       ]],
       tags: ['', this.selectedTags],
       startDate: ['',[Validators.required]],

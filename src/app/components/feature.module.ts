@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router';
 import { FEATURE_ROUTES } from './feature.routing';
 import { ToastrModule, ToastContainerModule } from 'ngx-toastr';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CreationButtonComponent } from './creationButton/creation-button.component';
 import { DropDownSelectComponent } from './dropdowns/dropdown-select/dropdown-select.component';
 import {
@@ -95,13 +95,20 @@ import { RegularInputComponent } from './input/regular-input/regular-input.compo
 import { SearchBarComponent } from './search/search-bar/search-bar.component';
 import { ConnectContentOptionComponent } from './experience/connect-content-option/connect-content-option.component';
 import { BingMapComponent } from './bing-map/bing-map.component';
+import { UserService } from '../user/user.service';
+import { FormInputComponent } from './input/form-input/form-input.component';
+import { NgxErrorsModule } from '@ultimate/ngxerrors';
+import { CustomFormsModule } from 'ng2-validation';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
+    NgxErrorsModule,
+    CustomFormsModule,
     RouterModule.forChild(FEATURE_ROUTES),
     BsDropdownModule.forRoot(),
+    ReactiveFormsModule,
     TabsModule.forRoot(),
     ModalModule.forRoot(),
     ColorPickerModule,
@@ -123,7 +130,8 @@ import { BingMapComponent } from './bing-map/bing-map.component';
   ],
   providers: [
     GalleryService,
-    ClientService
+    ClientService,
+    UserService
   ],
   declarations: [
     CreationButtonComponent,
@@ -166,7 +174,8 @@ import { BingMapComponent } from './bing-map/bing-map.component';
     RegularInputComponent,
     SearchBarComponent,
     ConnectContentOptionComponent,
-    BingMapComponent
+    BingMapComponent,
+    FormInputComponent
   ],
   exports: [
     CreationButtonComponent,
@@ -211,7 +220,8 @@ import { BingMapComponent } from './bing-map/bing-map.component';
     RegularInputComponent,
     SearchBarComponent,
     ConnectContentOptionComponent,
-    BingMapComponent
+    BingMapComponent,
+    FormInputComponent
   ]
 })
 
