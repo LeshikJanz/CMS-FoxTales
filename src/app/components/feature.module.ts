@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router';
 import { FEATURE_ROUTES } from './feature.routing';
 import { ToastrModule, ToastContainerModule } from 'ngx-toastr';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CreationButtonComponent } from './creationButton/creation-button.component';
 import { DropDownSelectComponent } from './dropdowns/dropdown-select/dropdown-select.component';
 import {
@@ -93,13 +93,20 @@ import {
   from './modals/experience-delete-modal/experience-delete-modal.component';
 import { RegularInputComponent } from './input/regular-input/regular-input.component';
 import { SearchBarComponent } from './search/search-bar/search-bar.component';
+import { UserService } from '../user/user.service';
+import { FormInputComponent } from './input/form-input/form-input.component';
+import { NgxErrorsModule } from '@ultimate/ngxerrors';
+import { CustomFormsModule } from 'ng2-validation';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
+    NgxErrorsModule,
+    CustomFormsModule,
     RouterModule.forChild(FEATURE_ROUTES),
     BsDropdownModule.forRoot(),
+    ReactiveFormsModule,
     TabsModule.forRoot(),
     ModalModule.forRoot(),
     ColorPickerModule,
@@ -121,7 +128,8 @@ import { SearchBarComponent } from './search/search-bar/search-bar.component';
   ],
   providers: [
     GalleryService,
-    ClientService
+    ClientService,
+    UserService
   ],
   declarations: [
     CreationButtonComponent,
@@ -162,7 +170,8 @@ import { SearchBarComponent } from './search/search-bar/search-bar.component';
     EventDeleteModalComponent,
     ExperienceDeleteModalComponent,
     RegularInputComponent,
-    SearchBarComponent
+    SearchBarComponent,
+    FormInputComponent
   ],
   exports: [
     CreationButtonComponent,
@@ -205,7 +214,8 @@ import { SearchBarComponent } from './search/search-bar/search-bar.component';
     EventDeleteModalComponent,
     ExperienceDeleteModalComponent,
     RegularInputComponent,
-    SearchBarComponent
+    SearchBarComponent,
+    FormInputComponent
   ]
 })
 

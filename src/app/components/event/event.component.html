@@ -2,18 +2,21 @@
   <div>
     <div class="main-info">
       <checkbox></checkbox>
+      <img *ngIf="false" src="../../../assets/img/complete.svg" alt="">
       <div>
         <div class="main-content">
           <img *ngIf="status === -1" src="../../../assets/img/attention.svg" alt="">
-          <img *ngIf="status === 1" src="../../../assets/img/complete.svg" alt="">
           <a title="{{event.name}}" [routerLink]="['/event', event.id, 'experiences']" class="event-name">{{event.name}}</a>
           <label class="date">{{ event.startTime | date}}</label>
           <div class="brands">
             <label *ngFor="let tag of event.tags">#{{tag}}</label>
           </div>
         </div>
-        <label name="experiences">
+        <label *ngIf="!isEnded" name="experiences">
           {{ event.experiences.length}} Experiences
+        </label>
+        <label *ngIf="isEnded" name="experiences">
+          Complete on {{endTime}}
         </label>
       </div>
       <div>

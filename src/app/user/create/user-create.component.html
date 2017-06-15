@@ -13,14 +13,15 @@
         <input
           id="email"
           type="email"
+          class="form-control"
           formControlName="email"
           placeholder="Email">
 
-        <div class="field-error" ngxErrors="email">
-          <div ngxError="required" when="touched">
+        <div ngxErrors="email">
+          <div class="field-error" ngxError="required" when="touched">
             Field is required
           </div>
-          <div ngxError="email" when="dirty">
+          <div class="field-error" ngxError="email" when="dirty">
             Invalid value
           </div>
         </div>

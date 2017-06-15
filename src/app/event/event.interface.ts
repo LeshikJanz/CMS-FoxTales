@@ -13,6 +13,7 @@ export interface IExperience {
 export interface IEvent {
   id: number;
   clientId: string;
+  clientName?: string;
   config: string;
   contentHostingLocation: number;
   endTime: string;

@@ -16,9 +16,13 @@
     <search-bar (Change)="onSearch($event)"></search-bar>
     <div class="profile">
       <div class="user-profile">
-        <img class="user-img" src="assets/img/default-user-icon.png">
-        <div [routerLink]="['/profile']">
-          <div class="user-name">{{clientName}}</div>
+        <img class="user-img" [src]="user && user.profileImagePath">
+        <div>
+          <dropdown
+            title="{{user && user.firstName}} {{user && user.lastName}}"
+            [options]="options"
+            [size]="'slim'"
+            (typeChanged)="onTypeChanged($event)"></dropdown>
           <div class="user-design-name">Aaron Dodson design</div>
         </div>
       </div>

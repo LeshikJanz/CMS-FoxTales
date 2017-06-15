@@ -6,6 +6,7 @@ import { IEvent } from '../../../event/event.interface';
 import { GalleryService } from '../../../gallery/gallery.service';
 import { ToastrService } from 'ngx-toastr';
 import { IGalleryItem } from '../../../gallery/gallery-item.interface';
+import { ISwitcher } from '../../toggles/switcher/switcher.interface';
 
 @Component({
   selector: 'download-modal',
@@ -58,7 +59,7 @@ export class DownloadModalComponent {
    *
    * @type {string}
    */
-  public options: string[] = ['Filtered Gallery Result', 'Entire Gallery'];
+  public options: ISwitcher[] = [{id: 1, name: 'Filtered Gallery Result'},{ id: 2, name: 'Entire Gallery'}];
 
   /**
    * Run generating zip link

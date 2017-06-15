@@ -19,6 +19,6 @@ export default sandboxOf(SwitcherComponent, { imports: [FormsModule] })
                You chose: {{ value}}`,
     context: {
       value: '',
-      options: ['Option 1', 'Option 2']
+      options: [{id: 1, name: 'Option 1'},{ id: 2, name: 'Option 2'}]
     }
   });
