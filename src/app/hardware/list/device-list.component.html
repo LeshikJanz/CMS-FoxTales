@@ -16,6 +16,7 @@
     [cols]="cols"
     [rowsCount]="totalDevices"
     [actions]="actions"
+    (sortChanged)="onSortChanged($event)"
     (limitChanged)="onLimitChanged($event)"
     (searchChanged)="onSearchChanged($event)"
     (pageChanged)="onPageChanged($event)"

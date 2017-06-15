@@ -4,6 +4,7 @@ import { ICol, ITableAction } from '../../shared/table';
 import { IDevice, IDeviceFilter, IDeviceList } from '../device.interface';
 import { Device } from '../device';
 import { DeviceService } from '../device.service';
+import { sortTypes } from './sort-type.enum';
 
 /**
  * Device list component
@@ -35,13 +36,13 @@ export class DeviceListComponent implements OnInit {
    */
   public cols: ICol[] = [
     { id: 'name',      title: 'Name',  format: 'default',  searchable: true },
-    { id: 'type',      title: 'Type',  format: 'default',  searchable: true },
-    { id: 'health',      title: 'Health',  format: 'boolean',  searchable: true },
-    { id: 'cpu',      title: 'CPU',  format: 'default',  searchable: true },
-    { id: 'memory',      title: 'Memory',  format: 'default',  searchable: true },
-    { id: 'temperature',      title: 'Temperature',  format: 'temperature',  searchable: true },
-    { id: 'errors',      title: 'App errors',  format: 'boolean',  searchable: true },
-    { id: 'virusCheck',      title: 'System errors',  format: 'boolean',  searchable: true }
+    { id: 'type',      title: 'Type',  format: 'default',  searchable: false },
+    { id: 'health',      title: 'Health',  format: 'boolean',  searchable: false },
+    { id: 'cpu',      title: 'CPU',  format: 'default',  searchable: false },
+    { id: 'memory',      title: 'Memory',  format: 'default',  searchable: false },
+    { id: 'temperature',      title: 'Temperature',  format: 'temperature',  searchable: false },
+    { id: 'errors',      title: 'App errors',  format: 'boolean',  searchable: false },
+    { id: 'virusCheck',      title: 'System errors',  format: 'boolean',  searchable: false }
   ];
 
   /**
@@ -116,6 +117,19 @@ export class DeviceListComponent implements OnInit {
    */
   public editDevice(id: string): Promise<boolean> {
     return this.router.navigate(['/admin/device', id]);
+  }
+
+  /**
+   * On sort changed
+   *
+   * @param {ICol} col - Table column
+   * @returns {void}
+   */
+  public onSortChanged(col: ICol): void {
+    this.filter.isAscendantSort = col.sort;
+    this.filter.currentSortType = sortTypes[col.id];
+
+    this.getDevices();
   }
 
   /**
