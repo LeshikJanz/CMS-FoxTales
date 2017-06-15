@@ -8,7 +8,7 @@ import { MOCK_TAGS } from '../tag.mock';
 import { DateTimePickerModule } from 'ng-pick-datetime';
 import * as moment from 'moment';
 import { ISwitcher } from '../../components/toggles/switcher/switcher.interface';
-import { } from 'bingmaps/scripts/MicrosoftMaps/Microsoft.Maps.All'
+import { } from 'bingmaps/scripts/MicrosoftMaps/Microsoft.Maps.All';
 
 @Component({
   selector: 'event-create',

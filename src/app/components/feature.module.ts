@@ -98,6 +98,9 @@ import { UserService } from '../user/user.service';
 import { FormInputComponent } from './input/form-input/form-input.component';
 import { NgxErrorsModule } from '@ultimate/ngxerrors';
 import { CustomFormsModule } from 'ng2-validation';
+import { SemiCircleDonutComponent } from './high-charts/semi-circle-donut/semi-circle-donut.component';
+import { BasicLineComponent } from './high-charts/basic-line/basic-line.component';
+import { BasicColumnComponent } from './high-charts/basic-column/basic-column.component';
 
 @NgModule({
   imports: [
@@ -173,7 +176,10 @@ import { CustomFormsModule } from 'ng2-validation';
     RegularInputComponent,
     SearchBarComponent,
     ConnectContentOptionComponent,
-    FormInputComponent
+    FormInputComponent,
+    SemiCircleDonutComponent,
+    BasicLineComponent,
+    BasicColumnComponent
   ],
   exports: [
     CreationButtonComponent,
@@ -218,7 +224,10 @@ import { CustomFormsModule } from 'ng2-validation';
     RegularInputComponent,
     SearchBarComponent,
     ConnectContentOptionComponent,
-    FormInputComponent
+    FormInputComponent,
+    SemiCircleDonutComponent,
+    BasicLineComponent,
+    BasicColumnComponent
   ]
 })
 
