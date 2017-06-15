@@ -123,24 +123,11 @@ export class UserCreateComponent implements OnInit {
    * @returns {void}
    */
   public addUser(user: IUser): void {
-    this.extractRoles();
-
     user.clientId = this.clientId;
 
     this.userService
       .addUser(user)
       .subscribe(() => this.router.navigate(['/admin/users']));
-  }
-
-  /**
-   * Extract selected roles
-   *
-   * @returns {void}
-   */
-  public extractRoles(): void {
-    this.userDetails.roles = this.roles
-      .filter((role: IUserRole) => role.checked)
-      .map((role: IUserRole) => role.id);
   }
 
   /**

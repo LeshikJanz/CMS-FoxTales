@@ -122,13 +122,6 @@ export class UserEditComponent implements OnInit {
     this.userService
       .getUserRoles()
       .subscribe((roles: IUserRole[]) => {
-        // Check selected roles
-        if (this.user.roles) {
-          roles.forEach((role: IUserRole) => {
-            role.checked = -1 !== this.user.roles.indexOf(role);
-          });
-        }
-
         this.roles = roles;
     });
   }
@@ -172,8 +165,6 @@ export class UserEditComponent implements OnInit {
    * @returns {void}
    */
   public updateUser(): void {
-    // this.extractRoles();
-
     this.user.clientId = this.clientId;
 
     this.userService
@@ -182,17 +173,6 @@ export class UserEditComponent implements OnInit {
         this.toastrService.success('User has been removed successfully.');
         this.router.navigate(['/admin/users']);
       });
-  }
-
-  /**
-   * Extract selected roles
-   *
-   * @returns {void}
-   */
-  public extractRoles(): void {
-    this.user.roles = this.roles
-      .filter((role: IUserRole) => role.checked)
-      .map((role: IUserRole) => role);
   }
 
   /**
