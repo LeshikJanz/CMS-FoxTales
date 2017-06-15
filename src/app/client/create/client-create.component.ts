@@ -25,7 +25,8 @@ import { ClientService } from '../client.service';
 @Component({
   selector: 'client-create',
   templateUrl: './client-create.component.html',
-  styleUrls: [ './client-create.component.scss' ]
+  styleUrls: [ './client-create.component.scss',
+    '../../shared/styles/form-element.scss']
 })
 export class ClientCreateComponent implements OnInit {
   /**
@@ -41,6 +42,13 @@ export class ClientCreateComponent implements OnInit {
    * @type {FormControl}
    */
   public addressControl: FormControl = new FormControl();
+
+  /**
+   * Name field
+   *
+   * @type {FormControl}
+   */
+  public nameControl: FormControl = new FormControl();
 
   /**
    * Address element ref
@@ -324,15 +332,16 @@ export class ClientCreateComponent implements OnInit {
     this.clientForm = this.formBuilder.group({
       logoBytes: [''],
       name: ['', [
-        Validators.required
+        Validators.required,
+        Validators.pattern('^\\S*')
       ]],
       email: ['', [
         Validators.required,
         CustomValidators.email
       ]],
       address: this.addressControl,
-      phone: ['', ],
-      freshBooks: ['', ],
+      phone: [''],
+      freshBooks: [''],
       socialAccounts: new FormArray([])
     });
 

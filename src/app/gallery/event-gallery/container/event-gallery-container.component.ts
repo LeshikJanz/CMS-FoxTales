@@ -6,6 +6,7 @@ import { GalleryService } from '../../gallery.service';
 import { ExperienceService } from '../../../experience/experience.service';
 import { IExperience, IEventGallery } from '../../../event/event.interface';
 import { EventService } from '../../../event/event.service';
+import { ISwitcher } from '../../../components/toggles/switcher/switcher.interface';
 
 /**
  * Gallery list component
@@ -31,14 +32,18 @@ export class EventGalleryContainerComponent implements OnInit {
    *
    * @type {string[]}
    */
-  public galleryTypes: string[] = ['Event', 'Experiences', 'All'];
+  public galleryTypes: ISwitcher[] = [
+    {id: 1, name: 'Event'},
+    {id: 2, name: 'Experiences'},
+    {id: 3, name: 'All'}];
 
   /**
    * Selected gallery type
    *
    * @type {string}
    */
-  public selectedType: string = 'Experiences';
+  public selectedType: number = this.galleryTypes[1].id;  //Experience
+
   /**
    * Gallery items
    *

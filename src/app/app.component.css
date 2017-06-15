@@ -35,6 +35,11 @@
 }
 
 @font-face {
+  font-family: WorkSans;
+  src: url(/assets/fonts/WorkSans/WorkSans-Regular.otf);
+}
+
+@font-face {
   font-family: WorkSans-Bold;
   src: url(/assets/fonts/WorkSans/WorkSans-Bold.otf);
 }
@@ -86,4 +91,16 @@ footer {
   left: 0;
   bottom: 0;
   padding: 0 10px;
+}
+
+video::-internal-media-controls-download-button {
+  display:none;
+}
+
+video::-webkit-media-controls-enclosure {
+  overflow:hidden;
+}
+
+button:focus {
+  outline: none !important;
 }

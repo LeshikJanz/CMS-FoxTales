@@ -1,0 +1,67 @@
+input {
+  font-size: 18px;
+  padding: 5px 10px 10px 20px;
+  display: inline-block;
+  width: inherit;
+  font-family: OpenSans;
+  font-size: 16px;
+  color: #3d3d3d;
+  height: 65px;
+  border-radius: 3px;
+  background-color: #ffffff;
+  border: solid 1px #3d3d3d;
+}
+
+input:focus {
+  outline: none;
+}
+
+/* LABEL ======================================= */
+label {
+  font-family: OpenSans;
+  color: #b2bac4;
+  font-size: 16px;
+  font-weight: normal;
+  position: absolute;
+  pointer-events: none;
+  left: 20px;
+  top: 20px;
+  transition: 0.2s ease all;
+  -moz-transition: 0.2s ease all;
+  -webkit-transition: 0.2s ease all;
+}
+
+/* active state */
+input:focus ~ label, input:valid ~ label {
+  top: -22px;
+  left: -2px;
+  font-family: Avenir;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1;
+  color: #4b535c;
+}
+
+/* BOTTOM BARS ================================= */
+.bar {
+  position: relative;
+  display: block;
+  width: inherit;
+}
+
+.bar:before, .bar:after {
+  content: '';
+  height: 2px;
+  width: 0;
+  bottom: 5px;
+  position: absolute;
+  background: #4b535c;
+  transition: 0.2s ease all;
+  -moz-transition: 0.2s ease all;
+  -webkit-transition: 0.2s ease all;
+}
+
+/* active state */
+input:focus ~ .bar:before, input:focus ~ .bar:after {
+  width: 100%;
+}

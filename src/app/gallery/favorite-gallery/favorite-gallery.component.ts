@@ -77,7 +77,7 @@ export class FavoriteGalleryComponent implements OnInit {
   constructor(private route: ActivatedRoute,
               private galleryService: GalleryService,
               private _routeData: RouteData) {
-    _routeData.name.next('Favorited Media');
+    // _routeData.name.next('Favorited Media');
   }
 
   /**

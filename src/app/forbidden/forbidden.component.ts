@@ -33,7 +33,6 @@ export class ForbiddenComponent {
    * @returns {void}
    */
   public logout(): void {
-    console.log('aaa');
     const context = this.auth.getContext();
     context.logout();
   }
