@@ -9,7 +9,6 @@
   }
 }
 
-
 .asc {
   display: inline-block;
   width: 0;
@@ -40,7 +39,7 @@
 }
 
 table {
-  border:none;
+  border: none;
   border-collapse: collapse;
 }
 
@@ -55,4 +54,20 @@ table td:first-child {
 
 table td:last-child {
   border-right: none;
+}
+
+/deep/ {
+  .dot {
+    margin: 0 auto;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+
+    &.error {
+      background-color: red;
+    }
+    &.success {
+      background-color: green;
+    }
+  }
 }

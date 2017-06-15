@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Response, Http } from '@angular/http';
 import { Observable } from 'rxjs';
-import { IDevice, IDeviceList } from './device.interface';
+import { IDevice, IDeviceFilter, IDeviceList } from './device.interface';
 import { Device } from './device';
 
 /**
@@ -25,11 +25,12 @@ export class DeviceService {
    *
    * See: http://dev.getfoxtales.com/swagger/#!/Devices/ApiDevicesGet
    *
+   * @param {IDeviceFilter} filter - Filter
    * @returns {Observable<IDeviceList>} - Devices
    */
-  public getDevices(): Observable<IDevice[]> {
-    return this.http.get(`${process.env.API_URL}/Devices`)
-      .map((response: Response) => <IDevice[]> response.json());
+  public getDevices(filter: IDeviceFilter): Observable<IDeviceList> {
+    return this.http.post(`${process.env.API_URL}/Devices/GetDeviceList`, filter)
+      .map((response: Response) => <IDeviceList> response.json());
   }
 
   /**

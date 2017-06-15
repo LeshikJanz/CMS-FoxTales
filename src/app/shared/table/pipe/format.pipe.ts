@@ -1,4 +1,4 @@
-import { Pipe, PipeTransform } from '@angular/core';
+import { Pipe, PipeTransform } from "@angular/core";
 
 /**
  * Format cell pipe
@@ -19,6 +19,14 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'myFormatCell'
 })
 export class FormatPipe implements PipeTransform {
+  private boolean = {
+    transform: (value: boolean) => `<div class="dot ${value ? 'success' : 'error'}"></div>`
+  };
+
+  private temperature = {
+    transform: (value) => `${value.toFixed(1)}&deg; F`
+  }
+
   /**
    * Angular invokes the `transform` method with the value of a binding
    * as the first argument, and any parameters as the second argument in list form.
@@ -34,6 +42,8 @@ export class FormatPipe implements PipeTransform {
     }
 
     if (this[format]) {
+      console.log(this.format);
+      console.log(this[format].transform(value, ...formatOptions));
       return this[format].transform(value, ...formatOptions);
     }
 
