@@ -17,9 +17,9 @@ export class TableDropDownComponent {
 
   @Input() public title: string = 'DropDown';
 
-  @Output() public typeChanged: EventEmitter<number> = new EventEmitter();
+  @Output() public typeChanged: EventEmitter<ITableAction> = new EventEmitter();
 
-  public onTypeChanged(id: number) {
-    this.typeChanged.emit(id);
+  public onTypeChanged(elem: ITableAction) {
+    this.typeChanged.emit(elem);
   }
 }
