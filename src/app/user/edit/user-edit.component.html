@@ -33,7 +33,7 @@
       <div class="form-element">
         <label>Client Access*</label>
         <fox-select
-          [active]="user.clientId"
+          [active]="client"
           (change)="user.clientId = $event.id"
           [items]="clients"
         >
