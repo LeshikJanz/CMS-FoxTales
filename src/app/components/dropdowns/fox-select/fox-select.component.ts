@@ -57,10 +57,11 @@ export class FoxSelectComponent implements OnChanges {
 
   public findActiveItems() {
     if (this.multiple) {
-      this.active.forEach((a: any) => this.activeItems.push(this.items.find((i: any) => i.id === a.id)));
+      Object.assign(this.activeItems, this.convert(this.active));
     } else {
       this.activeItems = this.items.filter((i: IClient) => i.id === this.active.id);
     }
+    this.active = null;
   }
 
 
