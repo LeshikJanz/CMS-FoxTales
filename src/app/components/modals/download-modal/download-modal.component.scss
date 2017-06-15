@@ -72,6 +72,13 @@
       text-align: center;
       overflow-wrap: break-word;
       font-family: Avenir-Bold;
+
+      > a {
+        display: block;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
     }
 
     fox-button {

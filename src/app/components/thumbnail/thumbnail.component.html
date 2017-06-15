@@ -6,9 +6,9 @@
       <img (click)="makeFavorite()" [hidden]="item.favorite" src="../../../assets/img/heart-inactive.svg" alt="">
     </div>
     <img *ngIf="item.mediaPath.indexOf('.png') > 0"
-      [src]="item ? item.mediaPath :
+         [src]="item ? item.mediaPath :
        'https://amazingcarousel.com/wp-content/uploads/amazingcarousel/3/images/lightbox/golden-wheat-field-lightbox.jpg'"
-      alt="">
+         alt="">
     <vg-player *ngIf="item.mediaPath.indexOf('.mp4') > 0" (onPlayerReady)="onPlayerReady($event)">
       <video loop="true" [vgMedia]="media" #media id="singleVideo" controls controlsList="nodownload">
         <source [src]="item.mediaPath" type="video/mp4">
@@ -40,7 +40,9 @@
   </div>
   <div class="action-menu">
     <img (click)="isInfoOpen = !isInfoOpen" src="../../../assets/img/info.svg">
-    <img (click)="downloadItem(item)" src="../../../assets/img/download-icon.svg">
+    <a [href]="item.mediaPath" [download]="item.mediaPath">
+      <img src="../../../assets/img/download-icon.svg">
+    </a>
     <img (click)="selectMediaToShare(item, 'facebook')" src="../../../assets/img/social/facebook.svg">
     <img (click)="selectMediaToShare(item, 'twitter')" src="../../../assets/img/social/twitter.svg">
     <img (click)="selectMediaToShare(item, 'tumblr')" src="../../../assets/img/social/tumblr.svg">
@@ -77,7 +79,8 @@
         <button
           type="button"
           class="btn btn-primary"
-          (click)="share(shareComment.value); shareModal.hide()">Confirm</button>
+          (click)="share(shareComment.value); shareModal.hide()">Confirm
+        </button>
       </div>
     </div>
   </div>
