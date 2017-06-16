@@ -85,9 +85,9 @@ export class ClientEditComponent implements OnInit {
   public licenses: IClientLicense[];
 
   public socialIntegrations: IClientSocial[] = [
-    { id: 1, name: 'Facebook' },
-    { id: 2, name: 'Twitter' },
-    { id: 5, name: 'Tumblr' }
+    { id: 1, name: 'Facebook', iconPath: 'assets/img/social/facebook.svg' },
+    { id: 2, name: 'Twitter', iconPath: 'assets/img/social/twitter.svg' },
+    { id: 5, name: 'Tumblr', iconPath: 'assets/img/social/tumblr.svg' }
   ];
 
   /**

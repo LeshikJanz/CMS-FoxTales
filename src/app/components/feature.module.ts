@@ -97,6 +97,7 @@ import { UserService } from '../user/user.service';
 import { FormInputComponent } from './input/form-input/form-input.component';
 import { NgxErrorsModule } from '@ultimate/ngxerrors';
 import { CustomFormsModule } from 'ng2-validation';
+import { ProfileNavigationComponent } from "./navigations/profile-navigation/profile-navigation.component";
 
 @NgModule({
   imports: [
@@ -171,7 +172,8 @@ import { CustomFormsModule } from 'ng2-validation';
     ExperienceDeleteModalComponent,
     RegularInputComponent,
     SearchBarComponent,
-    FormInputComponent
+    FormInputComponent,
+    ProfileNavigationComponent
   ],
   exports: [
     CreationButtonComponent,
@@ -215,7 +217,8 @@ import { CustomFormsModule } from 'ng2-validation';
     ExperienceDeleteModalComponent,
     RegularInputComponent,
     SearchBarComponent,
-    FormInputComponent
+    FormInputComponent,
+    ProfileNavigationComponent
   ]
 })
 

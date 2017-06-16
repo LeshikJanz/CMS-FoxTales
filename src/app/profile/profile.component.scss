@@ -1,0 +1,41 @@
+h2 {
+  font-family: Avenir-Book;
+  font-size: 26px;
+  line-height: 1.85;
+  letter-spacing: 0.5px;
+  color: #343a40;
+}
+
+.container {
+  .form-element img {
+    height: auto;
+    width: auto;
+    max-width: 200px;
+    border-radius: 10%;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5); /* Параметры тени */
+  }
+
+  label {
+    font-family: Avenir;
+    font-size: 20px;
+    font-weight: 900;
+    line-height: 2.4;
+    letter-spacing: 1px;
+    color: #343a40;
+  }
+
+  upload-button {
+    width: 400px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+
+  fox-button {
+    height: 50px;
+    width: 150px;
+  }
+
+  .profile-image {
+    display: flex;
+  }
+}

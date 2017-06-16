@@ -116,7 +116,7 @@
       <div class="form-element" formArrayName="socialAccounts">
         <label>Social Accounts</label>
 
-        <div *ngFor="let account of socialAccounts.controls; let i = index">
+        <div class="group" *ngFor="let account of socialAccounts.controls; let i = index">
           <input
             type="text"
             class="form-control input"
@@ -127,13 +127,14 @@
         </div>
 
         <div>
-          <a href="javascript:void(0)" (click)="addSocialAccount()">add</a>
+          <a class="add-button" href="javascript:void(0)" (click)="addSocialAccount()">+ add another</a>
         </div>
       </div>
 
       <div class="form-element" isAllowed="CreateEditSocialIntegrations">
         <label>Social Integrations</label>
-        <div *ngFor="let social of socialIntegrations">
+        <div class="social-integrations" *ngFor="let social of socialIntegrations">
+          <img (click)="auth(social)" [src]="social.iconPath" alt="">
           <a href="javascript:void(0)" (click)="auth(social)">{{ social.name }}</a>
           <a href="javascript:void(0)" (click)="cancelAuth(social)">x</a>
         </div>
@@ -142,8 +143,9 @@
 
     <!-- Licenses -->
     <div class="form-group">
+      <label>Licenses</label>
       <div class="license">
-      <div *ngFor="let license of licenses; let i = index">
+        <div *ngFor="let license of licenses; let i = index">
         <input
           type="checkbox"
           name="selectedLicenses[]"
