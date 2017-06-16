@@ -56,7 +56,31 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    width: 270px;
+    min-width: 150px;
+
+    ul.dropdown-menu {
+      width: inherit;
+
+      li {
+        height: 46px;
+        display: flex;
+        align-items: center;
+        padding-left: 20px;
+        cursor: pointer;
+        font-family: WorkSans;
+        font-size: 16px;
+        color: #343a40;
+        border-top: solid 1px #f5f6f7;
+      }
+
+      li:first-child {
+        border: none !important;
+      }
+
+      li:hover {
+        color: #f57f17;
+      }
+    }
 
     .user-img {
       cursor: pointer;
@@ -75,41 +99,6 @@
         cursor: pointer;
         width: 30px;
         height: 30px;
-      }
-
-      div {
-        div.user-name {
-          font-family: Avenir-Medium;
-          font-size: 16px;
-          font-weight: 500;
-          line-height: 1;
-          letter-spacing: 0.5px;
-          color: #343a40;
-          cursor: pointer;
-        }
-
-        div.user-name:after {
-          position: relative;
-          content: "";
-          display: inline-block;
-          bottom: 4px;
-          left: 11px;
-          width: 0.4em;
-          height: 0.4em;
-          border-right: 0.1em solid  #37394c;
-          border-top: 0.1em solid  #37394c;
-          transform: rotate(135deg);
-          opacity: 0.8;
-          margin-right: 0.5em;
-        }
-
-        div.user-design-name {
-          font-family: WorkSans;
-          font-size: 12px;
-          line-height: 1;
-          letter-spacing: 0.4px;
-          color: #7a8693;
-        }
       }
     }
   }
@@ -134,3 +123,52 @@
   }
 }
 
+.drop-button {
+  background-color: transparent;
+  border: none;
+  display: flex;
+  justify-content: space-between;
+  flex: 1;
+  align-items: center;
+
+  > * {
+    margin-right: 15px;
+  }
+
+  div {
+    flex: 1;
+
+    .user-name {
+      font-family: Avenir-Medium;
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 1;
+      letter-spacing: 0.5px;
+      color: #343a40;
+      cursor: pointer;
+    }
+
+    .user-name:after {
+      position: relative;
+      content: "";
+      display: inline-block;
+      bottom: 4px;
+      left: 11px;
+      width: 0.4em;
+      height: 0.4em;
+      border-right: 0.1em solid #37394c;
+      border-top: 0.1em solid #37394c;
+      transform: rotate(135deg);
+      opacity: 0.8;
+      margin-right: 0.5em;
+    }
+
+    .user-design-name {
+      font-family: WorkSans;
+      font-size: 12px;
+      line-height: 1;
+      letter-spacing: 0.4px;
+      color: #7a8693;
+    }
+  }
+}

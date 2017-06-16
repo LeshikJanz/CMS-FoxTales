@@ -14,19 +14,21 @@
 
   <div>
     <search-bar (Change)="onSearch($event)"></search-bar>
-    <div class="profile">
-      <div class="user-profile">
+    <div class="profile btn-group" dropdown placement="bottom">
+      <div dropdownToggle type="button" class="btn btn-primary drop-button">
         <img class="user-img" [src]="user && user.profileImagePath">
         <div>
-          <dropdown
-            title="{{user && user.firstName}} {{user && user.lastName}}"
-            [options]="options"
-            [size]="'slim'"
-            (typeChanged)="onTypeChanged($event)"></dropdown>
-          <div class="user-design-name">Aaron Dodson design</div>
+          <div class="user-name">{{user && user.firstName}} {{user && user.lastName}}</div>
         </div>
       </div>
-      <img class="user-img" src="assets/img/help.png">
+      <div>
+        <img class="user-img" src="assets/img/help.png">
+      </div>
+      <ul *dropdownMenu class="dropdown-menu" role="menu">
+        <li *ngFor="let option of options" role="menuitem" (click)="onTypeChanged(option)">
+          {{option.action}}
+        </li>
+      </ul>
     </div>
   </div>
 </div>

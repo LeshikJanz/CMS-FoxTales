@@ -47,6 +47,8 @@ export class MainNavigationComponent implements OnInit {
   }
 
   public onTypeChanged(action: IActionState) {
+    console.log('action');
+    console.log(action);
     if (this[action.callback]) {
       this[action.callback]();
     }
