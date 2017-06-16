@@ -72,15 +72,35 @@ export class EventEditComponent implements OnInit {
       } else {
         this.defaultNotification = this.notificationOptions[1].id;
       }
-    let map = this.mapAddress = new Microsoft.Maps.Map(this.myMap.nativeElement, {
+    let map = new Microsoft.Maps.Map(this.myMap.nativeElement, {
         credentials: process.env.BING_KEY
     });
-    
+
+    let searchRequest = {
+      where: this.eventAddress,
+      callback: (results) => {
+        if (results && results.results && results.results.length > 0) {
+          let pin = new Microsoft.Maps.Pushpin(results.results[0].location);
+            map.entities.push(pin);
+            map.setView({ bounds: results.results[0].bestView });
+            }
+          }
+        };
+
+    Microsoft.Maps.loadModule('Microsoft.Maps.Search', () => {
+      map.entities.clear();
+      let searchManager = new Microsoft.Maps.Search.SearchManager(map);
+      searchManager.geocode(searchRequest);
+    });
+   
+
+
     Microsoft.Maps.loadModule('Microsoft.Maps.AutoSuggest', () => {
       let manager = new Microsoft.Maps.AutosuggestManager({ map: map });
         manager.attachAutosuggest('#searchBox', '#searchBoxContainer', (result) => {
 
-        map['address'] = this.mapAddress = result.formattedSuggestion;
+        map['address'] = result.formattedSuggestion;
+        this.mapAddress = result.formattedSuggestion;
         // map['latitude'] = result.location.latitude;
         // map['longitude'] = result.location.longitude;
 
@@ -130,8 +150,6 @@ export class EventEditComponent implements OnInit {
       startTime: this.startMomentDate,
       endTime: this.endMomentDate,
       tags: this.defaultTags,
-      // latitude: this.mapAddress.latitude,
-      // longitude: this.mapAddress.longitude,
       sendNotifications: this.defaultNotification
 
     }).subscribe((event) => {
