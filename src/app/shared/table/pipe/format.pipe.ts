@@ -1,4 +1,4 @@
-import { Pipe, PipeTransform } from "@angular/core";
+import { Pipe, PipeTransform } from '@angular/core';
 
 /**
  * Format cell pipe
@@ -42,8 +42,6 @@ export class FormatPipe implements PipeTransform {
     }
 
     if (this[format]) {
-      console.log(this.format);
-      console.log(this[format].transform(value, ...formatOptions));
       return this[format].transform(value, ...formatOptions);
     }
 
