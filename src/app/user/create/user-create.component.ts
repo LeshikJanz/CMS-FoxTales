@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { CustomValidators } from 'ng2-validation';
+import { ToastrService } from 'ngx-toastr';
 import { IUser } from '../user.interface';
 import { IUserRole } from '../user-role.interface';
 import { IUserClient } from '../user-client.interface';
@@ -49,13 +50,16 @@ export class UserCreateComponent implements OnInit {
    * Constructor
    *
    * @param {Router} router - Router
+   * @param {ToastrService} toastrService - Toastr service
    * @param {FormBuilder} formBuilder
    * @param {UserService} userService - User service
    * @returns {void}
    */
-  constructor(private router: Router,
-              private formBuilder: FormBuilder,
-              private userService: UserService) {
+  constructor(
+    private router: Router,
+    private toastrService: ToastrService,
+    private formBuilder: FormBuilder,
+    private userService: UserService) {
   }
 
   /**
@@ -120,7 +124,14 @@ export class UserCreateComponent implements OnInit {
   public addUser(user: IUser): void {
     this.userService
       .addUser({ ...user, ...this.userDetails })
-      .subscribe(() => this.router.navigate(['/admin/users']));
+      .subscribe((response: any) => {
+        if (response.success) {
+          this.toastrService.success('User has been created successfully.');
+          this.router.navigate(['/admin/users'])
+        } else {
+          this.toastrService.error(response.message);
+        }
+      });
   }
 
   /**
