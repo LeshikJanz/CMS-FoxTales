@@ -10,28 +10,90 @@ i > * {
   display: none !important;
 }
 
+:host /deep/ .ui-select-match-item {
+  display: flex;
+  height: 44px;
+  width: 115px;
+  align-items: center;
+  border-radius: 3px;
+  background-color: #d8dce1;
+}
+
+ng-select {
+  width: inherit;
+  height: inherit;
+}
+
+:host /deep/ .ui-select-container {
+  border-radius: 3px;
+  background-color: #ffffff;
+  border: solid 1px #3d3d3d !important;
+  font-family: OpenSans;
+  font-size: 16px;
+  color: #3d3d3d;
+  height: inherit;
+  width: inherit;
+}
+
+:host /deep/ .ui-select-match-text {
+  font-family: OpenSans;
+  font-size: 16px;
+}
+
+:host /deep/ .ui-select-multiple .ui-select-match-item {
+  font-family: WorkSans;
+  font-size: 14px;
+  font-weight: 500;
+  color: #4b535c;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-around;
+}
+
+:host /deep/ .ui-select-match {
+  width: inherit;
+  height: inherit;
+
+  > .btn {
+    width: inherit;
+    height: inherit;
+  }
+}
+
+:host /deep/ .ui-select-search {
+  width: inherit !important;
+  height: inherit;
+}
+
+:host /deep/ .dropdown-menu {
+  width: inherit !important;
+}
+
 :host /deep/ .caret {
   display: none;
 }
 
 :host /deep/ .ui-select-toggle {
-  font-family: OpenSans;
+  height: inherit;
+  width: inherit;
   font-size: 18px;
-  width: 320px;
   border-radius: 5px;
   border-style: double;
   border-color: #b4b4b4;
-  height: 40px;
 }
 
 :host /deep/ .ui-select-search {
   font-family: OpenSans;
   font-size: 18px;
-  width: 320px;
   border-radius: 5px;
   border-style: double;
   border-color: #b4b4b4;
   height: 40px;
+  width: inherit;
+}
+
+:host /deep/ .ui-select-search::-webkit-input-placeholder {
+  color: transparent;
 }
 
 :host /deep/ .dropdown-toggle {
@@ -43,7 +105,7 @@ i > * {
 }
 
 :host /deep/ .ui-select-choices-row > a {
-  font-family: WorkSans-Regular;
+  font-family: OpenSans;
   font-size: 16px;
   display: flex !important;
   align-items: center !important;
