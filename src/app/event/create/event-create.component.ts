@@ -78,28 +78,31 @@ export class EventCreateComponent implements OnInit {
     this.buildEventForm();
 
     let map = this.mapAddress = new Microsoft.Maps.Map(this.myMap.nativeElement, {
-        credentials: 'place key here'
+        credentials: process.env.BING_KEY
     });
     
-    Microsoft.Maps.loadModule('Microsoft.Maps.AutoSuggest', function () {
+    Microsoft.Maps.loadModule('Microsoft.Maps.AutoSuggest', () => {
       let manager = new Microsoft.Maps.AutosuggestManager({ map: map });
-        manager.attachAutosuggest('#searchBox', '#searchBoxContainer', selectedSuggestion);
-      });
-      let pushpin = new Microsoft.Maps.Pushpin(map.getCenter(), null);
-      let layer = new Microsoft.Maps.Layer();
-      layer.add(pushpin);
-      map.layers.insert(layer);
-      
-      function selectedSuggestion(result) {
+        manager.attachAutosuggest('#searchBox', '#searchBoxContainer', (result) => {
+
         map['address'] = result.formattedSuggestion;
+
         //Remove previously selected suggestions from the map.
         map.entities.clear();
+
         //Show the suggestion as a pushpin and center map over it.
-        var pin = new Microsoft.Maps.Pushpin(result.location);
+        const pin = new Microsoft.Maps.Pushpin(result.location);
+
         map.entities.push(pin);
         map.setView({ bounds: result.bestView });
-      }
-        
+      });
+    });
+
+    let pushpin = new Microsoft.Maps.Pushpin(map.getCenter(), null);
+    let layer = new Microsoft.Maps.Layer();
+
+    layer.add(pushpin);
+    map.layers.insert(layer);
   }
 
   /**
