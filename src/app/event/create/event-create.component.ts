@@ -172,8 +172,7 @@ export class EventCreateComponent implements OnInit {
   public buildEventForm(): EventCreateComponent {
     this.eventForm = this.formBuilder.group({
       name: ['', [
-        Validators.required,
-        Validators.pattern('^\\S*')
+        Validators.required
       ]],
       address: ['', [
         Validators.required
