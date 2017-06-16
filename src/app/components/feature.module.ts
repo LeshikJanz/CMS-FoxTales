@@ -93,10 +93,14 @@ import {
   from './modals/experience-delete-modal/experience-delete-modal.component';
 import { RegularInputComponent } from './input/regular-input/regular-input.component';
 import { SearchBarComponent } from './search/search-bar/search-bar.component';
+import { ConnectContentOptionComponent } from './experience/connect-content-option/connect-content-option.component';
 import { UserService } from '../user/user.service';
 import { FormInputComponent } from './input/form-input/form-input.component';
 import { NgxErrorsModule } from '@ultimate/ngxerrors';
 import { CustomFormsModule } from 'ng2-validation';
+import { SemiCircleDonutComponent } from './high-charts/semi-circle-donut/semi-circle-donut.component';
+import { BasicLineComponent } from './high-charts/basic-line/basic-line.component';
+import { BasicColumnComponent } from './high-charts/basic-column/basic-column.component';
 
 @NgModule({
   imports: [
@@ -171,7 +175,11 @@ import { CustomFormsModule } from 'ng2-validation';
     ExperienceDeleteModalComponent,
     RegularInputComponent,
     SearchBarComponent,
-    FormInputComponent
+    ConnectContentOptionComponent,
+    FormInputComponent,
+    SemiCircleDonutComponent,
+    BasicLineComponent,
+    BasicColumnComponent
   ],
   exports: [
     CreationButtonComponent,
@@ -215,7 +223,11 @@ import { CustomFormsModule } from 'ng2-validation';
     ExperienceDeleteModalComponent,
     RegularInputComponent,
     SearchBarComponent,
-    FormInputComponent
+    ConnectContentOptionComponent,
+    FormInputComponent,
+    SemiCircleDonutComponent,
+    BasicLineComponent,
+    BasicColumnComponent
   ]
 })
 

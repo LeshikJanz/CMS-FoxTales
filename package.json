@@ -78,6 +78,7 @@
     "adal-ts": "^0.5.9-alpha1",
     "angular-font-awesome": "^2.0.2",
     "angular2-highcharts": "^0.5.5",
+    "bingmaps": "^1.0.13",
     "core-js": "^2.4.1",
     "font-awesome": "^4.7.0",
     "hellojs": "^1.14.1",

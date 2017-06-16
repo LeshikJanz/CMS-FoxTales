@@ -117,4 +117,12 @@ export class ExperienceBuilderService {
           return response.json();
         });
     }
+
+    public getContentOptions(id) {
+      return this.http.get(`${process.env.API_URL}/Experiences/`+ id +
+      `/contentoptions`)
+        .map((response: Response) => {
+          return response.json();
+        });
+    }
 }

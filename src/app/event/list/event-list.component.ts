@@ -252,7 +252,7 @@ export class EventListComponent implements OnInit {
       .cloneEvent(
         this.eventToClone.id,
         this.cloneName,
-        moment(this.cloneStartDate).add(1, 'day').toISOString()
+        this.getStartDate()
       )
       .subscribe((clonedEvent: IEvent) => {
         this.isCloned = true;
@@ -272,7 +272,7 @@ export class EventListComponent implements OnInit {
     let requestData = {
       id: this.clonedEvent.id,
       name: this.cloneName,
-      startTime: moment(this.cloneStartDate).add(1, 'day').toISOString()
+      startTime: this.getStartDate()
     };
 
     this.eventService
@@ -280,5 +280,9 @@ export class EventListComponent implements OnInit {
       .subscribe(() => {
         this.cloneModal.hide();
       });
+  }
+
+  public getStartDate(): string {
+    return moment(this.cloneStartDate).format();
   }
 }

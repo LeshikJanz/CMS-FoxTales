@@ -17,7 +17,6 @@ import { CustomValidators } from 'ng2-validation';
 import { MapsAPILoader } from '@agm/core';
 import { ToastrService } from 'ngx-toastr';
 import {  } from '@types/googlemaps';
-import * as moment from 'moment';
 import { IClient } from '../client.interface';
 import { IClientLicense } from '../client-license.interface';
 import { ClientService } from '../client.service';

@@ -18,6 +18,7 @@
               <input [(ngModel)]="galleryName">
               <hr>
               <h3>Connect A Content Option</h3>
+              <connect-content-option [experience]="experience" (contentOptionChecked)="checkedContentOption($event)"></connect-content-option>
               <br>
               <button [type]="'tertiary'" [value]="'Next'" (click)="Next()" >Next</button>
             </div>

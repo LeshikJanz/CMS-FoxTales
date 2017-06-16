@@ -8,7 +8,7 @@
       <!-- Event Name -->
       <!-- Name -->
       <div class="form-element">
-        <label for="name">Client Name*</label>
+        <label for="name">Event Name*</label>
         <input
           id="name"
           class="form-control input"
@@ -21,10 +21,10 @@
         <div>
           <label>Start Date</label>
           <div class="wrap">
-            <input class="picker-input" [ngModel]="startMomentDate" [ngModelOptions]="{standalone: true}"
+            <input class="picker-input" [ngModel]="startMomentDate"
                    [returnObject]=" 'string' "
                    [(dateTimePicker)]="startMomentDate" [mode]="'dropdown'" [pickerType]="'date'"
-                   placeholder="Start Date"
+                   placeholder="Start Date" [formControlName]="'startDate'"
                    readonly>
           </div>
         </div>
@@ -32,22 +32,23 @@
           <label>End Date</label>
           <div>
             <div class="wrap">
-            <input class="picker-input" [ngModel]="endMomentDate" [ngModelOptions]="{standalone: true}"
+            <input class="picker-input" [ngModel]="endMomentDate" 
                    [returnObject]=" 'string' " [(dateTimePicker)]="endMomentDate"
-                   [mode]="'dropdown'" [pickerType]="'date'" placeholder="End Date" readonly>
+                   [mode]="'dropdown'" [pickerType]="'date'" placeholder="End Date"
+                   [formControlName]="'endDate'" readonly>
             </div>
           </div>
         </div>
       </div>
 
       <!-- Location -->
-      <div class="form-element location">
+      <div class="form-element location" id='searchBoxContainer' >
         <label for="address">Location</label>
-        <input id="address" formControlName="address" type="text" placeholder="Address">
+        <input id='searchBox'  formControlName="address" type="text" placeholder="Address" autocomplete="off">
       </div>
 
       <!-- Tags -->
-      <div class="form-element">
+      <div class="form-element tags">
       <label>Tags</label>
       <tag-input
         [transform]="tagTransformer"
@@ -82,6 +83,6 @@
     </div>
   </form>
   <div class="map">
-    <img src="http://staticmapmaker.com/img/bing.png" alt="Bing map">
+    <div #myMap style='width: 100%; height: 500px;'></div> 
   </div>
 </div>
