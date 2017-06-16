@@ -22,3 +22,18 @@ export interface IDeviceList {
   suscess: boolean;
   message: string;
 }
+
+/**
+ * Device filter interface
+ */
+export interface IDeviceFilter {
+  pageingInfo: {
+    currentPage: number;
+    pageRowCount: number;
+  };
+  currentSortType: number;
+  isAscendantSort: boolean;
+  searchFields?: {
+    [index: string]: string;
+  };
+}
