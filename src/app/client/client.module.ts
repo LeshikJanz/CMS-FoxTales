@@ -30,7 +30,7 @@ import { FeatureModule } from '../components/feature.module';
     ToastContainerModule.forRoot(),
     SharedModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyAW7s_PMAH6CJRMMXRVWnQPevWqipMkCyA',
+      apiKey: process.env.GOOGLE_KEY,
       libraries: [ 'places' ]
     }),
     CLIENT_ROUTING,
