@@ -84,8 +84,10 @@ export class EventCreateComponent implements OnInit {
     Microsoft.Maps.loadModule('Microsoft.Maps.AutoSuggest', () => {
       let manager = new Microsoft.Maps.AutosuggestManager({ map: map });
         manager.attachAutosuggest('#searchBox', '#searchBoxContainer', (result) => {
-
+          console.log(result)
         map['address'] = result.formattedSuggestion;
+        map['latitude'] = result.location.latitude;
+        map['longitude'] = result.location.longitude;
 
         //Remove previously selected suggestions from the map.
         map.entities.clear();
@@ -150,6 +152,8 @@ export class EventCreateComponent implements OnInit {
         break;
     }
     event.address = this.mapAddress.address;
+    event.latitude = this.mapAddress.latitude;
+    event.longitude = this.mapAddress.longitude;
     event['startTime'] = moment(this.startMomentDate, 'MMM DD').format();
     event['endTime'] = moment(this.endMomentDate, 'MMM DD').format();
  
