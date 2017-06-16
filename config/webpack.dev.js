@@ -24,6 +24,8 @@ const FACEBOOK_ID = process.env.FACEBOOK_ID = '138371986719204';
 const TWITTER_ID = process.env.TWITTER_ID = 'dYwfwIRNmhhcleI0lWYJyby8v';
 const TUMBLR_ID = process.env.TUMBLR_ID = 'USVEg5yTqC536m3d32J60rpR1XovZ3cBE2Vl1EGa3Uwwk1F1WY';
 const AUTH_PROXY = process.env.AUTH_PROXY = 'https://auth-server.herokuapp.com/proxy';
+const GOOGLE_KEY = process.env.GOOGLE_KEY = 'AIzaSyAW7s_PMAH6CJRMMXRVWnQPevWqipMkCyA';
+const BING_KEY = process.env.BING_KEY = 'AgPn8P9gDiOFuiw33ebWeLKdx29J1Z-dNh3PqN03rsgLvu4bTQZwiDvQuwxFhqcZ';
 const HMR = helpers.hasProcessFlag('hot');
 const METADATA = webpackMerge(commonConfig({env: ENV}).metadata, {
   host: HOST,
@@ -35,6 +37,8 @@ const METADATA = webpackMerge(commonConfig({env: ENV}).metadata, {
   TWITTER_ID: TWITTER_ID,
   TUMBLR_ID: TUMBLR_ID,
   AUTH_PROXY: AUTH_PROXY,
+  GOOGLE_KEY: GOOGLE_KEY,
+  BING_KEY: BING_KEY,
   ENV: ENV,
   HMR: HMR
 });
@@ -166,6 +170,8 @@ module.exports = function (options) {
         'TWITTER_ID': JSON.stringify(METADATA.TWITTER_ID),
         'TUMBLR_ID': JSON.stringify(METADATA.TUMBLR_ID),
         'AUTH_PROXY': JSON.stringify(METADATA.AUTH_PROXY),
+        'GOOGLE_KEY': JSON.stringify(METADATA.GOOGLE_KEY),
+        'BING_KEY': JSON.stringify(METADATA.BING_KEY),
         'HMR': METADATA.HMR,
         'process.env': {
           'ENV': JSON.stringify(METADATA.ENV),
@@ -176,6 +182,8 @@ module.exports = function (options) {
           'TWITTER_ID': JSON.stringify(METADATA.TWITTER_ID),
           'TUMBLR_ID': JSON.stringify(METADATA.TUMBLR_ID),
           'AUTH_PROXY': JSON.stringify(METADATA.AUTH_PROXY),
+          'GOOGLE_KEY': JSON.stringify(METADATA.GOOGLE_KEY),
+          'BING_KEY': JSON.stringify(METADATA.BING_KEY),
           'NODE_ENV': JSON.stringify(METADATA.ENV),
           'HMR': METADATA.HMR,
         }

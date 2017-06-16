@@ -50,6 +50,7 @@ export class UIBuilderComponent {
     })})
     .subscribe((configs) => {
       console.log(configs);
+      this.router.navigate(['/experience-builder/container/content-gallery']);
     });
   };
 

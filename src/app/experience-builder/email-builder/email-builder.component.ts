@@ -19,9 +19,12 @@ export class EmailBuilderComponent {
    public emailPreviewText: string;
    public emailBodyText: string;
    public ctaText: string;
+   public experience: any;
 
   constructor(private router: Router,
-              private experienceBuilderService: ExperienceBuilderService) {}
+              private experienceBuilderService: ExperienceBuilderService) {
+                this.experience = this.experienceBuilderService.experience;
+              }
 
  public Next() {
   this.experienceBuilderService.experience.emailBuilderName = this.emailBuilderName;
@@ -38,4 +41,8 @@ export class EmailBuilderComponent {
     console.log(response);
   });
  };
+
+public checkedContentOption(event) {
+  console.log(event);
+};
 }

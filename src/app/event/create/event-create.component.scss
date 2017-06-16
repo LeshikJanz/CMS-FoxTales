@@ -15,7 +15,8 @@
   }
 
   .map {
-
+    width: 100%;
+    max-width: 500px;
   }
 }
 
@@ -79,6 +80,14 @@
   &.location {
     width: 100%;
     max-width: 400px;
+
+    input {
+      width: 90%;
+    }
+  }
+    &.tags {
+    width: 100%;
+    max-width: 500px;
 
     input {
       width: 90%;
