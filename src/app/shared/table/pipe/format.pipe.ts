@@ -24,6 +24,14 @@ import { FirstNamePipe } from './firstName.pipe';
   name: 'myFormatCell'
 })
 export class FormatPipe implements PipeTransform {
+  private boolean = {
+    transform: (value: boolean) => `<div class="dot ${value ? 'success' : 'error'}"></div>`
+  };
+
+  private temperature = {
+    transform: (value) => `${value.toFixed(1)}&deg; F`
+  }
+
   /**
    * Constructor
    *
