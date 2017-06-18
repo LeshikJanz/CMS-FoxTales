@@ -5,7 +5,13 @@ import {
   IClientList, IClientFilter, IClientSocialIntegration, IClientSocial
 } from './client.interface';
 import { Client } from './client';
-import { ClientLicense } from './client-license';
+import {
+  IClientLicense,
+  IClientLicenseType,
+  IClientLicenseTier,
+  IClientLicenseBilling,
+  IClientLicenseHardware
+} from './client-license.interface';
 
 /**
  * Client service
@@ -104,18 +110,6 @@ export class ClientService {
   }
 
   /**
-   * Get client licenses
-   *
-   * See: http://client2.dev.getfoxtales.com/swagger/#!/License/ApiLicenseGetGet
-   *
-   * @returns {Observable<ClientLicense[]>}
-   */
-  public getClientLicenses(): Observable<ClientLicense[]> {
-    return this.http.get(`${process.env.API_URL}/License/Get`)
-      .map((response: Response) => response.json() as ClientLicense[]);
-  }
-
-  /**
    * Social integration
    *
    * @param {number} id - Platform id
@@ -169,6 +163,82 @@ export class ClientService {
   public clientsLookup(): Observable<IClientSocial[]> {
     return this.http.get(
       `${process.env.API_URL}/Clients/Lookup`
+    ).map((response: Response) =>
+      response.json()
+    );
+  }
+
+  /**
+   * Client license
+   *
+   * @param {string} clientId - Client id
+   * @returns {IClientLicense} - License
+   */
+  public getClientLicense(clientId: string): Observable<IClientLicense> {
+    return this.http.get(
+      `${process.env.API_URL}/License/Get?clientId=${clientId}`
+    ).map((response: Response) =>
+      <IClientLicense> response.json()
+    );
+  }
+
+  /**
+   * Save client license
+   *
+   * @param {IClientLicense} license - License
+   * @returns {Observable<Response>} - Response
+   */
+  public updateClientLicense(license: IClientLicense): Observable<Response> {
+    return this.http.post(`${process.env.API_URL}/License/SaveClientLicense`, license);
+  }
+
+  /**
+   * Client license types
+   *
+   * @returns {IClientLicenseType[]} - License types
+   */
+  public getClientLicenseTypes(): Observable<IClientLicenseType[]> {
+    return this.http.get(
+      `${process.env.API_URL}/License/GetLicenseTypes`
+    ).map((response: Response) =>
+      response.json()
+    );
+  }
+
+  /**
+   * Client license tiers
+   *
+   * @returns {IClientLicenseTier[]} - License tiers
+   */
+  public getClientLicenseTiers(): Observable<IClientLicenseTier[]> {
+    return this.http.get(
+      `${process.env.API_URL}/License/GetLicenseTiers`
+    ).map((response: Response) =>
+      response.json()
+    );
+  }
+
+  /**
+   * Client license billing types
+   *
+   * @returns {IClientLicenseBilling[]} - License billing
+   */
+  public getClientLicenseBilling(): Observable<IClientLicenseBilling[]> {
+    return this.http.get(
+      `${process.env.API_URL}/License/GetLicenseBillingTypes`
+    ).map((response: Response) =>
+      response.json()
+    );
+  }
+
+  /**
+   * Client license hardware types
+   *
+   * @returns {IClientLicenseHardware[]} - License hardware
+   */
+  public getClientLicenseHardware(): Observable<IClientLicenseHardware[]> {
+    return this.http.get(
+      `${process.env.API_URL}/License/GetHardwareLicenseTypes`
     ).map((response: Response) =>
       response.json()
     );

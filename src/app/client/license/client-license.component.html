@@ -1,0 +1,61 @@
+<div class="license-container">
+
+  <form
+    (ngSubmit)="updateLicense(licenseForm.value)"
+    class="form"
+    novalidate>
+
+    <div class="form-group" [formGroup]="licenseForm">
+      <!-- Software License -->
+      <div class="form-element">
+        <label>Software License*</label>
+        <fox-select
+          (change)="license.softwareLicenseTypeId = $event.id"
+          [items]="licenseTypes">
+        </fox-select>
+      </div>
+
+      <!-- License Tier -->
+      <div class="form-element">
+        <label>License Tier*</label>
+        <fox-select
+          (change)="license.tierId = $event.id"
+          [items]="licenseTiers">
+        </fox-select>
+      </div>
+
+      <!-- License id -->
+      <div class="form-element">
+        <label for="name">License ID*</label>
+        <input
+          id="name"
+          type="text"
+          class="form-control input"
+          [(ngModel)]="license.licenseIdNumber"
+          formControlName="licenseIdNumber"
+          placeholder="ID number">
+
+        <div ngxErrors="licenseIdNumber">
+          <div class="field-error"  ngxError="required" when="touched">
+            Field is required
+          </div>
+        </div>
+      </div>
+
+      <!-- Billing -->
+      <div class="form-element">
+        <label>Billing Type*</label>
+        <fox-select
+          (change)="license.billingTypeId = $event.id"
+          [items]="licenseBilling">
+        </fox-select>
+      </div>
+    </div>
+
+
+    <fox-button
+      [value]="'Done'"
+      [design]="'special'">
+    </fox-button>
+  </form>
+</div>

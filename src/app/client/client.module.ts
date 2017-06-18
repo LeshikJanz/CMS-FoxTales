@@ -16,6 +16,7 @@ import { ClientService } from './client.service';
 import { ClientListComponent } from './list';
 import { ClientCreateComponent } from './create';
 import { ClientEditComponent } from './edit';
+import { ClientLicenseComponent } from './license';
 import { FeatureModule } from '../components/feature.module';
 
 @NgModule({
@@ -52,7 +53,8 @@ import { FeatureModule } from '../components/feature.module';
   declarations: [
     ClientListComponent,
     ClientCreateComponent,
-    ClientEditComponent
+    ClientEditComponent,
+    ClientLicenseComponent
   ]
 })
 export class ClientModule {

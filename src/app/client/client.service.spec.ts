@@ -2,7 +2,6 @@ import { TestBed, inject } from '@angular/core/testing';
 import { ResponseOptions, Response, BaseRequestOptions, Http } from '@angular/http';
 import { MockBackend, MockConnection } from '@angular/http/testing';
 import { IClient, IClientList } from './client.interface';
-import { IClientLicense } from './client-license.interface';
 import { ClientService } from './client.service';
 import { MOCK_CLIENTS, MOCK_CLIENT, MOCK_CLIENTS_FILTER } from './client.mock';
 import { MOCK_CLIENT_LICENSE } from './client-license.mock';
@@ -125,22 +124,6 @@ describe('ClientService', () => {
       clientService.unarchiveClient('2eb5c2ff-44f8-4664-8a67-458a39ff4e9d')
         .subscribe((response: Response) => {
           expect(response.status).toBe(204);
-        });
-    }));
-
-  it('should return all client licenses', inject([MockBackend, ClientService],
-    (mockBackend: MockBackend, clientService: ClientService) => {
-      mockBackend.connections.subscribe((connection: MockConnection) => {
-        const options = new ResponseOptions({
-          body: MOCK_CLIENT_LICENSE
-        });
-
-        connection.mockRespond(new Response(options));
-      });
-
-      clientService.getClientLicenses()
-        .subscribe((licenses: IClientLicense[]) => {
-          expect(licenses).toBe(MOCK_CLIENT_LICENSE);
         });
     }));
 });
