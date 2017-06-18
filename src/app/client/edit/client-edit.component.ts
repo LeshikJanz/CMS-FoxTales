@@ -19,7 +19,6 @@ import {  } from '@types/googlemaps';
 import hello from 'hellojs';
 import { CustomValidators } from 'ng2-validation';
 import { IClient, IClientSocial } from '../client.interface';
-import { IClientLicense } from '../client-license.interface';
 import { ClientService } from '../client.service';
 
 /**
@@ -76,13 +75,6 @@ export class ClientEditComponent implements OnInit {
    * @type {string}
    */
   public logoBytes: string;
-
-  /**
-   * Client licenses
-   *
-   * @type {IClientLicense[]}
-   */
-  public licenses: IClientLicense[];
 
   public socialIntegrations: IClientSocial[] = [
     { id: 1, name: 'Facebook' },
@@ -209,27 +201,6 @@ export class ClientEditComponent implements OnInit {
         this.client = client;
 
         this.addSocialAccounts(client);
-        this.getLicenses();
-      });
-  }
-
-  /**
-   * Update licenses
-   *
-   * @returns {void}
-   */
-  public getLicenses(): void {
-    this.clientService
-      .getClientLicenses()
-      .subscribe((licenses: IClientLicense[]) => {
-        // Check selected licenses
-        if (this.client.selectedLicenses) {
-          licenses.forEach((license: IClientLicense) => {
-            license.checked = -1 !== this.client.selectedLicenses.indexOf(license.id);
-          });
-        }
-
-        this.licenses = licenses;
       });
   }
 
@@ -239,36 +210,12 @@ export class ClientEditComponent implements OnInit {
    * @returns {void}
    */
   public updateClient(): void {
-    this.extractLicenses();
-
     this.clientService
       .updateClient(this.client)
       .subscribe(() => {
         this.toastrService.success('Client has been updated successfully.');
         this.router.navigate(['/admin/clients']);
       });
-  }
-
-  /**
-   * Extract selected licenses
-   *
-   * @returns {void}
-   */
-  public extractLicenses(): void {
-    this.client.selectedLicenses =  this.licenses
-      .filter((license: IClientLicense) => license.checked)
-      .map((license: IClientLicense) => license.id);
-  }
-
-  /**
-   * Select license
-   *
-   * @param {number} index - Index
-   * @param {boolean} state - Is checked?
-   * @returns {void}
-   */
-  public selectLicense(index: number, state: boolean): void {
-    this.licenses[index].checked = state;
   }
 
   /**

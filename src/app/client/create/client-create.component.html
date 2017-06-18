@@ -117,23 +117,6 @@
       </div>
     </div>
 
-    <!-- Licenses -->
-    <div class="form-group">
-      <label>Licenses</label>
-      <div class="license">
-        <div *ngFor="let license of licenses">
-          <input
-            type="checkbox"
-            name="selectedLicenses[]"
-            class="regular-checkbox"
-            [(ngModel)]="license.checked">
-          <label>
-            {{ license.name }}
-          </label>
-        </div>
-      </div>
-    </div>
-
     <div>
       <button
         type="submit"
