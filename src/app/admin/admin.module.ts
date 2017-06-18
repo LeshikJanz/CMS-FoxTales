@@ -4,6 +4,7 @@ import { HttpService } from '../shared/core';
 import { ADMIN_ROUTING } from './admin.routes';
 import { AdminComponent } from './admin.component';
 import { FeatureModule } from '../components/feature.module';
+import { UsersHeaderComponent } from './headers/users-header/users-header.component';
 
 @NgModule({
   imports: [
@@ -11,7 +12,7 @@ import { FeatureModule } from '../components/feature.module';
     FeatureModule
   ],
   providers: [],
-  declarations: [AdminComponent]
+  declarations: [AdminComponent, UsersHeaderComponent]
 })
 export class AdminModule {
 }
