@@ -2,18 +2,6 @@
 
 <div class="list-container">
   <div class="list-menu">
-    <div>
-      <h2 class="main-label">Client List</h2>
-    </div>
-    <div>
-      <add-button
-        isAllowed="ClientCreate"
-        [routerLink]="['/admin/client']"
-        class="creation-button"
-        [value]="'Create New Client'"
-      ></add-button>
-    </div>
-  </div>
   <data-table
     [rows]="clients"
     [cols]="cols"

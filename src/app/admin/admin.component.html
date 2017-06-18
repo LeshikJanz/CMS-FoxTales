@@ -1,4 +1,5 @@
 <div [ngSwitch]="curLocation">
   <users-header *ngSwitchCase="'/admin/users'"></users-header>
+  <clients-header *ngSwitchCase="'/admin/clients'"></clients-header>
 </div>
 <admin-navigation></admin-navigation>

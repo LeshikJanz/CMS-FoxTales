@@ -62,9 +62,6 @@ import {
   import { AngularFontAwesomeModule } from 'angular-font-awesome/angular-font-awesome';
 
 import { ThumbnailComponent } from './thumbnail/thumbnail.component';
-import {
-  EventNavigationComponent
-} from './navigations/event-navigation/event-navigation.component';
 import { FavoriteGalleryComponent } from '../gallery/favorite-gallery/favorite-gallery.component';
 import { GalleryItemListComponent } from '../gallery-items/list/gallery-item-list.component';
 import { GalleryService } from '../gallery/gallery.service';
@@ -140,7 +137,6 @@ import { ProfileNavigationComponent } from "./navigations/profile-navigation/pro
     ExperienceBuilderNavigationComponent,
     AdminNavigationComponent,
     MainNavigationComponent,
-    EventNavigationComponent,
     EventsNavigationComponent,
     EventComponent,
     CheckboxComponent,
@@ -184,7 +180,6 @@ import { ProfileNavigationComponent } from "./navigations/profile-navigation/pro
     ExperienceNavigationComponent,
     ExperienceBuilderNavigationComponent,
     MainNavigationComponent,
-    EventNavigationComponent,
     EventsNavigationComponent,
     EventComponent,
     AdminNavigationComponent,
