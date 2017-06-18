@@ -24,8 +24,7 @@ import { ClientService } from '../client.service';
 @Component({
   selector: 'client-create',
   templateUrl: './client-create.component.html',
-  styleUrls: [ './client-create.component.scss',
-    '../../shared/styles/form-element.scss']
+  styleUrls: ['../../shared/styles/form-element.scss']
 })
 export class ClientCreateComponent implements OnInit {
   /**
@@ -187,19 +186,23 @@ export class ClientCreateComponent implements OnInit {
    * @param {IClient} client - Client
    * @returns {void}
    */
-  public addClient(client: IClient): void {
-    this.extractLicenses();
+  public addClient(client: IClient, event): void {
+    console.log('client');
+    console.log(client);
+    event.preventDefault();
 
-    this.clientService
-      .addClient({ ...client, ...this.clientDetails })
-      .subscribe((response: any) => {
-        if (response.success) {
-          this.toastrService.success('Client has been created successfully.');
-          this.router.navigate(['/admin/clients']);
-        } else {
-          this.toastrService.error(response.message);
-        }
-      });
+    // this.extractLicenses();
+    //
+    // this.clientService
+    //   .addClient({ ...client, ...this.clientDetails })
+    //   .subscribe((response: any) => {
+    //     if (response.success) {
+    //       this.toastrService.success('Client has been created successfully.');
+    //       this.router.navigate(['/admin/clients']);
+    //     } else {
+    //       this.toastrService.error(response.message);
+    //     }
+    //   });
   }
 
   /**

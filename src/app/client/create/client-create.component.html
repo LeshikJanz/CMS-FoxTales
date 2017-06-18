@@ -1,8 +1,8 @@
 <div class="client-container">
   <form
-    (ngSubmit)="addClient(clientForm.value)"
-    class="form"
-    novalidate>
+      (ngSubmit)="addClient(clientForm.value, $event);"
+      class="form"
+      novalidate>
 
     <div [formGroup]="clientForm">
       <!-- Logo -->
@@ -16,64 +16,34 @@
       </div>
 
       <!-- Name -->
-      <!--<div >-->
-        <!--<form-input [form]="clientForm" [name]="name" title="Client Name*"></form-input>-->
-      <!--</div>-->
-      <div class="form-element">
-        <label [ngClass]="{'label-error': clientForm.get('name').touched &&
-                                          clientForm.get('name').hasError('required')}"
-               for="name">Client Name*</label>
-        <div [ngClass]="{'plus-wrap': clientForm.get('name').touched &&
-                                 !clientForm.get('name').hasError('required')}"
-             >
-        <input
-            id="name"
-            type="text"
-            class="form-control"
-            formControlName="name"
-            placeholder="Name"/>
-      </div>
-      <div ngxErrors="name">
-          <div class="field-error" ngxError="required" when="touched">
-            <button class="close-icon" type="reset"></button>
-            Field is required
-          </div>
-        </div>
-      </div>
+      <form-input
+          [form]="clientForm"
+          [controlName]="'name'"
+          [isRequired]="true"
+          [title]="'Client Name*'">
+      </form-input>
 
       <!-- Email -->
-      <div class="form-element">
-        <label for="email">Admin AD email*</label>
-        <input
-          id="email"
-          type="email"
-          formControlName="email"
-          class="form-control"
-          placeholder="Email">
-
-        <div ngxErrors="email">
-          <div class="field-error" ngxError="required" when="touched">
-            Field is required
-          </div>
-          <div ngxError="email" when="dirty">
-            Invalid value
-          </div>
-        </div>
-      </div>
+      <form-input
+          [form]="clientForm"
+          [controlName]="'email'"
+          [isRequired]="true"
+          [title]="'Admin AD email*'">
+      </form-input>
 
       <!-- Address -->
       <div class="form-element">
         <label for="address">Address</label>
         <input
-          id="address"
-          class="form-control"
-          type="text"
-          formControlName="address"
-          autocorrect="off"
-          autocapitalize="off"
-          spellcheck="off"
-          #address
-          placeholder="Search for Location">
+            id="address"
+            class="form-control"
+            type="text"
+            formControlName="address"
+            autocorrect="off"
+            autocapitalize="off"
+            spellcheck="off"
+            #address
+            placeholder="Search for Location">
 
         <div ngxErrors="address">
           <div class="field-error" ngxError="required" when="touched">
@@ -83,31 +53,22 @@
       </div>
 
       <!-- Phone -->
-      <div class="form-element">
-        <label for="phone">Phone</label>
-        <input
-          id="phone"
-          class="form-control"
-          type="text"
-          formControlName="phone"
-          placeholder="Phone">
-
-        <div ngxErrors="phone">
-          <div class="field-error" ngxError="required" when="touched">
-            Field is required
-          </div>
-        </div>
-      </div>
+      <form-input
+          [form]="clientForm"
+          [controlName]="'phone'"
+          [isRequired]="true"
+          [title]="'Phone'">
+      </form-input>
 
       <!-- FreshBook -->
       <div class="form-element">
         <label for="freshBooks">FreshBook Url</label>
         <input
-          id="freshBooks"
-          class="form-control"
-          type="text"
-          formControlName="freshBooks"
-          placeholder="FreshBook Url">
+            id="freshBooks"
+            class="form-control"
+            type="text"
+            formControlName="freshBooks"
+            placeholder="FreshBook Url">
 
         <div ngxErrors="freshBooks">
           <div class="field-error" ngxError="required" when="touched">
@@ -123,10 +84,10 @@
       <div class="license">
         <div *ngFor="let license of licenses">
           <input
-            type="checkbox"
-            name="selectedLicenses[]"
-            class="regular-checkbox"
-            [(ngModel)]="license.checked">
+              type="checkbox"
+              name="selectedLicenses[]"
+              class="regular-checkbox"
+              [(ngModel)]="license.checked">
           <label>
             {{ license.name }}
           </label>
@@ -136,9 +97,9 @@
 
     <div>
       <button
-        type="submit"
-        [disabled]="clientForm.invalid"
-        class="create-button">CREATE
+          type="submit"
+          [disabled]="clientForm.invalid"
+          class="create-button">CREATE
       </button>
     </div>
   </form>

@@ -1,5 +1,4 @@
-import { Component, OnChanges, Output, EventEmitter, Input } from '@angular/core';
-import { ICol } from '../../../shared/table/col.interface';
+import { Component, OnChanges, Input, SimpleChanges } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
 @Component({
@@ -8,18 +7,52 @@ import { FormGroup } from '@angular/forms';
   styleUrls: ['form-input.component.scss']
 })
 
-export class FormInputComponent implements OnChanges {
-  @Input() public form: FormGroup;
+export class FormInputComponent {
+  /**
+   * Parent form element
+   *
+   * @tyoe {FormGroup}
+   */
+  @Input()
+  public form: FormGroup;
 
-  @Input() public name: string;
+  /**
+   * Form control name
+   *
+   * @tyoe {string}
+   */
+  @Input()
+  public controlName: string = '';
 
-  @Input() public title: string;
+  /**
+   * Field label
+   *
+   * @tyoe {string}
+   */
+  @Input()
+  public title: string = '';
 
-  public ngOnChanges() {
-    console.log('this.form.controls');
-    console.log(this.form.controls);
+  /**
+   * Is field required?
+   *
+   * @tyoe {boolean}
+   */
+  @Input()
+  public isRequired: boolean = false;
 
-    console.log('this.form.get(name)');
-    console.log(this.form.get('name'));
-  }
+  /**
+   * Initial field value
+   *
+   * @tyoe {string}
+   */
+  @Input()
+  public value: string = '';
+
+  /**
+   * Custom message on validation error
+   *
+   * @tyoe {string}
+   */
+  @Input()
+  public errorMsg: string = 'Invalid value';
 }

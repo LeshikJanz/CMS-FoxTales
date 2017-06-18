@@ -7,7 +7,8 @@ import { ClientEditComponent } from './edit';
 
 const CLIENT_ROUTES: Routes = [
   { path: 'clients',    component: ClientListComponent },
-  { path: 'client',     component: ClientCreateComponent, data: { acl: 'ClientCreate' } },
+  { path: 'client',     component: ClientCreateComponent },
+  // { path: 'client',     component: ClientCreateComponent, data: { acl: 'ClientCreate' } },
   { path: 'client/:id', component: ClientEditComponent }
 ];
 
