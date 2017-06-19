@@ -19,7 +19,11 @@ export class ContentGalleryComponent {
   constructor(private router: Router,
               private experienceBuilderService: ExperienceBuilderService) {
               this.experience = this.experienceBuilderService.experience;
-              this.options = ['Tiled', 'Stretch', 'Fixed Scroll'];
+              this.options = [
+                {id: 1, name: 'Tiled' },
+                {id:2, name: 'Stretch'},
+                {id:3, name: 'Fixed Scroll'}
+                ];
               }
 
  public Next() {

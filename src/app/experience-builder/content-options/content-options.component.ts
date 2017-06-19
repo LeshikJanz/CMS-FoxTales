@@ -31,6 +31,7 @@ export class ContentOptionsComponent {
  public contentOptions: any[];
  public contentTypeOption: any;
  public orientationTypeOption: any;
+ public animatedOverlay: any;
 
   constructor(private router: Router,
               private experienceBuilderService: ExperienceBuilderService) {}
@@ -54,6 +55,7 @@ export class ContentOptionsComponent {
   }
 
   public Finish(modal) {
+    console.log(this.animatedOverlay)
     this.experienceBuilderService
     .getContentOptions(this.experienceBuilderService.experience.experienceId)
     .subscribe((response) => {
@@ -67,6 +69,7 @@ export class ContentOptionsComponent {
   }
 
   public contentOptionEdit(content) {
+    console.log(content)
    this.contentName = content.name;
    if (content.captureTypeId === 1) {
     this.contentTypeOption = this.contentSwitchOptions[0].id;
@@ -76,7 +79,8 @@ export class ContentOptionsComponent {
    }
   if (content.captureTypeId === 4) {
     this.contentTypeOption = this.contentSwitchOptions[2].id;
-   } 
+   }
+  //  this.orientationTypeValue = content.cameraSettings[0].settingValueId; 
   }
 
 }

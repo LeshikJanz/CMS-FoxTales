@@ -28,8 +28,14 @@
             import brand tags here
             <br>
             <h3>Provide A Custom URL?</h3>
+            <ui-switch></ui-switch>
             <input>
             <hr>
+            <h3>Allow Content To Be Downloaded?</h3>
+            <ui-switch></ui-switch>
+            <hr>
+            <h3>Public or Private Gallery?</h3>
+            <!--<switcher [options]="gallerySwitchOptions" ></switcher>-->
             <button [type]="'tertiary'" [value]="'Finish'" (click)="Finish()" >Next</button>
           </tab>
               <tab heading='Part 3'>

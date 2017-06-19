@@ -103,6 +103,9 @@ import {
 } from './high-charts/semi-circle-donut/semi-circle-donut.component';
 import { BasicLineComponent } from './high-charts/basic-line/basic-line.component';
 import { BasicColumnComponent } from './high-charts/basic-column/basic-column.component';
+import { BasicDetailsRunTimesComponent } from './experience-builder/basic-details-run-times/basic-details-run-times.component';
+import { DateTimePickerModule } from 'ng-pick-datetime';
+import { UiSwitchComponent } from './toggles/toggle-switch/toggle-switch.component';
 
 @NgModule({
   imports: [
@@ -130,7 +133,8 @@ import { BasicColumnComponent } from './high-charts/basic-column/basic-column.co
     ToastContainerModule.forRoot(),
     ChartModule.forRoot(require('highcharts')),
     ToastContainerModule.forRoot(),
-    PaginationModule.forRoot()
+    PaginationModule.forRoot(),
+    DateTimePickerModule,
   ],
   providers: [
     GalleryService,
@@ -182,7 +186,9 @@ import { BasicColumnComponent } from './high-charts/basic-column/basic-column.co
     BasicLineComponent,
     BasicColumnComponent,
     FormInputComponent,
-    ProfileNavigationComponent
+    ProfileNavigationComponent,
+    BasicDetailsRunTimesComponent,
+    UiSwitchComponent
   ],
   exports: [
     CreationButtonComponent,
@@ -231,7 +237,9 @@ import { BasicColumnComponent } from './high-charts/basic-column/basic-column.co
     BasicLineComponent,
     BasicColumnComponent,
     FormInputComponent,
-    ProfileNavigationComponent
+    ProfileNavigationComponent,
+    BasicDetailsRunTimesComponent,
+    UiSwitchComponent
   ]
 })
 
