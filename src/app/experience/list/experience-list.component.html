@@ -3,15 +3,13 @@
 <div class="list-container">
   <div class="list-menu">
     <div>
-      <div>
-        <label>Sort by</label>
-        <dropdown
+      <label>Sort by</label>
+      <dropdown
           [title]="'Start Date'"
           [options]="sortActions"
           [size]="'big'"
           (typeChanged)="onSortChanged($event)"
-        ></dropdown>
-      </div>
+      ></dropdown>
     </div>
     <div class="create-experience">
       <search-input [title]="'find experience'" (Change)="onSearchChange($event)"></search-input>
@@ -21,5 +19,5 @@
   <experience *ngFor="let experience of Experience" [experience]="experience"
               [experienceActions]="experienceActions" [deleteModal]="deleteModal"></experience>
 
-<experience-delete-modal #deleteModal (delete)="onDeleteExperience()"></experience-delete-modal>
+  <experience-delete-modal #deleteModal (delete)="onDeleteExperience()"></experience-delete-modal>
 </div>
