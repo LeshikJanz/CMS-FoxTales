@@ -13,20 +13,14 @@ import { Location } from '@angular/common';
 
 export class ClientEditHeaderComponent implements OnInit {
   constructor(private route: ActivatedRoute,
-              private clientService: ClientService,
-              private location: Location) {}
-
-  public id: string;
+              private clientService: ClientService) {}
 
   public client: IClient;
 
   public ngOnInit() {
-    this.route.children[0].params.subscribe((params: any) => {
-        this.id = params['id'];
-        this.clientService.getClient(this.id)
-          .subscribe((client: IClient) =>
-            this.client = client
-          )
-      });
+    this.route.children[0].params.subscribe((params: any) =>
+        this.clientService.getClient(params['id'])
+          .subscribe((client: IClient) => this.client = client)
+      );
     }
 }

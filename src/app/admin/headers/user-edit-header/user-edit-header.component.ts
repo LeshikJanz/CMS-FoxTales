@@ -18,14 +18,9 @@ export class UserEditHeaderComponent implements OnInit {
   public user: IUser;
 
   public ngOnInit() {
-    this.route.children[0].params.subscribe((params: any) => {
+    this.route.children[0].params.subscribe((params: any) =>
       this.userService.getUser(params['id'])
-        .subscribe((user: IUser) => {
-          this.user = user
-          console.log('this.user');
-          console.log(this.user);
-        }
-        )
-    });
+        .subscribe((user: IUser) => this.user = user)
+    )
   }
 }

@@ -12,8 +12,6 @@ import { TagInputModule } from 'ng2-tag-input';
 import { SharedModule } from '../shared';
 import { HttpService } from '../shared/core';
 
-import { EVENT_ROUTING } from './event.routes';
-
 import { EventService } from './event.service';
 import { EventListComponent } from './list';
 import { EventCreateComponent } from './create';
@@ -23,12 +21,9 @@ import { FeatureModule } from '../components/feature.module';
 import { EventGroupsComponent } from '../event-groups/list/event-groups.component';
 import { EventGroupsService } from '../event-groups/list/event-groups.service';
 import { EventGroupCreateComponent } from '../event-groups/create/event-group-create.component';
-import { GalleryModule } from '../gallery/gallery.module';
 import { DateTimePickerModule } from 'ng-pick-datetime';
 import * as moment from 'moment';
 import { EventRecapReportComponent } from '../event/recap-report/event-recap-report.component';
-import { EventHeaderComponent } from './headers/event-header/event-header.component';
-import { EventNavigationComponent } from '../components/navigations/event-navigation/event-navigation.component';
 
 @NgModule({
   imports: [
@@ -43,9 +38,7 @@ import { EventNavigationComponent } from '../components/navigations/event-naviga
     ToastContainerModule.forRoot(),
     TagInputModule,
     SharedModule,
-    EVENT_ROUTING,
     FeatureModule,
-    GalleryModule,
     DateTimePickerModule
   ],
   providers: [
