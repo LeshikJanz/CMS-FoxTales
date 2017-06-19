@@ -30,7 +30,7 @@ export class FormatPipe implements PipeTransform {
 
   private temperature = {
     transform: (value) => `${value.toFixed(1)}&deg; F`
-  }
+  };
 
   /**
    * Constructor

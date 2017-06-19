@@ -16,7 +16,7 @@ export interface IClientLicense {
   billingContactName: string;
   billingContactEmail: string;
   billingContactPhone: string;
-  billingContactAddress: string
+  billingContactAddress: string;
 }
 
 /**

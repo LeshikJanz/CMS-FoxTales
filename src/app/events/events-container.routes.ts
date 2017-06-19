@@ -20,7 +20,11 @@ const EVENTS_ROUTES: Routes = [
       },
       {path: 'edit-event/:id', component: EventEditComponent, data: { acl: 'CreateEditEvents' } },
       {path: 'create-event', component: EventCreateComponent, data: { acl: 'CreateEditEvents' }},
-      {path: 'recap-report/:id', component: EventRecapReportComponent, data: { acl: 'ViewSendRecapReport' } },
+      {
+        path: 'recap-report/:id',
+        component: EventRecapReportComponent,
+        data: { acl: 'ViewSendRecapReport' }
+      },
       {path: 'event-groups', component: EventGroupsComponent},
       {path: 'event-group', component: EventGroupCreateComponent},
       {path: 'event-group/:id', component: EventGroupEditComponent},

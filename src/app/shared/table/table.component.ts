@@ -6,7 +6,7 @@ import { ICol } from './col.interface';
 import { ITableAction } from './action.interface';
 import { IActionState } from '../../client/client.interface';
 import { ICheckbox } from '../../components/toggles/checkbox/checkbox.component';
-import { PermissionService } from "../core/auth/permission.service";
+import { PermissionService } from '../core/auth/permission.service';
 
 @Component({
   selector: 'data-table',

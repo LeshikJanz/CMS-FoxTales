@@ -1,6 +1,10 @@
-import { 
-    Component, Input, OnChanges, Output,
-    EventEmitter} from '@angular/core';
+import {
+  Component,
+  Input,
+  OnChanges,
+  Output,
+  EventEmitter
+} from '@angular/core';
 import { IActionState } from '../../client/client.interface';
 import { Router } from '@angular/router';
 import { IEvent, IExperience } from '../../event/event.interface';
@@ -12,9 +16,7 @@ import { ExperienceBuilderService } from '../../../experience-builder/experience
   templateUrl: 'connect-content-option.component.html',
   styleUrls: ['connect-content-option.component.scss']
 })
-
 export class ConnectContentOptionComponent implements OnChanges {
-
   /**
    * Experience
    *
@@ -31,29 +33,26 @@ export class ConnectContentOptionComponent implements OnChanges {
 
   public contentOption: any;
 
-      /**
-     * Save changes
-     *
-     * @type {EventEmitter}
-     */
-    @Output() public contentOptionChecked: EventEmitter<any> = new EventEmitter();
-
+  /**
+   * Save changes
+   *
+   * @type {EventEmitter}
+   */
+  @Output() public contentOptionChecked: EventEmitter<any> = new EventEmitter();
 
   constructor(private _routeData: RouteData,
               private router: Router,
               private experienceService: ExperienceBuilderService) {
   }
-  public isChecked(event){
+
+  public isChecked(event) {
     this.contentOptionChecked.emit(event);
   }
 
   public ngOnChanges() {
-    
     this.experienceService.getContentOptions(this.experience.experienceId)
     .subscribe((response) => {
       this.contentOption = response.map((option) => option.name);
-    })
- 
+    });
   }
-
 }

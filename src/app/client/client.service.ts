@@ -117,7 +117,10 @@ export class ClientService {
    * @param {string} authResponse - Response data
    * @returns {Observable<Response>} - Response
    */
-  public addSocialIntegration(id: number, name: string, authResponse: string): Observable<Response> {
+  public addSocialIntegration(
+    id: number,
+    name: string, authResponse: string
+  ): Observable<Response> {
     return this.http.post(`${process.env.API_URL}/SocialIntegrations/${name}`, {
       platformID: id,
       token: authResponse
