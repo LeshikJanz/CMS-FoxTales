@@ -1,0 +1,14 @@
+.details-container {
+  display: flex;
+  padding: 25px;
+  flex-wrap: wrap;
+  background-color: #EEEEE9;
+}
+
+.details-item {
+  flex: 0 0 25%;
+  margin: 10px 0;
+  span {
+    font-weight: 600;
+  }
+}

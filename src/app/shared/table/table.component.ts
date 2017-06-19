@@ -304,7 +304,9 @@ export class TableComponent implements OnInit {
    * @returns {void}
    */
   public changeAction(id: number, event: IActionState): void {
+    console.log(id);
     event.id = id;
+    console.log(event);
     this.actionChanged.emit(event);
   }
 

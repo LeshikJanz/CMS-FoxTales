@@ -18,7 +18,7 @@ export interface IDeviceList {
   totalRowCount: number;
   currentPageNumber: number;
   numberRowsOnPage: number;
-  result: IDevice[];
+  result: any;
   suscess: boolean;
   message: string;
 }
@@ -27,6 +27,7 @@ export interface IDeviceList {
  * Device filter interface
  */
 export interface IDeviceFilter {
+  id?: number;
   pageingInfo: {
     currentPage: number;
     pageRowCount: number;
@@ -36,4 +37,17 @@ export interface IDeviceFilter {
   searchFields?: {
     [index: string]: string;
   };
+}
+
+export interface IDeviceDetails {
+  id: number;
+  name: string;
+  purchaseDate: string;
+  appVersion: string;
+  serialNumber: string;
+  hardwareVersion: string;
+  tabletModel: string;
+  cameraModel: string;
+  cameraFirmware: string;
+  lighting: string;
 }

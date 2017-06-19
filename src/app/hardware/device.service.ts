@@ -3,6 +3,7 @@ import { Response, Http } from '@angular/http';
 import { Observable } from 'rxjs';
 import { IDevice, IDeviceFilter, IDeviceList } from './device.interface';
 import { Device } from './device';
+import { ILog } from './log.interface';
 
 /**
  * User service
@@ -44,6 +45,32 @@ export class DeviceService {
   public getDevice(id: string): Observable<Device> {
     return this.http.get(`${process.env.API_URL}/Devices/${id}`)
       .map((response: Response) => <Device> response.json());
+  }
+
+  /**
+   * Get device details
+   *
+   * See: http://dev.getfoxtales.com/swagger/#!/Devices/ApiDevicesByIdGet
+   *
+   * @param {IDeviceFilter} filter - Filter
+   * @returns {Observable<IDeviceList>} - Logs
+   */
+  public getDeviceDetails(filter: IDeviceFilter): Observable<IDeviceList> {
+    return this.http.post(`${process.env.API_URL}/Devices/Details`, filter)
+      .map((response: Response) => <IDeviceList> response.json());
+  }
+
+  /**
+   * Get log by id
+   *
+   * See: http://dev.getfoxtales.com/swagger/#!/Devices/ApiDevicesByIdGet
+   *
+   * @param {string} id - Log id
+   * @returns {Observable<Log>} - Log
+   */
+  public getLog(id: string): Observable<ILog> {
+    return this.http.get(`${process.env.API_URL}/Devices/${id}/Log`)
+      .map((response: Response) => <ILog> response.json());
   }
 
   /**
