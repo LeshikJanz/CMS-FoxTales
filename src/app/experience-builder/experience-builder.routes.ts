@@ -13,7 +13,11 @@ import { ContentFeedsComponent } from './content-feeds';
 
 const EXPERIENCE_BUILDER_ROUTES: Routes = [
   { path: '',    redirectTo: 'intro' },
-  { path: 'intro',     component: ExperienceBuilderIntroComponent },
+  {
+    path: 'intro',
+    component: ExperienceBuilderIntroComponent ,
+    data: { acl: 'CreateEditExperiences' }
+  },
   { path: 'container', component: ExperienceBuilderContainerComponent,
     children: [
         { path: 'basic-details', component: BasicDetailsComponent },

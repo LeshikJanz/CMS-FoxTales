@@ -21,7 +21,7 @@ export class CheckboxComponent implements OnInit {
   public checkbox: ICheckbox;
 
   public onChange(event: boolean) {
-    this.toggle.emit({name, isChecked: event});
+    this.toggle.emit({name: this.name, isChecked: event});
   }
 
   public ngOnInit() {

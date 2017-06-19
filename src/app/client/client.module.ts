@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Http, HttpModule, RequestOptions, XHRBackend } from '@angular/http';
 import { CustomFormsModule } from 'ng2-validation';
 import { NgxErrorsModule } from '@ultimate/ngxerrors';
+import { DateTimePickerModule } from 'ng-pick-datetime';
 import { ToastrModule, ToastContainerModule } from 'ngx-toastr';
 import { AgmCoreModule } from '@agm/core';
 
@@ -16,6 +17,7 @@ import { ClientService } from './client.service';
 import { ClientListComponent } from './list';
 import { ClientCreateComponent } from './create';
 import { ClientEditComponent } from './edit';
+import { ClientLicenseComponent } from './license';
 import { FeatureModule } from '../components/feature.module';
 import { ClientEditHeaderComponent } from "../admin/headers/client-edit-header/client-edit-header.component";
 
@@ -27,11 +29,12 @@ import { ClientEditHeaderComponent } from "../admin/headers/client-edit-header/c
     CustomFormsModule,
     HttpModule,
     NgxErrorsModule,
+    DateTimePickerModule,
     ToastrModule.forRoot(),
     ToastContainerModule.forRoot(),
     SharedModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyAW7s_PMAH6CJRMMXRVWnQPevWqipMkCyA',
+      apiKey: process.env.GOOGLE_KEY,
       libraries: [ 'places' ]
     }),
     CLIENT_ROUTING,
@@ -53,7 +56,8 @@ import { ClientEditHeaderComponent } from "../admin/headers/client-edit-header/c
   declarations: [
     ClientListComponent,
     ClientCreateComponent,
-    ClientEditComponent
+    ClientEditComponent,
+    ClientLicenseComponent
   ]
 })
 export class ClientModule {

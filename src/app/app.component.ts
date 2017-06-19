@@ -20,7 +20,7 @@ export class AppComponent implements OnInit {
    *
    * @type {string}
    */
-  public version: string = '2.2.5';
+  public version: string = '2.2.7';
 
   /**
    * Route name
@@ -102,14 +102,17 @@ export class AppComponent implements OnInit {
    */
   public checkAcl(): void {
     this.router.events
-      .filter(event => event instanceof NavigationEnd)
+      .filter((event) => event instanceof NavigationEnd)
       .map(() => this.activatedRoute)
-      .map(route => {
-        while (route.firstChild) route = route.firstChild;
+      .map((route) => {
+        while (route.firstChild) {
+          route = route.firstChild;
+        }
+
         return route;
       })
-      .filter(route => route.outlet === 'primary')
-      .mergeMap(route => route.data)
+      .filter((route) => route.outlet === 'primary')
+      .mergeMap((route) => route.data)
       .subscribe((event) => {
         const acl = event['acl'];
 

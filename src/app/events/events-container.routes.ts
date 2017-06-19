@@ -16,11 +16,15 @@ const EVENTS_ROUTES: Routes = [
     children: [
       {path: '', redirectTo: 'events'},
       {
-        path: 'events', component: EventListComponent
+        path: 'events', component: EventListComponent, data: { acl: 'ViewEventList' }
       },
-      {path: 'edit-event/:id', component: EventEditComponent },
-      {path: 'create-event', component: EventCreateComponent},
-      {path: 'recap-report/:id', component: EventRecapReportComponent },
+      {path: 'edit-event/:id', component: EventEditComponent, data: { acl: 'CreateEditEvents' } },
+      {path: 'create-event', component: EventCreateComponent, data: { acl: 'CreateEditEvents' }},
+      {
+        path: 'recap-report/:id',
+        component: EventRecapReportComponent,
+        data: { acl: 'ViewSendRecapReport' }
+      },
       {path: 'event-groups', component: EventGroupsComponent},
       {path: 'event-group', component: EventGroupCreateComponent},
       {path: 'event-group/:id', component: EventGroupEditComponent},

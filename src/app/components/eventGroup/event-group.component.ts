@@ -74,7 +74,6 @@ export class EventGroupComponent implements OnChanges {
   constructor(private router: Router) {
   }
 
-
   public ngOnChanges() {
     if (this.eventGroups) {
       this.eventGroups = this.eventGroups.map((e: IEventGroup) => ({

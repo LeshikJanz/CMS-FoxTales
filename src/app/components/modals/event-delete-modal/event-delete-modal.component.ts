@@ -16,7 +16,7 @@ import { ToastrService } from 'ngx-toastr';
     styleUrls: ['event-delete-modal.component.scss']
 })
 
-export class EventDeleteModalComponent implements OnChanges {
+export class EventDeleteModalComponent {
 
     @ViewChild('deleteModal') public lgModal: ModalDirective;
     public isModalShown: boolean = false;
@@ -55,25 +55,24 @@ export class EventDeleteModalComponent implements OnChanges {
                 private toastrService: ToastrService) {
     }
 
-    public deleteEvent(){
-        this.eventService.deleteEvent(this.event).
-        subscribe((event) => {
-            this.delete.emit();
-            this.hide();
-        })
-  
-      
+    public deleteEvent() {
+    this.eventService
+      .deleteEvent(this.event)
+      .subscribe((event) => {
+        this.delete.emit();
+        this.hide();
+      });
     }
+
     /**
      * Show modal
      *
      * @return {void}
      */
     public show(event: IEvent) {
-        this.event = event;
-        this.isModalShown = true;
+      this.event = event;
+      this.isModalShown = true;
     }
-
 
     /**
      * Hide modal
@@ -81,7 +80,7 @@ export class EventDeleteModalComponent implements OnChanges {
      * @return {void}
      */
     public hide() {
-        this.lgModal.hide();
+      this.lgModal.hide();
     }
 
     /**
@@ -90,18 +89,6 @@ export class EventDeleteModalComponent implements OnChanges {
      * @return {void}
      */
     public onHidden() {
-        this.isModalShown = false;
+      this.isModalShown = false;
     }
-
-    /**
-     * Lifecycle hook that is called after ngOnInit and after any component's
-     * properties change
-     *
-     * @returns {void}
-     */
-    public ngOnChanges() {
-      
-    }
-
-
 }

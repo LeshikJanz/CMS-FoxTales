@@ -15,6 +15,11 @@
     [rows]="devices"
     [cols]="cols"
     [rowsCount]="totalDevices"
-    [actions]="actions">
+    [actions]="actions"
+    (sortChanged)="onSortChanged($event)"
+    (limitChanged)="onLimitChanged($event)"
+    (searchChanged)="onSearchChanged($event)"
+    (pageChanged)="onPageChanged($event)"
+    (actionChanged)="onActionChanged($event)">
   </data-table>
 </div>

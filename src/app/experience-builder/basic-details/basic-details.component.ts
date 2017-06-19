@@ -6,7 +6,7 @@ import { ExperienceBuilderService } from '../experience-builder.service';
 import { BsDropdownModule } from 'ngx-bootstrap';
 import { DateTimePickerModule } from 'ng-pick-datetime';
 import * as moment from 'moment';
-import {Location} from '@angular/common';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'basic-details',
@@ -21,7 +21,7 @@ export class BasicDetailsComponent implements OnInit {
   public endMomentTime: string;
   public endMomentDate: string;
   public defaultTags: any[];
-    public tags: ITag[];
+  public tags: ITag[];
   public sub: any;
   public id: any;
 
@@ -105,9 +105,9 @@ export class BasicDetailsComponent implements OnInit {
     .getExperience(this.id)
     .subscribe((experience) => {
       this.experienceBuilderService.experience.experienceId = this.id;
-      this.experienceBuilderService.experience.displayName = experience.name,
-      this.experienceBuilderService.experience.eventId = experience.eventId,
-      this.experienceBuilderService.experience.productId = experience.productId,
+      this.experienceBuilderService.experience.displayName = experience.name;
+      this.experienceBuilderService.experience.eventId = experience.eventId;
+      this.experienceBuilderService.experience.productId = experience.productId;
       this.startMomentDate = moment(experience.runTimes[0].startTime).format('MMM DD, YYYY');
       this.endMomentDate = moment(experience.runTimes[0].endTime).format('MMM DD, YYYY');
       this.startMomentTime = moment(experience.runTimes[0].startTime).format('hh:mm');
@@ -120,6 +120,6 @@ export class BasicDetailsComponent implements OnInit {
       }
     });
     });
-  }
+  };
 
 }

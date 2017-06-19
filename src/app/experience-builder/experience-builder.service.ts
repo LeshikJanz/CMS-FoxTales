@@ -78,7 +78,7 @@ export class ExperienceBuilderService {
       });
   }
 
-  public postEmailSettings(){
+  public postEmailSettings() {
     return this.http.post(`${process.env.API_URL}/Experiences/`
       + this.experience.experienceId + `/emailSettings`, {
         name: this.experience.emailBuilderName,
@@ -96,7 +96,7 @@ export class ExperienceBuilderService {
 
   }
 
-    /**
+  /**
    * Get tags
    *
    * @returns {Observable<Tag[]>} - Tags
@@ -106,13 +106,20 @@ export class ExperienceBuilderService {
       .map((response: Response) => response.json() as Tag[]);
   }
 
-    /**
+  /**
    * Get Experience
    *
    */
-
     public getExperience(id) {
-      return this.http.get(`${process.env.API_URL}/Experiences/`+ id)
+      return this.http.get(`${process.env.API_URL}/Experiences/` + id)
+        .map((response: Response) => {
+          return response.json();
+        });
+    }
+
+    public getContentOptions(id) {
+      return this.http.get(`${process.env.API_URL}/Experiences/` + id +
+      `/contentoptions`)
         .map((response: Response) => {
           return response.json();
         });

@@ -29,7 +29,7 @@ export class MainNavigationComponent implements OnInit {
     this.userService.getUser(PermissionService.userId.toString())
       .subscribe((user: IUser) =>
         this.user = user
-      )
+      );
   }
 
   public editProfile() {

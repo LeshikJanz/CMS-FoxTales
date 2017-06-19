@@ -17,7 +17,7 @@ export default sandboxOf(DropDownComponent, {imports: [BsDropdownModule.forRoot(
       options: [{id: 1, action: 'Upcoming', callback: 'upcomingSort'},
         {id: 2, action: 'Descending', callback: 'descendingSort'},
         {id: 3, action: 'Start date', callback: 'startDateSort'},
-        {id: 4, action: 'End date', callback: 'endDateSort'},],
+        {id: 4, action: 'End date', callback: 'endDateSort'}],
       size: 'small',
       onTypeChanged(event) {
         console.log('onTypeChanged');

@@ -13,9 +13,9 @@ import { EventCreateComponent } from './create/event-create.component';
 
 const EVENT_ROUTES: Routes = [
   {
-    path: ':id', component: EventContainerComponent,
+    path: '', component: EventContainerComponent,
     children: [
-      {path: 'experiences', component: ExperienceListComponent},
+      {path: ':id/experiences', component: ExperienceListComponent, data: { acl: 'ViewExperienceList' }},
       {
         path: ':id', children: [
         {path: 'galleries', pathMatch: 'full', component: EventGalleryContainerComponent},

@@ -18,13 +18,13 @@ import { MapsAPILoader } from '@agm/core';
 import { ToastrService } from 'ngx-toastr';
 import {  } from '@types/googlemaps';
 import { IClient } from '../client.interface';
-import { IClientLicense } from '../client-license.interface';
 import { ClientService } from '../client.service';
 
 @Component({
   selector: 'client-create',
   templateUrl: './client-create.component.html',
-  styleUrls: ['client-create.component.scss', '../../shared/styles/form-element.scss']
+  styleUrls: [ './client-create.component.scss',
+    '../../shared/styles/form-element.scss']
 })
 export class ClientCreateComponent implements OnInit {
   /**
@@ -55,13 +55,6 @@ export class ClientCreateComponent implements OnInit {
    */
   @ViewChild('address')
   public addressElementRef: ElementRef;
-
-  /**
-   * Client licenses
-   *
-   * @type {IClientLicense[]}
-   */
-  public licenses: IClientLicense[] = [];
 
   /**
    * Additional client details
@@ -136,8 +129,7 @@ export class ClientCreateComponent implements OnInit {
     this
       .initFileReader()
       .initAddressSearch()
-      .buildClientForm()
-      .getClientLicenses();
+      .buildClientForm();
   }
 
   /**
@@ -170,26 +162,12 @@ export class ClientCreateComponent implements OnInit {
   }
 
   /**
-   * Get client licenses
-   *
-   * @returns {void}
-   */
-  public getClientLicenses(): void {
-    this.clientService
-      .getClientLicenses()
-      .subscribe((licenses: IClientLicense[]) => this.licenses = licenses);
-  }
-
-  /**
    * Add new client
    *
    * @param {IClient} client - Client
    * @returns {void}
    */
-  public addClient(client: IClient, event: Event): void {
-    event.preventDefault();
-    this.extractLicenses();
-
+  public addClient(client: IClient): void {
     this.clientService
       .addClient({ ...client, ...this.clientDetails })
       .subscribe((response: any) => {
@@ -200,19 +178,6 @@ export class ClientCreateComponent implements OnInit {
           this.toastrService.error(response.message);
         }
       });
-  }
-
-  /**
-   * Extract selected licenses
-   *
-   * @returns {void}
-   */
-  public extractLicenses(): void {
-    if(this.licenses) {
-      this.clientDetails.selectedLicenses = this.licenses
-        .filter((license: IClientLicense) => license.checked)
-        .map((license: IClientLicense) => license.id);
-    }
   }
 
   /**

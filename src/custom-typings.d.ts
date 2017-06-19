@@ -67,6 +67,8 @@ declare var FACEBOOK_ID: string;
 declare var TWITTER_ID: string;
 declare var TUMBLR_ID: string;
 declare var AUTH_PROXY: string;
+declare var GOOGLE_KEY: string;
+declare var BING_KEY: string;
 
 interface SystemJS {
   import: (path?: string) => Promise<any>;

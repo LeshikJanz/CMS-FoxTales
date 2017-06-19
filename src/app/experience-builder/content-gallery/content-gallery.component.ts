@@ -14,9 +14,11 @@ export class ContentGalleryComponent {
 
  @ViewChild('staticTabs') public staticTabs: TabsetComponent;
  public staticModal: any;
+ public experience: any;
 
   constructor(private router: Router,
               private experienceBuilderService: ExperienceBuilderService) {
+              this.experience = this.experienceBuilderService.experience;
               this.options = ['Tiled', 'Stretch', 'Fixed Scroll'];
               }
 
@@ -27,4 +29,8 @@ export class ContentGalleryComponent {
  public Finish() {
   console.log(' finish function ');
  };
+
+ public checkedContentOption(event) {
+  console.log(event);
+}
 }

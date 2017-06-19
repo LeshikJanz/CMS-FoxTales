@@ -6,7 +6,7 @@ import { ICol } from './col.interface';
 import { ITableAction } from './action.interface';
 import { IActionState } from '../../client/client.interface';
 import { ICheckbox } from '../../components/toggles/checkbox/checkbox.component';
-import { PermissionService } from "../core/auth/permission.service";
+import { PermissionService } from '../core/auth/permission.service';
 
 @Component({
   selector: 'data-table',
@@ -304,7 +304,9 @@ export class TableComponent implements OnInit {
    * @returns {void}
    */
   public changeAction(id: number, event: IActionState): void {
+    console.log(id);
     event.id = id;
+    console.log(event);
     this.actionChanged.emit(event);
   }
 

@@ -89,7 +89,7 @@ export class ExperienceListComponent implements OnInit {
       });
   }
 
-  onDeleteExperience(){
+  public onDeleteExperience() {
     this.getExperiences();
   }
 }

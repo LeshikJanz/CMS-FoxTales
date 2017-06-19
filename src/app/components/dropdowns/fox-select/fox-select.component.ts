@@ -64,7 +64,6 @@ export class FoxSelectComponent implements OnChanges {
     this.active = null;
   }
 
-
   public ngOnChanges() {
     if (this.items) {
       this.items = this.convert(this.items);

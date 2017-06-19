@@ -13,8 +13,7 @@ export class IsAllowedDirective implements OnInit {
    *
    * @type {string}
    */
-  @Input('isAllowed')
-  public operation: string;
+  @Input('isAllowed') public operation: string;
 
   /**
    * Constructor

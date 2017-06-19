@@ -7,9 +7,9 @@ import { UserEditComponent } from './edit';
 
 const USER_ROUTES: Routes = [
   { path: '',    redirectTo: 'users' },
-  { path: 'users',    component: UserListComponent },
-  { path: 'user',     component: UserCreateComponent },
-  { path: 'user/:id', component: UserEditComponent }
+  { path: 'users',    component: UserListComponent, data: { acl: 'ViewUserList' } },
+  { path: 'user',     component: UserCreateComponent, data: { acl: 'CreateNewUser' } },
+  { path: 'user/:id', component: UserEditComponent, data: { acl: 'UserEdit' } }
 ];
 
 export const USER_ROUTING: ModuleWithProviders = RouterModule.forChild(USER_ROUTES);
