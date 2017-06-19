@@ -23,8 +23,8 @@ export class EventGalleryContainerComponent implements OnInit {
    * @type {IActionState[]}
    */
   public sortActions: IActionState[] = [
-    {id: 1, action: 'Upcoming'},
-    {id: 2, action: 'Descending'}
+    { id: 1, action: 'Upcoming' },
+    { id: 2, action: 'Descending' }
   ];
 
   /**
@@ -33,9 +33,9 @@ export class EventGalleryContainerComponent implements OnInit {
    * @type {string[]}
    */
   public galleryTypes: ISwitcher[] = [
-    {id: 1, name: 'Event'},
-    {id: 2, name: 'Experiences'},
-    {id: 3, name: 'All'}];
+    { id: 1, name: 'Event' },
+    { id: 2, name: 'Experiences' },
+    { id: 3, name: 'All' }];
 
   /**
    * Selected gallery type
@@ -132,11 +132,14 @@ export class EventGalleryContainerComponent implements OnInit {
   }
 
   public ngOnInit() {
-    this.route.params.subscribe((params: any) =>
-      this.eventId = params['id']
+    this.route.params.subscribe((params: any) => {
+      this.eventId = params['id'];
+      console.log('this.eventId');
+      console.log(this.eventId);
+    }
     );
 
-    this.filter = {eventId: this.eventId};
+    this.filter = { eventId: this.eventId };
 
     this.getGalleryItems(this.filter);
     this.getExperiences(this.eventId);
@@ -164,11 +167,9 @@ export class EventGalleryContainerComponent implements OnInit {
    */
   public getEventGallery(eventId: number) {
     this.eventService.getEventGallery(eventId)
-      .subscribe((gallery: IEventGallery) => {
-        this.eventGallery = gallery;
-        console.log('this.eventGallery');
-        console.log(this.eventGallery);
-      });
+      .subscribe((gallery: IEventGallery) =>
+        this.eventGallery = gallery
+      );
   }
 
   /**

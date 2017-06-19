@@ -1,5 +1,8 @@
 <div class="header-container">
-  <h1>{{id}}</h1>
+  <div>
+    <a class="hvr-icon-wobble-horizontal" [routerLink]="['/events']">Back</a>
+    <h1>{{event && event.name}}</h1>
+  </div>
   <add-button
       [routerLink]="['/experience-builder/intro']"
       [queryParams]="{ id: this.id  }"
