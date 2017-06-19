@@ -9,8 +9,9 @@ import { ClientLicenseComponent } from './license';
 const CLIENT_ROUTES: Routes = [
   { path: 'clients',    component: ClientListComponent },
   { path: 'client',     component: ClientCreateComponent, data: { acl: 'CreateClient' } },
-  { path: 'client/:id', component: ClientEditComponent, data: { acl: 'BasicClientEdit' } },
-  { path: 'client/:id/license', component: ClientLicenseComponent }
+  { path: 'client/:id', component: ClientEditComponent, pathMatch: 'prefix',
+    data: { acl: 'BasicClientEdit' } },
+  { path: 'client/:id/license', component: ClientLicenseComponent, pathMatch: 'prefix' }
 ];
 
 export const CLIENT_ROUTING: ModuleWithProviders = RouterModule.forChild(CLIENT_ROUTES);

@@ -2,13 +2,13 @@
   display: flex;
   width: 100%;
   justify-content: space-between;
-  align-items: center;
-  height: 100px;
+  align-items: flex-start;
+  height: 120px;
 
   > div {
     a {
-      padding-left: 40px;
       color: black;
+      margin-left: 25px;
     }
 
     h1 {
