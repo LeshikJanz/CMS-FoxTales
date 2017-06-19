@@ -24,7 +24,7 @@ import { ClientService } from '../client.service';
 @Component({
   selector: 'client-create',
   templateUrl: './client-create.component.html',
-  styleUrls: ['../../shared/styles/form-element.scss']
+  styleUrls: ['client-create.component.scss', '../../shared/styles/form-element.scss']
 })
 export class ClientCreateComponent implements OnInit {
   /**
@@ -61,7 +61,7 @@ export class ClientCreateComponent implements OnInit {
    *
    * @type {IClientLicense[]}
    */
-  public licenses: IClientLicense[];
+  public licenses: IClientLicense[] = [];
 
   /**
    * Additional client details
@@ -186,23 +186,20 @@ export class ClientCreateComponent implements OnInit {
    * @param {IClient} client - Client
    * @returns {void}
    */
-  public addClient(client: IClient, event): void {
-    console.log('client');
-    console.log(client);
+  public addClient(client: IClient, event: Event): void {
     event.preventDefault();
+    this.extractLicenses();
 
-    // this.extractLicenses();
-    //
-    // this.clientService
-    //   .addClient({ ...client, ...this.clientDetails })
-    //   .subscribe((response: any) => {
-    //     if (response.success) {
-    //       this.toastrService.success('Client has been created successfully.');
-    //       this.router.navigate(['/admin/clients']);
-    //     } else {
-    //       this.toastrService.error(response.message);
-    //     }
-    //   });
+    this.clientService
+      .addClient({ ...client, ...this.clientDetails })
+      .subscribe((response: any) => {
+        if (response.success) {
+          this.toastrService.success('Client has been created successfully.');
+          this.router.navigate(['/admin/clients']);
+        } else {
+          this.toastrService.error(response.message);
+        }
+      });
   }
 
   /**
@@ -211,9 +208,11 @@ export class ClientCreateComponent implements OnInit {
    * @returns {void}
    */
   public extractLicenses(): void {
-    this.clientDetails.selectedLicenses = this.licenses
-      .filter((license: IClientLicense) => license.checked)
-      .map((license: IClientLicense) => license.id);
+    if(this.licenses) {
+      this.clientDetails.selectedLicenses = this.licenses
+        .filter((license: IClientLicense) => license.checked)
+        .map((license: IClientLicense) => license.id);
+    }
   }
 
   /**

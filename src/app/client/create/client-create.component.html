@@ -1,4 +1,4 @@
-<div class="client-container">
+<div class="container client-container">
   <form
       (ngSubmit)="addClient(clientForm.value, $event);"
       class="form"
@@ -9,8 +9,10 @@
       <div class="form-element">
         <div>
           <label style="font-size: 22px">Client logo</label>
-          <img src="{{ logoBytes }}" style="max-height: 50px;">
-          <a href="javascript:void(0)" *ngIf="logoBytes" (click)="removeLogo()">x</a>
+          <div>
+            <img src="{{ logoBytes }}">
+            <a href="javascript:void(0)" *ngIf="logoBytes" (click)="removeLogo()">x</a>
+          </div>
         </div>
         <upload-button (imgUploaded)="onImgUploaded($event)"></upload-button>
       </div>
@@ -60,22 +62,14 @@
           [title]="'Phone'">
       </form-input>
 
-      <!-- FreshBook -->
-      <div class="form-element">
-        <label for="freshBooks">FreshBook Url</label>
-        <input
-            id="freshBooks"
-            class="form-control"
-            type="text"
-            formControlName="freshBooks"
-            placeholder="FreshBook Url">
 
-        <div ngxErrors="freshBooks">
-          <div class="field-error" ngxError="required" when="touched">
-            Field is required
-          </div>
-        </div>
-      </div>
+      <!-- FreshBook -->
+      <form-input
+          [form]="clientForm"
+          [controlName]="'freshBooks'"
+          [isRequired]="false"
+          [title]="'FreshBook Url'">
+      </form-input>
     </div>
 
     <!-- Licenses -->

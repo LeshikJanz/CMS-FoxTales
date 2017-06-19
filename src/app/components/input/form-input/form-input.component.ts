@@ -43,7 +43,7 @@ export class FormInputComponent {
   /**
    * Initial field value
    *
-   * @tyoe {string}
+   * @type {string}
    */
   @Input()
   public value: string = '';
