@@ -55,4 +55,17 @@ export class GalleryService {
     return this.http.post(`${process.env.API_URL}/Media/archiveSelected`, mediaIds)
       .map((response: Response) => response.text());
   }
+
+  /**
+   * Change visibility
+   *
+   * @param {number} id - thumbnail id
+   * @param {boolean} isVisible - visibility status
+   * @returns {Observable<Response>} - Response
+   */
+  public setVisibility(id: number, isVisible: boolean): Observable<Response> {
+    return this.http.post(`${process.env.API_URL}/Media/${id}/setfeedvisibility`, {
+      status: isVisible
+    });
+  }
 }
