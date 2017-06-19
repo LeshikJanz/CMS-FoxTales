@@ -180,7 +180,7 @@ import { BasicColumnComponent } from './high-charts/basic-column/basic-column.co
     FormInputComponent,
     SemiCircleDonutComponent,
     BasicLineComponent,
-    BasicColumnComponent
+    BasicColumnComponent,
     FormInputComponent,
     ProfileNavigationComponent
   ],
@@ -229,7 +229,7 @@ import { BasicColumnComponent } from './high-charts/basic-column/basic-column.co
     FormInputComponent,
     SemiCircleDonutComponent,
     BasicLineComponent,
-    BasicColumnComponent
+    BasicColumnComponent,
     FormInputComponent,
     ProfileNavigationComponent
   ]

@@ -141,22 +141,8 @@
       </div>
     </div>
 
-    <!-- Licenses -->
-    <div class="form-group">
-      <label>Licenses</label>
-      <div class="license">
-        <div *ngFor="let license of licenses; let i = index">
-          <input
-              type="checkbox"
-              name="selectedLicenses[]"
-              class="regular-checkbox"
-              (change)="selectLicense(i, $event.target.checked)"
-              [checked]="license.checked">
-          <label>
-            {{ license.name }}
-          </label>
-        </div>
-      </div>
+    <div>
+      <a href="javascript:void(0)" (click)="addSocialAccount()">add</a>
     </div>
 
     <div>

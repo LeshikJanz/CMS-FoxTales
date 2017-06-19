@@ -9,11 +9,13 @@ import { ClientsHeaderComponent } from './headers/clients-header/cliens-header.c
 import { ClientEditHeaderComponent } from './headers/client-edit-header/client-edit-header.component';
 import { ClientCreateHeaderComponent } from './headers/client-create-header/client-create-header.component';
 import { UserCreateHeaderComponent } from './headers/user-create-header/user-create-header.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   imports: [
     ADMIN_ROUTING,
-    FeatureModule
+    FeatureModule,
+    SharedModule
   ],
   providers: [],
   declarations: [
