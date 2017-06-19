@@ -78,7 +78,7 @@ export class EventService {
   /**
    * Update Event
    */
-  public getEvent(event) {
+  public getEvent(event: number) {
     return this.http.get(`${process.env.API_URL}/Events/${event}`)
         .map((response: Response) => {
           return response.json();

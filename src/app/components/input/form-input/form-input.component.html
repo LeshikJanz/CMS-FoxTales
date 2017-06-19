@@ -1,22 +1,31 @@
-<div class="form-element">
-  <label [ngClass]="{'label-error': form && form.get('name').touched &&
-                                          form.get('name').hasError('required')}"
-         for="{{name}}">{{title}}</label>
-  <div [ngClass]="{'plus-wrap': form && form.get('name').touched &&
-                                 !form.get('name').hasError('required')}"
-  >
+<div class="form-element" [formGroup]="form">
+  <label [ngClass]="{'error': isRequired &&
+                              form.get(controlName).touched &&
+                              form.get(controlName).errors}"
+         for="{{controlName}}">{{title}}
+  </label>
+  <div [ngClass]="{'success': form.get(controlName).touched &&
+                              !form.get(controlName).errors}">
     <input
-      id="{{name}}"
-      type="text"
-      class="form-control"
-      formControlName="{{name}}"
-      placeholder="{{title}}"/>
+        id="{{controlName}}"
+        type="text"
+        class="form-control"
+        formControlName="{{controlName}}"
+        value="{{value}}"
+        placeholder="{{title}}"/>
   </div>
-  <div ngxErrors="{{name}}">
-    <div class="field-error" *ngIf="form && form.get('name').touched &&
-                                          form.get('name').hasError('required')">
-      <button class="close-icon" type="reset"></button>
+
+  <div ngxErrors="{{controlName}}">
+    <div class="field-error"
+         *ngIf="isRequired &&
+                form.get(controlName).touched &&
+                form.get(controlName).hasError('required')">
+      <button *ngIf="isRequired && form.get(controlName).errors"
+              class="close-icon" type="reset"></button>
       Field is required
+    </div>
+    <div ngxError="{{controlName}}" class="field-error" when="dirty">
+      {{errorMsg}}
     </div>
   </div>
 </div>

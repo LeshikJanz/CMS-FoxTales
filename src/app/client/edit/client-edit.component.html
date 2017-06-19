@@ -1,15 +1,15 @@
-<div class="client-container">
+<div class="container client-container">
   <form
-    (ngSubmit)="updateClient()"
-    class="form"
-    novalidate>
+      (ngSubmit)="updateClient()"
+      class="form"
+      novalidate>
 
     <div [formGroup]="clientForm">
       <!-- Logo -->
       <div class="form-element">
+        <label style="font-size: 22px">Client logo</label>
         <div>
-          <label style="font-size: 22px">Client logo</label>
-          <img src="{{ logoBytes || client?.logo }}" *ngIf="logoBytes || client?.logo" style="max-height: 50px;">
+          <img src="{{ logoBytes || client?.logo }}" *ngIf="logoBytes || client?.logo">
           <a href="javascript:void(0)" *ngIf="logoBytes || client?.logo" (click)="removeLogo()">x</a>
         </div>
         <upload-button (imgUploaded)="onImgUploaded($event)"></upload-button>
@@ -17,17 +17,17 @@
 
       <!-- Name -->
       <div class="form-element">
-        <label for="name">Client Name</label>
+        <label for="name">Client Name*</label>
         <input
-          id="name"
-          type="text"
-          class="form-control input"
-          [(ngModel)]="client.name"
-          formControlName="name"
-          placeholder="Name">
+            id="name"
+            type="text"
+            class="form-control input"
+            [(ngModel)]="client.name"
+            formControlName="name"
+            placeholder="Name">
 
         <div ngxErrors="name">
-          <div class="field-error"  ngxError="required" when="touched">
+          <div class="field-error" ngxError="required" when="touched">
             Field is required
           </div>
         </div>
@@ -37,18 +37,18 @@
       <div class="form-element">
         <label for="email">Email</label>
         <input
-          id="email"
-          type="email"
-          class="form-control input"
-          [(ngModel)]="client.email"
-          formControlName="email"
-          placeholder="Email">
+            id="email"
+            type="email"
+            class="form-control input"
+            [(ngModel)]="client.email"
+            formControlName="email"
+            placeholder="Email">
 
         <div ngxErrors="email">
-          <div class="field-error"  ngxError="required" when="touched">
+          <div class="field-error" ngxError="required" when="touched">
             Field is required
           </div>
-          <div class="field-error"  ngxError="email" when="dirty">
+          <div class="field-error" ngxError="email" when="dirty">
             Invalid value
           </div>
         </div>
@@ -58,19 +58,19 @@
       <div class="form-element">
         <label for="address">Address</label>
         <input
-          id="address"
-          type="text"
-          class="form-control input"
-          [(ngModel)]="client.address"
-          formControlName="address"
-          autocorrect="off"
-          autocapitalize="off"
-          spellcheck="off"
-          #address
-          placeholder="Search for Location">
+            id="address"
+            type="text"
+            class="form-control input"
+            [(ngModel)]="client.address"
+            formControlName="address"
+            autocorrect="off"
+            autocapitalize="off"
+            spellcheck="off"
+            #address
+            placeholder="Search for Location">
 
         <div ngxErrors="address">
-          <div  ngxError="required" when="touched">
+          <div ngxError="required" when="touched">
             Field is required
           </div>
         </div>
@@ -80,12 +80,12 @@
       <div class="form-element">
         <label for="phone">Phone</label>
         <input
-          id="phone"
-          type="text"
-          class="form-control input"
-          [(ngModel)]="client.phone"
-          formControlName="phone"
-          placeholder="Phone">
+            id="phone"
+            type="text"
+            class="form-control input"
+            [(ngModel)]="client.phone"
+            formControlName="phone"
+            placeholder="Phone">
 
         <div ngxErrors="phone">
           <div ngxError="required" when="touched">
@@ -98,12 +98,12 @@
       <div class="form-element">
         <label for="freshBooks">FreshBook Url</label>
         <input
-          id="freshBooks"
-          type="text"
-          class="form-control input"
-          [(ngModel)]="client.freshBooks"
-          formControlName="freshBooks"
-          placeholder="FreshBook Url">
+            id="freshBooks"
+            type="text"
+            class="form-control input"
+            [(ngModel)]="client.freshBooks"
+            formControlName="freshBooks"
+            placeholder="FreshBook Url">
 
         <div ngxErrors="freshBooks">
           <div ngxError="required" when="touched">
@@ -116,39 +116,41 @@
       <div class="form-element" formArrayName="socialAccounts">
         <label>Social Accounts</label>
 
-        <div *ngFor="let account of socialAccounts.controls; let i = index">
+        <div class="" *ngFor="let account of socialAccounts.controls; let i = index">
           <input
-            type="text"
-            class="form-control input"
-            [(ngModel)]="client.socialAccounts[i]"
-            [formControl]="account"
-            placeholder="Social Account Url">
+              type="text"
+              class="form-control input"
+              [(ngModel)]="client.socialAccounts[i]"
+              [formControl]="account"
+              placeholder="Social Account Url">
           <a href="javascript:void(0)" (click)="removeSocialAccount(i)">x</a>
         </div>
 
         <div>
-          <a href="javascript:void(0)" (click)="addSocialAccount()">add</a>
+          <a class="add-button" href="javascript:void(0)" (click)="addSocialAccount()">+ add another</a>
         </div>
       </div>
 
       <div class="form-element" isAllowed="CreateEditSocialIntegrations">
         <label>Social Integrations</label>
-        <div *ngFor="let social of socialIntegrations">
+        <div class="social-integrations" *ngFor="let social of socialIntegrations">
+          <img (click)="auth(social)" [src]="social.iconPath" alt="">
           <a href="javascript:void(0)" (click)="auth(social)">{{ social.name }}</a>
           <a href="javascript:void(0)" (click)="cancelAuth(social)">x</a>
         </div>
       </div>
     </div>
 
-    <p>
-      <a href="javascript:void(0)" [routerLink]="['/admin/client', client.id, 'license']">License</a>
-    </p>
+    <div>
+      <a href="javascript:void(0)" (click)="addSocialAccount()">add</a>
+    </div>
 
     <div>
       <button
-        type="submit"
-        [disabled]="clientForm.invalid"
-        class="create-button">UPDATE</button>
+          type="submit"
+          [disabled]="clientForm.invalid"
+          class="create-button">UPDATE
+      </button>
     </div>
   </form>
 </div>

@@ -62,9 +62,6 @@ import {
   import { AngularFontAwesomeModule } from 'angular-font-awesome/angular-font-awesome';
 
 import { ThumbnailComponent } from './thumbnail/thumbnail.component';
-import {
-  EventNavigationComponent
-} from './navigations/event-navigation/event-navigation.component';
 import { FavoriteGalleryComponent } from '../gallery/favorite-gallery/favorite-gallery.component';
 import { GalleryItemListComponent } from '../gallery-items/list/gallery-item-list.component';
 import { GalleryService } from '../gallery/gallery.service';
@@ -100,6 +97,7 @@ import { UserService } from '../user/user.service';
 import { FormInputComponent } from './input/form-input/form-input.component';
 import { NgxErrorsModule } from '@ultimate/ngxerrors';
 import { CustomFormsModule } from 'ng2-validation';
+import { ProfileNavigationComponent } from "./navigations/profile-navigation/profile-navigation.component";
 import {
   SemiCircleDonutComponent
 } from './high-charts/semi-circle-donut/semi-circle-donut.component';
@@ -147,7 +145,6 @@ import { BasicColumnComponent } from './high-charts/basic-column/basic-column.co
     ExperienceBuilderNavigationComponent,
     AdminNavigationComponent,
     MainNavigationComponent,
-    EventNavigationComponent,
     EventsNavigationComponent,
     EventComponent,
     CheckboxComponent,
@@ -183,7 +180,9 @@ import { BasicColumnComponent } from './high-charts/basic-column/basic-column.co
     FormInputComponent,
     SemiCircleDonutComponent,
     BasicLineComponent,
-    BasicColumnComponent
+    BasicColumnComponent,
+    FormInputComponent,
+    ProfileNavigationComponent
   ],
   exports: [
     CreationButtonComponent,
@@ -194,7 +193,6 @@ import { BasicColumnComponent } from './high-charts/basic-column/basic-column.co
     ExperienceNavigationComponent,
     ExperienceBuilderNavigationComponent,
     MainNavigationComponent,
-    EventNavigationComponent,
     EventsNavigationComponent,
     EventComponent,
     AdminNavigationComponent,
@@ -231,7 +229,9 @@ import { BasicColumnComponent } from './high-charts/basic-column/basic-column.co
     FormInputComponent,
     SemiCircleDonutComponent,
     BasicLineComponent,
-    BasicColumnComponent
+    BasicColumnComponent,
+    FormInputComponent,
+    ProfileNavigationComponent
   ]
 })
 

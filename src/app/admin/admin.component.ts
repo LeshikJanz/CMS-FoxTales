@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { RouteData } from '../shared/core/routing/route-data.service';
+import { Router } from '@angular/router';
+import { Location } from '@angular/common';
+
 
 @Component({
   selector: 'admin',
@@ -7,7 +9,12 @@ import { RouteData } from '../shared/core/routing/route-data.service';
 })
 
 export class AdminComponent {
-  constructor(private _routeData: RouteData) {
-    // _routeData.name.next('Admin Management');
+  public curLocation: string;
+
+  constructor(private location: Location,
+              private router: Router) {
+    this.router.events.subscribe((val) =>
+      this.curLocation = this.location.path()
+    );
   }
 }

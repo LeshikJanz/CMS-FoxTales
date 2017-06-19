@@ -8,7 +8,8 @@ import { ProfileService } from './profile.service';
  */
 @Component({
   selector: 'profile',
-  templateUrl: './profile.component.html'
+  templateUrl: './profile.component.html',
+  styleUrls: [ '../shared/styles/form-element.scss', 'profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
   /**
@@ -72,6 +73,7 @@ export class ProfileComponent implements OnInit {
       .subscribe(() => {
         this.toastrService.success('User profile has been updated successfully.');
       });
+    location.reload();
   }
 
   /**

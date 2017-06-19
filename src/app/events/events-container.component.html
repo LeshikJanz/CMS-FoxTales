@@ -1,2 +1,6 @@
+<div [ngSwitch]="curLocation">
+  <events-header *ngSwitchCase="'/events/events'"></events-header>
+  <events-group-header *ngSwitchCase="'/events/event-groups'"></events-group-header>
+  <events-header *ngSwitchCase="'/events/favorited-media'"></events-header>
+</div>
 <events-navigation></events-navigation>
-

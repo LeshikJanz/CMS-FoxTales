@@ -6,9 +6,9 @@
       <th class="table-header" *ngFor="let col of cols">
         <div>
           <!--<regular-input [title]="col.title" [col]="col"-->
-                       <!--(input)="searchQuery[col.id].next(searchValue)"-->
-                       <!--(Change)="searchValue=$event"-->
-                       <!--(sortChange)="changeSort($event)"-->
+          <!--(input)="searchQuery[col.id].next(searchValue)"-->
+          <!--(Change)="searchValue=$event"-->
+          <!--(sortChange)="changeSort($event)"-->
           <!--&gt;</regular-input>-->
           <fox-input [title]="col.title" (input)="searchQuery[col.id].next(searchValue)"
                      (Change)="searchValue=$event"></fox-input>
@@ -28,9 +28,9 @@
         <br>
       </td>
       <td
-        *ngFor="let col of cols"
-        (click)="clickRow(row)"
-        [innerHtml]="col.format == 'myFirstName' ? (row | myFormatCell:col.format:col.formatOptions)
+          *ngFor="let col of cols"
+          (click)="clickRow(row)"
+          [innerHtml]="col.format == 'myFirstName' ? (row | myFormatCell:col.format:col.formatOptions)
                                           : (row[col.id] | myFormatCell:col.format:col.formatOptions)"
       >
       </td>
@@ -41,9 +41,10 @@
                         [size]="'medium'"
                         (typeChanged)="changeAction(row.id, $event)">
         </table-dropdown>
-        <button *ngIf="actions.length === 1"
-                (click)="changeAction(row.id, actions[0])">{{actions[0].title}}
-        </button>
+        <fox-button *ngIf="actions.length === 1"
+                    [value]="actions[0].title"
+                    (click)="changeAction(row.id, actions[0])"
+                    [design]="'gray'"></fox-button>
       </td>
     </tr>
     </tbody>

@@ -72,8 +72,6 @@ export class ExperienceListComponent implements OnInit {
     this.sub = this.route.params.subscribe((params) => {
       this.id = params['id'];
     });
-    console.log('this.id');
-    console.log(this.id);
 
     this.getExperiences();
   }

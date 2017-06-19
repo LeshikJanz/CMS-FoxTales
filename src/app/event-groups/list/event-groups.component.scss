@@ -1,9 +1,18 @@
 .group-container {
   display: flex;
   justify-content: space-between;
+  align-items: flex-start;
+  padding-top: 20px;
 
-  &:first-child {
+  label {
+    margin-bottom: 0;
+  }
+
+  & > div:first-child {
     display: flex;
+    width: 240px;
+    align-items: center;
+    justify-content: space-between;
   }
 
   add-button {

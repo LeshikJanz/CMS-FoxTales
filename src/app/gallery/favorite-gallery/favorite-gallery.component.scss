@@ -7,10 +7,22 @@
     padding: 20px 0;
     justify-content: space-between;
 
-    div {
+    > div {
+      width: 40%;
+      max-width: 540px;
       display: flex;
       justify-content: space-between;
       align-items: center;
+
+      > div {
+        display: flex;
+        width: 250px;
+        justify-content: space-between;
+
+        label {
+          align-self: center;
+        }
+      }
     }
   }
 

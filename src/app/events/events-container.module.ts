@@ -21,6 +21,8 @@ import { DateTimePickerModule } from 'ng-pick-datetime';
 import { EventEditComponent } from  '../event/edit/event-edit.component';
 import { EventRecapReportComponent } from '../event/recap-report/event-recap-report.component';
 import { ChartModule } from 'angular2-highcharts';
+import { EventsHeaderComponent } from './headers/events-header/events-header.component';
+import { EventsGroupHeaderComponent } from './headers/events-group-header/events-group-header.component';
 
 @NgModule({
   imports: [
@@ -48,7 +50,9 @@ import { ChartModule } from 'angular2-highcharts';
     EventGroupCreateComponent,
     EventGroupEditComponent,
     EventEditComponent,
-    EventRecapReportComponent
+    EventRecapReportComponent,
+    EventsHeaderComponent,
+    EventsGroupHeaderComponent
   ]
 })
 export class EventsModule {

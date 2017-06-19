@@ -20,6 +20,13 @@ export class EventComponent implements OnInit {
   @Input() public event: IEvent;
 
   /**
+   * Event id
+   *
+   * @type number
+   */
+  @Input() public id: number;
+
+  /**
    * is event ended?
    *
    * @type boolean
@@ -160,5 +167,6 @@ export class EventComponent implements OnInit {
   public ngOnInit() {
     this.endTime = moment(this.event.endTime).format('MMMM D, YYYY');
     this.isEnded = moment(this.event.endTime).isBefore(moment());
+    this.id = this.event.id;
   }
 }

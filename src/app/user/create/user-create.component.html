@@ -1,5 +1,5 @@
 <div class="user-container">
-  <a href="javascript:void(0)" [routerLink]="['/admin/users']">Back to all Users</a>
+  <!--<a href="javascript:void(0)" [routerLink]="['/admin/users']">Back to all Users</a>-->
 
   <form
     (ngSubmit)="addUser(userForm.value)"
@@ -8,24 +8,12 @@
 
     <div class="form-group" [formGroup]="userForm">
       <!-- Email -->
-      <div class="form-element">
-        <label for="email">Email/Username*</label>
-        <input
-          id="email"
-          type="email"
-          class="form-control"
-          formControlName="email"
-          placeholder="Email">
-
-        <div ngxErrors="email">
-          <div class="field-error" ngxError="required" when="touched">
-            Field is required
-          </div>
-          <div class="field-error" ngxError="email" when="dirty">
-            Invalid value
-          </div>
-        </div>
-      </div>
+      <form-input
+          [form]="userForm"
+          [controlName]="'email'"
+          [isRequired]="true"
+          [title]="'Email/Username*'">
+      </form-input>
 
        <!--Client Access -->
       <div class="form-element">

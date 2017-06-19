@@ -2,18 +2,16 @@
   display: flex;
   flex-direction: column;
   width: 400px;
-  height: 400px;
   justify-content: space-between;
 
   .form-group {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    height: 250px;
   }
 
   fox-select {
-    width: 300px;
+    width: 400px !important;
   }
 
   fox-button {

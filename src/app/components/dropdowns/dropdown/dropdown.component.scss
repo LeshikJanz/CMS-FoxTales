@@ -3,10 +3,12 @@ $small-height: 26px;
 $mid-width: 117px;
 $mid-height: 38px;
 $big-width: 177px;
-$big-height: 38px;
+$big-height: 44px;
 
 ul.dropdown-menu {
   min-width: $small-width;
+  border-radius: 3px;
+  border: solid 1px #343a40;
 
   li {
     height: 46px;
@@ -34,10 +36,11 @@ ul.dropdown-menu {
   cursor: pointer;
   justify-content: space-between;
   padding-top: 4%;
-  border-radius: 0;
   background-color: #f8f8f8;
-  border: #f8f8f8;
   font-family: AvenirNext;
+  border-radius: 3px;
+  border: solid 1px #343a40;
+  align-items: center;
 
   input {
     background-image: url(../../../../assets/img/search.svg);
@@ -127,7 +130,7 @@ ul.dropdown-menu {
     .fox-caret {
       border-width: 0 2px 2px 0;
       margin-bottom: 5%;
-      margin-right: 1%;
+      margin-right: 5%;
     }
   }
 
@@ -141,15 +144,20 @@ ul.dropdown-menu {
   .btn.drop-button {
     height: $big-height;
     width: $big-width;
-    border-radius: 6px;
+    border-radius: 3px;
     font-size: 16px;
     font-weight: 500;
     line-height: 1.58;
     color: #626d78;
 
+    :active {
+      border: none;
+    }
+
     .fox-caret {
-      border-width: 0 2px 2px 0;
-      margin-bottom: 5%;
+      border-left: 7px solid transparent;
+      border-right: 7px solid transparent;
+      border-top: 10px solid #626d78;
     }
   }
 

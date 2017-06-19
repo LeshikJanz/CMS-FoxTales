@@ -61,6 +61,7 @@ export interface IActionState {
 export interface IClientSocial {
   id: number;
   name: string;
+  iconPath?: string;
 }
 
 /**
