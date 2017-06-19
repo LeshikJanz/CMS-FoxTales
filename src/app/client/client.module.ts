@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Http, HttpModule, RequestOptions, XHRBackend } from '@angular/http';
 import { CustomFormsModule } from 'ng2-validation';
 import { NgxErrorsModule } from '@ultimate/ngxerrors';
+import { DateTimePickerModule } from 'ng-pick-datetime';
 import { ToastrModule, ToastContainerModule } from 'ngx-toastr';
 import { AgmCoreModule } from '@agm/core';
 
@@ -27,6 +28,7 @@ import { FeatureModule } from '../components/feature.module';
     CustomFormsModule,
     HttpModule,
     NgxErrorsModule,
+    DateTimePickerModule,
     ToastrModule.forRoot(),
     ToastContainerModule.forRoot(),
     SharedModule,

@@ -2,8 +2,8 @@
  * Client license interface
  */
 export interface IClientLicense {
-  id: number;
-  clientID: number;
+  id?: number;
+  clientID?: number|string;
   licenseIdNumber: string;
   softwareLicenseTypeId: number;
   tierId: number;
