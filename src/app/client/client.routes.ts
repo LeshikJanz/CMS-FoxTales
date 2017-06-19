@@ -8,8 +8,8 @@ import { ClientLicenseComponent } from './license';
 
 const CLIENT_ROUTES: Routes = [
   { path: 'clients',    component: ClientListComponent },
-  { path: 'client',     component: ClientCreateComponent },
-  { path: 'client/:id', component: ClientEditComponent },
+  { path: 'client',     component: ClientCreateComponent, data: { acl: 'ClientCreate' } },
+  { path: 'client/:id', component: ClientEditComponent, data: { acl: 'BasicClientEdit' } },
   { path: 'client/:id/license', component: ClientLicenseComponent }
 ];
 
