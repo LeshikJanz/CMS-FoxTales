@@ -1,0 +1,6 @@
+<div class="header-container">
+  <div>
+    <a class="hvr-icon-wobble-horizontal" [routerLink]="['/admin/users']">Back to all users</a>
+    <h1 *ngIf="user">{{ user?.firstName + ' ' + user?.lastName }}</h1>
+  </div>
+</div>
