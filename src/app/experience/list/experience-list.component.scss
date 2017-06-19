@@ -2,10 +2,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  height: 80px;
 
   & > div:first-child {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     width: 240px;
     align-items: center;
     justify-content: space-between;
@@ -21,4 +22,10 @@
       background-color: #2fd976;
     }
   }
+}
+
+.dr-actions {
+  display: flex;
+  justify-content: flex-end;
+  height: 80px;
 }
