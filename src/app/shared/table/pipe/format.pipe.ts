@@ -4,6 +4,9 @@ import { ImagePipe } from './image.pipe';
 import { DefaultPipe } from './default.pipe';
 import { DomSanitizer } from '@angular/platform-browser';
 import { FirstNamePipe } from './firstName.pipe';
+import { BooleanPipe } from './boolean.pipe';
+import { TemperaturePipe } from './temperature.pipe';
+import { InternetStatusPipe } from './internet-status.pipe';
 
 /**
  * Format cell pipe
@@ -24,13 +27,6 @@ import { FirstNamePipe } from './firstName.pipe';
   name: 'myFormatCell'
 })
 export class FormatPipe implements PipeTransform {
-  private boolean = {
-    transform: (value: boolean) => `<div class="dot ${value ? 'success' : 'error'}"></div>`
-  };
-
-  private temperature = {
-    transform: (value) => `${value.toFixed(1)}&deg; F`
-  };
 
   /**
    * Constructor
@@ -45,6 +41,9 @@ export class FormatPipe implements PipeTransform {
               private myImage: ImagePipe,
               private myDefault: DefaultPipe,
               private myFirstName: FirstNamePipe,
+              private boolean: BooleanPipe,
+              private temperature: TemperaturePipe,
+              private internetStatus: InternetStatusPipe,
               private date: DatePipe) {
   }
 

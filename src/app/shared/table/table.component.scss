@@ -67,7 +67,7 @@ table th {
     height: 45px;
   }
 
-    div:first-child {
+  div:first-child {
     width: inherit;
     position: relative;
   }
@@ -95,6 +95,7 @@ table td {
 table th:first-child {
   width: 66px;
 }
+
 //
 //table th:nth-child(2) {
 //  width: 17%;
@@ -135,7 +136,6 @@ checkbox {
     left: 4px;
   }
 }
-
 
 .regular-checkbox {
   height: 27px;
@@ -252,16 +252,19 @@ fox-input {
 }
 
 /deep/ {
-  .dot {
+  .circle {
     margin: 0 auto;
     width: 10px;
     height: 10px;
     border-radius: 50%;
 
-    &.error {
+    &.bad {
       background-color: red;
     }
-    &.success {
+    &.medium {
+      background-color: orange;
+    }
+    &.good {
       background-color: green;
     }
   }

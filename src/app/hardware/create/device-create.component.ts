@@ -120,9 +120,6 @@ export class DeviceCreateComponent implements OnInit {
       name: ['', [
         Validators.required
       ]],
-      hubId: ['', [
-        Validators.required
-      ]],
       productId: ['', [
         Validators.required
       ]],

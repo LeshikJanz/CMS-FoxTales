@@ -10,6 +10,9 @@ import { TableComponent, FormatPipe, ImagePipe } from './table';
 import { FeatureModule } from '../components/feature.module';
 import { DefaultPipe } from './table/pipe/default.pipe';
 import { FirstNamePipe } from './table/pipe/firstName.pipe';
+import { TemperaturePipe } from './table/pipe/temperature.pipe';
+import { BooleanPipe } from './table/pipe/boolean.pipe';
+import { InternetStatusPipe } from './table/pipe/internet-status.pipe';
 
 @NgModule({
   imports: [
@@ -41,7 +44,10 @@ import { FirstNamePipe } from './table/pipe/firstName.pipe';
     ImagePipe,
     DefaultPipe,
     FirstNamePipe,
-    DatePipe
+    DatePipe,
+    BooleanPipe,
+    InternetStatusPipe,
+    TemperaturePipe
   ],
   exports: [
     CommonModule,

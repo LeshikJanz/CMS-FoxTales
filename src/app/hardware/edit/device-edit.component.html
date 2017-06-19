@@ -1,6 +1,7 @@
-<div class="container">
+<div class="user-container">
+
   <form
-    (ngSubmit)="addDevice(deviceForm.value)"
+    (ngSubmit)="updateDevice(deviceForm.value)"
     class="form"
     novalidate>
 
@@ -15,6 +16,23 @@
           placeholder="Name">
 
         <div ngxErrors="name">
+          <div ngxError="required" when="touched">
+            Field is required
+          </div>
+        </div>
+      </div>
+
+      <!-- Hub -->
+      <div>
+        <label for="hubId">Hub</label>
+        <input
+          id="hubId"
+          type="text"
+          formControlName="hubId"
+          placeholder="Hub" disabled>
+
+
+        <div ngxErrors="hubId">
           <div ngxError="required" when="touched">
             Field is required
           </div>
@@ -75,7 +93,7 @@
       <button
         type="submit"
         [disabled]="deviceForm.invalid"
-        class="create-button">CREATE
+        class="create-button">UPDATE
       </button>
     </div>
   </form>
