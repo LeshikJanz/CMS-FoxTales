@@ -24,9 +24,9 @@
       </div>
     </div>
     <!-- Location -->
-    <div class="form-element location">
+    <div class="form-element location" id='searchBoxContainer'>
       <label>Location</label>
-      <input id="address" [(ngModel)]="eventAddress" type="text" placeholder="Address">
+      <input id="address" id='searchBox' [(ngModel)]="eventAddress" type="text" placeholder="Address" autocomplete="off">
     </div>
 
     <!-- Tags -->
@@ -37,11 +37,11 @@
         </tag-input-dropdown>
       </tag-input>
 
-      <div ngxErrors="tags">
+      <!--<div ngxErrors="tags">
         <div class="field-error" ngxError="required" when="touched">
           Field is required
         </div>
-      </div>
+      </div>-->
     </div>
     <div class="form-element">
       <label>Notifications</label>
@@ -62,7 +62,8 @@
     </div>
   </div>
   <div class="map">
-    <img src="http://staticmapmaker.com/img/bing.png" alt="Bing map">
+     <div #myMap style='width: 100%; height: 500px;'></div> 
+    <!--<img src="http://staticmapmaker.com/img/bing.png" alt="Bing map">-->
   </div>
 
 
