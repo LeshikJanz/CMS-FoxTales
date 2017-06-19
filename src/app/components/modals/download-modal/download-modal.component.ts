@@ -59,7 +59,10 @@ export class DownloadModalComponent {
    *
    * @type {string}
    */
-  public options: ISwitcher[] = [{id: 1, name: 'Filtered Gallery Result'},{ id: 2, name: 'Entire Gallery'}];
+  public options: ISwitcher[] = [
+    {id: 1, name: 'Filtered Gallery Result'},
+    { id: 2, name: 'Entire Gallery'}
+  ];
 
   /**
    * Run generating zip link

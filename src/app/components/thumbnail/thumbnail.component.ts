@@ -124,13 +124,13 @@ export class ThumbnailComponent implements OnInit {
 
           social
             .api(`blog/${name}/post`, 'post', tumblrRequest)
-            .then((response) => {
-              this.shareSuccessCallback(response);
-            }, (response) => {
-              this.shareErrorCallback(response);
+            .then((successResponse) => {
+              this.shareSuccessCallback(successResponse);
+            }, (errorResponse) => {
+              this.shareErrorCallback(errorResponse);
             });
-        }, (response) => {
-          this.shareErrorCallback(response);
+        }, (errorResponse) => {
+          this.shareErrorCallback(errorResponse);
         });
     } else {
       social

@@ -1,0 +1,11 @@
+<div>
+  <div>CPU: {{log?.cpu}}</div>
+  <div>Memory: {{log?.memory}}</div>
+  <div>Temperature: {{log?.temperature}}</div>
+  <div>Connection speed: Upload - {{log?.connectionSpeed.upload}}, Download {{log?.connectionSpeed.download}}</div>
+  <div>Virus check: {{log?.virusCheck?.message}}</div>
+  <div>Errors:</div>
+  <div *ngFor="let error of log?.errors">
+    {{error.message}}
+  </div>
+</div>

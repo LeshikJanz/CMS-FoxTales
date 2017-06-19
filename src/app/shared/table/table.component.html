@@ -35,12 +35,15 @@
       >
       </td>
       <td *ngIf="actions">
-        <table-dropdown
-          [title]="'Action'"
-          [options]="row.id === userId ? activeUserActions : actions"
-          [size]="'medium'"
-          (typeChanged)="changeAction(row.id, $event)"
-        ></table-dropdown>
+        <table-dropdown *ngIf="actions.length > 1"
+                        [title]="'Action'"
+                        [options]="actions"
+                        [size]="'medium'"
+                        (typeChanged)="changeAction(row.id, $event)">
+        </table-dropdown>
+        <button *ngIf="actions.length === 1"
+                (click)="changeAction(row.id, actions[0])">{{actions[0].title}}
+        </button>
       </td>
     </tr>
     </tbody>

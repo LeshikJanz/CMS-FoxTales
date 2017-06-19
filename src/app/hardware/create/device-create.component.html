@@ -24,11 +24,12 @@
       <!-- Hub -->
       <div>
         <label for="hubId">Hub</label>
-        <select
+        <input
           id="hubId"
-          formControlName="hubId">
-          <option value="test_1">Test 1</option>
-        </select>
+          type="text"
+          formControlName="hubId"
+          placeholder="Hub">
+
 
         <div ngxErrors="hubId">
           <div ngxError="required" when="touched">
