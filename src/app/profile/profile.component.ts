@@ -73,7 +73,7 @@ export class ProfileComponent implements OnInit {
       .subscribe(() => {
         this.toastrService.success('User profile has been updated successfully.');
       });
-    location.reload();
+    // location.reload();
   }
 
   /**
