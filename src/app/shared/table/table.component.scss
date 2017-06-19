@@ -250,3 +250,19 @@ fox-input {
 
   border-right: 8px solid #6a8186;
 }
+
+/deep/ {
+  .dot {
+    margin: 0 auto;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+
+    &.error {
+      background-color: red;
+    }
+    &.success {
+      background-color: green;
+    }
+  }
+}

@@ -1,0 +1,38 @@
+<div>
+  <h2 class="main-label">Device details</h2>
+  <div class="details-container">
+    <div class="details-item"><span>Serial number: </span>{{device?.serialNumber}}</div>
+    <div class="details-item"><span>Hardware version: </span>{{device?.hardwareVersion}}</div>
+    <div class="details-item"><span>PC: </span>{{device?.tabletModel}}</div>
+    <div class="details-item"><span>Camera firmware: </span>{{device?.cameraFirmware}}</div>
+    <div class="details-item"><span>Purchase date: </span>{{device?.purchaseDate}}</div>
+    <div class="details-item"><span>App version: </span>{{device?.appVersion}}</div>
+    <div class="details-item"><span>Camera: </span>{{device?.cameraModel}}</div>
+    <div class="details-item"><span>Lighting: </span>{{device?.lighting}}</div>
+  </div>
+</div>
+<div class="list-container">
+  <div class="list-menu">
+    <div>
+      <h2 class="main-label">Log List</h2>
+    </div>
+    <div class="">
+      <add-button
+        [routerLink]="['/admin/device']"
+        class="creation-button"
+        [value]="'Create New Device'"
+      ></add-button>
+    </div>
+  </div>
+  <data-table
+    [rows]="logs"
+    [cols]="cols"
+    [rowsCount]="totalLogs"
+    [actions]="actions"
+    (sortChanged)="onSortChanged($event)"
+    (limitChanged)="onLimitChanged($event)"
+    (searchChanged)="onSearchChanged($event)"
+    (pageChanged)="onPageChanged($event)"
+    (actionChanged)="onActionChanged($event)">
+  </data-table>
+</div>

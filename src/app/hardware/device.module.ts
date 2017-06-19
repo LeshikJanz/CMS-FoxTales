@@ -14,7 +14,9 @@ import { DEVICE_ROUTING } from './device.routes';
 import { DeviceService } from './device.service';
 import { DeviceListComponent } from './list';
 import { DeviceCreateComponent } from './create';
-// import { UserEditComponent } from './edit';
+import { DeviceDetailsComponent } from './details';
+import { LogDetailsComponent } from './log-details';
+
 import { FeatureModule } from '../components/feature.module';
 
 @NgModule({
@@ -46,7 +48,9 @@ import { FeatureModule } from '../components/feature.module';
   ],
   declarations: [
     DeviceListComponent,
-    DeviceCreateComponent
+    DeviceCreateComponent,
+    DeviceDetailsComponent,
+    LogDetailsComponent
   ]
 })
 export class DeviceModule {
