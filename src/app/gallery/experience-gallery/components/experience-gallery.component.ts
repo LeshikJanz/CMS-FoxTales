@@ -3,6 +3,7 @@ import { IActionState } from '../../../client/client.interface';
 import { ActivatedRoute } from '@angular/router';
 import { GalleryService } from '../../gallery.service';
 import { IGalleryFilter, IGalleryItem } from '../../gallery-item.interface';
+import { ICheckbox } from '../../../components/toggles/checkbox/checkbox.component';
 
 /**
  * Gallery list component
@@ -63,6 +64,17 @@ export class ExperienceGalleryComponent implements OnInit {
   public onSortChanged(event) {
     console.log('onTypeChange');
     console.log(event);
+  }
+  
+  /**
+   * Mark element as checked/unchecked
+   *
+   * item {ICheckbox} - checkbox element
+   * @returns {void}
+   */
+  public onChecked(event: ICheckbox) {
+    this.galleryItems.filter((i: IGalleryItem) => i.id === event.id)[0]
+      .isChecked = event.isChecked;
   }
 
   public ngOnInit() {

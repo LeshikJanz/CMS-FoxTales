@@ -3,6 +3,7 @@ form {
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
+  max-width: 1400px;
 
   .form-group:first-child {
     min-width: 520px;
