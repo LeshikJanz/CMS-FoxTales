@@ -15,7 +15,7 @@ import {
 import { Router, ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { MapsAPILoader } from '@agm/core';
-import {  } from '@types/googlemaps';
+import {} from '@types/googlemaps';
 import hello from 'hellojs';
 import { CustomValidators } from 'ng2-validation';
 import { IClient, IClientSocial } from '../client.interface';
@@ -27,7 +27,7 @@ import { ClientService } from '../client.service';
 @Component({
   selector: 'client-edit',
   templateUrl: './client-edit.component.html',
-  styleUrls: [ './client-edit.component.scss',
+  styleUrls: ['./client-edit.component.scss',
     '../../shared/styles/form-element.scss']
 })
 export class ClientEditComponent implements OnInit {
@@ -101,15 +101,13 @@ export class ClientEditComponent implements OnInit {
    * @param {ClientService} clientService - Client service
    * @returns {void}
    */
-  constructor(
-    private mapsAPILoader: MapsAPILoader,
-    private ngZone: NgZone,
-    private router: Router,
-    private route: ActivatedRoute,
-    private formBuilder: FormBuilder,
-    private toastrService: ToastrService,
-    private clientService: ClientService
-  ) {
+  constructor(private mapsAPILoader: MapsAPILoader,
+              private ngZone: NgZone,
+              private router: Router,
+              private route: ActivatedRoute,
+              private formBuilder: FormBuilder,
+              private toastrService: ToastrService,
+              private clientService: ClientService) {
   }
 
   /**

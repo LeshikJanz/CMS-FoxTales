@@ -7,6 +7,7 @@ export default sandboxOf(CheckboxComponent, { imports: [FormsModule] })
     template: `<checkbox 
                 style="height: 32px; width: 32px; font-size: 12px;"
                 [name]="first"
+                [isChecked]="true"
                 (toggle)="checkbox=$event"></checkbox>
               <br>isChecked: {{checkbox.isChecked}}`
   });

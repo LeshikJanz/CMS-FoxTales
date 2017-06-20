@@ -1,9 +1,39 @@
+.line-group {
+  display: flex;
+  min-width: 500px;
+  max-width: 900px;
+
+  .form-element {
+    width: 100%;
+
+    fox-select {
+      width: 100% !important;
+    }
+
+    input {
+      width: 100% !important;
+    }
+    margin-right: 5%;
+  }
+}
+
 .form-element {
   display: flex;
   position: relative;
   flex-direction: column;
   margin-top: 15px;
   margin-bottom: 20px;
+
+  > p {
+    display: flex;
+    width: 130px;
+    align-items: center;
+    justify-content: space-between;
+
+    > label {
+      margin: 0;
+    };
+  }
 
   > div img {
     height: auto;
@@ -39,6 +69,11 @@
     font-family: OpenSans;
     font-size: 16px;
     color: #3d3d3d;
+  }
+
+  checkbox {
+    width: 32px;
+    height: 32px;
   }
 
   input:focus {

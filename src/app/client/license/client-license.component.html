@@ -1,17 +1,17 @@
 <div class="license-container">
   <form
-    (ngSubmit)="updateLicense()"
-    class="form"
-    novalidate>
+      (ngSubmit)="updateLicense()"
+      class="form"
+      novalidate>
 
     <div class="form-group">
       <!-- Software License -->
       <div class="form-element">
         <label>Software License*</label>
         <fox-select
-          (change)="license.softwareLicenseTypeId = $event.id"
-          [active]="activeLicenseType"
-          [items]="licenseTypes">
+            (change)="license.softwareLicenseTypeId = $event.id"
+            [active]="activeLicenseType"
+            [items]="licenseTypes">
         </fox-select>
       </div>
 
@@ -19,9 +19,9 @@
       <div class="form-element">
         <label>License Tier*</label>
         <fox-select
-          (change)="license.tierId = $event.id"
-          [active]="activeLicenseTier"
-          [items]="licenseTiers">
+            (change)="license.tierId = $event.id"
+            [active]="activeLicenseTier"
+            [items]="licenseTiers">
         </fox-select>
       </div>
 
@@ -29,69 +29,72 @@
       <div class="form-element" [formGroup]="licenseForm">
         <label for="licenseIdNumber">License ID*</label>
         <input
-          id="licenseIdNumber"
-          type="text"
-          class="form-control input"
-          [(ngModel)]="license.licenseIdNumber"
-          formControlName="licenseIdNumber"
-          placeholder="ID number">
+            id="licenseIdNumber"
+            type="text"
+            class="form-control input"
+            [(ngModel)]="license.licenseIdNumber"
+            formControlName="licenseIdNumber"
+            placeholder="ID number">
 
         <div ngxErrors="licenseIdNumber">
-          <div class="field-error"  ngxError="required" when="touched">
+          <div class="field-error" ngxError="required" when="touched">
             Field is required
           </div>
         </div>
       </div>
 
       <!-- Billing -->
-      <div class="form-element">
-        <label>Billing Type*</label>
-        <fox-select
-          (change)="license.billingTypeId = $event.id"
-          [active]="activeLicenseBilling"
-          [items]="licenseBilling">
-        </fox-select>
-      </div>
-
-      <div class="form-element">
-        <label>
-          Auto-renew
-          <input type="checkbox" name="autoRenew" [(ngModel)]="license.autoRenew" [value]="true">
-        </label>
-      </div>
-
+      <div class="line-group">
+        <div class="form-element">
+          <label>Billing Type*</label>
+          <fox-select
+              (change)="license.billingTypeId = $event.id"
+              [active]="activeLicenseBilling"
+              [items]="licenseBilling">
+          </fox-select>
+        </div>
         <!-- Start Date -->
-      <div class="form-element">
-        <label>Start Date*</label>
-        <input
-          name="startDate"
-          class="picker-input"
-          [ngModel]="startDate"
-          [returnObject]="'string'"
-          [(dateTimePicker)]="startDate"
-          [mode]="'dropdown'"
-          [pickerType]="'date'"
-          placeholder="Start Date"
-          readonly>
+        <div class="form-element">
+          <label>Start Date*</label>
+          <input
+              name="startDate"
+              class="picker-input"
+              [ngModel]="startDate"
+              [returnObject]="'string'"
+              [(dateTimePicker)]="startDate"
+              [mode]="'dropdown'"
+              [pickerType]="'date'"
+              placeholder="Start Date"
+              readonly>
+        </div>
+
+        <!-- Months -->
+        <div class="form-element">
+          <label>Number of months*</label>
+          <fox-select
+              (change)="license.numberOfMonths = $event.id"
+              [active]="activeLicenseMonths"
+              [items]="months">
+          </fox-select>
+        </div>
       </div>
 
-      <!-- Months -->
       <div class="form-element">
-        <label>Number of months*</label>
-        <fox-select
-          (change)="license.numberOfMonths = $event.id"
-          [active]="activeLicenseMonths"
-          [items]="months">
-        </fox-select>
+        <p>
+          <checkbox (toggle)="license.autoRenew=$event" [isChecked]="true"></checkbox>
+          <label>Auto-renew</label>
+        </p>
       </div>
+
+
 
       <!-- Hardware -->
       <div class="form-element">
         <label>Hardware License*</label>
         <fox-select
-          (change)="license.hardwareLicenseTypeId = $event.id"
-          [active]="activeLicenseHardware"
-          [items]="licenseHardware">
+            (change)="license.hardwareLicenseTypeId = $event.id"
+            [active]="activeLicenseHardware"
+            [items]="licenseHardware">
         </fox-select>
       </div>
 
@@ -99,15 +102,15 @@
       <div class="form-element" [formGroup]="licenseForm">
         <label for="serial">Serial Number*</label>
         <input
-          id="serial"
-          type="text"
-          class="form-control input"
-          [(ngModel)]="license.serialNumber"
-          formControlName="serialNumber"
-          placeholder="Serial Number">
+            id="serial"
+            type="text"
+            class="form-control input"
+            [(ngModel)]="license.serialNumber"
+            formControlName="serialNumber"
+            placeholder="Serial Number">
 
         <div ngxErrors="serialNumber">
-          <div class="field-error"  ngxError="required" when="touched">
+          <div class="field-error" ngxError="required" when="touched">
             Field is required
           </div>
         </div>
@@ -117,15 +120,15 @@
       <div class="form-element" [formGroup]="licenseForm">
         <label for="billingContactName">Name</label>
         <input
-          id="billingContactName"
-          type="text"
-          class="form-control input"
-          [(ngModel)]="license.billingContactName"
-          formControlName="billingContactName"
-          placeholder="Contact Name">
+            id="billingContactName"
+            type="text"
+            class="form-control input"
+            [(ngModel)]="license.billingContactName"
+            formControlName="billingContactName"
+            placeholder="Contact Name">
 
         <div ngxErrors="billingContactName">
-          <div class="field-error"  ngxError="required" when="touched">
+          <div class="field-error" ngxError="required" when="touched">
             Field is required
           </div>
         </div>
@@ -135,15 +138,15 @@
       <div class="form-element" [formGroup]="licenseForm">
         <label for="billingContactEmail">Email</label>
         <input
-          id="billingContactEmail"
-          type="email"
-          class="form-control input"
-          [(ngModel)]="license.billingContactEmail"
-          formControlName="billingContactEmail"
-          placeholder="Contact Email">
+            id="billingContactEmail"
+            type="email"
+            class="form-control input"
+            [(ngModel)]="license.billingContactEmail"
+            formControlName="billingContactEmail"
+            placeholder="Contact Email">
 
         <div ngxErrors="billingContactEmail">
-          <div class="field-error"  ngxError="required" when="touched">
+          <div class="field-error" ngxError="required" when="touched">
             Field is required
           </div>
         </div>
@@ -153,15 +156,15 @@
       <div class="form-element" [formGroup]="licenseForm">
         <label for="billingContactPhone">Phone</label>
         <input
-          id="billingContactPhone"
-          type="text"
-          class="form-control input"
-          [(ngModel)]="license.billingContactPhone"
-          formControlName="billingContactPhone"
-          placeholder="Contact Phone">
+            id="billingContactPhone"
+            type="text"
+            class="form-control input"
+            [(ngModel)]="license.billingContactPhone"
+            formControlName="billingContactPhone"
+            placeholder="Contact Phone">
 
         <div ngxErrors="billingContactPhone">
-          <div class="field-error"  ngxError="required" when="touched">
+          <div class="field-error" ngxError="required" when="touched">
             Field is required
           </div>
         </div>
@@ -171,15 +174,15 @@
       <div class="form-element" [formGroup]="licenseForm">
         <label for="billingContactAddress">Address</label>
         <input
-          id="billingContactAddress"
-          type="text"
-          class="form-control input"
-          [(ngModel)]="license.billingContactAddress"
-          formControlName="billingContactAddress"
-          placeholder="Contact Address">
+            id="billingContactAddress"
+            type="text"
+            class="form-control input"
+            [(ngModel)]="license.billingContactAddress"
+            formControlName="billingContactAddress"
+            placeholder="Contact Address">
 
         <div ngxErrors="billingContactAddress">
-          <div class="field-error"  ngxError="required" when="touched">
+          <div class="field-error" ngxError="required" when="touched">
             Field is required
           </div>
         </div>
@@ -187,8 +190,8 @@
     </div>
 
     <fox-button
-      [value]="'Done'"
-      [design]="'special'">
+        [value]="'Done'"
+        [design]="'special'">
     </fox-button>
   </form>
 </div>
