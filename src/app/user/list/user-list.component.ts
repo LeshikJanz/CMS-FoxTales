@@ -81,9 +81,9 @@ export class UserListComponent implements OnInit {
    * @type {ITableAction[]}
    */
   public actions: ITableAction[] = [
-    {title: 'Edit', callback: 'editUser'},
-    {title: 'Archive', callback: 'confirmArchive'},
-    {title: 'Unarchive', callback: 'confirmUnarchive'}
+    {title: 'Edit', callback: 'editUser', acl: 'UserEdit' },
+    {title: 'Archive', callback: 'confirmArchive', acl: 'UserEdit' },
+    {title: 'Unarchive', callback: 'confirmUnarchive', acl: 'UserEdit' }
   ];
 
   /**

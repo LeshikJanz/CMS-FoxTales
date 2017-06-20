@@ -53,6 +53,7 @@ export interface IActionState {
   id: number;
   action: string;
   callback?: string;
+  acl?: string;
 }
 
 /**

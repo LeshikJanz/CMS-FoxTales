@@ -35,13 +35,12 @@ export class ClientListComponent implements OnInit {
    * @type {ICol[]}
    */
   public cols: ICol[] = [
-    // { id: 'logo',    title: 'Logo',        format: 'myImage' },
-    { id: 'name',    title: 'Client Name', format: 'myFirstName',  searchable: true },
-    { id: 'address', title: 'Address',     format: 'myDefault',  searchable: true },
-    { id: 'city',    title: 'City',        format: 'myDefault',  searchable: true },
-    { id: 'state',   title: 'State',       format: 'myDefault',  searchable: true },
-    { id: 'email',   title: 'Email',       format: 'myDefault',  searchable: true },
-    { id: 'phone',   title: 'Phone',       format: 'myDefault',  searchable: true }
+    { id: 'name',    title: 'Client Name', format: 'myFirstName', searchable: true },
+    { id: 'address', title: 'Address',     format: 'myDefault',   searchable: true },
+    { id: 'city',    title: 'City',        format: 'myDefault',   searchable: true },
+    { id: 'state',   title: 'State',       format: 'myDefault',   searchable: true },
+    { id: 'email',   title: 'Email',       format: 'myDefault',   searchable: true },
+    { id: 'phone',   title: 'Phone',       format: 'myDefault',   searchable: true }
   ];
 
   /**
@@ -50,7 +49,7 @@ export class ClientListComponent implements OnInit {
    * @type {ITableAction[]}
    */
   public actions: ITableAction[] = [
-    { title: 'Edit', callback: 'editClient' }
+    { title: 'Edit', callback: 'editClient', acl: 'BasicClientEdit' }
   ];
 
   /**
