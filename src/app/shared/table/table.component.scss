@@ -67,7 +67,7 @@ table th {
     height: 45px;
   }
 
-    div:first-child {
+  div:first-child {
     width: inherit;
     position: relative;
   }
@@ -96,6 +96,31 @@ table th:first-child {
   width: 66px;
 }
 
+//
+//table th:nth-child(2) {
+//  width: 17%;
+//}
+//
+//table th:nth-child(3) {
+//  width: 17%;
+//}
+//
+//table th:nth-child(4) {
+//  width: 10%;
+//}
+//
+//table th:nth-child(5) {
+//  width: 10%;
+//}
+//
+//table th:nth-child(6) {
+//  width: 17%;
+//}
+//
+//table th:nth-child(7) {
+//  width: 10%;
+//}
+//
 table th:last-child {
   width: 110px;
   border-right: none;
@@ -112,11 +137,14 @@ checkbox {
   }
 }
 
+<<<<<<< HEAD
+=======
 fox-button {
   height: 36px;
   width: 98px;
 }
 
+>>>>>>> develop
 .regular-checkbox {
   height: 27px;
   width: 27px;
@@ -232,16 +260,19 @@ fox-input {
 }
 
 /deep/ {
-  .dot {
+  .circle {
     margin: 0 auto;
     width: 10px;
     height: 10px;
     border-radius: 50%;
 
-    &.error {
+    &.bad {
       background-color: red;
     }
-    &.success {
+    &.medium {
+      background-color: orange;
+    }
+    &.good {
       background-color: green;
     }
   }

@@ -4,7 +4,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Http, HttpModule, RequestOptions, XHRBackend } from '@angular/http';
 import { CustomFormsModule } from 'ng2-validation';
 import { NgxErrorsModule } from '@ultimate/ngxerrors';
+import { Ng2BootstrapModule } from 'ngx-bootstrap';
 import { ToastrModule, ToastContainerModule } from 'ngx-toastr';
+import { DateTimePickerModule } from 'ng-pick-datetime'
 
 import { SharedModule } from '../shared';
 import { HttpService, AuthService, AuthRequestOptions } from '../shared/core';
@@ -15,6 +17,7 @@ import { DeviceService } from './device.service';
 import { DeviceListComponent } from './list';
 import { DeviceCreateComponent } from './create';
 import { DeviceDetailsComponent } from './details';
+import { DeviceEditComponent } from './edit';
 import { LogDetailsComponent } from './log-details';
 
 import { FeatureModule } from '../components/feature.module';
@@ -31,7 +34,9 @@ import { FeatureModule } from '../components/feature.module';
     ToastContainerModule.forRoot(),
     SharedModule,
     DEVICE_ROUTING,
-    FeatureModule
+    FeatureModule,
+    Ng2BootstrapModule,
+    DateTimePickerModule
   ],
   providers: [
     {
@@ -50,6 +55,7 @@ import { FeatureModule } from '../components/feature.module';
     DeviceListComponent,
     DeviceCreateComponent,
     DeviceDetailsComponent,
+    DeviceEditComponent,
     LogDetailsComponent
   ]
 })

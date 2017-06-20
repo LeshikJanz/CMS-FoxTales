@@ -52,7 +52,7 @@ export class DeviceDetailsComponent implements OnInit {
     {id: 'memory', title: 'Memory', format: 'default', searchable: false},
     {id: 'temperature', title: 'Temperature', format: 'temperature', searchable: false},
     {id: 'cpu', title: 'CPU', format: 'default', searchable: false},
-    {id: 'internetStatus', title: 'Internet', format: 'default', searchable: false}
+    {id: 'internetStatus', title: 'Internet', format: 'internetStatus', searchable: false}
   ];
 
   /**

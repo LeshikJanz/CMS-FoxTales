@@ -1,5 +1,16 @@
 <div>
-  <h2 class="main-label">Device details</h2>
+  <div class="list-menu">
+    <div>
+      <h2 class="main-label">Device details</h2>
+    </div>
+    <div class="">
+      <add-button
+        [routerLink]="['/admin/device', device?.id, 'edit']"
+        class="creation-button"
+        [value]="'Edit Device'"
+      ></add-button>
+    </div>
+  </div>
   <div class="details-container">
     <div class="details-item"><span>Serial number: </span>{{device?.serialNumber}}</div>
     <div class="details-item"><span>Hardware version: </span>{{device?.hardwareVersion}}</div>
@@ -15,13 +26,6 @@
   <div class="list-menu">
     <div>
       <h2 class="main-label">Log List</h2>
-    </div>
-    <div class="">
-      <add-button
-        [routerLink]="['/admin/device']"
-        class="creation-button"
-        [value]="'Create New Device'"
-      ></add-button>
     </div>
   </div>
   <data-table
