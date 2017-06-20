@@ -44,7 +44,7 @@ export class DeviceService {
    */
   public getDevice(id: string): Observable<Device> {
     return this.http.get(`${process.env.API_URL}/Devices/${id}`)
-      .map((response: Response) => <Device> response.json());
+      .map((response: Response) => <Device> response.json()[0]);
   }
 
   /**
@@ -94,8 +94,8 @@ export class DeviceService {
    * @param {Device} device - Device
    * @returns {Observable<Device>} - Device
    */
-  public updateDevice(device: Device): Observable<Device> {
-    return this.http.put(`${process.env.API_URL}/Devices/${device.id}`, device)
+  public updateDevice(device: IDevice, id: number): Observable<Device> {
+    return this.http.put(`${process.env.API_URL}/Devices/${id}/update`, device)
       .map((response: Response) => <Device> response.json());
   }
 

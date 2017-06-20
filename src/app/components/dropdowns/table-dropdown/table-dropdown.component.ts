@@ -1,4 +1,5 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import { PermissionService } from '../../../shared/core';
 import { ITableAction } from '../../../shared/table/action.interface';
 
 /**
@@ -10,7 +11,7 @@ import { ITableAction } from '../../../shared/table/action.interface';
   styleUrls: ['table-dropdown.component.scss']
 })
 
-export class TableDropDownComponent {
+export class TableDropDownComponent implements OnInit {
   @Input() public options: ITableAction[];
 
   @Input() public size: string = 'small';
@@ -18,6 +19,20 @@ export class TableDropDownComponent {
   @Input() public title: string = 'DropDown';
 
   @Output() public typeChanged: EventEmitter<ITableAction> = new EventEmitter();
+
+  constructor(private permission: PermissionService) {
+  }
+
+  public ngOnInit(): void {
+    this.options = this.options.filter((option: ITableAction) => {
+      if (option.acl) {
+        return this.permission.isAllowed(option.acl);
+      }
+
+      return true;
+    });
+  }
+
 
   public onTypeChanged(elem: ITableAction) {
     this.typeChanged.emit(elem);

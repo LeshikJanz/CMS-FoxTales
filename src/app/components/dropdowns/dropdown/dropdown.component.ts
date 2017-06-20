@@ -1,4 +1,5 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import { PermissionService } from '../../../shared/core';
 import { IActionState } from '../../../client/client.interface';
 
 /**
@@ -10,7 +11,7 @@ import { IActionState } from '../../../client/client.interface';
   styleUrls: ['dropdown.component.scss']
 })
 
-export class DropDownComponent {
+export class DropDownComponent implements OnInit {
   @Input() public options: IActionState[];
 
   @Input() public size: string = 'small';
@@ -20,6 +21,21 @@ export class DropDownComponent {
   @Output() public typeChanged: EventEmitter<IActionState> = new EventEmitter();
 
   public curentAction = null;
+
+  constructor(private permission: PermissionService) {
+  }
+
+  public ngOnInit(): void {
+    if(this.options) {
+      this.options = this.options.filter((option: IActionState) => {
+        if (option.acl) {
+          return this.permission.isAllowed(option.acl);
+        }
+
+        return true;
+      });
+    }
+  }
 
   public onTypeChanged(option: IActionState) {
     this.curentAction = option.action;

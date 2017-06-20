@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ICol, ITableAction } from '../../shared/table';
-import { IDevice, IDeviceFilter, IDeviceList } from '../device.interface';
 import { Device } from '../device';
+import { IDevice, IDeviceFilter, IDeviceList } from '../device.interface';
 import { DeviceService } from '../device.service';
 import { sortTypes } from './sort-type.enum';
 
@@ -12,7 +12,7 @@ import { sortTypes } from './sort-type.enum';
 @Component({
   selector: 'device-list',
   templateUrl: './device-list.component.html',
-  styleUrls: [ './device-list.component.scss']
+  styleUrls: ['./device-list.component.scss']
 })
 export class DeviceListComponent implements OnInit {
   /**
@@ -35,14 +35,15 @@ export class DeviceListComponent implements OnInit {
    * @type {ICol[]}
    */
   public cols: ICol[] = [
-    { id: 'name',      title: 'Name',  format: 'default',  searchable: true },
-    { id: 'type',      title: 'Type',  format: 'default',  searchable: false },
-    { id: 'health',      title: 'Health',  format: 'boolean',  searchable: false },
-    { id: 'cpu',      title: 'CPU',  format: 'default',  searchable: false },
-    { id: 'memory',      title: 'Memory',  format: 'default',  searchable: false },
-    { id: 'temperature',      title: 'Temperature',  format: 'temperature',  searchable: false },
-    { id: 'errors',      title: 'App errors',  format: 'boolean',  searchable: false },
-    { id: 'virusCheck',      title: 'System errors',  format: 'boolean',  searchable: false }
+    {id: 'name', title: 'Name', format: 'default', searchable: true},
+    {id: 'type', title: 'Type', format: 'default', searchable: false},
+    {id: 'health', title: 'Health', format: 'boolean', searchable: false},
+    {id: 'cpu', title: 'CPU', format: 'default', searchable: false},
+    {id: 'memory', title: 'Memory', format: 'default', searchable: false},
+    {id: 'temperature', title: 'Temperature', format: 'temperature', searchable: false},
+    {id: 'errors', title: 'App errors', format: 'boolean', searchable: false},
+    {id: 'virusCheck', title: 'System errors', format: 'boolean', searchable: false},
+    {id: 'internetStatus', title: 'Internet status', format: 'internetStatus', searchable: false}
   ];
 
   /**
@@ -51,8 +52,8 @@ export class DeviceListComponent implements OnInit {
    * @type {ITableAction[]}
    */
   public actions: ITableAction[] = [
-    { title: 'Edit',      callback: 'editDevice' },
-    { title: 'Assign',   callback: 'editDevice' }
+    {title: 'Edit', callback: 'editDevice'},
+    {title: 'Assign', callback: 'editDevice'}
   ];
 
   /**
@@ -79,10 +80,8 @@ export class DeviceListComponent implements OnInit {
    * @param {DeviceService} deviceService - Device service
    * @returns {void}
    */
-  constructor(
-    private router: Router,
-    private deviceService: DeviceService
-  ) {
+  constructor(private router: Router,
+              private deviceService: DeviceService) {
   }
 
   /**

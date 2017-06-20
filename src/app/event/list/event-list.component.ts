@@ -87,13 +87,13 @@ export class EventListComponent implements OnInit {
    * @type {ITableAction[]}
    */
   public eventActions: ITableAction[] = [
-    { id: 1, title: 'EDIT', callback: 'onEdit' },
-    { id: 2, title: 'CLONE', callback: 'onClone' },
-    { id: 3, title: 'DELETE', callback: 'onDelete' },
-    { id: 4, title: 'ADD TO GROUP', callback: 'onAddToGroup' },
-    { id: 5, title: 'ASSIGN USERS', callback: 'onAssignUsers' },
-    {id: 6, title: 'RECAP REPORT', callback: 'onRecapReport'},
-    {id: 7, title: 'EXPORT CRM DATA', callback: 'onExportCrmData'}
+    { id: 1, title: 'EDIT', callback: 'onEdit', acl: 'CreateEditEvents' },
+    { id: 2, title: 'CLONE', callback: 'onClone', acl: 'CloneEvents' },
+    { id: 3, title: 'DELETE', callback: 'onDelete', acl: 'DeleteEvents' },
+    { id: 4, title: 'ADD TO GROUP', callback: 'onAddToGroup', acl: 'CreateEditEvents' },
+    { id: 5, title: 'ASSIGN USERS', callback: 'onAssignUsers', acl: 'CreateEditEvents' },
+    {id: 6, title: 'RECAP REPORT', callback: 'onRecapReport', acl: 'ViewSendRecapReport' },
+    {id: 7, title: 'EXPORT CRM DATA', callback: 'onExportCrmData', acl: 'ExportCRMData' }
   ];
 
   /**

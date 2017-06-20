@@ -1,6 +1,6 @@
 .ng-select-container {
   width: inherit;
-  height: inherit;
+  height: 65px;
   margin-bottom: inherit;
   border-radius: inherit;
   border: inherit;
@@ -77,9 +77,11 @@ ng-select {
   height: inherit;
   width: inherit;
   font-size: 18px;
-  border-radius: 5px;
-  border-style: double;
-  border-color: #b4b4b4;
+  border: none;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 :host /deep/ .ui-select-search {

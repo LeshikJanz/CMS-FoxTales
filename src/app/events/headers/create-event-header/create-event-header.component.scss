@@ -1,0 +1,27 @@
+.header-container {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  height: 100px;
+
+  > div {
+    a {
+      margin-left: 20px;
+      color: black;
+    }
+
+    h1 {
+      align-self: flex-start;
+    }
+  }
+
+  add-button {
+    background-color: #2fd976;
+    width: 254px;
+    height: 54px;
+    font-size: 16px;
+    border-radius: 6px;
+    align-self: center;
+  }
+}

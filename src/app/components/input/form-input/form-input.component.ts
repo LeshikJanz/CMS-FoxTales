@@ -1,5 +1,5 @@
 import { Component, OnChanges, Input, SimpleChanges } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormGroup, NgModel } from '@angular/forms';
 
 @Component({
   selector: 'form-input',
@@ -15,6 +15,14 @@ export class FormInputComponent {
    */
   @Input()
   public form: FormGroup;
+
+  /**
+   * ngModel
+   *
+   * @tyoe {ngModel}
+   */
+  @Input()
+  public ngModel: NgModel;
 
   /**
    * Form control name
@@ -55,4 +63,9 @@ export class FormInputComponent {
    */
   @Input()
   public errorMsg: string = 'Invalid value';
+
+  public ngOnInit() {
+    console.log('this.ngModel');
+    console.log(this.ngModel);
+  }
 }
