@@ -64,8 +64,6 @@ export class GalleryService {
    * @returns {Observable<Response>} - Response
    */
   public setVisibility(id: number, isVisible: boolean): Observable<Response> {
-    return this.http.post(`${process.env.API_URL}/Media/${id}/setfeedvisibility`, {
-      status: isVisible
-    });
+    return this.http.post(`${process.env.API_URL}/Media/${id}/setfeedvisibility/${isVisible}`, '');
   }
 }
