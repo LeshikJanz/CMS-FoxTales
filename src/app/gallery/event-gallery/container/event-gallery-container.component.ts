@@ -103,13 +103,13 @@ export class EventGalleryContainerComponent implements OnInit {
   /**
    * Handler gallery type changing
    *
-   * @param {string} event
+   * @param {number} event
    * @return {void}
    */
   public onTypeChange(event) {
-    console.log('onTypeChange');
-    console.log(event);
-    this.selectedType = event;
+    if(event <= 3) {
+      this.selectedType = event;
+    }
   }
 
   /**
