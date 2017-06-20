@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 
 export default sandboxOf(SwitcherComponent, { imports: [FormsModule] })
   .add('switcher enabled', {
-    template: `<switcher style="padding: 10px" 
+    template: `<switcher style="padding: 10px" [type]="1"
                 [options]="options" (toggle)="value=$event"></switcher>
                You chose: {{ value}}`,
     context: {
