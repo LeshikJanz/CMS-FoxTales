@@ -15,6 +15,7 @@ export class ContentGalleryComponent {
  @ViewChild('staticTabs') public staticTabs: TabsetComponent;
  public staticModal: any;
  public experience: any;
+ public gallerySwitchOptions: any;
 
   constructor(private router: Router,
               private experienceBuilderService: ExperienceBuilderService) {
@@ -24,6 +25,11 @@ export class ContentGalleryComponent {
                 {id:2, name: 'Stretch'},
                 {id:3, name: 'Fixed Scroll'}
                 ];
+              
+              this.gallerySwitchOptions = [
+                {id: 4, name: 'Public'},
+                {id: 5, name: 'Private'}
+              ]
               }
 
  public Next() {

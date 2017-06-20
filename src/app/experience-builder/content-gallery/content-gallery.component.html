@@ -5,7 +5,7 @@
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title pull-left">Title of COntent Gallery Builder</h4>
+        <h4 class="modal-title pull-left">Title of Content Gallery Builder</h4>
         <button type="button" class="close pull-right" aria-label="Close" (click)="staticModal.hide()">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -25,7 +25,7 @@
           </tab>
           <tab heading='Part 2'>
             <h3>Add Gallery Hashtags</h3>
-            import brand tags here
+            build gallery hashtag adder
             <br>
             <h3>Provide A Custom URL?</h3>
             <ui-switch></ui-switch>
@@ -35,17 +35,23 @@
             <ui-switch></ui-switch>
             <hr>
             <h3>Public or Private Gallery?</h3>
-            <!--<switcher [options]="gallerySwitchOptions" ></switcher>-->
+            <switcher [options]="gallerySwitchOptions" ></switcher>
+            <br>
             <button [type]="'tertiary'" [value]="'Finish'" (click)="Finish()" >Next</button>
           </tab>
               <tab heading='Part 3'>
             <h3>Upload Background Image</h3>
+            <h4>Upload Image</h4>
            <upload-button></upload-button>
            <h3>Different Background for Mobile?</h3>
+           <ui-switch></ui-switch>
             <upload-button></upload-button>
             <h3>Background Style</h3>
            <switcher style="padding: 10px" [options]="options" ></switcher>
            <br>
+           <h3>Where Would You Like The Message Oriented?</h3>
+           <orientation-selector></orientation-selector>
+
             <button [type]="'tertiary'" [value]="'Finish'" (click)="Finish()" >Next</button>
           </tab>
                  

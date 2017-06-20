@@ -106,6 +106,7 @@ import { BasicColumnComponent } from './high-charts/basic-column/basic-column.co
 import { BasicDetailsRunTimesComponent } from './experience-builder/basic-details-run-times/basic-details-run-times.component';
 import { DateTimePickerModule } from 'ng-pick-datetime';
 import { UiSwitchComponent } from './toggles/toggle-switch/toggle-switch.component';
+import { OrientationSelectorComponent } from './toggles/orientation-selector/orientation-selector.component'
 
 @NgModule({
   imports: [
@@ -188,7 +189,8 @@ import { UiSwitchComponent } from './toggles/toggle-switch/toggle-switch.compone
     FormInputComponent,
     ProfileNavigationComponent,
     BasicDetailsRunTimesComponent,
-    UiSwitchComponent
+    UiSwitchComponent,
+    OrientationSelectorComponent
   ],
   exports: [
     CreationButtonComponent,
@@ -239,7 +241,8 @@ import { UiSwitchComponent } from './toggles/toggle-switch/toggle-switch.compone
     FormInputComponent,
     ProfileNavigationComponent,
     BasicDetailsRunTimesComponent,
-    UiSwitchComponent
+    UiSwitchComponent,
+    OrientationSelectorComponent
   ]
 })
 
