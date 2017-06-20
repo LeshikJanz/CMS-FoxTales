@@ -38,6 +38,8 @@ export class ThumbnailComponent implements OnInit {
 
   @Output() public favorite: EventEmitter<IGalleryItem> = new EventEmitter();
 
+  @Output() public visible: EventEmitter<IGalleryItem> = new EventEmitter();
+
   @Output() public confirm: EventEmitter<any> = new EventEmitter();
 
   @Output() public decline: EventEmitter<any> = new EventEmitter();
@@ -69,6 +71,13 @@ export class ThumbnailComponent implements OnInit {
     this.item.favorite = !this.item.favorite;
     this.galleryService.makeFavorite(this.item.id, this.item.favorite)
       .subscribe(() => console.log('favorite is succeeded'));
+  }
+
+  public setVisibility() {
+    this.visible.emit(this.item);
+    this.item.visible = !this.item.visible;
+    this.galleryService.setVisibility(this.item.id, this.item.visible)
+      .subscribe(() => console.log('visibility is succeeded'));
   }
 
   public downloadItem(item: IGalleryItem) {
