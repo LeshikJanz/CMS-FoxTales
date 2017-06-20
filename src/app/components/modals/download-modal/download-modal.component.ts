@@ -34,6 +34,13 @@ export class DownloadModalComponent {
   public zipLink: string;
 
   /**
+   * Download type (Filtered/entire)
+   *
+   * @type {number}
+   */
+  public downloadType: number;
+
+  /**
    * Media items for downloading
    *
    * @type {number[]}
@@ -60,8 +67,8 @@ export class DownloadModalComponent {
    * @type {string}
    */
   public options: ISwitcher[] = [
-    {id: 1, name: 'Filtered Gallery Result'},
-    { id: 2, name: 'Entire Gallery'}
+    { id: 1, name: 'Filtered Gallery Result' },
+    { id: 2, name: 'Entire Gallery' }
   ];
 
   /**
@@ -122,9 +129,27 @@ export class DownloadModalComponent {
    *
    * @return {void}
    */
-  public onSwitch(event: string) {
-    console.log('onSwitch');
-    console.log(event);
+  public onSwitch(event: number) {
+    this.downloadType = event;
+  }
+
+  /**
+   * Filter items according to current filter
+   *
+   * @return {void}
+   */
+  public getIdsForDownload() {
+    let mediaIds = [];
+    if (this.downloadType === 1) {
+      mediaIds = this.galleryItems.map((gi: IGalleryItem) => {
+        if (gi.isChecked) {
+          return gi.id
+        }
+      }).filter((i: any) => i)
+    }
+
+    if (this.downloadType === 2) mediaIds = this.galleryItems.map((gi: IGalleryItem) => gi.id);
+    return mediaIds;
   }
 
   /**
@@ -132,10 +157,14 @@ export class DownloadModalComponent {
    *
    * @return {void}
    */
-  public startDownload() {
+  public
+  startDownload() {
     this.loading = true;
     this.isEmailSent = true;
-    const mediaIds = this.galleryItems.map((gi: IGalleryItem) => gi.id);
+    const mediaIds = this.getIdsForDownload();
+
+    console.log('mediaIds');
+    console.log(mediaIds);
 
     this.galleryService.getArchive(mediaIds)
       .subscribe((link: any) => {

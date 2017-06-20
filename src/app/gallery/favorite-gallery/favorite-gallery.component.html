@@ -29,7 +29,7 @@
       ></fox-button>
 
     </div>
-    <gallery-item-list (favorite)="onFavorite($event)" [galleryItems]="galleryItems"></gallery-item-list>
+    <gallery-item-list (favorite)="onFavorite($event)" (toggle)="onChecked($event)" [galleryItems]="galleryItems"></gallery-item-list>
     <download-modal [galleryItems]="galleryItems" #atgModal></download-modal>
   </div>
 
