@@ -13,6 +13,9 @@
 
     h1 {
       align-self: flex-start;
+      > div {
+        display: inline-block;
+      }
     }
   }
 

@@ -3,5 +3,9 @@
   <clients-header *ngSwitchCase="'/admin/clients'"></clients-header>
   <client-create-header *ngSwitchCase="'/admin/client'"></client-create-header>
   <user-create-header *ngSwitchCase="'/admin/user'"></user-create-header>
+  <client-edit-header *ngIf="curLocation && curLocation.indexOf('/admin/client/') >= 0">
+  </client-edit-header>
+  <user-edit-header *ngIf="curLocation && curLocation.indexOf('/admin/user/') >= 0">
+  </user-edit-header>
 </div>
 <admin-navigation></admin-navigation>

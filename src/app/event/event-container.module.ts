@@ -19,7 +19,6 @@ import {
 import { EventService } from './event.service';
 import { FavoriteGalleryComponent } from '../gallery/favorite-gallery/favorite-gallery.component';
 import { EventNavigationComponent } from "../components/navigations/event-navigation/event-navigation.component";
-import { EventHeaderComponent } from "./headers/event-header/event-header.component";
 
 @NgModule({
   imports: [
@@ -41,8 +40,7 @@ import { EventHeaderComponent } from "./headers/event-header/event-header.compon
     GalleryListComponent,
     EventGalleryComponent,
     EventGalleryContainerComponent,
-    EventNavigationComponent,
-    EventHeaderComponent
+    EventNavigationComponent
   ],
   exports: [
     ExperienceListComponent,

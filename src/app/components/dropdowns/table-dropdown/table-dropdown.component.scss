@@ -35,10 +35,10 @@ ul.dropdown-menu {
   cursor: pointer;
   justify-content: space-between;
   padding-top: 4%;
+  border-radius: 0;
   background-color: #f8f8f8;
+  border: #f8f8f8;
   font-family: AvenirNext;
-  border-radius: 3px;
-  border: solid 1px #343a40 !important;
 
   :focus {
     border-color: #66afe9;
@@ -116,7 +116,7 @@ ul.dropdown-menu {
     .fox-caret {
       border-width: 0 2px 2px 0;
       margin-bottom: 5%;
-      margin-right: 5%;
+      margin-right: 1%;
     }
   }
 
@@ -141,7 +141,7 @@ ul.dropdown-menu {
     .fox-caret {
       border-width: 0 2px 2px 0;
       margin-bottom: 5%;
-      margin-right: 5%;
+      margin-right: 1%;
     }
   }
 

@@ -10,6 +10,7 @@ import { ClientEditHeaderComponent } from './headers/client-edit-header/client-e
 import { ClientCreateHeaderComponent } from './headers/client-create-header/client-create-header.component';
 import { UserCreateHeaderComponent } from './headers/user-create-header/user-create-header.component';
 import { SharedModule } from '../shared/shared.module';
+import { UserEditHeaderComponent } from './headers/user-edit-header/user-edit-header.component';
 
 @NgModule({
   imports: [
@@ -24,7 +25,8 @@ import { SharedModule } from '../shared/shared.module';
     ClientsHeaderComponent,
     ClientCreateHeaderComponent,
     ClientEditHeaderComponent,
-    UserCreateHeaderComponent
+    UserCreateHeaderComponent,
+    UserEditHeaderComponent
   ]
 })
 export class AdminModule {

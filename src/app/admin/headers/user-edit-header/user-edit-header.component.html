@@ -1,0 +1,10 @@
+<div class="header-container">
+  <div>
+    <a class="hvr-icon-wobble-horizontal" [routerLink]="['/admin/users']">Back to all users</a>
+    <h1 *ngIf="user">{{ user?.firstName }}&nbsp;{{ user?.lastName }}</h1>
+  </div>
+  <add-button
+      [routerLink]="['/admin/user']"
+      [value]="'Create New User'"
+  ></add-button>
+</div>
