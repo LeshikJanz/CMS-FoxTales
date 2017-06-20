@@ -9,38 +9,48 @@ import { TabsetComponent } from 'ngx-bootstrap';
 })
 
 export class ContentGalleryComponent {
- public options: any;
- public galleryName: string;
-
- @ViewChild('staticTabs') public staticTabs: TabsetComponent;
- public staticModal: any;
- public experience: any;
- public gallerySwitchOptions: any;
+  @ViewChild('staticTabs') public staticTabs: TabsetComponent;
+  public options: any;
+  public galleryName: string;
+  public staticModal: any;
+  public experience: any;
+  public gallerySwitchOptions: any;
+  public hashtags: any[];
+  public customUrlChecked: boolean = false;
+  public customUrl: any;
+  public galleryDownloadChecked: boolean = false;
+  public mobileBackgroundChecked: boolean = false;
+  public onItemAdded: any;
 
   constructor(private router: Router,
               private experienceBuilderService: ExperienceBuilderService) {
               this.experience = this.experienceBuilderService.experience;
               this.options = [
                 {id: 1, name: 'Tiled' },
-                {id:2, name: 'Stretch'},
-                {id:3, name: 'Fixed Scroll'}
+                {id: 2, name: 'Stretch'},
+                {id: 3, name: 'Fixed Scroll'}
                 ];
-              
+
               this.gallerySwitchOptions = [
                 {id: 4, name: 'Public'},
                 {id: 5, name: 'Private'}
-              ]
+              ];
               }
 
- public Next() {
-  console.log('next function');
- };
+  public createTab1() {
+    console.log('create tab1 function');
+  };
 
- public Finish() {
-  console.log(' finish function ');
- };
+  public createTab2() {
+    console.log('create tab2 function ');
+  };
 
- public checkedContentOption(event) {
-  console.log(event);
-}
+  public createTab3() {
+    console.log('finish tab');
+  }
+
+  public checkedContentOption(event) {
+    console.log(event);
+  }
+
 }

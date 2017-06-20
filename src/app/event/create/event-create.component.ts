@@ -8,7 +8,7 @@ import { MOCK_TAGS } from '../tag.mock';
 import { DateTimePickerModule } from 'ng-pick-datetime';
 import * as moment from 'moment';
 import { ISwitcher } from '../../components/toggles/switcher/switcher.interface';
-import { } from 'bingmaps/scripts/MicrosoftMaps/Microsoft.Maps.All';
+import {  } from 'bingmaps/scripts/MicrosoftMaps/Microsoft.Maps.All';
 
 @Component({
   selector: 'event-create',
@@ -82,7 +82,7 @@ export class EventCreateComponent implements OnInit {
     let map = this.mapAddress = new Microsoft.Maps.Map(this.myMap.nativeElement, {
       credentials: process.env.BING_KEY
     });
-    
+
     Microsoft.Maps.loadModule('Microsoft.Maps.AutoSuggest', () => {
       let manager = new Microsoft.Maps.AutosuggestManager({ map: map });
       manager.attachAutosuggest('#searchBox', '#searchBoxContainer', (result) => {
@@ -137,11 +137,11 @@ export class EventCreateComponent implements OnInit {
    * @param event - Event
    * @returns {void}
    */
-  public addEvent(event): void { 
-    if(event.tags === undefined){
+  public addEvent(event): void {
+    if (event.tags === undefined) {
       event.tags = [];
     }
- 
+
     event.tags = event.tags.map((tag: ITag) => tag.name);
 
     switch (this.notification) {
@@ -151,13 +151,16 @@ export class EventCreateComponent implements OnInit {
       case 2:
         event['sendNotifications'] = false;
         break;
+      default:
+        event['sendNotifications'] = true;
+        break;
     }
     event.address = this.mapAddress.address;
     event.latitude = this.mapAddress.latitude;
     event.longitude = this.mapAddress.longitude;
     event['startTime'] = moment(this.startMomentDate, 'MMM DD').format();
     event['endTime'] = moment(this.endMomentDate, 'MMM DD').format();
- 
+
     this.event.createEvent(event).subscribe((response) => {
       console.log(response);
       this.router.navigate(['/events/events']);
@@ -178,8 +181,8 @@ export class EventCreateComponent implements OnInit {
         Validators.required
       ]],
       tags: ['', this.selectedTags],
-      startDate: ['',[Validators.required]],
-      endDate: ['',[Validators.required]]
+      startDate: ['', [Validators.required]],
+      endDate: ['', [Validators.required]]
     });
 
     return this;

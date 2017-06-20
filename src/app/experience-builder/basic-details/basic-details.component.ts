@@ -28,7 +28,7 @@ export class BasicDetailsComponent implements OnInit {
 
   constructor(private router: Router,
               private experienceBuilderService: ExperienceBuilderService,
-              private _location: Location,
+              public _location: Location,
               private route: ActivatedRoute) {
               }
 
@@ -37,6 +37,9 @@ export class BasicDetailsComponent implements OnInit {
   }
 
   public Next() {
+    if (this.defaultTags === undefined) {
+        this.defaultTags = [];
+    }
     this.defaultTags = this.defaultTags.map((tag: ITag) => {
       if (tag.name) {
         return tag.name;
@@ -118,9 +121,8 @@ export class BasicDetailsComponent implements OnInit {
     });
   };
 
-  public addRunTimes(){
-    console.log('add run time')
+  public addRunTimes() {
+    console.log('add run time');
   }
-
 
 }

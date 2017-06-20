@@ -15,58 +15,64 @@ const UI_SWITCH_CONTROL_VALUE_ACCESSOR: any = {
 })
 export class UiSwitchComponent implements ControlValueAccessor {
   private onTouchedCallback = (v: any) => {
-  };
+  }
   private onChangeCallback = (v: any) => {
-  };
+  }
 
   private _checked: boolean;
   private _disabled: boolean;
   private _reverse: boolean;
 
-  @Input() set checked(v: boolean) {
+  @Input() public set checked(v: boolean) {
     this._checked = v !== false;
   }
 
-  get checked() {
+  public get checked() {
     return this._checked;
   }
 
-  @Input() set disabled(v: boolean) {
+  @Input() public set disabled(v: boolean) {
     this._disabled = v !== false;
   };
 
-  get disabled() {
+  public get disabled() {
     return this._disabled;
   }
 
-  @Input() set reverse(v: boolean) {
+  @Input() public set reverse(v: boolean) {
     this._reverse = v !== false;
   };
 
-  get reverse() {
+  public get reverse() {
     return this._reverse;
   }
 
-  @Input() size: string = 'medium';
-  @Output() change = new EventEmitter<boolean>();
-  @Input() color: string = 'rgb(100, 189, 99)';
-  @Input() switchOffColor: string = '';
-  @Input() switchColor: string = '#fff';
-  defaultBgColor: string = '#fff';
-  defaultBoColor: string = '#dfdfdf';
+  @Input() public size: string = 'medium';
+  @Output() public change = new EventEmitter<boolean>();
+  @Input() public color: string = 'rgb(100, 189, 99)';
+  @Input() public switchOffColor: string = '';
+  @Input() public switchColor: string = '#fff';
+  public defaultBgColor: string = '#fff';
+  public defaultBoColor: string = '#dfdfdf';
 
-  getColor(flag) {
-    if (flag === 'borderColor') return this.defaultBoColor;
+  public getColor(flag) {
+    if (flag === 'borderColor') {
+        return this.defaultBoColor;
+    }
     if (flag === 'switchColor') {
-      if (this.reverse) return !this.checked ? this.switchColor : this.switchOffColor || this.switchColor;
+      if (this.reverse) {
+        return !this.checked ? this.switchColor : this.switchOffColor || this.switchColor;
+      } 
       return this.checked ? this.switchColor : this.switchOffColor || this.switchColor;
     }
-    if (this.reverse)  return !this.checked ? this.color : this.defaultBgColor;
+      if (this.reverse) {
+        return !this.checked ? this.color : this.defaultBgColor;
+      }     
     return this.checked ? this.color : this.defaultBgColor;
-  }
+  };
 
   @HostListener('click')
-  onToggle() {
+  public onToggle() {
     if (this.disabled) return;
     this.checked = !this.checked;
     this.change.emit(this.checked);
@@ -74,17 +80,17 @@ export class UiSwitchComponent implements ControlValueAccessor {
     this.onTouchedCallback(this.checked);
   }
 
-  writeValue(obj: any): void {
+  public writeValue(obj: any): void {
     if (obj !== this.checked) {
       this.checked = !!obj;
     }
   }
 
-  registerOnChange(fn: any) {
+  public registerOnChange(fn: any) {
     this.onChangeCallback = fn;
   }
 
-  registerOnTouched(fn: any) {
+  public registerOnTouched(fn: any) {
     this.onTouchedCallback = fn;
   }
 }
