@@ -10,5 +10,15 @@ export default sandboxOf(FoxSelectComponent, { imports: [ SelectModule, FormsMod
                    style="width: 250px; margin-bottom: 20px"
                    >
  
-                    </fox-select>`
+                    </fox-select>`,
+    context: {
+      options: [{
+        id: 1,
+        name: 'Option1',
+      },
+        {
+        id: 2,
+        name: 'Option2',
+      }]
+    }
   });

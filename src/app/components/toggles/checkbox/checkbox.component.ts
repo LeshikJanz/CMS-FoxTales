@@ -16,7 +16,7 @@ export class CheckboxComponent implements OnInit {
 
   @Input() public name: string;
 
-  public isChecked: boolean = false;
+  @Input() public isChecked: boolean = false;
 
   public checkbox: ICheckbox;
 
