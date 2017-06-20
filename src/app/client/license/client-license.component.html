@@ -3,8 +3,9 @@
       (ngSubmit)="updateLicense()"
       class="form"
       novalidate>
-
     <div class="form-group">
+      <h1>&nbsp;</h1>
+
       <!-- Software License -->
       <div class="form-element">
         <label>Software License*</label>
@@ -56,16 +57,20 @@
         <!-- Start Date -->
         <div class="form-element">
           <label>Start Date*</label>
-          <input
-              name="startDate"
-              class="picker-input"
-              [ngModel]="startDate"
-              [returnObject]="'string'"
-              [(dateTimePicker)]="startDate"
-              [mode]="'dropdown'"
-              [pickerType]="'date'"
-              placeholder="Start Date"
-              readonly>
+          <div>
+            <div class="wrap">
+              <input
+                  name="startDate"
+                  class="picker-input"
+                  [ngModel]="startDate"
+                  [returnObject]="'string'"
+                  [(dateTimePicker)]="startDate"
+                  [mode]="'dropdown'"
+                  [pickerType]="'date'"
+                  placeholder="Start Date"
+                  readonly>
+            </div>
+          </div>
         </div>
 
         <!-- Months -->
@@ -85,7 +90,6 @@
           <label>Auto-renew</label>
         </p>
       </div>
-
 
 
       <!-- Hardware -->
@@ -116,6 +120,14 @@
         </div>
       </div>
 
+      <fox-button
+          [value]="'Done'"
+          [design]="'special'">
+      </fox-button>
+    </div>
+
+    <div class="form-group">
+      <h1>Billing information</h1>
       <!-- Name -->
       <div class="form-element" [formGroup]="licenseForm">
         <label for="billingContactName">Name</label>
@@ -188,10 +200,5 @@
         </div>
       </div>
     </div>
-
-    <fox-button
-        [value]="'Done'"
-        [design]="'special'">
-    </fox-button>
   </form>
 </div>

@@ -17,12 +17,39 @@
   }
 }
 
+h1 {
+  font-family: Avenir;
+  font-size: 20px;
+  font-weight: 900;
+  line-height: 2.4;
+  letter-spacing: 1px;
+  color: #343a40;
+}
+
 .form-element {
   display: flex;
   position: relative;
   flex-direction: column;
   margin-top: 15px;
   margin-bottom: 20px;
+
+  .picker-input {
+    padding-left: 10px;
+    font-family: OpenSans;
+    font-size: 16px;
+    color: #3d3d3d;
+  }
+
+  .wrap:after {
+    content: "";
+    position: absolute;
+    right: 10px;
+    bottom: 24px;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-top: 10px solid black;
+    pointer-events: none;
+  }
 
   > p {
     display: flex;
@@ -185,3 +212,7 @@
     }
   }
 }
+
+fox-button {
+  margin: 50px 0;
+};
