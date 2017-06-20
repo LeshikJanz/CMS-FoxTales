@@ -107,8 +107,8 @@ export class EventGalleryContainerComponent implements OnInit {
    * @return {void}
    */
   public onTypeChange(event) {
-    console.log('event');
-    console.log(event);
+    console.log('onTypeChange')
+    console.log(event)
     if(event <= 3) {
       this.selectedType = event;
     }

@@ -17,14 +17,14 @@ export class SwitcherComponent implements OnInit {
   @Input() public disabled: boolean;
 
   public ngOnInit() {
-    if (!this.type) {
-      this.type = this.options[1].id;
-    }
-    this.onChange(this.type);
+    // if (!this.type) {
+    //   this.type = this.options[1].id;
+    // }
+    // this.onChange(this.type);
   }
 
   public onChange(id: number) {
-    this.type = id;
+    // this.type = id;
     this.toggle.emit(id);
   }
 }

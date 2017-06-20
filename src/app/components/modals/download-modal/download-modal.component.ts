@@ -130,6 +130,8 @@ export class DownloadModalComponent {
    * @return {void}
    */
   public onSwitch(event: number) {
+    console.log('onSwitch')
+    console.log(event)
     this.downloadType = event;
   }
 
