@@ -6,6 +6,7 @@ import hello from 'hellojs';
 import { Observable, AsyncSubject } from 'rxjs';
 import { IGalleryItem, IGalleryFilter } from '../../gallery/gallery-item.interface';
 import { GalleryService } from '../../gallery/gallery.service';
+import { ICheckbox } from '../../components/toggles/checkbox/checkbox.component';
 
 /**
  * Gallery list component
@@ -30,6 +31,13 @@ export class GalleryItemListComponent implements OnInit {
    * @type {EventEmitter}
    */
   @Output() public favorite: EventEmitter<IGalleryItem> = new EventEmitter();
+
+  /**
+   * Checkbox value
+   *
+   * @type {ICheckbox}
+   */
+  @Output() public toggle: EventEmitter<ICheckbox> = new EventEmitter();
 
   /**
    * Gallery items
@@ -72,6 +80,16 @@ export class GalleryItemListComponent implements OnInit {
   }
 
   /**
+   * On checkbox change
+   *
+   * event {ICheckbox} - checkbox value
+   * @returns {void}
+   */
+  public onChecked(event: ICheckbox) {
+    this.toggle.emit(event);
+  }
+
+  /**
    * Init social networks
    *
    * @returns {void}
@@ -108,5 +126,4 @@ export class GalleryItemListComponent implements OnInit {
       }
     });
   }
-
 }
