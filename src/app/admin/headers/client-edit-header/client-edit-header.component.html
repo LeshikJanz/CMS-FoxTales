@@ -1,5 +1,11 @@
 <div class="header-container">
   <div>
-    <a class="hvr-icon-wobble-horizontal" [routerLink]="['/clients']">Back</a>
-    <h1>{{client && client.name}}</h1>  </div>
+    <a class="hvr-icon-wobble-horizontal" [routerLink]="['/admin/clients']">Back to all clients</a>
+    <h1 *ngIf="client">{{client?.name}}</h1>
+  </div>
+  <add-button
+      isAllowed="CreateClient"
+      [routerLink]="['/admin/client']"
+      [value]="'Create New Client'"
+  ></add-button>
 </div>

@@ -15,7 +15,7 @@
   <div>
     <search-bar (Change)="onSearch($event)"></search-bar>
     <div class="profile btn-group" dropdown placement="bottom">
-      <div dropdownToggle type="button" class="btn btn-primary drop-button">
+      <div dropdownToggle class="btn btn-primary drop-button">
         <img class="user-img" [src]="user && user.profileImagePath">
         <div>
           <div class="user-name">{{user && user.firstName}} {{user && user.lastName}}</div>

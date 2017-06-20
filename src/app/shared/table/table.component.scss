@@ -95,31 +95,7 @@ table td {
 table th:first-child {
   width: 66px;
 }
-//
-//table th:nth-child(2) {
-//  width: 17%;
-//}
-//
-//table th:nth-child(3) {
-//  width: 17%;
-//}
-//
-//table th:nth-child(4) {
-//  width: 10%;
-//}
-//
-//table th:nth-child(5) {
-//  width: 10%;
-//}
-//
-//table th:nth-child(6) {
-//  width: 17%;
-//}
-//
-//table th:nth-child(7) {
-//  width: 10%;
-//}
-//
+
 table th:last-child {
   width: 110px;
   border-right: none;
@@ -136,6 +112,10 @@ checkbox {
   }
 }
 
+fox-button {
+  height: 36px;
+  width: 98px;
+}
 
 .regular-checkbox {
   height: 27px;
