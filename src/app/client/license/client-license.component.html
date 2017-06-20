@@ -4,11 +4,9 @@
       class="form"
       novalidate>
     <div class="form-group">
-      <h1>&nbsp;</h1>
-
       <!-- Software License -->
       <div class="form-element">
-        <label>Software License*</label>
+        <h1>Software License*</h1>
         <fox-select
             (change)="license.softwareLicenseTypeId = $event.id"
             [active]="activeLicenseType"
@@ -94,7 +92,7 @@
 
       <!-- Hardware -->
       <div class="form-element">
-        <label>Hardware License*</label>
+        <h1>Hardware License*</h1>
         <fox-select
             (change)="license.hardwareLicenseTypeId = $event.id"
             [active]="activeLicenseHardware"
@@ -121,7 +119,7 @@
       </div>
 
       <fox-button
-          [value]="'Done'"
+          [value]="'DONE'"
           [design]="'special'">
       </fox-button>
     </div>

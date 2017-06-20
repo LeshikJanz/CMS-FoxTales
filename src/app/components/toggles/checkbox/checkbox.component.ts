@@ -1,7 +1,8 @@
 import { Component, Output, EventEmitter, Input, OnInit } from '@angular/core';
 
 export interface ICheckbox {
-  name: string;
+  id?: number;
+  name?: string;
   isChecked: boolean;
 }
 

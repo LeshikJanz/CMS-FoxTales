@@ -11,6 +11,7 @@ export interface IGalleryItem {
   contentOptionId: number;
   favorite: boolean;
   visible: boolean;
+  isChecked?: boolean;
 }
 
 /**

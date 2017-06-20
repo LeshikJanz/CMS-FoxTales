@@ -5,6 +5,7 @@ import { IGalleryItem, IGalleryFilter } from '../gallery-item.interface';
 import { IExperience } from '../../event/event.interface';
 import { GalleryService } from '../gallery.service';
 import { RouteData } from '../../shared/core/routing/route-data.service';
+import { ICheckbox } from '../../components/toggles/checkbox/checkbox.component';
 
 /**
  * Favorite gallery component
@@ -129,6 +130,17 @@ export class FavoriteGalleryComponent implements OnInit {
    */
   public onFavorite(item: IGalleryItem) {
     this.galleryItems = this.galleryItems.filter((gItem: IGalleryItem) => gItem !== item);
+  }
+
+  /**
+   * Mark element as checked/unchecked
+   *
+   * item {ICheckbox} - checkbox element
+   * @returns {void}
+   */
+  public onChecked(event: ICheckbox) {
+    this.galleryItems.filter((i: IGalleryItem) => i.id === event.id)[0]
+      .isChecked = event.isChecked;
   }
 
   /**

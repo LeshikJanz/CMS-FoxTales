@@ -5,6 +5,7 @@ import { IGalleryItem } from '../../gallery/gallery-item.interface';
 import { GalleryService } from '../../gallery/gallery.service';
 import hello from 'hellojs';
 import 'rxjs/Rx' ;
+import { ICheckbox } from '../toggles/checkbox/checkbox.component';
 
 /**
  * Upload Button component
@@ -34,7 +35,7 @@ export class ThumbnailComponent implements OnInit {
 
   @Input() public progress: number = 0;
 
-  @Output() public toggle: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() public toggle: EventEmitter<ICheckbox> = new EventEmitter<ICheckbox>();
 
   @Output() public favorite: EventEmitter<IGalleryItem> = new EventEmitter();
 
@@ -53,6 +54,7 @@ export class ThumbnailComponent implements OnInit {
   }
 
   public onChecked(event) {
+    event.id = this.item.id;
     this.toggle.emit(event);
   }
 
@@ -72,8 +74,7 @@ export class ThumbnailComponent implements OnInit {
   }
 
   public downloadItem(item: IGalleryItem) {
-    const win = window.open(item.mediaPath, '_blank');
-    win.focus();
+    window.location.assign(item.mediaPath);
   }
 
   public ngOnInit() {
