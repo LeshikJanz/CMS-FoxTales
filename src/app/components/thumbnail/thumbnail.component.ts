@@ -74,8 +74,7 @@ export class ThumbnailComponent implements OnInit {
   }
 
   public downloadItem(item: IGalleryItem) {
-    const win = window.open(item.mediaPath, '_blank');
-    win.focus();
+    window.location.assign(item.mediaPath);
   }
 
   public ngOnInit() {
