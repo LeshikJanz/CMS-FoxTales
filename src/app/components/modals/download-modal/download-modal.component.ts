@@ -157,8 +157,7 @@ export class DownloadModalComponent {
    *
    * @return {void}
    */
-  public
-  startDownload() {
+  public startDownload() {
     this.loading = true;
     this.isEmailSent = true;
     const mediaIds = this.getIdsForDownload();

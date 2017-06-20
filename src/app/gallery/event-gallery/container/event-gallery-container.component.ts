@@ -7,6 +7,7 @@ import { ExperienceService } from '../../../experience/experience.service';
 import { IExperience, IEventGallery } from '../../../event/event.interface';
 import { EventService } from '../../../event/event.service';
 import { ISwitcher } from '../../../components/toggles/switcher/switcher.interface';
+import { ICheckbox } from '../../../components/toggles/checkbox/checkbox.component';
 
 /**
  * Gallery list component
@@ -106,6 +107,8 @@ export class EventGalleryContainerComponent implements OnInit {
    * @return {void}
    */
   public onTypeChange(event) {
+    console.log('onTypeChange');
+    console.log(event);
     this.selectedType = event;
   }
 
@@ -157,6 +160,18 @@ export class EventGalleryContainerComponent implements OnInit {
       .subscribe((experiences: IExperience[]) =>
         this.experiences = experiences
       );
+  }
+
+
+  /**
+   * Mark element as checked/unchecked
+   *
+   * item {ICheckbox} - checkbox element
+   * @returns {void}
+   */
+  public onChecked(event: ICheckbox) {
+    this.galleryItems.filter((i: IGalleryItem) => i.id === event.id)[0]
+      .isChecked = event.isChecked;
   }
 
   /**

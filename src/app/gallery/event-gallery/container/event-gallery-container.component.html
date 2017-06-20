@@ -25,11 +25,17 @@
       </div>
       <switcher style="padding: 10px" [type]="selectedType"
                 [options]="galleryTypes" (toggle)="onTypeChange($event)"></switcher>
-      <search-input [title]="'find gallery'" (Change)="onSearchChange($event)"></search-input>
-
+      <search-input *ngIf='selectedType !== 3' [title]="'find gallery'" (Change)="onSearchChange($event)"></search-input>
+      <fox-button
+          *ngIf='selectedType === 3'
+          [value]="'Download Gallery'"
+          [design]="'primary'"
+          (click)="atgModal.show()"
+      ></fox-button>
     </div>
     <gallery-list *ngIf="selectedType == 2" [galleries]="experiences" ></gallery-list>
-    <gallery-item-list *ngIf="selectedType == 3" [galleryItems]="galleryItems"></gallery-item-list>
+    <gallery-item-list *ngIf="selectedType == 3" [galleryItems]="galleryItems"
+                       (toggle)="onChecked($event)"></gallery-item-list>
   </div>
-
+  <download-modal [galleryItems]="galleryItems" #atgModal></download-modal>
 </div>

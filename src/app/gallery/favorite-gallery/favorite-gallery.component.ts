@@ -133,7 +133,7 @@ export class FavoriteGalleryComponent implements OnInit {
   }
 
   /**
-   * Hide item from gallery if it was favorited
+   * Mark element as checked/unchecked
    *
    * item {ICheckbox} - checkbox element
    * @returns {void}
