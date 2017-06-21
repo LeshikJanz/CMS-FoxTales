@@ -24,6 +24,7 @@ export interface IEvent {
   name: string;
   sendNotifications: boolean;
   startTime: string;
+  isChecked?: boolean;
   tags: any[];
 }
 

@@ -6,21 +6,21 @@ import { IActionState } from '../../../client/client.interface';
  * Drop down menu
  */
 @Component({
-  selector: 'dropdown',
-  templateUrl: 'dropdown.component.html',
-  styleUrls: ['dropdown.component.scss']
+  selector: 'form-dropdown',
+  templateUrl: 'form-dropdown.component.html',
+  styleUrls: ['form-dropdown.component.scss']
 })
 
-export class DropDownComponent implements OnInit {
-  @Input() public options: IActionState[];
-
-  @Input() public size: string = 'small';
+export class FormDropDownComponent implements OnInit {
+  @Input() public options: any[];
 
   @Input() public title: string = 'DropDown';
 
   @Output() public typeChanged: EventEmitter<IActionState> = new EventEmitter();
 
-  @Input() public curentAction = null;
+  @Input() public active: any = null;
+
+  public currentAction: string = null;
 
   constructor(private permission: PermissionService) {
   }
@@ -35,10 +35,14 @@ export class DropDownComponent implements OnInit {
         return true;
       });
     }
+
+    if(this.active) {
+      this.onTypeChanged(this.active);
+    }
   }
 
-  public onTypeChanged(option: IActionState) {
-    this.curentAction = option.action;
+  public onTypeChanged(option: any) {
+    this.currentAction = option.action || option.name;
     this.typeChanged.emit(option);
   }
 }

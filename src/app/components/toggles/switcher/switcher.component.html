@@ -2,10 +2,11 @@
 <ul>
   <li *ngFor="let option of options">
     <input [attr.disabled]="disabled ? '' : null"
-           type="radio" id="{{option.id}}-option" [ngModel]="type"
+           type="radio" [(ngModel)]="type"
            (ngModelChange)="onChange($event)"
+           name="{{option.id}}-option"
+           id="{{option.id}}-option"
            [value]="option.id">
-
     <div class="check">
       <label for="{{option.id}}-option">{{option.name}}</label>
     </div>

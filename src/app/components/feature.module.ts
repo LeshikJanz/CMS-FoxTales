@@ -97,12 +97,13 @@ import { UserService } from '../user/user.service';
 import { FormInputComponent } from './input/form-input/form-input.component';
 import { NgxErrorsModule } from '@ultimate/ngxerrors';
 import { CustomFormsModule } from 'ng2-validation';
-import { ProfileNavigationComponent } from "./navigations/profile-navigation/profile-navigation.component";
+import { ProfileNavigationComponent } from './navigations/profile-navigation/profile-navigation.component';
 import {
   SemiCircleDonutComponent
 } from './high-charts/semi-circle-donut/semi-circle-donut.component';
 import { BasicLineComponent } from './high-charts/basic-line/basic-line.component';
 import { BasicColumnComponent } from './high-charts/basic-column/basic-column.component';
+import { FormDropDownComponent } from './dropdowns/form-dropdown/form-dropdown.component';
 
 @NgModule({
   imports: [
@@ -182,7 +183,8 @@ import { BasicColumnComponent } from './high-charts/basic-column/basic-column.co
     BasicLineComponent,
     BasicColumnComponent,
     FormInputComponent,
-    ProfileNavigationComponent
+    ProfileNavigationComponent,
+    FormDropDownComponent
   ],
   exports: [
     CreationButtonComponent,
@@ -231,7 +233,8 @@ import { BasicColumnComponent } from './high-charts/basic-column/basic-column.co
     BasicLineComponent,
     BasicColumnComponent,
     FormInputComponent,
-    ProfileNavigationComponent
+    ProfileNavigationComponent,
+    FormDropDownComponent
   ]
 })
 
