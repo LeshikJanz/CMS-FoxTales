@@ -1,6 +1,5 @@
 <div class="form-element" [formGroup]="form">
-  <label [ngClass]="{'error': isRequired &&
-                              form.get(controlName).touched &&
+  <label [ngClass]="{'error': form.get(controlName).touched &&
                               form.get(controlName).errors}"
          for="{{controlName}}">{{title}}
   </label>
@@ -16,15 +15,17 @@
   </div>
 
   <div ngxErrors="{{controlName}}">
+    <button class="close-icon" *ngIf="form.get(controlName).touched &&
+                              form.get(controlName).errors" type="reset"></button>
     <div class="field-error"
-         *ngIf="isRequired &&
-                form.get(controlName).touched &&
-                form.get(controlName).hasError('required')">
-      <button *ngIf="isRequired && form.get(controlName).errors"
-              class="close-icon" type="reset"></button>
+         *ngIf="form.get(controlName).hasError('required') &&
+         form.get(controlName).touched">
       Field is required
     </div>
-    <div ngxError="{{controlName}}" class="field-error" when="dirty">
+
+    <div class="field-error"
+         *ngIf="form.get(controlName).touched && (form.get(controlName).hasError('pattern')||
+          form.get(controlName).hasError('email'))">
       {{errorMsg}}
     </div>
   </div>

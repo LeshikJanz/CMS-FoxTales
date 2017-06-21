@@ -1,7 +1,6 @@
 <div class="user-container">
 
   <form
-    (ngSubmit)="updateUser()"
     class="form"
     novalidate>
 
@@ -44,6 +43,7 @@
         <label>User Type*</label>
         <form-dropdown
             [title]="'Select'"
+            [active]="user.roles && user.roles[0]"
             (typeChanged)="selectRole($event)"
             [options]="roles"
         >
@@ -57,6 +57,7 @@
       [value]="'Update'"
       [disabled]="isFormInvalid()"
       [design]="'special'"
+      (click)="updateUser()"
     ></fox-button>
   </form>
 </div>

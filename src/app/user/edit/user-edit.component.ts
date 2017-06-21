@@ -14,8 +14,8 @@ import { UserService } from '../user.service';
 @Component({
   selector: 'user-edit',
   templateUrl: './user-edit.component.html',
-  styleUrls: ['user-edit.component.scss',
-    '../../shared/styles/form-element.scss']
+  styleUrls: ['../../shared/styles/form-element.scss',
+              'user-edit.component.scss']
 })
 export class UserEditComponent implements OnInit {
   /**
@@ -148,6 +148,7 @@ export class UserEditComponent implements OnInit {
         }
 
         this.user = user;
+
         this.getUserRoles();
         this.getClient(user.clientId);
       });
@@ -159,6 +160,10 @@ export class UserEditComponent implements OnInit {
    * @returns {void}
    */
   public updateUser(): void {
+    this.user.roles = this.user.roles.map((r: any) => r.id);
+    console.log('this.user');
+    console.log(this.user);
+
     this.userService
       .updateUser(this.user)
       .subscribe(() => {
@@ -185,17 +190,8 @@ export class UserEditComponent implements OnInit {
    *
    * @param {any} role - Role
    */
-  public selectRole(role: any): void {
-    this.user.roles[0] = role.id;
-  }
-
-  /**
-   * User role selected
-   *
-   * @param {any[]} roles - Roles
-   */
-  public rolesSelected(roles: any[]): void {
-    this.user.roles = roles;
+  public selectRole(role: IUserRole): void {
+    this.user.roles[0] = role;
   }
 
   /**

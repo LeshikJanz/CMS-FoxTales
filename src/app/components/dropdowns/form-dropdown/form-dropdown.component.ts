@@ -26,7 +26,7 @@ export class FormDropDownComponent implements OnInit {
   }
 
   public ngOnInit(): void {
-    if(this.options) {
+    if (this.options) {
       this.options = this.options.filter((option: IActionState) => {
         if (option.acl) {
           return this.permission.isAllowed(option.acl);
@@ -35,9 +35,12 @@ export class FormDropDownComponent implements OnInit {
         return true;
       });
     }
+  }
 
-    if(this.active) {
-      this.onTypeChanged(this.active);
+  public ngOnChanges() {
+    if (this.active) {
+      // this.onTypeChanged(this.active);
+      this.currentAction = this.active.action || this.active.name;
     }
   }
 
