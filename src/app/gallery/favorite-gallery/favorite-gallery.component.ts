@@ -4,7 +4,7 @@ import { IActionState } from '../../client/client.interface';
 import { IGalleryItem, IGalleryFilter } from '../gallery-item.interface';
 import { IExperience } from '../../event/event.interface';
 import { GalleryService } from '../gallery.service';
-import { RouteData } from '../../shared/core/routing/route-data.service';
+import { RouteData } from '../../shared/core/event-management/route-data.service';
 import { ICheckbox } from '../../components/toggles/checkbox/checkbox.component';
 
 /**
