@@ -61,7 +61,7 @@ export class PermissionService {
     PermissionService.clientId = permissions.clientId;
     PermissionService.userId = permissions.userId;
 
-    return isValid && permissions.hasClientLicense;
+    return isValid;
   }
 
   /**
