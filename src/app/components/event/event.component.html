@@ -14,7 +14,7 @@
           </div>
         </div>
         <label *ngIf="!isEnded" name="experiences">
-          {{ event.experiences.length}} Experiences
+          {{ event.experiences.length}} Experiences  <br> End Date: {{ endTime }}
         </label>
         <label *ngIf="isEnded" name="experiences">
           Completed on {{endTime}}
