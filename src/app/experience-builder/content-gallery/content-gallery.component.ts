@@ -47,13 +47,20 @@ export class ContentGalleryComponent {
     this.staticTabs.tabs[2].active = true;
   };
 
-  public createTab3() {
+  public createTab3(modal) {
     console.log('finish tab');
+    this.hashtags = this.hashtags.map((hashtag) =>{
+      return hashtag.value;
+    });
+
     this.experienceBuilderService.postContentGallerySettings({
       name: this.galleryName,
       hashtags: this.hashtags.toString(),
       shortUrl: this.customUrl,
       showMobileBackgroundImage: this.mobileBackgroundChecked
+    }).subscribe((response) => {
+      console.log(response);
+      modal.hide();
     });
 
   }
