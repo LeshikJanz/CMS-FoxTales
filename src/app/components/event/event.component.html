@@ -5,6 +5,7 @@
       <img *ngIf="false" src="../../../assets/img/complete.svg" alt="">
       <div>
         <div class="main-content">
+           <i *ngIf="isEnded" class="fa fa-check-circle fa-3x" aria-hidden="true"></i>
           <img *ngIf="status === -1" src="../../../assets/img/attention.svg" alt="">
           <a title="{{event.name}}" [routerLink]="['/event', id, 'experiences']"
              class="event-name">{{event.name}}</a>
@@ -16,7 +17,7 @@
         <label *ngIf="!isEnded" name="experiences">
           {{ event.experiences.length }} Experiences  <br> End Date: {{ endTime }}
         </label>
-        <label *ngIf="isEnded" name="experiences">
+        <label *ngIf="isEnded" name="experiences" class="finishedEventLabel">
           {{ event.experiences.length }} Experiences <br> Completed on {{endTime}}
         </label>
       </div>
