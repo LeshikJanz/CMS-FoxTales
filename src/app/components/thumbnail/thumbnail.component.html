@@ -4,6 +4,9 @@
       <checkbox (toggle)="onChecked($event)"></checkbox>
       <img (click)="makeFavorite()" [hidden]="!item.favorite" src="../../../assets/img/heart-active.svg" alt="">
       <img (click)="makeFavorite()" [hidden]="item.favorite" src="../../../assets/img/heart-inactive.svg" alt="">
+
+      <a href="javascript:void(0)" (click)="setVisibility()" [hidden]="!item.visible">show</a>
+      <a href="javascript:void(0)" (click)="setVisibility()" [hidden]="item.visible">hide</a>
     </div>
     <img *ngIf="item.mediaPath.indexOf('.png') > 0"
          [src]="item ? item.mediaPath :
