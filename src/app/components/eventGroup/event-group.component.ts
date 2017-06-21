@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 import { ITableAction } from '../../shared/table/action.interface';
 import { ICheckbox } from '../toggles/checkbox/checkbox.component';
 import { EventGroupsService } from '../../event-groups/list/event-groups.service';
-import { ToastrService } from "ngx-toastr";
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'event-group',
@@ -108,7 +108,7 @@ export class EventGroupComponent implements OnChanges {
   public getGroupActions(group: IEventGroup) {
     console.log('getGroupActions');
     return group.events.find((i: IEvent) => i.isChecked) ? this.groupActions
-      : this.groupActions.slice(0, 3)
+      : this.groupActions.slice(0, 3);
   }
 
   /**
@@ -140,17 +140,18 @@ export class EventGroupComponent implements OnChanges {
    * @return {void}
    */
   public removeEvents(group: IEventGroup) {
-    const eventIds = group.events.map((e: IEvent) => e.isChecked && e.id).filter((e: boolean|number) => e);
-    if(!eventIds.length) {
+    const eventIds = group.events.map((e: IEvent) => e.isChecked && e.id)
+      .filter((e: boolean|number) => e);
+    if (!eventIds.length) {
       this.toastrService.error('No one event is checked');
       return;
     }
     this.eventGroupService.removeGroupEvents(group.id, eventIds)
       .subscribe(() => {
-          group.events = group.events.filter((e: IEvent) => !e.isChecked);
-          this.toastrService.success('Events have been successfully deleted.');
-        }
-      )
+        group.events = group.events.filter((e: IEvent) => !e.isChecked);
+        this.toastrService.success('Events have been successfully deleted.');
+      }
+  )
   }
 
   /**
