@@ -103,6 +103,10 @@ import {
 } from './high-charts/semi-circle-donut/semi-circle-donut.component';
 import { BasicLineComponent } from './high-charts/basic-line/basic-line.component';
 import { BasicColumnComponent } from './high-charts/basic-column/basic-column.component';
+import { BasicDetailsRunTimesComponent } from './experience-builder/basic-details-run-times/basic-details-run-times.component';
+import { DateTimePickerModule } from 'ng-pick-datetime';
+import { UiSwitchComponent } from './toggles/toggle-switch/toggle-switch.component';
+import { OrientationSelectorComponent } from './toggles/orientation-selector/orientation-selector.component'
 import { FormDropDownComponent } from './dropdowns/form-dropdown/form-dropdown.component';
 
 @NgModule({
@@ -184,6 +188,10 @@ import { FormDropDownComponent } from './dropdowns/form-dropdown/form-dropdown.c
     BasicColumnComponent,
     FormInputComponent,
     ProfileNavigationComponent,
+    BasicDetailsRunTimesComponent,
+    UiSwitchComponent,
+    OrientationSelectorComponent,
+    ProfileNavigationComponent,
     FormDropDownComponent
   ],
   exports: [
@@ -234,7 +242,11 @@ import { FormDropDownComponent } from './dropdowns/form-dropdown/form-dropdown.c
     BasicColumnComponent,
     FormInputComponent,
     ProfileNavigationComponent,
-    FormDropDownComponent
+    FormDropDownComponent,
+    ProfileNavigationComponent,
+    BasicDetailsRunTimesComponent,
+    UiSwitchComponent,
+    OrientationSelectorComponent
   ]
 })
 

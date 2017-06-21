@@ -1,17 +1,17 @@
 <button type="button" class="btn btn-primary" (click)="staticModal.show()">Create Content Gallery</button>
- 
-<div class="modal fade" bsModal #staticModal="bs-modal" [config]="{backdrop: 'static'}"
-     tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+
+<div class="modal fade" bsModal #staticModal="bs-modal" [config]="{backdrop: 'static'}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+  aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title pull-left">Title of Email Builder</h4>
+        <h4 class="modal-title pull-left">Title of Content Gallery Builder</h4>
         <button type="button" class="close pull-right" aria-label="Close" (click)="staticModal.hide()">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-               <tabset #staticTabs class='ui-builder-container'>
+        <tabset #staticTabs class='ui-builder-container'>
           <tab heading='Part 1'>
             <div class="part1-container">
               <h3>Let's Name the Gallery*</h3>
@@ -20,29 +20,43 @@
               <h3>Connect A Content Option</h3>
               <connect-content-option [experience]="experience" (contentOptionChecked)="checkedContentOption($event)"></connect-content-option>
               <br>
-              <button [type]="'tertiary'" [value]="'Next'" (click)="Next()" >Next</button>
+              <button [type]="'tertiary'" [value]="'Next'" (click)="createTab1()">Next</button>
             </div>
           </tab>
           <tab heading='Part 2'>
             <h3>Add Gallery Hashtags</h3>
-            import brand tags here
+            <tag-input [(ngModel)]='hashtags'>
+            </tag-input>
             <br>
-            <h3>Provide A Custom URL?</h3>
-            <input>
+            <h3>Provide A Custom URL?*</h3>
+            <ui-switch [(ngModel)]='customUrlChecked'></ui-switch>
+            <h5>Existing URL: gallery.getfoxtales.com/eventgroup/event/experience</h5>
+            <input [(ngModel)]='customUrl'>
             <hr>
-            <button [type]="'tertiary'" [value]="'Finish'" (click)="Finish()" >Next</button>
+            <h3>Allow Content To Be Downloaded?</h3>
+            <ui-switch [(ngModel)]='galleryDownloadChecked'></ui-switch>
+            <hr>
+            <h3>Public or Private Gallery?</h3>
+            <switcher [options]="gallerySwitchOptions"></switcher>
+            <br>
+            <button [type]="'tertiary'" [value]="'Finish'" (click)="createTab2()">Next</button>
           </tab>
-              <tab heading='Part 3'>
+          <tab heading='Part 3'>
             <h3>Upload Background Image</h3>
-           <upload-button></upload-button>
-           <h3>Different Background for Mobile?</h3>
+            <h4>Upload Image</h4>
+            <upload-button></upload-button>
+            <h3>Different Background for Mobile?</h3>
+            <ui-switch [(ngModel)]='mobileBackgroundChecked'></ui-switch>
             <upload-button></upload-button>
             <h3>Background Style</h3>
-           <switcher style="padding: 10px" [options]="options" ></switcher>
-           <br>
-            <button [type]="'tertiary'" [value]="'Finish'" (click)="Finish()" >Next</button>
+            <switcher style="padding: 10px" [options]="options"></switcher>
+            <br>
+            <h3>Where Would You Like The Message Oriented?</h3>
+            <orientation-selector></orientation-selector>
+
+            <button [type]="'tertiary'" [value]="'Finish'" (click)="createTab3()">Finish</button>
           </tab>
-                 
+
         </tabset>
       </div>
     </div>

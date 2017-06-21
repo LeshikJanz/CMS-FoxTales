@@ -15,7 +15,8 @@ const EVENT_ROUTES: Routes = [
   {
     path: '', component: EventContainerComponent,
     children: [
-      {path: ':id/experiences', component: ExperienceListComponent, data: { acl: 'ViewExperienceList' }},
+      {path: ':id/experiences', component: ExperienceListComponent,
+        data: { acl: 'ViewExperienceList' }},
       {
         path: ':id', children: [
         {path: 'galleries', pathMatch: 'full', component: EventGalleryContainerComponent},

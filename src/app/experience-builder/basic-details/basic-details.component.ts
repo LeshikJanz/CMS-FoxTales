@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, OnChanges, EventEmitter, Output } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ITag } from '../tag.interface';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -7,6 +7,7 @@ import { BsDropdownModule } from 'ngx-bootstrap';
 import { DateTimePickerModule } from 'ng-pick-datetime';
 import * as moment from 'moment';
 import { Location } from '@angular/common';
+import { IRunTimes } from '../runtimes.interface';
 
 @Component({
   selector: 'basic-details',
@@ -27,20 +28,18 @@ export class BasicDetailsComponent implements OnInit {
 
   constructor(private router: Router,
               private experienceBuilderService: ExperienceBuilderService,
-              private _location: Location,
-              private route: ActivatedRoute) {}
+              public _location: Location,
+              private route: ActivatedRoute) {
+              }
 
   public ngOnInit() {
-    // if(this.route.queryParams.value.experience !== undefined) {
-    //   this.sub = this.route.queryParams.subscribe((params) => {
-    //     this.id = +params['experience'];
-    //   });
-    //   this.getExperience();
-    //  }
     this.getTags();
   }
 
   public Next() {
+    if (this.defaultTags === undefined) {
+        this.defaultTags = [];
+    }
     this.defaultTags = this.defaultTags.map((tag: ITag) => {
       if (tag.name) {
         return tag.name;
@@ -121,5 +120,9 @@ export class BasicDetailsComponent implements OnInit {
     });
     });
   };
+
+  public addRunTimes() {
+    console.log('add run time');
+  }
 
 }

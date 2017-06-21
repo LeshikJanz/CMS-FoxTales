@@ -33,9 +33,9 @@ export class ExperienceListComponent implements OnInit {
    * @type {ITableAction[]}
    */
   public experienceActions: ITableAction[] = [
-    {id: 1, title: 'EDIT', callback: 'onEdit'},
-    {id: 2, title: 'CLONE', callback: 'onClone'},
-    {id: 3, title: 'DELETE', callback: 'onDelete'},
+    {id: 1, title: 'EDIT', callback: 'onEdit', acl: 'CreateEditExperiences'},
+    {id: 2, title: 'CLONE', callback: 'onClone', acl: 'CloneExperience'},
+    {id: 3, title: 'DELETE', callback: 'onDelete', acl: 'DeleteExperiences'},
     {id: 4, title: 'ADD TO GROUP', callback: 'onAddToGroup'},
     {id: 5, title: 'ASSIGN USERS', callback: 'onAssignUsers'},
     {id: 6, title: 'RECAP REPORT', callback: 'onRecapReport'},

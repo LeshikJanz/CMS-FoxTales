@@ -53,7 +53,12 @@ export class ProfileComponent implements OnInit {
   public getProfile(): void {
     this.profile
       .getProfile()
-      .subscribe((data: IProfile) => this.profileData = data);
+      .subscribe((data: IProfile) => {
+        const date = new Date();
+        data.profileImagePath = `${data.profileImagePath}?_=${date.getTime()}`;
+
+        this.profileData = data;
+      });
   }
 
   /**
