@@ -3,6 +3,7 @@ import { IActionState } from '../../client/client.interface';
 import { Router } from '@angular/router';
 import { IEvent } from '../../event/event.interface';
 import * as moment from 'moment';
+import { ICheckbox } from "../toggles/checkbox/checkbox.component";
 
 @Component({
   selector: 'event',
@@ -101,6 +102,14 @@ export class EventComponent implements OnInit {
   public cloneAction: EventEmitter<any> = new EventEmitter();
 
   /**
+   * Checkbox action
+   *
+   * @type {EventEmitter}
+   */
+  @Output()
+  public toggle: EventEmitter<ICheckbox> = new EventEmitter();
+
+  /**
    * is event checked?
    *
    * @type boolean
@@ -126,6 +135,17 @@ export class EventComponent implements OnInit {
    */
   public onEdit() {
     this.router.navigate(['/events/edit-event', this.event['id']]);
+  }
+
+  /**
+   * On check/uncheck
+   *
+   * @param {boolean} event - checked/unchecked event
+   * @return {void}
+   */
+  public onChecked(event: ICheckbox) {
+    event.id = this.event.id;
+    this.toggle.emit(event);
   }
 
   /**

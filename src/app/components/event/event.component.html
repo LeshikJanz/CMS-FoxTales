@@ -1,7 +1,7 @@
 <div class="event-container">
   <div>
     <div class="main-info">
-      <checkbox></checkbox>
+      <checkbox (toggle)="onChecked($event)"></checkbox>
       <img *ngIf="false" src="../../../assets/img/complete.svg" alt="">
       <div>
         <div class="main-content">

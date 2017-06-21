@@ -24,13 +24,18 @@ export class TableDropDownComponent implements OnInit {
   }
 
   public ngOnInit(): void {
-    this.options = this.options.filter((option: ITableAction) => {
-      if (option.acl) {
-        return this.permission.isAllowed(option.acl);
-      }
+    if (this.options) {
+      console.log('this.options');
+      console.log(this.options);
 
-      return true;
-    });
+      this.options = this.options.filter((option: ITableAction) => {
+        if (option.acl) {
+          return this.permission.isAllowed(option.acl);
+        }
+
+        return true;
+      });
+    }
   }
 
 
