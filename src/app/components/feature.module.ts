@@ -135,7 +135,8 @@ import { FormDropDownComponent } from './dropdowns/form-dropdown/form-dropdown.c
     ToastContainerModule.forRoot(),
     ChartModule.forRoot(require('highcharts')),
     ToastContainerModule.forRoot(),
-    PaginationModule.forRoot()
+    PaginationModule.forRoot(),
+    DateTimePickerModule
   ],
   providers: [
     GalleryService,
