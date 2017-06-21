@@ -96,6 +96,14 @@ export class EventListComponent implements OnInit {
     {id: 7, title: 'EXPORT CRM DATA', callback: 'onExportCrmData', acl: 'ExportCRMData' }
   ];
 
+    public eventActionsCompleted = [
+    { id: 1, title: 'View Details', callback: 'onViewDetails', acl: 'CreateEditEvents' },
+    { id: 2, title: 'Clone', callback: 'onClone', acl: 'CloneEvents' },
+    { id: 3, title: 'Recap Report', callback: 'onRecapReport', acl: 'ViewSendRecapReport' },
+    { id: 4, title: 'View Analytics' },
+     {id: 5, title: 'Export CRM Data', callback: 'onExportCrmData', acl: 'ExportCRMData' }
+  ];
+
   /**
    * Initial sort object
    *

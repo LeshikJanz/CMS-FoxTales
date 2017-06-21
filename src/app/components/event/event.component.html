@@ -17,7 +17,7 @@
           {{ event.experiences.length}} Experiences
         </label>
         <label *ngIf="isEnded" name="experiences">
-          Complete on {{endTime}}
+          Completed on {{endTime}}
         </label>
       </div>
       <div>
@@ -31,9 +31,16 @@
               [design]="'gray'"></fox-button>
 
   <table-dropdown
-      *ngIf="eventActions.length > 1"
+      *ngIf="eventActions.length > 1  && !isEnded"
       [title]="'Action'"
       [options]="eventActions"
+      [size]="'medium'"
+      (typeChanged)="onActionChanged(event, $event)"
+  ></table-dropdown>
+    <table-dropdown
+      *ngIf="eventActions.length > 1  && isEnded"
+      [title]="'Action'"
+      [options]="eventActionsCompleted"
       [size]="'medium'"
       (typeChanged)="onActionChanged(event, $event)"
   ></table-dropdown>
