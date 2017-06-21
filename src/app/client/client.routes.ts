@@ -11,7 +11,13 @@ const CLIENT_ROUTES: Routes = [
   { path: 'client',     component: ClientCreateComponent, data: { acl: 'CreateClient' } },
   { path: 'client/:id', component: ClientEditComponent, pathMatch: 'prefix',
     data: { acl: 'BasicClientEdit' } },
-  { path: 'client/:id/license', component: ClientLicenseComponent, pathMatch: 'prefix' }
+  {
+    path:
+    'client/:id/license',
+    component: ClientLicenseComponent,
+    pathMatch: 'prefix',
+    data: { acl: 'ViewLicenseList' }
+  }
 ];
 
 export const CLIENT_ROUTING: ModuleWithProviders = RouterModule.forChild(CLIENT_ROUTES);
