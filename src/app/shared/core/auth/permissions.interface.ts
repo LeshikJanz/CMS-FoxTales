@@ -4,6 +4,7 @@
 export interface IPermissions {
   userId: number;
   clientId: number;
+  hasClientLicense: boolean;
   roles: string[];
   rolesId: string[];
   globalAccess: boolean;

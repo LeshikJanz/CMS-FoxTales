@@ -89,20 +89,7 @@ export class ClientLicenseComponent implements OnInit {
    *
    * @type {any[]}
    */
-  public months: IActionState[] = [
-    { id: 1, action: '1' },
-    { id: 2, action: '2' },
-    { id: 3, action: '3' },
-    { id: 4, action: '4' },
-    { id: 5, action: '5' },
-    { id: 6, action: '6' },
-    { id: 7, action: '7' },
-    { id: 8, action: '8' },
-    { id: 9, action: '9' },
-    { id: 10, action: '10' },
-    { id: 11, action: '11' },
-    { id: 12, action: '12' }
-  ];
+  public months: IActionState[] = [];
 
   /**
    * License type
@@ -192,6 +179,7 @@ export class ClientLicenseComponent implements OnInit {
       this.getLicense(this.clientId);
     });
 
+    this.populateMonths();
     this.buildLicenseForm();
   }
 
@@ -299,6 +287,19 @@ export class ClientLicenseComponent implements OnInit {
       .subscribe((response: any) => {
         this.toastrService.success('License has been updated.');
       });
+  }
+
+  /**
+   * Populate array of months
+   *
+   * @returns {void}
+   */
+  public populateMonths(): void {
+    for (let i = 1; i <= 60; i++) {
+      this.months.push(
+        { id: i, action: `${i}` }
+      );
+    }
   }
 
   /**

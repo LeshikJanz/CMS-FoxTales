@@ -36,7 +36,7 @@
             <br>
             <textarea [(ngModel)]="emailPreviewText" cols="40" rows="5"></textarea>
 
-            <button [type]="'tertiary'" [value]="'Finish'" (click)="Next()">Next</button>
+            <button [type]="'tertiary'" [value]="'Finish'" (click)="Next2()">Next</button>
           </tab>
           <tab heading='Part 3'>
             <h3>What Type Of Email Are You Sending?</h3>
@@ -50,7 +50,7 @@
             <h3>Call To Action Text</h3>
             <input [(ngModel)]="ctaText">
             <br>
-            <button [type]="'tertiary'" [value]="'Finish'" (click)="Finish()">Next</button>
+            <button [type]="'tertiary'" [value]="'Finish'" (click)="Finish()">Finish</button>
           </tab>
 
         </tabset>

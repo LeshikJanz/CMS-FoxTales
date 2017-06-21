@@ -61,7 +61,7 @@ export class PermissionService {
     PermissionService.clientId = permissions.clientId;
     PermissionService.userId = permissions.userId;
 
-    return isValid;
+    return isValid && permissions.hasClientLicense;
   }
 
   /**
@@ -96,7 +96,7 @@ export class PermissionService {
     const permissionMatrix: IPermissionMatrixItem[] = accessData.permissionMatrix;
 
     const operations = permissionMatrix.filter((operation: IPermissionMatrixItem) => {
-      return operation.operationName === operationName;
+      return operation.operationName.trim() === operationName;
     });
 
     return !!operations.length;

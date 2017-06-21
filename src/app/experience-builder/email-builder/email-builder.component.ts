@@ -23,7 +23,7 @@ export class EmailBuilderComponent {
 
   constructor(private router: Router,
               private experienceBuilderService: ExperienceBuilderService) {
-                this.experience = this.experienceBuilderService.experience;
+              this.experience = this.experienceBuilderService.experience;
               }
 
  public Next() {
@@ -32,6 +32,16 @@ export class EmailBuilderComponent {
   this.experienceBuilderService.experience.senderName = this.senderName;
   this.experienceBuilderService.experience.emailSubject = this.emailSubject;
   this.experienceBuilderService.experience.emailPreviewText = this.emailPreviewText;
+  this.staticTabs.tabs[1].active = true;
+ };
+
+  public Next2() {
+  this.experienceBuilderService.experience.emailBuilderName = this.emailBuilderName;
+  this.experienceBuilderService.experience.fromEmailAddress = this.fromEmailAddress;
+  this.experienceBuilderService.experience.senderName = this.senderName;
+  this.experienceBuilderService.experience.emailSubject = this.emailSubject;
+  this.experienceBuilderService.experience.emailPreviewText = this.emailPreviewText;
+  this.staticTabs.tabs[2].active = true;
  };
 
  public Finish() {
@@ -39,6 +49,7 @@ export class EmailBuilderComponent {
   this.experienceBuilderService.experience.ctaText = this.ctaText;
   this.experienceBuilderService.postEmailSettings().subscribe((response) => {
     console.log(response);
+    this.router.navigate(['/experience-builder/container/ui-builder']);
   });
  };
 

@@ -30,16 +30,14 @@ export class EventRecapReportComponent implements OnInit {
     private route: ActivatedRoute
   ) {}
 
-  public ngOnInit(){
-      this.sub = this.route.params.subscribe((params) => {
+  public ngOnInit() {
+    this.sub = this.route.params.subscribe((params) => {
       this.id = params['id'];
     });
     this.eventService.getEvent(this.id)
     .subscribe((response) => {
-      console.log(response)
+      console.log(response);
       this.currentEvent = response;
-    })
-
-
+    });
   }
 }
