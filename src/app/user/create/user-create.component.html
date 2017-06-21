@@ -28,8 +28,14 @@
       <!-- Roles -->
       <div class="form-element">
         <label>User Type*</label>
-        <fox-select [items]="roles" (data)="rolesSelected($event)">
-        </fox-select>
+        <form-dropdown
+            [title]="'Select'"
+            (typeChanged)="selectRole($event)"
+            [options]="roles"
+        >
+        </form-dropdown>
+        <!--<fox-select [items]="roles" (data)="rolesSelected($event)">-->
+        <!--</fox-select>-->
       </div>
     </div>
 

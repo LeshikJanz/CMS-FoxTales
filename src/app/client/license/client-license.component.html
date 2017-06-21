@@ -74,17 +74,24 @@
         <!-- Months -->
         <div class="form-element">
           <label>Number of months*</label>
-          <fox-select
-              (change)="license.numberOfMonths = $event.id"
+          <form-dropdown
+              [title]="'Select'"
+              (typeChanged)="license.numberOfMonths = $event.id"
               [active]="activeLicenseMonths"
-              [items]="months">
-          </fox-select>
+              [options]="months"
+          >
+          </form-dropdown>
+          <!--<fox-select-->
+              <!--(change)="license.numberOfMonths = $event.id"-->
+              <!--[active]="activeLicenseMonths"-->
+              <!--[items]="months">-->
+          <!--</fox-select>-->
         </div>
       </div>
 
       <div class="form-element">
         <p>
-          <checkbox (toggle)="license.autoRenew=$event" [isChecked]="true"></checkbox>
+          <checkbox (toggle)="license.autoRenew=$event"></checkbox>
           <label>Auto-renew</label>
         </p>
       </div>
@@ -119,6 +126,7 @@
       </div>
 
       <fox-button
+          isAllowed="CreateEditLicenses"
           [value]="'DONE'"
           [design]="'special'">
       </fox-button>

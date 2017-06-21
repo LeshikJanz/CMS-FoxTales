@@ -142,7 +142,11 @@
     </div>
 
     <div>
-      <a href="javascript:void(0)" *ngIf="client" [routerLink]="['/admin/client', client.id, 'license']">Client licenses</a>
+      <a
+        href="javascript:void(0)"
+        *ngIf="client"
+        isAllowed="ViewLicenseList"
+        [routerLink]="['/admin/client', client.id, 'license']">Client licenses</a>
     </div>
 
     <div>

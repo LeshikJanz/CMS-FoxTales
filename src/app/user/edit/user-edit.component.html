@@ -42,8 +42,14 @@
       <!-- Roles -->
       <div class="form-element">
         <label>User Type*</label>
-        <fox-select [items]="roles" [active]="user.roles" [multiple]="true" (data)="rolesSelected($event)">
-        </fox-select>
+        <form-dropdown
+            [title]="'Select'"
+            (typeChanged)="selectRole($event)"
+            [options]="roles"
+        >
+        </form-dropdown>
+        <!--<fox-select [items]="roles" [active]="user.roles" [multiple]="true" (data)="rolesSelected($event)">-->
+        <!--</fox-select>-->
       </div>
     </div>
 

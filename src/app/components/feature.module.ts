@@ -97,7 +97,7 @@ import { UserService } from '../user/user.service';
 import { FormInputComponent } from './input/form-input/form-input.component';
 import { NgxErrorsModule } from '@ultimate/ngxerrors';
 import { CustomFormsModule } from 'ng2-validation';
-import { ProfileNavigationComponent } from "./navigations/profile-navigation/profile-navigation.component";
+import { ProfileNavigationComponent } from './navigations/profile-navigation/profile-navigation.component';
 import {
   SemiCircleDonutComponent
 } from './high-charts/semi-circle-donut/semi-circle-donut.component';
@@ -107,6 +107,7 @@ import { BasicDetailsRunTimesComponent } from './experience-builder/basic-detail
 import { DateTimePickerModule } from 'ng-pick-datetime';
 import { UiSwitchComponent } from './toggles/toggle-switch/toggle-switch.component';
 import { OrientationSelectorComponent } from './toggles/orientation-selector/orientation-selector.component'
+import { FormDropDownComponent } from './dropdowns/form-dropdown/form-dropdown.component';
 
 @NgModule({
   imports: [
@@ -134,8 +135,7 @@ import { OrientationSelectorComponent } from './toggles/orientation-selector/ori
     ToastContainerModule.forRoot(),
     ChartModule.forRoot(require('highcharts')),
     ToastContainerModule.forRoot(),
-    PaginationModule.forRoot(),
-    DateTimePickerModule,
+    PaginationModule.forRoot()
   ],
   providers: [
     GalleryService,
@@ -190,7 +190,9 @@ import { OrientationSelectorComponent } from './toggles/orientation-selector/ori
     ProfileNavigationComponent,
     BasicDetailsRunTimesComponent,
     UiSwitchComponent,
-    OrientationSelectorComponent
+    OrientationSelectorComponent,
+    ProfileNavigationComponent,
+    FormDropDownComponent
   ],
   exports: [
     CreationButtonComponent,
@@ -239,6 +241,8 @@ import { OrientationSelectorComponent } from './toggles/orientation-selector/ori
     BasicLineComponent,
     BasicColumnComponent,
     FormInputComponent,
+    ProfileNavigationComponent,
+    FormDropDownComponent,
     ProfileNavigationComponent,
     BasicDetailsRunTimesComponent,
     UiSwitchComponent,

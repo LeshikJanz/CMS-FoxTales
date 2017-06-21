@@ -12,6 +12,7 @@ import {
   IClientLicenseHardware
 } from '../client-license.interface';
 import { ClientService } from '../client.service';
+import { IActionState } from "../client.interface";
 
 @Component({
   selector: 'client-license',
@@ -88,20 +89,7 @@ export class ClientLicenseComponent implements OnInit {
    *
    * @type {any[]}
    */
-  public months: any[] = [
-    { id: 1, name: '1' },
-    { id: 2, name: '2' },
-    { id: 3, name: '3' },
-    { id: 4, name: '4' },
-    { id: 5, name: '5' },
-    { id: 6, name: '6' },
-    { id: 7, name: '7' },
-    { id: 8, name: '8' },
-    { id: 9, name: '9' },
-    { id: 10, name: '10' },
-    { id: 11, name: '11' },
-    { id: 12, name: '12' }
-  ];
+  public months: IActionState[] = [];
 
   /**
    * License type
@@ -146,11 +134,11 @@ export class ClientLicenseComponent implements OnInit {
   /**
    * License months
    *
-   * @type {any}
+   * @type {IActionState}
    */
-  public activeLicenseMonths: any = {
+  public activeLicenseMonths: IActionState = {
     id: 1,
-    name: null
+    action: null
   };
 
   /**
@@ -191,6 +179,7 @@ export class ClientLicenseComponent implements OnInit {
       this.getLicense(this.clientId);
     });
 
+    this.populateMonths();
     this.buildLicenseForm();
   }
 
@@ -298,6 +287,19 @@ export class ClientLicenseComponent implements OnInit {
       .subscribe((response: any) => {
         this.toastrService.success('License has been updated.');
       });
+  }
+
+  /**
+   * Populate array of months
+   *
+   * @returns {void}
+   */
+  public populateMonths(): void {
+    for (let i = 1; i <= 60; i++) {
+      this.months.push(
+        { id: i, action: `${i}` }
+      );
+    }
   }
 
   /**

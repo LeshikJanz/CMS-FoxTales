@@ -1,10 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Response, Http, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs';
-import { IClientList, IClientFilter } from './client.interface';
-import { Client } from './client';
-import { ClientLicense } from './client-license';
-import { IEvent } from '../event/event.interface';
 import { IEventGroup } from './event-groups.interaface';
 import { PermissionService } from '../../shared/core/auth/permission.service';
 
@@ -76,6 +72,19 @@ export class EventGroupsService {
     return this.http.put(`${process.env.API_URL}/EventGroups/${eventGroup.id}`, eventGroup)
       .map((response: Response) => <IEventGroup> response.json())
       .catch(this.handleError);
+  }
+
+  /**
+   * Remove events from group
+   *
+   * See: http://client2.dev.getfoxtales.com/swagger/#!/Clients/ApiEventGroups{id}/removeevents
+   * @param {number} groupId - group id
+   * @param {number[]} eventIds - ids of deleting events
+   * @returns {any}
+
+   */
+  public removeGroupEvents(groupId: number, eventIds: number[]) {
+    return this.http.post(`${process.env.API_URL}/EventGroups/${groupId}/removeevents`, eventIds)
   }
 
   /**
