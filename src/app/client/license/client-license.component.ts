@@ -12,6 +12,7 @@ import {
   IClientLicenseHardware
 } from '../client-license.interface';
 import { ClientService } from '../client.service';
+import { IActionState } from "../client.interface";
 
 @Component({
   selector: 'client-license',
@@ -88,19 +89,19 @@ export class ClientLicenseComponent implements OnInit {
    *
    * @type {any[]}
    */
-  public months: any[] = [
-    { id: 1, name: '1' },
-    { id: 2, name: '2' },
-    { id: 3, name: '3' },
-    { id: 4, name: '4' },
-    { id: 5, name: '5' },
-    { id: 6, name: '6' },
-    { id: 7, name: '7' },
-    { id: 8, name: '8' },
-    { id: 9, name: '9' },
-    { id: 10, name: '10' },
-    { id: 11, name: '11' },
-    { id: 12, name: '12' }
+  public months: IActionState[] = [
+    { id: 1, action: '1' },
+    { id: 2, action: '2' },
+    { id: 3, action: '3' },
+    { id: 4, action: '4' },
+    { id: 5, action: '5' },
+    { id: 6, action: '6' },
+    { id: 7, action: '7' },
+    { id: 8, action: '8' },
+    { id: 9, action: '9' },
+    { id: 10, action: '10' },
+    { id: 11, action: '11' },
+    { id: 12, action: '12' }
   ];
 
   /**
@@ -146,11 +147,11 @@ export class ClientLicenseComponent implements OnInit {
   /**
    * License months
    *
-   * @type {any}
+   * @type {IActionState}
    */
-  public activeLicenseMonths: any = {
+  public activeLicenseMonths: IActionState = {
     id: 1,
-    name: null
+    action: null
   };
 
   /**

@@ -1,0 +1,65 @@
+div.btn-group {
+  width: 100%;
+}
+
+label {
+  font-family: OpenSans;
+  font-size: 18px;
+  color: #636c72;
+  margin-bottom: 0;
+}
+
+ul.dropdown-menu {
+  width: inherit;
+  margin-bottom: inherit;
+  border-radius: inherit;
+  border: inherit;
+  height: inherit;
+  max-height: 184px;
+  overflow: scroll;
+  overflow-x: hidden;
+  min-width: auto;
+
+  li {
+    height: 46px;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    cursor: pointer;
+    font-family: WorkSans;
+    font-size: 16px;
+    color: #343a40;
+    border-top: solid 1px #f5f6f7;
+  }
+
+  li:first-child {
+    border: none !important;
+  }
+
+  li:hover {
+    color: #f57f17;
+  }
+}
+
+.btn.drop-button {
+  display: flex;
+  width: inherit;
+  height: 65px;
+  border-radius: 3px;
+  background-color: #ffffff;
+  border: solid 1px #3d3d3d;
+  font-family: OpenSans;
+  font-size: 16px;
+  color: #3d3d3d;
+
+  :after {
+    content: "";
+    position: absolute;
+    right: 10px;
+    bottom: 25px;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 9px solid black;
+    pointer-events: none;
+  }
+}

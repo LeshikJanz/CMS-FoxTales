@@ -134,6 +134,16 @@ export class UserCreateComponent implements OnInit {
       });
   }
 
+
+  /**
+   * User role select
+   *
+   * @param {any} role - Role
+   */
+  public selectRole(role: any): void {
+    return role.id;
+  }
+
   /**
    * User role selected
    *
