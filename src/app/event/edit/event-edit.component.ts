@@ -75,7 +75,6 @@ export class EventEditComponent implements OnInit {
     let map = new Microsoft.Maps.Map(this.myMap.nativeElement, {
         credentials: process.env.BING_KEY
     });
-
     let searchRequest = {
       where: this.eventAddress,
       callback: (results) => {
@@ -122,7 +121,7 @@ export class EventEditComponent implements OnInit {
     map.layers.insert(layer);
     map.setView({center:map.getCenter()});
 
-    });
+  });
   }
 
   public editEvent() {
