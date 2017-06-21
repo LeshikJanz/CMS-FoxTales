@@ -54,8 +54,8 @@ export class ContentGalleryComponent {
       hashtags: this.hashtags.toString(),
       shortUrl: this.customUrl,
       showMobileBackgroundImage: this.mobileBackgroundChecked
-    })
-    
+    });
+
   }
 
   public checkedContentOption(event) {

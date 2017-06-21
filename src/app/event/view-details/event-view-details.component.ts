@@ -73,25 +73,25 @@ export class EventViewDetailsComponent implements OnInit {
         this.defaultNotification = this.notificationOptions[1].id;
       }
     let map = new Microsoft.Maps.Map(this.myMap.nativeElement, {
-        credentials: process.env.BING_KEY
-    });
+      credentials: process.env.BING_KEY
+  });
 
     let searchRequest = {
-      where: this.eventAddress,
-      callback: (results) => {
-        if (results && results.results && results.results.length > 0) {
-          let pin = new Microsoft.Maps.Pushpin(results.results[0].location);
-            map.entities.push(pin);
-            map.setView({ bounds: results.results[0].bestView });
-            }
+    where: this.eventAddress,
+    callback: (results) => {
+      if (results && results.results && results.results.length > 0) {
+        let pin = new Microsoft.Maps.Pushpin(results.results[0].location);
+          map.entities.push(pin);
+          map.setView({ bounds: results.results[0].bestView });
           }
-        };
+        }
+      };
 
-    Microsoft.Maps.loadModule('Microsoft.Maps.Search', () => {
-      map.entities.clear();
-      let searchManager = new Microsoft.Maps.Search.SearchManager(map);
-      searchManager.geocode(searchRequest);
-    });
+  Microsoft.Maps.loadModule('Microsoft.Maps.Search', () => {
+    map.entities.clear();
+    let searchManager = new Microsoft.Maps.Search.SearchManager(map);
+    searchManager.geocode(searchRequest);
+  });
    
     let pushpin = new Microsoft.Maps.Pushpin(map.getCenter(), null);
     let layer = new Microsoft.Maps.Layer();
