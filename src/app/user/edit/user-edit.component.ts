@@ -32,7 +32,7 @@ export class UserEditComponent implements OnInit {
    */
   public user: IUser = {
     email: null,
-    roles: null,
+    roles: [],
     clientId: null
   };
 
@@ -173,7 +173,7 @@ export class UserEditComponent implements OnInit {
    * @return {boolean}
    */
   public isFormInvalid(): boolean {
-    if (this.user.clientId && this.user.roles) {
+    if (this.user.clientId && this.user.roles.length) {
       return false;
     }
 
@@ -186,7 +186,7 @@ export class UserEditComponent implements OnInit {
    * @param {any} role - Role
    */
   public selectRole(role: any): void {
-    this.user.roles = role.id;
+    this.user.roles[0] = role.id;
   }
 
   /**

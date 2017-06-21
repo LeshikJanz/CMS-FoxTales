@@ -42,7 +42,7 @@ export class UserCreateComponent implements OnInit {
    * @type {any}
    */
   public userDetails: any = {
-    role: null,
+    roles: [],
     clientId: null
   };
 
@@ -68,7 +68,7 @@ export class UserCreateComponent implements OnInit {
    * @return {boolean}
    */
   public isFormInvalid(): boolean {
-    if (this.userForm.valid && this.userDetails.clientId && this.userDetails.role) {
+    if (this.userForm.valid && this.userDetails.clientId && this.userDetails.roles.length) {
       return false;
     }
     return true;
@@ -140,7 +140,7 @@ export class UserCreateComponent implements OnInit {
    * @param {any} role - Role
    */
   public selectRole(role: any): void {
-    this.userDetails.role = role.id;
+    this.userDetails.roles[0] = role.id;
   }
 
   /**

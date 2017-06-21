@@ -109,7 +109,6 @@ export class DownloadModalComponent {
    * @return {void}
    */
   public show() {
-    this.mediaIds = this.getIdsForDownload();
     this.isModalShown = true;
   }
 
@@ -138,9 +137,8 @@ export class DownloadModalComponent {
    * @return {void}
    */
   public onSwitch(event: number) {
-    console.log('onSwitch')
-    console.log(event)
     this.downloadType = event;
+    this.mediaIds = this.getIdsForDownload();
   }
 
   /**
@@ -150,7 +148,7 @@ export class DownloadModalComponent {
    */
   public getIdsForDownload() {
     let mediaIds = [];
-    if (this.downloadType === 1) {
+    if (this.downloadType === 4) {
       mediaIds = this.galleryItems.map((gi: IGalleryItem) => {
         if (gi.isChecked) {
           return gi.id
@@ -158,7 +156,7 @@ export class DownloadModalComponent {
       }).filter((i: any) => i)
     }
 
-    if (this.downloadType === 2) mediaIds = this.galleryItems.map((gi: IGalleryItem) => gi.id);
+    if (this.downloadType === 5) mediaIds = this.galleryItems.map((gi: IGalleryItem) => gi.id);
     return mediaIds;
   }
 
