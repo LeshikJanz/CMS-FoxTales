@@ -25,7 +25,7 @@ export class SharingOptionsComponent {
 
   constructor(private router: Router,
               private experienceBuilderService: ExperienceBuilderService) {
-        this.experience = this.experienceBuilderService.experience;
+              this.experience = this.experienceBuilderService.experience;
               }
 
  public generateTextArea(social) {
@@ -54,6 +54,7 @@ public checkedContentOption(event) {
 
  public finish() {
   this.experienceBuilderService.postSocialShareSettings({
+  name: this.sharingOptionName,
   shareToTwitter: this.twitter,
   shareToFacebook: this.facebook,
   shareToInstagram: this.instagram,
@@ -64,11 +65,12 @@ public checkedContentOption(event) {
   tumblrCopy: this.tumblrTextCopy
   }).subscribe((response) => {
    console.log(response);
+   this.router.navigate(['/experience-builder/container/email-builder']);
   });
  };
 
  public Next() {
-  console.log('next function');
+  this.staticTabs.tabs[1].active = true;
  };
 
 }

@@ -53,6 +53,13 @@ export class ExperienceBuilderService {
         });
   }
 
+  public updateContentOption(contentOptions) {
+    return this.http.post(`${process.env.API_URL}/ContentOptions/`, contentOptions)
+        .map((response: Response) => {
+          return response.json();
+        });
+  }
+
   public addBasicDetailsExperience(details) {
     return this.http.put(`${process.env.API_URL}/Experiences/`
       + this.experience.experienceId, details)
@@ -94,6 +101,15 @@ export class ExperienceBuilderService {
         return response;
       });
 
+  }
+
+  public postContentGallerySettings(settings) {
+    return this.http.post(`${process.env.API_URL}/Experiences/`
+      + this.experience.experienceId + `/galleries`, settings)
+      .map((response: Response) => {
+        console.log(response);
+        return response;
+      });
   }
 
   /**

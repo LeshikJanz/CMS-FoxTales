@@ -5,7 +5,7 @@
 
 
 <div *ngFor="let content of contentOptions">
-  <a href="javascript:void(0);" (click)="contentOptionModal.show();contentOptionEdit(content)">{{content.name}}</a>
+  <a href="javascript:void(0);" (click)="contentOptionEditModal.show();contentOptionEdit(content)">{{content.name}}</a>
 </div>
 
 
@@ -24,7 +24,8 @@
         <tabset #staticTabs class='ui-builder-container'>
           <tab heading='Part 1'>
             <div class="part1-container">
-
+              <h3>Let's Name the Content</h3>
+              <input [(ngModel)]="contentName">
               <hr>
               <h5>Content Type</h5>
               <div class="btn-group">
@@ -34,31 +35,80 @@
               <br>
               <h5>Orientation Type</h5>
                <div class="btn-group">
-                <!--<switcher [type]="orientationTypeOption" [options]="orientationSwitchOptions" (toggle)="orientationTypeValue = $event"></switcher>-->
-                <label class="btn" [(ngModel)]="orientationTypeValue" btnRadio=106>Landscape</label>
+                <switcher [type]="orientationTypeOption" [options]="orientationSwitchOptions" (toggle)="orientationTypeValue = $event"></switcher>
+                <!--<label class="btn" [(ngModel)]="orientationTypeValue" btnRadio=106>Landscape</label>
                 <label class="btn" [(ngModel)]="orientationTypeValue" btnRadio=105>Portrait</label>
-                <label class="btn" [(ngModel)]="orientationTypeValue" btnRadio=104>Square</label>
+                <label class="btn" [(ngModel)]="orientationTypeValue" btnRadio=104>Square</label>-->
                </div>
               <hr>
-
-              <h3>Let's Name the Content</h3>
-              <input [(ngModel)]="contentName">
               <br>
-              <button [type]="'tertiary'" [value]="'Next'" (click)="Next()">Next</button>
+              <button [type]="'tertiary'" [value]="'Next'" (click)="createTab1()">Next</button>
             </div>
           </tab>
           <tab heading='Part 2'>
             <h3>Media Manipulation</h3>
             <upload-button></upload-button>
-            <br>
+            <!--<br>
             <h5>Animated Overlay?</h5>
-
+            <ui-switch [(ngModel)]="animatedOverlay"></ui-switch>
             <hr>
             <h3>Blend Mode</h3>
             select input
             <br>
-             <upload-button></upload-button>
-            <button [type]="'tertiary'" [value]="'Finish'" (click)="Finish(contentOptionModal)">Finish</button>
+             <upload-button></upload-button>-->
+            <button [type]="'tertiary'" [value]="'Finish'" (click)="createTab2(contentOptionModal)">Finish</button>
+          </tab>
+        </tabset>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" bsModal #contentOptionEditModal="bs-modal" [config]="{backdrop: 'static'}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+  aria-hidden="true">
+  <div class="bsmodal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title pull-left">Travel the USA Content Builder - Edit</h1>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="contentOptionEditModal.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <tabset #staticTabs class='ui-builder-container'>
+          <tab heading='Part 1'>
+            <div class="part1-container">
+              <h3>Let's Edit the Content</h3>
+              <input [(ngModel)]="contentName">
+              <hr>
+              <h5>Content Type</h5>
+              <div class="btn-group">
+                <switcher [type]="contentTypeOption" [options]="contentSwitchOptions" (toggle)="contentTypeValue = $event"></switcher>
+              </div>
+
+              <br>
+              <h5>Orientation Type</h5>
+               <div class="btn-group">
+                <switcher [type]="orientationTypeOption" [options]="orientationSwitchOptions" (toggle)="orientationTypeValue = $event"></switcher>
+               </div>
+              <hr>
+              <br>
+              <button [type]="'tertiary'" [value]="'Next'" (click)="editTab1()">Next</button>
+            </div>
+          </tab>
+          <tab heading='Part 2'>
+            <h3>Media Manipulation</h3>
+            <upload-button></upload-button>
+            <!--<br>
+            <h5>Animated Overlay?</h5>
+            <ui-switch [(ngModel)]="animatedOverlay"></ui-switch>
+            <hr>
+            <h3>Blend Mode</h3>
+            select input
+            <br>
+             <upload-button></upload-button>-->
+            <button [type]="'tertiary'" [value]="'Finish'" (click)="editTab2(contentOptionModal)">Finish</button>
           </tab>
         </tabset>
 

@@ -15,6 +15,7 @@ import { ISwitcher } from '../../components/toggles/switcher/switcher.interface'
 export class ContentOptionsComponent {
  @ViewChild('staticTabs') public staticTabs: TabsetComponent;
  public contentOptionModal: any;
+ public contentOptionEditModal: any;
  public contentName: string;
  public contentTypeValue: string;
  public orientationTypeValue: string;
@@ -35,7 +36,7 @@ export class ContentOptionsComponent {
   constructor(private router: Router,
               private experienceBuilderService: ExperienceBuilderService) {}
 
- public Next() {
+ public createTab1() {
   this.experienceBuilderService.addContentOption({
     experienceId:  this.experienceBuilderService.experience.experienceId,
     name: this.contentName,
@@ -53,7 +54,10 @@ export class ContentOptionsComponent {
   this.staticTabs.tabs[1].active = true;
   }
 
-  public Finish(modal) {
+  public createTab2(modal) {
+    // this.experienceBuilderService.updateContentOption({}).subscribe((response) =>{
+
+    // })
     this.experienceBuilderService
     .getContentOptions(this.experienceBuilderService.experience.experienceId)
     .subscribe((response) => {
@@ -66,17 +70,26 @@ export class ContentOptionsComponent {
     });
   }
 
+  public editTab1() {
+    console.log('edit tab1');
+  };
+
+  public editTab2() {
+    console.log('edit tab2');
+  };
+
   public contentOptionEdit(content) {
-   this.contentName = content.name;
-   if (content.captureTypeId === 1) {
-    this.contentTypeOption = this.contentSwitchOptions[0].id;
-   }
-  if (content.captureTypeId === 2) {
-    this.contentTypeOption = this.contentSwitchOptions[1].id;
-   }
-  if (content.captureTypeId === 4) {
-    this.contentTypeOption = this.contentSwitchOptions[2].id;
-   } 
+    this.contentName = content.name;
+    if (content.captureTypeId === 1) {
+      this.contentTypeOption = this.contentSwitchOptions[0].id;
+    }
+    if (content.captureTypeId === 2) {
+      this.contentTypeOption = this.contentSwitchOptions[1].id;
+    }
+    if (content.captureTypeId === 4) {
+      this.contentTypeOption = this.contentSwitchOptions[2].id;
+    }
+  //  this.orientationTypeValue = content.cameraSettings[0].settingValueId;
   }
 
 }
