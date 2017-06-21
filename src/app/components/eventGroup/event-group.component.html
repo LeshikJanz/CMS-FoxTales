@@ -10,11 +10,13 @@
       </div>
 
     </div>
-    <table-dropdown [options]="groupActions" [title]="'Action'" [size]="'big-ul'"
+    <table-dropdown [options]="groupActions"
+                    [title]="'Action'" [size]="'big-ul'"
                     (typeChanged)="onActionChanged(group, $event)"></table-dropdown>
   </div>
   <div [hidden]="!group.isOpen" *ngIf="group.events" class="group-dropdown">
-    <event *ngFor="let event of group.events" [event]="event" [eventActions]="eventActions">
+    <event *ngFor="let event of group.events" [event]="event" (toggle)="onChecked(group, $event)"
+           [eventActions]="eventActions">
     </event>
   </div>
 </div>

@@ -173,11 +173,20 @@ export class UserEditComponent implements OnInit {
    * @return {boolean}
    */
   public isFormInvalid(): boolean {
-    if (this.user.clientId && this.user.roles.length) {
+    if (this.user.clientId && this.user.roles) {
       return false;
     }
 
     return true;
+  }
+
+  /**
+   * User role select
+   *
+   * @param {any} role - Role
+   */
+  public selectRole(role: any): void {
+    this.user.roles = role.id;
   }
 
   /**

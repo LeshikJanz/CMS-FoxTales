@@ -42,7 +42,7 @@ export class UserCreateComponent implements OnInit {
    * @type {any}
    */
   public userDetails: any = {
-    roles: [],
+    role: null,
     clientId: null
   };
 
@@ -68,7 +68,7 @@ export class UserCreateComponent implements OnInit {
    * @return {boolean}
    */
   public isFormInvalid(): boolean {
-    if (this.userForm.valid && this.userDetails.clientId && this.userDetails.roles.length) {
+    if (this.userForm.valid && this.userDetails.clientId && this.userDetails.role) {
       return false;
     }
     return true;
@@ -132,6 +132,15 @@ export class UserCreateComponent implements OnInit {
           this.toastrService.error(response.message);
         }
       });
+  }
+
+  /**
+   * User role select
+   *
+   * @param {any} role - Role
+   */
+  public selectRole(role: any): void {
+    this.userDetails.role = role.id;
   }
 
   /**
