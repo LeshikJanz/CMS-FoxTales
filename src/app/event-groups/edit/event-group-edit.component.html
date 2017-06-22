@@ -1,37 +1,37 @@
 <div class="group-container">
   <form
-    (ngSubmit)="updateEventGroup()"
-    class="form"
-    novalidate>
+      (ngSubmit)="updateEventGroup()"
+      class="form"
+      novalidate>
 
     <div [formGroup]="eventGroupForm">
       <!-- Name -->
       <div class="form-element">
         <label for="name">Group Name *</label>
         <input
-          id="name"
-          class="form-control input"
-          type="text"
-          [(ngModel)]="eventGroup.name"
-          formControlName="name"
-          placeholder="Group name">
+            id="name"
+            class="form-control input"
+            type="text"
+            [(ngModel)]="eventGroup.name"
+            formControlName="name"
+            placeholder="Group name">
       </div>
 
       <!-- Events -->
       <div class="form-element">
         <label>Add events</label>
         <tag-input
-          formControlName="events"
-          [transform]="tagTransformer"
-          [displayBy]="'name'"
-          [(ngModel)]="eventGroup.events"
-          [maxItems]="365"
-          [(inputText)]='tagInputValue'
-          [secondaryPlaceholder]="'Start typing event name'">
-          <tag-input-dropdown
-            [identifyBy]="'id'"
+            formControlName="events"
+            [transform]="tagTransformer"
             [displayBy]="'name'"
-            [autocompleteItems]="events">
+            [(ngModel)]="eventGroup.events"
+            [maxItems]="365"
+            [(inputText)]='tagInputValue'
+            [secondaryPlaceholder]="'Start typing event name'">
+          <tag-input-dropdown
+              [identifyBy]="'id'"
+              [displayBy]="'name'"
+              [autocompleteItems]="events">
           </tag-input-dropdown>
         </tag-input>
       </div>
@@ -40,21 +40,18 @@
         <label for="groupGallery">Enable Group Gallery</label>
         <switcher id="groupGallery" [options]="galleryOptions" (toggle)="isGalleryEnabled=$event"></switcher>
         <configure-button
-          *ngIf="isGalleryEnabled === 1"
-          [value]="'Configure Gallery'"
+            *ngIf="isGalleryEnabled === 1"
+            [value]="'Configure Gallery'"
         ></configure-button>
 
       </div>
     </div>
-    <div>
-
-      <fox-button
+    <fox-button
         type="submit"
         [disabled]="eventGroupForm.invalid || tagInputValue"
         [value]="'Update'"
         [design]="'special'"
-      ></fox-button>
-    </div>
+    ></fox-button>
   </form>
 
 </div>

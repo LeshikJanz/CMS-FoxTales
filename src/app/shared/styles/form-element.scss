@@ -205,8 +205,10 @@ h1 {
   height: inherit;
   width: inherit;
   border: 1px solid !important;
+  min-height: inherit !important;
 
   .ng2-tags-container {
+    min-height: inherit;
     height: inherit;
     width: inherit;
     align-items: center;
@@ -236,7 +238,7 @@ h1 {
   }
 
   tag {
-    width: 115px;
+    min-width: 115px;
     height: 44px;
     padding-left: 15px;
     display: flex;
@@ -250,7 +252,12 @@ h1 {
       > div {
         justify-content: space-between;
         display: flex;
-        width: 90px;
+        min-width: 90px;
+
+        delete-icon {
+          margin-left: 5px !important;
+        }
+      ;
       }
     }
   }
@@ -258,10 +265,10 @@ h1 {
 
 :host /deep/ switcher {
   .check label {
-    height: 65px !important;
-    width: 130px;
+    height: 45px !important;
+    width: 100px;
     text-align: center;
-    line-height: 4;
+    line-height: 3;
   }
 }
 
@@ -269,6 +276,4 @@ fox-button {
   margin: 50px 0;
   height: 55px;
   width: 120px;
-}
-
-;
+};
