@@ -38,11 +38,13 @@
 
       <div class="form-element">
         <label for="groupGallery">Enable Group Gallery</label>
-        <switcher id="groupGallery" [options]="galleryOptions" (toggle)="isGalleryEnabled=$event"></switcher>
-        <configure-button
-            *ngIf="isGalleryEnabled === 1"
-            [value]="'Configure Gallery'"
-        ></configure-button>
+        <div class="gallery">
+          <switcher id="groupGallery" [options]="galleryOptions" (toggle)="isGalleryEnabled=$event"></switcher>
+          <configure-button
+              *ngIf="isGalleryEnabled === 1"
+              [value]="'Configure Gallery'"
+          ></configure-button>
+        </div>
 
       </div>
     </div>
