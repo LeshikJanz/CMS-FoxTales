@@ -1,71 +1,71 @@
 <div class="event-container">
   <form
-    (ngSubmit)="addEvent(eventForm.value)"
-    class="form"
-    novalidate>
+      (ngSubmit)="addEvent(eventForm.value)"
+      class="form"
+      novalidate>
 
     <div [formGroup]="eventForm">
       <!-- Event Name -->
-      <!-- Name -->
       <div class="form-element">
         <label for="name">Event Name*</label>
         <input
-          id="name"
-          class="form-control input"
-          type="text"
-          formControlName="name"
-          placeholder="Name">
+            id="name"
+            class="form-control input"
+            type="text"
+            formControlName="name"
+            placeholder="Name">
       </div>
 
-      <div class="form-element dates">
-        <div>
+      <div class="line-group">
+        <div class="form-element">
           <label>Start Date</label>
           <div class="wrap">
             <input class="picker-input" [ngModel]="startMomentDate"
                    [returnObject]=" 'string' "
                    [(dateTimePicker)]="startMomentDate" [mode]="'dropdown'" [pickerType]="'date'"
-                   placeholder="Start Date" [formControlName]="'startDate'"
+                   placeholder="mm/dd/yy" [formControlName]="'startDate'"
                    readonly>
           </div>
         </div>
-        <div>
+        <div class="form-element">
           <label>End Date</label>
           <div>
             <div class="wrap">
-            <input class="picker-input" [ngModel]="endMomentDate" 
-                   [returnObject]=" 'string' " [(dateTimePicker)]="endMomentDate"
-                   [mode]="'dropdown'" [pickerType]="'date'" placeholder="End Date"
-                   [formControlName]="'endDate'" readonly>
+              <input class="picker-input" [ngModel]="endMomentDate"
+                     [returnObject]=" 'string' " [(dateTimePicker)]="endMomentDate"
+                     [mode]="'dropdown'" [pickerType]="'date'" placeholder="mm/dd/yy"
+                     [formControlName]="'endDate'" readonly>
             </div>
           </div>
         </div>
       </div>
 
       <!-- Location -->
-      <div class="form-element location" id='searchBoxContainer' >
+      <div class="form-element location" id='searchBoxContainer'>
         <label for="address">Location</label>
-        <input id='searchBox'  formControlName="address" type="text" placeholder="Address" autocomplete="off">
+        <input id='searchBox' formControlName="address" type="text" placeholder="Address" autocomplete="off">
       </div>
 
       <!-- Tags -->
       <div class="form-element tags">
-      <label>Tags</label>
-      <tag-input
-        [transform]="tagTransformer"
-        [formControlName]="'tags'"
-        [maxItems]="365"
-        [(ngModel)]="selectedTags"
-        [(inputText)]='tagInputValue'
-      >
-        <tag-input-dropdown
-          [appendToBody]="false"
-          [identifyBy]="'id'"
-          [displayBy]="'name'"
-          [matchingFn]="matchingFn"
-          [autocompleteItems]="tags">
-        </tag-input-dropdown>
-      </tag-input>
+        <label>Tags</label>
+        <tag-input
+            [transform]="tagTransformer"
+            [formControlName]="'tags'"
+            [maxItems]="365"
+            [(ngModel)]="selectedTags"
+            [(inputText)]='tagInputValue'
+        >
+          <tag-input-dropdown
+              [appendToBody]="false"
+              [identifyBy]="'id'"
+              [displayBy]="'name'"
+              [matchingFn]="matchingFn"
+              [autocompleteItems]="tags">
+          </tag-input-dropdown>
+        </tag-input>
       </div>
+
       <div class="form-element">
         <label>Notifications</label>
         <switcher id="groupGallery" [options]="notificationOptions"
@@ -73,16 +73,14 @@
       </div>
       <br>
 
-      <div class="create">
-        <fox-button
+      <fox-button
           [value]="'CREATE'"
           [disabled]="eventForm.invalid || tagInputValue"
           [design]="'special'"
-        ></fox-button>
-      </div>
+      ></fox-button>
     </div>
   </form>
   <div class="map">
-    <div #myMap style='width: 100%; height: 500px;'></div> 
+    <div #myMap style='width: 100%; height: 500px;'></div>
   </div>
 </div>

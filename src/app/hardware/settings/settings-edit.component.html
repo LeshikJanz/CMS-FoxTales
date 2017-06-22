@@ -1,4 +1,4 @@
-<button (click)="editModal.show()">Manage settings</button>
+<button (click)="editModal.show()" class="settings-btn">Manage settings</button>
 <div [config]="{ show: false }"
      bsModal #editModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog">
@@ -20,39 +20,41 @@
           <div [formGroup]="settingsForm">
             <!-- First Name -->
             <div class="form-element">
-              <label>Set to auto update or manual</label>
-              <label>
-                Manual
-                <input
-                  type="radio"
-                  name="updateType"
-                  [value]="0"
-                  formControlName="updateType"
-                  placeholder="Name">
-              </label>
-              <label>
-                Auto
-                <input
-                  type="radio"
-                  name="updateType"
-                  [value]="1"
-                  formControlName="updateType"
-                  placeholder="Name">
-              </label>
+              <div>Set to auto update or manual</div>
+              <div class="radio-inline">
+                <label>
+                  <input
+                    type="radio"
+                    name="updateType"
+                    [value]="0"
+                    formControlName="updateType"
+                    placeholder="Name">
+                  <div>Manual</div>
+                </label>
+                <label>
+                  <input
+                    type="radio"
+                    name="updateType"
+                    [value]="1"
+                    formControlName="updateType"
+                    placeholder="Name">
+                  <div>Auto</div>
+                </label>
+              </div>
             </div>
 
             <!-- Log time -->
-            <div>
-              <label for="logTime">Select a time</label>
+            <div class="form-element">
+              <div for="logTime">Select a time</div>
               <select
                 id="logTime">
                 <option>Select log time</option>
               </select>
             </div>
 
-            <!-- Client -->
-            <div>
-              <label for="logsPerDay">Logs per day</label>
+            <!-- logsPerDay -->
+            <div class="form-element">
+              <div for="logsPerDay">Logs per day</div>
               <input
                 id="logsPerDay"
                 type="number"
@@ -77,22 +79,18 @@
             <fox-button
               [value]="'CONTINUE'"
               [design]="'gray'"
+              [type]="'submit'"
               [disabled]="settingsForm.invalid"
             ></fox-button>
 
-            <div class="btn-actions">
-              <fox-button
-                [value]="'CANCEL'"
-                [design]="'gray'"
-                ((click)="editModal.hide()"
-              ></fox-button>
-            </div>
+            <fox-button
+              [value]="'CANCEL'"
+              [design]="'gray'"
+              (click)="editModal.hide()"
+            ></fox-button>
           </div>
         </form>
       </div>
     </div>
   </div>
-</div>
-
-<div class="user-container">
 </div>

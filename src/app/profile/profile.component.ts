@@ -10,7 +10,8 @@ import { RouteData } from '../shared/core/event-management/route-data.service';
 @Component({
   selector: 'profile',
   templateUrl: './profile.component.html',
-  styleUrls: [ '../shared/styles/form-element.scss', 'profile.component.scss']
+  styleUrls: ['profile.component.scss',
+    '../shared/styles/form-element.scss']
 })
 export class ProfileComponent implements OnInit {
   /**

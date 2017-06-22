@@ -1,6 +1,11 @@
 .list-container {
 }
 
+.buttons-block {
+  display: flex;
+  justify-content: space-between;
+}
+
 .create-client {
   display: flex;
   justify-content: flex-end;

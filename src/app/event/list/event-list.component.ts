@@ -3,7 +3,7 @@ import { ModalDirective } from 'ngx-bootstrap/modal';
 import { EventService } from '../event.service';
 import { IActionState } from '../../client/client.interface';
 import { EventGroupsService } from '../../event-groups/list/event-groups.service';
-import { IEventFilter, IEvent } from '../event.interface';
+import { IEventFilter, IEvent, IEventList } from '../event.interface';
 import { ITableAction } from '../../shared/table/action.interface';
 import { RouteData } from '../../shared/core/event-management/route-data.service';
 import * as moment from 'moment';
@@ -14,7 +14,8 @@ import * as moment from 'moment';
 @Component({
   selector: 'event-list',
   templateUrl: './event-list.component.html',
-  styleUrls: ['./event-list.component.scss']
+  styleUrls: ['./event-list.component.scss',
+    '../../shared/styles/form-element.scss']
 })
 export class EventListComponent implements OnInit {
   /**
@@ -30,7 +31,7 @@ export class EventListComponent implements OnInit {
    *
    * @type {Event[]}
    */
-  public Events: any[];
+  public Events: IEvent[];
 
   /**
    * Event to be cloned
@@ -92,16 +93,16 @@ export class EventListComponent implements OnInit {
     { id: 3, title: 'DELETE', callback: 'onDelete', acl: 'DeleteEvents' },
     { id: 4, title: 'ADD TO GROUP', callback: 'onAddToGroup', acl: 'CreateEditEvents' },
     { id: 5, title: 'ASSIGN USERS', callback: 'onAssignUsers', acl: 'CreateEditEvents' },
-    {id: 6, title: 'RECAP REPORT', callback: 'onRecapReport', acl: 'ViewSendRecapReport' },
-    {id: 7, title: 'EXPORT CRM DATA', callback: 'onExportCrmData', acl: 'ExportCRMData' }
+    { id: 6, title: 'RECAP REPORT', callback: 'onRecapReport', acl: 'ViewSendRecapReport' },
+    { id: 7, title: 'EXPORT CRM DATA', callback: 'onExportCrmData', acl: 'ExportCRMData' }
   ];
 
-    public eventActionsCompleted = [
+  public eventActionsCompleted = [
     { id: 1, title: 'View Details', callback: 'onViewDetails', acl: 'CreateEditEvents' },
     { id: 2, title: 'Clone', callback: 'onClone', acl: 'CloneEvents' },
     { id: 3, title: 'Recap Report', callback: 'onRecapReport', acl: 'ViewSendRecapReport' },
     { id: 4, title: 'View Analytics' },
-     {id: 5, title: 'Export CRM Data', callback: 'onExportCrmData', acl: 'ExportCRMData' }
+    { id: 5, title: 'Export CRM Data', callback: 'onExportCrmData', acl: 'ExportCRMData' }
   ];
 
   /**
@@ -111,7 +112,9 @@ export class EventListComponent implements OnInit {
    */
   public initialSorting: IEventFilter = {
     sortBy: 'StartTime',
-    sortAscending: true
+    sortAscending: true,
+    currentPage: 1,
+    numberOfRowsOnPage: 10
   };
 
   /**
@@ -126,11 +129,42 @@ export class EventListComponent implements OnInit {
     { id: 4, action: 'End date', callback: 'onEndDateSort' },
   ];
 
+  /**
+   * Start offset
+   *
+   * @type {number}
+   */
+  public startOffset: number = 1;
+
+  /**
+   * End offset
+   *
+   * @type {number}
+   */
+  public endOffset: number = 10;
+
+  /**
+   * Page number
+   *
+   * @type {number}
+   */
+  public page: number = 1;
+
+  /**
+   * Limit per page
+   *
+   * @type {number}
+   */
+  public limit: number = 10;
+
+  public rowsCount: number = 0;
+
   constructor(private eventService: EventService,
               private eventGroupsService: EventGroupsService,
               private _routeData: RouteData) {
     // _routeData.name.next('Event Management');
   }
+
   public ngOnInit(): void {
     this.getEvents();
     this.getEventGroups();
@@ -142,8 +176,10 @@ export class EventListComponent implements OnInit {
    * @returns {void}
    */
   public onUpcomingSort() {
-    const filter = { sortBy: 'Name', sortAscending: true };
-    this.getEvents(filter);
+    this.initialSorting.sortBy = 'Name';
+    this.initialSorting.sortAscending = true;
+
+    this.getEvents();
   }
 
   /**
@@ -152,8 +188,10 @@ export class EventListComponent implements OnInit {
    * @returns {void}
    */
   public onDescendingSort() {
-    const filter = { sortBy: 'Name', sortAscending: false };
-    this.getEvents(filter);
+    this.initialSorting.sortBy = 'Name';
+    this.initialSorting.sortAscending = false;
+
+    this.getEvents();
   }
 
   /**
@@ -162,7 +200,7 @@ export class EventListComponent implements OnInit {
    * @returns {void}
    */
   public onStartDateSort() {
-    this.getEvents(this.initialSorting);
+    this.getEvents();
   }
 
   /**
@@ -171,8 +209,10 @@ export class EventListComponent implements OnInit {
    * @returns {void}
    */
   public onEndDateSort() {
-    const filter = { sortBy: 'EndTime', sortAscending: true };
-    this.getEvents(filter);
+    this.initialSorting.sortBy = 'EndTime';
+    this.initialSorting.sortAscending = true;
+
+    this.getEvents();
   }
 
   /**
@@ -196,14 +236,19 @@ export class EventListComponent implements OnInit {
   public onActionChanged(action: any): void {
     console.log('onActionChanged');
   }
+
   /**
    * On search changed
    *
-   * @param {string} event - Search string
+   * @param {string} filter - Search string
    * @returns {void}
    */
-  public onSearchChange(event: string): void {
-    console.log('onSearchChange');
+  public onSearchChange(filter: string): void {
+    this.eventService.getEventList({ name: filter })
+      .subscribe((eventList: IEventList) => {
+        this.Events = eventList.result;
+        this.rowsCount = eventList.totalRowCount;
+      })
   }
 
   /**
@@ -211,11 +256,12 @@ export class EventListComponent implements OnInit {
    *
    * @returns {void}
    */
-  public getEvents(filter: IEventFilter = this.initialSorting): void {
+  public getEvents(): void {
     this.eventService
-      .getEvents(filter)
-      .subscribe((events) => {
-        this.Events = events;
+      .getEventList(this.initialSorting)
+      .subscribe((eventList: IEventList) => {
+        this.Events = eventList.result;
+        this.rowsCount = eventList.totalRowCount;
       });
   }
 
@@ -292,5 +338,65 @@ export class EventListComponent implements OnInit {
 
   public getStartDate(): string {
     return moment(this.cloneStartDate).format();
+  }
+
+  /**
+   * Emit page changed event
+   *
+   * @returns {void}
+   */
+  public changePage(): void {
+    this.startOffset = (this.page - 1) * this.limit + 1;
+    this.endOffset = (this.rowsCount < this.page * this.limit)
+      ? this.rowsCount
+      : this.page * this.limit;
+
+    this.initialSorting.currentPage = this.page;
+
+    this.getEvents();
+  }
+
+  /**
+   * Emit page changed event
+   *
+   * @returns {void}
+   */
+  public prevPage(): void {
+    if (this.isPrevPage()) {
+      this.page--;
+    }
+
+    this.changePage();
+  }
+
+  /**
+   * Emit page changed event
+   *
+   * @returns {void}
+   */
+  public nextPage(): void {
+    if (this.isNextPage()) {
+      this.page++;
+    }
+
+    this.changePage();
+  }
+
+  /**
+   * Is prev page active?
+   *
+   * @returns {boolean}
+   */
+  public isPrevPage(): boolean {
+    return this.page > 1;
+  }
+
+  /**
+   * Is next page active?
+   *
+   * @returns {boolean}
+   */
+  public isNextPage(): boolean {
+    return this.page < Math.ceil(this.rowsCount / this.limit);
   }
 }

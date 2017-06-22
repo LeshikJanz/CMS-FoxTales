@@ -35,24 +35,18 @@ ul li label{
   display: block;
   position: relative;
   font-weight: 300;
-  font-size: 1.35em;
-  padding-left: 5px;
-  margin: 5px auto;
-  height: 30px;
-  color: #f8f8f8;
-  z-index: 9;
+  font-family: OpenSans;
+  font-size: 16px;
+  color: #b2bac4;  z-index: 9;
   cursor: pointer;
   -webkit-transition: all 0.25s linear;
-  padding: 15px;
-  padding-top: 0;
-  margin-bottom: 0;
 }
 
 ul li .check{
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 2px solid #AAAAAA;
+  border: 1px solid #AAAAAA;
   height: inherit;
   color: #7a8693;
   top: 0;
@@ -68,7 +62,7 @@ ul li .check label {
 
 
 ul li:hover .check {
-  border: 2px solid #7a8693;
+  border: 1px solid #7a8693;
 }
 
 ul li .check::before {
@@ -79,9 +73,8 @@ ul li .check::before {
 
 input[type=radio]:checked ~ .check {
   //Just uncomment it to enable orange switcher
-  //border: 2px solid #f57f17;
-  //background-color: #f57f17;
-  background-color: #7a8693;
+  background-color: #f57f17;
+  //background-color: #7a8693;
   color: white;
 }
 

@@ -10,7 +10,8 @@ import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'event-group-edit',
   templateUrl: 'event-group-edit.component.html',
-  styleUrls: ['event-group-edit.component.scss']
+  styleUrls: ['event-group-edit.component.scss',
+    '../../shared/styles/form-element.scss']
 })
 
 export class EventGroupEditComponent implements OnInit {
