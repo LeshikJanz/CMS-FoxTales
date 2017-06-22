@@ -35,6 +35,13 @@ export class EventGroupCreateComponent implements OnInit {
   public tags: ITag[];
 
   /**
+   * Loading spinner
+   *
+   * @type {boolean}
+   */
+  public loading: boolean = false;
+
+  /**
    * Events
    *
    * @type {IEvent[]}
@@ -117,8 +124,10 @@ export class EventGroupCreateComponent implements OnInit {
 
     this.eventService
       .getEvents(filter)
-      .subscribe((events: IEvent[]) =>
-        this.events = events.filter((e: IEvent) => !!e.name)
+      .subscribe((events: IEvent[]) => {
+          this.events = events.filter((e: IEvent) => !!e.name)
+          this.loading = false;
+        }
       );
   }
 
@@ -149,6 +158,7 @@ export class EventGroupCreateComponent implements OnInit {
    * @returns {void}
    */
   public onClientAccessChange(event: any) {
+    this.loading = true;
     this.eventGroupForm.get('clientId').setValue(event.id);
     this.eventGroupForm.get('events').setValue('');
     this.getEvents({ clientId: event.id });

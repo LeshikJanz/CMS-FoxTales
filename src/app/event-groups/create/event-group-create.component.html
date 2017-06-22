@@ -31,6 +31,8 @@
       <!-- Events -->
       <div class="form-element">
         <label>Add events</label>
+        <img style="position: absolute; top: 20px;"
+             [hidden]="!loading" src="../../../../assets/img/spinner.gif" alt="">
         <tag-input
             formControlName="events"
             [transform]="tagTransformer"
