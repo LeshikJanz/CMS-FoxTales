@@ -1,5 +1,5 @@
-import { Component, OnChanges, Input, SimpleChanges } from '@angular/core';
-import { FormGroup, NgModel } from '@angular/forms';
+import { Component, OnChanges, Input, SimpleChanges, forwardRef } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'form-input',
@@ -7,7 +7,7 @@ import { FormGroup, NgModel } from '@angular/forms';
   styleUrls: ['form-input.component.scss']
 })
 
-export class FormInputComponent {
+export class FormInputComponent implements OnChanges {
   /**
    * Parent form element
    *
@@ -17,12 +17,12 @@ export class FormInputComponent {
   public form: FormGroup;
 
   /**
-   * ngModel
+   * is form input disabled?
    *
-   * @tyoe {ngModel}
+   * @tyoe {boolean}
    */
   @Input()
-  public ngModel: NgModel;
+  public disabled: boolean;
 
   /**
    * Form control name
@@ -41,14 +41,6 @@ export class FormInputComponent {
   public title: string = '';
 
   /**
-   * Is field required?
-   *
-   * @tyoe {boolean}
-   */
-  @Input()
-  public isRequired: boolean = false;
-
-  /**
    * Initial field value
    *
    * @type {string}
@@ -64,8 +56,7 @@ export class FormInputComponent {
   @Input()
   public errorMsg: string = 'Invalid value';
 
-  public ngOnInit() {
-    console.log('this.ngModel');
-    console.log(this.ngModel);
+  public ngOnChanges() {
+    this.form.get(this.controlName).setValue(this.value, { onlySelf: true });
   }
 }

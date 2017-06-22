@@ -2,9 +2,10 @@ import { sandboxOf } from 'angular-playground';
 import { FormDropDownComponent } from './form-dropdown.component';
 import { BsDropdownModule } from 'ngx-bootstrap';
 import { PermissionService } from '../../../shared/core/auth/permission.service';
-import { Http } from "@angular/http";
+import { Http } from '@angular/http';
 
-export default sandboxOf(FormDropDownComponent, {providers: [PermissionService, Http], imports: [BsDropdownModule.forRoot()]})
+export default sandboxOf(FormDropDownComponent,
+  {providers: [PermissionService, Http], imports: [BsDropdownModule.forRoot()]})
   .add('form-dropdown', {
     template: `
               <div >
@@ -25,4 +26,4 @@ export default sandboxOf(FormDropDownComponent, {providers: [PermissionService, 
       }
     },
     providers: [PermissionService, Http]
-  })
+  });

@@ -1,4 +1,4 @@
-<div class="container client-container">
+<div class="client-container">
   <form
       (ngSubmit)="addClient(clientForm.value, $event);"
       class="form"
@@ -21,7 +21,6 @@
       <form-input
           [form]="clientForm"
           [controlName]="'name'"
-          [isRequired]="true"
           [title]="'Client Name*'">
       </form-input>
 
@@ -29,7 +28,6 @@
       <form-input
           [form]="clientForm"
           [controlName]="'email'"
-          [isRequired]="true"
           [title]="'Admin AD email*'">
       </form-input>
 
@@ -58,7 +56,6 @@
       <form-input
           [form]="clientForm"
           [controlName]="'phone'"
-          [isRequired]="true"
           [title]="'Phone'">
       </form-input>
 
@@ -67,18 +64,17 @@
       <form-input
           [form]="clientForm"
           [controlName]="'freshBooks'"
-          [isRequired]="false"
           [title]="'FreshBook Url'">
       </form-input>
     </div>
 
 
     <div>
-      <button
-          type="submit"
+      <fox-button
+          [value]="'CREATE'"
           [disabled]="clientForm.invalid"
-          class="create-button">CREATE
-      </button>
+          [design]="'special'"
+      ></fox-button>
     </div>
   </form>
 </div>

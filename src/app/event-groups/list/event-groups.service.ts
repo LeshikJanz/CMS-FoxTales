@@ -81,10 +81,9 @@ export class EventGroupsService {
    * @param {number} groupId - group id
    * @param {number[]} eventIds - ids of deleting events
    * @returns {any}
-
    */
   public removeGroupEvents(groupId: number, eventIds: number[]) {
-    return this.http.post(`${process.env.API_URL}/EventGroups/${groupId}/removeevents`, eventIds)
+    return this.http.post(`${process.env.API_URL}/EventGroups/${groupId}/removeevents`, eventIds);
   }
 
   /**

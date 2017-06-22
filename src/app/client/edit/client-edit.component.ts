@@ -27,7 +27,7 @@ import { ClientService } from '../client.service';
 @Component({
   selector: 'client-edit',
   templateUrl: './client-edit.component.html',
-  styleUrls: ['./client-edit.component.scss',
+  styleUrls: ['client-edit.component.scss',
     '../../shared/styles/form-element.scss']
 })
 export class ClientEditComponent implements OnInit {
@@ -208,6 +208,8 @@ export class ClientEditComponent implements OnInit {
    * @returns {void}
    */
   public updateClient(): void {
+    this.client = Object.assign({}, this.client, this.clientForm.value);
+
     this.clientService
       .updateClient(this.client)
       .subscribe(() => {
@@ -325,10 +327,9 @@ export class ClientEditComponent implements OnInit {
    */
   public buildClientForm(): ClientEditComponent {
     this.clientForm = this.formBuilder.group({
-      logoBytes: [''],
       name: ['', [
         Validators.required,
-        Validators.pattern('^\\S*')
+        Validators.pattern('^[a-zA-Z1-9].*')
       ]],
       email: ['', [
         Validators.required,

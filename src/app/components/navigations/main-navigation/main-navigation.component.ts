@@ -5,6 +5,7 @@ import { UserService } from '../../../user/user.service';
 import { IUser } from '../../../user/user.interface';
 import { IActionState } from '../../../client/client.interface';
 import { Router } from '@angular/router';
+import { RouteData } from '../../../shared/core/event-management/route-data.service';
 
 @Component({
   selector: 'main-navigation',
@@ -22,13 +23,21 @@ export class MainNavigationComponent implements OnInit {
 
   constructor(private auth: AuthService,
               private userService: UserService,
-              private router: Router) {
+              private router: Router,
+              private routeData: RouteData) {
+
+    this
+      .routeData
+      .imgPath
+      .subscribe((n: any) => this.user.profileImagePath = n);
   }
 
   public ngOnInit() {
     this.userService.getUser(PermissionService.userId.toString())
-      .subscribe((user: IUser) =>
-        this.user = user
+      .subscribe((user: IUser) => {
+          this.user = user;
+          this.user.profileImagePath = `${this.user.profileImagePath}?_=${new Date().getTime()}`;
+        }
       );
   }
 
@@ -47,8 +56,6 @@ export class MainNavigationComponent implements OnInit {
   }
 
   public onTypeChanged(action: IActionState) {
-    console.log('action');
-    console.log(action);
     if (this[action.callback]) {
       this[action.callback]();
     }

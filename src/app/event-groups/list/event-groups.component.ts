@@ -4,7 +4,7 @@ import { EventGroupsService } from './event-groups.service';
 import { IEventGroup } from './event-groups.interaface';
 import { EventService } from '../../event/event.service';
 import { IActionState } from '../../client/client.interface';
-import { RouteData } from '../../shared/core/routing/route-data.service';
+import { RouteData } from '../../shared/core/event-management/route-data.service';
 
 @Component({
   selector: 'event-groups',

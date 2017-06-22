@@ -4,9 +4,11 @@ import { FormsModule } from '@angular/forms';
 
 export default sandboxOf(OrientationSelectorComponent, { imports: [FormsModule] })
   .add('orientation-selector', {
-    template: `<orientation-selector [options]="options" (onChange)="value=$event"></orientation-selector>`,
+    template: `<orientation-selector [options]="options"
+ (onChange)="value=$event"></orientation-selector>`,
     context: {
       value: '',
-      options: ['topLeft', 'topMid', 'topRight','midLeft','mid','midRight','botLeft','botMid','botRight']
+      options: ['topLeft', 'topMid', 'topRight', 'midLeft', 'mid',
+        'midRight', 'botLeft', 'botMid', 'botRight']
     }
   });

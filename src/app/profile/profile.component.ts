@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { IProfile } from './profile.interface';
 import { ProfileService } from './profile.service';
+import { RouteData } from '../shared/core/event-management/route-data.service';
 
 /**
  * Auth component
@@ -33,7 +34,9 @@ export class ProfileComponent implements OnInit {
    * @param {ProfileService} profile - Profile service
    * @returns {void}
    */
-  constructor(private toastrService: ToastrService, private profile: ProfileService) {
+  constructor(private toastrService: ToastrService,
+              private profile: ProfileService,
+              private routeData: RouteData) {
   }
 
   /**
@@ -77,6 +80,7 @@ export class ProfileComponent implements OnInit {
       .updateProfile(logo)
       .subscribe(() => {
         this.toastrService.success('User profile has been updated successfully.');
+        this.routeData.imgPath.next(this.logo);
       });
     // location.reload();
   }
