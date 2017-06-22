@@ -5,7 +5,8 @@ import { TabsetComponent } from 'ngx-bootstrap';
 
 @Component({
   selector: 'content-gallery-component',
-  templateUrl: './content-gallery.component.html'
+  templateUrl: './content-gallery.component.html',
+  styleUrls: ['./content-gallery.component.scss']
 })
 
 export class ContentGalleryComponent {

@@ -140,4 +140,13 @@ export class ExperienceBuilderService {
           return response.json();
         });
     }
+
+    public postContentFeedSettings(settings) {
+      return this.http.post(`${process.env.API_URL}/Experiences/`
+        + this.experience.experienceId + `/contentfeed`, settings)
+        .map((response: Response) => {
+          console.log(response);
+          return response;
+        });
+    }
 }
