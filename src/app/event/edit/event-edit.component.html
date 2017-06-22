@@ -58,6 +58,7 @@
     <div>
       <div class="create">
         <fox-button
+            [disabled]="!eventName"
             [value]="'UPDATE'"
             [design]="'special'"
             (click)="editEvent()"
