@@ -26,8 +26,19 @@ h1 {
   position: relative;
   flex-direction: column;
   margin-top: 15px;
-  margin-bottom: 20px;
+  padding-bottom: 20px;
   width: 100%;
+
+  > div {
+    display: flex;
+    align-items: flex-start;
+
+    a.delete-icon {
+      padding-left: 10px;
+      font-size: 18px;
+      color: #636c72;
+    }
+  }
 
   .picker-input {
     padding-left: 10px;
@@ -40,7 +51,7 @@ h1 {
     content: "";
     position: absolute;
     right: 10px;
-    bottom: 25px;
+    top: 55px;
     border-left: 7px solid transparent;
     border-right: 7px solid transparent;
     border-top: 10px solid #626d78;
@@ -273,6 +284,7 @@ h1 {
 }
 
 fox-button {
+  padding: 50px 0;
   margin: 50px 0;
   height: 55px;
   width: 120px;

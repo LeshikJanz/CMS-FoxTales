@@ -14,7 +14,8 @@ import * as moment from 'moment';
 @Component({
   selector: 'event-list',
   templateUrl: './event-list.component.html',
-  styleUrls: ['./event-list.component.scss']
+  styleUrls: ['./event-list.component.scss',
+    '../../shared/styles/form-element.scss']
 })
 export class EventListComponent implements OnInit {
   /**
