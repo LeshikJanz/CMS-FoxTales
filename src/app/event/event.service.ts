@@ -4,7 +4,7 @@ import { Response, Http, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs';
 import { Tag } from './tag';
 import { PermissionService } from '../shared/core/auth/permission.service';
-import { IEventGallery, IEventFilter, IEvent } from './event.interface';
+import { IEventGallery, IEventFilter, IEvent, IEventList } from './event.interface';
 
 @Injectable()
 export class EventService {
@@ -30,9 +30,23 @@ export class EventService {
     });
 
     return this.http.get(`${process.env.API_URL}/Events`, options)
-        .map((response: Response) => {
-          return response.json();
-        });
+      .map((response: Response) => {
+        return response.json();
+      });
+  };
+
+  /**
+   * Get Event List
+   */
+  public getEventList(filter: IEventFilter = {}): Observable<IEventList> {
+    let options = new RequestOptions({
+      params: { clientId: PermissionService.clientId, ...filter }
+    });
+
+    return this.http.get(`${process.env.API_URL}/Events/GetPage`, options)
+      .map((response: Response) => {
+        return <IEventList> response.json();
+      });
   };
 
   /**

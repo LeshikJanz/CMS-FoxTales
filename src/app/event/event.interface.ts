@@ -56,4 +56,15 @@ export interface IEventFilter {
   sortBy?: string;
   sortAscending?: boolean;
   ignoreEventGroupFilter?: boolean;
+  currentPage?: number;
+  numberOfRowsOnPage?: number;
+}
+
+export interface IEventList {
+  totalRowCount: number;
+  currentPageNumber: number;
+  numberRowsOnPage: number;
+  result: IEvent[];
+  success: boolean;
+  message: string;
 }

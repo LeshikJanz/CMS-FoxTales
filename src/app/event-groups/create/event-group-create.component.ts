@@ -12,7 +12,8 @@ import { PermissionService } from '../../shared/core/auth/permission.service';
 @Component({
   selector: 'event-group-create',
   templateUrl: 'event-group-create.component.html',
-  styleUrls: ['event-group-create.component.scss']
+  styleUrls: ['event-group-create.component.scss',
+    '../../shared/styles/form-element.scss']
 })
 
 export class EventGroupCreateComponent implements OnInit {

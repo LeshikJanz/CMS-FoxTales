@@ -1,49 +1,18 @@
-.ng-touched.ng-invalid {
-  border-color: red;
-}
+.group-container {
+  width: 400px;
 
-.error-text {
-  color: red;
-  font-family: Avenir;
-  font-size: 10px;
-}
-
-.form {
-  display: flex;
-  flex-direction: column;
-  margin-top: 25px;
-
-  div {
-    margin-bottom: 35px;
+  tag-input {
+    width: 600px;
   }
 
   fox-button {
-    height: 36px;
-    width: 150px;
-    font-size: 14px;
-
-  }
-}
-
-.form-element {
-  switcher {
-    height: 35px;
-    width: 60px;
+    width: 160px;
   }
 
-  configure-button {
-    height: 35px;
-    width: 170px;
-    font-size: 16px;
-    position: absolute;
-  }
-
-  label {
-    display: block;
-  }
-
-  .field-error {
-    font-style: italic;
-    color: red;
+  .gallery {
+    display: flex;
+    width: 400px;
+    justify-content: space-between;
+    align-items: center;
   }
 }
