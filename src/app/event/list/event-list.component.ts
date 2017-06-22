@@ -92,8 +92,6 @@ export class EventListComponent implements OnInit {
     { id: 3, title: 'DELETE', callback: 'onDelete', acl: 'DeleteEvents' },
     { id: 4, title: 'ADD TO GROUP', callback: 'onAddToGroup', acl: 'CreateEditEvents' },
     { id: 5, title: 'ASSIGN USERS', callback: 'onAssignUsers', acl: 'CreateEditEvents' },
-    {id: 6, title: 'RECAP REPORT', callback: 'onRecapReport', acl: 'ViewSendRecapReport' },
-    {id: 7, title: 'EXPORT CRM DATA', callback: 'onExportCrmData', acl: 'ExportCRMData' }
   ];
 
     public eventActionsCompleted = [
@@ -101,7 +99,8 @@ export class EventListComponent implements OnInit {
     { id: 2, title: 'Clone', callback: 'onClone', acl: 'CloneEvents' },
     { id: 3, title: 'Recap Report', callback: 'onRecapReport', acl: 'ViewSendRecapReport' },
     { id: 4, title: 'View Analytics' },
-     {id: 5, title: 'Export CRM Data', callback: 'onExportCrmData', acl: 'ExportCRMData' }
+    { id: 5, title: 'Export CRM Data', callback: 'onExportCrmData', acl: 'ExportCRMData' },
+    { id: 6, title: 'Add to Group', callback: 'onAddToGroup', acl: 'CreateEditEvents' },
   ];
 
   /**
