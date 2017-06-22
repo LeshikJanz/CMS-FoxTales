@@ -78,7 +78,7 @@ ng-select {
 
 :host /deep/ .ui-select-search {
   width: inherit !important;
-  height: inherit;
+  height: 65px !important;
 }
 
 :host /deep/ .dropdown-menu {
@@ -90,7 +90,7 @@ ng-select {
 }
 
 :host /deep/ .ui-select-toggle {
-  height: inherit;
+  height: 65px !important;
   width: inherit;
   font-size: 18px;
   border: none;

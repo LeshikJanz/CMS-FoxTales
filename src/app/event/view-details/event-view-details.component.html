@@ -1,20 +1,20 @@
 <div class="event-container">
 
-  <div>
+  <div class="form">
     <!-- Event Name -->
     <div class="form-element">
       <label>Event Name</label>
       <input id="name" [ngModel]="eventName" type="text" placeholder="Event Name" [readonly]="true">
     </div>
 
-    <div class="form-element dates">
-      <div>
+    <div class="line-group">
+      <div class="form-element">
         <label>Start Date</label>
           <input class="picker-input" [ngModel]="startMomentDate" title="{{startMomentDate}}"
                  placeholder="Start Date"
                  [readonly]="true">
       </div>
-      <div>
+      <div class="form-element">
         <label>End Date</label>
           <input class="picker-input" [ngModel]="endMomentDate" placeholder="End Date" [readonly]="true">
       </div>

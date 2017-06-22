@@ -56,6 +56,13 @@ ul.dropdown-menu {
   font-size: 16px;
   color: #3d3d3d;
 
+  > label {
+    font-family: Helvetica;
+    font-size: 16px;
+    color: #b2bac4;
+    font-weight: 400;
+  }
+
   :after {
     content: "";
     position: absolute;
