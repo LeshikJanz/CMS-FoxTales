@@ -3,14 +3,15 @@
                               form.get(controlName).errors}"
          for="{{controlName}}">{{title}}
   </label>
-  <div [ngClass]="{'success': form.get(controlName).touched &&
+  <div [ngClass]="{'success': form.get(controlName).value &&
+                              form.get(controlName).touched &&
                               !form.get(controlName).errors}">
     <input
         id="{{controlName}}"
+        [attr.disabled]="disabled ? '' : null"
         type="text"
         class="form-control"
         formControlName="{{controlName}}"
-        value="{{value}}"
         placeholder="{{title}}"/>
   </div>
 
@@ -19,14 +20,12 @@
                               form.get(controlName).errors" type="reset"></button>
     <div class="field-error"
          *ngIf="form.get(controlName).hasError('required') &&
-         form.get(controlName).touched">
-      Field is required
+                form.get(controlName).touched">Field is required
     </div>
 
     <div class="field-error"
-         *ngIf="form.get(controlName).touched && (form.get(controlName).hasError('pattern')||
-          form.get(controlName).hasError('email'))">
-      {{errorMsg}}
+         *ngIf="form.get(controlName).touched && (form.get(controlName).hasError('pattern') ||
+                form.get(controlName).hasError('email'))">{{errorMsg}}
     </div>
   </div>
 </div>

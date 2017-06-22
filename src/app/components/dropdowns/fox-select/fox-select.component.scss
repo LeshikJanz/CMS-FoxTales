@@ -98,6 +98,12 @@ ng-select {
   color: transparent;
 }
 
+:host /deep/ .ui-select-placeholder {
+  color: #999999 !important;
+  font-size: 18px;
+  font-family: OpenSans;
+}
+
 :host /deep/ .dropdown-toggle {
   font-size: 16px;
 }

@@ -1,13 +1,21 @@
-import { Component, OnChanges, Input, SimpleChanges } from '@angular/core';
-import { FormGroup, NgModel } from '@angular/forms';
+import { Component, OnChanges, Input, SimpleChanges, forwardRef } from '@angular/core';
+import { FormGroup, NgModel, NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
+import { noop } from "rxjs/util/noop";
+
+export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
+  provide: NG_VALUE_ACCESSOR,
+  useExisting: forwardRef(() => FormInputComponent),
+  multi: true
+};
 
 @Component({
   selector: 'form-input',
   templateUrl: 'form-input.component.html',
-  styleUrls: ['form-input.component.scss']
+  styleUrls: ['form-input.component.scss'],
+  providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR]
 })
 
-export class FormInputComponent {
+export class FormInputComponent implements OnChanges {
   /**
    * Parent form element
    *
@@ -17,12 +25,12 @@ export class FormInputComponent {
   public form: FormGroup;
 
   /**
-   * ngModel
+   * is form input disabled?
    *
-   * @tyoe {ngModel}
+   * @tyoe {boolean}
    */
   @Input()
-  public ngModel: NgModel;
+  public disabled: boolean;
 
   /**
    * Form control name
@@ -41,14 +49,6 @@ export class FormInputComponent {
   public title: string = '';
 
   /**
-   * Is field required?
-   *
-   * @tyoe {boolean}
-   */
-  @Input()
-  public isRequired: boolean = false;
-
-  /**
    * Initial field value
    *
    * @type {string}
@@ -64,8 +64,7 @@ export class FormInputComponent {
   @Input()
   public errorMsg: string = 'Invalid value';
 
-  public ngOnInit() {
-    console.log('this.ngModel');
-    console.log(this.ngModel);
+  public ngOnChanges() {
+    this.form.get(this.controlName).setValue(this.value, { onlySelf: true });
   }
 }

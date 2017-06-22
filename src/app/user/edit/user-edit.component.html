@@ -1,10 +1,35 @@
 <div class="user-container">
 
   <form
+    (ngSubmit)="updateUser()"
     class="form"
     novalidate>
 
     <div class="form-group" [formGroup]="userForm">
+      <!-- First Name -->
+      <div  class="form-element">
+        <label for="email">First Name</label>
+        <input
+            id="firstName"
+            type="text"
+            class="form-control"
+            [(ngModel)]="user.firstName"
+            formControlName="firstName"
+            placeholder="First Name">
+        </div>
+
+      <!-- Last Name -->
+      <div  class="form-element">
+        <label for="email">Last Name</label>
+        <input
+            id="lastName"
+            type="text"
+            class="form-control"
+            [(ngModel)]="user.lastName"
+            formControlName="lastName"
+            placeholder="Last Name">
+        </div>
+
       <!-- Email -->
       <div  class="form-element">
         <label for="email">Email</label>
@@ -12,7 +37,7 @@
           disabled
           id="email"
           type="email"
-          class="form-control input"
+          class="form-control"
           [(ngModel)]="user.email"
           formControlName="email"
           placeholder="Email">
@@ -43,13 +68,11 @@
         <label>User Type*</label>
         <form-dropdown
             [title]="'Select'"
-            [active]="user.roles && user.roles[0]"
+            [active]="user.roles[0]"
             (typeChanged)="selectRole($event)"
             [options]="roles"
         >
         </form-dropdown>
-        <!--<fox-select [items]="roles" [active]="user.roles" [multiple]="true" (data)="rolesSelected($event)">-->
-        <!--</fox-select>-->
       </div>
     </div>
 
@@ -57,7 +80,6 @@
       [value]="'Update'"
       [disabled]="isFormInvalid()"
       [design]="'special'"
-      (click)="updateUser()"
     ></fox-button>
   </form>
 </div>

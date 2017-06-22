@@ -1,5 +1,4 @@
 <div class="user-container">
-  <!--<a href="javascript:void(0)" [routerLink]="['/admin/users']">Back to all Users</a>-->
 
   <form
     (ngSubmit)="addUser(userForm.value)"
@@ -7,11 +6,24 @@
     novalidate>
 
     <div class="form-group" [formGroup]="userForm">
+      <!-- First name -->
+      <form-input
+          [form]="userForm"
+          [controlName]="'firstName'"
+          [title]="'First Name'"
+      >
+      </form-input>
+      <!-- Email -->
+      <form-input
+          [form]="userForm"
+          [controlName]="'lastName'"
+          [title]="'Last Name'"
+      >
+      </form-input>
       <!-- Email -->
       <form-input
           [form]="userForm"
           [controlName]="'email'"
-          [isRequired]="true"
           [title]="'Email/Username*'">
       </form-input>
 
@@ -19,7 +31,8 @@
       <div class="form-element">
         <label>Client Access*</label>
         <fox-select
-          (change)="userDetails.clientId = $event.id"
+            [title]="'Select client access'"
+            (change)="userDetails.clientId = $event.id"
           [items]="clients"
         >
         </fox-select>
@@ -29,13 +42,11 @@
       <div class="form-element">
         <label>User Type*</label>
         <form-dropdown
-            [title]="'Select'"
+            [title]="'Select user type'"
             (typeChanged)="selectRole($event)"
             [options]="roles"
         >
         </form-dropdown>
-        <!--<fox-select [items]="roles" (data)="rolesSelected($event)">-->
-        <!--</fox-select>-->
       </div>
     </div>
 

@@ -5,6 +5,8 @@
       novalidate>
 
     <div [formGroup]="clientForm">
+
+
       <!-- Logo -->
       <div class="form-element">
         <label style="font-size: 22px">Client logo</label>
@@ -15,44 +17,19 @@
         <upload-button (imgUploaded)="onImgUploaded($event)"></upload-button>
       </div>
 
-      <!-- Name -->
-      <div class="form-element">
-        <label for="name">Client Name*</label>
-        <input
-            id="name"
-            type="text"
-            class="form-control input"
-            [(ngModel)]="client.name"
-            formControlName="name"
-            placeholder="Name">
+      <form-input
+          [form]="clientForm"
+          [controlName]="'name'"
+          [title]="'Client Name*'"
+          [value]="client.name"
+      ></form-input>
 
-        <div ngxErrors="name">
-          <div class="field-error" ngxError="required" when="touched">
-            Field is required
-          </div>
-        </div>
-      </div>
-
-      <!-- Email -->
-      <div class="form-element">
-        <label for="email">Email</label>
-        <input
-            id="email"
-            type="email"
-            class="form-control input"
-            [(ngModel)]="client.email"
-            formControlName="email"
-            placeholder="Email">
-
-        <div ngxErrors="email">
-          <div class="field-error" ngxError="required" when="touched">
-            Field is required
-          </div>
-          <div class="field-error" ngxError="email" when="dirty">
-            Invalid value
-          </div>
-        </div>
-      </div>
+      <form-input
+          [form]="clientForm"
+          [controlName]="'email'"
+          [title]="'Email'"
+          [value]="client.email"
+      ></form-input>
 
       <!-- Address -->
       <div class="form-element">
@@ -76,41 +53,19 @@
         </div>
       </div>
 
-      <!-- Phone -->
-      <div class="form-element">
-        <label for="phone">Phone</label>
-        <input
-            id="phone"
-            type="text"
-            class="form-control input"
-            [(ngModel)]="client.phone"
-            formControlName="phone"
-            placeholder="Phone">
+      <form-input
+          [form]="clientForm"
+          [controlName]="'phone'"
+          [title]="'Phone'"
+          [value]="client.phone"
+      ></form-input>
 
-        <div ngxErrors="phone">
-          <div ngxError="required" when="touched">
-            Field is required
-          </div>
-        </div>
-      </div>
-
-      <!-- FreshBook -->
-      <div class="form-element">
-        <label for="freshBooks">FreshBook Url</label>
-        <input
-            id="freshBooks"
-            type="text"
-            class="form-control input"
-            [(ngModel)]="client.freshBooks"
-            formControlName="freshBooks"
-            placeholder="FreshBook Url">
-
-        <div ngxErrors="freshBooks">
-          <div ngxError="required" when="touched">
-            Field is required
-          </div>
-        </div>
-      </div>
+      <form-input
+          [form]="clientForm"
+          [controlName]="'freshBooks'"
+          [title]="'FreshBook Url'"
+          [value]="client.freshBooks"
+      ></form-input>
 
       <!-- Social Accounts -->
       <div class="form-element" formArrayName="socialAccounts">
@@ -143,18 +98,18 @@
 
     <div>
       <a
-        href="javascript:void(0)"
-        *ngIf="client"
-        isAllowed="ViewLicenseList"
-        [routerLink]="['/admin/client', client.id, 'license']">Client licenses</a>
+          href="javascript:void(0)"
+          *ngIf="client"
+          isAllowed="ViewLicenseList"
+          [routerLink]="['/admin/client', client.id, 'license']">Client licenses</a>
     </div>
 
     <div>
-      <button
-          type="submit"
+      <fox-button
+          [value]="'UPDATE'"
           [disabled]="clientForm.invalid"
-          class="create-button">UPDATE
-      </button>
+          [design]="'special'"
+      ></fox-button>
     </div>
   </form>
 </div>

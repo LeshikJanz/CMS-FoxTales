@@ -14,8 +14,9 @@ import { UserService } from '../user.service';
 @Component({
   selector: 'user-edit',
   templateUrl: './user-edit.component.html',
-  styleUrls: ['../../shared/styles/form-element.scss',
-              'user-edit.component.scss']
+  styleUrls: ['user-edit.component.scss',
+    '../../shared/styles/form-element.scss'
+  ]
 })
 export class UserEditComponent implements OnInit {
   /**
@@ -67,13 +68,11 @@ export class UserEditComponent implements OnInit {
    * @param {UserService} userService - User service
    * @returns {void}
    */
-  constructor(
-    private router: Router,
-    private route: ActivatedRoute,
-    private formBuilder: FormBuilder,
-    private toastrService: ToastrService,
-    private userService: UserService
-  ) {
+  constructor(private router: Router,
+              private route: ActivatedRoute,
+              private formBuilder: FormBuilder,
+              private toastrService: ToastrService,
+              private userService: UserService) {
   }
 
   /**
@@ -117,7 +116,7 @@ export class UserEditComponent implements OnInit {
       .getUserRoles()
       .subscribe((roles: IUserRole[]) => {
         this.roles = roles;
-    });
+      });
   }
 
   /**
@@ -161,13 +160,11 @@ export class UserEditComponent implements OnInit {
    */
   public updateUser(): void {
     this.user.roles = this.user.roles.map((r: any) => r.id);
-    console.log('this.user');
-    console.log(this.user);
 
     this.userService
       .updateUser(this.user)
       .subscribe(() => {
-        this.toastrService.success('User has been removed successfully.');
+        this.toastrService.success('User has been updated successfully.');
         this.router.navigate(['/admin/users']);
       });
   }
@@ -201,6 +198,8 @@ export class UserEditComponent implements OnInit {
    */
   public buildUserForm(): void {
     this.userForm = this.formBuilder.group({
+      firstName: [''],
+      lastName: [''],
       email: ['', [
         Validators.required,
         CustomValidators.email

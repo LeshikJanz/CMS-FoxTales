@@ -11,8 +11,9 @@ import { UserService } from '../user.service';
 @Component({
   selector: 'user-create',
   templateUrl: './user-create.component.html',
-  styleUrls: ['../../shared/styles/form-element.scss',
-    './user-create.component.scss']
+  styleUrls: ['./user-create.component.scss',
+    '../../shared/styles/form-element.scss'
+    ]
 })
 export class UserCreateComponent implements OnInit {
   /**
@@ -161,6 +162,8 @@ export class UserCreateComponent implements OnInit {
    */
   public buildUserForm(): UserCreateComponent {
     this.userForm = this.formBuilder.group({
+      firstName: [''],
+      lastName: [''],
       email: ['', [
         Validators.required,
         CustomValidators.email
