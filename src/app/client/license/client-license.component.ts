@@ -286,6 +286,7 @@ export class ClientLicenseComponent implements OnInit {
       .updateClientLicense(this.license)
       .subscribe((response: any) => {
         this.toastrService.success('License has been updated.');
+        this.router.navigate(['/admin/client', this.clientId]);
       });
   }
 

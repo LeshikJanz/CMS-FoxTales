@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Response, Http } from '@angular/http';
+import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs';
-import { IDevice, IDeviceFilter, IDeviceList } from './device.interface';
 import { Device } from './device';
+import { IDevice, IDeviceFilter, IDeviceList } from './device.interface';
 import { ILog } from './log.interface';
 
 /**
@@ -97,6 +97,31 @@ export class DeviceService {
   public updateDevice(device: IDevice, id: number): Observable<Device> {
     return this.http.put(`${process.env.API_URL}/Devices/${id}/update`, device)
       .map((response: Response) => <Device> response.json());
+  }
+
+  /**
+   * Get settings
+   *
+   * See: http://dev.getfoxtales.com/swagger/#!/Devices/ApiDevicesDeviceSettingsGet
+   *
+   * @returns {Observable<any>} - settings
+   */
+  public getSettings(): Observable<any> {
+    return this.http.get(`${process.env.API_URL}/Devices/DeviceSettings`)
+      .map((response: Response) => response.json());
+  }
+
+  /**
+   * Update settings
+   *
+   * See: http://dev.getfoxtales.com/swagger/#!/Devices/ApiDevicesDeviceSettingsPut
+   *
+   * @param {settings} settings - settings
+   * @returns {Observable<settings>} - settings
+   */
+  public updateSettings(settings: any): Observable<any> {
+    return this.http.put(`${process.env.API_URL}/Devices/DeviceSettings?updateType=${settings.updateType}&logsPerDay=${settings.logsPerDay}`, settings)
+      .map((response: Response) => response.json());
   }
 
   /**

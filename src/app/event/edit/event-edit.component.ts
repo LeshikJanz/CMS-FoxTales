@@ -17,7 +17,7 @@ import {} from 'bingmaps/scripts/MicrosoftMaps/Microsoft.Maps.All';
     '../../shared/styles/form-element.scss']
 })
 export class EventEditComponent implements OnInit {
-  @ViewChild('myMap') myMap;
+  @ViewChild('myMap') public myMap;
   public startMomentDate: string;
   public endMomentDate: string;
   public notification: number;

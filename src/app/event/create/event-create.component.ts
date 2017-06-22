@@ -159,8 +159,8 @@ export class EventCreateComponent implements OnInit {
     event.address = this.mapAddress.address;
     event.latitude = this.mapAddress.latitude;
     event.longitude = this.mapAddress.longitude;
-    event['startTime'] = moment(this.startMomentDate, 'MMM DD').format();
-    event['endTime'] = moment(this.endMomentDate, 'MMM DD').format();
+    event['startTime'] = moment(this.startMomentDate, 'MMM DD YYYY').format();
+    event['endTime'] = moment(this.endMomentDate, 'MMM DD YYYY').format();
 
     this.event.createEvent(event).subscribe((response) => {
       console.log(response);

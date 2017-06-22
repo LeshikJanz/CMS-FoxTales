@@ -25,8 +25,8 @@ export class TableDropDownComponent implements OnInit {
 
   public ngOnInit(): void {
     if (this.options) {
-      console.log('this.options');
-      console.log(this.options);
+      // console.log('this.options');
+      // console.log(this.options);
 
       this.options = this.options.filter((option: ITableAction) => {
         if (option.acl) {

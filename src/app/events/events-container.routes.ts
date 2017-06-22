@@ -9,6 +9,7 @@ import { FavoriteGalleryComponent } from '../gallery/favorite-gallery/favorite-g
 import { EventGroupEditComponent } from '../event-groups/edit/event-group-edit.component';
 import { EventGroupCreateComponent } from '../event-groups/create/event-group-create.component';
 import { EventRecapReportComponent } from '../event/recap-report/event-recap-report.component';
+import { EventViewDetailsComponent } from '../event/view-details/event-view-details.component';
 
 const EVENTS_ROUTES: Routes = [
   {
@@ -19,6 +20,8 @@ const EVENTS_ROUTES: Routes = [
         path: 'events', component: EventListComponent, data: { acl: 'ViewEventList' }
       },
       {path: 'edit-event/:id', component: EventEditComponent, data: { acl: 'CreateEditEvents' } },
+      {path: 'details-event/:id', component: EventViewDetailsComponent,
+        data: { acl: 'CreateEditEvents' } },
       {path: 'create-event', component: EventCreateComponent, data: { acl: 'CreateEditEvents' }},
       {
         path: 'recap-report/:id',

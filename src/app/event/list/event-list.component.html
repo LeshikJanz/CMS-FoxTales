@@ -25,9 +25,20 @@
     [deleteModal]="deleteModal"
     [event]="event"
     [eventActions]="eventActions"
+    [eventActionsCompleted] = "eventActionsCompleted"
     (cloneAction)="onClone($event)"
   >
   </event>
+
+  <div class="pagination">
+    <section>
+      <div class="arrow-left" (click)="prevPage()"></div>
+
+      {{ startOffset }}-{{ endOffset }} of {{ rowsCount }}
+
+      <div class="arrow-right" (click)="nextPage()"></div>
+    </section>
+  </div>
 
   <event-to-group-modal #atgModal [eventGroups]="eventGroups"></event-to-group-modal>
   <event-delete-modal #deleteModal (delete)="onDeleteEvent()"></event-delete-modal>
