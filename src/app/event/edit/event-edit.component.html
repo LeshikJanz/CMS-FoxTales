@@ -1,39 +1,43 @@
 <div class="event-container">
 
-  <div>
+  <div class="form">
     <!-- Event Name -->
     <div class="form-element">
       <label>Event Name</label>
       <input id="name" [(ngModel)]="eventName" type="text" placeholder="Event Name">
     </div>
 
-    <div class="form-element dates">
-      <div>
-        <label>Start Date</label>
+    <div class="line-group">
+      <div class="form-element">
+        <div>
+          <label>Start Date</label>
           <input class="picker-input" [(ngModel)]="startMomentDate" title="{{startMomentDate}}"
                  [ngModelOptions]="{standalone: true}"
                  [returnObject]=" 'string' "
                  [(dateTimePicker)]="startMomentDate" [mode]="'dropdown'" [pickerType]="'date'" placeholder="Start Date"
                  readonly>
+        </div>
       </div>
-      <div>
+      <div class="form-element">
         <label>End Date</label>
-          <input class="picker-input" [(ngModel)]="endMomentDate" [ngModelOptions]="{standalone: true}"
-                 [returnObject]=" 'string' " [(dateTimePicker)]="endMomentDate"
-                 [mode]="'dropdown'" [pickerType]="'date'" placeholder="End Date" readonly>
+        <input class="picker-input" [(ngModel)]="endMomentDate" [ngModelOptions]="{standalone: true}"
+               [returnObject]=" 'string' " [(dateTimePicker)]="endMomentDate"
+               [mode]="'dropdown'" [pickerType]="'date'" placeholder="End Date" readonly>
       </div>
     </div>
     <!-- Location -->
     <div class="form-element location" id='searchBoxContainer'>
       <label>Location</label>
-      <input id="address" id='searchBox' [(ngModel)]="eventAddress" type="text" placeholder="Address" autocomplete="off">
+      <input id="address" id='searchBox' [(ngModel)]="eventAddress" type="text" placeholder="Address"
+             autocomplete="off">
     </div>
 
     <!-- Tags -->
-    <div class="form-element">
+    <div class="form-element tags">
       <label>Tags</label>
       <tag-input [(ngModel)]="defaultTags" [transform]="tagTransformer">
-        <tag-input-dropdown [matchingFn]="matchingFn"  [identifyBy]="'id'" [displayBy]="'name'" [autocompleteItems]="tags">
+        <tag-input-dropdown [matchingFn]="matchingFn" [identifyBy]="'id'" [displayBy]="'name'"
+                            [autocompleteItems]="tags">
         </tag-input-dropdown>
       </tag-input>
 
@@ -54,15 +58,15 @@
     <div>
       <div class="create">
         <fox-button
-          [value]="'UPDATE'"
-          [design]="'special'"
-          (click)="editEvent()"
+            [value]="'UPDATE'"
+            [design]="'special'"
+            (click)="editEvent()"
         ></fox-button>
       </div>
     </div>
   </div>
   <div class="map">
-     <div #myMap style='width: 100%; height: 500px;'></div> 
+    <div #myMap style='width: 100%; height: 500px;'></div>
     <!--<img src="http://staticmapmaker.com/img/bing.png" alt="Bing map">-->
   </div>
 

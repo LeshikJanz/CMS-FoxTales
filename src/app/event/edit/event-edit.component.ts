@@ -13,10 +13,11 @@ import {} from 'bingmaps/scripts/MicrosoftMaps/Microsoft.Maps.All';
 @Component({
   selector: 'event-edit',
   templateUrl: './event-edit.component.html',
-  styleUrls: ['./event-edit.component.scss']
+  styleUrls: ['./event-edit.component.scss',
+    '../../shared/styles/form-element.scss']
 })
 export class EventEditComponent implements OnInit {
-  public @ViewChild('myMap') myMap;
+  @ViewChild('myMap') myMap;
   public startMomentDate: string;
   public endMomentDate: string;
   public notification: number;

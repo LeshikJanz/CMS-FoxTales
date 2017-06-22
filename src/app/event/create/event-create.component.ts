@@ -13,7 +13,8 @@ import {  } from 'bingmaps/scripts/MicrosoftMaps/Microsoft.Maps.All';
 @Component({
   selector: 'event-create',
   templateUrl: './event-create.component.html',
-  styleUrls: ['event-create.component.scss']
+  styleUrls: ['event-create.component.scss',
+    '../../shared/styles/form-element.scss']
 })
 export class EventCreateComponent implements OnInit {
   public startMomentTime: string;
