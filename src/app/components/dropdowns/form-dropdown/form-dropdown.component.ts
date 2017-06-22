@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit, OnChanges } from '@angular/core';
 import { PermissionService } from '../../../shared/core';
 import { IActionState } from '../../../client/client.interface';
 
@@ -11,7 +11,7 @@ import { IActionState } from '../../../client/client.interface';
   styleUrls: ['form-dropdown.component.scss']
 })
 
-export class FormDropDownComponent implements OnInit {
+export class FormDropDownComponent implements OnInit, OnChanges {
   @Input() public options: any[];
 
   @Input() public title: string = 'DropDown';

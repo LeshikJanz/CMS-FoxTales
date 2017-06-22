@@ -151,12 +151,14 @@ export class DownloadModalComponent {
     if (this.downloadType === 4) {
       mediaIds = this.galleryItems.map((gi: IGalleryItem) => {
         if (gi.isChecked) {
-          return gi.id
+          return gi.id;
         }
-      }).filter((i: any) => i)
+      }).filter((i: any) => i);
     }
 
-    if (this.downloadType === 5) mediaIds = this.galleryItems.map((gi: IGalleryItem) => gi.id);
+    if (this.downloadType === 5) {
+      mediaIds = this.galleryItems.map((gi: IGalleryItem) => gi.id);
+    }
     return mediaIds;
   }
 

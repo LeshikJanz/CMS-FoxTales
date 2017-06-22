@@ -26,7 +26,7 @@ export class DropDownComponent implements OnInit {
   }
 
   public ngOnInit(): void {
-    if(this.options) {
+    if (this.options) {
       this.options = this.options.filter((option: IActionState) => {
         if (option.acl) {
           return this.permission.isAllowed(option.acl);

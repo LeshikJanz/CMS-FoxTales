@@ -11,16 +11,16 @@ import { UserService } from '../../../user/user.service';
 })
 
 export class UserEditHeaderComponent implements OnInit {
+  public user: IUser;
+
   constructor(private route: ActivatedRoute,
               private userService: UserService) {
   }
-
-  public user: IUser;
 
   public ngOnInit() {
     this.route.children[0].params.subscribe((params: any) =>
       this.userService.getUser(params['id'])
         .subscribe((user: IUser) => this.user = user)
-    )
+    );
   }
 }

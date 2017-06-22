@@ -128,7 +128,7 @@ export class UserCreateComponent implements OnInit {
       .subscribe((response: any) => {
         if (response.success) {
           this.toastrService.success('User has been created successfully.');
-          this.router.navigate(['/admin/users'])
+          this.router.navigate(['/admin/users']);
         } else {
           this.toastrService.error(response.message);
         }

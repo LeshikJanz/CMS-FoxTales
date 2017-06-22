@@ -1,18 +1,10 @@
 import { Component, OnChanges, Input, SimpleChanges, forwardRef } from '@angular/core';
-import { FormGroup, NgModel, NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
-import { noop } from "rxjs/util/noop";
-
-export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
-  provide: NG_VALUE_ACCESSOR,
-  useExisting: forwardRef(() => FormInputComponent),
-  multi: true
-};
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'form-input',
   templateUrl: 'form-input.component.html',
-  styleUrls: ['form-input.component.scss'],
-  providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR]
+  styleUrls: ['form-input.component.scss']
 })
 
 export class FormInputComponent implements OnChanges {

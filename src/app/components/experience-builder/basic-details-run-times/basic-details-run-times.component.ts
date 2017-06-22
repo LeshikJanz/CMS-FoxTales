@@ -30,20 +30,23 @@ export class BasicDetailsRunTimesComponent implements OnChanges {
   constructor(private router: Router,
               private _location: Location,
               private route: ActivatedRoute) {
-               this.hello = {}
-              }
-public setMoment(event){
-    this.startMomentDate = event;
-    this.updateRunTime.emit({startDate: event})
-    console.log(event)
-}
+    this.hello = {};
+  }
 
-public ngOnChanges(){
-    console.log(this.runTime)
-    this.updateRunTime.emit({startDate: this.startMomentDate,
-                             startTime: this.startMomentTime,
-                            endDate: this.endMomentDate,
-                            endTime: this.endMomentTime});
-}
+  public setMoment(event) {
+    this.startMomentDate = event;
+    this.updateRunTime.emit({ startDate: event });
+    console.log(event);
+  }
+
+  public ngOnChanges() {
+    console.log(this.runTime);
+    this.updateRunTime.emit({
+      startDate: this.startMomentDate,
+      startTime: this.startMomentTime,
+      endDate: this.endMomentDate,
+      endTime: this.endMomentTime
+    });
+  }
 
 }

@@ -148,10 +148,10 @@ export class EventGroupComponent implements OnChanges {
     }
     this.eventGroupService.removeGroupEvents(group.id, eventIds)
       .subscribe(() => {
-        group.events = group.events.filter((e: IEvent) => !e.isChecked);
-        this.toastrService.success('Events have been successfully deleted.');
-      }
-  )
+          group.events = group.events.filter((e: IEvent) => !e.isChecked);
+          this.toastrService.success('Events have been successfully deleted.');
+        }
+      );
   }
 
   /**
