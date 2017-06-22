@@ -96,45 +96,15 @@ table th:first-child {
   width: 66px;
 }
 
-//
-//table th:nth-child(2) {
-//  width: 17%;
-//}
-//
-//table th:nth-child(3) {
-//  width: 17%;
-//}
-//
-//table th:nth-child(4) {
-//  width: 10%;
-//}
-//
-//table th:nth-child(5) {
-//  width: 10%;
-//}
-//
-//table th:nth-child(6) {
-//  width: 17%;
-//}
-//
-//table th:nth-child(7) {
-//  width: 10%;
-//}
-//
 table th:last-child {
   width: 110px;
   border-right: none;
 }
 
 checkbox {
-  height: 27px;
-  width: 27px;
+  height: 32px;
+  width: 32px;
   font-size: 12px;
-
-  :host /deep/ .regular-checkbox:checked:after {
-    top: 1px;
-    left: 4px;
-  }
 }
 
 fox-button {

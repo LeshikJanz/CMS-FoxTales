@@ -13,6 +13,10 @@ $imgHeight: 256.4px;
 
   &:hover {
 
+    .icon-show {
+      display: block;
+    }
+
     .action-menu {
       display: flex;
       visibility: visible;
@@ -27,6 +31,14 @@ $imgHeight: 256.4px;
         opacity: 1;
       }
     }
+  }
+
+  .icon {
+    top: 186px !important;
+  }
+
+  .icon-show {
+    display: none;
   }
 
   div {
@@ -55,7 +67,6 @@ $imgHeight: 256.4px;
 
     div img {
       cursor: pointer;
-      display: flex;
       position: absolute;
       top: 11px;
       right: 11px;

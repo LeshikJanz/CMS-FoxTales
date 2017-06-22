@@ -1,39 +1,42 @@
 <div>
   <div
-    class="group-container"
+      class="group-container"
   >
     <div class="filters">
       <div>
-      <div>
-        <label>Sort by</label>
-        <dropdown
-          [title]="'Upcoming'"
-          [options]="sortActions"
-          [size]="'big'"
-          (typeChanged)="onSortChanged($event)"
-        ></dropdown>
+        <div>
+          <label>Sort by</label>
+          <dropdown
+              [title]="'Upcoming'"
+              [options]="sortActions"
+              [size]="'big'"
+              (typeChanged)="onSortChanged($event)"
+          ></dropdown>
+        </div>
+        <div>
+          <label>Filter by</label>
+          <dropdown
+              [title]="'Upcoming'"
+              [options]="sortActions"
+              [size]="'big'"
+              (typeChanged)="onSortChanged($event)"
+          ></dropdown>
+        </div>
       </div>
-      <div>
-        <label>Filter by</label>
-        <dropdown
-          [title]="'Upcoming'"
-          [options]="sortActions"
-          [size]="'big'"
-          (typeChanged)="onSortChanged($event)"
-        ></dropdown>
-      </div>
-      </div>
-      <switcher style="padding: 10px" [type]="selectedType"
+      <switcher [type]="selectedType"
                 [options]="galleryTypes" (toggle)="onTypeChange($event)"></switcher>
-      <search-input *ngIf='selectedType !== 3' [title]="'find gallery'" (Change)="onSearchChange($event)"></search-input>
-      <fox-button
-          *ngIf='selectedType === 3'
-          [value]="'Download Gallery'"
-          [design]="'primary'"
-          (click)="atgModal.show()"
-      ></fox-button>
+      <div>
+        <search-input *ngIf='selectedType !== 3' [title]="'find gallery'"
+                      (Change)="onSearchChange($event)"></search-input>
+        <fox-button
+            *ngIf='selectedType === 3'
+            [value]="'Download Gallery'"
+            [design]="'primary'"
+            (click)="atgModal.show()"
+        ></fox-button>
+      </div>
     </div>
-    <gallery-list *ngIf="selectedType == 2" [galleries]="experiences" ></gallery-list>
+    <gallery-list *ngIf="selectedType == 2" [galleries]="experiences"></gallery-list>
     <gallery-item-list *ngIf="selectedType == 3" [galleryItems]="galleryItems"
                        (toggle)="onChecked($event)"></gallery-item-list>
   </div>

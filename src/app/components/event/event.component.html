@@ -2,10 +2,9 @@
   <div>
     <div class="main-info">
       <checkbox (toggle)="onChecked($event)"></checkbox>
-      <img *ngIf="false" src="../../../assets/img/complete.svg" alt="">
+      <img *ngIf="isEnded" class="finishedEvent" src="../../../assets/img/complete.svg" alt="">
       <div>
         <div class="main-content">
-           <i *ngIf="isEnded" class="fa fa-check-circle fa-3x" aria-hidden="true"></i>
           <img *ngIf="status === -1" src="../../../assets/img/attention.svg" alt="">
           <a title="{{event.name}}" [routerLink]="['/event', id, 'experiences']"
              class="event-name">{{event.name}}</a>
