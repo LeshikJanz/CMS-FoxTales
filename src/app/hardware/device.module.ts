@@ -1,28 +1,29 @@
-import { NgModule, Injector } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Injector, NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Http, HttpModule, RequestOptions, XHRBackend } from '@angular/http';
-import { CustomFormsModule } from 'ng2-validation';
 import { NgxErrorsModule } from '@ultimate/ngxerrors';
+import { DateTimePickerModule } from 'ng-pick-datetime';
+import { CustomFormsModule } from 'ng2-validation';
 import { Ng2BootstrapModule } from 'ngx-bootstrap';
-import { ToastrModule, ToastContainerModule } from 'ngx-toastr';
-import { DateTimePickerModule } from 'ng-pick-datetime'
+import { ToastContainerModule, ToastrModule } from 'ngx-toastr';
+
+import { FeatureModule } from '../components/feature.module';
 
 import { SharedModule } from '../shared';
-import { HttpService, AuthService, AuthRequestOptions } from '../shared/core';
+import { AuthRequestOptions, AuthService, HttpService } from '../shared/core';
+import { DeviceCreateComponent } from './create';
+import { DeviceDetailsComponent } from './details';
 
 import { DEVICE_ROUTING } from './device.routes';
 
 import { DeviceService } from './device.service';
-import { DeviceListComponent } from './list';
-import { DeviceCreateComponent } from './create';
-import { DeviceDetailsComponent } from './details';
 import { DeviceEditComponent } from './edit';
+import { DeviceListComponent } from './list';
 import { LogDetailsComponent } from './log-details';
+import { RenameComponent } from './rename';
 import { SettingsEditComponent } from './settings';
-import { RenameComponent } from "./rename";
-
-import { FeatureModule } from '../components/feature.module';
+import { UploadFirmwareComponent } from './upload-firmware';
 
 @NgModule({
   imports: [
@@ -44,12 +45,12 @@ import { FeatureModule } from '../components/feature.module';
     {
       provide: Http,
       useFactory: httpFactory,
-      deps: [ XHRBackend, RequestOptions, Injector ]
+      deps: [XHRBackend, RequestOptions, Injector]
     },
     {
       provide: RequestOptions,
       useFactory: requestOptionsFactory,
-      deps: [ AuthService ]
+      deps: [AuthService]
     },
     DeviceService
   ],
@@ -60,7 +61,8 @@ import { FeatureModule } from '../components/feature.module';
     DeviceEditComponent,
     LogDetailsComponent,
     SettingsEditComponent,
-    RenameComponent
+    RenameComponent,
+    UploadFirmwareComponent
   ]
 })
 export class DeviceModule {

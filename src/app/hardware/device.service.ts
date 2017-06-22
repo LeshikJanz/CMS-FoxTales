@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { Http, RequestOptions, Response } from '@angular/http';
 import { Observable } from 'rxjs';
+import { AuthService } from '../shared/core/auth/auth.service';
 import { Device } from './device';
 import { IDevice, IDeviceFilter, IDeviceList } from './device.interface';
 import { ILog } from './log.interface';
@@ -18,7 +19,8 @@ export class DeviceService {
    * @param {Http} http
    * @returns {void}
    */
-  constructor(private http: Http) {
+  constructor(private http: Http,
+              private auth: AuthService) {
   }
 
   /**
@@ -171,6 +173,34 @@ export class DeviceService {
    */
   public getClients(): Observable<any> {
     return this.http.get(`${process.env.API_URL}/Clients/Lookup`)
+      .map((response: Response) => response.json());
+  }
+
+  public downloadDeviceSettings(id: number): Observable<any> {
+    return this.http.get(`${process.env.API_URL}/Devices/${id}/DeviceConnectionSettings`)
+      .map((response: Response) => response.json());
+  }
+
+  public restartDevice(id: any): Observable<any> {
+    return this.http.put(`${process.env.API_URL}/Devices/${id}/restart`, {})
+      .map((response: Response) => response.json());
+  }
+
+  public getUploadUrl(version: string): Observable<any> {
+    return this.http.get(`${process.env.API_URL}/Devices/GetUploadSoftwareURL/${version}`)
+      .map((response: Response) => response.json());
+  }
+
+  public uploadFileToBlob(url: string, file: any): Observable<any> {
+    // let headers = new Headers();
+    // headers.append('Authorization', `SharedKey ${this.auth.getContext().getToken()}`);
+    // let options = new RequestOptions({headers: headers});
+    return this.http.put(url, file)
+      .map((response: Response) => response.json());
+  }
+
+  public setUploadUrl(data: any): Observable<any> {
+    return this.http.post(`${process.env.API_URL}/Devices/SetUploadSoftwareURL`, data)
       .map((response: Response) => response.json());
   }
 }
