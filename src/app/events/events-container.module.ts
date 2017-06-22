@@ -28,13 +28,16 @@ import {
 import {
   CreateEventHeaderComponent
 } from './headers/create-event-header/create-event-header.component';
-import { EditEventHeaderComponent } from './headers/edit-event-header/edit-event-header.component';
+import {
+  EditEventHeaderComponent
+} from './headers/edit-event-header/edit-event-header.component';
 import {
   CreateEventGroupHeaderComponent
 } from './headers/create-eventGroup-header/create-eventGroup-header.component';
 import {
   EditEventGroupHeaderComponent
 } from './headers/edit-eventGroup-header/edit-eventGroup-header.component';
+import { EventViewDetailsComponent } from '../event/view-details/event-view-details.component';
 
 @NgModule({
   imports: [

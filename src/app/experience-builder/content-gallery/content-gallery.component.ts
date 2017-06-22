@@ -38,15 +38,31 @@ export class ContentGalleryComponent {
               }
 
   public createTab1() {
+    this.staticTabs.tabs[1].active = true;
     console.log('create tab1 function');
   };
 
   public createTab2() {
     console.log('create tab2 function ');
+    this.staticTabs.tabs[2].active = true;
   };
 
-  public createTab3() {
+  public createTab3(modal) {
     console.log('finish tab');
+    this.hashtags = this.hashtags.map((hashtag) =>{
+      return hashtag.value;
+    });
+
+    this.experienceBuilderService.postContentGallerySettings({
+      name: this.galleryName,
+      hashtags: this.hashtags.toString(),
+      shortUrl: this.customUrl,
+      showMobileBackgroundImage: this.mobileBackgroundChecked
+    }).subscribe((response) => {
+      console.log(response);
+      modal.hide();
+    });
+
   }
 
   public checkedContentOption(event) {
