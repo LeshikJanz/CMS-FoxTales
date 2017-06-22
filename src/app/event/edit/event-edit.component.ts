@@ -13,7 +13,8 @@ import {} from 'bingmaps/scripts/MicrosoftMaps/Microsoft.Maps.All';
 @Component({
   selector: 'event-edit',
   templateUrl: './event-edit.component.html',
-  styleUrls: ['./event-edit.component.scss']
+  styleUrls: ['./event-edit.component.scss',
+    '../../shared/styles/form-element.scss']
 })
 export class EventEditComponent implements OnInit {
   @ViewChild('myMap') public myMap;
@@ -21,7 +22,7 @@ export class EventEditComponent implements OnInit {
   public endMomentDate: string;
   public notification: number;
   public isNotificationEnabled: string;
-  public notificationOptions: ISwitcher[] = [{id: 1, name: 'Yes'}, {id: 2, name: 'No'}];
+  public notificationOptions: ISwitcher[] = [{ id: 1, name: 'Yes' }, { id: 2, name: 'No' }];
   public eventName: string;
   public eventAddress: string;
   public eventTags: any;

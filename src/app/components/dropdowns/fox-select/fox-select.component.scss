@@ -1,6 +1,6 @@
 .ng-select-container {
   width: inherit;
-  height: 65px;
+  min-height: 65px;
   margin-bottom: inherit;
   border-radius: inherit;
   border: inherit;
@@ -12,7 +12,6 @@ i > * {
 
 :host /deep/ .ui-select-match-item {
   display: flex;
-  height: 44px;
   width: 115px;
   align-items: center;
   border-radius: 3px;
@@ -41,13 +40,30 @@ ng-select {
 }
 
 :host /deep/ .ui-select-multiple .ui-select-match-item {
-  font-family: WorkSans;
+  display: inline-block;
+  height: 44px;
+  line-height: 3;
+  width: 140px;
   font-size: 14px;
   font-weight: 500;
   color: #4b535c;
-  display: flex;
-  flex-direction: row-reverse;
-  justify-content: space-around;
+  background-color: #d8dce1;
+  margin: 10px;
+
+  > span {
+    float: left;
+    font-family: WorkSans;
+    font-size: 14px;
+    font-weight: 500;
+    color: #4b535c;
+    margin-left: 15px;
+  }
+
+  > a {
+    margin-left: 5px;
+    display: inline-block;
+    line-height: 1.7 !important;
+  }
 }
 
 :host /deep/ .ui-select-match {
@@ -141,6 +157,21 @@ ng-select {
   color: #b2bac4;
   height: inherit;
   align-self: center;
+}
+
+:host /deep/ .ui-select-multiple {
+  min-height: 65px;
+
+  .ui-select-search {
+    background-image: url(../../../../assets/img/drop-arrow.svg);
+    background-repeat: no-repeat;
+    background-size: 13px 13px;
+    background-position-x: 15px;
+    cursor: pointer;
+    float: right;
+    width: 50px !important;
+    height: 65px !important;
+  }
 }
 
 :host /deep/ .ui-select-choices::-webkit-scrollbar {
