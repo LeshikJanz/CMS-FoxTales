@@ -71,7 +71,8 @@ import { EventViewDetailsComponent } from '../event/view-details/event-view-deta
     CreateEventHeaderComponent,
     EditEventHeaderComponent,
     CreateEventGroupHeaderComponent,
-    EditEventGroupHeaderComponent
+    EditEventGroupHeaderComponent,
+    EventViewDetailsComponent
   ]
 })
 export class EventsModule {
