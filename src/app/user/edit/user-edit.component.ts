@@ -15,7 +15,8 @@ import { UserService } from '../user.service';
   selector: 'user-edit',
   templateUrl: './user-edit.component.html',
   styleUrls: ['user-edit.component.scss',
-    '../../shared/styles/form-element.scss']
+    '../../shared/styles/form-element.scss'
+  ]
 })
 export class UserEditComponent implements OnInit {
   /**
@@ -32,7 +33,7 @@ export class UserEditComponent implements OnInit {
    */
   public user: IUser = {
     email: null,
-    roles: null,
+    roles: [],
     clientId: null
   };
 
@@ -67,13 +68,11 @@ export class UserEditComponent implements OnInit {
    * @param {UserService} userService - User service
    * @returns {void}
    */
-  constructor(
-    private router: Router,
-    private route: ActivatedRoute,
-    private formBuilder: FormBuilder,
-    private toastrService: ToastrService,
-    private userService: UserService
-  ) {
+  constructor(private router: Router,
+              private route: ActivatedRoute,
+              private formBuilder: FormBuilder,
+              private toastrService: ToastrService,
+              private userService: UserService) {
   }
 
   /**
@@ -117,7 +116,7 @@ export class UserEditComponent implements OnInit {
       .getUserRoles()
       .subscribe((roles: IUserRole[]) => {
         this.roles = roles;
-    });
+      });
   }
 
   /**
@@ -148,6 +147,7 @@ export class UserEditComponent implements OnInit {
         }
 
         this.user = user;
+
         this.getUserRoles();
         this.getClient(user.clientId);
       });
@@ -159,10 +159,12 @@ export class UserEditComponent implements OnInit {
    * @returns {void}
    */
   public updateUser(): void {
+    this.user.roles = this.user.roles.map((r: any) => r.id);
+
     this.userService
       .updateUser(this.user)
       .subscribe(() => {
-        this.toastrService.success('User has been removed successfully.');
+        this.toastrService.success('User has been updated successfully.');
         this.router.navigate(['/admin/users']);
       });
   }
@@ -173,7 +175,7 @@ export class UserEditComponent implements OnInit {
    * @return {boolean}
    */
   public isFormInvalid(): boolean {
-    if (this.user.clientId && this.user.roles) {
+    if (this.user.clientId && this.user.roles.length) {
       return false;
     }
 
@@ -185,17 +187,8 @@ export class UserEditComponent implements OnInit {
    *
    * @param {any} role - Role
    */
-  public selectRole(role: any): void {
-    this.user.roles = role.id;
-  }
-
-  /**
-   * User role selected
-   *
-   * @param {any[]} roles - Roles
-   */
-  public rolesSelected(roles: any[]): void {
-    this.user.roles = roles;
+  public selectRole(role: IUserRole): void {
+    this.user.roles[0] = role;
   }
 
   /**
@@ -205,6 +198,8 @@ export class UserEditComponent implements OnInit {
    */
   public buildUserForm(): void {
     this.userForm = this.formBuilder.group({
+      firstName: [''],
+      lastName: [''],
       email: ['', [
         Validators.required,
         CustomValidators.email

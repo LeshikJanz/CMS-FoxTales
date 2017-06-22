@@ -65,7 +65,7 @@ export class ExperienceGalleryComponent implements OnInit {
     console.log('onTypeChange');
     console.log(event);
   }
-  
+
   /**
    * Mark element as checked/unchecked
    *
@@ -80,9 +80,9 @@ export class ExperienceGalleryComponent implements OnInit {
   public ngOnInit() {
     this.route.params.subscribe((params: any) =>
       this.galleryId = params['id']
-  );
+    );
 
-    this.filter = {experienceId: this.galleryId};
+    this.filter = { experienceId: this.galleryId };
     this.getGalleryItems(this.filter);
   }
 

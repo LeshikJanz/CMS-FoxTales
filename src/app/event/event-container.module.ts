@@ -18,8 +18,8 @@ import {
 } from '../gallery/event-gallery/container/event-gallery-container.component';
 import { EventService } from './event.service';
 import { FavoriteGalleryComponent } from '../gallery/favorite-gallery/favorite-gallery.component';
-import { 
-  EventNavigationComponent 
+import {
+  EventNavigationComponent
 } from '../components/navigations/event-navigation/event-navigation.component';
 
 @NgModule({

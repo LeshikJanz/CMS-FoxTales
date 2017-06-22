@@ -58,8 +58,8 @@ import {
 }
   from './modals/event-to-group-modal/event-to-group-modal.component';
 
-  import { DatepickerModule } from 'ngx-bootstrap';
-  import { AngularFontAwesomeModule } from 'angular-font-awesome/angular-font-awesome';
+import { DatepickerModule } from 'ngx-bootstrap';
+import { AngularFontAwesomeModule } from 'angular-font-awesome/angular-font-awesome';
 
 import { ThumbnailComponent } from './thumbnail/thumbnail.component';
 import { FavoriteGalleryComponent } from '../gallery/favorite-gallery/favorite-gallery.component';
@@ -84,7 +84,7 @@ import {
   EventDeleteModalComponent
 }
   from './modals/event-delete-modal/event-delete-modal.component';
-  import {
+import {
   ExperienceDeleteModalComponent
 }
   from './modals/experience-delete-modal/experience-delete-modal.component';
@@ -97,16 +97,22 @@ import { UserService } from '../user/user.service';
 import { FormInputComponent } from './input/form-input/form-input.component';
 import { NgxErrorsModule } from '@ultimate/ngxerrors';
 import { CustomFormsModule } from 'ng2-validation';
-import { ProfileNavigationComponent } from './navigations/profile-navigation/profile-navigation.component';
+import {
+  ProfileNavigationComponent
+} from './navigations/profile-navigation/profile-navigation.component';
 import {
   SemiCircleDonutComponent
 } from './high-charts/semi-circle-donut/semi-circle-donut.component';
 import { BasicLineComponent } from './high-charts/basic-line/basic-line.component';
 import { BasicColumnComponent } from './high-charts/basic-column/basic-column.component';
-import { BasicDetailsRunTimesComponent } from './experience-builder/basic-details-run-times/basic-details-run-times.component';
+import {
+  BasicDetailsRunTimesComponent
+} from './experience-builder/basic-details-run-times/basic-details-run-times.component';
 import { DateTimePickerModule } from 'ng-pick-datetime';
 import { UiSwitchComponent } from './toggles/toggle-switch/toggle-switch.component';
-import { OrientationSelectorComponent } from './toggles/orientation-selector/orientation-selector.component'
+import {
+  OrientationSelectorComponent
+} from './toggles/orientation-selector/orientation-selector.component';
 import { FormDropDownComponent } from './dropdowns/form-dropdown/form-dropdown.component';
 
 @NgModule({

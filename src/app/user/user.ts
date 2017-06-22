@@ -59,7 +59,7 @@ export class User implements IUser {
    *
    * @type {IUserRole[]}
    */
-  public roles?: IUserRole[];
+  public roles?: any[];
 
   /**
    * Is user active?

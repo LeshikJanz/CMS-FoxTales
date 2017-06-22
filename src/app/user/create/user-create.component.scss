@@ -1,51 +1,7 @@
-.form {
-  display: flex;
-  flex-direction: column;
+.user-container {
   width: 400px;
-  justify-content: space-between;
-
-  .form-group {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-  }
 
   fox-select {
-    width: 400px !important;
-  }
-
-  fox-button {
-    height: 55px;
-    width: 120px;
-    font-size: 16px;
-  }
-}
-
-.create-button {
-  width: 204px;
-  height: 54px;
-  border-radius: 6px;
-  background-color: #2fd976;
-  color: white;
-  font-size: 16px;
-}
-
-button.create-button[disabled] {
-  background-color: gray;
-  cursor: not-allowed;
-}
-
-.field-error {
-  font-style: italic;
-  color: red;
-}
-
-.form-group {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-
-  .license {
-    padding-right: 15px;
+    width: 400px;
   }
 }

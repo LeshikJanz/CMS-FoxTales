@@ -6,9 +6,15 @@ import { AdminComponent } from './admin.component';
 import { FeatureModule } from '../components/feature.module';
 import { UsersHeaderComponent } from './headers/users-header/users-header.component';
 import { ClientsHeaderComponent } from './headers/clients-header/cliens-header.component';
-import { ClientEditHeaderComponent } from './headers/client-edit-header/client-edit-header.component';
-import { ClientCreateHeaderComponent } from './headers/client-create-header/client-create-header.component';
-import { UserCreateHeaderComponent } from './headers/user-create-header/user-create-header.component';
+import {
+  ClientEditHeaderComponent
+} from './headers/client-edit-header/client-edit-header.component';
+import {
+  ClientCreateHeaderComponent
+} from './headers/client-create-header/client-create-header.component';
+import {
+  UserCreateHeaderComponent
+} from './headers/user-create-header/user-create-header.component';
 import { SharedModule } from '../shared/shared.module';
 import { UserEditHeaderComponent } from './headers/user-edit-header/user-edit-header.component';
 

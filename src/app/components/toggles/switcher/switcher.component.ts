@@ -17,7 +17,7 @@ export class SwitcherComponent implements OnInit {
   @Input() public disabled: boolean;
 
   public ngOnInit() {
-    if(this.type) {
+    if (this.type) {
       this.onChange(this.type);
     }
   }

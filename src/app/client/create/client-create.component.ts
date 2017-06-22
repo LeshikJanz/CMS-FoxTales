@@ -299,7 +299,7 @@ export class ClientCreateComponent implements OnInit {
       logoBytes: [''],
       name: ['', [
         Validators.required,
-        Validators.pattern('^\\S*')
+        Validators.pattern('^[a-zA-Z1-9].*')
       ]],
       email: ['', [
         Validators.required,

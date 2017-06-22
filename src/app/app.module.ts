@@ -27,7 +27,7 @@ import './../../node_modules/videogular2/fonts/videogular.css';
 import '../styles/styles.scss';
 
 import { FeatureModule } from './components/feature.module';
-import { RouteData } from './shared/core/routing/route-data.service';
+import { RouteData } from './shared/core/event-management/route-data.service';
 
 // Application wide providers
 const APP_PROVIDERS = [

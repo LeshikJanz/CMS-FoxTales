@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
-import { ActivatedRoute } from "@angular/router";
-import { EventService } from "../../../event/event.service";
-import { IEvent } from "../../../event/event.interface";
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { EventService } from '../../../event/event.service';
+import { IEvent } from '../../../event/event.interface';
 
 @Component({
   selector: 'edit-event-header',
@@ -10,11 +10,11 @@ import { IEvent } from "../../../event/event.interface";
     '../../../shared/styles/animations.scss']
 })
 
-export class EditEventHeaderComponent {
+export class EditEventHeaderComponent implements OnInit {
+  public event: IEvent;
+
   constructor(private route: ActivatedRoute,
               private eventService: EventService) {}
-
-  public event: IEvent;
 
   public ngOnInit() {
     this.route.children[0].params.subscribe((params: any) =>

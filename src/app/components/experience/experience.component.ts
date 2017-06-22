@@ -2,7 +2,7 @@ import { Component, Input, OnChanges } from '@angular/core';
 import { IActionState } from '../../client/client.interface';
 import { Router } from '@angular/router';
 import { IEvent, IExperience } from '../../event/event.interface';
-import { RouteData } from '../../shared/core/routing/route-data.service';
+import { RouteData } from '../../shared/core/event-management/route-data.service';
 
 @Component({
   selector: 'experience',
