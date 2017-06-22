@@ -3,7 +3,8 @@
     <div>
       <h2 class="main-label">Device List</h2>
     </div>
-    <div class="">
+    <div class="buttons-block">
+      <settings-edit></settings-edit>
       <add-button
         [routerLink]="['/admin/device']"
         class="creation-button"
@@ -11,7 +12,6 @@
       ></add-button>
     </div>
   </div>
-  <settings-edit></settings-edit>
   <data-table
     [rows]="devices"
     [cols]="cols"
