@@ -8,15 +8,15 @@ import { MOCK_TAGS } from '../tag.mock';
 import { DateTimePickerModule } from 'ng-pick-datetime';
 import * as moment from 'moment';
 import { ISwitcher } from '../../components/toggles/switcher/switcher.interface';
-import {} from 'bingmaps/scripts/MicrosoftMaps/Microsoft.Maps.All';
+import { } from 'bingmaps/scripts/MicrosoftMaps/Microsoft.Maps.All';
 
 @Component({
-  selector: 'event-edit',
-  templateUrl: './event-edit.component.html',
-  styleUrls: ['./event-edit.component.scss']
+  selector: 'event-view-details',
+  templateUrl: './event-view-details.component.html',
+  styleUrls: ['./event-view-details.component.scss']
 })
-export class EventEditComponent implements OnInit {
-  @ViewChild('myMap') public myMap;
+export class EventViewDetailsComponent implements OnInit {
+  @ViewChild ('myMap') myMap;
   public startMomentDate: string;
   public endMomentDate: string;
   public notification: number;
@@ -29,7 +29,7 @@ export class EventEditComponent implements OnInit {
   public defaultTags: any[];
   public defaultNotification: any;
   public tags: ITag[];
-  public mapAddress: any;
+    public mapAddress: any;
   private sub: any;
 
   /**
@@ -72,87 +72,34 @@ export class EventEditComponent implements OnInit {
       } else {
         this.defaultNotification = this.notificationOptions[1].id;
       }
-      let map = new Microsoft.Maps.Map(this.myMap.nativeElement, {
-        credentials: process.env.BING_KEY
-      });
+    let map = new Microsoft.Maps.Map(this.myMap.nativeElement, {
+      credentials: process.env.BING_KEY
+  });
 
-      let searchRequest = {
-        where: this.eventAddress,
-        callback: (results) => {
-          if (results && results.results && results.results.length > 0) {
-            let pin = new Microsoft.Maps.Pushpin(results.results[0].location);
-            map.entities.push(pin);
-            map.setView({ bounds: results.results[0].bestView });
+    let searchRequest = {
+    where: this.eventAddress,
+    callback: (results) => {
+      if (results && results.results && results.results.length > 0) {
+        let pin = new Microsoft.Maps.Pushpin(results.results[0].location);
+          map.entities.push(pin);
+          map.setView({ bounds: results.results[0].bestView });
           }
         }
       };
 
-      Microsoft.Maps.loadModule('Microsoft.Maps.Search', () => {
-        map.entities.clear();
-        let searchManager = new Microsoft.Maps.Search.SearchManager(map);
-        searchManager.geocode(searchRequest);
-      });
+  Microsoft.Maps.loadModule('Microsoft.Maps.Search', () => {
+    map.entities.clear();
+    let searchManager = new Microsoft.Maps.Search.SearchManager(map);
+    searchManager.geocode(searchRequest);
+  });
+   
+    let pushpin = new Microsoft.Maps.Pushpin(map.getCenter(), null);
+    let layer = new Microsoft.Maps.Layer();
 
-      Microsoft.Maps.loadModule('Microsoft.Maps.AutoSuggest', () => {
-        let manager = new Microsoft.Maps.AutosuggestManager({ map: map });
-        manager.attachAutosuggest('#searchBox', '#searchBoxContainer', (result) => {
+    layer.add(pushpin);
+    map.layers.insert(layer);
+    map.setView({center:map.getCenter()});
 
-          map['address'] = result.formattedSuggestion;
-          this.mapAddress = result.formattedSuggestion;
-          // map['latitude'] = result.location.latitude;
-          // map['longitude'] = result.location.longitude;
-
-          // Remove previously selected suggestions from the map.
-          map.entities.clear();
-
-          // Show the suggestion as a pushpin and center map over it.
-          const pin = new Microsoft.Maps.Pushpin(result.location);
-
-          map.entities.push(pin);
-          map.setView({ bounds: result.bestView });
-        });
-      });
-      // let location =
-      let pushpin = new Microsoft.Maps.Pushpin(map.getCenter(), null);
-      let layer = new Microsoft.Maps.Layer();
-
-      layer.add(pushpin);
-      map.layers.insert(layer);
-      map.setView({ center: map.getCenter() });
-
-    });
-  }
-
-  public editEvent() {
-    this.defaultTags = this.defaultTags.map((tag: ITag) => {
-      if (tag.name) {
-        return tag.name;
-      } else {
-        return tag;
-      }
-    });
-
-    switch (this.notification) {
-      case 1:
-        this.defaultNotification = true;
-        break;
-      case 2:
-        this.defaultNotification = false;
-        break;
-    }
-
-    this.event.updateEvent({
-      id: this.id,
-      name: this.eventName,
-      address: this.mapAddress,
-      startTime: this.startMomentDate,
-      endTime: this.endMomentDate,
-      tags: this.defaultTags,
-      sendNotifications: this.defaultNotification
-
-    }).subscribe((event) => {
-      console.log(event);
-      this.router.navigate(['/events/events']);
     });
   }
 
@@ -177,6 +124,7 @@ export class EventEditComponent implements OnInit {
     return tag.replace(/\s/g, '');
   }
 
+
   /**
    * Search tags
    *
@@ -191,8 +139,8 @@ export class EventEditComponent implements OnInit {
 
     const targetValue = target['name'].toString();
     return targetValue && targetValue
-        .toLowerCase()
-        .indexOf(value.toLowerCase()) >= 0;
+      .toLowerCase()
+      .indexOf(value.toLowerCase()) >= 0;
   }
 
 }

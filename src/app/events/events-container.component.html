@@ -2,6 +2,7 @@
   <events-header *ngSwitchCase="'/events/events'"></events-header>
   <events-group-header *ngSwitchCase="'/events/event-groups'"></events-group-header>
   <edit-event-header *ngIf="curLocation && curLocation.indexOf('/events/edit-event/') >= 0"></edit-event-header>
+  <edit-event-header *ngIf="curLocation && curLocation.indexOf('/events/details-event/') >= 0"></edit-event-header>
   <events-header *ngSwitchCase="'/events/favorited-media'"></events-header>
   <create-event-header *ngSwitchCase="'/events/create-event'"></create-event-header>
   <create-event-group-header *ngSwitchCase="'/events/event-group'"></create-event-group-header>

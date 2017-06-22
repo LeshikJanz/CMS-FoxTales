@@ -47,6 +47,7 @@ export class EventComponent implements OnInit {
    * @type IActionState[]
    */
   @Input() public eventActions: IActionState[];
+  @Input() public eventActionsCompleted: any;
 
   /**
    * Object controls Modal state
@@ -135,6 +136,15 @@ export class EventComponent implements OnInit {
    */
   public onEdit() {
     this.router.navigate(['/events/edit-event', this.event['id']]);
+  }
+
+  /**
+   * On View Details event
+   *
+   * @return {void}
+   */
+  public onViewDetails() {
+    this.router.navigate(['/events/details-event', this.event['id']]);
   }
 
   /**
