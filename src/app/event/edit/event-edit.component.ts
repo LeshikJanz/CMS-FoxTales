@@ -8,7 +8,7 @@ import { MOCK_TAGS } from '../tag.mock';
 import { DateTimePickerModule } from 'ng-pick-datetime';
 import * as moment from 'moment';
 import { ISwitcher } from '../../components/toggles/switcher/switcher.interface';
-import { } from 'bingmaps/scripts/MicrosoftMaps/Microsoft.Maps.All';
+import {} from 'bingmaps/scripts/MicrosoftMaps/Microsoft.Maps.All';
 
 @Component({
   selector: 'event-edit',
@@ -16,7 +16,7 @@ import { } from 'bingmaps/scripts/MicrosoftMaps/Microsoft.Maps.All';
   styleUrls: ['./event-edit.component.scss']
 })
 export class EventEditComponent implements OnInit {
-  @ViewChild ('myMap') myMap;
+  @ViewChild('myMap') public myMap;
   public startMomentDate: string;
   public endMomentDate: string;
   public notification: number;
@@ -29,7 +29,7 @@ export class EventEditComponent implements OnInit {
   public defaultTags: any[];
   public defaultNotification: any;
   public tags: ITag[];
-    public mapAddress: any;
+  public mapAddress: any;
   private sub: any;
 
   /**
@@ -72,56 +72,55 @@ export class EventEditComponent implements OnInit {
       } else {
         this.defaultNotification = this.notificationOptions[1].id;
       }
-    let map = new Microsoft.Maps.Map(this.myMap.nativeElement, {
+      let map = new Microsoft.Maps.Map(this.myMap.nativeElement, {
         credentials: process.env.BING_KEY
-    });
-    let searchRequest = {
-      where: this.eventAddress,
-      callback: (results) => {
-        if (results && results.results && results.results.length > 0) {
-          let pin = new Microsoft.Maps.Pushpin(results.results[0].location);
+      });
+
+      let searchRequest = {
+        where: this.eventAddress,
+        callback: (results) => {
+          if (results && results.results && results.results.length > 0) {
+            let pin = new Microsoft.Maps.Pushpin(results.results[0].location);
             map.entities.push(pin);
             map.setView({ bounds: results.results[0].bestView });
-            }
           }
-        };
+        }
+      };
 
-    Microsoft.Maps.loadModule('Microsoft.Maps.Search', () => {
-      map.entities.clear();
-      let searchManager = new Microsoft.Maps.Search.SearchManager(map);
-      searchManager.geocode(searchRequest);
-    });
-   
+      Microsoft.Maps.loadModule('Microsoft.Maps.Search', () => {
+        map.entities.clear();
+        let searchManager = new Microsoft.Maps.Search.SearchManager(map);
+        searchManager.geocode(searchRequest);
+      });
 
-
-    Microsoft.Maps.loadModule('Microsoft.Maps.AutoSuggest', () => {
-      let manager = new Microsoft.Maps.AutosuggestManager({ map: map });
+      Microsoft.Maps.loadModule('Microsoft.Maps.AutoSuggest', () => {
+        let manager = new Microsoft.Maps.AutosuggestManager({ map: map });
         manager.attachAutosuggest('#searchBox', '#searchBoxContainer', (result) => {
 
-        map['address'] = result.formattedSuggestion;
-        this.mapAddress = result.formattedSuggestion;
-        // map['latitude'] = result.location.latitude;
-        // map['longitude'] = result.location.longitude;
+          map['address'] = result.formattedSuggestion;
+          this.mapAddress = result.formattedSuggestion;
+          // map['latitude'] = result.location.latitude;
+          // map['longitude'] = result.location.longitude;
 
-        //Remove previously selected suggestions from the map.
-        map.entities.clear();
+          // Remove previously selected suggestions from the map.
+          map.entities.clear();
 
-        //Show the suggestion as a pushpin and center map over it.
-        const pin = new Microsoft.Maps.Pushpin(result.location);
+          // Show the suggestion as a pushpin and center map over it.
+          const pin = new Microsoft.Maps.Pushpin(result.location);
 
-        map.entities.push(pin);
-        map.setView({ bounds: result.bestView });
+          map.entities.push(pin);
+          map.setView({ bounds: result.bestView });
+        });
       });
+      // let location =
+      let pushpin = new Microsoft.Maps.Pushpin(map.getCenter(), null);
+      let layer = new Microsoft.Maps.Layer();
+
+      layer.add(pushpin);
+      map.layers.insert(layer);
+      map.setView({ center: map.getCenter() });
+
     });
-    // let location = 
-    let pushpin = new Microsoft.Maps.Pushpin(map.getCenter(), null);
-    let layer = new Microsoft.Maps.Layer();
-
-    layer.add(pushpin);
-    map.layers.insert(layer);
-    map.setView({center:map.getCenter()});
-
-  });
   }
 
   public editEvent() {
@@ -178,7 +177,6 @@ export class EventEditComponent implements OnInit {
     return tag.replace(/\s/g, '');
   }
 
-
   /**
    * Search tags
    *
@@ -193,8 +191,8 @@ export class EventEditComponent implements OnInit {
 
     const targetValue = target['name'].toString();
     return targetValue && targetValue
-      .toLowerCase()
-      .indexOf(value.toLowerCase()) >= 0;
+        .toLowerCase()
+        .indexOf(value.toLowerCase()) >= 0;
   }
 
 }

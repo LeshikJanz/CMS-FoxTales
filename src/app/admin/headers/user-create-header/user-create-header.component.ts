@@ -1,7 +1,4 @@
-import { Component, Input } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { ClientService } from '../../../client/client.service';
-import { IClient } from "../../../client/client.interface";
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'user-create-header',
@@ -11,6 +8,4 @@ import { IClient } from "../../../client/client.interface";
 })
 
 export class UserCreateHeaderComponent {
-  constructor() {
-  }
 }

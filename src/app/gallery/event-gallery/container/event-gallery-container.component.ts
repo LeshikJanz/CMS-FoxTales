@@ -43,7 +43,7 @@ export class EventGalleryContainerComponent implements OnInit {
    *
    * @type {string}
    */
-  public selectedType: number = this.galleryTypes[1].id;  //Experience
+  public selectedType: number = this.galleryTypes[1].id;  // Experience
 
   /**
    * Gallery items
@@ -107,9 +107,7 @@ export class EventGalleryContainerComponent implements OnInit {
    * @return {void}
    */
   public onTypeChange(event) {
-    console.log('onTypeChange')
-    console.log(event)
-    if(event <= 3) {
+    if (event <= 3) {
       this.selectedType = event;
     }
   }
@@ -138,10 +136,10 @@ export class EventGalleryContainerComponent implements OnInit {
 
   public ngOnInit() {
     this.route.params.subscribe((params: any) => {
-      this.eventId = params['id'];
-      console.log('this.eventId');
-      console.log(this.eventId);
-    }
+        this.eventId = params['id'];
+        console.log('this.eventId');
+        console.log(this.eventId);
+      }
     );
 
     this.filter = { eventId: this.eventId };
@@ -163,7 +161,6 @@ export class EventGalleryContainerComponent implements OnInit {
         this.experiences = experiences
       );
   }
-
 
   /**
    * Mark element as checked/unchecked

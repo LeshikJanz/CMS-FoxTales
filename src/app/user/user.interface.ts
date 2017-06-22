@@ -17,6 +17,7 @@ export interface IUser {
   location?: string;
   lastActiveDate?: string;
   selectedClientAccess?: string;
+  profileImagePath?: string;
 }
 
 /**

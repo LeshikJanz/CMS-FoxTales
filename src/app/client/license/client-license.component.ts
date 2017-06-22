@@ -12,7 +12,7 @@ import {
   IClientLicenseHardware
 } from '../client-license.interface';
 import { ClientService } from '../client.service';
-import { IActionState } from "../client.interface";
+import { IActionState } from '../client.interface';
 
 @Component({
   selector: 'client-license',

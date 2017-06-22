@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit, OnChanges } from '@angular/core';
 import { PermissionService } from '../../../shared/core';
 import { IActionState } from '../../../client/client.interface';
 
@@ -11,7 +11,7 @@ import { IActionState } from '../../../client/client.interface';
   styleUrls: ['form-dropdown.component.scss']
 })
 
-export class FormDropDownComponent implements OnInit {
+export class FormDropDownComponent implements OnInit, OnChanges {
   @Input() public options: any[];
 
   @Input() public title: string = 'DropDown';
@@ -26,7 +26,7 @@ export class FormDropDownComponent implements OnInit {
   }
 
   public ngOnInit(): void {
-    if(this.options) {
+    if (this.options) {
       this.options = this.options.filter((option: IActionState) => {
         if (option.acl) {
           return this.permission.isAllowed(option.acl);
@@ -35,9 +35,12 @@ export class FormDropDownComponent implements OnInit {
         return true;
       });
     }
+  }
 
-    if(this.active) {
-      this.onTypeChanged(this.active);
+  public ngOnChanges() {
+    if (this.active) {
+      // this.onTypeChanged(this.active);
+      this.currentAction = this.active.action || this.active.name;
     }
   }
 

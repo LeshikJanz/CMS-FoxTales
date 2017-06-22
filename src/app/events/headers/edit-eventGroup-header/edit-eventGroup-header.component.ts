@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { IEventGroup } from '../../../event-groups/list/event-groups.interaface';
-import { EventGroupsService } from "../../../event-groups/list/event-groups.service";
+import { EventGroupsService } from '../../../event-groups/list/event-groups.service';
 
 @Component({
   selector: 'edit-event-group-header',
@@ -10,12 +10,12 @@ import { EventGroupsService } from "../../../event-groups/list/event-groups.serv
     '../../../shared/styles/animations.scss']
 })
 
-export class EditEventGroupHeaderComponent {
+export class EditEventGroupHeaderComponent implements OnInit {
+  public eventGroup: IEventGroup;
+
   constructor(private route: ActivatedRoute,
               private eventGroupService: EventGroupsService) {
   }
-
-  public eventGroup: IEventGroup;
 
   public ngOnInit() {
     this.route.children[0].params.subscribe((params: any) =>

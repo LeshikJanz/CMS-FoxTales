@@ -3,7 +3,21 @@ form {
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
-  max-width: 1400px;
+  min-width: 900px;
+  max-width: 1200px;
+
+  .form-element {
+    width: 400px;
+  }
+
+  .line-group {
+    min-width: 500px;
+    max-width: 900px;
+
+    .form-element {
+      width: 200px;
+    }
+  }
 
   .form-group:first-child {
     min-width: 520px;

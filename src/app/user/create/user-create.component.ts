@@ -11,8 +11,9 @@ import { UserService } from '../user.service';
 @Component({
   selector: 'user-create',
   templateUrl: './user-create.component.html',
-  styleUrls: ['../../shared/styles/form-element.scss',
-    './user-create.component.scss']
+  styleUrls: ['./user-create.component.scss',
+    '../../shared/styles/form-element.scss'
+    ]
 })
 export class UserCreateComponent implements OnInit {
   /**
@@ -42,7 +43,7 @@ export class UserCreateComponent implements OnInit {
    * @type {any}
    */
   public userDetails: any = {
-    role: null,
+    roles: [],
     clientId: null
   };
 
@@ -68,7 +69,7 @@ export class UserCreateComponent implements OnInit {
    * @return {boolean}
    */
   public isFormInvalid(): boolean {
-    if (this.userForm.valid && this.userDetails.clientId && this.userDetails.role) {
+    if (this.userForm.valid && this.userDetails.clientId && this.userDetails.roles.length) {
       return false;
     }
     return true;
@@ -127,7 +128,7 @@ export class UserCreateComponent implements OnInit {
       .subscribe((response: any) => {
         if (response.success) {
           this.toastrService.success('User has been created successfully.');
-          this.router.navigate(['/admin/users'])
+          this.router.navigate(['/admin/users']);
         } else {
           this.toastrService.error(response.message);
         }
@@ -140,7 +141,7 @@ export class UserCreateComponent implements OnInit {
    * @param {any} role - Role
    */
   public selectRole(role: any): void {
-    this.userDetails.role = role.id;
+    this.userDetails.roles[0] = role.id;
   }
 
   /**
@@ -161,6 +162,8 @@ export class UserCreateComponent implements OnInit {
    */
   public buildUserForm(): UserCreateComponent {
     this.userForm = this.formBuilder.group({
+      firstName: [''],
+      lastName: [''],
       email: ['', [
         Validators.required,
         CustomValidators.email

@@ -2,7 +2,7 @@ import { Component, ViewEncapsulation, OnInit } from '@angular/core';
 import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 import { Authentication } from 'adal-ts';
 import { AuthService, PermissionService } from './shared/core';
-import { RouteData } from './shared/core/routing/route-data.service';
+import { RouteData } from './shared/core/event-management/route-data.service';
 
 /*
  * App Component
@@ -48,11 +48,6 @@ export class AppComponent implements OnInit {
     setTimeout(() => {
       this.redirect();
     }, 1000);
-
-    this
-      .routeData
-      .name
-      .subscribe((n: any) => this.routeName = n);
   }
 
   /**

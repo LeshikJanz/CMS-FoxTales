@@ -5,7 +5,7 @@ import { IActionState } from '../../client/client.interface';
 import { EventGroupsService } from '../../event-groups/list/event-groups.service';
 import { IEventFilter, IEvent } from '../event.interface';
 import { ITableAction } from '../../shared/table/action.interface';
-import { RouteData } from '../../shared/core/routing/route-data.service';
+import { RouteData } from '../../shared/core/event-management/route-data.service';
 import * as moment from 'moment';
 
 /**

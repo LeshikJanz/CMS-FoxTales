@@ -38,7 +38,6 @@ export class TableDropDownComponent implements OnInit {
     }
   }
 
-
   public onTypeChanged(elem: ITableAction) {
     this.typeChanged.emit(elem);
   }

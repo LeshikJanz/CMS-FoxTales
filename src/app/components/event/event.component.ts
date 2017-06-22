@@ -3,7 +3,7 @@ import { IActionState } from '../../client/client.interface';
 import { Router } from '@angular/router';
 import { IEvent } from '../../event/event.interface';
 import * as moment from 'moment';
-import { ICheckbox } from "../toggles/checkbox/checkbox.component";
+import { ICheckbox } from '../toggles/checkbox/checkbox.component';
 
 @Component({
   selector: 'event',
