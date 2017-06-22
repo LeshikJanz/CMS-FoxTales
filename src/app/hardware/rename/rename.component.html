@@ -1,0 +1,29 @@
+<div *ngIf="!editing">
+  {{name}}
+  <span (click)="toggleEdit()">Edit</span>
+</div>
+<form
+  *ngIf="editing"
+  (ngSubmit)="rename(renameForm.value)"
+  class="form"
+  novalidate>
+
+  <div [formGroup]="renameForm">
+
+    <!-- Name -->
+    <div>
+      <input
+        id="name"
+        type="text"
+        formControlName="name"
+        placeholder="Name">
+
+      <div ngxErrors="name">
+        <div ngxError="required" when="touched">
+          Field is required
+        </div>
+      </div>
+    </div>
+
+  </div>
+</form>

@@ -1,6 +1,10 @@
 <div>
   <div class="list-menu">
     <div>
+      <rename [name]="device?.name"
+              (onRename)="onRenameClicked($event)"></rename>
+    </div>
+    <div>
       <h2 class="main-label">Device details</h2>
     </div>
     <div class="">

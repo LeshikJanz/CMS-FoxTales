@@ -125,6 +125,20 @@ export class DeviceService {
   }
 
   /**
+   * Rename device
+   *
+   * See: http://dev.getfoxtales.com/swagger/#!/Devices/ApiDevicesByIdRenamePut
+   *
+   * @param {id} id - number
+   * @param {name} name - string
+   * @returns {Observable<any>} - any
+   */
+  public renameDevice(id: number, name: string): Observable<any> {
+    return this.http.put(`${process.env.API_URL}/Devices/${id}/rename?name=${name}`, {})
+      .map((response: Response) => response.json());
+  }
+
+  /**
    * Get products
    *
    * See: http://dev.getfoxtales.com/swagger/#!/Products/ApiProductsAssociatedListGet

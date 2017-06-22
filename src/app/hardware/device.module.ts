@@ -20,6 +20,7 @@ import { DeviceDetailsComponent } from './details';
 import { DeviceEditComponent } from './edit';
 import { LogDetailsComponent } from './log-details';
 import { SettingsEditComponent } from './settings';
+import { RenameComponent } from "./rename";
 
 import { FeatureModule } from '../components/feature.module';
 
@@ -58,7 +59,8 @@ import { FeatureModule } from '../components/feature.module';
     DeviceDetailsComponent,
     DeviceEditComponent,
     LogDetailsComponent,
-    SettingsEditComponent
+    SettingsEditComponent,
+    RenameComponent
   ]
 })
 export class DeviceModule {

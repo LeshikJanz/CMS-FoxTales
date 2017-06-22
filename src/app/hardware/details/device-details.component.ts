@@ -213,4 +213,11 @@ export class DeviceDetailsComponent implements OnInit {
       this[action.callback](action.id);
     }
   }
+
+  public onRenameClicked(event: any): void {
+    this.deviceService.renameDevice(this.id, event.name).subscribe((data: any) => {
+      console.log(data);
+      this.device.name = event.name;
+    });
+  }
 }
