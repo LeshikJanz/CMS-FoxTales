@@ -27,6 +27,7 @@
     [eventActions]="eventActions"
     [eventActionsCompleted] = "eventActionsCompleted"
     (cloneAction)="onClone($event)"
+    (addToGroupAction)="getUnusedGroups($event)"
   >
   </event>
 
@@ -40,7 +41,7 @@
     </section>
   </div>
 
-  <event-to-group-modal #atgModal [eventGroups]="eventGroups"></event-to-group-modal>
+  <event-to-group-modal #atgModal [eventGroups]="unusedEventGroups"></event-to-group-modal>
   <event-delete-modal #deleteModal (delete)="onDeleteEvent()"></event-delete-modal>
 
 </div>

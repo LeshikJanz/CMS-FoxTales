@@ -9,14 +9,12 @@
              src="../../../assets/img/show-icon.svg" alt="">
       <img class="icon icon-hide" (click)="setVisibility()" [hidden]="item.visible"
              src="../../../assets/img/hide-icon.svg">
-      <!--<a href="javascript:void(0)" (click)="setVisibility()" [hidden]="!item.visible">show</a>-->
-      <!--<a href="javascript:void(0)" (click)="setVisibility()" [hidden]="item.visible">hide</a>-->
     </div>
-    <img *ngIf="item.mediaPath.indexOf('.png') > 0"
+    <img [ngClass]="{transparent: !item.visible}" *ngIf="item.mediaPath.search('.(jpe?g|gif|png)') > 0"
          [src]="item ? item.mediaPath :
        'https://amazingcarousel.com/wp-content/uploads/amazingcarousel/3/images/lightbox/golden-wheat-field-lightbox.jpg'"
          alt="">
-    <vg-player *ngIf="item.mediaPath.indexOf('.mp4') > 0" (onPlayerReady)="onPlayerReady($event)">
+    <vg-player [ngClass]="{transparent: !item.visible}" *ngIf="item.mediaPath.indexOf('.mp4') > 0" (onPlayerReady)="onPlayerReady($event)">
       <video loop="true" [vgMedia]="media" #media id="singleVideo" controls controlsList="nodownload">
         <source [src]="item.mediaPath" type="video/mp4">
       </video>

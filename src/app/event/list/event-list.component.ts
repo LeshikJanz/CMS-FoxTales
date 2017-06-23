@@ -7,6 +7,7 @@ import { IEventFilter, IEvent, IEventList } from '../event.interface';
 import { ITableAction } from '../../shared/table/action.interface';
 import { RouteData } from '../../shared/core/event-management/route-data.service';
 import * as moment from 'moment';
+import { IEventGroupFilter, IEventGroup } from '../../event-groups/list/event-groups.interaface';
 
 /**
  * Event list component
@@ -32,6 +33,13 @@ export class EventListComponent implements OnInit {
    * @type {Event[]}
    */
   public Events: IEvent[];
+
+  /**
+   * Unused event groups
+   *
+   * @type {IEventGroup[]}
+   */
+  public unusedEventGroups: IEventGroup[];
 
   /**
    * Event to be cloned
@@ -380,6 +388,26 @@ export class EventListComponent implements OnInit {
 
     this.changePage();
   }
+
+
+  /**
+   * Get unused event groups ( do not contain current event )
+   *
+   * @param {number} eventId - event id
+   * @return {void}
+   */
+  public getUnusedGroups(eventId: any) {
+    console.log('getUnusedEventGroups');
+    console.log('getUnusedEventGroups');
+
+    const filter: IEventGroupFilter = { eventId };
+
+    this.eventGroupsService
+      .getEventGroups(filter)
+      .subscribe((eventGroups: IEventGroup[]) =>
+        this.unusedEventGroups = eventGroups
+      );
+  };
 
   /**
    * Is prev page active?
