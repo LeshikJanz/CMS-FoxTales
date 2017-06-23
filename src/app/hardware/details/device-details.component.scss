@@ -1,3 +1,7 @@
+button {
+  border: none;
+}
+
 .list-menu {
   display: flex;
   flex-direction: row;
@@ -5,7 +9,21 @@
   align-items: center;
 }
 
+.buttons-block {
+  display: flex;
+  align-items: center;
+  button {
+    max-width: 150px;
+    margin-left: 10px;
+    background: transparent;
+    &:hover {
+      background-color: #868c96;
+    }
+  }
+}
+
 .creation-button {
+  margin-left: 10px;
   width: 204px;
   height: 54px;
   font-size: 16px;

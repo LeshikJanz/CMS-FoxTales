@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, OnChanges } from '@angular/core';
+import {Component, Input, OnInit, OnChanges} from '@angular/core';
 
 /**
  * Drop down menu
@@ -6,7 +6,7 @@ import { Component, Input, OnInit, OnChanges } from '@angular/core';
 @Component({
   selector: 'fox-button',
   templateUrl: 'fox-button.component.html',
-  styleUrls: [ 'fox-button.component.scss' ]
+  styleUrls: ['fox-button.component.scss']
 })
 
 export class FoxButtonComponent implements OnInit {
@@ -15,6 +15,8 @@ export class FoxButtonComponent implements OnInit {
   @Input() public design: string;
 
   @Input() public disabled: boolean;
+
+  @Input() public type: string = 'button';
 
   public ngOnInit() {
     if (this.value == null) {

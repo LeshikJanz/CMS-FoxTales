@@ -52,7 +52,7 @@ export class ConnectContentOptionComponent implements OnChanges {
   public ngOnChanges() {
     this.experienceService.getContentOptions(this.experience.experienceId)
     .subscribe((response) => {
-      this.contentOption = response.map((option) => option.name);
+      this.contentOption = response.map((option) => option);
     });
   }
 }

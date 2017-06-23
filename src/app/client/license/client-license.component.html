@@ -92,7 +92,7 @@
 
       <div class="form-element">
         <p>
-          <checkbox (toggle)="license.autoRenew=$event"></checkbox>
+          <checkbox (toggle)="license.autoRenew=$event.isChecked"></checkbox>
           <label>Auto-renew</label>
         </p>
       </div>

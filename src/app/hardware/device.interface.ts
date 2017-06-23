@@ -6,7 +6,7 @@ export interface IDevice {
   hubId?: number;
   purchaseDate?: string;
   productId?: number;
-  clientId: number;
+  clientId: any;
   locationId: number;
   name: string;
 }

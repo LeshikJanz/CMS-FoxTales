@@ -37,7 +37,7 @@
             <ui-switch [(ngModel)]='galleryDownloadChecked'></ui-switch>
             <hr>
             <h3>Public or Private Gallery?</h3>
-            <switcher [options]="gallerySwitchOptions"></switcher>
+            <switcher (toggle)="galleryType = $event" [options]="gallerySwitchOptions"></switcher>
             <br>
             <button [type]="'tertiary'" [value]="'Finish'" (click)="createTab2()">Next</button>
           </tab>
@@ -49,10 +49,10 @@
             <ui-switch [(ngModel)]='mobileBackgroundChecked'></ui-switch>
             <upload-button></upload-button>
             <h3>Background Style</h3>
-            <switcher style="padding: 10px" [options]="options"></switcher>
+            <switcher style="padding: 10px" [options]="options" (toggle)="backgroundFitType = $event"></switcher>
             <br>
             <h3>Where Would You Like The Message Oriented?</h3>
-            <orientation-selector></orientation-selector>
+            <orientation-selector (toggle)="backgroundPosition = $event"></orientation-selector>
 
             <button [type]="'tertiary'" [value]="'Finish'" (click)="createTab3(staticModal)">Finish</button>
           </tab>

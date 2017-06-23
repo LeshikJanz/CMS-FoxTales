@@ -8,6 +8,8 @@ import { IEvent, IEventFilter } from '../../event/event.interface';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { PermissionService } from '../../shared/core/auth/permission.service';
+import { IUserClient } from '../../user/user-client.interface';
+import { UserService } from '../../user/user.service';
 
 @Component({
   selector: 'event-group-create',
@@ -31,6 +33,13 @@ export class EventGroupCreateComponent implements OnInit {
    * @type {ITag[]}
    */
   public tags: ITag[];
+
+  /**
+   * Loading spinner
+   *
+   * @type {boolean}
+   */
+  public loading: boolean = false;
 
   /**
    * Events
@@ -77,17 +86,29 @@ export class EventGroupCreateComponent implements OnInit {
   public tagInputValue: string;
 
   /**
+   * Clients
+   *
+   * @type {IUserClient[]}
+   */
+  public clients: IUserClient[];
+
+  /**
    * Constructor
    *
    * @param {FormBuilder} formBuilder - form builder
    * @param {EventService} eventService - event service
+   * @param {EventGroupsService} eventGroupService - event group service
+   * @param {Router} router - router
+   * @param {ToastrService} toastrService - toastr service
+   * @param {UserService} userService - user service
    * @returns {void}
    */
   constructor(private eventService: EventService,
               private eventGroupService: EventGroupsService,
               private router: Router,
               private formBuilder: FormBuilder,
-              private toastrService: ToastrService) {
+              private toastrService: ToastrService,
+              private userService: UserService) {
   }
 
   /**
@@ -95,21 +116,61 @@ export class EventGroupCreateComponent implements OnInit {
    *
    * @return {void}
    */
-  public getEvents() {
+  public getEvents(clientFilter: IEventFilter = {}) {
     const filter: IEventFilter = {
-      ignoreEventGroupFilter: false
+      ignoreEventGroupFilter: false,
+      ...clientFilter
     };
 
     this.eventService
       .getEvents(filter)
-      .subscribe((events: IEvent[]) =>
-        this.events = events.filter((e: IEvent) => !!e.name)
+      .subscribe((events: IEvent[]) => {
+          this.events = events.filter((e: IEvent) => !!e.name)
+          this.loading = false;
+        }
       );
   }
 
   public ngOnInit() {
-    this.getEvents();
+    this.getUserClients();
     this.buildForm();
+  }
+
+  /**
+   * Get user clients
+   *
+   * @returns {EventCreateComponent} - Component
+   */
+  public getUserClients(): EventGroupCreateComponent {
+    this.userService
+      .getClients()
+      .subscribe((clients: IUserClient[]) => {
+        this.clients = clients;
+      });
+
+    return this;
+  }
+
+  /**
+   * On client access change
+   * @param {any} event - even
+   *
+   * @returns {void}
+   */
+  public onClientAccessChange(event: any) {
+    this.loading = true;
+    this.eventGroupForm.get('clientId').setValue(event.id);
+    this.eventGroupForm.get('events').setValue('');
+    this.getEvents({ clientId: event.id });
+  }
+
+  /**
+   * Show warning
+   *
+   * @returns {void}
+   */
+  public showWarning() {
+    this.toastrService.warning('Choice Client Access first');
   }
 
   /**
@@ -132,7 +193,8 @@ export class EventGroupCreateComponent implements OnInit {
       name: ['', [
         Validators.required
       ]],
-      events: ['']
+      events: [''],
+      clientId: ['', [Validators.required]]
     });
 
     return this;

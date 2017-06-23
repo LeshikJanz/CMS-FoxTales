@@ -66,6 +66,17 @@
         </tag-input>
       </div>
 
+      <!--Client Access -->
+      <div class="form-element">
+        <label>Client Access*</label>
+        <fox-select
+            [title]="'Select client access'"
+            (change)="eventForm.get('clientId').setValue($event.id)"
+            [items]="clients"
+        >
+        </fox-select>
+      </div>
+
       <div class="form-element">
         <label>Notifications</label>
         <switcher id="groupGallery" [options]="notificationOptions"
@@ -73,13 +84,11 @@
       </div>
       <br>
 
-      <div class="create">
-        <fox-button
-            [value]="'CREATE'"
-            [disabled]="eventForm.invalid || tagInputValue"
-            [design]="'special'"
-        ></fox-button>
-      </div>
+      <fox-button
+          [value]="'CREATE'"
+          [disabled]="eventForm.invalid || tagInputValue"
+          [design]="'special'"
+      ></fox-button>
     </div>
   </form>
   <div class="map">

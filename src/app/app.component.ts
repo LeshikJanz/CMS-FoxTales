@@ -20,7 +20,7 @@ export class AppComponent implements OnInit {
    *
    * @type {string}
    */
-  public version: string = '2.2.10';
+  public version: string = '2.2.11';
 
   /**
    * Route name

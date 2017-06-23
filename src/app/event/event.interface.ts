@@ -58,6 +58,8 @@ export interface IEventFilter {
   ignoreEventGroupFilter?: boolean;
   currentPage?: number;
   numberOfRowsOnPage?: number;
+  name?: string;
+  clientId?: number;
 }
 
 export interface IEventList {

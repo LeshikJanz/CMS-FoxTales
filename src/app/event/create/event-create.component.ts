@@ -9,6 +9,9 @@ import { DateTimePickerModule } from 'ng-pick-datetime';
 import * as moment from 'moment';
 import { ISwitcher } from '../../components/toggles/switcher/switcher.interface';
 import {  } from 'bingmaps/scripts/MicrosoftMaps/Microsoft.Maps.All';
+import { UserService } from '../../user/user.service';
+import { IClient } from '../../client/client.interface';
+import { IUserClient } from '../../user/user-client.interface';
 
 @Component({
   selector: 'event-create',
@@ -33,6 +36,13 @@ export class EventCreateComponent implements OnInit {
    * @type {FormGroup}
    */
   public eventForm: FormGroup;
+
+  /**
+   * Clients
+   *
+   * @type {IUserClient[]}
+   */
+  public clients: IUserClient[];
 
   /**
    * Tags
@@ -62,11 +72,13 @@ export class EventCreateComponent implements OnInit {
    * @param {Router} router - Router
    * @param {FormBuilder} formBuilder
    * @param {EventService} event - Event service
+   * @param {UserService} userService - User service
    * @returns {void}
    */
   constructor(private router: Router,
               private formBuilder: FormBuilder,
-              private event: EventService) {
+              private event: EventService,
+              private userService: UserService) {
   }
 
   /**
@@ -78,6 +90,7 @@ export class EventCreateComponent implements OnInit {
 
   public ngOnInit(): void {
     this.getTags();
+    this.getUserClients();
     this.buildEventForm();
 
     let map = this.mapAddress = new Microsoft.Maps.Map(this.myMap.nativeElement, {
@@ -120,6 +133,21 @@ export class EventCreateComponent implements OnInit {
       .subscribe((tags: ITag[]) =>
         this.tags = tags
       );
+  }
+
+  /**
+   * Get user clients
+   *
+   * @returns {EventCreateComponent} - Component
+   */
+  public getUserClients(): EventCreateComponent {
+    this.userService
+      .getClients()
+      .subscribe((clients: IUserClient[]) => {
+        this.clients = clients;
+      });
+
+    return this;
   }
 
   /**
@@ -183,7 +211,8 @@ export class EventCreateComponent implements OnInit {
       ]],
       tags: ['', this.selectedTags],
       startDate: ['', [Validators.required]],
-      endDate: ['', [Validators.required]]
+      endDate: ['', [Validators.required]],
+      clientId: ['', [Validators.required]],
     });
 
     return this;
