@@ -16,7 +16,7 @@ export class FoxButtonComponent implements OnInit {
 
   @Input() public disabled: boolean;
 
-  @Input() public type: string = 'button';
+  @Input() public type: string = 'submit';
 
   public ngOnInit() {
     if (this.value == null) {
