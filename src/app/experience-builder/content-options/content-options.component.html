@@ -8,7 +8,6 @@
   <a href="javascript:void(0);" (click)="contentOptionEditModal.show();contentOptionEdit(content)">{{content.name}}</a>
 </div>
 
-
 <!--need to move this modal to components-->
 <div class="modal fade" bsModal #contentOptionModal="bs-modal" [config]="{backdrop: 'static'}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
   aria-hidden="true">
@@ -36,9 +35,6 @@
               <h5>Orientation Type</h5>
                <div class="btn-group">
                 <switcher [type]="orientationTypeOption" [options]="orientationSwitchOptions" (toggle)="orientationTypeValue = $event"></switcher>
-                <!--<label class="btn" [(ngModel)]="orientationTypeValue" btnRadio=106>Landscape</label>
-                <label class="btn" [(ngModel)]="orientationTypeValue" btnRadio=105>Portrait</label>
-                <label class="btn" [(ngModel)]="orientationTypeValue" btnRadio=104>Square</label>-->
                </div>
               <hr>
               <br>
@@ -47,7 +43,7 @@
           </tab>
           <tab heading='Part 2'>
             <h3>Media Manipulation</h3>
-            <upload-button></upload-button>
+            <upload-button (imgUploaded)="onImgUploaded($event)"></upload-button>
             <!--<br>
             <h5>Animated Overlay?</h5>
             <ui-switch [(ngModel)]="animatedOverlay"></ui-switch>

@@ -5,7 +5,8 @@ import { TabsetComponent } from 'ngx-bootstrap';
 
 @Component({
   selector: 'content-gallery-component',
-  templateUrl: './content-gallery.component.html'
+  templateUrl: './content-gallery.component.html',
+  styleUrls: ['./content-gallery.component.scss']
 })
 
 export class ContentGalleryComponent {
@@ -21,20 +22,25 @@ export class ContentGalleryComponent {
   public galleryDownloadChecked: boolean = false;
   public mobileBackgroundChecked: boolean = false;
   public onItemAdded: any;
+  public galleryType: any;
+  public backgroundFitType: any;
+  public backgroundPosition: any;
+  public contentOption: any = [];
 
   constructor(private router: Router,
               private experienceBuilderService: ExperienceBuilderService) {
               this.experience = this.experienceBuilderService.experience;
               this.options = [
-                {id: 1, name: 'Tiled' },
-                {id: 2, name: 'Stretch'},
-                {id: 3, name: 'Fixed Scroll'}
+                {id: 'Tiled', name: 'Tiled' },
+                {id: 'Stretch', name: 'Stretch'},
+                {id: 'Fixed Scroll', name: 'Fixed Scroll'}
                 ];
 
               this.gallerySwitchOptions = [
-                {id: 4, name: 'Public'},
-                {id: 5, name: 'Private'}
+                {id: true, name: 'Public'},
+                {id: false, name: 'Private'}
               ];
+              this.hashtags = [];
               }
 
   public createTab1() {
@@ -52,21 +58,33 @@ export class ContentGalleryComponent {
     this.hashtags = this.hashtags.map((hashtag) =>{
       return hashtag.value;
     });
-
+ 
     this.experienceBuilderService.postContentGallerySettings({
       name: this.galleryName,
       hashtags: this.hashtags.toString(),
+      backgroundFit: this.backgroundFitType,
+      backgroundPosition: this.backgroundPosition,
       shortUrl: this.customUrl,
-      showMobileBackgroundImage: this.mobileBackgroundChecked
+      showMobileBackgroundImage: this.mobileBackgroundChecked,
+      navigationEnabled: this.galleryType,
+      contentOptionsIds: this.contentOption
     }).subscribe((response) => {
       console.log(response);
       modal.hide();
+      this.router.navigate(['/experience-builder/container/content-feeds']);
     });
 
   }
 
   public checkedContentOption(event) {
-    console.log(event);
+    if(event.isChecked === true && this.contentOption.includes(event.name.id)){
+    }
+    if(event.isChecked === false && this.contentOption.includes(event.name.id)){
+      this.contentOption.splice(this.contentOption.indexOf(event.name.id),1);
+    }
+    if(event.isChecked === true && !this.contentOption.includes(event.name.id)){
+      this.contentOption.push(event.name.id)
+    }
   }
 
 }

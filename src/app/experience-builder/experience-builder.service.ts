@@ -12,19 +12,6 @@ export class ExperienceBuilderService {
     eventId: '',
     productId: '',
     displayName: '',
-    primaryColor: '',
-    secondaryColor: '',
-    backgroundColor: '',
-    uiBuilderText: '',
-    uiBuilderOptInText: '',
-    uiBuilderThankYouText: '',
-    emailBuilderName: '',
-    fromEmailAddress: '',
-    senderName: '',
-    emailSubject: '',
-    emailPreviewText: '',
-    emailBodyText: '',
-    ctaText: '',
     runTimes: '',
     brands: ''
     };
@@ -85,17 +72,9 @@ export class ExperienceBuilderService {
       });
   }
 
-  public postEmailSettings() {
+  public postEmailSettings(config) {
     return this.http.post(`${process.env.API_URL}/Experiences/`
-      + this.experience.experienceId + `/emailSettings`, {
-        name: this.experience.emailBuilderName,
-        senderName: this.experience.senderName,
-        senderAddress: this.experience.fromEmailAddress,
-        subject: this.experience.emailSubject,
-        emailBody: this.experience.emailBodyText,
-        previewText: this.experience.emailPreviewText,
-        callToActionText: this.experience.ctaText
-      })
+      + this.experience.experienceId + `/emailSettings`, config)
       .map((response: Response) => {
         console.log(response);
         return response;
@@ -138,6 +117,15 @@ export class ExperienceBuilderService {
       `/contentoptions`)
         .map((response: Response) => {
           return response.json();
+        });
+    }
+
+    public postContentFeedSettings(settings) {
+      return this.http.post(`${process.env.API_URL}/Experiences/`
+        + this.experience.experienceId + `/contentfeed`, settings)
+        .map((response: Response) => {
+          console.log(response);
+          return response;
         });
     }
 }
