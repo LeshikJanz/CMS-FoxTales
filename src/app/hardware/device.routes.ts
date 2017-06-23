@@ -10,9 +10,9 @@ import { LogDetailsComponent } from './log-details';
 const DEVICE_ROUTES: Routes = [
   {path: '', redirectTo: 'users'},
   {path: 'devices', component: DeviceListComponent},
-  {path: 'device', component: DeviceCreateComponent},
+  {path: 'device', component: DeviceCreateComponent, data: { acl: 'CreateEditDevice' }},
   {path: 'device/:id', component: DeviceDetailsComponent},
-  {path: 'device/:id/edit', component: DeviceEditComponent},
+  {path: 'device/:id/edit', component: DeviceEditComponent, data: { acl: 'CreateEditDevice' }},
   {path: 'log/:id', component: LogDetailsComponent}
 ];
 
