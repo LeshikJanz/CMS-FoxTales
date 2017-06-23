@@ -1,0 +1,88 @@
+<button (click)="editModal.show()">Upload new firmware</button>
+<div [config]="{ show: false }"
+     bsModal #editModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div>
+          <h1 class="modal-title">Update preferences</h1>
+        </div>
+        <button type="button" class="close" (click)="editModal.hide()" aria-label="Close">
+          <img src="assets/img/close.svg">
+        </button>
+      </div>
+      <div class="modal-body">
+        <form
+          (ngSubmit)="setUploadSoftwareStatus(uploadFirmwareForm.value)"
+          class="form"
+          novalidate>
+
+          <div [formGroup]="uploadFirmwareForm">
+            <!-- Version -->
+            <div class="form-element">
+              <label for="version">Version</label>
+              <input
+                id="version"
+                type="text"
+                formControlName="version"
+                placeholder="Version">
+
+              <div ngxErrors="version">
+                <div ngxError="required" when="touched">
+                  Field is required
+                </div>
+              </div>
+            </div>
+
+            <!-- Release note -->
+            <div class="form-element">
+              <label for="releaseNote">Release note</label>
+              <input
+                id="releaseNote"
+                type="text"
+                formControlName="releaseNote"
+                placeholder="Release note">
+            </div>
+
+            <!-- Is critical -->
+            <div class="form-element">
+              <label for="isCritical">Is critical</label>
+              <input
+                id="isCritical"
+                type="checkbox"
+                formControlName="isCritical"
+                placeholder="Release note">
+            </div>
+
+            <div class="form-element">
+              <div>
+                <label style="font-size: 22px">File</label>
+                <div>
+                  <img src="{{ logoBytes }}">
+                  <a href="javascript:void(0)" *ngIf="logoBytes" (click)="removeLogo()">x</a>
+                </div>
+              </div>
+              <upload-button (imgUploaded)="onImgUploaded($event)"></upload-button>
+            </div>
+          </div>
+
+          <div class="btn-actions">
+            <fox-button
+              [value]="'SAVE'"
+              [design]="'gray'"
+              [disabled]="uploadFirmwareForm.invalid"
+            ></fox-button>
+
+            <div class="btn-actions">
+              <fox-button
+                [value]="'CANCEL'"
+                [design]="'gray'"
+                ((click)="editModal.hide()"
+              ></fox-button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
