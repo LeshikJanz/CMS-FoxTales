@@ -5,11 +5,6 @@
       <th></th>
       <th class="table-header" *ngFor="let col of cols">
         <div>
-          <!--<regular-input [title]="col.title" [col]="col"-->
-          <!--(input)="searchQuery[col.id].next(searchValue)"-->
-          <!--(Change)="searchValue=$event"-->
-          <!--(sortChange)="changeSort($event)"-->
-          <!--&gt;</regular-input>-->
           <div *ngIf="!col.searchable">{{col.title}}</div>
           <fox-input [title]="col.title"
                      (input)="searchQuery[col.id].next(searchValue)"

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, OnChanges } from '@angular/core';
+import { Component, Input, Output, OnInit, OnChanges, EventEmitter } from '@angular/core';
 import { IActionState } from '../../client/client.interface';
 import { IEventGroup } from '../../event-groups/list/event-groups.interaface';
 import * as moment from 'moment';
@@ -30,6 +30,13 @@ export class EventGroupComponent implements OnChanges {
    * @type {any}
    */
   @Input() public modal: any;
+
+  /**
+   * On event group update
+   *
+   * @type {EventEmitter}
+   */
+  @Output() public update: EventEmitter<any> = new EventEmitter();
 
   /**
    * Is event group tab open?
@@ -150,6 +157,7 @@ export class EventGroupComponent implements OnChanges {
       .subscribe(() => {
           group.events = group.events.filter((e: IEvent) => !e.isChecked);
           this.toastrService.success('Events have been successfully deleted.');
+          this.update.emit();
         }
       );
   }

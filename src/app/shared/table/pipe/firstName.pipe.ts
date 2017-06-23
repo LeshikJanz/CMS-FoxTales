@@ -27,7 +27,7 @@ export class FirstNamePipe implements PipeTransform {
   public transform(value: any) {
     const date = new Date();
     const logo = value.logo ? `${value.logo}?_=${date.getTime()}`
-      : 'https://cdn3.iconfinder.com/data/icons/rcons-user-action/32/boy-512.png';
+      : '../../../../assets/img/default-user-icon.png';
     const name = value.name ? value.name : value.firstName ? value.firstName : '-';
     return this.sanitizer.bypassSecurityTrustHtml(
       `<div class="first-name">

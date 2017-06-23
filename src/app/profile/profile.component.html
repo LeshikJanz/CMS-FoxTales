@@ -21,7 +21,7 @@
   <div class="form-element">
     <label>Profile Image</label>
     <div>
-      <img *ngIf="profileData?.profileImagePath || logo" src="{{ logo || profileData?.profileImagePath }}">
+      <img *ngIf="profileData?.profileImagePath || logo" [src]="logo || profileData?.profileImagePath">
       <a class="delete-icon" href="javascript:void(0)" *ngIf="profileData?.profileImagePath || logo"
          (click)="removeLogo()">x</a>
     </div>
