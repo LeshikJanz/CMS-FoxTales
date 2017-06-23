@@ -14,7 +14,8 @@ import * as moment from 'moment';
 @Component({
   selector: 'event-list',
   templateUrl: './event-list.component.html',
-  styleUrls: ['./event-list.component.scss']
+  styleUrls: ['./event-list.component.scss',
+    '../../shared/styles/form-element.scss']
 })
 export class EventListComponent implements OnInit {
   /**
@@ -94,7 +95,7 @@ export class EventListComponent implements OnInit {
     { id: 5, title: 'ASSIGN USERS', callback: 'onAssignUsers', acl: 'CreateEditEvents' },
   ];
 
-    public eventActionsCompleted = [
+  public eventActionsCompleted = [
     { id: 1, title: 'View Details', callback: 'onViewDetails', acl: 'CreateEditEvents' },
     { id: 2, title: 'Clone', callback: 'onClone', acl: 'CloneEvents' },
     { id: 3, title: 'Recap Report', callback: 'onRecapReport', acl: 'ViewSendRecapReport' },
@@ -162,6 +163,7 @@ export class EventListComponent implements OnInit {
               private _routeData: RouteData) {
     // _routeData.name.next('Event Management');
   }
+
   public ngOnInit(): void {
     this.getEvents();
     this.getEventGroups();
@@ -233,14 +235,19 @@ export class EventListComponent implements OnInit {
   public onActionChanged(action: any): void {
     console.log('onActionChanged');
   }
+
   /**
    * On search changed
    *
-   * @param {string} event - Search string
+   * @param {string} filter - Search string
    * @returns {void}
    */
-  public onSearchChange(event: string): void {
-    console.log('onSearchChange');
+  public onSearchChange(filter: string): void {
+    this.eventService.getEventList({ name: filter })
+      .subscribe((eventList: IEventList) => {
+        this.Events = eventList.result;
+        this.rowsCount = eventList.totalRowCount;
+      })
   }
 
   /**

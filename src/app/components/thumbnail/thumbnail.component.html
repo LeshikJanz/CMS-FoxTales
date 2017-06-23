@@ -5,8 +5,12 @@
       <img (click)="makeFavorite()" [hidden]="!item.favorite" src="../../../assets/img/heart-active.svg" alt="">
       <img (click)="makeFavorite()" [hidden]="item.favorite" src="../../../assets/img/heart-inactive.svg" alt="">
 
-      <a href="javascript:void(0)" (click)="setVisibility()" [hidden]="!item.visible">show</a>
-      <a href="javascript:void(0)" (click)="setVisibility()" [hidden]="item.visible">hide</a>
+      <img class="icon icon-show" (click)="setVisibility()" [hidden]="!item.visible"
+             src="../../../assets/img/show-icon.svg" alt="">
+      <img class="icon icon-hide" (click)="setVisibility()" [hidden]="item.visible"
+             src="../../../assets/img/hide-icon.svg">
+      <!--<a href="javascript:void(0)" (click)="setVisibility()" [hidden]="!item.visible">show</a>-->
+      <!--<a href="javascript:void(0)" (click)="setVisibility()" [hidden]="item.visible">hide</a>-->
     </div>
     <img *ngIf="item.mediaPath.indexOf('.png') > 0"
          [src]="item ? item.mediaPath :
@@ -59,11 +63,11 @@
 <device-info (close)="isInfoOpen = false" [hidden]="!isInfoOpen"></device-info>
 
 <div
-  bsModal
-  #shareModal="bs-modal"
-  class="modal fade"
-  tabindex="-1"
-  role="dialog">
+    bsModal
+    #shareModal="bs-modal"
+    class="modal fade"
+    tabindex="-1"
+    role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -80,9 +84,9 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-default" (click)="shareModal.hide()">Close</button>
         <button
-          type="button"
-          class="btn btn-primary"
-          (click)="share(shareComment.value); shareModal.hide()">Confirm
+            type="button"
+            class="btn btn-primary"
+            (click)="share(shareComment.value); shareModal.hide()">Confirm
         </button>
       </div>
     </div>
