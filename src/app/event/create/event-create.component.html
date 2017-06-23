@@ -18,7 +18,7 @@
 
       <div class="line-group">
         <div class="form-element">
-          <label>Start Date</label>
+          <label>Start Date*</label>
           <div class="wrap">
             <input class="picker-input" [ngModel]="startMomentDate"
                    [returnObject]=" 'string' "
@@ -28,7 +28,7 @@
           </div>
         </div>
         <div class="form-element">
-          <label>End Date</label>
+          <label>End Date*</label>
           <div>
             <div class="wrap">
               <input class="picker-input" [ngModel]="endMomentDate"
@@ -42,7 +42,7 @@
 
       <!-- Location -->
       <div class="form-element location" id='searchBoxContainer'>
-        <label for="address">Location</label>
+        <label for="address">Location*</label>
         <input id='searchBox' formControlName="address" type="text" placeholder="Address" autocomplete="off">
       </div>
 

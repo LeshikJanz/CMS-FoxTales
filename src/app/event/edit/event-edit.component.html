@@ -10,7 +10,7 @@
     <div class="line-group">
       <div class="form-element">
         <div>
-          <label>Start Date</label>
+          <label>Start Date*</label>
           <input class="picker-input" [(ngModel)]="startMomentDate" title="{{startMomentDate}}"
                  [ngModelOptions]="{standalone: true}"
                  [returnObject]=" 'string' "
@@ -19,7 +19,7 @@
         </div>
       </div>
       <div class="form-element">
-        <label>End Date</label>
+        <label>End Date*</label>
         <input class="picker-input" [(ngModel)]="endMomentDate" [ngModelOptions]="{standalone: true}"
                [returnObject]=" 'string' " [(dateTimePicker)]="endMomentDate"
                [mode]="'dropdown'" [pickerType]="'date'" placeholder="End Date" readonly>
@@ -27,7 +27,7 @@
     </div>
     <!-- Location -->
     <div class="form-element location" id='searchBoxContainer'>
-      <label>Location</label>
+      <label>Location*</label>
       <input id="address" id='searchBox' [(ngModel)]="eventAddress" type="text" placeholder="Address"
              autocomplete="off">
     </div>
