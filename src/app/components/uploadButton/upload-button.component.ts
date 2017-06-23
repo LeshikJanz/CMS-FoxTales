@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 /**
  * Upload Button component
@@ -13,6 +13,8 @@ export class UploadButtonComponent {
   public error: string;
   public isLoading: boolean = false;
 
+  @Input() public filesAllowed: boolean;
+
   @Output() public imgUploaded: EventEmitter<string> = new EventEmitter();
 
   public handlePictureChange(event) {
@@ -25,7 +27,7 @@ export class UploadButtonComponent {
     let reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = () => {
-      if (reader.result.indexOf('data:image') >= 0) {
+      if (reader.result.indexOf('data:image') >= 0 || this.filesAllowed) {
         this.uploadState = 1;
         this.isLoading = false;
         this.imgUploaded.emit(reader.result);
