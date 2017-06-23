@@ -78,25 +78,19 @@
           <form-dropdown
               [title]="'Select'"
               (typeChanged)="license.numberOfMonths = $event.id"
-              [active]="activeLicenseMonths"
+              [active]="{ id: activeLicenseMonths.id, action: activeLicenseMonths.id }"
               [options]="months"
           >
           </form-dropdown>
-          <!--<fox-select-->
-              <!--(change)="license.numberOfMonths = $event.id"-->
-              <!--[active]="activeLicenseMonths"-->
-              <!--[items]="months">-->
-          <!--</fox-select>-->
         </div>
       </div>
 
       <div class="form-element">
         <p>
-          <checkbox (toggle)="license.autoRenew=$event.isChecked"></checkbox>
+          <checkbox [isChecked]="license.autoRenew" (toggle)="license.autoRenew=$event.isChecked"></checkbox>
           <label>Auto-renew</label>
         </p>
       </div>
-
 
       <!-- Hardware -->
       <div class="form-element">
