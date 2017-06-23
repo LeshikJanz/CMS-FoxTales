@@ -16,14 +16,30 @@
             placeholder="Group name">
       </div>
 
+
+      <!--Client Access -->
+      <div class="form-element">
+        <label>Client Access*</label>
+        <fox-select
+            [title]="'Select client access'"
+            (change)="onClientAccessChange($event)"
+            [items]="clients"
+        >
+        </fox-select>
+      </div>
+
       <!-- Events -->
       <div class="form-element">
         <label>Add events</label>
+        <img style="position: absolute; top: 20px;"
+             [hidden]="!loading" src="../../../../assets/img/spinner.gif" alt="">
         <tag-input
             formControlName="events"
             [transform]="tagTransformer"
+            [readonly]="eventGroupForm.get('clientId').invalid"
             [(inputText)]='tagInputValue'
             [secondaryPlaceholder]="'Start typing event name'"
+            (click)="eventGroupForm.get('clientId').invalid && showWarning()"
         >
           <tag-input-dropdown
               [identifyBy]="'id'"

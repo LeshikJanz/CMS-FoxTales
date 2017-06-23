@@ -76,9 +76,9 @@ bar {
 
 .dropdown-toggle::after {
   display: inline-block;
-  border-top: .6em solid;
-  border-right: .4em solid transparent;
-  border-left: .4em solid transparent;
+    border-top: 10px solid;
+    border-right: 7px solid transparent;
+    border-left: 7px solid transparent;
 }
 
 h1, h2, h3, h4, h5 label {
