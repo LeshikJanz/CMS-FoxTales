@@ -14,7 +14,7 @@
       <div class="modal-body">
         <search-input [title]="'search for element...'" (Change)="onSearchChange($event)"></search-input>
         <hr>
-        <scroll [options]="eventGroupList" (chose)="selectedGroup = $event"></scroll>
+        <scroll *ngIf="eventGroupList" [options]="eventGroupList" (chose)="selectedGroup = $event"></scroll>
         <hr>
         <div class="btn-actions">
           <fox-button

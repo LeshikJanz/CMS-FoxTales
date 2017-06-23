@@ -12,3 +12,12 @@ export interface IEventGroup {
   gallery?: any;
   timePeriod?: string;
 }
+
+/**
+ * Event groups interface
+ */
+export interface IEventGroupFilter {
+  id?: number;
+  clientId?: number;
+  eventId?: number;
+}
