@@ -16,7 +16,7 @@ export class FoxSelectComponent implements OnChanges {
 
   public activeItems: any[] = [];
 
-  public disabled: boolean = false;
+  @Input() public disabled: boolean = false;
 
   private value: any = {};
 
