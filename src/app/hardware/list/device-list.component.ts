@@ -5,6 +5,7 @@ import { Device } from '../device';
 import { IDevice, IDeviceFilter, IDeviceList } from '../device.interface';
 import { DeviceService } from '../device.service';
 import { sortTypes } from './sort-type.enum';
+import { ToastrService } from 'ngx-toastr';
 
 /**
  * Device list component
@@ -35,15 +36,15 @@ export class DeviceListComponent implements OnInit {
    * @type {ICol[]}
    */
   public cols: ICol[] = [
-    {id: 'name', title: 'Name', format: 'default', searchable: true},
-    {id: 'type', title: 'Type', format: 'default', searchable: false},
-    {id: 'health', title: 'Health', format: 'boolean', searchable: false},
-    {id: 'cpu', title: 'CPU', format: 'default', searchable: false},
-    {id: 'memory', title: 'Memory', format: 'default', searchable: false},
-    {id: 'temperature', title: 'Temperature', format: 'temperature', searchable: false},
-    {id: 'errors', title: 'App errors', format: 'boolean', searchable: false},
-    {id: 'virusCheck', title: 'System errors', format: 'boolean', searchable: false},
-    {id: 'internetStatus', title: 'Internet status', format: 'internetStatus', searchable: false}
+    {id: 'name', title: 'Name', format: 'default', searchable: true, sort: true},
+    {id: 'type', title: 'Type', format: 'default', searchable: false, sort: true},
+    {id: 'health', title: 'Health', format: 'boolean', searchable: false, sort: true},
+    {id: 'cpu', title: 'CPU', format: 'default', searchable: false, sort: true},
+    {id: 'memory', title: 'Memory', format: 'default', searchable: false, sort: true},
+    {id: 'temperature', title: 'Temperature', format: 'temperature', searchable: false, sort: true},
+    {id: 'errors', title: 'App errors', format: 'boolean', searchable: false, sort: true},
+    {id: 'virusCheck', title: 'System errors', format: 'boolean', searchable: false, sort: true},
+    {id: 'internetStatus', title: 'Internet status', format: 'internetStatus', searchable: false, sort: true}
   ];
 
   /**
@@ -52,8 +53,10 @@ export class DeviceListComponent implements OnInit {
    * @type {ITableAction[]}
    */
   public actions: ITableAction[] = [
+    {title: 'Details', callback: 'detailsDevice'},
     {title: 'Edit', callback: 'editDevice'},
-    {title: 'Assign', callback: 'editDevice'}
+    {title: 'Assign', callback: 'editDevice'},
+    {title: 'Restart', callback: 'restartDevice'}
   ];
 
   /**
@@ -81,6 +84,7 @@ export class DeviceListComponent implements OnInit {
    * @returns {void}
    */
   constructor(private router: Router,
+              private toastrService: ToastrService,
               private deviceService: DeviceService) {
   }
 
@@ -108,6 +112,10 @@ export class DeviceListComponent implements OnInit {
       });
   }
 
+  public detailsDevice(id: string): Promise<boolean> {
+    return this.router.navigate(['/admin/device', id]);
+  }
+
   /**
    * Redirect to device edit page
    *
@@ -115,7 +123,19 @@ export class DeviceListComponent implements OnInit {
    * @returns {Promise<boolean>}
    */
   public editDevice(id: string): Promise<boolean> {
-    return this.router.navigate(['/admin/device', id]);
+    return this.router.navigate(['/admin/device', id, 'edit']);
+  }
+
+  /**
+   * Redirect to device edit page
+   *
+   * @param {string} id - Device id
+   * @returns {Promise<boolean>}
+   */
+  public restartDevice(id: string): void {
+    this.deviceService.restartDevice(id).subscribe(() => {
+      this.toastrService.success(`Device with id ${id} was restarted successfully`);
+    });
   }
 
   /**

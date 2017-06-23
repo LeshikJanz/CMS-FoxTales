@@ -14,8 +14,7 @@ export class EventService {
    * @param {Http} http
    * @returns {void}
    */
-  constructor(private http: Http,
-              private router: Router) {
+  constructor(private http: Http) {
   }
 
   /**

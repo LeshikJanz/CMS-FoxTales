@@ -4,10 +4,11 @@ import { ITableAction } from '../../shared/table/action.interface';
 import { ICol } from '../../shared/table/col.interface';
 import { IDeviceClient } from '../device-client.interface';
 import { IDeviceRole } from '../device-role.interface';
-import { IDevice, IDeviceFilter, IDeviceList, IDeviceDetails } from '../device.interface';
+import { IDeviceDetails, IDeviceFilter, IDeviceList } from '../device.interface';
 import { DeviceService } from '../device.service';
 import { sortTypes } from '../list/sort-type.enum';
 import { ILog } from '../log.interface';
+import { ToastrService } from 'ngx-toastr';
 
 /**
  * Device details component
@@ -46,13 +47,13 @@ export class DeviceDetailsComponent implements OnInit {
    * @type {ICol[]}
    */
   public cols: ICol[] = [
-    {id: 'logTime', title: 'Date', format: 'date', formatOptions: ['shortDate'], searchable: false},
-    {id: 'logTime', title: 'Time', format: 'date', formatOptions: ['shortTime'], searchable: false},
-    {id: 'type', title: 'Type', format: 'default', searchable: false},
-    {id: 'memory', title: 'Memory', format: 'default', searchable: false},
-    {id: 'temperature', title: 'Temperature', format: 'temperature', searchable: false},
-    {id: 'cpu', title: 'CPU', format: 'default', searchable: false},
-    {id: 'internetStatus', title: 'Internet', format: 'internetStatus', searchable: false}
+    {id: 'logTime', title: 'Date', format: 'date', formatOptions: ['shortDate'], searchable: false, notSortable: true},
+    {id: 'logTime', title: 'Time', format: 'date', formatOptions: ['shortTime'], searchable: false, notSortable: true},
+    {id: 'type', title: 'Type', format: 'default', searchable: false, notSortable: true},
+    {id: 'memory', title: 'Memory', format: 'default', searchable: false, notSortable: true},
+    {id: 'temperature', title: 'Temperature', format: 'temperature', searchable: false, notSortable: true},
+    {id: 'cpu', title: 'CPU', format: 'default', searchable: false, notSortable: true},
+    {id: 'internetStatus', title: 'Internet', format: 'internetStatus', searchable: false, notSortable: true}
   ];
 
   /**
@@ -76,7 +77,7 @@ export class DeviceDetailsComponent implements OnInit {
       pageRowCount: 10
     },
     currentSortType: 0,
-    isAscendantSort: true,
+    isAscendantSort: false,
     searchFields: {
       name: ''
     }
@@ -98,6 +99,7 @@ export class DeviceDetailsComponent implements OnInit {
    */
   constructor(private router: Router,
               private deviceService: DeviceService,
+              private toastrService: ToastrService,
               private route: ActivatedRoute) {
   }
 
@@ -110,7 +112,6 @@ export class DeviceDetailsComponent implements OnInit {
   public ngOnInit(): void {
     this.route.params.subscribe((params: any) => {
       this.filter.id = this.id = params['id'];
-
       this.getLogs();
     });
   }
@@ -212,5 +213,27 @@ export class DeviceDetailsComponent implements OnInit {
     if (this[action.callback]) {
       this[action.callback](action.id);
     }
+  }
+
+  public onRenameClicked(event: any): void {
+    this.deviceService.renameDevice(this.id, event.name).subscribe((data: any) => {
+      this.device.name = data.name;
+    });
+  }
+
+  public downloadFile() {
+    this.deviceService.downloadDeviceSettings(this.id).subscribe((data) => {
+      let a = document.createElement('a');
+      let file = new Blob([JSON.stringify(data)], {type: 'application/json'});
+      a.href = URL.createObjectURL(file);
+      a.download = `device_${this.id}_connection_settings.json`;
+      a.click();
+    });
+  }
+
+  public restart() {
+    this.deviceService.restartDevice(this.id).subscribe(() => {
+      this.toastrService.success('Device was restarted successfully');
+    });
   }
 }

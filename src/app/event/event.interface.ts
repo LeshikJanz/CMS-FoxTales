@@ -59,6 +59,7 @@ export interface IEventFilter {
   currentPage?: number;
   numberOfRowsOnPage?: number;
   name?: string;
+  clientId?: number;
 }
 
 export interface IEventList {

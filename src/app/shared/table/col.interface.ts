@@ -9,4 +9,5 @@ export interface ICol {
   searchable?: boolean;
   format?: string;
   formatOptions?: string[];
+  notSortable?: boolean;
 }

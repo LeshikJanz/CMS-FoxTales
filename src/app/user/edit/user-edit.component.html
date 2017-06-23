@@ -56,6 +56,7 @@
       <div class="form-element">
         <label>Client Access*</label>
         <fox-select
+          [disabled]="true"
           [active]="client"
           (change)="user.clientId = $event.id"
           [items]="clients"

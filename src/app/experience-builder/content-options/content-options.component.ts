@@ -62,6 +62,7 @@ export class ContentOptionsComponent {
     .getContentOptions(this.experienceBuilderService.experience.experienceId)
     .subscribe((response) => {
       this.contentOptions = response.map((content) => {
+        console.log(content)
         return content;
       });
       this.contentName = null;
