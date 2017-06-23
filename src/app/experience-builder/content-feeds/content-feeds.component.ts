@@ -24,11 +24,11 @@ export class ContentFeedsComponent {
   public backgroundStyleOptions: any;
   public backgroundStyleOptionValue: any;
   public backgroundPosition: any;
-
-
+  public contentOption: any = [];
 
   constructor(private router: Router,
               private experienceBuilderService: ExperienceBuilderService) {
+                this.experience = this.experienceBuilderService.experience;
                 this.backgroundOptions = [
                   { id: 'Image', name: 'Image'},
                   { id: 'Color', name: 'Color'}
@@ -67,6 +67,18 @@ export class ContentFeedsComponent {
 
     }).subscribe((response) => {
       console.log(response);
+      modal.hide();
     })
   }
+
+  public checkedContentOption(event) {
+    if(event.isChecked === true && this.contentOption.includes(event.name.id)){
+    }
+    if(event.isChecked === false && this.contentOption.includes(event.name.id)){
+      this.contentOption.splice(this.contentOption.indexOf(event.name.id),1);
+    }
+    if(event.isChecked === true && !this.contentOption.includes(event.name.id)){
+      this.contentOption.push(event.name.id)
+    }
+  };
 }

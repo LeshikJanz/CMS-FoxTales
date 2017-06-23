@@ -20,6 +20,7 @@ export class EmailBuilderComponent {
    public emailBodyText: string;
    public ctaText: string;
    public experience: any;
+   public contentOption: any = [];
 
   constructor(private router: Router,
               private experienceBuilderService: ExperienceBuilderService) {
@@ -27,33 +28,36 @@ export class EmailBuilderComponent {
               }
 
  public Next() {
-  this.experienceBuilderService.experience.emailBuilderName = this.emailBuilderName;
-  this.experienceBuilderService.experience.fromEmailAddress = this.fromEmailAddress;
-  this.experienceBuilderService.experience.senderName = this.senderName;
-  this.experienceBuilderService.experience.emailSubject = this.emailSubject;
-  this.experienceBuilderService.experience.emailPreviewText = this.emailPreviewText;
   this.staticTabs.tabs[1].active = true;
  };
 
   public Next2() {
-  this.experienceBuilderService.experience.emailBuilderName = this.emailBuilderName;
-  this.experienceBuilderService.experience.fromEmailAddress = this.fromEmailAddress;
-  this.experienceBuilderService.experience.senderName = this.senderName;
-  this.experienceBuilderService.experience.emailSubject = this.emailSubject;
-  this.experienceBuilderService.experience.emailPreviewText = this.emailPreviewText;
   this.staticTabs.tabs[2].active = true;
  };
 
  public Finish() {
-  this.experienceBuilderService.experience.emailBodyText = this.emailBodyText;
-  this.experienceBuilderService.experience.ctaText = this.ctaText;
-  this.experienceBuilderService.postEmailSettings().subscribe((response) => {
+  this.experienceBuilderService.postEmailSettings({
+    name: this.emailBuilderName,
+    senderName: this.senderName,
+    senderAddress: this.fromEmailAddress,
+    subject: this.emailSubject,
+    previewText: this.emailPreviewText,
+    callToActionText: this.ctaText,
+    contentOptionIds: this.contentOption
+  }).subscribe((response) => {
     console.log(response);
     this.router.navigate(['/experience-builder/container/ui-builder']);
   });
  };
 
-public checkedContentOption(event) {
-  console.log(event);
-};
+  public checkedContentOption(event) {
+    if(event.isChecked === true && this.contentOption.includes(event.name.id)){
+    }
+    if(event.isChecked === false && this.contentOption.includes(event.name.id)){
+      this.contentOption.splice(this.contentOption.indexOf(event.name.id),1);
+    }
+    if(event.isChecked === true && !this.contentOption.includes(event.name.id)){
+      this.contentOption.push(event.name.id)
+    }
+  };
 }

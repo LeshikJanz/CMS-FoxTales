@@ -25,6 +25,7 @@ export class ContentGalleryComponent {
   public galleryType: any;
   public backgroundFitType: any;
   public backgroundPosition: any;
+  public contentOption: any = [];
 
   constructor(private router: Router,
               private experienceBuilderService: ExperienceBuilderService) {
@@ -65,7 +66,8 @@ export class ContentGalleryComponent {
       backgroundPosition: this.backgroundPosition,
       shortUrl: this.customUrl,
       showMobileBackgroundImage: this.mobileBackgroundChecked,
-      navigationEnabled: this.galleryType
+      navigationEnabled: this.galleryType,
+      contentOptionsIds: this.contentOption
     }).subscribe((response) => {
       console.log(response);
       modal.hide();
@@ -75,7 +77,14 @@ export class ContentGalleryComponent {
   }
 
   public checkedContentOption(event) {
-    console.log(event);
+    if(event.isChecked === true && this.contentOption.includes(event.name.id)){
+    }
+    if(event.isChecked === false && this.contentOption.includes(event.name.id)){
+      this.contentOption.splice(this.contentOption.indexOf(event.name.id),1);
+    }
+    if(event.isChecked === true && !this.contentOption.includes(event.name.id)){
+      this.contentOption.push(event.name.id)
+    }
   }
 
 }
