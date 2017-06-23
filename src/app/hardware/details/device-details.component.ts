@@ -226,7 +226,7 @@ export class DeviceDetailsComponent implements OnInit {
       let a = document.createElement('a');
       let file = new Blob([JSON.stringify(data)], {type: 'application/json'});
       a.href = URL.createObjectURL(file);
-      a.download = `device_${this.id}_connection_settings.json`;
+      a.download = `settings.json`;
       a.click();
     });
   }
