@@ -1,13 +1,7 @@
 <div toastContainer class="toast-top-center"></div>
 
-<div class="dr-actions">
-  <dropdown
-    [title]="'Unarchieved'"
-    [options]="clientStates"
-    [size]="'big'"
-    (typeChanged)="onTypeChanged($event.id)"
-  ></dropdown>
-</div>
+<div class="actions"></div>
+
 <div class="list-container">
   <data-table
     [rows]="users"

@@ -17,6 +17,7 @@
   .link-bar {
     display: flex;
     width: 50%;
+    min-width: 600px;
     justify-content: space-around;
 
     a {

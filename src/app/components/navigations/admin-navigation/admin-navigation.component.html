@@ -1,27 +1,40 @@
-<nav class="slidemenu">
+<div class="admin-container">
+  <nav class="slidemenu">
 
-  <input type="radio" name="slideItem" id="slide-item-1" class="slide-toggle"
-         [routerLink]="['/admin/users']"
-         [attr.checked]="curLocation && curLocation.indexOf('/admin/user') >= 0 ? '' : null"/>
-  <label for="slide-item-1"><span >Users</span></label>
+    <input type="radio" name="slideItem" id="slide-item-1" class="slide-toggle"
+           [routerLink]="['/admin/users']"
+           [attr.checked]="curLocation && curLocation.indexOf('/admin/user') >= 0 ? '' : null"/>
+    <label for="slide-item-1"><span>Users</span></label>
 
-  <input type="radio" name="slideItem" id="slide-item-2" class="slide-toggle"
-         [routerLink]="['/admin/clients']"
-         [attr.checked]="curLocation && curLocation.indexOf('/admin/client') >= 0 ? '' : null"/>
-  <label for="slide-item-2"><span >Clients</span></label>
+    <input type="radio" name="slideItem" id="slide-item-2" class="slide-toggle"
+           [routerLink]="['/admin/clients']"
+           [attr.checked]="curLocation && curLocation.indexOf('/admin/client') >= 0 ? '' : null"/>
+    <label for="slide-item-2"><span>Clients</span></label>
 
-  <input type="radio" name="slideItem" id="slide-item-3" class="slide-toggle"/>
-  <label for="slide-item-3"><span>Locations</span></label>
+    <input type="radio" name="slideItem" id="slide-item-3" class="slide-toggle"/>
+    <label for="slide-item-3"><span>Locations</span></label>
 
-  <input type="radio" name="slideItem" id="slide-item-4" class="slide-toggle"/>
-  <label for="slide-item-4"><span [routerLink]="['/admin/devices']">Integrations+hardware</span></label>
+    <input type="radio" name="slideItem" id="slide-item-4" class="slide-toggle"/>
+    <label for="slide-item-4"><span [routerLink]="['/admin/devices']">Integrations+hardware</span></label>
 
-  <div class="clear"></div>
+    <div class="clear"></div>
 
-  <div class="slider">
-    <div class="slide-line">
-      <div class="bar"></div>
+    <div class="slider">
+      <div class="slide-line">
+        <div class="bar"></div>
+      </div>
     </div>
+  </nav>
+  <div class="actions">
+    <div id="1" [hidden]="!isArchieved" (click)="onTypeChanged($event.target.id)">Archived</div>
+    <div id="2" [hidden]="isArchieved" (click)="onTypeChanged($event.target.id)">Unarchived</div>
+    <!--<dropdown-->
+        <!--*ngIf="curLocation && curLocation.indexOf('/admin/user') >= 0"-->
+        <!--[title]="'Unarchived'"-->
+        <!--[options]="clientStates"-->
+        <!--[size]="'big'"-->
+        <!--(typeChanged)="onTypeChanged($event.id)"-->
+    <!--&gt;</dropdown>-->
   </div>
-</nav>
+</div>
 <router-outlet></router-outlet>
