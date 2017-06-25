@@ -37,6 +37,7 @@ ng-select {
 :host /deep/ .ui-select-match-text {
   font-family: OpenSans;
   font-size: 16px;
+  padding-left: 12px;
 }
 
 :host /deep/ .ui-select-multiple .ui-select-match-item {
@@ -116,8 +117,9 @@ ng-select {
 
 :host /deep/ .ui-select-placeholder {
   color: #999999 !important;
-  font-size: 18px;
+  font-size: 16px;
   font-family: OpenSans;
+  padding-left: 12px;
 }
 
 :host /deep/ .dropdown-toggle {
