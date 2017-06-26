@@ -15,7 +15,7 @@ export class UploadButtonComponent {
 
   @Input() public filesAllowed: boolean;
 
-  @Output() public imgUploaded: EventEmitter<string> = new EventEmitter();
+  @Output() public imgUploaded: EventEmitter<any> = new EventEmitter();
 
   public handlePictureChange(event) {
     this.getBase64(event.target.files[0]);
@@ -30,7 +30,7 @@ export class UploadButtonComponent {
       if (reader.result.indexOf('data:image') >= 0 || this.filesAllowed) {
         this.uploadState = 1;
         this.isLoading = false;
-        this.imgUploaded.emit(reader.result);
+        this.imgUploaded.emit({base64: reader.result, file: file});
       } else {
         this.error = 'Chosen file is not an image';
         this.isLoading = false;

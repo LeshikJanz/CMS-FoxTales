@@ -24,12 +24,7 @@ export class UploadFirmwareComponent implements OnInit {
    */
   public uploadFirmwareForm: FormGroup;
 
-  /**
-   * Base64 logo
-   *
-   * @type {string}
-   */
-  public logoBytes: string;
+  public file: any;
 
   /**
    * Constructor
@@ -55,8 +50,8 @@ export class UploadFirmwareComponent implements OnInit {
     this.buildUploadFirmwareForm();
   }
 
-  public onImgUploaded(base64) {
-    this.logoBytes = base64;
+  public onImgUploaded(data) {
+    this.file = data.file;
   }
 
   /**
@@ -65,19 +60,19 @@ export class UploadFirmwareComponent implements OnInit {
    * @returns {void}
    */
   public setUploadSoftwareStatus(uploadFirmware: any): void {
-    this.deviceService.getUploadUrl(uploadFirmware.version).flatMap((response) => {
+    this.deviceService.getUploadUrl(uploadFirmware.version, this.file).flatMap((response) => {
       uploadFirmware.url = response.result;
       return this.deviceService.uploadFileToBlob(
         response.result,
-        this.logoBytes.replace(/data:image\/(png|jpg|jpeg|gif);base64,/, '')
-      ).flatMap(() => {
-        return this.deviceService
-          .setUploadUrl(uploadFirmware)
-          .do(() => {
-            this.toastrService.success('UploadFirmware has been created successfully.');
-            this.editModal.hide();
-          });
-      });
+        this.file
+      );
+    }).flatMap(() => {
+      return this.deviceService
+        .setUploadUrl(uploadFirmware)
+        .do(() => {
+          this.toastrService.success('UploadFirmware has been created successfully.');
+          this.editModal.hide();
+        });
     }).subscribe();
   }
 

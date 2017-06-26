@@ -92,8 +92,8 @@ export class ProfileComponent implements OnInit {
    * @param {string} base64 - string
    * @returns {void}
    */
-  public onImgUploaded(base64) {
-    this.logo = base64;
+  public onImgUploaded(data) {
+    this.logo = data.base64;
   }
 
   /**

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Http, RequestOptions, Response } from '@angular/http';
+import { Headers, Http, RequestOptions, Response } from '@angular/http';
 import { Observable } from 'rxjs';
-import { AuthService } from '../shared/core/auth/auth.service';
+import { AzureUploadService } from './azure-upload.service';
 import { Device } from './device';
 import { IDevice, IDeviceFilter, IDeviceList } from './device.interface';
 import { ILog } from './log.interface';
@@ -19,8 +19,7 @@ export class DeviceService {
    * @param {Http} http
    * @returns {void}
    */
-  constructor(private http: Http,
-              private auth: AuthService) {
+  constructor(private http: Http) {
   }
 
   /**
@@ -186,21 +185,21 @@ export class DeviceService {
       .map((response: Response) => response.json());
   }
 
-  public getUploadUrl(version: string): Observable<any> {
-    return this.http.get(`${process.env.API_URL}/Devices/GetUploadSoftwareURL/${version}`)
+  public getUploadUrl(version: string, file: any): Observable<any> {
+    return this.http
+      .get(`${process.env.API_URL}/Devices/GetUploadSoftwareURL/${version}/${file.name}`)
       .map((response: Response) => response.json());
   }
 
-  public uploadFileToBlob(url: string, file: any): Observable<any> {
-    // let headers = new Headers();
-    // headers.append('Authorization', `SharedKey ${this.auth.getContext().getToken()}`);
-    // let options = new RequestOptions({headers: headers});
-    return this.http.put(url, file)
-      .map((response: Response) => response.json());
+  public uploadFileToBlob(url: string, file: File): Observable<any> {
+    let headers = new Headers();
+    headers.append('x-ms-blob-type', 'BlockBlob');
+    let options = new RequestOptions({'headers': headers});
+    return this.http.put(url, file, options);
   }
 
   public setUploadUrl(data: any): Observable<any> {
-    return this.http.post(`${process.env.API_URL}/Devices/SetUploadSoftwareURL`, data)
+    return this.http.post(`${process.env.API_URL}/Devices/SetUploadSoftwareStatus`, data)
       .map((response: Response) => response.json());
   }
 }
