@@ -84,7 +84,6 @@ export class EventGroupsComponent implements OnInit {
       .subscribe((eventGroups: IEventGroup[]) => {
 
         this.eventGroups = eventGroups;
-
       });
   };
 
@@ -117,6 +116,4 @@ export class EventGroupsComponent implements OnInit {
         this.unusedEvents = events
       );
   };
-
-
 }

@@ -211,7 +211,6 @@ export class EventGroupCreateComponent implements OnInit {
       eventGroup.eventIds = eventGroup.events.map((e: IEvent) => e.id);
     }
     delete eventGroup.events;
-    eventGroup.clientId = PermissionService.clientId;
 
     this.eventGroupService.addEventGroup(eventGroup)
       .subscribe(() => {

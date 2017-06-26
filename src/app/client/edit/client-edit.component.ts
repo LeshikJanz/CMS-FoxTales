@@ -208,16 +208,14 @@ export class ClientEditComponent implements OnInit {
    * @returns {void}
    */
   public updateClient(): void {
-    console.log('this.clientForm.value');
-    console.log(this.clientForm.value);
     this.client = Object.assign({}, this.client, this.clientForm.value);
 
-    // this.clientService
-    //   .updateClient(this.client)
-    //   .subscribe(() => {
-    //     this.toastrService.success('Client has been updated successfully.');
-    //     this.router.navigate(['/admin/clients']);
-    //   });
+    this.clientService
+      .updateClient(this.client)
+      .subscribe(() => {
+        this.toastrService.success('Client has been updated successfully.');
+        this.router.navigate(['/admin/clients']);
+      });
   }
 
   /**
