@@ -21,4 +21,5 @@ export class EditEventHeaderComponent implements OnInit {
       this.eventService.getEvent(params['id'])
         .subscribe((event: IEvent) => this.event = event)
     );
-  }}
+  }
+}

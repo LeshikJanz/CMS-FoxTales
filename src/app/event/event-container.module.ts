@@ -17,10 +17,10 @@ import {
   EventGalleryContainerComponent
 } from '../gallery/event-gallery/container/event-gallery-container.component';
 import { EventService } from './event.service';
-import { FavoriteGalleryComponent } from '../gallery/favorite-gallery/favorite-gallery.component';
 import {
   EventNavigationComponent
 } from '../components/navigations/event-navigation/event-navigation.component';
+import { ExperienceHeaderComponent } from '../experience/headers/experience-header/experience-header.component';
 
 @NgModule({
   imports: [
@@ -42,7 +42,8 @@ import {
     GalleryListComponent,
     EventGalleryComponent,
     EventGalleryContainerComponent,
-    EventNavigationComponent
+    EventNavigationComponent,
+    ExperienceHeaderComponent
   ],
   exports: [
     ExperienceListComponent,

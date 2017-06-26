@@ -59,8 +59,7 @@ import { ExperienceHeaderComponent } from './headers/experience-header/experienc
     ExperienceComponent,
     ExperienceContentComponent,
     ExperienceGalleryComponent,
-    ExperienceGalleryContainerComponent,
-    ExperienceHeaderComponent
+    ExperienceGalleryContainerComponent
   ]
 })
 export class ExperienceModule {
