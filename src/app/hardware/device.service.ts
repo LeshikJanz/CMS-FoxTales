@@ -186,8 +186,8 @@ export class DeviceService {
       .map((response: Response) => response.json());
   }
 
-  public getUploadUrl(version: string): Observable<any> {
-    return this.http.get(`${process.env.API_URL}/Devices/GetUploadSoftwareURL/${version}`)
+  public getUploadUrl(version: string, file: File): Observable<any> {
+    return this.http.get(`${process.env.API_URL}/Devices/GetUploadSoftwareURL/${version}/${file.name}`)
       .map((response: Response) => response.json());
   }
 
