@@ -114,7 +114,6 @@ import {
   OrientationSelectorComponent
 } from './toggles/orientation-selector/orientation-selector.component';
 import { FormDropDownComponent } from './dropdowns/form-dropdown/form-dropdown.component';
-import { MultiSelectComponent } from './dropdowns/multi-select/multi-select.component';
 
 @NgModule({
   imports: [

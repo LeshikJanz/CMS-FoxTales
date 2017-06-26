@@ -14,8 +14,11 @@ export class EventsNavigationComponent {
 
   constructor(private location: Location,
               private router: Router) {
-    this.router.events.subscribe((val) =>
+    this.router.events.subscribe((val) => {
       this.curLocation = this.location.path()
+      console.log('this.curLocation');
+      console.log(this.curLocation);
+    }
     );
   }
 

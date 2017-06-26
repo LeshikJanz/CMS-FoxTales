@@ -12,6 +12,7 @@
         <label>Start Date*</label>
         <input class="picker-input" [(ngModel)]="startMomentDate" title="{{startMomentDate}}"
                [ngModelOptions]="{standalone: true}"
+               [theme]=" '#f57f17' "
                [returnObject]=" 'string' "
                [(dateTimePicker)]="startMomentDate" [mode]="'dropdown'" [pickerType]="'date'" placeholder="Start Date"
                readonly>
@@ -19,6 +20,7 @@
       <div class="form-element">
         <label>End Date*</label>
         <input class="picker-input" [(ngModel)]="endMomentDate" [ngModelOptions]="{standalone: true}"
+               [theme]=" '#f57f17' "
                [returnObject]=" 'string' " [(dateTimePicker)]="endMomentDate"
                [mode]="'dropdown'" [pickerType]="'date'" placeholder="End Date" readonly>
       </div>
