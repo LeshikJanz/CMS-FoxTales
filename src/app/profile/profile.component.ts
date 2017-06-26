@@ -29,6 +29,13 @@ export class ProfileComponent implements OnInit {
   public logo: string;
 
   /**
+   * Max file size in bytes
+   *
+   * @type {number}
+   */
+  public maxFileSize: number = 2097152;
+
+  /**
    * Constructor
    *
    * @param {ToastrService} toastrService - Toastr
@@ -95,6 +102,11 @@ export class ProfileComponent implements OnInit {
    * @returns {void}
    */
   public onImgUploaded(data) {
+    if (data.file.size > this.maxFileSize) {
+      this.toastrService.error('Max upload image size is 2Mb.');
+      return;
+    }
+
     this.logo = data.base64;
   }
 
