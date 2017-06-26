@@ -171,7 +171,7 @@ export class EventGroupCreateComponent implements OnInit {
    * @returns {void}
    */
   public showWarning() {
-    this.toastrService.warning('Choice Client Access first');
+    this.toastrService.warning('Select Client Access first');
   }
 
   /**
