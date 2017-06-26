@@ -199,7 +199,7 @@ export class DeviceService {
   }
 
   public setUploadUrl(data: any): Observable<any> {
-    return this.http.post(`${process.env.API_URL}/Devices/SetUploadSoftwareURL`, data)
+    return this.http.post(`${process.env.API_URL}/Devices/SetUploadSoftwareStatus`, data)
       .map((response: Response) => response.json());
   }
 }
