@@ -17,7 +17,8 @@ import { IUserClient } from '../../user/user-client.interface';
   selector: 'event-create',
   templateUrl: './event-create.component.html',
   styleUrls: ['event-create.component.scss',
-    '../../shared/styles/form-element.scss']
+    '../../shared/styles/form-element.scss',
+    '../../shared/styles/date-picker.scss']
 })
 export class EventCreateComponent implements OnInit {
   public startMomentTime: string;

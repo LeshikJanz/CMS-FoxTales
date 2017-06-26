@@ -10,16 +10,17 @@
       margin-left: 20px;
       color: black;
     }
+
+    h1 {
+      align-self: flex-start;
+    }
   }
 
-  h1 {
-    align-self: flex-start;
-    margin-top: 0 !important;
-  }
+
 
   add-button {
     background-color: #2fd976;
-    width: 204px;
+    width: 254px;
     height: 54px;
     font-size: 16px;
     border-radius: 6px;

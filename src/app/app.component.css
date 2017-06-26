@@ -104,3 +104,10 @@ video::-webkit-media-controls-enclosure {
 button:focus {
   outline: none !important;
 }
+
+@media screen and (max-width: 1024px) {
+  .mainContent {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
