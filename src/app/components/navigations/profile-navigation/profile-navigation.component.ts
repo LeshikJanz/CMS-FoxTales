@@ -5,7 +5,8 @@ import { Location } from '@angular/common';
 @Component({
   selector: 'profile-navigation',
   templateUrl: 'profile-navigation.component.html',
-  styleUrls: ['profile-navigation.component.scss']
+  styleUrls: ['profile-navigation.component.scss',
+    '../../../shared/styles/navigation.scss']
 })
 
 export class ProfileNavigationComponent {

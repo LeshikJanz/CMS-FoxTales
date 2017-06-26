@@ -48,12 +48,12 @@
 
       </div>
     </div>
-    <fox-button
-        type="submit"
-        [disabled]="eventGroupForm.invalid || tagInputValue"
-        [value]="'Update'"
-        [design]="'special'"
-    ></fox-button>
+      <fox-button
+          (click)="updateEventGroup()"
+          [disabled]="eventGroupForm.invalid || tagInputValue"
+          [value]="'Update'"
+          [design]="'special'"
+      ></fox-button>
   </form>
 
 </div>

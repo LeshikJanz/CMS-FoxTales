@@ -119,6 +119,7 @@ export class EventGroupCreateComponent implements OnInit {
   public getEvents(clientFilter: IEventFilter = {}) {
     const filter: IEventFilter = {
       ignoreEventGroupFilter: false,
+      sortBy: 'ClientID',
       ...clientFilter
     };
 
