@@ -24,7 +24,9 @@ export class UploadFirmwareComponent implements OnInit {
    */
   public uploadFirmwareForm: FormGroup;
 
+  public uploadState: number = 0;
   public file: any;
+  public uploading: boolean = false;
 
   /**
    * Constructor
@@ -60,6 +62,7 @@ export class UploadFirmwareComponent implements OnInit {
    * @returns {void}
    */
   public setUploadSoftwareStatus(uploadFirmware: any): void {
+    this.uploading = true;
     this.deviceService.getUploadUrl(uploadFirmware.version, this.file).flatMap((response) => {
       uploadFirmware.url = response.result;
       return this.deviceService.uploadFileToBlob(
@@ -71,7 +74,8 @@ export class UploadFirmwareComponent implements OnInit {
         .setUploadUrl(uploadFirmware)
         .do(() => {
           this.toastrService.success('UploadFirmware has been created successfully.');
-          this.editModal.hide();
+          this.uploading = false;
+          this.hide();
         });
     }).subscribe();
   }
@@ -89,5 +93,11 @@ export class UploadFirmwareComponent implements OnInit {
       releaseNote: [''],
       isCritical: [false]
     });
+  }
+
+  public hide(): void {
+    this.buildUploadFirmwareForm();
+    this.uploadState = 0;
+    this.editModal.hide();
   }
 }

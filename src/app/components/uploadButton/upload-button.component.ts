@@ -9,13 +9,21 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrls: ['upload-button.component.scss']
 })
 export class UploadButtonComponent {
-  public uploadState: number = 0;
   public error: string;
   public isLoading: boolean = false;
 
+  @Input() public uploadState: number = 0;
+
   @Input() public filesAllowed: boolean;
 
+  @Output() public uploadStateChange = new EventEmitter();
+
   @Output() public imgUploaded: EventEmitter<any> = new EventEmitter();
+
+  public set uploadStateValue(val: number) {
+    this.uploadState = val;
+    this.uploadStateChange.emit(this.uploadState);
+  }
 
   public handlePictureChange(event) {
     this.getBase64(event.target.files[0]);
@@ -28,13 +36,13 @@ export class UploadButtonComponent {
     reader.readAsDataURL(file);
     reader.onload = () => {
       if (reader.result.indexOf('data:image') >= 0 || this.filesAllowed) {
-        this.uploadState = 1;
+        this.uploadStateValue = 1;
         this.isLoading = false;
         this.imgUploaded.emit({base64: reader.result, file: file});
       } else {
         this.error = 'Chosen file is not an image';
         this.isLoading = false;
-        this.uploadState = 2;
+        this.uploadStateValue = 2;
       }
     };
     reader.onerror = (error) => {

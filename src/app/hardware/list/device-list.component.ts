@@ -54,9 +54,9 @@ export class DeviceListComponent implements OnInit {
    */
   public actions: ITableAction[] = [
     {title: 'Details', callback: 'detailsDevice'},
-    {title: 'Edit', callback: 'editDevice'},
-    {title: 'Assign', callback: 'editDevice'},
-    {title: 'Restart', callback: 'restartDevice'}
+    {title: 'Edit', callback: 'editDevice', acl: 'CreateEditDevice'},
+    {title: 'Assign', callback: 'editDevice', acl: 'CreateEditDevice'},
+    {title: 'Restart', callback: 'restartDevice', acl: 'RestartDevice'}
   ];
 
   /**

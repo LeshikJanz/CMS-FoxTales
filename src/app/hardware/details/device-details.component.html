@@ -8,7 +8,7 @@
       <h2 class="main-label">Device details</h2>
     </div>
     <div class="buttons-block">
-      <button
+      <button isAllowed="CreateEditDevice"
               (click)="downloadFile()">
         Download device connection settings
       </button>
@@ -19,6 +19,7 @@
       <add-button
         [routerLink]="['/admin/device', device?.id, 'edit']"
         class="creation-button"
+        isAllowed="CreateEditDevice"
         [value]="'Edit Device'"
       ></add-button>
     </div>
