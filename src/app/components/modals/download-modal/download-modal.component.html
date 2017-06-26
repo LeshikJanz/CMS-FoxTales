@@ -17,7 +17,7 @@
         </div>
         <div class="btn-actions">
           <fox-button
-              [disabled]="!mediaIds.length && downloadType === 4"
+              [disabled]="!mediaIds.length"
               [value]="'START DOWNLOAD'"
               [design]="'primary'"
               (click)="startDownload()"

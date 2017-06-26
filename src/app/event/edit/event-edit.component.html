@@ -9,14 +9,12 @@
 
     <div class="line-group">
       <div class="form-element">
-        <div>
-          <label>Start Date*</label>
-          <input class="picker-input" [(ngModel)]="startMomentDate" title="{{startMomentDate}}"
-                 [ngModelOptions]="{standalone: true}"
-                 [returnObject]=" 'string' "
-                 [(dateTimePicker)]="startMomentDate" [mode]="'dropdown'" [pickerType]="'date'" placeholder="Start Date"
-                 readonly>
-        </div>
+        <label>Start Date*</label>
+        <input class="picker-input" [(ngModel)]="startMomentDate" title="{{startMomentDate}}"
+               [ngModelOptions]="{standalone: true}"
+               [returnObject]=" 'string' "
+               [(dateTimePicker)]="startMomentDate" [mode]="'dropdown'" [pickerType]="'date'" placeholder="Start Date"
+               readonly>
       </div>
       <div class="form-element">
         <label>End Date*</label>

@@ -103,6 +103,14 @@ export class EventComponent implements OnInit {
   public cloneAction: EventEmitter<any> = new EventEmitter();
 
   /**
+   * Add To group action
+   *
+   * @type {EventEmitter}
+   */
+  @Output()
+  public addToGroupAction: EventEmitter<number> = new EventEmitter();
+
+  /**
    * Checkbox action
    *
    * @type {EventEmitter}
@@ -126,6 +134,7 @@ export class EventComponent implements OnInit {
    * @return {void}
    */
   public onAddToGroup(event: IEvent) {
+    this.addToGroupAction.emit(event.id);
     this.atgModal.show(event);
   }
 

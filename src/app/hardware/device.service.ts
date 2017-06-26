@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Headers, Http, RequestOptions, Response } from '@angular/http';
+import { Http, RequestOptions, Response } from '@angular/http';
 import { Observable } from 'rxjs';
-import { AzureUploadService } from './azure-upload.service';
+import { AuthService } from '../shared/core/auth/auth.service';
 import { Device } from './device';
 import { IDevice, IDeviceFilter, IDeviceList } from './device.interface';
 import { ILog } from './log.interface';
@@ -19,7 +19,8 @@ export class DeviceService {
    * @param {Http} http
    * @returns {void}
    */
-  constructor(private http: Http) {
+  constructor(private http: Http,
+              private auth: AuthService) {
   }
 
   /**
@@ -185,9 +186,8 @@ export class DeviceService {
       .map((response: Response) => response.json());
   }
 
-  public getUploadUrl(version: string, file: any): Observable<any> {
-    return this.http
-      .get(`${process.env.API_URL}/Devices/GetUploadSoftwareURL/${version}/${file.name}`)
+  public getUploadUrl(version: string): Observable<any> {
+    return this.http.get(`${process.env.API_URL}/Devices/GetUploadSoftwareURL/${version}`)
       .map((response: Response) => response.json());
   }
 
@@ -199,7 +199,7 @@ export class DeviceService {
   }
 
   public setUploadUrl(data: any): Observable<any> {
-    return this.http.post(`${process.env.API_URL}/Devices/SetUploadSoftwareStatus`, data)
+    return this.http.post(`${process.env.API_URL}/Devices/SetUploadSoftwareURL`, data)
       .map((response: Response) => response.json());
   }
 }

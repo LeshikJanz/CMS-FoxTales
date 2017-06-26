@@ -88,3 +88,15 @@
     }
   }
 }
+
+:host /deep/ switcher {
+  .check {
+    text-align: center;
+    line-height: 3;
+
+    label {
+      height: 46px;
+      width: 240px;
+    }
+  }
+}

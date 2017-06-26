@@ -194,6 +194,10 @@ $imgHeight: 256.4px;
   }
 }
 
+.transparent {
+  opacity: 0.4;
+}
+
 device-info {
   position: absolute;
   z-index: 100;

@@ -1,4 +1,4 @@
-<button (click)="editModal.show()" class="settings-btn">Manage settings</button>
+<button (click)="editModal.show()" class="settings-btn" isAllowed="CreateEditDeviceSettings">Manage settings</button>
 <div [config]="{ show: false }"
      bsModal #editModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog">

@@ -3,17 +3,18 @@
     <div>
       <label>Sort by</label>
       <dropdown
-        [title]="'Upcoming'"
-        [options]="sortActions"
-        [size]="'big'"
-        (typeChanged)="onSortChanged($event)"
+          [title]="'Upcoming'"
+          [options]="sortActions"
+          [size]="'big'"
+          (typeChanged)="onSortChanged($event)"
       ></dropdown>
     </div>
   </div>
   <event-group
-    [modal]="aeModal"
-    [eventGroups]="eventGroups"
-    style="width: 700px"
+      (update)="getUnusedEvents()"
+      [modal]="aeModal"
+      [eventGroups]="eventGroups"
+      style="width: 700px"
   ></event-group>
 
   <events-to-cur-group-modal #aeModal (save)="onSave()" [events]="unusedEvents"></events-to-cur-group-modal>

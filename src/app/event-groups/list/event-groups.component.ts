@@ -1,7 +1,7 @@
 import { Component, OnInit, OnChanges } from '@angular/core';
 import { IEvent, IEventFilter } from '../../event/event.interface';
 import { EventGroupsService } from './event-groups.service';
-import { IEventGroup } from './event-groups.interaface';
+import { IEventGroup, IEventGroupFilter } from './event-groups.interaface';
 import { EventService } from '../../event/event.service';
 import { IActionState } from '../../client/client.interface';
 import { RouteData } from '../../shared/core/event-management/route-data.service';
@@ -40,10 +40,10 @@ export class EventGroupsComponent implements OnInit {
    * @type {IActionState[]}
    */
   public sortActions: IActionState[] = [
-    {id: 1, action: 'Upcoming', callback: 'upcomingSort'},
-    {id: 2, action: 'Descending', callback: 'descendingSort'},
-    {id: 3, action: 'Start date', callback: 'startDateSort'},
-    {id: 4, action: 'End date', callback: 'endDateSort'},
+    { id: 1, action: 'Upcoming', callback: 'upcomingSort' },
+    { id: 2, action: 'Descending', callback: 'descendingSort' },
+    { id: 3, action: 'Start date', callback: 'startDateSort' },
+    { id: 4, action: 'End date', callback: 'endDateSort' },
   ];
 
   constructor(private eventGroupsService: EventGroupsService,
@@ -117,4 +117,6 @@ export class EventGroupsComponent implements OnInit {
         this.unusedEvents = events
       );
   };
+
+
 }

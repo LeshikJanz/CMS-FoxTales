@@ -59,7 +59,9 @@ export class ProfileComponent implements OnInit {
       .getProfile()
       .subscribe((data: IProfile) => {
         const date = new Date();
-        data.profileImagePath = `${data.profileImagePath}?_=${date.getTime()}`;
+        if(data.profileImagePath) {
+          data.profileImagePath = `${data.profileImagePath}?_=${date.getTime()}`;
+        }
 
         this.profileData = data;
       });

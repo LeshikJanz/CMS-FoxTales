@@ -14,6 +14,13 @@ import { RouteData } from '../../../shared/core/event-management/route-data.serv
 })
 
 export class MainNavigationComponent implements OnInit {
+  /**
+   * Default user icon
+   *
+   * @type {string}
+   */
+  public defaultUserIcon: string = '../../../assets/img/default-user-icon.png';
+
   public user: IUser;
 
   public options: IActionState[] = [
@@ -36,7 +43,9 @@ export class MainNavigationComponent implements OnInit {
     this.userService.getUser(PermissionService.userId.toString())
       .subscribe((user: IUser) => {
           this.user = user;
-          this.user.profileImagePath = `${this.user.profileImagePath}?_=${new Date().getTime()}`;
+          this.user.profileImagePath = this.user.profileImagePath ?
+                                `${this.user.profileImagePath}?_=${new Date().getTime()}` :
+                                    '../../../assets/img/default-user-icon.png';
         }
       );
   }
