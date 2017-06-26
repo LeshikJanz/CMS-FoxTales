@@ -60,7 +60,7 @@ export class UploadFirmwareComponent implements OnInit {
    * @returns {void}
    */
   public setUploadSoftwareStatus(uploadFirmware: any): void {
-    this.deviceService.getUploadUrl(uploadFirmware.version, this.file).flatMap((response) => {
+    this.deviceService.getUploadUrl(uploadFirmware.version).flatMap((response) => {
       uploadFirmware.url = response.result;
       return this.deviceService.uploadFileToBlob(
         response.result,
