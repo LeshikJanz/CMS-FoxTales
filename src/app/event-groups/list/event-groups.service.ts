@@ -28,7 +28,7 @@ export class EventGroupsService {
    */
   public getEventGroups(filter: IEventGroupFilter = {}): Observable<IEventGroup[]> {
     let options = new RequestOptions({
-      params: { clientId: PermissionService.clientId, ...filter }
+      params: { ...filter }
     });
 
     return this.http.get(`${process.env.API_URL}/EventGroups`, options)

@@ -21,8 +21,8 @@
         ></dropdown>
       </div>
       </div>
-      <input type="text" name="search" placeholder="find gallery" [(ngModel)]="search"
-             (ngModelChange)="onSearchChange($event)">
+      <search-input [title]="'find gallery'"
+                    (Change)="onSearchChange($event)"></search-input>
 
     </div>
     <gallery-item-list [galleryItems]="galleryItems" ></gallery-item-list>
