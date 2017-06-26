@@ -25,7 +25,7 @@ export class EventService {
    */
   public getEvents(filter: IEventFilter = {}) {
     let options = new RequestOptions({
-      params: { clientId: PermissionService.clientId, ...filter }
+      params: { ...filter }
     });
 
     return this.http.get(`${process.env.API_URL}/Events`, options)
@@ -39,7 +39,7 @@ export class EventService {
    */
   public getEventList(filter: IEventFilter = {}): Observable<IEventList> {
     let options = new RequestOptions({
-      params: { clientId: PermissionService.clientId, ...filter }
+      params: { ...filter }
     });
 
     return this.http.get(`${process.env.API_URL}/Events/GetPage`, options)

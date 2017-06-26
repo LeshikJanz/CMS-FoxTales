@@ -11,14 +11,7 @@
           (typeChanged)="onSortChanged($event)"
       ></dropdown>
     </div>
-    <div class="create-experience">
-            <add-button
-        [routerLink]="['/experience-builder/intro']"
-        [queryParams]="{ id: this.id  }"
-        [value]="'Create New Experience'"
-      ></add-button>
-      <search-input [title]="'find experience'" (Change)="onSearchChange($event)"></search-input>
-    </div>
+    <search-input [title]="'find experience'" (Change)="onSearchChange($event)"></search-input>
 
   </div>
   <experience *ngFor="let experience of Experience" [experience]="experience"

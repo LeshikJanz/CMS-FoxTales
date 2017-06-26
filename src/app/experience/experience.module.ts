@@ -27,6 +27,7 @@ import { GalleryService } from '../gallery/gallery.service';
 import {
   ExperienceGalleryContainerComponent
 } from '../gallery/experience-gallery/container/experience-gallery-container.component';
+import { ExperienceHeaderComponent } from './headers/experience-header/experience-header.component';
 
 @NgModule({
   imports: [

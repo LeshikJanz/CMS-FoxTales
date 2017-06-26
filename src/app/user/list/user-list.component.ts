@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, OnChanges } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ModalDirective } from 'ngx-bootstrap/modal';
@@ -7,6 +7,7 @@ import { IUserList, IUserFilter } from '../user.interface';
 import { User } from '../user';
 import { UserService } from '../user.service';
 import { IActionState } from '../../client/client.interface';
+import { RouteData } from '../../shared/core/event-management/route-data.service';
 
 /**
  * User list component
@@ -126,11 +127,15 @@ export class UserListComponent implements OnInit {
    * @param {Router} router - Router
    * @param {ToastrService} toastrService - Toastr service
    * @param {UserService} userService - User service
+   * @param {RouteData} routeData - Router Data
    * @returns {void}
    */
   constructor(private router: Router,
               private toastrService: ToastrService,
-              private userService: UserService) {
+              private userService: UserService,
+              private routeData: RouteData) {
+    this.routeData.archieve
+      .subscribe((id: number) => this.onTypeChanged(id));
   }
 
   /**

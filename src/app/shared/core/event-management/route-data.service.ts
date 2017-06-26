@@ -5,4 +5,5 @@ import { Injectable } from '@angular/core';
 export class RouteData {
   public name = new Subject();
   public imgPath = new Subject();
+  public archieve = new Subject();
 }

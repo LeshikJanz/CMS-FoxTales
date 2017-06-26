@@ -162,8 +162,6 @@ export class UserCreateComponent implements OnInit {
    */
   public buildUserForm(): UserCreateComponent {
     this.userForm = this.formBuilder.group({
-      firstName: [''],
-      lastName: [''],
       email: ['', [
         Validators.required,
         CustomValidators.email

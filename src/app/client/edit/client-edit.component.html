@@ -108,6 +108,7 @@
 
     <div>
       <fox-button
+          (click)="updateClient()"
           [value]="'UPDATE'"
           [disabled]="clientForm.invalid"
           [design]="'special'"
