@@ -1,24 +1,24 @@
 <nav class="slidemenu">
 
-  <input type="radio" name="slideItem" id="slide-item-1" class="slide-toggle" checked/>
+  <input type="radio" name="slideItem" id="slide-item-1" class="slide-toggle" [attr.checked]='one' />
   <label for="slide-item-1"><span [routerLink]="['/experience-builder/container/basic-details']">Basic Details</span></label>
 
-  <input type="radio" name="slideItem" id="slide-item-2" class="slide-toggle"/>
+  <input type="radio" name="slideItem" id="slide-item-2" class="slide-toggle" [attr.checked]='two' />
   <label for="slide-item-2"><span [routerLink]="['/experience-builder/container/content-options']">Content Options</span></label>
 
-  <input type="radio" name="slideItem" id="slide-item-3" class="slide-toggle"/>
+  <input type="radio" name="slideItem" id="slide-item-3" class="slide-toggle" [attr.checked]='three' />
   <label for="slide-item-3"><span [routerLink]="['/experience-builder/container/sharing-options']">Sharing Options</span></label>
 
-  <input type="radio" name="slideItem" id="slide-item-4" class="slide-toggle"/>
+  <input type="radio" name="slideItem" id="slide-item-4" class="slide-toggle" [attr.checked]='four' />
   <label for="slide-item-4"><span [routerLink]="['/experience-builder/container/email-builder']">Email Builder</span></label>
 
-  <input type="radio" name="slideItem" id="slide-item-5" class="slide-toggle"/>
+  <input type="radio" name="slideItem" id="slide-item-5" class="slide-toggle" [attr.checked]='five' />
   <label for="slide-item-5"><span [routerLink]="['/experience-builder/container/ui-builder']">UI Builder</span></label>
 
-  <input type="radio" name="slideItem" id="slide-item-6" class="slide-toggle"/>
+  <input type="radio" name="slideItem" id="slide-item-6" class="slide-toggle" [attr.checked]='six' />
   <label for="slide-item-6"><span [routerLink]="['/experience-builder/container/content-gallery']">Content Gallery</span></label>
 
-  <input type="radio" name="slideItem" id="slide-item-7" class="slide-toggle"/>
+  <input type="radio" name="slideItem" id="slide-item-7" class="slide-toggle" [attr.checked]='seven' />
   <label for="slide-item-7"><span [routerLink]="['/experience-builder/container/content-feeds']">Content Feeds</span></label>
 
   <div class="clear"></div>
