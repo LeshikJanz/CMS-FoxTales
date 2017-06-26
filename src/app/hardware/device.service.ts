@@ -193,7 +193,7 @@ export class DeviceService {
 
   public uploadFileToBlob(url: string, file: any): Observable<any> {
     // let headers = new Headers();
-    // headers.append('Authorization', `SharedKey ${this.auth.getContext().getToken()}`);
+    // headers.append('x-ms-blob-type', 'BlockBlob');
     // let options = new RequestOptions({headers: headers});
     return this.http.put(url, file)
       .map((response: Response) => response.json());
