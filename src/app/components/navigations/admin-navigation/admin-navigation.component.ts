@@ -7,7 +7,8 @@ import { IActionState } from '../../../client/client.interface';
 @Component({
   selector: 'admin-navigation',
   templateUrl: 'admin-navigation.component.html',
-  styleUrls: ['admin-navigation.component.scss']
+  styleUrls: ['admin-navigation.component.scss',
+    '../../../shared/styles/navigation.scss']
 })
 
 export class AdminNavigationComponent {

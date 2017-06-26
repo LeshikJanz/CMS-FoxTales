@@ -5,7 +5,8 @@ import { Location } from '@angular/common';
 @Component({
   selector: 'event-navigation',
   templateUrl: 'event-navigation.component.html',
-  styleUrls: ['event-navigation.component.scss']
+  styleUrls: ['event-navigation.component.scss',
+    '../../../shared/styles/navigation.scss']
 })
 
 export class EventNavigationComponent {

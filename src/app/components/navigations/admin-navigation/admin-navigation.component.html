@@ -1,4 +1,4 @@
-<div class="admin-container">
+<div class="nav-container">
   <nav class="slidemenu">
 
     <input type="radio" name="slideItem" id="slide-item-1" class="slide-toggle"
@@ -28,13 +28,6 @@
   <div class="actions">
     <div id="1" [hidden]="!isArchieved" (click)="onTypeChanged($event.target.id)">Archived</div>
     <div id="2" [hidden]="isArchieved" (click)="onTypeChanged($event.target.id)">Unarchived</div>
-    <!--<dropdown-->
-        <!--*ngIf="curLocation && curLocation.indexOf('/admin/user') >= 0"-->
-        <!--[title]="'Unarchived'"-->
-        <!--[options]="clientStates"-->
-        <!--[size]="'big'"-->
-        <!--(typeChanged)="onTypeChanged($event.id)"-->
-    <!--&gt;</dropdown>-->
   </div>
 </div>
 <router-outlet></router-outlet>
