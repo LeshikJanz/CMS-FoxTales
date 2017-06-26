@@ -5,7 +5,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <div>
-          <h1 class="modal-title">Update preferences</h1>
+          <h1 class="modal-title">Upload new firmware update</h1>
         </div>
         <button type="button" class="close" (click)="editModal.hide()" aria-label="Close">
           <img src="assets/img/close.svg">
@@ -55,14 +55,8 @@
             </div>
 
             <div class="form-element">
-              <div>
-                <label style="font-size: 22px">File</label>
-                <div>
-                  <img src="{{ logoBytes }}">
-                  <a href="javascript:void(0)" *ngIf="logoBytes" (click)="removeLogo()">x</a>
-                </div>
-              </div>
-              <upload-button (imgUploaded)="onImgUploaded($event)"></upload-button>
+              <upload-button (imgUploaded)="onImgUploaded($event)"
+                             [filesAllowed]="true"></upload-button>
             </div>
           </div>
 
@@ -78,7 +72,8 @@
               <fox-button
                 [value]="'CANCEL'"
                 [design]="'gray'"
-                ((click)="editModal.hide()"
+                [type]="'button'"
+                (click)="editModal.hide()"
               ></fox-button>
             </div>
           </div>

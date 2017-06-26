@@ -1,4 +1,4 @@
-<div class="form-group file-area" (click)="handleLoading()">
+<div class="form-group file-area" (click)="handleLoading()" *ngIf="!filesAllowed">
   <input type="file" name="images" accept=".jpg, .png" id="images" (click)="isLoading=true"
          (change)="handlePictureChange($event)"
          required="required" multiple="multiple"/>
@@ -20,12 +20,39 @@
     <div class="default" [hidden]="uploadState != 0">
       <label class="input-block">
         <img src="../../../assets/img/arrows-24-px-outline-1-cloud-upload-94.svg" alt="">
-        <label class="inner-text default">Drag n drop an image here or
+        <label class="inner-text default">Drag n drop an image here or {{filesAllowed}}
           &nbsp;<ins>browse for one on your computer</ins>
         </label>
       </label>
     </div>
   </div>
 </div>
-
-
+<div class="form-group file-area" (click)="handleLoading()" *ngIf="filesAllowed">
+  <input type="file" name="images" id="images" (click)="isLoading=true"
+         (change)="handlePictureChange($event)"
+         required="required" multiple="multiple"/>
+  <div class="btn upload-button" [class.success]="uploadState == 1" [class.fail]="uploadState == 2">
+    <div class="fail" [hidden]="uploadState != 2">
+      <label class="input-block">
+        <img src="../../../assets/img/attention.svg" alt="">
+        <strong class="inner-text">Please
+          <ins style="color: black">try again.</ins>
+          {{error}}</strong>
+      </label>
+    </div>
+    <div class="success" [hidden]="uploadState == 2 || uploadState == 0">
+      <label class="input-block">
+        <img src="../../../assets/img/complete.svg" alt="">
+        <strong class="inner-text">Item uploaded successfully!</strong>
+      </label>
+    </div>
+    <div class="default" [hidden]="uploadState != 0">
+      <label class="input-block">
+        <img src="../../../assets/img/arrows-24-px-outline-1-cloud-upload-94.svg" alt="">
+        <label class="inner-text default">Drag n drop a file here or
+          &nbsp;<ins>browse for one on your computer</ins>
+        </label>
+      </label>
+    </div>
+  </div>
+</div>

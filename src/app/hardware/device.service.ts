@@ -191,12 +191,11 @@ export class DeviceService {
       .map((response: Response) => response.json());
   }
 
-  public uploadFileToBlob(url: string, file: any): Observable<any> {
-    // let headers = new Headers();
-    // headers.append('x-ms-blob-type', 'BlockBlob');
-    // let options = new RequestOptions({headers: headers});
-    return this.http.put(url, file)
-      .map((response: Response) => response.json());
+  public uploadFileToBlob(url: string, file: File): Observable<any> {
+    let headers = new Headers();
+    headers.append('x-ms-blob-type', 'BlockBlob');
+    let options = new RequestOptions({'headers': headers});
+    return this.http.put(url, file, options);
   }
 
   public setUploadUrl(data: any): Observable<any> {
