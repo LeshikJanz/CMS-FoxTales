@@ -89,7 +89,8 @@ export class SettingsEditComponent implements OnInit {
   public updateSettings(settings: any): void {
     this.deviceService
       .updateSettings(settings)
-      .subscribe(() => {
+      .subscribe((data) => {
+        this.settings = data;
         this.toastrService.success('Settings has been updated successfully.');
         this.editModal.hide();
       });
@@ -109,5 +110,10 @@ export class SettingsEditComponent implements OnInit {
         Validators.required
       ]]
     });
+  }
+
+  public hide(): void {
+    this.buildSettingsForm();
+    this.editModal.hide();
   }
 }

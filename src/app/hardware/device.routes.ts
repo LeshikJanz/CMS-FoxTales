@@ -8,7 +8,7 @@ import { DeviceListComponent } from './list';
 import { LogDetailsComponent } from './log-details';
 
 const DEVICE_ROUTES: Routes = [
-  {path: '', redirectTo: 'users'},
+  {path: '', redirectTo: 'devices'},
   {path: 'devices', component: DeviceListComponent},
   {path: 'device', component: DeviceCreateComponent, data: { acl: 'CreateEditDevice' }},
   {path: 'device/:id', component: DeviceDetailsComponent},

@@ -1,5 +1,5 @@
 <button (click)="editModal.show()" isAllowed="CreateEditDeviceFirmware">Upload new firmware</button>
-<div [config]="{ show: false }"
+<div [config]="{ show: false, backdrop: 'static'}"
      bsModal #editModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -56,16 +56,18 @@
 
             <div class="form-element">
               <upload-button (imgUploaded)="onImgUploaded($event)"
+                             [(uploadState)]="uploadState"
                              [filesAllowed]="true"></upload-button>
             </div>
           </div>
 
           <div class="btn-actions">
+            <div *ngIf="uploading">File is uploading</div>
             <fox-button
               [value]="'SAVE'"
               [design]="'gray'"
               [type]="'submit'"
-              [disabled]="uploadFirmwareForm.invalid"
+              [disabled]="uploadFirmwareForm.invalid || uploading"
             ></fox-button>
 
             <div class="btn-actions">
@@ -73,7 +75,8 @@
                 [value]="'CANCEL'"
                 [design]="'gray'"
                 [type]="'button'"
-                (click)="editModal.hide()"
+                (click)="hide()"
+                [disabled]="uploading"
               ></fox-button>
             </div>
           </div>

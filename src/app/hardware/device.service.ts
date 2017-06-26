@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Headers, Http, RequestOptions, Response } from '@angular/http';
+import { Http, RequestOptions, Response, Headers } from '@angular/http';
 import { Observable } from 'rxjs';
 import { AuthService } from '../shared/core/auth/auth.service';
 import { Device } from './device';
@@ -122,7 +122,8 @@ export class DeviceService {
    * @returns {Observable<settings>} - settings
    */
   public updateSettings(settings: any): Observable<any> {
-    return this.http.put(`${process.env.API_URL}/Devices/DeviceSettings?updateType=${settings.updateType}&logsPerDay=${settings.logsPerDay}`, settings)
+    return this.http
+      .put(`${process.env.API_URL}/Devices/DeviceSettings?updateType=${settings.updateType}&logsPerDay=${settings.logsPerDay}`, settings)
       .map((response: Response) => response.json());
   }
 
@@ -187,14 +188,15 @@ export class DeviceService {
   }
 
   public getUploadUrl(version: string, file: File): Observable<any> {
-    return this.http.get(`${process.env.API_URL}/Devices/GetUploadSoftwareURL/${version}/${file.name}`)
+    return this.http
+      .get(`${process.env.API_URL}/Devices/GetUploadSoftwareURL/${version}/${file.name}`)
       .map((response: Response) => response.json());
   }
 
   public uploadFileToBlob(url: string, file: File): Observable<any> {
     let headers = new Headers();
     headers.append('x-ms-blob-type', 'BlockBlob');
-    let options = new RequestOptions({'headers': headers});
+    let options = new RequestOptions({headers: headers});
     return this.http.put(url, file, options);
   }
 
