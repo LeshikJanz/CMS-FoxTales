@@ -3,7 +3,6 @@
   [value]="'Create New Content'"
 ></add-button>
 
-
 <div *ngFor="let content of contentOptions">
   <a href="javascript:void(0);" (click)="contentOptionEditModal.show();contentOptionEdit(content)">{{content.name}}</a>
 </div>
@@ -43,7 +42,7 @@
           </tab>
           <tab heading='Part 2'>
             <h3>Media Manipulation</h3>
-            <upload-button (imgUploaded)="onImgUploaded($event)"></upload-button>
+            <upload-button #fileUpload (change)="fileUpload.upload()" (imgUploadedNon64)="onImgUploadedNon64($event)" ></upload-button>
             <!--<br>
             <h5>Animated Overlay?</h5>
             <ui-switch [(ngModel)]="animatedOverlay"></ui-switch>

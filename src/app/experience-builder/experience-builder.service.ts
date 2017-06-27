@@ -13,7 +13,9 @@ export class ExperienceBuilderService {
     productId: '',
     displayName: '',
     runTimes: '',
-    brands: ''
+    brands: '',
+    MediaManipulationId: '',
+    contentOptionId: ''
     };
 
   /**
@@ -123,6 +125,28 @@ export class ExperienceBuilderService {
     public postContentFeedSettings(settings) {
       return this.http.post(`${process.env.API_URL}/Experiences/`
         + this.experience.experienceId + `/contentfeed`, settings)
+        .map((response: Response) => {
+          console.log(response);
+          return response;
+        });
+    }
+
+    public postMediaManipulations(settings){
+      return this.http.post(`${process.env.API_URL}/MediaManipulations/`
+        , settings)
+        .map((response: Response) => {
+          this.experience.MediaManipulationId = response.json().id;
+          console.log(response);
+
+          return response;
+        });
+
+    }
+
+    public postMediaManipulationsAssets(formData) {
+      return this.http.post(`${process.env.API_URL}/MediaManipulations/`
+      + this.experience.MediaManipulationId + `/assets`
+        , formData)
         .map((response: Response) => {
           console.log(response);
           return response;
