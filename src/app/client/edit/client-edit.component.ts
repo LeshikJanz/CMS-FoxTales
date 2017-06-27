@@ -104,6 +104,7 @@ export class ClientEditComponent implements OnInit {
   constructor(private mapsAPILoader: MapsAPILoader,
               private ngZone: NgZone,
               private router: Router,
+              private elRef: ElementRef,
               private route: ActivatedRoute,
               private formBuilder: FormBuilder,
               private toastrService: ToastrService,
@@ -117,10 +118,9 @@ export class ClientEditComponent implements OnInit {
    * @returns {void}
    */
   public ngOnInit(): void {
-    this
-      .initFileReader()
-      .initAddressSearch()
-      .buildClientForm();
+    this.initFileReader()
+      .buildClientForm()
+      .initAddressSearch();
 
     this.route.params.subscribe((params: any) => {
       this.getClient(params['id']);
@@ -197,6 +197,14 @@ export class ClientEditComponent implements OnInit {
         }
 
         this.client = client;
+
+        Object.keys(this.client).forEach((field: string) => {
+          const formField = this.clientForm.get(field);
+
+          if (formField) {
+            formField.setValue(this.client[field]);
+          }
+        });
 
         this.addSocialAccounts(client);
       });
@@ -299,8 +307,10 @@ export class ClientEditComponent implements OnInit {
    * @return {ClientEditComponent} - Component
    */
   public initAddressSearch(): ClientEditComponent {
+    const that = this;
+
     this.mapsAPILoader.load().then(() => {
-      let autocomplete = new google.maps.places.Autocomplete(this.addressElementRef.nativeElement, {
+      let autocomplete = new google.maps.places.Autocomplete(that.elRef.nativeElement.querySelector('#address'), {
         types: ['address']
       });
 

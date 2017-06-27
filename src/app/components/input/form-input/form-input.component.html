@@ -1,32 +1,31 @@
-<div class="form-element" [formGroup]="form">
-  <label [ngClass]="{'error': form.get(controlName).touched &&
-                              form.get(controlName).errors}"
-         for="{{controlName}}">{{title}}
+<div class="form-element">
+  <label [ngClass]="{'error': control.touched && control.errors}">
+    {{title}}
   </label>
-  <div [ngClass]="{'success': form.get(controlName).value &&
-                              form.get(controlName).touched &&
-                              !form.get(controlName).errors}">
+
+  <div [ngClass]="{'success': control.value && control.touched && !control.errors}">
     <input
-        id="{{controlName}}"
-        [attr.disabled]="disabled ? '' : null"
-        type="text"
-        class="form-control"
-        formControlName="{{controlName}}"
-        placeholder="{{title}}"
-    />
+      [attr.disabled]="disabled ? '' : null"
+      type="text"
+      class="form-control"
+      [formControl]="control"
+      [placeholder]="title">
   </div>
 
-  <div ngxErrors="{{controlName}}">
-    <button class="close-icon" *ngIf="form.get(controlName).touched &&
-                              form.get(controlName).errors" type="reset"></button>
+  <div>
+    <button
+      class="close-icon"
+      *ngIf="control.touched && control.errors" type="reset">
+    </button>
+
     <div class="field-error"
-         *ngIf="form.get(controlName).hasError('required') &&
-                form.get(controlName).touched">Field is required
+         *ngIf="control.hasError('required') && control.touched">
+      Field is required
     </div>
 
     <div class="field-error"
-         *ngIf="form.get(controlName).touched && (form.get(controlName).hasError('pattern') ||
-                form.get(controlName).hasError('email'))">{{errorMsg}}
+         *ngIf="control.touched && (control.hasError('pattern') || control.hasError('email'))">
+      {{errorMsg}}
     </div>
   </div>
 </div>

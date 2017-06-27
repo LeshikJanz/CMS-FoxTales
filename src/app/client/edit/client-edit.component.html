@@ -1,12 +1,11 @@
 <div class="client-container">
   <form
+      *ngIf="clientForm"
       (ngSubmit)="updateClient()"
       class="form"
       novalidate>
 
     <div [formGroup]="clientForm">
-
-
       <!-- Logo -->
       <div class="form-element">
         <label style="font-size: 22px">Client logo</label>
@@ -18,18 +17,14 @@
       </div>
 
       <form-input
-          [form]="clientForm"
-          [controlName]="'name'"
-          [title]="'Client Name*'"
-          [value]="client.name"
-      ></form-input>
+          [control]="clientForm.get('name')"
+          title="Client Name*">
+      </form-input>
 
       <form-input
-          [form]="clientForm"
-          [controlName]="'email'"
-          [title]="'Email'"
-          [value]="client.email"
-      ></form-input>
+        [control]="clientForm.get('email')"
+        title="Email">
+      </form-input>
 
       <!-- Address -->
       <div class="form-element">
@@ -45,8 +40,7 @@
             spellcheck="off"
             #address
             placeholder="Search for Location"
-            alt="client.address"
-          >
+            alt="client.address">
 
         <div ngxErrors="address">
           <div ngxError="required" when="touched">
@@ -56,18 +50,14 @@
       </div>
 
       <form-input
-          [form]="clientForm"
-          [controlName]="'phone'"
-          [title]="'Phone'"
-          [value]="client.phone"
-      ></form-input>
+        [control]="clientForm.get('phone')"
+        title="Phone">
+      </form-input>
 
       <form-input
-          [form]="clientForm"
-          [controlName]="'freshBooks'"
-          [title]="'FreshBook Url'"
-          [value]="client.freshBooks"
-      ></form-input>
+        [control]="clientForm.get('freshBooks')"
+        title="FreshBook Url">
+      </form-input>
 
       <!-- Social Accounts -->
       <div class="form-element" formArrayName="socialAccounts">
@@ -108,7 +98,6 @@
 
     <div>
       <fox-button
-          (click)="updateClient()"
           [value]="'UPDATE'"
           [disabled]="clientForm.invalid"
           [design]="'special'"

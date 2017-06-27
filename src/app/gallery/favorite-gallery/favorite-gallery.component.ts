@@ -22,8 +22,8 @@ export class FavoriteGalleryComponent implements OnInit {
    * @type {IActionState[]}
    */
   public sortActions: IActionState[] = [
-    {id: 1, action: 'Upcoming'},
-    {id: 2, action: 'Descending'}
+    {id: 1, action: 'Most Shared'},
+    {id: 2, action: 'Least Shared'}
   ];
 
   /**
