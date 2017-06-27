@@ -14,6 +14,10 @@
   color: #444444 !important;
 }
 
+:host /deep/ tag:active {
+  background: #f57f17 !important;
+}
+
 :host /deep/ .ng2-menu-item {
   height: 38px !important;
   font-family: WorkSans !important;
@@ -26,14 +30,18 @@
   height: inherit;
   width: inherit;
   border: 1px solid !important;
-  min-height: inherit !important;
+  min-height: 0 !important;
+  padding: 0 !important;
 
   .ng2-tags-container {
-    min-height: inherit;
     height: inherit;
     width: inherit;
     align-items: center;
-    padding-left: 10px;
+    padding-left: 54px;
+    min-height: 65px;
+    background-image: url('../../../assets/img/search.svg');
+    background-repeat: no-repeat;
+    background-position: 20px;
   }
 
   tag-input-form {
@@ -82,8 +90,7 @@
           path {
             fill: #343a40 !important;
           }
-        }
-      ;
+        };
       }
     }
   }

@@ -19,26 +19,22 @@
       <div class="line-group">
         <div class="form-element">
           <label>Start Date*</label>
-          <div class="wrap">
-            <input class="picker-input" [ngModel]="startMomentDate"
-                   [returnObject]=" 'string' "
-                   [theme]=" '#f57f17' "
-                   [(dateTimePicker)]="startMomentDate" [mode]="'dropdown'" [pickerType]="'date'"
-                   placeholder="mm/dd/yy" [formControlName]="'startDate'"
-                   readonly>
-          </div>
+          <input class="picker-input" [ngModel]="startMomentDate"
+                 [returnObject]=" 'string' "
+                 [theme]=" '#f57f17' "
+                 [(dateTimePicker)]="startMomentDate" [mode]="'dropdown'" [pickerType]="'date'"
+                 placeholder="mm/dd/yy" [formControlName]="'startDate'"
+                 readonly>
         </div>
         <div class="form-element">
           <label>End Date*</label>
           <div>
-            <div class="wrap">
               <input class="picker-input" [ngModel]="endMomentDate"
                      [theme]=" '#f57f17' "
                      [returnObject]=" 'string' " [(dateTimePicker)]="endMomentDate"
                      [mode]="'dropdown'" [pickerType]="'date'" placeholder="mm/dd/yy"
                      [formControlName]="'endDate'" readonly>
             </div>
-          </div>
         </div>
       </div>
 

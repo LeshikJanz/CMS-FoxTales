@@ -46,6 +46,10 @@ h1 {
     font-family: OpenSans;
     font-size: 18px;
     color: #636c72;
+    background-image: url(../../../assets/img/drop-arrow.svg);
+    background-repeat: no-repeat;
+    background-size: 14px 10px;
+    background-position: right 10px center;
   }
 
   .wrap:after {

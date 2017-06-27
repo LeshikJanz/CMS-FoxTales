@@ -91,7 +91,7 @@ export class EventToGroupModalComponent implements OnChanges {
    */
   public onSearchChange(value: string): void {
     this.eventGroupList = this.eventGroups.filter(
-      (eg: IEventGroup) => eg.name.toLowerCase().indexOf(value) >= 0);
+      (eg: IEventGroup) => eg.name.toLowerCase().indexOf(value.toLowerCase()) >= 0);
   }
 
   /**

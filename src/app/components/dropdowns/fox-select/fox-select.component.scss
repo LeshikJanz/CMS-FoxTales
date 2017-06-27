@@ -38,6 +38,7 @@ ng-select {
 }
 
 :host /deep/ .ui-disabled {
+  opacity: 0.4 !important;
   background-color: white !important;
 }
 
