@@ -21,10 +21,6 @@ export class ExperienceBuilderNavigationComponent implements OnInit, DoCheck {
  
   }
 
-  public hello(){
-    return true;
-  }
-
   ngOnInit(){
     switch(this.router.url) {
       case '/experience-builder/container/basic-details':
@@ -62,6 +58,7 @@ export class ExperienceBuilderNavigationComponent implements OnInit, DoCheck {
   }
 
   ngDoCheck(){
+    console.log(this.router.url)
     switch(this.router.url) {
       case '/experience-builder/container/basic-details':
         this.one = ' ';
