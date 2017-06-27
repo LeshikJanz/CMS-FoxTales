@@ -6,12 +6,15 @@ import { EventGroupsService } from '../list/event-groups.service';
 import { IEvent, IEventFilter } from '../../event/event.interface';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { ClientService } from '../../client/client.service';
+import { IClient } from '../../client/client.interface';
 
 @Component({
   selector: 'event-group-edit',
   templateUrl: 'event-group-edit.component.html',
   styleUrls: ['event-group-edit.component.scss',
-    '../../shared/styles/form-element.scss']
+    '../../shared/styles/form-element.scss',
+    '../../shared/styles/tag-input.scss']
 })
 
 export class EventGroupEditComponent implements OnInit {
@@ -35,6 +38,22 @@ export class EventGroupEditComponent implements OnInit {
     eventIds: null,
     events: null,
     gallery: null
+  };
+
+  /**
+   * Client
+   *
+   * @type {IClient}
+   */
+  public client: IClient = {
+    logo: null,
+    logoBytes: null,
+    name: null,
+    email: null,
+    address: null,
+    phone: null,
+    freshBooks: null,
+    socialAccounts: null
   };
 
   /**
@@ -79,7 +98,8 @@ export class EventGroupEditComponent implements OnInit {
               private router: Router,
               private route: ActivatedRoute,
               private formBuilder: FormBuilder,
-              private toastrService: ToastrService) {
+              private toastrService: ToastrService,
+              private clientService: ClientService) {
   }
 
   /**
@@ -97,6 +117,8 @@ export class EventGroupEditComponent implements OnInit {
         }
 
         this.eventGroup = eventGroup[0];
+        this.getClient(this.eventGroup.clientId.toString());
+
       });
   }
 
@@ -124,6 +146,20 @@ export class EventGroupEditComponent implements OnInit {
       .subscribe((events: IEvent[]) =>
         this.events = events.filter((e: IEvent) => !!e.name)
       );
+  }
+  
+  /**
+   * Get client by id
+   *
+   * @param {string} id - Client id
+   * @returns {void|Promise<boolean>}
+   */
+  public getClient(id: string): void|Promise<boolean> {
+    this.clientService
+      .getClient(id)
+      .subscribe((client: IClient) => {
+        this.client = client;
+      });
   }
 
   /**
