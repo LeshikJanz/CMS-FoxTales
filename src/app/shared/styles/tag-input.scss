@@ -1,0 +1,89 @@
+// ng2-tag-input
+:host /deep/ .ng2-menu-item--selected {
+  color: #f57f17 !important;
+  background: transparent !important;
+}
+
+:host /deep/ .ng2-dropdown-menu::-webkit-scrollbar {
+  display: none;
+}
+
+:host /deep/ tag:focus {
+  background: #e6e7e8 !important;
+  border: 1px solid #f57f17 !important;
+  color: #444444 !important;
+}
+
+:host /deep/ .ng2-menu-item {
+  height: 38px !important;
+  font-family: WorkSans !important;
+  font-size: 16px !important;
+  border-bottom: 1px solid #eef1f3 !important;
+  line-height: 28px !important;
+}
+
+:host /deep/ .ng2-tag-input {
+  height: inherit;
+  width: inherit;
+  border: 1px solid !important;
+  min-height: inherit !important;
+
+  .ng2-tags-container {
+    min-height: inherit;
+    height: inherit;
+    width: inherit;
+    align-items: center;
+    padding-left: 10px;
+  }
+
+  tag-input-form {
+    display: flex;
+    align-items: center;
+  }
+
+  input {
+    background-color: #ffffff;
+    font-family: WorkSans;
+    font-size: 16px;
+    color: #3d3d3d;
+  }
+
+  input:focus {
+    background-color: #ffffff;
+  }
+
+  input::-webkit-input-placeholder {
+    font-family: Helvetica;
+    font-size: 16px;
+    color: #b2bac4;
+  }
+
+  tag {
+    min-width: 115px;
+    height: 44px;
+    padding-left: 15px;
+    display: flex;
+    align-items: center;
+    border-radius: 3px;
+    margin: 5px;
+
+    > div {
+      width: inherit;
+
+      > div {
+        justify-content: space-between;
+        display: flex;
+        min-width: 90px;
+
+        delete-icon {
+          margin-left: 5px !important;
+
+          path {
+            fill: #343a40 !important;
+          }
+        }
+      ;
+      }
+    }
+  }
+}

@@ -36,8 +36,6 @@ export class AdminNavigationComponent {
 
   public onTypeChanged(id: number) {
     this.isArchieved = !this.isArchieved;
-    console.log('id');
-    console.log(id);
     this.routeData.archieve.next(id);
   }
 }
