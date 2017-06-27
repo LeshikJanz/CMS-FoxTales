@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import * as moment from 'moment';
 import { ToastrService } from 'ngx-toastr';
 import { IDeviceClient } from '../device-client.interface';
 import { IDevice } from '../device.interface';
@@ -57,6 +58,7 @@ export class DeviceEditComponent implements OnInit {
    * @type {any[]}
    */
   public clients: any[];
+  public purchaseMomentDate: string;
 
   /**
    * Constructor
@@ -135,7 +137,9 @@ export class DeviceEditComponent implements OnInit {
         if (!device) {
           return this.router.navigate(['/admin/devices']);
         }
-
+        if (device.purchaseDate) {
+          this.purchaseMomentDate = device.purchaseDate = moment(device.purchaseDate).format('MMM DD, YYYY');
+        }
         this.device = device;
 
         this.buildDeviceForm();
@@ -152,6 +156,7 @@ export class DeviceEditComponent implements OnInit {
    * @returns {void}
    */
   public updateDevice(device: IDevice): void {
+    device['purchaseDate'] = moment(this.purchaseMomentDate, 'MMM DD YYYY').format();
     this.deviceService
       .updateDevice(device, this.device.id)
       .subscribe(() => {
