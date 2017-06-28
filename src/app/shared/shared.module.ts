@@ -13,6 +13,7 @@ import { FirstNamePipe } from './table/pipe/firstName.pipe';
 import { TemperaturePipe } from './table/pipe/temperature.pipe';
 import { BooleanPipe } from './table/pipe/boolean.pipe';
 import { InternetStatusPipe } from './table/pipe/internet-status.pipe';
+import { FormService } from './core/form/form.service';
 
 @NgModule({
   imports: [
@@ -47,7 +48,8 @@ import { InternetStatusPipe } from './table/pipe/internet-status.pipe';
     DatePipe,
     BooleanPipe,
     InternetStatusPipe,
-    TemperaturePipe
+    TemperaturePipe,
+    FormService
   ],
   exports: [
     CommonModule,

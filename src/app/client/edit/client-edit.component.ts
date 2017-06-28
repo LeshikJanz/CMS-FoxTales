@@ -20,6 +20,7 @@ import hello from 'hellojs';
 import { CustomValidators } from 'ng2-validation';
 import { IClient, IClientSocial } from '../client.interface';
 import { ClientService } from '../client.service';
+import { FormService } from "../../shared/core/form/form.service";
 
 /**
  * Client details component
@@ -197,14 +198,8 @@ export class ClientEditComponent implements OnInit {
         }
 
         this.client = client;
-
-        Object.keys(this.client).forEach((field: string) => {
-          const formField = this.clientForm.get(field);
-
-          if (formField) {
-            formField.setValue(this.client[field]);
-          }
-        });
+        
+        FormService.populateForm(this.client, this.clientForm);
 
         this.addSocialAccounts(client);
       });
