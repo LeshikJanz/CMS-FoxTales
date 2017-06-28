@@ -15,7 +15,8 @@ import { UserService } from '../../user/user.service';
   selector: 'event-group-create',
   templateUrl: 'event-group-create.component.html',
   styleUrls: ['event-group-create.component.scss',
-    '../../shared/styles/form-element.scss']
+    '../../shared/styles/form-element.scss',
+    '../../shared/styles/tag-input.scss']
 })
 
 export class EventGroupCreateComponent implements OnInit {

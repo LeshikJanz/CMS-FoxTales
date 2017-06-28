@@ -17,6 +17,16 @@
             placeholder="Group name">
       </div>
 
+      <!--Client Access -->
+      <div class="form-element">
+        <label>Client Access*</label>
+        <fox-select
+            [disabled]="true"
+            [active]="client"
+        >
+        </fox-select>
+      </div>
+
       <!-- Events -->
       <div class="form-element">
         <label>Add events</label>
@@ -49,7 +59,6 @@
       </div>
     </div>
       <fox-button
-          (click)="updateEventGroup()"
           [disabled]="eventGroupForm.invalid || tagInputValue"
           [value]="'Update'"
           [design]="'special'"

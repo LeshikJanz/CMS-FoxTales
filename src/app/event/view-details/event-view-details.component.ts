@@ -1,28 +1,29 @@
-import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 
 import { ITag } from '../tag.interface';
 import { EventService } from '../event.service';
-import { MOCK_TAGS } from '../tag.mock';
 import { DateTimePickerModule } from 'ng-pick-datetime';
 import * as moment from 'moment';
 import { ISwitcher } from '../../components/toggles/switcher/switcher.interface';
-import { } from 'bingmaps/scripts/MicrosoftMaps/Microsoft.Maps.All';
+import {} from 'bingmaps/scripts/MicrosoftMaps/Microsoft.Maps.All';
 
 @Component({
   selector: 'event-view-details',
   templateUrl: './event-view-details.component.html',
   styleUrls: ['./event-view-details.component.scss',
-    '../../shared/styles/form-element.scss']
+    '../../shared/styles/form-element.scss',
+    '../../shared/styles/tag-input.scss'
+  ]
 })
 export class EventViewDetailsComponent implements OnInit {
-  @ViewChild ('myMap') myMap;
+  @ViewChild('myMap') myMap;
   public startMomentDate: string;
   public endMomentDate: string;
   public notification: number;
   public isNotificationEnabled: string;
-  public notificationOptions: ISwitcher[] = [{id: 1, name: 'Yes'}, {id: 2, name: 'No'}];
+  public notificationOptions: ISwitcher[] = [{ id: 1, name: 'Yes' }, { id: 2, name: 'No' }];
   public eventName: string;
   public eventAddress: string;
   public eventTags: any;
@@ -30,7 +31,7 @@ export class EventViewDetailsComponent implements OnInit {
   public defaultTags: any[];
   public defaultNotification: any;
   public tags: ITag[];
-    public mapAddress: any;
+  public mapAddress: any;
   private sub: any;
 
   /**
@@ -73,33 +74,33 @@ export class EventViewDetailsComponent implements OnInit {
       } else {
         this.defaultNotification = this.notificationOptions[1].id;
       }
-    let map = new Microsoft.Maps.Map(this.myMap.nativeElement, {
-      credentials: process.env.BING_KEY
-  });
+      let map = new Microsoft.Maps.Map(this.myMap.nativeElement, {
+        credentials: process.env.BING_KEY
+      });
 
-    let searchRequest = {
-    where: this.eventAddress,
-    callback: (results) => {
-      if (results && results.results && results.results.length > 0) {
-        let pin = new Microsoft.Maps.Pushpin(results.results[0].location);
-          map.entities.push(pin);
-          map.setView({ bounds: results.results[0].bestView });
+      let searchRequest = {
+        where: this.eventAddress,
+        callback: (results) => {
+          if (results && results.results && results.results.length > 0) {
+            let pin = new Microsoft.Maps.Pushpin(results.results[0].location);
+            map.entities.push(pin);
+            map.setView({ bounds: results.results[0].bestView });
           }
         }
       };
 
-  Microsoft.Maps.loadModule('Microsoft.Maps.Search', () => {
-    map.entities.clear();
-    let searchManager = new Microsoft.Maps.Search.SearchManager(map);
-    searchManager.geocode(searchRequest);
-  });
-   
-    let pushpin = new Microsoft.Maps.Pushpin(map.getCenter(), null);
-    let layer = new Microsoft.Maps.Layer();
+      Microsoft.Maps.loadModule('Microsoft.Maps.Search', () => {
+        map.entities.clear();
+        let searchManager = new Microsoft.Maps.Search.SearchManager(map);
+        searchManager.geocode(searchRequest);
+      });
 
-    layer.add(pushpin);
-    map.layers.insert(layer);
-    map.setView({center:map.getCenter()});
+      let pushpin = new Microsoft.Maps.Pushpin(map.getCenter(), null);
+      let layer = new Microsoft.Maps.Layer();
+
+      layer.add(pushpin);
+      map.layers.insert(layer);
+      map.setView({ center: map.getCenter() });
 
     });
   }
@@ -140,8 +141,8 @@ export class EventViewDetailsComponent implements OnInit {
 
     const targetValue = target['name'].toString();
     return targetValue && targetValue
-      .toLowerCase()
-      .indexOf(value.toLowerCase()) >= 0;
+        .toLowerCase()
+        .indexOf(value.toLowerCase()) >= 0;
   }
 
 }

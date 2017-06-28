@@ -1,10 +1,9 @@
-import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 
 import { ITag } from '../tag.interface';
 import { EventService } from '../event.service';
-import { MOCK_TAGS } from '../tag.mock';
 import { DateTimePickerModule } from 'ng-pick-datetime';
 import * as moment from 'moment';
 import { ISwitcher } from '../../components/toggles/switcher/switcher.interface';
@@ -14,7 +13,10 @@ import {} from 'bingmaps/scripts/MicrosoftMaps/Microsoft.Maps.All';
   selector: 'event-edit',
   templateUrl: './event-edit.component.html',
   styleUrls: ['./event-edit.component.scss',
-    '../../shared/styles/form-element.scss']
+    '../../shared/styles/form-element.scss',
+    '../../shared/styles/date-picker.scss',
+    '../../shared/styles/tag-input.scss'
+  ]
 })
 export class EventEditComponent implements OnInit {
   @ViewChild('myMap') public myMap;

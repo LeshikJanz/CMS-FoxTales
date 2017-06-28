@@ -24,9 +24,6 @@ ng-select {
 }
 
 :host /deep/ .ui-select-container {
-  border-radius: 3px;
-  background-color: #ffffff;
-  border: solid 1px #3d3d3d !important;
   font-family: OpenSans;
   font-size: 16px;
   color: #3d3d3d;
@@ -38,6 +35,11 @@ ng-select {
   font-family: OpenSans;
   font-size: 16px;
   padding-left: 12px;
+}
+
+:host /deep/ .ui-disabled {
+  opacity: 0.4 !important;
+  background-color: white !important;
 }
 
 :host /deep/ .ui-select-multiple .ui-select-match-item {
@@ -70,6 +72,9 @@ ng-select {
 :host /deep/ .ui-select-match {
   width: inherit;
   height: inherit;
+  border-radius: 3px;
+  background-color: #ffffff;
+  border: solid 1px #3d3d3d !important;
 
   > .btn {
     width: inherit;
@@ -116,9 +121,9 @@ ng-select {
 }
 
 :host /deep/ .ui-select-placeholder {
-  color: #999999 !important;
+  font-family: Helvetica;
   font-size: 16px;
-  font-family: OpenSans;
+  color: #b2bac4 !important;
   padding-left: 12px;
 }
 
