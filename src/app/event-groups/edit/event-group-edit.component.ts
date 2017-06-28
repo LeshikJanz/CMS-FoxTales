@@ -135,14 +135,17 @@ export class EventGroupEditComponent implements OnInit {
    *
    * @return {void}
    */
-  public getEvents(filter: IEventFilter) {
+  public getEvents(filter: IEventFilter = {}) {
     this.eventService
       .getEvents(filter)
-      .subscribe((events: IEvent[]) =>
-        this.events = events.filter((e: IEvent) => !!e.name)
+      .subscribe((events: IEvent[]) => {
+          this.events = events.filter((e: IEvent) => !!e.name);
+          this.events = this.events.filter((e: IEvent) =>
+            !this.eventGroup.events.find((elem: IEvent) => elem.id === e.id));
+        }
       );
   }
-  
+
   /**
    * Get client by id
    *
@@ -154,7 +157,13 @@ export class EventGroupEditComponent implements OnInit {
       .getClient(id)
       .subscribe((client: IClient) => {
         this.client = client;
-        this.getEvents({ clientId: +this.client.id });
+
+        //TODO: delete if-else. Delete all event groups from DB which doesn't belong to any client
+        if(this.client) {
+          this.getEvents({ clientId: +this.client.id }); // should be
+        }else {
+          this.getEvents();
+        }
       });
   }
 
