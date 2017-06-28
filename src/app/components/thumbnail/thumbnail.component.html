@@ -2,8 +2,8 @@
   <div class="content">
     <div class="actions">
       <checkbox (toggle)="onChecked($event)"></checkbox>
-      <img (click)="makeFavorite()" [hidden]="!item.favorite" src="../../../assets/img/heart-active.svg" alt="">
-      <img (click)="makeFavorite()" [hidden]="item.favorite" src="../../../assets/img/heart-inactive.svg" alt="">
+      <img *ngIf="item.visible" (click)="makeFavorite()" [hidden]="!item.favorite" src="../../../assets/img/heart-active.svg" alt="">
+      <img *ngIf="item.visible" (click)="makeFavorite()" [hidden]="item.favorite" src="../../../assets/img/heart-inactive.svg" alt="">
 
       <img class="icon icon-show" (click)="setVisibility()" [hidden]="!item.visible"
              src="../../../assets/img/show-icon.svg" alt="">
@@ -51,9 +51,9 @@
     <a [href]="item.mediaPath" [download]="item.mediaPath">
       <img src="../../../assets/img/download-icon.svg">
     </a>
-    <img (click)="selectMediaToShare(item, 'facebook')" src="../../../assets/img/social/facebook.svg">
-    <img (click)="selectMediaToShare(item, 'twitter')" src="../../../assets/img/social/twitter.svg">
-    <img (click)="selectMediaToShare(item, 'tumblr')" src="../../../assets/img/social/tumblr.svg">
+    <img *ngIf="item.visible" (click)="selectMediaToShare(item, 'facebook')" src="../../../assets/img/social/facebook.svg">
+    <img *ngIf="item.visible" (click)="selectMediaToShare(item, 'twitter')" src="../../../assets/img/social/twitter.svg">
+    <img *ngIf="item.visible" (click)="selectMediaToShare(item, 'tumblr')" src="../../../assets/img/social/tumblr.svg">
 
     <!--<a href="javascript:void(0)" (click)="selectMediaToShare(item, 'facebook')">facebook</a>-->
     <!--<a href="javascript:void(0)" (click)="selectMediaToShare(item, 'twitter')">twitter</a>-->
