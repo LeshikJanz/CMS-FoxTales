@@ -16,7 +16,8 @@ import { IUserClient } from '../../user/user-client.interface';
   styleUrls: ['event-create.component.scss',
     '../../shared/styles/form-element.scss',
     '../../shared/styles/date-picker.scss',
-    '../../shared/styles/tag-input.scss'
+    '../../shared/styles/tag-input.scss',
+    '../../shared/styles/calendar.scss'
   ]
 })
 export class EventCreateComponent implements OnInit {

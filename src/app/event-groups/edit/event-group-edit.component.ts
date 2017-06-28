@@ -124,7 +124,6 @@ export class EventGroupEditComponent implements OnInit {
 
   public ngOnInit() {
     this.buildForm();
-    this.getEvents();
 
     this.route.params.subscribe((params: any) => {
       this.getEventGroup(params['id']);
@@ -136,11 +135,7 @@ export class EventGroupEditComponent implements OnInit {
    *
    * @return {void}
    */
-  public getEvents() {
-    const filter: IEventFilter = {
-      ignoreEventGroupFilter: false
-    };
-
+  public getEvents(filter: IEventFilter) {
     this.eventService
       .getEvents(filter)
       .subscribe((events: IEvent[]) =>
@@ -159,6 +154,7 @@ export class EventGroupEditComponent implements OnInit {
       .getClient(id)
       .subscribe((client: IClient) => {
         this.client = client;
+        this.getEvents({ clientId: +this.client.id });
       });
   }
 
