@@ -7,6 +7,7 @@ import { NgxErrorsModule } from '@ultimate/ngxerrors';
 import { DateTimePickerModule } from 'ng-pick-datetime';
 import { ToastrModule, ToastContainerModule } from 'ngx-toastr';
 import { AgmCoreModule } from '@agm/core';
+import { Ng2BootstrapModule } from 'ngx-bootstrap';
 
 import { SharedModule } from '../shared';
 import { HttpService, AuthService, AuthRequestOptions } from '../shared/core';
@@ -31,6 +32,7 @@ import { FeatureModule } from '../components/feature.module';
     DateTimePickerModule,
     ToastrModule.forRoot(),
     ToastContainerModule.forRoot(),
+    Ng2BootstrapModule,
     SharedModule,
     AgmCoreModule.forRoot({
       apiKey: process.env.GOOGLE_KEY,

@@ -6,6 +6,7 @@ import { NgModule, ApplicationRef } from '@angular/core';
 import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularclass/hmr';
 import { RouterModule, PreloadAllModules } from '@angular/router';
 import { ToastrModule, ToastContainerModule } from 'ngx-toastr';
+import { Ng2BootstrapModule } from 'ngx-bootstrap';
 
 /*
  * Platform and Environment providers/directives/pipes
@@ -66,6 +67,7 @@ type StoreType = {
     RouterModule.forRoot(ROUTES, { useHash: true, preloadingStrategy: PreloadAllModules }),
     ToastrModule.forRoot(),
     ToastContainerModule.forRoot(),
+    Ng2BootstrapModule,
     SharedModule,
     FeatureModule
   ],
