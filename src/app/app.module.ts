@@ -7,6 +7,7 @@ import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularcla
 import { RouterModule, PreloadAllModules } from '@angular/router';
 import { ToastrModule, ToastContainerModule } from 'ngx-toastr';
 import { Ng2BootstrapModule } from 'ngx-bootstrap';
+import { DateTimePickerModule } from 'ng-pick-datetime';
 
 /*
  * Platform and Environment providers/directives/pipes
@@ -68,6 +69,7 @@ type StoreType = {
     ToastrModule.forRoot(),
     ToastContainerModule.forRoot(),
     Ng2BootstrapModule,
+    DateTimePickerModule,
     SharedModule,
     FeatureModule
   ],

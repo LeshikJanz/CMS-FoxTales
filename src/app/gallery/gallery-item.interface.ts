@@ -27,4 +27,8 @@ export interface IGalleryFilter {
   showOnFeed?: boolean;
   approved?: boolean;
   favoriteOnly?: boolean;
+  startFrom?: string;
+  startTo?: string;
+  sortType?: number;
+  ascending?: boolean;
 }

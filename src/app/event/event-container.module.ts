@@ -3,6 +3,7 @@ import { RequestOptions, XHRBackend } from '@angular/http';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Ng2BootstrapModule } from 'ngx-bootstrap';
+import { DateTimePickerModule } from 'ng-pick-datetime';
 import { HttpService } from '../shared/core';
 import { FeatureModule } from '../components/feature.module';
 import { EVENT_ROUTING } from './event-container.routes';
@@ -27,6 +28,7 @@ import { ExperienceHeaderComponent } from '../experience/headers/experience-head
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    DateTimePickerModule,
     Ng2BootstrapModule,
     EVENT_ROUTING,
     FeatureModule,

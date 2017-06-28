@@ -50,7 +50,7 @@ export interface IClientFilter {
  * Client state interface
  */
 export interface IActionState {
-  id: number;
+  id: number|boolean;
   action: string;
   callback?: string;
   acl?: string;
