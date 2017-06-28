@@ -99,7 +99,7 @@ export class EventEditComponent implements OnInit {
         manager.attachAutosuggest('#searchBox', '#searchBoxContainer', (result) => {
 
           map['address'] = result.formattedSuggestion;
-          this.mapAddress = result.formattedSuggestion;
+          this.eventAddress = result.formattedSuggestion;
           // map['latitude'] = result.location.latitude;
           // map['longitude'] = result.location.longitude;
 
@@ -145,7 +145,7 @@ export class EventEditComponent implements OnInit {
     this.event.updateEvent({
       id: this.id,
       name: this.eventName,
-      address: this.mapAddress,
+      address: this.eventAddress,
       startTime: this.startMomentDate,
       endTime: this.endMomentDate,
       tags: this.defaultTags,
