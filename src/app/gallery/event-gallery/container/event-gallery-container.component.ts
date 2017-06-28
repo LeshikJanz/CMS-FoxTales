@@ -173,6 +173,10 @@ export class EventGalleryContainerComponent implements OnInit {
       .isChecked = event.isChecked;
   }
 
+  public onDelete(item: IGalleryItem) {
+    this.getGalleryItems(this.filter);
+  }
+
   /**
    * Get event gallery background properties
    *

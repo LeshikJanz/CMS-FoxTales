@@ -40,6 +40,13 @@ export class GalleryItemListComponent implements OnInit {
   @Output() public toggle: EventEmitter<ICheckbox> = new EventEmitter();
 
   /**
+   * Delete
+   *
+   * @type {EventEmitter}
+   */
+  @Output() public deleted: EventEmitter<boolean> = new EventEmitter();
+
+  /**
    * Gallery items
    *
    * @type {IGalleryItem[]}
@@ -77,6 +84,16 @@ export class GalleryItemListComponent implements OnInit {
    */
   public onFavorite(item: IGalleryItem) {
     this.favorite.emit(item);
+  }
+
+  /**
+   * On delete
+   *
+   * item {IGalleryItem} - gallery item
+   * @returns {void}
+   */
+  public onDelete(item: IGalleryItem) {
+    this.deleted.emit(true);
   }
 
   /**

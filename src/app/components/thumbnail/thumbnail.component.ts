@@ -41,6 +41,8 @@ export class ThumbnailComponent implements OnInit {
 
   @Output() public visible: EventEmitter<IGalleryItem> = new EventEmitter();
 
+  @Output() public deleted: EventEmitter<boolean> = new EventEmitter();
+
   @Output() public confirm: EventEmitter<any> = new EventEmitter();
 
   @Output() public decline: EventEmitter<any> = new EventEmitter();
@@ -80,6 +82,11 @@ export class ThumbnailComponent implements OnInit {
     this.item.visible = !this.item.visible;
     this.galleryService.setVisibility(this.item.id, this.item.visible)
       .subscribe(() => console.log('visibility is succeeded'));
+  }
+
+  public deleteMedia() {
+    this.galleryService.deleteMedia(this.item.id)
+      .subscribe(() => this.deleted.emit(true));
   }
 
   public downloadItem(item: IGalleryItem) {

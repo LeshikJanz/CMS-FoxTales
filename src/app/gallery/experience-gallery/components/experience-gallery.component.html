@@ -32,7 +32,7 @@
       </div>
 
     </div>
-    <gallery-item-list [galleryItems]="galleryItems" (toggle)="onChecked($event)"></gallery-item-list>
+    <gallery-item-list [galleryItems]="galleryItems" (toggle)="onChecked($event)" (deleted)="onDelete($event)"></gallery-item-list>
     <download-modal [galleryItems]="galleryItems" #atgModal></download-modal>
 
   </div>

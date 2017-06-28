@@ -129,5 +129,10 @@ export class ExperienceGalleryContainerComponent implements OnInit {
       .subscribe((items: IGalleryItem[]) =>
           this.galleryItems = items
       );
-  };
+  }
+
+  public onDelete(item: IGalleryItem) {
+    this.getGalleryItems(this.filter);
+  }
+
 }

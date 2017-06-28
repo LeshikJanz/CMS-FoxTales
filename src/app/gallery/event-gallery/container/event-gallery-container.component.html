@@ -38,7 +38,7 @@
     </div>
     <gallery-list *ngIf="selectedType == 2" [galleries]="experiences"></gallery-list>
     <gallery-item-list *ngIf="selectedType == 3" [galleryItems]="galleryItems"
-                       (toggle)="onChecked($event)"></gallery-item-list>
+                       (toggle)="onChecked($event)" (deleted)="onDelete($event)"></gallery-item-list>
   </div>
   <download-modal [galleryItems]="galleryItems" #atgModal></download-modal>
 </div>

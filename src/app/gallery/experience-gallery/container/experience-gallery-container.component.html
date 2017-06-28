@@ -25,7 +25,7 @@
                     (Change)="onSearchChange($event)"></search-input>
 
     </div>
-    <gallery-item-list [galleryItems]="galleryItems" ></gallery-item-list>
+    <gallery-item-list [galleryItems]="galleryItems" (deleted)="onDelete($event)"></gallery-item-list>
   </div>
 
 </div>

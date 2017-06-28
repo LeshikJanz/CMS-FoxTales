@@ -132,6 +132,10 @@ export class FavoriteGalleryComponent implements OnInit {
     this.galleryItems = this.galleryItems.filter((gItem: IGalleryItem) => gItem !== item);
   }
 
+  public onDelete(item: IGalleryItem) {
+    this.getGalleryItems(this.filter);
+  }
+
   /**
    * Mark element as checked/unchecked
    *

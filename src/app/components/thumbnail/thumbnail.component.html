@@ -9,6 +9,9 @@
              src="../../../assets/img/show-icon.svg" alt="">
       <img class="icon icon-hide" (click)="setVisibility()" [hidden]="item.visible"
              src="../../../assets/img/hide-icon.svg">
+
+      <a href="javascript:void(0)" (click)="deleteMedia()">delete</a>
+
     </div>
     <img [ngClass]="{transparent: !item.visible}" *ngIf="item.mediaPath.search('.(jpe?g|gif|png)') > 0"
          [src]="item ? item.mediaPath :
