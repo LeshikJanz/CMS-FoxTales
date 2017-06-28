@@ -70,3 +70,11 @@ export interface IEventList {
   success: boolean;
   message: string;
 }
+
+/**
+ * User event interface
+ */
+export interface IUserEvent {
+  id: string;
+  name: string;
+}

@@ -15,6 +15,7 @@ import { TagInputModule } from 'ng2-tag-input';
 import { Ng2BootstrapModule } from 'ngx-bootstrap';
 import { SharedModule } from '../shared/shared.module';
 import { EventService } from '../event/event.service';
+import { ExperienceService } from '../experience/experience.service';
 import { EventGroupsService } from '../event-groups/list/event-groups.service';
 import { EventGroupEditComponent } from '../event-groups/edit/event-group-edit.component';
 import { DateTimePickerModule } from 'ng-pick-datetime';
@@ -55,7 +56,8 @@ import { EventViewDetailsComponent } from '../event/view-details/event-view-deta
   ],
   providers: [
     EventService,
-    EventGroupsService
+    EventGroupsService,
+    ExperienceService
   ],
   declarations: [
     EventsComponent,

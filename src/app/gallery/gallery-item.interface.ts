@@ -19,6 +19,7 @@ export interface IGalleryItem {
  */
 export interface IGalleryFilter {
   id?: number;
+  clientId?: number;
   eventId?: number;
   experienceId?: number;
   contentOptionIds?: number[];

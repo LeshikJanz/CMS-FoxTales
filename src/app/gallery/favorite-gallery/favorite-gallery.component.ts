@@ -6,6 +6,12 @@ import { IExperience } from '../../event/event.interface';
 import { GalleryService } from '../gallery.service';
 import { RouteData } from '../../shared/core/event-management/route-data.service';
 import { ICheckbox } from '../../components/toggles/checkbox/checkbox.component';
+import { IUserClient } from '../../user/user-client.interface';
+import { UserService } from '../../user/user.service';
+import { IUserEvent } from '../../event/event.interface';
+import { EventService } from '../../event/event.service';
+import { ExperienceService } from '../../experience/experience.service';
+import * as moment from 'moment';
 
 /**
  * Favorite gallery component
@@ -22,8 +28,8 @@ export class FavoriteGalleryComponent implements OnInit {
    * @type {IActionState[]}
    */
   public sortActions: IActionState[] = [
-    {id: 1, action: 'Upcoming'},
-    {id: 2, action: 'Descending'}
+    { id: true, action: 'Most Shared' },
+    { id: false, action: 'Least Shared' }
   ];
 
   /**
@@ -65,7 +71,22 @@ export class FavoriteGalleryComponent implements OnInit {
    *
    * @type {IGalleryFilter}
    */
-  public filter: IGalleryFilter;
+  public filter: IGalleryFilter = {
+    favoriteOnly: true
+  };
+
+  /**
+   * Clients
+   *
+   * @type {IUserClient[]}
+   */
+  public clients: IUserClient[];
+
+  public events: IUserEvent[];
+
+  public eventExperiences: IUserEvent[];
+
+  public createdDate: string = '';
 
   /**
    * Constructor
@@ -77,7 +98,11 @@ export class FavoriteGalleryComponent implements OnInit {
    */
   constructor(private route: ActivatedRoute,
               private galleryService: GalleryService,
-              private _routeData: RouteData) {
+              private _routeData: RouteData,
+              private userService: UserService,
+              private eventService: EventService,
+              private experienceService: ExperienceService
+  ) {
     // _routeData.name.next('Favorited Media');
   }
 
@@ -110,8 +135,9 @@ export class FavoriteGalleryComponent implements OnInit {
    * @return {void}
    */
   public onSortChanged(event) {
-    console.log('onSortChange');
-    console.log(event);
+    this.filter.sortType = 1;
+    this.filter.ascending = event.id;
+    this.getGalleryItems(this.filter);
   }
 
   public ngOnInit() {
@@ -119,7 +145,81 @@ export class FavoriteGalleryComponent implements OnInit {
       this.experienceId = params['id']
     );
 
-    this.getGalleryItems({favoriteOnly: true});
+    this.getGalleryItems(this.filter);
+    this.getUserClients();
+    this.getUserEvents();
+  }
+
+  /**
+   * Get user clients
+   *
+   * @returns {FavoriteGalleryComponent} - Component
+   */
+  public getUserClients(): FavoriteGalleryComponent {
+    this.userService
+      .getClients()
+      .subscribe((clients: IUserClient[]) => {
+        this.clients = clients;
+      });
+
+    return this;
+  }
+
+  /**
+   * Get user events
+   *
+   * @returns {FavoriteGalleryComponent} - Component
+   */
+  public getUserEvents(): FavoriteGalleryComponent {
+    this.eventService
+      .getEvents()
+      .subscribe((events: IUserEvent[]) => {
+        this.events = events;
+      });
+
+    return this;
+  }
+
+  /**
+   * Get user experiences
+   *
+   * @returns {FavoriteGalleryComponent} - Component
+   */
+  public getUserExperiences(): FavoriteGalleryComponent {
+    this.eventExperiences = [];
+    delete this.filter.experienceId;
+
+    this.experienceService
+      .getExperiences(this.filter.eventId)
+      .subscribe((experiences: IUserEvent[]) => {
+        this.eventExperiences = experiences;
+      });
+
+    return this;
+  }
+
+  public onClientSelected(event): void {
+    this.filter.clientId = event.id;
+    this.getGalleryItems(this.filter);
+  }
+
+  public onEventSelected(event): void {
+    this.filter.eventId = event.id;
+    this.getUserExperiences();
+    this.getGalleryItems(this.filter);
+  }
+
+  public onExperienceSelected(event): void {
+    this.filter.experienceId = event.id;
+    this.getGalleryItems(this.filter);
+  }
+
+  public onCreatedDateChanged(date: any) {
+    date = moment(date).format();
+
+    this.filter.startFrom = date;
+    this.filter.startTo = date;
+    this.getGalleryItems(this.filter);
   }
 
   /**
