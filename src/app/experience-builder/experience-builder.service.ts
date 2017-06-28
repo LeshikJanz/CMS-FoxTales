@@ -8,7 +8,7 @@ import { Experience } from './experience';
 export class ExperienceBuilderService {
 
   public experience = {
-    experienceId: '',
+    experienceId: null,
     eventId: '',
     productId: '',
     displayName: '',

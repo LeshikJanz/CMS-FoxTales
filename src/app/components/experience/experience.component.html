@@ -19,21 +19,33 @@
   <div class="actions">
     <icon-button
       [type]="'Content'"
+      [routerLink]="['/experience-builder/container/content-options']"
+      [queryParams]="{ id: experience.id  }"
     ></icon-button>
     <icon-button
       [type]="'Email'"
+      [routerLink]="['/experience-builder/container/email-builder']"
+      [queryParams]="{ id: experience.id  }"
     ></icon-button>
     <icon-button
       [type]="'Feeds'"
+      [routerLink]="['/experience-builder/container/content-feeds']"
+      [queryParams]="{ id: experience.id  }"
     ></icon-button>
     <icon-button
       [type]="'Gallery'"
+      [routerLink]="['/experience-builder/container/content-gallery']"
+      [queryParams]="{ id: experience.id  }"
     ></icon-button>
     <icon-button
       [type]="'Interface'"
+      [routerLink]="['/experience-builder/container/ui-builder']"
+      [queryParams]="{ id: experience.id  }"
     ></icon-button>
     <icon-button
       [type]="'Social'"
+      [routerLink]="['/experience-builder/container/sharing-options']"
+      [queryParams]="{ id: experience.id  }"
     ></icon-button>
     <table-dropdown
       *ngIf="experienceActions.length > 1"
