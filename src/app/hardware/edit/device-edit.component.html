@@ -22,6 +22,16 @@
         </div>
       </div>
 
+      <div class="form-element">
+        <label for="name">Purchase date</label>
+        <input class="picker-input" [ngModel]="purchaseMomentDate"
+               [returnObject]=" 'string' "
+               [theme]=" '#f57f17' "
+               [(dateTimePicker)]="purchaseMomentDate" [mode]="'dropdown'" [pickerType]="'date'"
+               placeholder="mm/dd/yy" [formControlName]="'purchaseDate'"
+               readonly>
+      </div>
+
       <!-- Hub -->
       <div>
         <label for="hubId">Hub</label>

@@ -29,7 +29,7 @@
     <div class="details-item"><span>Hardware version: </span>{{device?.hardwareVersion}}</div>
     <div class="details-item"><span>PC: </span>{{device?.tabletModel}}</div>
     <div class="details-item"><span>Camera firmware: </span>{{device?.cameraFirmware}}</div>
-    <div class="details-item"><span>Purchase date: </span>{{device?.purchaseDate}}</div>
+    <div class="details-item"><span>Purchase date: </span>{{device?.purchaseDate|date:'shortDate'}}</div>
     <div class="details-item"><span>App version: </span>{{device?.appVersion}}</div>
     <div class="details-item"><span>Camera: </span>{{device?.cameraModel}}</div>
     <div class="details-item"><span>Lighting: </span>{{device?.lighting}}</div>

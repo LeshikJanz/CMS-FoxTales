@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { IDevice } from '../device.interface';
 import { DeviceService } from '../device.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'device-create',
@@ -37,6 +38,7 @@ export class DeviceCreateComponent implements OnInit {
    * @type {any[]}
    */
   public clients: any[];
+  public purchaseMomentDate: string;
 
   /**
    * Constructor
@@ -104,7 +106,7 @@ export class DeviceCreateComponent implements OnInit {
    * @returns {void}
    */
   public addDevice(device: IDevice): void {
-
+    device['purchaseDate'] = moment(this.purchaseMomentDate, 'MMM DD YYYY').format();
     this.deviceService
       .addDevice(device)
       .subscribe(() => this.router.navigate(['/admin/devices']));
@@ -124,7 +126,8 @@ export class DeviceCreateComponent implements OnInit {
         Validators.required
       ]],
       clientId: [''],
-      locationId: ['']
+      locationId: [''],
+      purchaseDate: ''
     });
   }
 }
