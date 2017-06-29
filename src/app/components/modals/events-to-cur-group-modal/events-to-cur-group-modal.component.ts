@@ -11,7 +11,9 @@ import { Router } from '@angular/router';
   selector: 'events-to-cur-group-modal',
   templateUrl: 'events-to-cur-group-modal.component.html',
   styleUrls: ['events-to-cur-group-modal.component.scss',
-    '../../../shared/styles/form-element.scss']
+    '../../../shared/styles/form-element.scss',
+    '../../../shared/styles/tag-input.scss',
+  ]
 })
 
 export class EventsToCurGroupModalComponent {

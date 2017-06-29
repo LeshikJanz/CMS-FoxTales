@@ -1,3 +1,7 @@
+.slidemenu {
+  min-width: 1200px !important;
+}
+
 .slidemenu #slide-item-1:checked ~ .slider .bar{ width: 50px; margin-left: 0%; }
 .slidemenu #slide-item-2:checked ~ .slider .bar{ width: 100px; margin-left: 10%; }
 .slidemenu #slide-item-3:checked ~ .slider .bar{ width: 120px; margin-left: 20%; }

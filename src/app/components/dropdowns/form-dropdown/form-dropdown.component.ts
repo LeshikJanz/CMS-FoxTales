@@ -39,10 +39,7 @@ export class FormDropDownComponent implements OnInit, OnChanges {
 
   public ngOnChanges() {
     if (this.active) {
-      console.log('this.active');
-      console.log(this.active);
       this.onTypeChanged(this.active);
-      // this.currentAction = this.active.action || this.active.name;
     }
   }
 

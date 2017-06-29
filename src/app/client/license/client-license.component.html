@@ -1,6 +1,7 @@
 <div class="license-container">
   <form
-      (ngSubmit)="updateLicense()"
+      *ngIf="licenseForm"
+      (ngSubmit)="updateLicense(licenseForm.value)"
       class="form"
       novalidate>
     <div class="form-group">
@@ -26,22 +27,10 @@
       </div>
 
       <!-- License id -->
-      <div class="form-element" [formGroup]="licenseForm">
-        <label for="licenseIdNumber">License ID*</label>
-        <input
-            id="licenseIdNumber"
-            type="text"
-            class="form-control input"
-            [(ngModel)]="license.licenseIdNumber"
-            formControlName="licenseIdNumber"
-            placeholder="ID number">
-
-        <div ngxErrors="licenseIdNumber">
-          <div class="field-error" ngxError="required" when="touched">
-            Field is required
-          </div>
-        </div>
-      </div>
+      <form-input
+          [control]="licenseForm.get('licenseIdNumber')"
+          title="License ID*">
+      </form-input>
 
       <!-- Billing -->
       <div class="line-group">
@@ -103,22 +92,10 @@
       </div>
 
       <!-- Serial Number -->
-      <div class="form-element" [formGroup]="licenseForm">
-        <label for="serial">Serial Number*</label>
-        <input
-            id="serial"
-            type="text"
-            class="form-control input"
-            [(ngModel)]="license.serialNumber"
-            formControlName="serialNumber"
-            placeholder="Serial Number">
-
-        <div ngxErrors="serialNumber">
-          <div class="field-error" ngxError="required" when="touched">
-            Field is required
-          </div>
-        </div>
-      </div>
+      <form-input
+          [control]="licenseForm.get('serialNumber')"
+          title="Serial Number*">
+      </form-input>
 
       <fox-button
           isAllowed="CreateEditLicenses"
@@ -129,59 +106,24 @@
 
     <div class="form-group">
       <h1>Billing information</h1>
-      <!-- Name -->
-      <div class="form-element" [formGroup]="licenseForm">
-        <label for="billingContactName">Name</label>
-        <input
-            id="billingContactName"
-            type="text"
-            class="form-control input"
-            [(ngModel)]="license.billingContactName"
-            formControlName="billingContactName"
-            placeholder="Contact Name">
 
-        <div ngxErrors="billingContactName">
-          <div class="field-error" ngxError="required" when="touched">
-            Field is required
-          </div>
-        </div>
-      </div>
+      <!-- Name -->
+      <form-input
+          [control]="licenseForm.get('billingContactName')"
+          title="Name">
+      </form-input>
 
       <!-- Email -->
-      <div class="form-element" [formGroup]="licenseForm">
-        <label for="billingContactEmail">Email</label>
-        <input
-            id="billingContactEmail"
-            type="email"
-            class="form-control input"
-            [(ngModel)]="license.billingContactEmail"
-            formControlName="billingContactEmail"
-            placeholder="Contact Email">
-
-        <div ngxErrors="billingContactEmail">
-          <div class="field-error" ngxError="required" when="touched">
-            Field is required
-          </div>
-        </div>
-      </div>
+      <form-input
+          [control]="licenseForm.get('billingContactEmail')"
+          title="Email">
+      </form-input>
 
       <!-- Phone -->
-      <div class="form-element" [formGroup]="licenseForm">
-        <label for="billingContactPhone">Phone</label>
-        <input
-            id="billingContactPhone"
-            type="text"
-            class="form-control input"
-            [(ngModel)]="license.billingContactPhone"
-            formControlName="billingContactPhone"
-            placeholder="Contact Phone">
-
-        <div ngxErrors="billingContactPhone">
-          <div class="field-error" ngxError="required" when="touched">
-            Field is required
-          </div>
-        </div>
-      </div>
+      <form-input
+          [control]="licenseForm.get('billingContactPhone')"
+          title="Phone">
+      </form-input>
 
       <!-- Address -->
       <div class="form-element" [formGroup]="licenseForm">

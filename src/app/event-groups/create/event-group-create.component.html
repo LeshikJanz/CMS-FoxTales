@@ -1,21 +1,16 @@
 <div class="group-container">
   <form
+      *ngIf="eventGroupForm"
       (ngSubmit)="addEventGroup(eventGroupForm.value)"
       class="form"
       novalidate>
 
     <div [formGroup]="eventGroupForm">
       <!-- Name -->
-      <div class="form-element">
-        <label for="name">Group Name *</label>
-        <input
-            id="name"
-            class="form-control input"
-            type="text"
-            formControlName="name"
-            placeholder="Group name">
-      </div>
-
+      <form-input
+          [control]="eventGroupForm.get('name')"
+          title="Group Name *">
+      </form-input>
 
       <!--Client Access -->
       <div class="form-element">

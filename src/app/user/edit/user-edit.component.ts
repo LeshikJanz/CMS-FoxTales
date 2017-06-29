@@ -7,6 +7,7 @@ import { IUser } from '../user.interface';
 import { IUserRole } from '../user-role.interface';
 import { IUserClient } from '../user-client.interface';
 import { UserService } from '../user.service';
+import { FormService } from '../../shared/core/form/form.service';
 
 /**
  * User details component
@@ -147,6 +148,8 @@ export class UserEditComponent implements OnInit {
         }
 
         this.user = user;
+
+        FormService.populateForm(this.user, this.userForm);
 
         this.getUserRoles();
         this.getClient(user.clientId);

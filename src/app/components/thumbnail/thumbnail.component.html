@@ -2,22 +2,22 @@
   <div class="content">
     <div class="actions">
       <checkbox (toggle)="onChecked($event)"></checkbox>
-      <img *ngIf="item.visible" (click)="makeFavorite()" [hidden]="!item.favorite" src="../../../assets/img/heart-active.svg" alt="">
-      <img *ngIf="item.visible" (click)="makeFavorite()" [hidden]="item.favorite" src="../../../assets/img/heart-inactive.svg" alt="">
+      <img isAllowed="FavoriteContent"
+           (click)="makeFavorite()" [hidden]="!item.favorite" src="../../../assets/img/heart-active.svg" alt="">
+      <img isAllowed="FavoriteContent"
+           (click)="makeFavorite()" [hidden]="item.favorite" src="../../../assets/img/heart-inactive.svg" alt="">
 
       <img class="icon icon-show" (click)="setVisibility()" [hidden]="!item.visible"
-             src="../../../assets/img/show-icon.svg" alt="">
+           src="../../../assets/img/show-icon.svg" alt="">
       <img class="icon icon-hide" (click)="setVisibility()" [hidden]="item.visible"
-             src="../../../assets/img/hide-icon.svg">
-
-      <a href="javascript:void(0)" (click)="deleteMedia()">delete</a>
-
+           src="../../../assets/img/hide-icon.svg">
     </div>
     <img [ngClass]="{transparent: !item.visible}" *ngIf="item.mediaPath.search('.(jpe?g|gif|png)') > 0"
          [src]="item ? item.mediaPath :
        'https://amazingcarousel.com/wp-content/uploads/amazingcarousel/3/images/lightbox/golden-wheat-field-lightbox.jpg'"
          alt="">
-    <vg-player [ngClass]="{transparent: !item.visible}" *ngIf="item.mediaPath.indexOf('.mp4') > 0" (onPlayerReady)="onPlayerReady($event)">
+    <vg-player [ngClass]="{transparent: !item.visible}" *ngIf="item.mediaPath.indexOf('.mp4') > 0"
+               (onPlayerReady)="onPlayerReady($event)">
       <video loop="true" [vgMedia]="media" #media id="singleVideo" controls controlsList="nodownload">
         <source [src]="item.mediaPath" type="video/mp4">
       </video>
@@ -51,9 +51,9 @@
     <a [href]="item.mediaPath" [download]="item.mediaPath">
       <img src="../../../assets/img/download-icon.svg">
     </a>
-    <img *ngIf="item.visible" (click)="selectMediaToShare(item, 'facebook')" src="../../../assets/img/social/facebook.svg">
-    <img *ngIf="item.visible" (click)="selectMediaToShare(item, 'twitter')" src="../../../assets/img/social/twitter.svg">
-    <img *ngIf="item.visible" (click)="selectMediaToShare(item, 'tumblr')" src="../../../assets/img/social/tumblr.svg">
+    <img (click)="selectMediaToShare(item, 'facebook')" src="../../../assets/img/social/facebook.svg">
+    <img (click)="selectMediaToShare(item, 'twitter')" src="../../../assets/img/social/twitter.svg">
+    <img (click)="selectMediaToShare(item, 'tumblr')" src="../../../assets/img/social/tumblr.svg">
 
     <!--<a href="javascript:void(0)" (click)="selectMediaToShare(item, 'facebook')">facebook</a>-->
     <!--<a href="javascript:void(0)" (click)="selectMediaToShare(item, 'twitter')">twitter</a>-->

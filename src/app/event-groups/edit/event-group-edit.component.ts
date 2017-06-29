@@ -6,11 +6,17 @@ import { EventGroupsService } from '../list/event-groups.service';
 import { IEvent, IEventFilter } from '../../event/event.interface';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { ClientService } from '../../client/client.service';
+import { IClient } from '../../client/client.interface';
+import { FormService } from '../../shared/core/form/form.service';
+import { IUserClient } from '../../user/user-client.interface';
+import { UserService } from '../../user/user.service';
 
 @Component({
   selector: 'event-group-edit',
   templateUrl: 'event-group-edit.component.html',
   styleUrls: ['event-group-edit.component.scss',
+    '../../shared/styles/tag-input.scss',
     '../../shared/styles/form-element.scss']
 })
 
@@ -36,6 +42,13 @@ export class EventGroupEditComponent implements OnInit {
     events: null,
     gallery: null
   };
+
+  /**
+   * Client
+   *
+   * @type {IUserClient}
+   */
+  public client: IUserClient;
 
   /**
    * Events
@@ -68,6 +81,13 @@ export class EventGroupEditComponent implements OnInit {
   public tagInputValue: string;
 
   /**
+   * Clients
+   *
+   * @type {IUserClient[]}
+   */
+  public clients: IUserClient[];
+
+  /**
    * Constructor
    *
    * @param {FormBuilder} formBuilder - form builder
@@ -79,7 +99,9 @@ export class EventGroupEditComponent implements OnInit {
               private router: Router,
               private route: ActivatedRoute,
               private formBuilder: FormBuilder,
-              private toastrService: ToastrService) {
+              private toastrService: ToastrService,
+              private clientService: ClientService,
+              private userService: UserService) {
   }
 
   /**
@@ -97,16 +119,36 @@ export class EventGroupEditComponent implements OnInit {
         }
 
         this.eventGroup = eventGroup[0];
+
+        this.getUserClients();
+        this.getEvents({ clientId: this.eventGroup.clientId });
+
+        FormService.populateForm(this.eventGroup, this.eventGroupForm);
       });
   }
 
   public ngOnInit() {
     this.buildForm();
-    this.getEvents();
 
     this.route.params.subscribe((params: any) => {
       this.getEventGroup(params['id']);
     });
+  }
+  
+  /**
+   * Get user clients
+   *
+   * @returns {EventCreateComponent} - Component
+   */
+  public getUserClients(): EventGroupEditComponent {
+    this.userService
+      .getClients()
+      .subscribe((clients: IUserClient[]) => {
+        this.clients = clients;
+        this.client = this.clients.find((c: IUserClient) => +c.id === this.eventGroup.clientId);
+      });
+
+    return this;
   }
 
   /**
@@ -114,11 +156,7 @@ export class EventGroupEditComponent implements OnInit {
    *
    * @return {void}
    */
-  public getEvents() {
-    const filter: IEventFilter = {
-      ignoreEventGroupFilter: false
-    };
-
+  public getEvents(filter: IEventFilter) {
     this.eventService
       .getEvents(filter)
       .subscribe((events: IEvent[]) =>

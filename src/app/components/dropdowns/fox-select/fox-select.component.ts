@@ -49,7 +49,7 @@ export class FoxSelectComponent implements OnChanges {
   }
 
   public convert(items: any) {
-    return this.items.map((c: any) => ({
+    return items.map((c: any) => ({
       ...c,
       text: c.name
     }));
@@ -67,6 +67,9 @@ export class FoxSelectComponent implements OnChanges {
   public ngOnChanges() {
     if (this.items) {
       this.items = this.convert(this.items);
+
+      console.log('this.active');
+      console.log(this.active);
 
       if (this.active) {
         this.findActiveItems();

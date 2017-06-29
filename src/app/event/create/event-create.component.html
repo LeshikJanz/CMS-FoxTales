@@ -1,43 +1,35 @@
 <div class="event-container">
   <form
+      *ngIf="eventForm"
       (ngSubmit)="addEvent(eventForm.value)"
       class="form"
       novalidate>
 
     <div [formGroup]="eventForm">
       <!-- Event Name -->
-      <div class="form-element">
-        <label for="name">Event Name*</label>
-        <input
-            id="name"
-            class="form-control input"
-            type="text"
-            formControlName="name"
-            placeholder="Name">
-      </div>
+      <form-input
+          [control]="eventForm.get('name')"
+          title="Event Name*">
+      </form-input>
 
       <div class="line-group">
         <div class="form-element">
           <label>Start Date*</label>
-          <div class="wrap">
-            <input class="picker-input" [ngModel]="startMomentDate"
-                   [returnObject]=" 'string' "
-                   [theme]=" '#f57f17' "
-                   [(dateTimePicker)]="startMomentDate" [mode]="'dropdown'" [pickerType]="'date'"
-                   placeholder="mm/dd/yy" [formControlName]="'startDate'"
-                   readonly>
-          </div>
+          <input class="picker-input" [ngModel]="startMomentDate"
+                 [returnObject]=" 'string' "
+                 [theme]=" '#f57f17' "
+                 [(dateTimePicker)]="startMomentDate" [mode]="'dropdown'" [pickerType]="'date'"
+                 placeholder="mm/dd/yy" [formControlName]="'startDate'"
+                 readonly>
         </div>
         <div class="form-element">
           <label>End Date*</label>
           <div>
-            <div class="wrap">
-              <input class="picker-input" [ngModel]="endMomentDate"
-                     [theme]=" '#f57f17' "
-                     [returnObject]=" 'string' " [(dateTimePicker)]="endMomentDate"
-                     [mode]="'dropdown'" [pickerType]="'date'" placeholder="mm/dd/yy"
-                     [formControlName]="'endDate'" readonly>
-            </div>
+            <input class="picker-input" [ngModel]="endMomentDate"
+                   [theme]=" '#f57f17' "
+                   [returnObject]=" 'string' " [(dateTimePicker)]="endMomentDate"
+                   [mode]="'dropdown'" [pickerType]="'date'" placeholder="mm/dd/yy"
+                   [formControlName]="'endDate'" readonly>
           </div>
         </div>
       </div>

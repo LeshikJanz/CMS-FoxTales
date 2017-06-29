@@ -1,5 +1,6 @@
 <div class="client-container">
   <form
+      *ngIf="clientForm"
       (ngSubmit)="addClient(clientForm.value, $event);"
       class="form"
       novalidate>
@@ -19,16 +20,14 @@
 
       <!-- Name -->
       <form-input
-          [form]="clientForm"
-          [controlName]="'name'"
-          [title]="'Client Name*'">
+          [control]="clientForm.get('name')"
+          title="Client Name*">
       </form-input>
 
       <!-- Email -->
       <form-input
-          [form]="clientForm"
-          [controlName]="'email'"
-          [title]="'Admin AD email*'">
+          [control]="clientForm.get('email')"
+          title="Admin AD email*">
       </form-input>
 
       <!-- Address -->
@@ -54,17 +53,14 @@
 
       <!-- Phone -->
       <form-input
-          [form]="clientForm"
-          [controlName]="'phone'"
-          [title]="'Phone'">
+          [control]="clientForm.get('phone')"
+          title="Phone">
       </form-input>
-
 
       <!-- FreshBook -->
       <form-input
-          [form]="clientForm"
-          [controlName]="'freshBooks'"
-          [title]="'FreshBook Url'">
+          [control]="clientForm.get('freshBooks')"
+          title="FreshBook Url">
       </form-input>
     </div>
 

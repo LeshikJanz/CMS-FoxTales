@@ -101,11 +101,9 @@ upload-button {
   }
 
   input:disabled {
-    background-color: #ffffff;
-    border: solid 1px #b2bac4;
     font-family: OpenSans;
     font-size: 16px;
-    color: #b2bac4;
+    opacity: 0.5;
   }
 
   .error-text {
