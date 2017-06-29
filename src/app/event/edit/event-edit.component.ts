@@ -70,6 +70,9 @@ export class EventEditComponent implements OnInit, AfterViewInit {
 
   public getEvent(id) {
     this.event.getEvent(id).subscribe((event) => {
+      if(event.endTime === null){
+        event.endTime = moment();
+      }
       this.eventName = event.name;
       this.eventAddress = event.address;
       this.startMomentDate = moment(event.startTime).format('MMM DD, YYYY');
@@ -107,8 +110,6 @@ export class EventEditComponent implements OnInit, AfterViewInit {
 
           map['address'] = result.formattedSuggestion;
           this.eventAddress = result.formattedSuggestion;
-          // map['latitude'] = result.location.latitude;
-          // map['longitude'] = result.location.longitude;
 
           // Remove previously selected suggestions from the map.
           map.entities.clear();
