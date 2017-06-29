@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ElementRef } from '@angular/core';
+import { Http } from '@angular/http';
 
 /**
  * Upload Button component
@@ -19,6 +20,11 @@ export class UploadButtonComponent {
   @Output() public uploadStateChange = new EventEmitter();
 
   @Output() public imgUploaded: EventEmitter<any> = new EventEmitter();
+
+  @Output() public imgUploadedNon64: EventEmitter<any> = new EventEmitter();
+
+      constructor(private http: Http,
+                private el: ElementRef) {}
 
   public set uploadStateValue(val: number) {
     this.uploadState = val;
@@ -49,4 +55,23 @@ export class UploadButtonComponent {
       console.log('Error: ', error);
     };
   }
+
+   public upload() {
+        let inputEl = this.el.nativeElement.children[0].firstElementChild;
+
+        if (inputEl.files.length === 0) { return; };
+
+        let files: FileList = inputEl.files;
+
+        const formData = new FormData();
+
+        for (let i = 0; i < files.length; i++) {
+            formData.append('files', files[i],files[i].name);
+        }
+        this.imgUploadedNon64.emit(formData)
+            // this.http
+            //     .post(`${process.env.API_URL}/MediaManipulations/37/assets`, formData)
+            //     .subscribe((response) => console.log(response))
+    
+    }
 }

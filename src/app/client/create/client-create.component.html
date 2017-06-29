@@ -12,7 +12,7 @@
           <label style="font-size: 22px">Client logo</label>
           <div>
             <img src="{{ logoBytes }}">
-            <a href="javascript:void(0)" *ngIf="logoBytes" (click)="removeLogo()">x</a>
+            <a href="javascript:void(0)" *ngIf="logoBytes" (click)="removeLogoModal.show()">x</a>
           </div>
         </div>
         <upload-button (imgUploaded)="onImgUploaded($event)"></upload-button>
@@ -70,4 +70,34 @@
           [design]="'special'"
       ></fox-button>
   </form>
+</div>
+
+<div
+  bsModal
+  #removeLogoModal="bs-modal"
+  class="modal fade"
+  tabindex="-1"
+  role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" (click)="removeLogoModal.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title">Are you sure?</h4>
+      </div>
+      <div class="modal-body">
+        <p>
+          Are you sure you want to remove logo?
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" (click)="removeLogoModal.hide()">Close</button>
+        <button
+          type="button"
+          class="btn btn-primary"
+          (click)="removeLogo(); removeLogoModal.hide()">Confirm</button>
+      </div>
+    </div>
+  </div>
 </div>

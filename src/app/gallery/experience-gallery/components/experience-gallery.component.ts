@@ -77,6 +77,10 @@ export class ExperienceGalleryComponent implements OnInit {
       .isChecked = event.isChecked;
   }
 
+  public onDelete(item: IGalleryItem) {
+    this.getGalleryItems(this.filter);
+  }
+
   public ngOnInit() {
     this.route.params.subscribe((params: any) =>
       this.galleryId = params['id']

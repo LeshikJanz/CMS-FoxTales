@@ -66,4 +66,14 @@ export class GalleryService {
   public setVisibility(id: number, isVisible: boolean): Observable<Response> {
     return this.http.post(`${process.env.API_URL}/Media/${id}/setfeedvisibility/${isVisible}`, '');
   }
+
+  /**
+   * Delete
+   *
+   * @param {number} id - thumbnail id
+   * @returns {Observable<Response>} - Response
+   */
+  public deleteMedia(id: number): Observable<Response> {
+    return this.http.delete(`${process.env.API_URL}/Media/${id}`);
+  }
 }

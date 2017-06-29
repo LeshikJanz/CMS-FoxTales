@@ -16,8 +16,6 @@ export class EventsNavigationComponent {
               private router: Router) {
     this.router.events.subscribe((val) => {
       this.curLocation = this.location.path()
-      console.log('this.curLocation');
-      console.log(this.curLocation);
     }
     );
   }

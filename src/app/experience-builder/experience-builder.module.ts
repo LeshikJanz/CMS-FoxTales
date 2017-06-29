@@ -53,7 +53,6 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome/angular-font-awes
     ButtonsModule.forRoot(),
     DateTimePickerModule,
     AngularFontAwesomeModule
-
   ],
   providers: [
     {

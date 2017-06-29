@@ -48,8 +48,17 @@ export class ContentOptionsComponent {
       }
       ]
     }).subscribe((response) => {
-      console.log(response);
+      this.experienceBuilderService.experience.contentOptionId = response.id;
+
+      this.experienceBuilderService.postMediaManipulations({
+        mediaManipulationTypeId: 4,
+        contentOptionId: this.experienceBuilderService.experience.contentOptionId,
+        mediaManipulationTargetId: 1,
+        position: 0,
+      }).subscribe((response) => { console.log(response)});
     });
+
+
 
   this.staticTabs.tabs[1].active = true;
   }
@@ -65,6 +74,7 @@ export class ContentOptionsComponent {
         console.log(content)
         return content;
       });
+
       this.contentName = null;
       modal.hide();
       this.staticTabs.tabs[0].active = true;
@@ -91,6 +101,12 @@ export class ContentOptionsComponent {
       this.contentTypeOption = this.contentSwitchOptions[2].id;
     }
   //  this.orientationTypeValue = content.cameraSettings[0].settingValueId;
-  }
+}
+
+public onImgUploadedNon64(data){
+  this.experienceBuilderService.postMediaManipulationsAssets(data)
+  .subscribe((response) => console.log(response))
+
+}
 
 }

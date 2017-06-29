@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import * as moment from 'moment';
 import { IActionState } from '../../../client/client.interface';
 import { IGalleryItem, IGalleryFilter } from '../../gallery-item.interface';
 import { ActivatedRoute } from '@angular/router';
@@ -20,8 +21,8 @@ export class ExperienceGalleryContainerComponent implements OnInit {
    * @type {IActionState[]}
    */
   public sortActions: IActionState[] = [
-    {id: 1, action: 'Upcoming'},
-    {id: 2, action: 'Descending'}
+    { id: true, action: 'Upcoming' },
+    { id: false, action: 'Descending' }
   ];
 
   /**
@@ -65,6 +66,9 @@ export class ExperienceGalleryContainerComponent implements OnInit {
    */
   public filter: IGalleryFilter;
 
+  public startDate: string;
+  public endDate: string;
+
   /**
    * Constructor
    *
@@ -99,14 +103,25 @@ export class ExperienceGalleryContainerComponent implements OnInit {
   }
 
   /**
-   * Handler sort action
+   * Handler gallery search
    *
    * @param {string} event
    * @return {void}
    */
   public onSortChanged(event) {
-    console.log('onSortChange');
-    console.log(event);
+    this.filter.sortType = 0;
+    this.filter.ascending = event.id;
+    this.getGalleryItems(this.filter);
+  }
+
+  public onStartDateChanged(date: any) {
+    this.filter.startFrom = moment(date).format();
+    this.getGalleryItems(this.filter);
+  }
+
+  public onEndDateChanged(date: any) {
+    this.filter.startTo = moment(date).format();
+    this.getGalleryItems(this.filter);
   }
 
   public ngOnInit() {
@@ -129,5 +144,10 @@ export class ExperienceGalleryContainerComponent implements OnInit {
       .subscribe((items: IGalleryItem[]) =>
           this.galleryItems = items
       );
-  };
+  }
+
+  public onDelete(item: IGalleryItem) {
+    this.getGalleryItems(this.filter);
+  }
+
 }

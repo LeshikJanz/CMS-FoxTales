@@ -3,7 +3,7 @@
       class="group-container"
   >
     <div class="filters">
-      <div>
+      <div *ngIf="3 == selectedType">
         <div>
           <label>Sort by</label>
           <dropdown
@@ -14,13 +14,30 @@
           ></dropdown>
         </div>
         <div>
-          <label>Filter by</label>
-          <dropdown
-              [title]="'Upcoming'"
-              [options]="sortActions"
-              [size]="'big'"
-              (typeChanged)="onSortChanged($event)"
-          ></dropdown>
+            <div class="wrap">
+              <label>Start Date</label>
+              <input class="picker-input" [ngModel]="startDate"
+                     [returnObject]=" 'string' "
+                     [theme]=" '#f57f17' "
+                     [(dateTimePicker)]="startDate"
+                     (dateTimePickerChange)="onStartDateChanged($event)"
+                     [mode]="'dropdown'"
+                     [pickerType]="'date'"
+                     placeholder="mm/dd/yy"
+                     readonly>
+            </div>
+          <div class="wrap">
+            <label>End Date</label>
+            <input class="picker-input" [ngModel]="endDate"
+                   [returnObject]=" 'string' "
+                   [theme]=" '#f57f17' "
+                   [(dateTimePicker)]="endDate"
+                   (dateTimePickerChange)="onEndDateChanged($event)"
+                   [mode]="'dropdown'"
+                   [pickerType]="'date'"
+                   placeholder="mm/dd/yy"
+                   readonly>
+          </div>
         </div>
       </div>
       <switcher [type]="selectedType"
@@ -38,7 +55,7 @@
     </div>
     <gallery-list *ngIf="selectedType == 2" [galleries]="experiences"></gallery-list>
     <gallery-item-list *ngIf="selectedType == 3" [galleryItems]="galleryItems"
-                       (toggle)="onChecked($event)"></gallery-item-list>
+                       (toggle)="onChecked($event)" (deleted)="onDelete($event)"></gallery-item-list>
   </div>
   <download-modal [galleryItems]="galleryItems" #atgModal></download-modal>
 </div>

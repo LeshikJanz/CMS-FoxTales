@@ -5,6 +5,7 @@ import { Http, HttpModule, RequestOptions, XHRBackend } from '@angular/http';
 import { CustomFormsModule } from 'ng2-validation';
 import { NgxErrorsModule } from '@ultimate/ngxerrors';
 import { ToastrModule, ToastContainerModule } from 'ngx-toastr';
+import { DateTimePickerModule } from 'ng-pick-datetime';
 
 import { TagInputModule } from 'ng2-tag-input';
 
@@ -37,6 +38,7 @@ import { ExperienceHeaderComponent } from './headers/experience-header/experienc
     CustomFormsModule,
     HttpModule,
     NgxErrorsModule,
+    DateTimePickerModule,
     ToastrModule.forRoot(),
     ToastContainerModule.forRoot(),
     TagInputModule,

@@ -19,6 +19,7 @@ export interface IGalleryItem {
  */
 export interface IGalleryFilter {
   id?: number;
+  clientId?: number;
   eventId?: number;
   experienceId?: number;
   contentOptionIds?: number[];
@@ -27,4 +28,8 @@ export interface IGalleryFilter {
   showOnFeed?: boolean;
   approved?: boolean;
   favoriteOnly?: boolean;
+  startFrom?: string;
+  startTo?: string;
+  sortType?: number;
+  ascending?: boolean;
 }
