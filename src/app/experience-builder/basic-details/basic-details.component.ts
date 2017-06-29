@@ -118,21 +118,24 @@ export class BasicDetailsComponent implements OnInit {
   };
 
   public addRunTimes() {
-    if(this.startMomentDate || this.endMomentDate || this.endMomentTime || this.startMomentTime){
+    if (this.startMomentDate || this.endMomentDate ||
+    this.endMomentTime || this.startMomentTime ) {
       this.runTimes.push({
-        startTime: moment(this.startMomentDate + this.startMomentTime, 'MMM DD, YYYYHH:mm').format(),
+        startTime: moment(this.startMomentDate +
+          this.startMomentTime, 'MMM DD, YYYYHH:mm').format(),
         endTime: moment(this.endMomentDate + this.endMomentTime, 'MMM DD, YYYYHH:mm').format()
-      })
-      this.startMomentDate = this.startMomentTime = this.endMomentDate = this.endMomentTime = null;  
+      });
+      this.startMomentDate = this.startMomentTime =
+      this.endMomentDate = this.endMomentTime = null;
     }
   }
 
-  public editRunTime(time){
-    console.log(time)
+  public editRunTime(time) {
+    console.log(time);
   }
 
-  public deleteRunTime(time){
-    this.runTimes.splice(this.runTimes.indexOf(time),1)
+  public deleteRunTime(time) {
+    this.runTimes.splice(this.runTimes.indexOf(time), 1);
   }
 
 }

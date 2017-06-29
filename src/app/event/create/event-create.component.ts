@@ -93,13 +93,13 @@ export class EventCreateComponent implements OnInit, AfterViewInit {
    */
 
   public ngOnInit(): void {
-    console.log('here')
+
     this.getTags();
     this.getUserClients();
     this.buildEventForm();
   }
 
-  public ngAfterViewInit(){
+  public ngAfterViewInit() {
     let map = this.mapAddress = new Microsoft.Maps.Map(this.myMap.nativeElement, {
       credentials: process.env.BING_KEY
     });
@@ -198,8 +198,6 @@ export class EventCreateComponent implements OnInit, AfterViewInit {
     event['endTime'] = moment(this.endMomentDate, 'MMM DD YYYY').format();
 
     this.event.createEvent(event).subscribe((response) => {
-      console.log(response);
-      console.log(response.id)
       this.experienceId = response.id;
       this.lgModal.show();
       // this.router.navigate(['/events/events']);
@@ -247,7 +245,7 @@ export class EventCreateComponent implements OnInit, AfterViewInit {
       .indexOf(value.toLowerCase()) >= 0;
   }
 
-  public hide(){
+  public hide() {
     this.router.navigate(['/events/events']);
   }
 }

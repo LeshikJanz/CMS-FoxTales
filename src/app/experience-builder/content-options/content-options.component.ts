@@ -56,10 +56,8 @@ export class ContentOptionsComponent implements OnInit {
         contentOptionId: this.experienceBuilderService.experience.contentOptionId,
         mediaManipulationTargetId: 1,
         position: 0,
-      }).subscribe((response) => { console.log(response)});
+      }).subscribe((response) => { console.log(response); });
     });
-
-
 
   this.staticTabs.tabs[1].active = true;
   }
@@ -72,7 +70,7 @@ export class ContentOptionsComponent implements OnInit {
     .getContentOptions(this.experienceBuilderService.experience.experienceId)
     .subscribe((response) => {
       this.contentOptions = response.map((content) => {
-        console.log(content)
+        console.log(content);
         return content;
       });
 
@@ -103,19 +101,19 @@ export class ContentOptionsComponent implements OnInit {
     }
 }
 
-  public onImgUploadedNon64(data){
+  public onImgUploadedNon64(data) {
     this.experienceBuilderService.postMediaManipulationsAssets(data)
-    .subscribe((response) => console.log(response))
+    .subscribe((response) => console.log(response));
   }
 
-  public ngOnInit(){
+  public ngOnInit() {
     this.route.queryParams.subscribe((params) => {
-      if(params['id']){
+      if (params['id']) {
         this.experienceBuilderService
         .getContentOptions(this.experienceBuilderService.experience.experienceId)
         .subscribe((response) => {
         this.contentOptions = response.map((content) => {
-          console.log(content)
+          console.log(content);
           return content;
         });
         });

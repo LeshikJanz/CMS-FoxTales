@@ -55,13 +55,13 @@ export class EventEditComponent implements OnInit, AfterViewInit {
    * @returns {void}
    */
   public ngOnInit(): void {
-    console.log('here2')
+
     this.getTags();
 
   }
 
-  public ngAfterViewInit(){
-    console.log('after init')
+  public ngAfterViewInit() {
+
     this.sub = this.route.params.subscribe((params) => {
       this.id = params['id'];
       this.getEvent(this.id);
@@ -70,7 +70,7 @@ export class EventEditComponent implements OnInit, AfterViewInit {
 
   public getEvent(id) {
     this.event.getEvent(id).subscribe((event) => {
-      if(event.endTime === null){
+      if (event.endTime === null) {
         event.endTime = moment();
       }
       this.eventName = event.name;

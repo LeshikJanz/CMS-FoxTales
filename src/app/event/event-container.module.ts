@@ -21,7 +21,8 @@ import { EventService } from './event.service';
 import {
   EventNavigationComponent
 } from '../components/navigations/event-navigation/event-navigation.component';
-import { ExperienceHeaderComponent } from '../experience/headers/experience-header/experience-header.component';
+import { ExperienceHeaderComponent
+} from '../experience/headers/experience-header/experience-header.component';
 
 @NgModule({
   imports: [

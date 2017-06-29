@@ -17,12 +17,12 @@ export class ExperienceBuilderNavigationComponent implements OnInit, DoCheck {
   public five: any;
   public six: any;
   public seven: any;
-  constructor(private router: Router){
- 
+  constructor(private router: Router) {
+
   }
 
-  ngOnInit(){
-    switch(this.router.url) {
+  public ngOnInit() {
+    switch (this.router.url) {
       case '/experience-builder/container/basic-details':
         this.one = ' ';
         this.two = this.three = this.four = this.five = this.six = this.seven = null;
@@ -57,8 +57,8 @@ export class ExperienceBuilderNavigationComponent implements OnInit, DoCheck {
     }
   }
 
-  ngDoCheck(){
-    switch(this.router.url) {
+  public ngDoCheck() {
+    switch (this.router.url) {
       case '/experience-builder/container/basic-details':
         this.one = ' ';
         this.two = this.three = this.four = this.five = this.six = this.seven = null;

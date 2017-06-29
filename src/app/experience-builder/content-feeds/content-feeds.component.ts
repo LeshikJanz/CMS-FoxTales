@@ -33,28 +33,24 @@ export class ContentFeedsComponent {
                 this.backgroundOptions = [
                   { id: 'Image', name: 'Image'},
                   { id: 'Color', name: 'Color'}
-                ]
+                ];
 
                 this.backgroundStyleOptions = [
                   { id: 'Stretch', name: 'Stretch'},
                   { id: 'Tile', name: 'Tile' },
                   { id: 'Fixed Scroll', name: 'Fixed Scroll' }
-                ]
+                ];
               }
 
-
-  public createTab1(){
-    console.log('create tab 1')
+  public createTab1() {
     this.staticTabs.tabs[1].active = true;
   }
 
-  public createTab2(){
-    console.log('create tab 2')
+  public createTab2() {
     this.staticTabs.tabs[2].active = true;
   }
 
-  public createTab3(modal){
-    console.log('create tab 3')
+  public createTab3(modal) {
 
     this.experienceBuilderService.postContentFeedSettings({
       name: this.feedName,
@@ -70,17 +66,18 @@ export class ContentFeedsComponent {
     }).subscribe((response) => {
       console.log(response);
       modal.hide();
-    })
-  }
+    });
+  };
 
   public checkedContentOption(event) {
-    if(event.isChecked === true && this.contentOption.includes(event.name.id)){
+    if (event.isChecked === true && this.contentOption.includes(event.name.id)) {
+      return;
     }
-    if(event.isChecked === false && this.contentOption.includes(event.name.id)){
-      this.contentOption.splice(this.contentOption.indexOf(event.name.id),1);
+    if (event.isChecked === false && this.contentOption.includes(event.name.id)) {
+      this.contentOption.splice(this.contentOption.indexOf(event.name.id), 1);
     }
-    if(event.isChecked === true && !this.contentOption.includes(event.name.id)){
-      this.contentOption.push(event.name.id)
+    if (event.isChecked === true && !this.contentOption.includes(event.name.id)) {
+      this.contentOption.push(event.name.id);
     }
   };
 
@@ -92,5 +89,5 @@ export class ContentFeedsComponent {
    */
   public onImgUploaded(data) {
       this.backgroundBase64 = data.base64.replace(/data:image\/(png|jpg|jpeg|gif);base64,/, '');
-  }
+  };
 }
