@@ -54,7 +54,7 @@ import { FeatureModule } from '../components/feature.module';
   ],
   declarations: [
     ClientListComponent,
-    // ClientCreateComponent,
+    ClientCreateComponent,
     ClientEditComponent,
     ClientLicenseComponent
   ]
