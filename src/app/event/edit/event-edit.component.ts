@@ -64,7 +64,6 @@ export class EventEditComponent implements OnInit {
 
   public getEvent(id) {
     this.event.getEvent(id).subscribe((event) => {
-      console.log(event);
       this.eventName = event.name;
       this.eventAddress = event.address;
       this.startMomentDate = moment(event.startTime).format('MMM DD, YYYY');

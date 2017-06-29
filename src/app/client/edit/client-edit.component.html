@@ -16,11 +16,13 @@
         <upload-button (imgUploaded)="onImgUploaded($event)"></upload-button>
       </div>
 
+      <!-- Name -->
       <form-input
           [control]="clientForm.get('name')"
           title="Client Name*">
       </form-input>
 
+      <!-- Email -->
       <form-input
         [control]="clientForm.get('email')"
         title="Email">

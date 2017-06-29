@@ -8,13 +8,10 @@ import { IClient } from '../../../client/client.interface';
 })
 export class FoxSelectComponent implements OnChanges {
   @Output() public change: EventEmitter<any> = new EventEmitter();
-
   @Output() public data: EventEmitter<any> = new EventEmitter();
 
   @Input() public items: any[];
-
   @Input() public active: any;
-
   @Input() public multiple: boolean = false;
 
   public activeItems: any[] = [];
@@ -23,8 +20,27 @@ export class FoxSelectComponent implements OnChanges {
 
   private value: any = {};
 
+  private _disabledV: string = '0';
+
+  private get disabledV(): string {
+    return this._disabledV;
+  }
+
+  private set disabledV(value: string) {
+    this._disabledV = value;
+    this.disabled = this._disabledV === '1';
+  }
+
   public selected(value: any): void {
     this.change.emit(value);
+  }
+
+  public removed(value: any): void {
+    console.log('Removed value is: ', value);
+  }
+
+  public typed(value: any): void {
+    console.log('New search input: ', value);
   }
 
   public refreshValue(value: any): void {
@@ -43,7 +59,7 @@ export class FoxSelectComponent implements OnChanges {
     if (this.multiple) {
       Object.assign(this.activeItems, this.convert(this.active));
     } else {
-      this.activeItems = this.convert([this.active]);
+      this.activeItems = this.items.filter((i: IClient) => i.id === this.active.id);
     }
     this.active = null;
   }
@@ -51,11 +67,14 @@ export class FoxSelectComponent implements OnChanges {
   public ngOnChanges() {
     if (this.items) {
       this.items = this.convert(this.items);
-    }
 
-    if (this.active && this.active.name) {
-      this.findActiveItems();
-      this.change.emit(this.activeItems[0]);
+      console.log('this.active');
+      console.log(this.active);
+
+      if (this.active) {
+        this.findActiveItems();
+        this.change.emit(this.activeItems[0]);
+      }
     }
   }
 }

@@ -13,6 +13,7 @@ import {
 } from '../client-license.interface';
 import { ClientService } from '../client.service';
 import { IActionState } from '../client.interface';
+import { FormService } from '../../shared/core/form/form.service';
 
 @Component({
   selector: 'client-license',
@@ -197,6 +198,7 @@ export class ClientLicenseComponent implements OnInit {
           this.license = license;
           this.activeLicenseMonths.id = license.numberOfMonths;
           this.startDate = moment(license.startDate).format('MMMM D, YYYY');
+          FormService.populateForm(this.license, this.licenseForm);
         }
 
         this
@@ -278,9 +280,11 @@ export class ClientLicenseComponent implements OnInit {
    *
    * @returns {void}
    */
-  public updateLicense(): void {
-    this.license.startDate = moment(this.startDate).format('M/D/YYYY');
-    this.license.clientID = this.clientId;
+  public updateLicense(license: IClientLicense): void {
+    license.startDate = moment(this.startDate).format('M/D/YYYY');
+    license.clientID = this.clientId;
+
+    this.license = Object.assign({}, this.license, license);
 
     this.clientService
       .updateClientLicense(this.license)

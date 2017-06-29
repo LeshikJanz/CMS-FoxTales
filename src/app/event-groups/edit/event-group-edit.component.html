@@ -1,21 +1,17 @@
 <div class="group-container">
   <form
+      *ngIf="eventGroupForm"
       (ngSubmit)="updateEventGroup()"
       class="form"
       novalidate>
 
     <div [formGroup]="eventGroupForm">
+
       <!-- Name -->
-      <div class="form-element">
-        <label for="name">Group Name *</label>
-        <input
-            id="name"
-            class="form-control input"
-            type="text"
-            [(ngModel)]="eventGroup.name"
-            formControlName="name"
-            placeholder="Group name">
-      </div>
+      <form-input
+          [control]="eventGroupForm.get('name')"
+          title="Group Name *">
+      </form-input>
 
       <!--Client Access -->
       <div class="form-element">
@@ -23,6 +19,7 @@
         <fox-select
             [disabled]="true"
             [active]="client"
+            [items]="clients"
         >
         </fox-select>
       </div>
