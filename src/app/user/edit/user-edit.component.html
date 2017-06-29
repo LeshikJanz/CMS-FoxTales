@@ -1,41 +1,26 @@
 <div class="user-container">
 
   <form
-    (ngSubmit)="updateUser()"
-    class="form"
-    novalidate>
+      *ngIf="userForm"
+      (ngSubmit)="updateUser()"
+      class="form"
+      novalidate>
 
     <div class="form-group" [formGroup]="userForm">
       <!-- Email -->
-      <div  class="form-element">
-        <label for="email">Email</label>
-        <input
-          disabled
-          id="email"
-          type="email"
-          class="form-control"
-          [(ngModel)]="user.email"
-          formControlName="email"
-          placeholder="Email">
-
-        <div ngxErrors="email">
-          <div class="field-error" ngxError="required" when="touched">
-            Field is required
-          </div>
-          <div class="field-error"  ngxError="email" when="dirty">
-            Invalid value
-          </div>
-        </div>
-      </div>
+      <form-input
+          [control]="userForm.get('email')"
+          title="Email/Username*">
+      </form-input>
 
       <!--Client Access -->
       <div class="form-element">
         <label>Client Access*</label>
         <fox-select
-          [disabled]="true"
-          [active]="client"
-          (change)="user.clientId = $event.id"
-          [items]="clients"
+            [disabled]="true"
+            [active]="client"
+            (change)="user.clientId = $event.id"
+            [items]="clients"
         >
         </fox-select>
       </div>
@@ -54,9 +39,9 @@
     </div>
 
     <fox-button
-      [value]="'Update'"
-      [disabled]="isFormInvalid()"
-      [design]="'special'"
+        [value]="'Update'"
+        [disabled]="isFormInvalid()"
+        [design]="'special'"
     ></fox-button>
   </form>
 </div>
