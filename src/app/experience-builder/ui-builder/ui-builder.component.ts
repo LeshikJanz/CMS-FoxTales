@@ -17,6 +17,8 @@ export class UIBuilderComponent {
   public text: string;
   public optInText: string;
   public thankYouText: string;
+  public logoBase64: string;
+  public overlayBase64: string;
 
  @ViewChild('staticTabs') public staticTabs: TabsetComponent;
 
@@ -29,18 +31,38 @@ export class UIBuilderComponent {
   };
 
   public finish() {
-    this.experienceBuilderService.postUIBuilderSettings({config: JSON.stringify({
+    this.experienceBuilderService.postUIBuilderStoryRingSettings({
       primaryColor: this.primaryColor,
       secondaryColor: this.secondaryColor,
-      backgroundColor: this.backgroundColor,
-      engagementText: this.text,
-      engagementOptInText: this.optInText,
-      engagementThankYouText: this.thankYouText
-    })})
+      ledColor: this.backgroundColor,
+      engageText: this.text,
+      optInText: this.optInText,
+      thankYouText: this.thankYouText,
+      overlayData: this.overlayBase64,
+      logoData: this.logoBase64
+    })
     .subscribe((configs) => {
       console.log(configs);
       this.router.navigate(['/experience-builder/container/content-gallery']);
     });
   };
+
+  /**
+   * Receive img in base64
+   *
+   * @param {string} base64 - string
+   * @returns {void}
+   */
+  public onImgUploaded(data,type) {
+    if(type === 'logo') {
+      this.logoBase64 = data.base64;
+      this.logoBase64 = this.logoBase64.replace(/data:image\/(png|jpg|jpeg|gif);base64,/, '');
+    }
+    if(type === 'overlay') {
+      this.overlayBase64 = data.base64;
+      this.overlayBase64 = this.overlayBase64.replace(/data:image\/(png|jpg|jpeg|gif);base64,/, '');
+    }
+
+  }
 
 }

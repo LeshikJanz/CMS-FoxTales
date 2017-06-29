@@ -65,9 +65,9 @@ export class ExperienceBuilderService {
       });
   }
 
-  public postUIBuilderSettings(config) {
+  public postUIBuilderStoryRingSettings(config) {
     return this.http.post(`${process.env.API_URL}/Experiences/`
-      + this.experience.experienceId + `/config`, config)
+      + this.experience.experienceId + `/configstoryring`, config)
       .map((response: Response) => {
         console.log(response);
         return response;
