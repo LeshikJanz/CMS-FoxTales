@@ -1,11 +1,12 @@
 import { Component, Output, EventEmitter, Input, OnInit, ViewChild } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { ModalDirective } from 'ngx-bootstrap/modal';
-import { IGalleryItem } from '../../gallery/gallery-item.interface';
+import { IGalleryItem, ICameraInfo } from '../../gallery/gallery-item.interface';
 import { GalleryService } from '../../gallery/gallery.service';
 import hello from 'hellojs';
 import 'rxjs/Rx' ;
 import { ICheckbox } from '../toggles/checkbox/checkbox.component';
+import { IDeviceInfo } from '../device-info/device-info.interface';
 
 /**
  * Upload Button component
@@ -23,6 +24,8 @@ export class ThumbnailComponent implements OnInit {
 
   public isInfoOpen: boolean = false;
 
+  public loading: boolean = false;
+
   public selectedNetwork: string;
 
   public selectedMedia: IGalleryItem;
@@ -32,6 +35,8 @@ export class ThumbnailComponent implements OnInit {
   @Input() public title: string;
 
   @Input() public type: string;
+
+  @Input() public deviceInfo: IDeviceInfo;
 
   @Input() public progress: number = 0;
 
@@ -106,6 +111,18 @@ export class ThumbnailComponent implements OnInit {
     this.selectedMedia = media;
     this.selectedNetwork = network;
     this.shareModal.show();
+  }
+
+  public getCameraInfo(id: number) {
+    this.loading = true;
+    this.galleryService.getCameraInfo(id)
+      .subscribe((info: IDeviceInfo) => {
+        this.deviceInfo = info;
+        this.loading = false;
+      })
+
+
+    this.isInfoOpen = !this.isInfoOpen
   }
 
   /**

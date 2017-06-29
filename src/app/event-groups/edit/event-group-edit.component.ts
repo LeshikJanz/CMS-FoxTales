@@ -121,7 +121,7 @@ export class EventGroupEditComponent implements OnInit {
         this.eventGroup = eventGroup[0];
 
         this.getUserClients();
-        this.getEvents({ clientId: this.eventGroup.clientId });
+        this.getEvents({ clientId: this.eventGroup.clientId, ignoreEventGroupFilter: false });
 
         FormService.populateForm(this.eventGroup, this.eventGroupForm);
       });

@@ -1,7 +1,7 @@
 import { Component, ViewChild, Input, OnChanges, Output, EventEmitter } from '@angular/core';
 import { ModalDirective } from 'ngx-bootstrap';
 import { EventService } from '../../../event/event.service';
-import { IEvent } from '../../../event/event.interface';
+import { IEvent, IEventFilter } from '../../../event/event.interface';
 import { IEventGroup } from '../../../event-groups/list/event-groups.interaface';
 import { EventGroupsService } from '../../../event-groups/list/event-groups.service';
 import { ToastrService } from 'ngx-toastr';
@@ -40,7 +40,7 @@ export class EventsToCurGroupModalComponent {
    *
    * @type {IEvent[]}
    */
-  @Input() public events: IEvent[];
+  public events: IEvent[];
 
   /**
    * Selected Events
@@ -59,11 +59,14 @@ export class EventsToCurGroupModalComponent {
   /**
    * Constructor
    *
+   * @param {EventGroupsService} eventGroupService - event group service
+   * @param {ToastrService} toastrService - toastr service
    * @param {EventService} eventService - event service
    * @return {void}
    */
   constructor(private eventGroupService: EventGroupsService,
-              private toastrService: ToastrService) {}
+              private toastrService: ToastrService,
+              private eventService: EventService) {}
 
   /**
    * Tag transformer
@@ -83,8 +86,27 @@ export class EventsToCurGroupModalComponent {
   public show(group: IEventGroup) {
     this.selectedEvents = [];
     this.group = group;
+    this.getUnusedEvents();
     this.isModalShown = true;
   }
+
+  /**
+   * Get unused events (aren't included to any event group)
+   *
+   * @return {void}
+   */
+  public getUnusedEvents() {
+    const filter: IEventFilter = {
+      clientId: this.group.clientId,
+      ignoreEventGroupFilter: false
+    };
+
+    this.eventService
+      .getEvents(filter)
+      .subscribe((events: IEvent[]) =>
+        this.events = events
+      );
+  };
 
   /**
    * Hide modal

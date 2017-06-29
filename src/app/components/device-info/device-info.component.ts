@@ -14,6 +14,8 @@ export class DeviceInfoComponent {
 
   @Input() public deviceInfo: IDeviceInfo;
 
+  @Input() public loading: boolean;
+
   @Output() public close: EventEmitter<any> = new EventEmitter();
 
   public onClose() {

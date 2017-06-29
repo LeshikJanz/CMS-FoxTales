@@ -5,12 +5,10 @@
   -moz-transition: all .3s ease;
   -ms-transition: all .3s ease;
   transition: all .3s ease;
-  /*depth of the elements */
   -webkit-perspective: 800px;
   -moz-perspective: 800px;
   -o-perspective: 800px;
   perspective: 800px;
-  /*border: 1px solid #ff0000;*/
   padding-left: 1%;
   display: flex;
   width: 250px;
@@ -19,6 +17,13 @@
   border: 1px solid #FA5F00;
   box-shadow: 0 30px 30px 0 rgba(0, 0, 0, 0.20);
   border-radius: 6px;
+}
+
+.loading {
+  display: flex;
+  height: 80px;
+  align-items: center;
+  justify-content: center;
 }
 
 .content {
