@@ -23,8 +23,11 @@ export class UploadButtonComponent {
 
   @Output() public imgUploadedNon64: EventEmitter<any> = new EventEmitter();
 
-      constructor(private http: Http,
-                private el: ElementRef) {}
+  public maxFileSize: number = 2000000;
+
+  constructor(private http: Http,
+              private el: ElementRef) {
+  }
 
   public set uploadStateValue(val: number) {
     this.uploadState = val;
@@ -37,14 +40,24 @@ export class UploadButtonComponent {
 
   public handleLoading = () => this.isLoading = true;
 
+  public showSizeError() {
+      this.error = 'Chosen file is too big';
+      this.isLoading = false;
+      this.uploadStateValue = 2;
+  }
+
   public getBase64(file) {
     let reader = new FileReader();
+    if(file.size >= this.maxFileSize ) {
+      this.showSizeError();
+      return;
+    }
     reader.readAsDataURL(file);
     reader.onload = () => {
-      if (reader.result.indexOf('data:image') >= 0 || this.filesAllowed) {
+      if (reader.result.indexOf('data:image') >= 0|| this.filesAllowed) {
         this.uploadStateValue = 1;
         this.isLoading = false;
-        this.imgUploaded.emit({base64: reader.result, file: file});
+        this.imgUploaded.emit({ base64: reader.result, file: file });
       } else {
         this.error = 'Chosen file is not an image';
         this.isLoading = false;
@@ -56,22 +69,25 @@ export class UploadButtonComponent {
     };
   }
 
-   public upload() {
-        let inputEl = this.el.nativeElement.children[0].firstElementChild;
+  public upload() {
+    let inputEl = this.el.nativeElement.children[0].firstElementChild;
 
-        if (inputEl.files.length === 0) { return; };
-
-        let files: FileList = inputEl.files;
-
-        const formData = new FormData();
-
-        for (let i = 0; i < files.length; i++) {
-            formData.append('files', files[i],files[i].name);
-        }
-        this.imgUploadedNon64.emit(formData)
-            // this.http
-            //     .post(`${process.env.API_URL}/MediaManipulations/37/assets`, formData)
-            //     .subscribe((response) => console.log(response))
-    
+    if (inputEl.files.length === 0) {
+      return;
     }
+    ;
+
+    let files: FileList = inputEl.files;
+
+    const formData = new FormData();
+
+    for (let i = 0; i < files.length; i++) {
+      formData.append('files', files[i], files[i].name);
+    }
+    this.imgUploadedNon64.emit(formData)
+    // this.http
+    //     .post(`${process.env.API_URL}/MediaManipulations/37/assets`, formData)
+    //     .subscribe((response) => console.log(response))
+
+  }
 }
