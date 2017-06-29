@@ -42,6 +42,7 @@
           <tab heading='Part 3'>
             <h3>Using An Image Or Custom Color For Background?</h3>
             <switcher style="padding: 10px" [options]="backgroundOptions" (toggle)="backgroundOptionValue = $event"></switcher>
+            <upload-button (imgUploaded)="onImgUploaded($event)"></upload-button>
             <br>
             <h4>Background Color</h4>
             <input class="colorDisplayInput" [style.background]="backgroundColor"/><input class="colorSelectionInput" [(colorPicker)]="backgroundColor"  [value]="backgroundColor"  [cpSaveClickOutside]="true"/>

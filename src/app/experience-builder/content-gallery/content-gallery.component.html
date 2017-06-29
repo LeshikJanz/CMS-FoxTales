@@ -44,10 +44,10 @@
           <tab heading='Part 3'>
             <h3>Upload Background Image</h3>
             <h4>Upload Image</h4>
-            <upload-button></upload-button>
+            <upload-button (imgUploaded)="onImgUploaded($event, 'background')"></upload-button>
             <h3>Different Background for Mobile?</h3>
             <ui-switch [(ngModel)]='mobileBackgroundChecked'></ui-switch>
-            <upload-button></upload-button>
+            <upload-button (imgUploaded)="onImgUploaded($event, 'mobileBackground')"></upload-button>
             <h3>Background Style</h3>
             <switcher style="padding: 10px" [options]="options" (toggle)="backgroundFitType = $event"></switcher>
             <br>

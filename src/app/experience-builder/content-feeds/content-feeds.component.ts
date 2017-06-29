@@ -25,6 +25,7 @@ export class ContentFeedsComponent {
   public backgroundStyleOptionValue: any;
   public backgroundPosition: any;
   public contentOption: any = [];
+  public backgroundBase64: string;
 
   constructor(private router: Router,
               private experienceBuilderService: ExperienceBuilderService) {
@@ -59,6 +60,7 @@ export class ContentFeedsComponent {
       name: this.feedName,
       preModerationEnabled: this.moderateFeed,
       backgroundColor: this.backgroundColor,
+      backgroundImage: this.backgroundBase64,
       cycleTime: this.feedDisplaySeconds,
       playFullVideo: this.playFullVideos,
       playAudio: this.playAudio,
@@ -81,4 +83,14 @@ export class ContentFeedsComponent {
       this.contentOption.push(event.name.id)
     }
   };
+
+  /**
+   * Receive img in base64
+   *
+   * @param {string} base64 - string
+   * @returns {void}
+   */
+  public onImgUploaded(data) {
+      this.backgroundBase64 = data.base64.replace(/data:image\/(png|jpg|jpeg|gif);base64,/, '');
+  }
 }

@@ -55,12 +55,10 @@ export class UIBuilderComponent {
    */
   public onImgUploaded(data,type) {
     if(type === 'logo') {
-      this.logoBase64 = data.base64;
-      this.logoBase64 = this.logoBase64.replace(/data:image\/(png|jpg|jpeg|gif);base64,/, '');
+      this.logoBase64 = data.base64.replace(/data:image\/(png|jpg|jpeg|gif);base64,/, '');
     }
     if(type === 'overlay') {
-      this.overlayBase64 = data.base64;
-      this.overlayBase64 = this.overlayBase64.replace(/data:image\/(png|jpg|jpeg|gif);base64,/, '');
+      this.overlayBase64 = data.base64.replace(/data:image\/(png|jpg|jpeg|gif);base64,/, '');
     }
 
   }
