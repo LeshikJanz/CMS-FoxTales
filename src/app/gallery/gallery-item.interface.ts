@@ -15,6 +15,20 @@ export interface IGalleryItem {
 }
 
 /**
+ * Camera info interface
+ */
+export interface ICameraInfo {
+  cameraInfo: string;
+  lens: string;
+  iso: number;
+  shutterSpeed: string;
+  aperture: string;
+  focalLength: number;
+  whiteBalance: number;
+  pictureStyle: string;
+}
+
+/**
  * Gallery interface filter
  */
 export interface IGalleryFilter {

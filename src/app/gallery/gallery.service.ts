@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Response, Http, RequestOptions, Headers } from '@angular/http';
-import { IGalleryItem, IGalleryFilter } from './gallery-item.interface';
+import { IGalleryItem, IGalleryFilter, ICameraInfo } from './gallery-item.interface';
 import { PermissionService } from '../shared/core/auth/permission.service';
+import { IDeviceInfo } from "../components/device-info/device-info.interface";
 
 @Injectable()
 export class GalleryService {
@@ -75,5 +76,16 @@ export class GalleryService {
    */
   public deleteMedia(id: number): Observable<Response> {
     return this.http.delete(`${process.env.API_URL}/Media/${id}`);
+  }
+
+  /**
+   * Get camera info
+   *
+   * @param {number} id - thumbnail id
+   * @returns {Observable<Response>} - Response
+   */
+  public getCameraInfo(id: number): Observable<IDeviceInfo> {
+    return this.http.get(`${process.env.API_URL}/Media/${id}/exif`)
+      .map((response: Response) => <IDeviceInfo> response.json());
   }
 }
