@@ -33,6 +33,12 @@
   line-height: 1;
   letter-spacing: 0.5px;
   color: #626d78;
+  text-align: center;
+}
+
+.slidemenu label:nth-child(2) {
+  text-align: left !important;
+  width: 5%;
 }
 
 .slidemenu label:hover {
