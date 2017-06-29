@@ -30,8 +30,8 @@
             <br>
             <h3>Provide A Custom URL?*</h3>
             <ui-switch [(ngModel)]='customUrlChecked'></ui-switch>
-            <h5>Existing URL: gallery.getfoxtales.com/eventgroup/event/experience</h5>
-            <input [(ngModel)]='customUrl'>
+            <h5 *ngIf="customUrlChecked === true">Existing URL: gallery.getfoxtales.com/eventgroup/event/experience</h5>
+            <input *ngIf="customUrlChecked === true" [(ngModel)]='customUrl'>
             <hr>
             <h3>Allow Content To Be Downloaded?</h3>
             <ui-switch [(ngModel)]='galleryDownloadChecked'></ui-switch>
@@ -47,7 +47,7 @@
             <upload-button (imgUploaded)="onImgUploaded($event, 'background')"></upload-button>
             <h3>Different Background for Mobile?</h3>
             <ui-switch [(ngModel)]='mobileBackgroundChecked'></ui-switch>
-            <upload-button (imgUploaded)="onImgUploaded($event, 'mobileBackground')"></upload-button>
+            <upload-button *ngIf="mobileBackgroundChecked === true" (imgUploaded)="onImgUploaded($event, 'mobileBackground')"></upload-button>
             <h3>Background Style</h3>
             <switcher style="padding: 10px" [options]="options" (toggle)="backgroundFitType = $event"></switcher>
             <br>

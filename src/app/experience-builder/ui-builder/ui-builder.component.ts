@@ -11,6 +11,7 @@ import { ExperienceBuilderService } from '../experience-builder.service';
 })
 
 export class UIBuilderComponent {
+  
   public primaryColor: string;
   public secondaryColor: string;
   public backgroundColor: string;
