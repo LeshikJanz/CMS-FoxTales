@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder } from '@angular/forms';
 
@@ -18,7 +18,7 @@ import {} from 'bingmaps/scripts/MicrosoftMaps/Microsoft.Maps.All';
     '../../shared/styles/tag-input.scss'
   ]
 })
-export class EventEditComponent implements OnInit {
+export class EventEditComponent implements OnInit, AfterViewInit {
   @ViewChild('myMap') public myMap;
   public startMomentDate: string;
   public endMomentDate: string;
@@ -55,7 +55,13 @@ export class EventEditComponent implements OnInit {
    * @returns {void}
    */
   public ngOnInit(): void {
+    console.log('here2')
     this.getTags();
+
+  }
+
+  public ngAfterViewInit(){
+    console.log('after init')
     this.sub = this.route.params.subscribe((params) => {
       this.id = params['id'];
       this.getEvent(this.id);
