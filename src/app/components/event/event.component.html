@@ -10,7 +10,8 @@
              class="event-name">{{event.name}}</a>
           <label class="date">{{ event.startTime | date}}</label>
           <div class="brands">
-            <label *ngFor="let tag of event.tags">#{{tag}}</label>
+            <label *ngFor="let tag of event.tags; let i=index"><template [ngIf]="i<10">
+            #{{tag}}</template></label>
           </div>
         </div>
         <label *ngIf="!isEnded" name="experiences">
