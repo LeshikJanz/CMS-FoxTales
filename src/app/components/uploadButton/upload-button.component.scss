@@ -47,10 +47,10 @@
   font-family: WorkSans;
   margin-top: 15px;
   margin-left: 20px;
+  white-space: normal;
 }
 
 .inner-text.default {
-  display: flex;
   flex-wrap: wrap;
   font-size: 12px;
 }
@@ -87,6 +87,10 @@
   & .fail {
     color: #fc5d5d;
     font-size: 14px;
+  }
+
+  .inner-text {
+    margin-top: 0;
   }
 }
 

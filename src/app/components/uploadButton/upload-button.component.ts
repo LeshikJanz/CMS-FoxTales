@@ -41,7 +41,7 @@ export class UploadButtonComponent {
   public handleLoading = () => this.isLoading = true;
 
   public showSizeError() {
-      this.error = 'Chosen file is too big';
+      this.error = 'File size was too large (over 2MB)';
       this.isLoading = false;
       this.uploadStateValue = 2;
   }
