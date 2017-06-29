@@ -1,13 +1,17 @@
-.slidemenu #slide-item-2:checked ~ .slider .bar {
+.slidemenu #slide-item-1.active ~ .slider .bar {
+  width: 50px;
+}
+
+.slidemenu #slide-item-2.active ~ .slider .bar {
   width: 70px;
 }
 
-.slidemenu #slide-item-3:checked ~ .slider .bar {
-  width: 90px !important;
+.slidemenu #slide-item-3.active ~ .slider .bar {
+  width: 90px;
 }
 
-.slidemenu #slide-item-4:checked ~ .slider .bar {
-  width: 180px !important;
+.slidemenu #slide-item-4.active ~ .slider .bar {
+  width: 180px;
 }
 
 .slidemenu label:nth-child(8) {
@@ -23,7 +27,6 @@
   right: 1px;
   bottom: 5px;
 }
-
 
 :host /deep/ .actions .btn-group {
   > div {

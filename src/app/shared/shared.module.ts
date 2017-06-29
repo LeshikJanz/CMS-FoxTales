@@ -14,6 +14,7 @@ import { TemperaturePipe } from './table/pipe/temperature.pipe';
 import { BooleanPipe } from './table/pipe/boolean.pipe';
 import { InternetStatusPipe } from './table/pipe/internet-status.pipe';
 import { FormService } from './core/form/form.service';
+import { NavigationService } from './core/navigation/navigation.service';
 
 @NgModule({
   imports: [
@@ -49,7 +50,8 @@ import { FormService } from './core/form/form.service';
     BooleanPipe,
     InternetStatusPipe,
     TemperaturePipe,
-    FormService
+    FormService,
+    NavigationService
   ],
   exports: [
     CommonModule,

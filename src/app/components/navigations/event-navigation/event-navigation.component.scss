@@ -1,13 +1,13 @@
-.slidemenu #slide-item-1:checked ~ .slider .bar {
+.slidemenu #slide-item-1.active ~ .slider .bar {
   width: 95px;
 }
 
-.slidemenu #slide-item-2:checked ~ .slider .bar {
+.slidemenu #slide-item-2.active ~ .slider .bar {
   margin-left: 150px;
   width: 90px;
 }
 
-.slidemenu #slide-item-3:checked ~ .slider .bar {
+.slidemenu #slide-item-3.active ~ .slider .bar {
   margin-left: 295px;
   width: 60px;
 }

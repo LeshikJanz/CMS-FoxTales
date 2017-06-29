@@ -1,22 +1,6 @@
+@import "../../../shared/styles/headers";
+
 .header-container {
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-  align-items: center;
-  height: 100px;
-
-  > div {
-    a {
-      margin-left: 20px;
-      color: black;
-    }
-  }
-
-  h1 {
-    align-self: flex-start;
-    margin-top: 0 !important;
-  }
-
   add-button {
     background-color: #2fd976;
     width: 204px;

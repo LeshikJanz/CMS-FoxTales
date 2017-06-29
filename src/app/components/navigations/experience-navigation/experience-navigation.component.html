@@ -2,7 +2,7 @@
 
   <input type="radio" name="slideItem" id="slide-item-1" class="slide-toggle"
          [routerLink]="['/experience', experienceId, 'content']"
-         [attr.checked]="curLocation && curLocation.indexOf('/content') > 0 ? '' : null"/>
+         [class.active]="nav.isActive(['/experience/' + experienceId + '/content'], false)"/>
   <label for="slide-item-1"><span>Content</span></label>
 
   <input type="radio" name="slideItem" id="slide-item-2" class="slide-toggle"/>
@@ -13,7 +13,8 @@
 
   <input type="radio" name="slideItem" id="slide-item-4" class="slide-toggle"
          [routerLink]="['/experience', experienceId, 'exgalleries']"
-         [attr.checked]="curLocation && curLocation.indexOf('/exgalleries') > 0 ? '' : null"/>
+         [class.active]="nav.isActive(['/experience/' + experienceId + '/exgalleries'], false)"
+  />
   <label for="slide-item-4"><span>Galleries</span></label>
 
   <input type="radio" name="slideItem" id="slide-item-5" class="slide-toggle"/>

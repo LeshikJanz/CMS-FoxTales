@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-import { Location } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
+import { NavigationService } from '../../../shared/core/navigation/navigation.service';
 
 @Component({
   selector: 'experience-navigation',
@@ -11,15 +11,12 @@ import { Location } from '@angular/common';
 })
 
 export class ExperienceNavigationComponent {
-  public curLocation: string;
-
   public experienceId: string;
 
-  constructor(private location: Location,
-              private router: Router) {
-    this.router.events.subscribe((val) => {
-      this.curLocation = this.location.path();
-      this.experienceId = this.curLocation.split('/')[2];
-    });
+  constructor(private route: ActivatedRoute,
+              private nav: NavigationService) {
+    this.route.firstChild.params.subscribe((params) =>
+      this.experienceId = params['id']
+    )
   }
 }

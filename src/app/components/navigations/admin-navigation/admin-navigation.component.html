@@ -1,24 +1,24 @@
 <div class="nav-container">
   <nav class="slidemenu">
-
-    <input type="radio" name="slideItem" id="slide-item-1" class="slide-toggle"
-           [routerLink]="['/admin/users']"
-           [attr.checked]="curLocation && curLocation.indexOf('/admin/user') >= 0 ? '' : null"/>
+    <input [routerLink]="['/admin/users']"
+           [class.active]="nav.isActive(['/admin/users', '/admin/user'], false)"
+           id="slide-item-1"
+           type="radio" name="slideItem" class="slide-toggle"/>
     <label for="slide-item-1"><span>Users</span></label>
-
-    <input type="radio" name="slideItem" id="slide-item-2" class="slide-toggle"
-           [routerLink]="['/admin/clients']"
-           [attr.checked]="curLocation && curLocation.indexOf('/admin/client') >= 0 ? '' : null"/>
+    <input [routerLink]="['/admin/clients']"
+           [class.active]="nav.isActive(['/admin/clients', '/admin/client'], false)"
+           id="slide-item-2"
+           class="slide-toggle"
+           type="radio" name="slideItem"/>
     <label for="slide-item-2"><span>Clients</span></label>
-
     <input type="radio" name="slideItem" id="slide-item-3" class="slide-toggle"/>
     <label for="slide-item-3"><span>Locations</span></label>
-
-  <input type="radio" name="slideItem" id="slide-item-4" class="slide-toggle"
-         [routerLink]="['/admin/devices']"
-         [attr.checked]="curLocation && curLocation.indexOf('/admin/device') >= 0 ? '' : null"/>
-  <label for="slide-item-4"><span>Integrations+hardware</span></label>
-
+    <input type="radio" name="slideItem"
+           id="slide-item-4"
+           [routerLink]="['/admin/devices']"
+           [class.active]="nav.isActive(['/admin/devices'], false)"
+           class="slide-toggle"/>
+    <label for="slide-item-4"><span>Integrations+hardware</span></label>
     <div class="clear"></div>
 
     <div class="slider">

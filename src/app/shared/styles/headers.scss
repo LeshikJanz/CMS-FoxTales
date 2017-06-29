@@ -5,13 +5,27 @@
   align-items: center;
   height: 120px;
 
+  > div {
+    a {
+      color: black;
+      margin-left: 25px;
+    }
+
+    h1 {
+      align-self: flex-start;
+      > div {
+        display: inline-block;
+      }
+    }
+  }
+
   h1 {
     align-self: flex-start;
   }
 
   add-button {
     background-color: #2fd976;
-    width: 204px;
+    width: 254px;
     height: 54px;
     font-size: 16px;
     border-radius: 6px;

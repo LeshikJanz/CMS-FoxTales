@@ -14,10 +14,12 @@
           </div>
         </div>
         <label *ngIf="!isEnded" name="experiences">
-          {{ event.experiences.length }} Experiences  <br> End Date: {{ endTime }}
+          {{ event.experiences.length }} Experiences
+          <!--<br> End Date: {{ endTime }}-->
         </label>
         <label *ngIf="isEnded" name="experiences" class="finishedEventLabel">
-          {{ event.experiences.length }} Experiences <br> Completed on {{endTime}}
+          <!--{{ event.experiences.length }} Experiences <br> -->
+          Completed on {{endTime}}
         </label>
       </div>
       <div>

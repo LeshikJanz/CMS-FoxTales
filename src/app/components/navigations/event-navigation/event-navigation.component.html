@@ -2,13 +2,15 @@
 
   <input type="radio" name="slideItem" id="slide-item-1" class="slide-toggle"
          [routerLink]="[eventId, 'experiences']"
-         [attr.checked]="curLocation && curLocation.indexOf('/experiences') > 0 ? '' : null"/>
-    <label for="slide-item-1"><span >Experiences</span></label>
+         [class.active]="nav.isActive(['/event/' + eventId + '/experiences'], false)"
+  />
+  <label for="slide-item-1"><span>Experiences</span></label>
 
   <input type="radio" name="slideItem" id="slide-item-2" class="slide-toggle"
          [routerLink]="[eventId, 'galleries']"
-         [attr.checked]="curLocation && curLocation.indexOf('/galleries') > 0 ? '' : null"/>
-  <label for="slide-item-2"><span >Galleries</span></label>
+         [class.active]="nav.isActive(['/event/' + eventId + '/galleries'], false)"
+  />
+  <label for="slide-item-2"><span>Galleries</span></label>
 
   <input type="radio" name="slideItem" id="slide-item-3" class="slide-toggle"/>
   <label for="slide-item-3"><span>Feeds</span></label>

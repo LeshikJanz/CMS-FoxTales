@@ -2,17 +2,18 @@ import { Injectable } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
 /**
- * Permission service
+ * Form service
  */
 @Injectable()
 export class FormService {
 
   /**
-   * Global clientId variable
+   * Global function for populating form inputs
    *
-   * @type {number}
+   * @param {any} elem - input element
+   * @param {FormGroup} form - form group
    */
-  public static populateForm(elem: any, form: FormGroup) {
+  public static populateForm(elem: any, form: FormGroup): void {
     Object.keys(elem).forEach((field: string) => {
       const formField = form.get(field);
 

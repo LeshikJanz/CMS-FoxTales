@@ -205,7 +205,7 @@ export class EventComponent implements OnInit {
 
   public ngOnInit() {
     this.endTime = moment(this.event.endTime).format('MMMM D, YYYY');
-    this.isEnded = moment(this.event.endTime).isBefore(moment());
+    this.isEnded = moment(this.event.endTime).isBefore(moment().format('MMMM D, YYYY'));
     this.id = this.event.id;
   }
 }
