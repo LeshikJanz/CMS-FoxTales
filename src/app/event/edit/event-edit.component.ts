@@ -146,7 +146,7 @@ export class EventEditComponent implements OnInit {
     this.event.updateEvent({
       id: this.id,
       name: this.eventName,
-      address: this.mapAddress,
+      address: this.mapAddress || this.eventAddress,
       startTime: this.startMomentDate,
       endTime: this.endMomentDate,
       tags: this.defaultTags,
