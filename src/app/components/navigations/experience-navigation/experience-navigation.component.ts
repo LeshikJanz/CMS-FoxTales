@@ -5,8 +5,9 @@ import { Location } from '@angular/common';
 @Component({
   selector: 'experience-navigation',
   templateUrl: 'experience-navigation.component.html',
-  styleUrls: ['experience-navigation.component.scss',
-    '../../../shared/styles/navigation.scss']
+  styleUrls: ['../../../shared/styles/navigation.scss',
+    'experience-navigation.component.scss'
+  ]
 })
 
 export class ExperienceNavigationComponent {

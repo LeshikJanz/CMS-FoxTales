@@ -1,40 +1,21 @@
-.slidemenu #slide-item-1:checked ~ .slider .bar {
-  margin-left: 0%;
-  width: 40px;
-}
-
-// Users
 .slidemenu #slide-item-2:checked ~ .slider .bar {
-  min-width: 50px;
-  width: 6%;
-  margin-left: 7%;
+  width: 70px;
 }
 
-// Clients
 .slidemenu #slide-item-3:checked ~ .slider .bar {
-  min-width: 70px;
-  width: 8%;
-  margin-left: 16%;
+  width: 90px !important;
 }
 
-// Locations
 .slidemenu #slide-item-4:checked ~ .slider .bar {
-  min-width: 100px;
-  width: 10%;
-  margin-left: 25%;
+  width: 180px !important;
 }
 
-//Integrations+hardware
-.slidemenu #slide-item-5:checked ~ .slider .bar {
-  margin-left: 45%;
+.slidemenu label:nth-child(8) {
+  width: 210px;
 }
 
-.slidemenu #slide-item-6:checked ~ .slider .bar {
-  margin-left: 50%;
-}
-
-.slidemenu #slide-item-7:checked ~ .slider .bar {
-  margin-left: 60%;
+.slidemenu label:nth-child(6) {
+  width: 140px;
 }
 
 .actions {
@@ -43,9 +24,6 @@
   bottom: 5px;
 }
 
-.slidemenu label:last-child {
-  width: 210px;
-}
 
 :host /deep/ .actions .btn-group {
   > div {

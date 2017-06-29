@@ -1,7 +1,37 @@
-.slidemenu #slide-item-1:checked ~ .slider .bar{ margin-left: 0%; }
-.slidemenu #slide-item-2:checked ~ .slider .bar{ margin-left: 10%; }
-.slidemenu #slide-item-3:checked ~ .slider .bar{ margin-left: 20%; }
-.slidemenu #slide-item-4:checked ~ .slider .bar{ margin-left: 30%; }
-.slidemenu #slide-item-5:checked ~ .slider .bar{ margin-left: 40%; }
-.slidemenu #slide-item-6:checked ~ .slider .bar{ margin-left: 50%; }
-.slidemenu #slide-item-7:checked ~ .slider .bar{ margin-left: 60%; }
+.slidemenu #slide-item-1:checked ~ .slider .bar {
+  width: 70px;
+}
+
+.slidemenu #slide-item-2:checked ~ .slider .bar {
+  width: 70px;
+  margin-left: 105px;
+}
+
+.slidemenu #slide-item-3:checked ~ .slider .bar {
+  width: 60px;
+  margin-left: 195px;
+}
+
+.slidemenu #slide-item-4:checked ~ .slider .bar {
+  width: 80px;
+  margin-left: 275px;
+}
+
+.slidemenu #slide-item-5:checked ~ .slider .bar {
+  width: 90px;
+  margin-left: 360px;
+}
+
+.slidemenu #slide-item-6:checked ~ .slider .bar {
+  width: 70px;
+  margin-left: 460px;
+}
+
+.slidemenu #slide-item-7:checked ~ .slider .bar {
+  width: 90px;
+  margin-left: 540px;
+}
+
+.slidemenu label {
+  width: 90px !important;
+}

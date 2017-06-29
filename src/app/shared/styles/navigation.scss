@@ -24,7 +24,7 @@
 }
 
 .slidemenu label {
-  width: 10%;
+  width: 100px;
   display: block;
   float: left;
   font-family: WorkSans;
@@ -38,7 +38,7 @@
 
 .slidemenu label:nth-child(2) {
   text-align: left !important;
-  width: 5%;
+  width: 70px;
 }
 
 .slidemenu label:hover {
@@ -81,7 +81,7 @@
 }
 
 .slider .bar {
-  width: 4%;
+  width: 100px;
   margin-left: 9%;
   height: 3px;
   background: #f57f17;
@@ -110,3 +110,11 @@
   opacity: 1;
   color: #f57f17;
 }
+
+.slidemenu #slide-item-1:checked ~ .slider .bar{ width: 55px; margin-left: 0%; }
+.slidemenu #slide-item-2:checked ~ .slider .bar{ margin-left: 85px; }
+.slidemenu #slide-item-3:checked ~ .slider .bar{ margin-left: 195px; }
+.slidemenu #slide-item-4:checked ~ .slider .bar{ margin-left: 325px; }
+.slidemenu #slide-item-5:checked ~ .slider .bar{ margin-left: 38%; }
+.slidemenu #slide-item-6:checked ~ .slider .bar{ margin-left: 48%; }
+.slidemenu #slide-item-7:checked ~ .slider .bar{ margin-left: 58%; }

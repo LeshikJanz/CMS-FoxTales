@@ -2,10 +2,28 @@
   min-width: 1200px !important;
 }
 
-.slidemenu #slide-item-1:checked ~ .slider .bar{ width: 50px; margin-left: 0%; }
-.slidemenu #slide-item-2:checked ~ .slider .bar{ width: 100px; margin-left: 10%; }
-.slidemenu #slide-item-3:checked ~ .slider .bar{ width: 120px; margin-left: 20%; }
-.slidemenu #slide-item-4:checked ~ .slider .bar{ margin-left: 30%; }
-.slidemenu #slide-item-5:checked ~ .slider .bar{ margin-left: 40%; }
-.slidemenu #slide-item-6:checked ~ .slider .bar{ margin-left: 50%; }
-.slidemenu #slide-item-7:checked ~ .slider .bar{ margin-left: 60%; }
+.slidemenu #slide-item-2:checked ~ .slider .bar {
+  width: 110px !important;
+}
+
+.slidemenu #slide-item-3:checked ~ .slider .bar {
+  width: 130px !important;
+  margin-left: 225px !important;
+}
+
+
+.slidemenu label:nth-child(6) {
+  width: 160px;
+}
+
+.slidemenu label:nth-child(4) {
+  width: 140px;
+}
+
+//.slidemenu #slide-item-1:checked ~ .slider .bar{ margin-left: 0%; }
+//.slidemenu #slide-item-2:checked ~ .slider .bar{ margin-left: 6%; }
+//.slidemenu #slide-item-3:checked ~ .slider .bar{ margin-left: 16%; }
+//.slidemenu #slide-item-4:checked ~ .slider .bar{ margin-left: 30%; }
+//.slidemenu #slide-item-5:checked ~ .slider .bar{ margin-left: 40%; }
+//.slidemenu #slide-item-6:checked ~ .slider .bar{ margin-left: 50%; }
+//.slidemenu #slide-item-7:checked ~ .slider .bar{ margin-left: 60%; }
