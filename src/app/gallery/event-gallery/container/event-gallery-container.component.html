@@ -14,7 +14,6 @@
           ></dropdown>
         </div>
         <div>
-            <div class="wrap">
               <label>Start Date</label>
               <input class="picker-input" [ngModel]="startDate"
                      [returnObject]=" 'string' "
@@ -25,8 +24,6 @@
                      [pickerType]="'date'"
                      placeholder="mm/dd/yy"
                      readonly>
-            </div>
-          <div class="wrap">
             <label>End Date</label>
             <input class="picker-input" [ngModel]="endDate"
                    [returnObject]=" 'string' "
@@ -37,7 +34,6 @@
                    [pickerType]="'date'"
                    placeholder="mm/dd/yy"
                    readonly>
-          </div>
         </div>
       </div>
       <switcher [type]="selectedType"

@@ -1,5 +1,6 @@
 <div *ngIf="isModalShown" [config]="{ show: true }" (onHidden)="onHidden()"
-     bsModal #aeModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+     bsModal #aeModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"
+     [config]="{backdrop: true}">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -12,20 +13,20 @@
       <!--First slide of download modal-->
       <div class="modal-body" [hidden]="isEmailSent">
         <div class="switch-container">
-          <label>What would you like to download?</label>
+          <h4>What would you like to download?</h4>
           <switcher [options]="options" [type]="4" (toggle)="onSwitch($event)"></switcher>
         </div>
         <div class="btn-actions">
           <fox-button
               [disabled]="!mediaIds.length"
-              [value]="'START DOWNLOAD'"
-              [design]="'primary'"
+              value="START DOWNLOAD"
+              design="primary"
               (click)="startDownload()"
           ></fox-button>
           <fox-button
               class="cancel"
-              [value]="'CANCEL'"
-              [design]="'tertiary'"
+              value="CANCEL"
+              design="secondary"
               (click)="lgModal.hide()"
           ></fox-button>
         </div>

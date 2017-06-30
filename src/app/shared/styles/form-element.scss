@@ -32,9 +32,11 @@ h1 {
   > div {
     display: flex;
     align-items: flex-start;
+    padding-bottom: 20px;
 
     a.delete-icon {
-      padding-left: 10px;
+      position: absolute;
+      right: -20px;
       font-size: 18px;
       color: #636c72;
     }
@@ -52,17 +54,6 @@ h1 {
     background-position: right 10px center;
   }
 
-  .wrap:after {
-    content: "";
-    position: absolute;
-    right: 10px;
-    top: 55px;
-    border-left: 7px solid transparent;
-    border-right: 7px solid transparent;
-    border-top: 10px solid #626d78;
-    pointer-events: none;
-  }
-
   > p {
     display: flex;
     width: 130px;
@@ -70,9 +61,9 @@ h1 {
     justify-content: space-between;
 
     > label {
+      font-family: WorkSans;
       margin: 0;
     }
-  ;
   }
 
   > div img {
@@ -97,10 +88,6 @@ h1 {
     margin-bottom: 10px;
   }
 
-  label.label-error {
-    color: #ff3328;
-  }
-
   input {
     height: 65px;
     width: 100%;
@@ -120,7 +107,7 @@ h1 {
   }
 
   input::-webkit-input-placeholder {
-    font-family: Helvetica;
+    font-family: WorkSans;
     font-size: 16px;
     color: #b2bac4;
   }
@@ -161,29 +148,12 @@ h1 {
     color: #ff3328;
   }
 
-  .plus-wrap:after {
-    content: '\2714';
-    font-size: inherit;
-    position: absolute;
-    height: 5px;
-    width: 5px;
-    top: 50px;
-    right: 20px;
-    color: #2dcc70;
-  }
-
   input:disabled {
     background-color: #ffffff;
     border: solid 1px #b2bac4;
     font-family: OpenSans;
     font-size: 16px;
     color: #b2bac4;
-  }
-
-  .error-text {
-    color: #ff3328;
-    font-family: Avenir;
-    font-size: 10px;
   }
 
   .social-accounts {
@@ -197,19 +167,6 @@ h1 {
     a {
       align-self: center;
     }
-  }
-
-  .add-button {
-    display: flex;
-    cursor: pointer;
-    color: #47535d;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 48px;
-    border-radius: 6px;
-    background-color: #ffffff;
-    border: dashed 1px #7a8693;
   }
 
   tag-input {
@@ -231,4 +188,22 @@ fox-button {
   margin: 50px 0;
   height: 55px;
   width: 120px;
-};
+}
+
+:host /deep/ .MicrosoftMap .as_container ul li {
+  background-color: transparent !important;
+  border-bottom: 1px solid #d8dce1;
+
+  &:hover {
+    color: #f57f17 !important;
+  }
+
+  .suggestLink:hover {
+    background-color: transparent;
+  }
+  .as_suggestion_root_inside {
+    font-family: WorkSans;
+    font-size: 16px;
+    //color: #343a40;
+  }
+}

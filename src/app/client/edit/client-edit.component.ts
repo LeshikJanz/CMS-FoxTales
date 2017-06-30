@@ -28,8 +28,8 @@ import { FormService } from "../../shared/core/form/form.service";
 @Component({
   selector: 'client-edit',
   templateUrl: './client-edit.component.html',
-  styleUrls: ['client-edit.component.scss',
-    '../../shared/styles/form-element.scss']
+  styleUrls: ['../../shared/styles/form-element.scss',
+    'client-edit.component.scss',]
 })
 export class ClientEditComponent implements OnInit {
   /**
@@ -198,7 +198,7 @@ export class ClientEditComponent implements OnInit {
         }
 
         this.client = client;
-        
+
         FormService.populateForm(this.client, this.clientForm);
 
         this.addSocialAccounts(client);

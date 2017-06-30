@@ -72,7 +72,7 @@
               [(ngModel)]="client.socialAccounts[i]"
               [formControl]="account"
               placeholder="Social Account Url">
-          <a href="javascript:void(0)" (click)="removeSocialAccount(i)">x</a>
+          <a class="delete-icon" href="javascript:void(0)" (click)="removeSocialAccount(i)">x</a>
         </div>
 
         <div>

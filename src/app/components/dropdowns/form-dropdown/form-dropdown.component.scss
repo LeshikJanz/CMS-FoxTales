@@ -10,7 +10,9 @@ label {
 }
 
 .placeholder {
-  color: #999999 !important;
+  font-family: WorkSans;
+  font-size: 16px;
+  color: #b2bac4 !important;
 }
 
 ul.dropdown-menu {
@@ -57,7 +59,7 @@ ul.dropdown-menu {
   color: #3d3d3d;
 
   > label {
-    font-family: OpenSans;
+    font-family: WorkSans;
     font-size: 16px;
     color: #333;
     font-weight: 400;

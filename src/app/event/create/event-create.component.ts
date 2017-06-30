@@ -67,6 +67,7 @@ export class EventCreateComponent implements OnInit {
 
   public tagInputValue: string;
   public mapAddress: any;
+  
   /**
    * Constructor
    *
