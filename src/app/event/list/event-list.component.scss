@@ -1,3 +1,5 @@
+@import "../../shared/styles/modal";
+
 .list-container .actions {
   display: flex;
   justify-content: space-between;
@@ -58,7 +60,6 @@ add-button {
   height: 0;
   border-top: 5px solid transparent;
   border-bottom: 5px solid transparent;
-
   border-right: 8px solid #6a8186;
 }
 
@@ -90,4 +91,13 @@ div.pagination {
       text-align: center;
     }
   }
+}
+
+fox-button {
+  margin: 0;
+  padding: 0;
+}
+
+.modal-body {
+  margin: 0 20px;
 }
