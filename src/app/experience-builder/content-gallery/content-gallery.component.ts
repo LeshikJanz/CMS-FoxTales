@@ -26,6 +26,8 @@ export class ContentGalleryComponent {
   public backgroundFitType: any;
   public backgroundPosition: any;
   public contentOption: any = [];
+  public backgroundBase64: string;
+  public mobileBackgroundBase64: string;
 
   constructor(private router: Router,
               private experienceBuilderService: ExperienceBuilderService) {
@@ -55,17 +57,19 @@ export class ContentGalleryComponent {
 
   public createTab3(modal) {
     console.log('finish tab');
-    this.hashtags = this.hashtags.map((hashtag) =>{
+    this.hashtags = this.hashtags.map((hashtag) => {
       return hashtag.value;
     });
- 
+
     this.experienceBuilderService.postContentGallerySettings({
       name: this.galleryName,
       hashtags: this.hashtags.toString(),
       backgroundFit: this.backgroundFitType,
       backgroundPosition: this.backgroundPosition,
+      backgroundImage: this.backgroundBase64,
       shortUrl: this.customUrl,
       showMobileBackgroundImage: this.mobileBackgroundChecked,
+      mobileBackgroundImage: this.mobileBackgroundBase64,
       navigationEnabled: this.galleryType,
       contentOptionsIds: this.contentOption
     }).subscribe((response) => {
@@ -77,14 +81,32 @@ export class ContentGalleryComponent {
   }
 
   public checkedContentOption(event) {
-    if(event.isChecked === true && this.contentOption.includes(event.name.id)){
+    if (event.isChecked === true && this.contentOption.includes(event.name.id)) {
+      return;
     }
-    if(event.isChecked === false && this.contentOption.includes(event.name.id)){
-      this.contentOption.splice(this.contentOption.indexOf(event.name.id),1);
+    if (event.isChecked === false && this.contentOption.includes(event.name.id)) {
+      this.contentOption.splice(this.contentOption.indexOf(event.name.id), 1);
     }
-    if(event.isChecked === true && !this.contentOption.includes(event.name.id)){
-      this.contentOption.push(event.name.id)
+    if (event.isChecked === true && !this.contentOption.includes(event.name.id)) {
+      this.contentOption.push(event.name.id);
     }
+  }
+
+  /**
+   * Receive img in base64
+   *
+   * @param {string} base64 - string
+   * @returns {void}
+   */
+  public onImgUploaded(data, type) {
+    if (type === 'background') {
+      this.backgroundBase64 = data.base64.replace(/data:image\/(png|jpg|jpeg|gif);base64,/, '');
+    }
+    if (type === 'mobileBackground') {
+      this.mobileBackgroundBase64 =
+        data.base64.replace(/data:image\/(png|jpg|jpeg|gif);base64,/, '');
+    }
+
   }
 
 }

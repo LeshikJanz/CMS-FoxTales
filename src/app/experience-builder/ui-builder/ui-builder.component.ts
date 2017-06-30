@@ -11,6 +11,7 @@ import { ExperienceBuilderService } from '../experience-builder.service';
 })
 
 export class UIBuilderComponent {
+
   public primaryColor: string;
   public secondaryColor: string;
   public backgroundColor: string;
@@ -53,14 +54,12 @@ export class UIBuilderComponent {
    * @param {string} base64 - string
    * @returns {void}
    */
-  public onImgUploaded(data,type) {
-    if(type === 'logo') {
-      this.logoBase64 = data.base64;
-      this.logoBase64 = this.logoBase64.replace(/data:image\/(png|jpg|jpeg|gif);base64,/, '');
+  public onImgUploaded(data, type) {
+    if (type === 'logo') {
+      this.logoBase64 = data.base64.replace(/data:image\/(png|jpg|jpeg|gif);base64,/, '');
     }
-    if(type === 'overlay') {
-      this.overlayBase64 = data.base64;
-      this.overlayBase64 = this.overlayBase64.replace(/data:image\/(png|jpg|jpeg|gif);base64,/, '');
+    if (type === 'overlay') {
+      this.overlayBase64 = data.base64.replace(/data:image\/(png|jpg|jpeg|gif);base64,/, '');
     }
 
   }

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ITag } from '../tag.interface';
@@ -9,6 +9,7 @@ import { ISwitcher } from '../../components/toggles/switcher/switcher.interface'
 import {  } from 'bingmaps/scripts/MicrosoftMaps/Microsoft.Maps.All';
 import { UserService } from '../../user/user.service';
 import { IUserClient } from '../../user/user-client.interface';
+import { ModalDirective } from 'ngx-bootstrap';
 
 @Component({
   selector: 'event-create',
@@ -20,7 +21,8 @@ import { IUserClient } from '../../user/user-client.interface';
     '../../shared/styles/calendar.scss'
   ]
 })
-export class EventCreateComponent implements OnInit {
+export class EventCreateComponent implements OnInit, AfterViewInit {
+    @ViewChild('buildExperienceModal') public lgModal: ModalDirective;
   public startMomentTime: string;
   public startMomentDate: string;
   public endMomentTime: string;
@@ -28,6 +30,7 @@ export class EventCreateComponent implements OnInit {
   public isNotificationEnabled: string;
   public notification: number;
   public notificationOptions: ISwitcher[] = [{id: 1, name: 'Yes'}, {id: 2, name: 'No'}];
+  public experienceId: any;
 
   @ViewChild ('myMap') public myMap;
 
@@ -90,10 +93,13 @@ export class EventCreateComponent implements OnInit {
    */
 
   public ngOnInit(): void {
+
     this.getTags();
     this.getUserClients();
     this.buildEventForm();
+  }
 
+  public ngAfterViewInit() {
     let map = this.mapAddress = new Microsoft.Maps.Map(this.myMap.nativeElement, {
       credentials: process.env.BING_KEY
     });
@@ -192,8 +198,9 @@ export class EventCreateComponent implements OnInit {
     event['endTime'] = moment(this.endMomentDate, 'MMM DD YYYY').format();
 
     this.event.createEvent(event).subscribe((response) => {
-      console.log(response);
-      this.router.navigate(['/events/events']);
+      this.experienceId = response.id;
+      this.lgModal.show();
+      // this.router.navigate(['/events/events']);
     });
   }
 
@@ -236,5 +243,9 @@ export class EventCreateComponent implements OnInit {
     return targetValue && targetValue
       .toLowerCase()
       .indexOf(value.toLowerCase()) >= 0;
+  }
+
+  public hide() {
+    this.router.navigate(['/events/events']);
   }
 }

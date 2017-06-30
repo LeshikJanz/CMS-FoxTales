@@ -131,7 +131,7 @@ export class ExperienceBuilderService {
         });
     }
 
-    public postMediaManipulations(settings){
+    public postMediaManipulations(settings) {
       return this.http.post(`${process.env.API_URL}/MediaManipulations/`
         , settings)
         .map((response: Response) => {

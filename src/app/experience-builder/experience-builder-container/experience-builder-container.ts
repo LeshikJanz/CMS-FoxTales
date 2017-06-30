@@ -11,7 +11,7 @@ export class ExperienceBuilderContainerComponent implements OnInit {
 
   /**
    * this is for edit/create from experience list
-   * will look for query params to populate information 
+   * will look for query params to populate information
    */
   public id: number;
   public sub: any;
@@ -20,9 +20,9 @@ export class ExperienceBuilderContainerComponent implements OnInit {
               private route: ActivatedRoute,
               private experienceBuilderService: ExperienceBuilderService) {}
 
-  public ngOnInit(){
+  public ngOnInit() {
     this.sub = this.route.queryParams.subscribe((params) => {
-      if(params['id']){
+      if (params['id']) {
         this.id = +params['id'];
         this.experienceBuilderService.experience.experienceId = params['id'];
       }
