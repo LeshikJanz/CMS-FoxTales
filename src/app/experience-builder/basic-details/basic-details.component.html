@@ -1,17 +1,17 @@
 <div class="basic-details-container">
-  <h4>When is the experience happening?</h4>
+  <h2>When is the experience happening?</h2>
 
 <!--<div *ngFor="let runTime of runTimes" >
 <basic-details-run-times [runTime]="runTime" (updateRunTime)="updateRunTime($event)"></basic-details-run-times>
 </div>-->
-  <div class="form-element dates">
-    <div>
+  <div class="line-group">
+    <div class="form-element">
       <label>Start Date</label>
         <input class="picker-input" [ngModel]="startMomentDate" [returnObject]=" 'string' "
                [(dateTimePicker)]="startMomentDate" [mode]="'dropdown'" [pickerType]="'date'" placeholder="Date"
                readonly>
     </div>
-    <div>
+    <div class="form-element">
       <label>Start Time</label>
       <div>
           <input class="picker-input" [ngModel]="startMomentTime" [returnObject]=" 'string' " [viewFormat]="'HH:mm'"
@@ -21,14 +21,14 @@
     </div>
   </div>
 
-  <div class="form-element dates">
-    <div>
+  <div class="line-group">
+    <div class="form-element">
       <label>End Date</label>
         <input class="picker-input" [ngModel]="endMomentDate" [returnObject]=" 'string' "
                [(dateTimePicker)]="endMomentDate"
                [mode]="'dropdown'" [pickerType]="'date'" placeholder="Date" readonly>
     </div>
-    <div>
+    <div class="form-element">
       <label>End Time</label>
       <div>
           <input class="picker-input" [ngModel]="endMomentTime" [returnObject]=" 'string' " [viewFormat]="'HH:mm'"
@@ -52,7 +52,7 @@
   <div class="addRunTime" (click)="addRunTimes()"><div class="addRunTimeTitle"><img src="https://foxtalesdbgroup1220.blob.core.windows.net/fonts/add.png"> Add Another runtime</div></div>
   <br>
   <hr>
-  <h3>Let's Add Some Brand Tags</h3>
+  <h2>Let's Add Some Brand Tags</h2>
   <label>Brand Tags</label>
   <tag-input [(ngModel)]="defaultTags" [transform]="tagTransformer" >
     <tag-input-dropdown [matchingFn]="matchingFn" [identifyBy]="'id'" [displayBy]="'name'" [autocompleteItems]="tags">

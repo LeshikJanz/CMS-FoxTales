@@ -7,7 +7,7 @@
     <div class="form-group">
       <!-- Software License -->
       <div class="form-element">
-        <h1>Software License*</h1>
+        <h2>Software License*</h2>
         <label>&nbsp;</label>
         <fox-select
             (change)="license.softwareLicenseTypeId = $event.id"
@@ -81,7 +81,7 @@
 
       <!-- Hardware -->
       <div class="form-element">
-        <h1>Hardware License*</h1>
+        <h2 style="padding-bottom: 15px">Hardware License*</h2>
         <fox-select
             (change)="license.hardwareLicenseTypeId = $event.id"
             [active]="activeLicenseHardware"
@@ -103,7 +103,7 @@
     </div>
 
     <div class="form-group">
-      <h1>Billing information</h1>
+      <h2>Billing information</h2>
 
       <!-- Name -->
       <form-input

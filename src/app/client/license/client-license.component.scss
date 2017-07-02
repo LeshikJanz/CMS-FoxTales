@@ -1,4 +1,5 @@
 @import "../../shared/styles/form-element";
+@import "../../shared/styles/mixins";
 
 form {
   display: flex;
@@ -7,6 +8,10 @@ form {
   width: 100%;
   min-width: 900px;
   max-width: 1200px;
+
+  h2 {
+    @include heading-2;
+  }
 
   .form-element {
     width: 400px;

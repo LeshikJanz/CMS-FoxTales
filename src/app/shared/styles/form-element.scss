@@ -18,6 +18,10 @@ h1 {
   @include heading-1;
 }
 
+h2 {
+  @include heading-2;
+}
+
 .form-element {
   display: flex;
   position: relative;
