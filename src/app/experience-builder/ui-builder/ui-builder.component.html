@@ -1,19 +1,33 @@
+<button type="button" class="btn btn-primary" (click)="staticModal.show()">Create Interface</button>
+
+
+<div class="modal fade" bsModal #staticModal="bs-modal" [config]="{backdrop: 'static'}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title pull-left">Title of Email Builder</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="staticModal.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
 <tabset #staticTabs class='ui-builder-container'>
   <tab heading='Interface'>
       <div class="interface-container">
           <h3>Interface Colors</h3>
           <h5>Primary Text Color</h5>
-           <input class="colorDisplayInput" [style.background]="primaryColor"/><input class="colorSelectionInput" [(colorPicker)]="primaryColor"  [value]="primaryColor"  [cpSaveClickOutside]="true"/>
+           <input class="colorDisplayInput" [style.background]="primaryColor"/><input class="colorSelectionInput" [(colorPicker)]="primaryColor" [cpPosition]="'left'" [cpPositionOffset]="'-50%'" [value]="primaryColor" [cpSaveClickOutside]="true"/>
             <h5>Secondary Text Color</h5>
-           <input class="colorDisplayInput" [style.background]="secondaryColor"/><input class="colorSelectionInput" [(colorPicker)]="secondaryColor"  [value]="secondaryColor"  />
+           <input class="colorDisplayInput" [style.background]="secondaryColor"/><input class="colorSelectionInput" [(colorPicker)]="secondaryColor" [cpPosition]="'left'" [cpPositionOffset]="'-50%'"  [value]="secondaryColor"  />
             <h5>Background Color</h5>
-           <input class="colorDisplayInput" [style.background]="backgroundColor"/><input class="colorSelectionInput" [(colorPicker)]="backgroundColor"  [value]="backgroundColor"  />
+           <input class="colorDisplayInput" [style.background]="backgroundColor"/><input class="colorSelectionInput" [(colorPicker)]="backgroundColor" [cpPosition]="'left'" [cpPositionOffset]="'-50%'"  [value]="backgroundColor"  />
           <h4>Logo and Overlay</h4>
           <h5>Drag &amp; Drop Logo Here</h5>
-          <upload-button></upload-button>
+          <upload-button (imgUploaded)="onImgUploaded($event, 'logo')"></upload-button>
           <br>
           <h5>Drag &amp; Drop Overlay Here</h5>
-           <upload-button></upload-button>
+           <upload-button (imgUploaded)="onImgUploaded($event, 'overlay')"></upload-button>
           <button  [type]="'tertiary'" [value]="'Next'" (click)="Next();">Next</button>
       </div>
   </tab>
@@ -31,3 +45,7 @@
     <button  [type]="'tertiary'" [value]="'Finish'" (click)="finish();">Finish</button>
   </tab>
 </tabset>
+      </div>
+    </div>
+  </div>
+</div>

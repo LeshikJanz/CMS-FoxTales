@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder } from '@angular/forms';
 
@@ -14,7 +14,7 @@ import {} from 'bingmaps/scripts/MicrosoftMaps/Microsoft.Maps.All';
   templateUrl: './event-edit.component.html',
   styleUrls: ['./event-edit.component.scss']
 })
-export class EventEditComponent implements OnInit {
+export class EventEditComponent implements OnInit, AfterViewInit {
   @ViewChild('myMap') public myMap;
   public startMomentDate: string;
   public endMomentDate: string;
@@ -51,7 +51,13 @@ export class EventEditComponent implements OnInit {
    * @returns {void}
    */
   public ngOnInit(): void {
+
     this.getTags();
+
+  }
+
+  public ngAfterViewInit() {
+
     this.sub = this.route.params.subscribe((params) => {
       this.id = params['id'];
       this.getEvent(this.id);
@@ -60,6 +66,9 @@ export class EventEditComponent implements OnInit {
 
   public getEvent(id) {
     this.event.getEvent(id).subscribe((event) => {
+      if (event.endTime === null) {
+        event.endTime = moment();
+      }
       this.eventName = event.name;
       this.eventAddress = event.address;
       this.startMomentDate = moment(event.startTime).format('MMM DD, YYYY');
@@ -96,9 +105,7 @@ export class EventEditComponent implements OnInit {
         manager.attachAutosuggest('#searchBox', '#searchBoxContainer', (result) => {
 
           map['address'] = result.formattedSuggestion;
-          this.mapAddress = result.formattedSuggestion;
-          // map['latitude'] = result.location.latitude;
-          // map['longitude'] = result.location.longitude;
+          this.eventAddress = result.formattedSuggestion;
 
           // Remove previously selected suggestions from the map.
           map.entities.clear();

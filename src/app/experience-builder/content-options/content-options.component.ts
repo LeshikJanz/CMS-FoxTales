@@ -1,5 +1,5 @@
-import { Component, Input, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, Input, ViewChild, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 import { TabsetComponent } from 'ngx-bootstrap';
 import { ButtonsModule } from 'ngx-bootstrap';
 import { ExperienceBuilderService } from '../experience-builder.service';
@@ -12,28 +12,29 @@ import { ISwitcher } from '../../components/toggles/switcher/switcher.interface'
      styleUrls: ['content-options.component.scss']
 })
 
-export class ContentOptionsComponent {
- @ViewChild('staticTabs') public staticTabs: TabsetComponent;
- public contentOptionModal: any;
- public contentOptionEditModal: any;
- public contentName: string;
- public contentTypeValue: string;
- public orientationTypeValue: string;
- public contentSwitchOptions: ISwitcher[] = [
-   { id: 1, name: 'Still' },
-   { id: 2, name: 'GIF' },
-   { id: 4, name: 'BurstGIF' }
- ];
+export class ContentOptionsComponent implements OnInit {
+  @ViewChild('staticTabs') public staticTabs: TabsetComponent;
+  public contentOptionModal: any;
+  public contentOptionEditModal: any;
+  public contentName: string;
+  public contentTypeValue: string;
+  public orientationTypeValue: string;
+  public contentSwitchOptions: ISwitcher[] = [
+    { id: 1, name: 'Still' },
+    { id: 2, name: 'GIF' },
+    { id: 4, name: 'BurstGIF' }
+  ];
   public orientationSwitchOptions: ISwitcher[] = [
    { id: 106, name: 'Landscape' },
    { id: 105, name: 'Portrait' },
    { id: 104, name: 'Square' }
  ];
- public contentOptions: any[];
- public contentTypeOption: any;
- public orientationTypeOption: any;
+  public contentOptions: any[];
+  public contentTypeOption: any;
+  public orientationTypeOption: any;
 
   constructor(private router: Router,
+              private route: ActivatedRoute,
               private experienceBuilderService: ExperienceBuilderService) {}
 
  public createTab1() {
@@ -55,10 +56,8 @@ export class ContentOptionsComponent {
         contentOptionId: this.experienceBuilderService.experience.contentOptionId,
         mediaManipulationTargetId: 1,
         position: 0,
-      }).subscribe((response) => { console.log(response)});
+      }).subscribe((response) => { console.log(response); });
     });
-
-
 
   this.staticTabs.tabs[1].active = true;
   }
@@ -71,7 +70,7 @@ export class ContentOptionsComponent {
     .getContentOptions(this.experienceBuilderService.experience.experienceId)
     .subscribe((response) => {
       this.contentOptions = response.map((content) => {
-        console.log(content)
+        console.log(content);
         return content;
       });
 
@@ -100,13 +99,26 @@ export class ContentOptionsComponent {
     if (content.captureTypeId === 4) {
       this.contentTypeOption = this.contentSwitchOptions[2].id;
     }
-  //  this.orientationTypeValue = content.cameraSettings[0].settingValueId;
 }
 
-public onImgUploadedNon64(data){
-  this.experienceBuilderService.postMediaManipulationsAssets(data)
-  .subscribe((response) => console.log(response))
+  public onImgUploadedNon64(data) {
+    this.experienceBuilderService.postMediaManipulationsAssets(data)
+    .subscribe((response) => console.log(response));
+  }
 
-}
+  public ngOnInit() {
+    this.route.queryParams.subscribe((params) => {
+      if (params['id']) {
+        this.experienceBuilderService
+        .getContentOptions(this.experienceBuilderService.experience.experienceId)
+        .subscribe((response) => {
+        this.contentOptions = response.map((content) => {
+          console.log(content);
+          return content;
+        });
+        });
+      }
+    });
+  }
 
 }

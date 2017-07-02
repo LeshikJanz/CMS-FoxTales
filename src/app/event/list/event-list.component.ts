@@ -254,7 +254,7 @@ export class EventListComponent implements OnInit {
       .subscribe((eventList: IEventList) => {
         this.Events = eventList.result;
         this.rowsCount = eventList.totalRowCount;
-      })
+      });
   }
 
   /**
@@ -387,7 +387,6 @@ export class EventListComponent implements OnInit {
 
     this.changePage();
   }
-
 
   /**
    * Get unused event groups ( do not contain current event )

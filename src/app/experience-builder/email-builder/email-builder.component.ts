@@ -51,13 +51,14 @@ export class EmailBuilderComponent {
  };
 
   public checkedContentOption(event) {
-    if(event.isChecked === true && this.contentOption.includes(event.name.id)){
+    if (event.isChecked === true && this.contentOption.includes(event.name.id)) {
+      return;
     }
-    if(event.isChecked === false && this.contentOption.includes(event.name.id)){
-      this.contentOption.splice(this.contentOption.indexOf(event.name.id),1);
+    if (event.isChecked === false && this.contentOption.includes(event.name.id)) {
+      this.contentOption.splice(this.contentOption.indexOf(event.name.id), 1);
     }
-    if(event.isChecked === true && !this.contentOption.includes(event.name.id)){
-      this.contentOption.push(event.name.id)
+    if (event.isChecked === true && !this.contentOption.includes(event.name.id)) {
+      this.contentOption.push(event.name.id);
     }
   };
 }

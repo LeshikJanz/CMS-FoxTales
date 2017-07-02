@@ -25,6 +25,7 @@ export class BasicDetailsComponent implements OnInit {
   public tags: ITag[];
   public sub: any;
   public id: any;
+  public runTimes: any[] = [];
 
   constructor(private router: Router,
               private experienceBuilderService: ExperienceBuilderService,
@@ -54,12 +55,7 @@ export class BasicDetailsComponent implements OnInit {
         productId: this.experienceBuilderService.experience.productId,
         config: '{}',
         brands: this.defaultTags,
-        runTimes:
-        [{
-          startTime: moment(this.startMomentDate +
-            this.startMomentTime, 'MMM DD, YYYYHH:mm').format(),
-          endTime: moment(this.endMomentDate + this.endMomentTime, 'MMM DD, YYYYHH:mm').format()
-        }]
+        runTimes: this.runTimes
       }).subscribe((runTimes) => {
       this.router.navigate(['/experience-builder/container/content-options']);
     });
@@ -122,7 +118,24 @@ export class BasicDetailsComponent implements OnInit {
   };
 
   public addRunTimes() {
-    console.log('add run time');
+    if (this.startMomentDate || this.endMomentDate ||
+    this.endMomentTime || this.startMomentTime ) {
+      this.runTimes.push({
+        startTime: moment(this.startMomentDate +
+          this.startMomentTime, 'MMM DD, YYYYHH:mm').format(),
+        endTime: moment(this.endMomentDate + this.endMomentTime, 'MMM DD, YYYYHH:mm').format()
+      });
+      this.startMomentDate = this.startMomentTime =
+      this.endMomentDate = this.endMomentTime = null;
+    }
+  }
+
+  public editRunTime(time) {
+    console.log(time);
+  }
+
+  public deleteRunTime(time) {
+    this.runTimes.splice(this.runTimes.indexOf(time), 1);
   }
 
 }

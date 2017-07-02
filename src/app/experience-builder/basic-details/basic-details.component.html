@@ -37,6 +37,18 @@
       </div>
     </div>
   </div>
+  <table *ngIf="runTimes.length > 0">
+    <tr>
+      <th>Start Date</th>
+      <th>End Date</th>
+      <th></th>
+    </tr>
+    <tr  *ngFor="let runtime of runTimes">
+      <td>{{runtime.startTime | date:'medium'}}</td>
+      <td>{{runtime.endTime | date:'medium'}}</td>
+      <td><i [ngStyle]="{'margin-right': '15px'}" class="fa fa-pencil" aria-hidden="true" (click)="editRunTime(runtime)"></i><i class="fa fa-times" aria-hidden="true" (click)="deleteRunTime(runtime)"></i></td>
+    </tr>
+  </table>
   <div class="addRunTime" (click)="addRunTimes()"><div class="addRunTimeTitle"><img src="https://foxtalesdbgroup1220.blob.core.windows.net/fonts/add.png"> Add Another runtime</div></div>
   <br>
   <hr>

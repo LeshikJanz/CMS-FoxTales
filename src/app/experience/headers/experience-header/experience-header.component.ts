@@ -19,11 +19,10 @@ export class ExperienceHeaderComponent implements OnInit {
 
   public ngOnInit() {
     this.route.children[0].params.subscribe((params: any) => {
-      this.id = params['id']
+      this.id = params['id'];
       this.eventService.getEvent(params['id'])
-      .subscribe((event: IEvent) => this.event = event)
+      .subscribe((event: IEvent) => this.event = event);
      });
-    
 
   }
 }
