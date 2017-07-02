@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavigationService } from '../../../shared/core/navigation/navigation.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'events-navigation',
@@ -9,5 +10,15 @@ import { NavigationService } from '../../../shared/core/navigation/navigation.se
 })
 
 export class EventsNavigationComponent {
-  constructor(private nav: NavigationService) {}
+  public eventId: number;
+
+  constructor(private nav: NavigationService,
+              private route: ActivatedRoute) {
+    this.route.params.subscribe((params) => {
+        this.eventId = params['id'];
+        console.log('this.eventId');
+        console.log(this.eventId);
+      }
+    )
+  }
 }

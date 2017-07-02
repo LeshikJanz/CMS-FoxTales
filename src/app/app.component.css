@@ -9,6 +9,11 @@
 }
 
 @font-face {
+  font-family: Avenir-Light;
+  src: url(/assets/fonts/Avenir/AvenirNextLTPro-lt.otf);
+}
+
+@font-face {
   font-family: Avenir-Book;
   src: url(/assets/fonts/Avenir/AvenirNextLTPro-Regular.otf);
 }

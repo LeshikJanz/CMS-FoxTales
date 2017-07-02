@@ -1,3 +1,5 @@
+@import "../../../shared/styles/mixins";
+
 .slidemenu #slide-item-1.active ~ .slider .bar {
   width: 50px;
 }

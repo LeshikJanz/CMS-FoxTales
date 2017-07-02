@@ -1,0 +1,39 @@
+@mixin input-label {
+  font-family: AvenirNext-DemiBold;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1;
+  color: #4b535c;
+  margin-bottom: 10px;
+}
+
+@mixin input-placeholder {
+  font-family: WorkSans;
+  font-size: 16px;
+  color: #b2bac4;
+}
+
+@mixin input-text {
+  width: inherit;
+  height: 65px;
+  border-radius: 3px;
+  background-color: #ffffff;
+  border: solid 1px #3d3d3d;
+  font-family: WorkSans;
+  font-size: 16px;
+  color: #3d3d3d;
+}
+
+@mixin dividing-line {
+  height: 2px;
+  background-color: #f1f1f1;
+}
+
+@mixin heading-1 {
+  font-family: Avenir-Light;
+  font-size: 40px;
+  font-weight: 300;
+  line-height: 1.2;
+  letter-spacing: 1px;
+  color: #343a40;
+}

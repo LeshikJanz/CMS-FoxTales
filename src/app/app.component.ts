@@ -12,7 +12,7 @@ import { RouteData } from './shared/core/event-management/route-data.service';
   selector: 'app',
   encapsulation: ViewEncapsulation.None,
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css', 'shared/styles/mixins.scss']
 })
 export class AppComponent implements OnInit {
   /**

@@ -1,3 +1,5 @@
+@import "mixins";
+
 .line-group {
   display: flex;
   min-width: inherit;
@@ -13,12 +15,7 @@ fox-select {
 }
 
 h1 {
-  font-family: Avenir;
-  font-size: 20px;
-  font-weight: 900;
-  line-height: 2.4;
-  letter-spacing: 1px;
-  color: #343a40;
+  @include heading-1;
 }
 
 .form-element {
@@ -80,36 +77,20 @@ h1 {
   }
 
   label {
-    font-family: AvenirNext-DemiBold;;
-    font-size: 16px;
-    font-weight: 600;
-    line-height: 1;
-    color: #4b535c;
-    margin-bottom: 10px;
+    @include input-label;
   }
 
   input {
-    height: 65px;
-    width: 100%;
-    border-radius: 3px;
-    background-color: #ffffff;
-    border: solid 1px #3d3d3d;
-    font-family: WorkSans;
-    font-size: 16px;
-    color: #3d3d3d;
+    @include input-text;
     padding: 6px 22px;
   }
 
   input:focus {
-    border-radius: 3px;
-    background-color: #ffffff;
     border: solid 1px #3d3d3d;
   }
 
   input::-webkit-input-placeholder {
-    font-family: WorkSans;
-    font-size: 16px;
-    color: #b2bac4;
+    @include input-placeholder;
   }
 
   checkbox {
@@ -127,6 +108,7 @@ h1 {
     height: 0;
     cursor: pointer;
   }
+
   .close-icon:after {
     content: "X";
     position: absolute;
@@ -184,8 +166,6 @@ h1 {
 }
 
 fox-button {
-  padding: 50px 0;
-  margin: 50px 0;
   height: 55px;
   width: 120px;
 }
@@ -204,6 +184,5 @@ fox-button {
   .as_suggestion_root_inside {
     font-family: WorkSans;
     font-size: 16px;
-    //color: #343a40;
   }
 }
