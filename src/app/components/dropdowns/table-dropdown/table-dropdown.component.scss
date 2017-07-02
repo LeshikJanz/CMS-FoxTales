@@ -1,3 +1,5 @@
+@import "../../../shared/styles/mixins";
+
 $small-width: 132px;
 $small-height: 26px;
 $mid-width: 117px;
@@ -10,15 +12,7 @@ ul.dropdown-menu {
   min-width: $small-width;
 
   li {
-    height: 46px;
-    display: flex;
-    align-items: center;
-    padding-left: 20px;
-    cursor: pointer;
-    font-family: WorkSans;
-    font-size: 16px;
-    color: #343a40;
-    border-top: solid 1px #f5f6f7;
+    @include dropdown-li;
   }
 
   li:first-child {
@@ -43,8 +37,8 @@ ul.dropdown-menu {
   :focus {
     border-color: #66afe9;
     outline: 0;
-    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
-    box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
   }
 
   input {
@@ -100,7 +94,6 @@ ul.dropdown-menu {
     }
   }
 
-
 }
 
 .medium {
@@ -121,12 +114,10 @@ ul.dropdown-menu {
   }
 
   .dropdown-menu {
-    min-width:$mid-width;
+    min-width: $mid-width;
     width: $mid-width;
   }
 }
-
-
 
 .big-ul {
   .btn.drop-button {
@@ -146,7 +137,7 @@ ul.dropdown-menu {
   }
 
   .dropdown-menu {
-    min-width:$mid-width;
+    min-width: $mid-width;
     width: $big-ul-width;
   }
 }

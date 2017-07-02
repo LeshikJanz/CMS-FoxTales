@@ -15,7 +15,7 @@
   justify-content: initial;
 
   > div {
-    border-bottom: 1px solid #e5e5e5;
+    @include border-bottom;
 
     &:last-child {
       border-bottom: none;

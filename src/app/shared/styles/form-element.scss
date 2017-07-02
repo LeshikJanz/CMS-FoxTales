@@ -32,8 +32,7 @@ h1 {
     padding-bottom: 20px;
 
     a.delete-icon {
-      position: absolute;
-      right: -20px;
+      margin-left: 10px;
       font-size: 18px;
       color: #636c72;
     }
@@ -73,7 +72,6 @@ h1 {
 
   upload-button {
     width: 100%;
-    margin-top: 20px;
   }
 
   label {
@@ -82,6 +80,7 @@ h1 {
 
   input {
     @include input-text;
+    @include input-container;
     padding: 6px 22px;
   }
 
@@ -168,6 +167,11 @@ h1 {
 fox-button {
   height: 55px;
   width: 120px;
+}
+
+form fox-button, .form fox-button {
+  padding: 50px 0;
+  margin: 50px 0;
 }
 
 :host /deep/ .MicrosoftMap .as_container ul li {

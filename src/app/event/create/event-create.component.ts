@@ -13,12 +13,7 @@ import { IUserClient } from '../../user/user-client.interface';
 @Component({
   selector: 'event-create',
   templateUrl: './event-create.component.html',
-  styleUrls: ['event-create.component.scss',
-    '../../shared/styles/form-element.scss',
-    '../../shared/styles/date-picker.scss',
-    '../../shared/styles/tag-input.scss',
-    '../../shared/styles/calendar.scss'
-  ]
+  styleUrls: ['event-create.component.scss']
 })
 export class EventCreateComponent implements OnInit {
   public startMomentTime: string;

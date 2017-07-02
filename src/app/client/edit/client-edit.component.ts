@@ -28,8 +28,7 @@ import { FormService } from "../../shared/core/form/form.service";
 @Component({
   selector: 'client-edit',
   templateUrl: './client-edit.component.html',
-  styleUrls: ['../../shared/styles/form-element.scss',
-    'client-edit.component.scss',]
+  styleUrls: ['client-edit.component.scss']
 })
 export class ClientEditComponent implements OnInit {
   /**

@@ -12,11 +12,7 @@ import {} from 'bingmaps/scripts/MicrosoftMaps/Microsoft.Maps.All';
 @Component({
   selector: 'event-edit',
   templateUrl: './event-edit.component.html',
-  styleUrls: ['./event-edit.component.scss',
-    '../../shared/styles/form-element.scss',
-    '../../shared/styles/date-picker.scss',
-    '../../shared/styles/tag-input.scss'
-  ]
+  styleUrls: ['./event-edit.component.scss']
 })
 export class EventEditComponent implements OnInit {
   @ViewChild('myMap') public myMap;

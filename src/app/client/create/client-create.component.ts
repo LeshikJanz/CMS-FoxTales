@@ -23,8 +23,7 @@ import { ClientService } from '../client.service';
 @Component({
   selector: 'client-create',
   templateUrl: './client-create.component.html',
-  styleUrls: [ './client-create.component.scss',
-    '../../shared/styles/form-element.scss']
+  styleUrls: [ './client-create.component.scss']
 })
 export class ClientCreateComponent implements OnInit {
   /**

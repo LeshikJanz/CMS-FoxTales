@@ -1,3 +1,5 @@
+@import "../../../shared/styles/mixins";
+
 $small-width: 132px;
 $small-height: 26px;
 $mid-width: 117px;
@@ -9,15 +11,7 @@ ul.dropdown-menu {
   min-width: $small-width;
 
   li {
-    height: 46px;
-    display: flex;
-    align-items: center;
-    padding-left: 20px;
-    cursor: pointer;
-    font-family: WorkSans;
-    font-size: 16px;
-    color: #343a40;
-    border-top: solid 1px #ff5f6f7;
+    @include dropdown-li;
   }
 
   li:first-child {

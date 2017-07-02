@@ -15,10 +15,7 @@ import { IEventGroupFilter, IEventGroup } from '../../event-groups/list/event-gr
 @Component({
   selector: 'event-list',
   templateUrl: './event-list.component.html',
-  styleUrls: ['./event-list.component.scss',
-    '../../shared/styles/form-element.scss',
-    '../../shared/styles/date-picker.scss',
-  ]
+  styleUrls: ['./event-list.component.scss']
 })
 export class EventListComponent implements OnInit {
   /**

@@ -1,6 +1,10 @@
 .group-container {
   width: 400px;
 
+  .wider {
+    width: 650px;
+  }
+
   fox-button {
     width: 160px;
   }

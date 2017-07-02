@@ -1,3 +1,5 @@
+@import "mixins";
+
 // ng2-tag-input
 :host /deep/ .ng2-menu-item--selected {
   color: #f57f17 !important;
@@ -19,13 +21,7 @@
 }
 
 :host /deep/ .ng2-menu-item {
-  display: flex;
-  align-items: center;
-  height: 46px !important;
-  font-family: WorkSans !important;
-  font-size: 16px !important;
-  border-bottom: 1px solid #eef1f3 !important;
-  line-height: 28px !important;
+  @include dropdown-li;
 }
 
 :host /deep/ .ng2-tag-input {
@@ -57,6 +53,7 @@
     font-size: 16px;
     color: #3d3d3d;
     padding-left: 12px;
+    min-width: 250px;
   }
 
   input:focus {
@@ -92,7 +89,7 @@
           path {
             fill: #343a40 !important;
           }
-        };
+        }
       }
     }
   }

@@ -18,8 +18,7 @@ import { FormService } from '../../shared/core/form/form.service';
 @Component({
   selector: 'client-license',
   templateUrl: './client-license.component.html',
-  styleUrls: [ '../../shared/styles/form-element.scss',
-                'client-license.component.scss']
+  styleUrls: ['client-license.component.scss']
 })
 export class ClientLicenseComponent implements OnInit {
   /**

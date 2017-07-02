@@ -13,7 +13,7 @@
         <img class="icon icon-hide" (click)="setVisibility()" [hidden]="item.visible"
              src="../../../assets/img/hide-icon.svg">
       </div>
-      <img [ngClass]="{transparent: !item.visible}" *ngIf="item.mediaPath.search('.(jpe?g|gif|png)') > 0"
+      <img class="" [ngClass]="{transparent: !item.visible}" *ngIf="item.mediaPath.search('.(jpe?g|gif|png)') > 0"
            [src]="item ? item.mediaPath :
        'https://amazingcarousel.com/wp-content/uploads/amazingcarousel/3/images/lightbox/golden-wheat-field-lightbox.jpg'"
            alt="">

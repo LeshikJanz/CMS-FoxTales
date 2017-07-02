@@ -45,15 +45,17 @@
         <label>Tags</label>
         <tag-input
             [transform]="tagTransformer"
-            [formControlName]="'tags'"
+            formControlName="tags"
             [maxItems]="365"
             [(ngModel)]="selectedTags"
+            placeholder="+ Event"
+            secondaryPlaceholder="Start typing event name"
             [(inputText)]='tagInputValue'
         >
           <tag-input-dropdown
               [appendToBody]="false"
-              [identifyBy]="'id'"
-              [displayBy]="'name'"
+              identifyBy="id"
+              displayBy="name"
               [matchingFn]="matchingFn"
               [autocompleteItems]="tags">
           </tag-input-dropdown>

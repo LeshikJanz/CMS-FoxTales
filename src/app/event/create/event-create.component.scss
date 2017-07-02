@@ -1,3 +1,8 @@
+@import "../../shared/styles/form-element";
+@import "../../shared/styles/date-picker";
+@import "../../shared/styles/calendar";
+@import "../../shared/styles/tag-input";
+
 .event-container {
   display: flex;
   justify-content: space-between;

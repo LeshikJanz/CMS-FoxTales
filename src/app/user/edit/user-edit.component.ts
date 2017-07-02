@@ -15,9 +15,7 @@ import { FormService } from '../../shared/core/form/form.service';
 @Component({
   selector: 'user-edit',
   templateUrl: './user-edit.component.html',
-  styleUrls: ['user-edit.component.scss',
-    '../../shared/styles/form-element.scss'
-  ]
+  styleUrls: ['user-edit.component.scss']
 })
 export class UserEditComponent implements OnInit {
   /**

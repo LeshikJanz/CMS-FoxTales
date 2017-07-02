@@ -12,10 +12,7 @@ import {} from 'bingmaps/scripts/MicrosoftMaps/Microsoft.Maps.All';
 @Component({
   selector: 'event-view-details',
   templateUrl: './event-view-details.component.html',
-  styleUrls: ['./event-view-details.component.scss',
-    '../../shared/styles/form-element.scss',
-    '../../shared/styles/tag-input.scss'
-  ]
+  styleUrls: ['./event-view-details.component.scss']
 })
 export class EventViewDetailsComponent implements OnInit {
   @ViewChild('myMap') myMap;
