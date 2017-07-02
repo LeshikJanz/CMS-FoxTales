@@ -5,8 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'event-navigation',
   templateUrl: 'event-navigation.component.html',
-  styleUrls: ['../../../shared/styles/navigation.scss',
-    'event-navigation.component.scss']
+  styleUrls: ['event-navigation.component.scss']
 })
 
 export class EventNavigationComponent {

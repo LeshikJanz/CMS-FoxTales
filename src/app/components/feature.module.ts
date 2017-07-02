@@ -114,6 +114,7 @@ import {
   OrientationSelectorComponent
 } from './toggles/orientation-selector/orientation-selector.component';
 import { FormDropDownComponent } from './dropdowns/form-dropdown/form-dropdown.component';
+import { ConfirmModalComponent } from './modals/confirm-modal/confirm-modal.component';
 
 @NgModule({
   imports: [
@@ -199,7 +200,8 @@ import { FormDropDownComponent } from './dropdowns/form-dropdown/form-dropdown.c
     UiSwitchComponent,
     OrientationSelectorComponent,
     ProfileNavigationComponent,
-    FormDropDownComponent
+    FormDropDownComponent,
+    ConfirmModalComponent
   ],
   exports: [
     CreationButtonComponent,
@@ -253,7 +255,8 @@ import { FormDropDownComponent } from './dropdowns/form-dropdown/form-dropdown.c
     ProfileNavigationComponent,
     BasicDetailsRunTimesComponent,
     UiSwitchComponent,
-    OrientationSelectorComponent
+    OrientationSelectorComponent,
+    ConfirmModalComponent
   ]
 })
 

@@ -1,5 +1,8 @@
+@import "../../../shared/styles/navigation.scss";
+
 .slidemenu #slide-item-1.active ~ .slider .bar {
   width: 95px;
+  margin-left: 0;
 }
 
 .slidemenu #slide-item-2.active ~ .slider .bar {

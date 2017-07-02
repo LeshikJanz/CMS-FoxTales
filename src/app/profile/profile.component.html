@@ -24,7 +24,7 @@
       <div>
         <img *ngIf="profileData?.profileImagePath || logo" [src]="logo || profileData?.profileImagePath">
         <a class="delete-icon" href="javascript:void(0)" *ngIf="profileData?.profileImagePath || logo"
-           (click)="removeLogoModal.show()">x</a>
+           (click)="cModal.show()">x</a>
       </div>
       <upload-button (imgUploaded)="onImgUploaded($event)"></upload-button>
     </div>
@@ -36,33 +36,9 @@
     ></fox-button>
   </div>
 </div>
-<div
-    bsModal
-    #removeLogoModal="bs-modal"
-    class="modal fade"
-    tabindex="-1"
-    role="dialog">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" (click)="removeLogoModal.hide()" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-        <h4 class="modal-title">Are you sure?</h4>
-      </div>
-      <div class="modal-body">
-        <p>
-          Are you sure you want to remove logo?
-        </p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" (click)="removeLogoModal.hide()">Close</button>
-        <button
-            type="button"
-            class="btn btn-primary"
-            (click)="removeLogo(); removeLogoModal.hide()">Confirm
-        </button>
-      </div>
-    </div>
-  </div>
-</div>
+
+<confirm-modal #cModal
+    (confirm)="removeLogo()"
+               title="Confirm"
+    message="Are you sure you want to remove logo?">
+</confirm-modal>

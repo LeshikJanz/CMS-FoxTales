@@ -111,10 +111,4 @@
   color: #f57f17;
 }
 
-.slidemenu #slide-item-1.active ~ .slider .bar{ width: 55px; margin-left: 0%; }
-.slidemenu #slide-item-2.active ~ .slider .bar{ margin-left: 85px; }
-.slidemenu #slide-item-3.active ~ .slider .bar{ margin-left: 225px; }
-.slidemenu #slide-item-4.active ~ .slider .bar{ margin-left: 325px; }
-.slidemenu #slide-item-5.active ~ .slider .bar{ margin-left: 38%; }
-.slidemenu #slide-item-6:checked ~ .slider .bar{ margin-left: 48%; }
-.slidemenu #slide-item-7:checked ~ .slider .bar{ margin-left: 58%; }
+

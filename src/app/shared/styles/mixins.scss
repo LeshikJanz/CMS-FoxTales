@@ -64,3 +64,11 @@
 @mixin border-bottom {
   border-bottom: 1px solid #e5e5e5;
 }
+
+@mixin regular-text {
+  font-family: WorkSans;
+  font-size: 16px;
+  line-height: 1.75;
+  letter-spacing: 0.5px;
+  color: #626d78;
+}

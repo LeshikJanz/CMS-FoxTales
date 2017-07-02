@@ -7,19 +7,19 @@
   align-items: center;
   height: 120px;
 
+  h1 {
+    @include heading-1;
+    margin-top: 10px !important;
+
+    > div {
+      display: inline-block;
+    }
+  }
+
   > div {
     a {
       color: black;
       margin-left: 25px;
-    }
-
-    h1 {
-      @include heading-1;
-      margin-top: 10px !important;
-
-      > div {
-        display: inline-block;
-      }
     }
   }
 

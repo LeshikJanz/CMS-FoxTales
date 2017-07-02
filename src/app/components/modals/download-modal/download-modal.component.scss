@@ -26,25 +26,6 @@ h4 {
   }
 }
 
-.btn-actions {
-  display: flex;
-  width: 100%;
-  justify-content: center;
-  align-items: center;
-  padding-bottom: 36px;
-
-  fox-button {
-    height: 55px;
-    width: 180px;
-    font-size: 16px;
-  }
-
-  .cancel {
-    margin-left: 25px;
-    width: 150px;
-  }
-}
-
 .email-confirmation {
   height: inherit;
   width: inherit;

@@ -10,6 +10,8 @@ import { ISwitcher } from './switcher.interface';
 export class SwitcherComponent implements OnInit {
   @Input() public type: number;
 
+  @Input() public isRequired: boolean;
+
   @Input() public options: ISwitcher[];
 
   @Output() public toggle: EventEmitter<number> = new EventEmitter<number>();

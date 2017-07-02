@@ -78,13 +78,13 @@
         <switcher id="groupGallery" [options]="notificationOptions"
                   (toggle)="notification=$event"></switcher>
       </div>
-      <br>
-
-      <fox-button
-          [value]="'CREATE'"
-          [disabled]="eventForm.invalid || tagInputValue"
-          [design]="'special'"
-      ></fox-button>
+      <div>
+        <fox-button
+            value="CREATE"
+            [disabled]="eventForm.invalid || tagInputValue"
+            design="special"
+        ></fox-button>
+      </div>
     </div>
   </form>
   <div class="map">
@@ -92,8 +92,9 @@
   </div>
 </div>
 
-<div class="modal fade" bsModal #buildExperienceModal="bs-modal" [config]="{backdrop: 'static'}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
-  aria-hidden="true">
+<div class="modal fade" bsModal #buildExperienceModal="bs-modal" [config]="{backdrop: 'static'}" tabindex="-1"
+     role="dialog" aria-labelledby="mySmallModalLabel"
+     aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
@@ -105,22 +106,22 @@
       <div class="modal-body">
         Continue and create an Experience?
 
-          <div class="btn-actions">
-          <fox-button
-            [value]="'CONTINUE'"
-            [design]="'gray'"
-            [routerLink]="['/experience-builder/intro']"
-            [queryParams]="{ id: experienceId  }"
-          ></fox-button>
-
         <div class="btn-actions">
           <fox-button
-            [value]="'NOT NOW'"
-            [design]="'gray'"
-            (click)="hide()"
+              [value]="'CONTINUE'"
+              [design]="'gray'"
+              [routerLink]="['/experience-builder/intro']"
+              [queryParams]="{ id: experienceId  }"
           ></fox-button>
+
+          <div class="btn-actions">
+            <fox-button
+                [value]="'NOT NOW'"
+                [design]="'gray'"
+                (click)="hide()"
+            ></fox-button>
+          </div>
         </div>
-      </div>
       </div>
     </div>
   </div>

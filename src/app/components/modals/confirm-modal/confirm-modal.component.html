@@ -1,0 +1,37 @@
+<div
+    bsModal
+    #confirmModal="bs-modal"
+    class="modal fade"
+    tabindex="-1"
+    role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title">{{title}}</h1>
+        <button type="button" class="close" (click)="lgModal.hide()" aria-label="Close">
+          <img src="assets/img/close.svg">
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>
+          {{message}}
+        </p>
+      </div>
+      <div class="modal-footer">
+        <div class="btn-actions">
+          <fox-button
+              value="Confirm"
+              design="primary"
+              (click)="onConfirm()"
+          ></fox-button>
+          <fox-button
+              class="cancel"
+              value="Close"
+              design="secondary"
+              (click)="lgModal.hide()"
+          ></fox-button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
