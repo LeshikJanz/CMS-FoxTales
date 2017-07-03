@@ -1,29 +1,4 @@
 <div>
-  <div class="list-menu">
-    <div>
-      <rename [name]="device?.name"
-              (onRename)="onRenameClicked($event)"></rename>
-    </div>
-    <div>
-      <h2 class="main-label">Device details</h2>
-    </div>
-    <div class="buttons-block">
-      <button isAllowed="CreateEditDevice"
-              (click)="downloadFile()">
-        Download device connection settings
-      </button>
-      <button isAllowed="RestartDevice"
-              (click)="restart()">
-        restart
-      </button>
-      <add-button
-        [routerLink]="['/admin/device', device?.id, 'edit']"
-        class="creation-button"
-        isAllowed="CreateEditDevice"
-        [value]="'Edit Device'"
-      ></add-button>
-    </div>
-  </div>
   <div class="details-container">
     <div class="details-item"><span>Serial number: </span>{{device?.serialNumber}}</div>
     <div class="details-item"><span>Hardware version: </span>{{device?.hardwareVersion}}</div>

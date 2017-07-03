@@ -5,11 +5,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
  * Rename component
  */
 @Component({
-  selector: 'rename',
+  selector: 'device-rename',
   templateUrl: './rename.component.html',
   styleUrls: ['rename.component.scss']
 })
-export class RenameComponent implements OnInit, OnChanges {
+export class DeviceRenameComponent implements OnInit, OnChanges {
   @Input() public name: string;
 
   @Output() public onRename: EventEmitter<any> = new EventEmitter();

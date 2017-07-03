@@ -1,0 +1,27 @@
+<div class="header-container">
+  <div>
+    <a class="hvr-icon-wobble-horizontal" [routerLink]="['/admin/devices']">Back to all devices</a>
+    <device-rename [name]="device?.name"
+                   (onRename)="onRenameClicked($event)"></device-rename>
+  </div>
+  <div class="button-container">
+    <fox-button
+      isAllowed="CreateEditDevice"
+      [value]="'Download device connection settings'"
+      [design]="'gray'"
+      (click)="downloadFile()"
+    ></fox-button>
+    <fox-button
+      isAllowed="RestartDevice"
+      [value]="'Restart'"
+      [design]="'gray'"
+      (click)="restart()"
+    ></fox-button>
+    <fox-button
+      [routerLink]="['/admin/device', id , 'edit']"
+      isAllowed="CreateEditDevice"
+      [value]="'Edit Device'"
+      [design]="'primary'"
+    ></fox-button>
+  </div>
+</div>

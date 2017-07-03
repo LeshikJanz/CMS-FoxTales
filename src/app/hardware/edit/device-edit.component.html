@@ -1,5 +1,4 @@
-<div class="user-container">
-
+<div>
   <form
     (ngSubmit)="updateDevice(deviceForm.value)"
     class="form"
@@ -33,7 +32,7 @@
       </div>
 
       <!-- Hub -->
-      <div>
+      <div class="form-element">
         <label for="hubId">Hub</label>
         <input
           id="hubId"
@@ -50,13 +49,15 @@
       </div>
 
       <!-- Product -->
-      <div>
-        <label for="productId">Product</label>
-        <select
-          id="productId"
-          formControlName="productId">
-          <option *ngFor="let p of products" [value]="p.id">{{p.name}}</option>
-        </select>
+      <div class="form-element">
+        <label>Product</label>
+        <fox-select
+          [title]="'Select product'"
+          [active]="selectedProduct"
+          (change)="deviceForm.get('productId').setValue($event.id)"
+          [items]="products"
+        >
+        </fox-select>
 
         <div ngxErrors="productId">
           <div ngxError="required" when="touched">
@@ -66,13 +67,15 @@
       </div>
 
       <!-- Location -->
-      <div>
-        <label for="locationId">Location</label>
-        <select
-          id="locationId"
-          formControlName="locationId">
-          <option *ngFor="let l of locations" [value]="l.id">{{l.name}}</option>
-        </select>
+      <div class="form-element">
+        <label>Location</label>
+        <fox-select
+          [title]="'Select location'"
+          [active]="selectedLocation"
+          (change)="deviceForm.get('locationId').setValue($event.id)"
+          [items]="locations"
+        >
+        </fox-select>
 
         <div ngxErrors="locationId">
           <div ngxError="required" when="touched">
@@ -82,14 +85,15 @@
       </div>
 
       <!-- Client -->
-      <div>
-        <label for="clientId">Client</label>
-        <select
-          id="clientId"
-          formControlName="clientId">
-          <option [ngValue]="null">unassign</option>
-          <option *ngFor="let c of clients" [value]="c.id">{{c.name}}</option>
-        </select>
+      <div class="form-element">
+        <label>Client</label>
+        <fox-select
+          [title]="'Select client'"
+          [active]="selectedClient"
+          (change)="deviceForm.get('clientId').setValue($event.id)"
+          [items]="clients"
+        >
+        </fox-select>
 
         <div ngxErrors="clientId">
           <div ngxError="required" when="touched">
