@@ -86,5 +86,6 @@ export class ConfirmModalComponent {
    */
   public onConfirm() {
     this.confirm.emit();
+    this.cModal.hide();
   }
 }

@@ -11,7 +11,7 @@
         <label style="font-size: 22px">Client logo</label>
         <div>
           <img src="{{ logoBytes || client?.logo }}" *ngIf="logoBytes || client?.logo">
-          <a href="javascript:void(0)" *ngIf="logoBytes || client?.logo" (click)="removeLogoModal.show()">x</a>
+          <a href="javascript:void(0)" *ngIf="logoBytes || client?.logo" (click)="cModal.show()">x</a>
         </div>
         <upload-button (imgUploaded)="onImgUploaded($event)"></upload-button>
       </div>
@@ -24,8 +24,8 @@
 
       <!-- Email -->
       <form-input
-        [control]="clientForm.get('email')"
-        title="Email">
+          [control]="clientForm.get('email')"
+          title="Email">
       </form-input>
 
       <!-- Address -->
@@ -52,13 +52,13 @@
       </div>
 
       <form-input
-        [control]="clientForm.get('phone')"
-        title="Phone">
+          [control]="clientForm.get('phone')"
+          title="Phone">
       </form-input>
 
       <form-input
-        [control]="clientForm.get('freshBooks')"
-        title="FreshBook Url">
+          [control]="clientForm.get('freshBooks')"
+          title="FreshBook Url">
       </form-input>
 
       <!-- Social Accounts -->
@@ -108,32 +108,8 @@
   </form>
 </div>
 
-<div
-  bsModal
-  #removeLogoModal="bs-modal"
-  class="modal fade"
-  tabindex="-1"
-  role="dialog">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" (click)="removeLogoModal.hide()" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-        <h4 class="modal-title">Are you sure?</h4>
-      </div>
-      <div class="modal-body">
-        <p>
-          Are you sure you want to remove logo?
-        </p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" (click)="removeLogoModal.hide()">Close</button>
-        <button
-          type="button"
-          class="btn btn-primary"
-          (click)="removeLogo(); removeLogoModal.hide()">Confirm</button>
-      </div>
-    </div>
-  </div>
-</div>
+
+<confirm-modal #cModal
+               (confirm)="removeLogo()"
+               title="Are you sure?"
+               message="Are you sure you want to remove logo?"></confirm-modal>

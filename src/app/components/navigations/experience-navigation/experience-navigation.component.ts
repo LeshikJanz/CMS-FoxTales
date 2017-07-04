@@ -5,8 +5,7 @@ import { NavigationService } from '../../../shared/core/navigation/navigation.se
 @Component({
   selector: 'experience-navigation',
   templateUrl: 'experience-navigation.component.html',
-  styleUrls: ['../../../shared/styles/navigation.scss',
-    'experience-navigation.component.scss'
+  styleUrls: ['experience-navigation.component.scss'
   ]
 })
 

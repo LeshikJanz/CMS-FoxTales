@@ -16,6 +16,8 @@ export class NavigationService {
    */
   public isActive(urls: string[]): boolean {
     let state: boolean = false;
+    console.log('urls');
+    console.log(urls);
 
     urls.forEach((i: any) => {
       if (this.router.isActive(this.router.createUrlTree([i]), false)) {

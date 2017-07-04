@@ -1,38 +1,36 @@
-.slidemenu #slide-item-1:checked ~ .slider .bar {
+@import "../../../shared/styles/navigation";
+
+.slidemenu #slide-item-1.active ~ .slider .bar {
   margin-left: 0;
-  width: 70px;
+  width: 65px;
 }
 
-.slidemenu #slide-item-2:checked ~ .slider .bar {
+.slidemenu #slide-item-2.active ~ .slider .bar {
   width: 70px;
   margin-left: 105px;
 }
 
-.slidemenu #slide-item-3:checked ~ .slider .bar {
+.slidemenu #slide-item-3.active ~ .slider .bar {
   width: 60px;
   margin-left: 195px;
 }
 
-.slidemenu #slide-item-4:checked ~ .slider .bar {
+.slidemenu #slide-item-4.active ~ .slider .bar {
   width: 80px;
-  margin-left: 275px;
+  margin-left: 280px;
 }
 
-.slidemenu #slide-item-5:checked ~ .slider .bar {
+.slidemenu #slide-item-5.active ~ .slider .bar {
   width: 90px;
   margin-left: 360px;
 }
 
-.slidemenu #slide-item-6:checked ~ .slider .bar {
+.slidemenu #slide-item-6.active ~ .slider .bar {
   width: 70px;
   margin-left: 460px;
 }
 
-.slidemenu #slide-item-7:checked ~ .slider .bar {
+.slidemenu #slide-item-7.active ~ .slider .bar {
   width: 90px;
   margin-left: 540px;
-}
-
-.slidemenu label {
-  width: 90px !important;
 }
