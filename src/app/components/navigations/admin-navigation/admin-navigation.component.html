@@ -27,7 +27,7 @@
       </div>
     </div>
   </nav>
-  <div class="actions" *ngIf="nav.isActive(['/admin/user'])">
+  <div class="actions" *ngIf="nav.isActive(['/admin/users'])">
     <div id="1" [hidden]="!isArchieved" (click)="onTypeChanged($event.target.id)">Archived</div>
     <div id="2" [hidden]="isArchieved" (click)="onTypeChanged($event.target.id)">Unarchived</div>
   </div>
