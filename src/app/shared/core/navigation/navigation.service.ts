@@ -7,7 +7,8 @@ import { Router } from '@angular/router';
 @Injectable()
 export class NavigationService {
 
-  constructor(private router: Router) {}
+  constructor(private router: Router) {
+  }
 
   /**
    * Global function to figure out is current url active
@@ -16,8 +17,6 @@ export class NavigationService {
    */
   public isActive(urls: string[]): boolean {
     let state: boolean = false;
-    console.log('urls');
-    console.log(urls);
 
     urls.forEach((i: any) => {
       if (this.router.isActive(this.router.createUrlTree([i]), false)) {

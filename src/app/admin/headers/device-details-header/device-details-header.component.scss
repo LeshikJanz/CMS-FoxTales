@@ -1,41 +1,23 @@
-.header-container {
+@import "../../../shared/styles/headers";
+
+.button-container {
   display: flex;
-  width: 100%;
+  width: 550px;
   justify-content: space-between;
-  align-items: center;
-  height: 100px;
-
-  > div {
-    a {
-      margin-left: 20px;
-      color: black;
-    }
-
-    h1 {
-      align-self: flex-start;
-    }
-  }
-
-  h1 {
-    align-self: flex-start;
-  }
-
-  add-button {
-    background-color: #2fd976;
-    width: 204px;
-    height: 54px;
-    font-size: 16px;
-    border-radius: 6px;
-    align-self: center;
-  }
-
-  .button-container {
-    display: flex;
-  }
 
   fox-button {
-    margin-left: 10px;
-    max-width: 160px;
     height: 55px;
+
+    &:first-child {
+      width: 220px;
+    }
+
+    &:nth-child(2) {
+      width: 120px;
+    }
+
+    &:last-child {
+      width: 160px;
+    }
   }
 }

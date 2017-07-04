@@ -1,7 +1,8 @@
 @import "../../../shared/styles/mixins";
+@import "../../../shared/styles/navigation";
 
 .slidemenu #slide-item-1.active ~ .slider .bar {
-  width: 50px;
+  width: 50px !important;
 }
 
 .slidemenu #slide-item-2.active ~ .slider .bar {

@@ -16,7 +16,7 @@
     <input type="radio" name="slideItem"
            id="slide-item-4"
            [routerLink]="['/admin/devices']"
-           [class.active]="nav.isActive(['/admin/devices'], false)"
+           [class.active]="nav.isActive(['/admin/devices', '/admin/device/', '/admin/log/'], false)"
            class="slide-toggle"/>
     <label for="slide-item-4"><span>Integrations+hardware</span></label>
     <div class="clear"></div>
@@ -27,7 +27,7 @@
       </div>
     </div>
   </nav>
-  <div class="actions" *ngIf="curLocation && curLocation.indexOf('/admin/user') >= 0">
+  <div class="actions" *ngIf="nav.isActive(['/admin/users'])">
     <div id="1" [hidden]="!isArchieved" (click)="onTypeChanged($event.target.id)">Archived</div>
     <div id="2" [hidden]="isArchieved" (click)="onTypeChanged($event.target.id)">Unarchived</div>
   </div>

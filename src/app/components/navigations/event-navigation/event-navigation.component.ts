@@ -12,12 +12,11 @@ export class EventNavigationComponent {
   public curLocation: string;
   public eventId: string;
 
-  constructor(private nav: NavigationService,
+  constructor(public nav: NavigationService,
               private route: ActivatedRoute) {
 
     this.route.firstChild.params.subscribe((params) =>
       this.eventId = params['id']
     )
   }
-
 }

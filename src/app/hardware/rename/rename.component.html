@@ -1,6 +1,6 @@
 <div *ngIf="!editing" class="device-name-block">
-  <div class="device-name">{{name}}</div>
-  <button (click)="toggleEdit()" isAllowed="RenameDevice">Edit</button>
+  <h1>{{name}}</h1>
+  <!--<button (click)="toggleEdit()" isAllowed="RenameDevice">Edit</button>-->
 </div>
 <form
   *ngIf="editing"

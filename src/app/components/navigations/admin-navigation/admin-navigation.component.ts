@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Location } from '@angular/common';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { RouteData } from '../../../shared/core/event-management/route-data.service';
 import { IActionState } from '../../../client/client.interface';
 import { NavigationService } from "../../../shared/core/navigation/navigation.service";
@@ -8,12 +8,13 @@ import { NavigationService } from "../../../shared/core/navigation/navigation.se
 @Component({
   selector: 'admin-navigation',
   templateUrl: 'admin-navigation.component.html',
-  styleUrls: ['../../../shared/styles/navigation.scss',
-    'admin-navigation.component.scss']
+  styleUrls: ['admin-navigation.component.scss']
 })
 
 export class AdminNavigationComponent {
   public isArchieved: boolean = false;
+
+  public id: number;
 
   /**
    * Archieve states
@@ -26,7 +27,11 @@ export class AdminNavigationComponent {
   ];
 
   constructor(private nav: NavigationService,
-              private routeData: RouteData) {
+              private routeData: RouteData,
+              private route: ActivatedRoute) {
+    this.route.firstChild.params.subscribe((params) =>
+      this.id = params['id']
+    )
   }
 
   public onTypeChanged(id: number) {

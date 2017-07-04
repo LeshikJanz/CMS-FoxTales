@@ -1,18 +1,18 @@
-<div>
+<div class="device-container">
   <form
-    (ngSubmit)="addDevice(deviceForm.value)"
-    class="form"
-    novalidate>
+      (ngSubmit)="addDevice(deviceForm.value)"
+      class="form"
+      novalidate>
 
     <div [formGroup]="deviceForm">
       <!-- First Name -->
       <div class="form-element">
         <label for="name">Name</label>
         <input
-          id="name"
-          type="text"
-          formControlName="name"
-          placeholder="Name">
+            id="name"
+            type="text"
+            formControlName="name"
+            placeholder="Name">
 
         <div ngxErrors="name">
           <div ngxError="required" when="touched">
@@ -35,9 +35,9 @@
       <div class="form-element">
         <label>Product</label>
         <fox-select
-          [title]="'Select product'"
-          (change)="deviceForm.get('productId').setValue($event.id)"
-          [items]="products"
+            [title]="'Select product'"
+            (change)="deviceForm.get('productId').setValue($event.id)"
+            [items]="products"
         >
         </fox-select>
 
@@ -52,9 +52,9 @@
       <div class="form-element">
         <label>Location</label>
         <fox-select
-          [title]="'Select location'"
-          (change)="deviceForm.get('locationId').setValue($event.id)"
-          [items]="locations"
+            [title]="'Select location'"
+            (change)="deviceForm.get('locationId').setValue($event.id)"
+            [items]="locations"
         >
         </fox-select>
 
@@ -69,9 +69,9 @@
       <div class="form-element">
         <label>Client</label>
         <fox-select
-          [title]="'Select client'"
-          (change)="deviceForm.get('clientId').setValue($event.id)"
-          [items]="clients"
+            [title]="'Select client'"
+            (change)="deviceForm.get('clientId').setValue($event.id)"
+            [items]="clients"
         >
         </fox-select>
 
@@ -85,11 +85,11 @@
     </div>
 
     <div>
-      <button
-        type="submit"
-        [disabled]="deviceForm.invalid"
-        class="create-button">CREATE
-      </button>
+      <fox-button
+          value="CREATE"
+          [disabled]="deviceForm.invalid"
+          design="special"
+      ></fox-button>
     </div>
   </form>
 </div>
