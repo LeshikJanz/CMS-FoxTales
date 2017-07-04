@@ -49,6 +49,15 @@
   color: #343a40;
 }
 
+@mixin heading-4 {
+  font-family: WorkSans;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 2.67;
+  letter-spacing: 0.6px;
+  color: #343a40;
+}
+
 @mixin dropdown-li {
   height: 46px;
   display: flex;

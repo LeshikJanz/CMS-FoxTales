@@ -129,6 +129,10 @@ ng-select {
 
 :host /deep/ .dropdown-toggle {
   font-size: 16px;
+
+  &:after {
+    border-top: 10px solid #626d78 !important;
+  }
 }
 
 :host /deep/ .ui-select-choices.dropdown-menu {

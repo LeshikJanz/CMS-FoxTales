@@ -1,6 +1,12 @@
+@import "../../shared/styles/mixins";
+
 .device-name-block {
   display: flex;
   align-items: center;
+
+  h1 {
+    @include heading-1;
+  }
 
   .device-name {
     max-width: 150px;

@@ -1,4 +1,4 @@
-<div>
+<div class="device-container">
   <form
     (ngSubmit)="updateDevice(deviceForm.value)"
     class="form"
@@ -101,15 +101,14 @@
           </div>
         </div>
       </div>
-
     </div>
 
     <div>
-      <button
-        type="submit"
-        [disabled]="deviceForm.invalid"
-        class="create-button">UPDATE
-      </button>
+      <fox-button
+          value="UPDATE"
+          [disabled]="deviceForm.invalid"
+          design="special"
+      ></fox-button>
     </div>
   </form>
 </div>
