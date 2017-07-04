@@ -1,14 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import * as moment from 'moment';
 import { IDevice } from '../device.interface';
 import { DeviceService } from '../device.service';
-import * as moment from 'moment';
 
 @Component({
   selector: 'device-create',
   templateUrl: './device-create.component.html',
-  styleUrls: ['./device-create.component.scss']
+  styleUrls: ['./device-create.component.scss',
+    '../../shared/styles/form-element.scss']
 })
 export class DeviceCreateComponent implements OnInit {
   /**

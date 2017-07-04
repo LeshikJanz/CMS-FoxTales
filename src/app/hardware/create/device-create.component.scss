@@ -1,25 +1,26 @@
-.container {
-  margin: 50px 70px;
-}
-
 .form {
-  width: 400px;
-}
-
-.form-element {
   display: flex;
   flex-direction: column;
-  margin-top: 25px;
-  margin-bottom: 10px;
-}
+  width: 400px;
+  height: 400px;
+  justify-content: space-between;
 
-.ng-touched.ng-invalid {
-  border-color: red;
-}
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 250px;
+  }
 
-.form-element .input {
-  height: 30px;
-  font-size: 14px;
+  fox-select {
+    width: 300px;
+  }
+
+  fox-button {
+    height: 55px;
+    width: 120px;
+    font-size: 16px;
+  }
 }
 
 .create-button {
@@ -29,7 +30,6 @@
   background-color: #2fd976;
   color: white;
   font-size: 16px;
-  margin-top: 30px;
 }
 
 button.create-button[disabled] {

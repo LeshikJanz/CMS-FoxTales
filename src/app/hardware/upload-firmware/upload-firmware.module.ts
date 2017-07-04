@@ -8,19 +8,13 @@ import { CustomFormsModule } from 'ng2-validation';
 import { Ng2BootstrapModule } from 'ngx-bootstrap';
 import { ToastContainerModule, ToastrModule } from 'ngx-toastr';
 
-import { FeatureModule } from '../components/feature.module';
+import { FeatureModule } from '../../components/feature.module';
 
-import { SharedModule } from '../shared';
-import { AuthRequestOptions, AuthService, HttpService } from '../shared/core';
-import { DeviceCreateComponent } from './create';
-import { DeviceDetailsComponent } from './details';
+import { SharedModule } from '../../shared';
+import { AuthRequestOptions, AuthService, HttpService } from '../../shared/core';
+import { DeviceService } from '../device.service';
 
-import { DEVICE_ROUTING } from './device.routes';
-
-import { DeviceService } from './device.service';
-import { DeviceEditComponent } from './edit';
-import { DeviceListComponent } from './list';
-import { LogDetailsComponent } from './log-details';
+import { UploadFirmwareComponent } from './upload-firmware.component';
 
 @NgModule({
   imports: [
@@ -33,7 +27,6 @@ import { LogDetailsComponent } from './log-details';
     ToastrModule.forRoot(),
     ToastContainerModule.forRoot(),
     SharedModule,
-    DEVICE_ROUTING,
     FeatureModule,
     Ng2BootstrapModule,
     DateTimePickerModule
@@ -52,14 +45,13 @@ import { LogDetailsComponent } from './log-details';
     DeviceService
   ],
   declarations: [
-    DeviceListComponent,
-    DeviceCreateComponent,
-    DeviceDetailsComponent,
-    DeviceEditComponent,
-    LogDetailsComponent
+    UploadFirmwareComponent
+  ],
+  exports: [
+    UploadFirmwareComponent
   ]
 })
-export class DeviceModule {
+export class UploadFirmwareModule {
 }
 
 /**

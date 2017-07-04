@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import * as _ from 'lodash';
 import * as moment from 'moment';
 import { ToastrService } from 'ngx-toastr';
 import { IDeviceClient } from '../device-client.interface';
@@ -59,6 +60,9 @@ export class DeviceEditComponent implements OnInit {
    */
   public clients: any[];
   public purchaseMomentDate: string;
+  public selectedProduct: any;
+  public selectedLocation: any;
+  public selectedClient: any;
 
   /**
    * Constructor
@@ -100,7 +104,10 @@ export class DeviceEditComponent implements OnInit {
   public getProducts(): void {
     this.deviceService
       .getProducts()
-      .subscribe((products: any[]) => this.products = products);
+      .subscribe((products: any[]) => {
+        this.products = products;
+        this.selectedProduct = _.find(products, (item) => item.id === this.device.productId)
+      });
   }
 
   /**
@@ -111,7 +118,10 @@ export class DeviceEditComponent implements OnInit {
   public getLocations(): void {
     this.deviceService
       .getLocations()
-      .subscribe((locations: any[]) => this.locations = locations);
+      .subscribe((locations: any[]) => {
+        this.locations = locations;
+        this.selectedLocation = _.find(locations, (item) => item.id === this.device.locationId);
+      });
   }
 
   /**
@@ -122,7 +132,15 @@ export class DeviceEditComponent implements OnInit {
   public getClients(): void {
     this.deviceService
       .getClients()
-      .subscribe((clients: any) => this.clients = clients.result);
+      .subscribe((clients: any) => {
+        let noClient: any = {id: 'null', name: 'unassign'};
+        clients.result.unshift(noClient);
+        this.clients = clients.result;
+        this.selectedClient = _.find(
+            clients.result,
+            (item: any) => item.id === this.device.clientId
+          ) || noClient;
+      });
   }
 
   /**
@@ -157,6 +175,7 @@ export class DeviceEditComponent implements OnInit {
    */
   public updateDevice(device: IDevice): void {
     device['purchaseDate'] = moment(this.purchaseMomentDate, 'MMM DD YYYY').format();
+    device['clientId'] = device['clientId'] === 'null' ? null : device['clientId'];
     this.deviceService
       .updateDevice(device, this.device.id)
       .subscribe(() => {

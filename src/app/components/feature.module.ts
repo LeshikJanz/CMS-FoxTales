@@ -115,6 +115,7 @@ import {
 } from './toggles/orientation-selector/orientation-selector.component';
 import { FormDropDownComponent } from './dropdowns/form-dropdown/form-dropdown.component';
 import { ConfirmModalComponent } from './modals/confirm-modal/confirm-modal.component';
+import { DeviceService } from '../hardware/device.service';
 
 @NgModule({
   imports: [
@@ -148,7 +149,8 @@ import { ConfirmModalComponent } from './modals/confirm-modal/confirm-modal.comp
   providers: [
     GalleryService,
     ClientService,
-    UserService
+    UserService,
+    DeviceService
   ],
   declarations: [
     CreationButtonComponent,

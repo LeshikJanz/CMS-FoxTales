@@ -1,19 +1,4 @@
 <div class="list-container">
-  <div class="list-menu">
-    <div>
-      <h2 class="main-label">Device List</h2>
-    </div>
-    <div class="buttons-block">
-      <add-button
-        [routerLink]="['/admin/device']"
-        class="creation-button"
-        isAllowed="CreateEditDevice"
-        [value]="'Create New Device'"
-      ></add-button>
-    </div>
-  </div>
-  <settings-edit></settings-edit>
-  <upload-firmware></upload-firmware>
   <data-table
     [rows]="devices"
     [cols]="cols"
