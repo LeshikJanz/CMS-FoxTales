@@ -1,5 +1,4 @@
 <div class="user-container">
-
   <form
       *ngIf="userForm"
       (ngSubmit)="updateUser()"
@@ -7,35 +6,42 @@
       novalidate>
 
     <div class="form-group" [formGroup]="userForm">
-      <!-- Email -->
       <form-input
-          [control]="userForm.get('email')"
-          title="Email/Username*">
+        title="First Name*"
+        [control]="userForm.get('firstName')"
+        [disabled]="true">
       </form-input>
 
-      <!--Client Access -->
-      <div class="form-element">
-        <label>Client Access*</label>
-        <fox-select
-            [disabled]="true"
-            [active]="client"
-            (change)="user.clientId = $event.id"
-            [items]="clients"
-        >
-        </fox-select>
-      </div>
+      <form-input
+        title="Last Name*"
+        [control]="userForm.get('lastName')"
+        [disabled]="true">
+      </form-input>
+
+      <!-- Email -->
+      <form-input
+        [control]="userForm.get('email')"
+        title="E-mail*"
+        [disabled]="true">
+      </form-input>
 
       <!-- Roles -->
       <div class="form-element">
-        <label>User Type*</label>
+        <label>User Role*</label>
         <form-dropdown
-            [title]="'Select'"
-            [active]="user.roles[0]"
-            (typeChanged)="selectRole($event)"
-            [options]="roles"
-        >
+          [title]="'Select'"
+          [active]="user.roles[0]"
+          (typeChanged)="selectRole($event)"
+          [options]="roles">
         </form-dropdown>
       </div>
+
+      <!--Client Access -->
+      <form-input
+        [control]="userForm.get('clientName')"
+        title="Client*"
+        [disabled]="true">
+      </form-input>
     </div>
 
     <fox-button

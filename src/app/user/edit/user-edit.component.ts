@@ -199,6 +199,9 @@ export class UserEditComponent implements OnInit {
    */
   public buildUserForm(): void {
     this.userForm = this.formBuilder.group({
+      firstName: [''],
+      lastName: [''],
+      clientName: [''],
       email: ['', [
         Validators.required,
         CustomValidators.email
