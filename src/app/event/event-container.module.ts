@@ -23,6 +23,7 @@ import {
 } from '../components/navigations/event-navigation/event-navigation.component';
 import { ExperienceHeaderComponent
 } from '../experience/headers/experience-header/experience-header.component';
+import { GalleryModule } from '../gallery/gallery.module';
 
 @NgModule({
   imports: [
@@ -33,6 +34,7 @@ import { ExperienceHeaderComponent
     Ng2BootstrapModule,
     EVENT_ROUTING,
     FeatureModule,
+    GalleryModule
   ],
   providers: [
     ExperienceService,
@@ -42,17 +44,11 @@ import { ExperienceHeaderComponent
   declarations: [
     EventContainerComponent,
     ExperienceListComponent,
-    GalleryListComponent,
-    EventGalleryComponent,
-    EventGalleryContainerComponent,
     EventNavigationComponent,
     ExperienceHeaderComponent
   ],
   exports: [
-    ExperienceListComponent,
-    GalleryListComponent,
-    EventGalleryComponent,
-    EventGalleryContainerComponent
+    ExperienceListComponent
   ]
 })
 export class EventContainerModule {

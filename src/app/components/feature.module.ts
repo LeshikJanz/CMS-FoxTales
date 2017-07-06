@@ -117,6 +117,7 @@ import { FormDropDownComponent } from './dropdowns/form-dropdown/form-dropdown.c
 import { ConfirmModalComponent } from './modals/confirm-modal/confirm-modal.component';
 import { DeviceService } from '../hardware/device.service';
 import { TogglerComponent } from './toggles/toggler/toggler.component';
+import { InlineSVGModule } from 'ng-inline-svg';
 
 @NgModule({
   imports: [
@@ -127,6 +128,7 @@ import { TogglerComponent } from './toggles/toggler/toggler.component';
     RouterModule.forChild(FEATURE_ROUTES),
     BsDropdownModule.forRoot(),
     ReactiveFormsModule,
+    InlineSVGModule,
     TabsModule.forRoot(),
     ModalModule.forRoot(),
     ColorPickerModule,
@@ -180,8 +182,6 @@ import { TogglerComponent } from './toggles/toggler/toggler.component';
     ScrollComponent,
     GroupDropDownComponent,
     ThumbnailComponent,
-    FavoriteGalleryComponent,
-    GalleryItemListComponent,
     DownloadModalComponent,
     DeviceInfoComponent,
     FoxSelectComponent,
@@ -236,8 +236,6 @@ import { TogglerComponent } from './toggles/toggler/toggler.component';
     ScrollComponent,
     GroupDropDownComponent,
     ThumbnailComponent,
-    FavoriteGalleryComponent,
-    GalleryItemListComponent,
     DownloadModalComponent,
     DeviceInfoComponent,
     FoxSelectComponent,

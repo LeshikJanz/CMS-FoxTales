@@ -49,7 +49,7 @@
     </div>
     <div class="action-menu">
       <img (click)="getCameraInfo(item.id)" src="../../../assets/img/info.svg">
-      <img (click)="cModal.show()" src="../../../assets/img/delete.svg">
+      <img isAllowed="CreateEditMedia" (click)="cModal.show()" src="../../../assets/img/delete.svg">
       <a [href]="item.mediaPath" [download]="item.mediaPath">
         <img src="../../../assets/img/download-icon.svg">
       </a>

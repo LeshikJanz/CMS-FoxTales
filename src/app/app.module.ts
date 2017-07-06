@@ -8,6 +8,7 @@ import { RouterModule, PreloadAllModules } from '@angular/router';
 import { ToastrModule, ToastContainerModule } from 'ngx-toastr';
 import { Ng2BootstrapModule } from 'ngx-bootstrap';
 import { DateTimePickerModule } from 'ng-pick-datetime';
+import { InlineSVGModule } from 'ng-inline-svg';
 
 /*
  * Platform and Environment providers/directives/pipes
@@ -30,6 +31,7 @@ import '../styles/styles.scss';
 
 import { FeatureModule } from './components/feature.module';
 import { RouteData } from './shared/core/event-management/route-data.service';
+import { GalleryModule } from './gallery/gallery.module';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -61,6 +63,7 @@ type StoreType = {
   ],
   imports: [ // import Angular's modules
     BrowserAnimationsModule,
+    InlineSVGModule,
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
