@@ -116,6 +116,7 @@ import {
 import { FormDropDownComponent } from './dropdowns/form-dropdown/form-dropdown.component';
 import { ConfirmModalComponent } from './modals/confirm-modal/confirm-modal.component';
 import { DeviceService } from '../hardware/device.service';
+import { TogglerComponent } from './toggles/toggler/toggler.component';
 
 @NgModule({
   imports: [
@@ -203,7 +204,8 @@ import { DeviceService } from '../hardware/device.service';
     OrientationSelectorComponent,
     ProfileNavigationComponent,
     FormDropDownComponent,
-    ConfirmModalComponent
+    ConfirmModalComponent,
+    TogglerComponent
   ],
   exports: [
     CreationButtonComponent,
@@ -258,7 +260,8 @@ import { DeviceService } from '../hardware/device.service';
     BasicDetailsRunTimesComponent,
     UiSwitchComponent,
     OrientationSelectorComponent,
-    ConfirmModalComponent
+    ConfirmModalComponent,
+    TogglerComponent
   ]
 })
 
