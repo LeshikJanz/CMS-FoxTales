@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
 @Component({
@@ -23,5 +23,5 @@ export class TogglerComponent {
    * @type {boolean}
    */
   @Input()
-  public disabled: boolean;
+  public disabled: boolean = false;
 }

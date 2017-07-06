@@ -1,5 +1,6 @@
 <div class="switch">
-  <input id="cmn-toggle-1" [formControl]="control"
+  <input id="cmn-toggle" [formControl]="control"
+         [attr.disabled]="disabled ? '' : null"
          class="cmn-toggle cmn-toggle-round" type="checkbox">
-  <label for="cmn-toggle-1"></label>
+  <label for="cmn-toggle"></label>
 </div>

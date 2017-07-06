@@ -70,8 +70,6 @@
   border-radius: 50%;
 }
 
-/*Bar Style*/
-
 .slider {
   width: 100%;
   height: 10px;
@@ -97,18 +95,13 @@
   border-radius: 5px;
 }
 
-/*Animations*/
 .slidemenu label, .slider .bar {
   transition: all 200ms ease-in-out;
   -webkit-transition: all 200ms ease-in-out;
   -moz-transition: all 200ms ease-in-out;
 }
 
-/*Toggle*/
-
 .slidemenu .slide-toggle.active + label span {
   opacity: 1;
   color: #f57f17;
 }
-
-

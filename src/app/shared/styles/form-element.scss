@@ -73,10 +73,6 @@ h2 {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Параметры тени */
   }
 
-  upload-button {
-    width: 100%;
-  }
-
   label {
     @include input-label;
   }
@@ -140,19 +136,6 @@ h2 {
     color: #b2bac4;
   }
 
-  .social-accounts {
-    display: flex;
-    padding-bottom: 20px;
-
-    img {
-      margin: 10px;
-    }
-
-    a {
-      align-self: center;
-    }
-  }
-
   tag-input {
     min-height: 65px;
   }
@@ -173,7 +156,6 @@ fox-button {
 }
 
 form fox-button, .form fox-button {
-  padding: 50px 0;
   margin: 50px 0;
 }
 

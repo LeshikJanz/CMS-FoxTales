@@ -13,6 +13,7 @@
   display: inline-block;
   position: relative;
   cursor: pointer;
+  outline: none !important;
 }
 
 .regular-checkbox:active, .regular-checkbox:checked:active {
@@ -26,11 +27,33 @@
   color: white;
 }
 
-.regular-checkbox:checked:after {
-  content: '\2714';
-  font-size: inherit;
-  position: absolute;
-  top: 6px;
-  left: 9px;
-  color: #2dcc70;
+.regular-checkbox:checked {
+//.regular-checkbox:checked:after {
+  &:before, &:after{
+    content:"";
+    display: block;
+    position: absolute;
+    width: 14px;
+    height: 2px;
+    margin: 0 auto;
+    top: 12px;
+    left: 0;
+    right: 0;
+    border-radius: 5px;
+    transition-duration: .3s;
+  }
+  &:before, &:after{
+    background-color: #2dcc70;
+  }
+  &:before{
+    width: 7px;
+    top: 14px;
+    left: -7px;
+    transform: rotateZ(45deg);
+  }
+  &:after{
+    width: 10px;
+    left: 4px;
+    transform: rotateZ(-45deg);
+  }
 }
