@@ -87,6 +87,7 @@
     "install": "^0.10.1",
     "jasmine-core": "^2.5.2",
     "moment": "^2.18.1",
+    "ng-inline-svg": "^3.2.3",
     "ng-pick-datetime": "^4.1.2",
     "ng2-select": "^1.2.0",
     "ng2-tag-input": "1.2.8",

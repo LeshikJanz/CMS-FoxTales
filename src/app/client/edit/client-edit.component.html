@@ -79,7 +79,6 @@
           <a class="add-button" href="javascript:void(0)" (click)="addSocialAccount()">+ add another</a>
         </div>
       </div>
-
       <div class="form-element" isAllowed="CreateEditSocialIntegrations">
         <label>Social Integrations</label>
         <div class="social-integrations" *ngFor="let social of socialIntegrations">
@@ -91,11 +90,12 @@
     </div>
 
     <div>
-      <a
+      <h4
+          class="hvr-icon-wobble-horizontal-right client-licenses"
           href="javascript:void(0)"
           *ngIf="client"
           isAllowed="ViewLicenseList"
-          [routerLink]="['/admin/client', client.id, 'license']">Client licenses</a>
+          [routerLink]="['/admin/client', client.id, 'license']">Client licenses</h4>
     </div>
 
     <div>

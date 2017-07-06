@@ -1,5 +1,38 @@
 @import "../../shared/styles/form-element";
+@import "../../shared/styles/animations";
+@import "../../shared/styles/mixins";
 
 .client-container {
   width: 400px;
+
+  h4.client-licenses {
+    @include heading-4;
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .social-integrations {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    img {
+      margin: 10px;
+      box-shadow: none;
+      cursor: pointer;
+    }
+
+    a {
+      margin-left: 15px;
+      font-family: WorkSans;
+      font-weight: 600;
+      line-height: 4;
+      letter-spacing: 0.4px;
+      color: #777c84;
+      font-size: 14px;
+    }
+  }
 }

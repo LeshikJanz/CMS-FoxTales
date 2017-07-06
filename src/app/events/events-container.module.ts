@@ -39,6 +39,7 @@ import {
   EditEventGroupHeaderComponent
 } from './headers/edit-eventGroup-header/edit-eventGroup-header.component';
 import { EventViewDetailsComponent } from '../event/view-details/event-view-details.component';
+import { GalleryModule } from '../gallery/gallery.module';
 
 @NgModule({
   imports: [
@@ -52,7 +53,8 @@ import { EventViewDetailsComponent } from '../event/view-details/event-view-deta
     TagInputModule,
     SharedModule,
     DateTimePickerModule,
-    ChartModule.forRoot(require('highcharts'))
+    ChartModule.forRoot(require('highcharts')),
+    GalleryModule
   ],
   providers: [
     EventService,

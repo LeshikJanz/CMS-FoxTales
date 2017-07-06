@@ -6,7 +6,7 @@ import { EventService } from '../event.service';
 import { DateTimePickerModule } from 'ng-pick-datetime';
 import * as moment from 'moment';
 import { ISwitcher } from '../../components/toggles/switcher/switcher.interface';
-import {  } from 'bingmaps/scripts/MicrosoftMaps/Microsoft.Maps.All';
+import { } from 'bingmaps/scripts/MicrosoftMaps/Microsoft.Maps.All';
 import { UserService } from '../../user/user.service';
 import { IUserClient } from '../../user/user-client.interface';
 import { ModalDirective } from 'ngx-bootstrap';

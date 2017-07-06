@@ -1,1 +1,1 @@
-export * from './experience-gallery/experience-gallery.module';
+export * from './gallery.module';
