@@ -1,0 +1,23 @@
+@import "../../../shared/styles/headers";
+
+.button-container {
+  display: flex;
+  width: 550px;
+  justify-content: space-between;
+
+  fox-button {
+    height: 55px;
+
+    &:first-child {
+      width: 220px;
+    }
+
+    &:nth-child(2) {
+      width: 120px;
+    }
+
+    &:last-child {
+      width: 160px;
+    }
+  }
+}

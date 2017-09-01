@@ -1,0 +1,41 @@
+@import "../../shared/styles/form-element";
+@import "../../shared/styles/date-picker";
+@import "../../shared/styles/calendar";
+@import "../../shared/styles/tag-input";
+
+.event-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+
+  form {
+    width: 800px;
+    .form-element {
+      width: 400px;
+    }
+
+    .line-group {
+      min-width: 500px;
+      max-width: 900px;
+
+      .form-element {
+        width: 160px;
+      }
+    }
+
+    .location, .tags {
+      width: 90%;
+    }
+  }
+
+  .map {
+    height: 40%;
+    width: 40%;
+    min-height: 500px;
+    min-width: 500px;
+  }
+}
+
+.modal-body > h5 {
+    text-align: center;
+}

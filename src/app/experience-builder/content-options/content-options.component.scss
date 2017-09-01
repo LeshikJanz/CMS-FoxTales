@@ -1,0 +1,51 @@
+.btn{
+    color: #7A8693;
+    background-color: white;
+    border: 1px solid #7A8693;
+}
+.btn.active{
+    color:white;
+    background-color: #7A8693;
+}
+
+add-button {
+  background-color: #2fd976;
+  width: 204px;
+  height: 54px;
+  font-size: 16px;
+  border-radius: 6px;
+}
+
+.bsmodal {
+  display: flex;
+  justify-content: center;
+
+  .modal-content {
+    width: 90%;
+
+    .modal-header h1 {
+      font-family: Avenir;
+      font-size: 40px;
+      font-weight: 300;
+      line-height: 1.2;
+      letter-spacing: 1px;
+      color: #343a40;
+      padding-left: 5%;
+    }
+
+    .modal-body {
+      padding-left: 5%;
+    }
+  }
+
+  .part1-container {
+    > h5 {
+      font-family: Avenir;
+      font-size: 20px;
+      font-weight: 900;
+      line-height: 2.4;
+      letter-spacing: 1px;
+      color: #343a40;
+    }
+  }
+}

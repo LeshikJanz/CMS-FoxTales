@@ -19,9 +19,11 @@ export class AuthComponent {
    * @returns {void}
    */
   constructor(private router: Router, private auth: AuthService) {
-    if (this.auth.loggedIn()) {
-      this.router.navigate(['/']);
-    }
+    setTimeout(() => {
+      if (this.auth.loggedIn()) {
+        this.router.navigate(['/dashboard']);
+      }
+    }, 1000);
   }
 
   /**
@@ -32,5 +34,14 @@ export class AuthComponent {
   public login(): void {
     const context = this.auth.getContext();
     context.login();
+  }
+
+  /**
+   * Is logged in?
+   *
+   * @returns {boolean} - Is logged in
+   */
+  public loggedIn(): boolean {
+    return this.auth.loggedIn();
   }
 }

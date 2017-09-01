@@ -1,0 +1,66 @@
+<div class="group-container">
+  <form
+      *ngIf="eventGroupForm"
+      (ngSubmit)="updateEventGroup()"
+      class="form"
+      novalidate>
+
+    <div [formGroup]="eventGroupForm">
+
+      <!-- Name -->
+      <form-input
+          [control]="eventGroupForm.get('name')"
+          title="Group Name *">
+      </form-input>
+
+      <!--Client Access -->
+      <div class="form-element">
+        <label>Client Access*</label>
+        <fox-select
+            [disabled]="true"
+            [active]="client"
+            [items]="clients"
+        >
+        </fox-select>
+      </div>
+
+      <!-- Events -->
+      <div class="form-element wider">
+        <label>Add events</label>
+        <tag-input
+            formControlName="events"
+            [transform]="tagTransformer"
+            [displayBy]="'name'"
+            [(ngModel)]="eventGroup.events"
+            [maxItems]="365"
+            [(inputText)]='tagInputValue'
+            [secondaryPlaceholder]="'Start typing event name'">
+          <tag-input-dropdown
+              [identifyBy]="'id'"
+              [displayBy]="'name'"
+              [autocompleteItems]="events">
+          </tag-input-dropdown>
+        </tag-input>
+      </div>
+
+      <div class="form-element">
+        <label for="groupGallery">Enable Group Gallery</label>
+        <div class="gallery">
+          <switcher id="groupGallery" [options]="galleryOptions" (toggle)="isGalleryEnabled=$event"></switcher>
+          <configure-button
+              *ngIf="isGalleryEnabled === 1"
+              [value]="'Configure Gallery'"
+          ></configure-button>
+        </div>
+
+      </div>
+    </div>
+      <fox-button
+          [disabled]="eventGroupForm.invalid || tagInputValue"
+          [value]="'Update'"
+          [design]="'special'"
+      ></fox-button>
+  </form>
+
+</div>
+

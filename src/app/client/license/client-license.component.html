@@ -1,0 +1,145 @@
+<div class="license-container">
+  <form
+      *ngIf="licenseForm"
+      (ngSubmit)="updateLicense(licenseForm.value)"
+      class="form"
+      novalidate>
+    <div class="form-group">
+      <!-- Software License -->
+      <div class="form-element">
+        <h2>Software License*</h2>
+        <label>&nbsp;</label>
+        <fox-select
+            (change)="license.softwareLicenseTypeId = $event.id"
+            [active]="activeLicenseType"
+            [items]="licenseTypes">
+        </fox-select>
+      </div>
+
+      <!-- License Tier -->
+      <div class="form-element">
+        <label>License Tier*</label>
+        <fox-select
+            (change)="license.tierId = $event.id"
+            [active]="activeLicenseTier"
+            [items]="licenseTiers">
+        </fox-select>
+      </div>
+
+      <!-- License id -->
+      <form-input
+          [control]="licenseForm.get('licenseIdNumber')"
+          title="License ID*">
+      </form-input>
+
+      <!-- Billing -->
+      <div class="line-group">
+        <div class="form-element">
+          <label>Billing Type*</label>
+          <fox-select
+              (change)="license.billingTypeId = $event.id"
+              [active]="activeLicenseBilling"
+              [items]="licenseBilling">
+          </fox-select>
+        </div>
+        <!-- Start Date -->
+        <div class="form-element">
+          <label>Start Date*</label>
+          <div>
+              <input
+                  name="startDate"
+                  class="picker-input"
+                  [ngModel]="startDate"
+                  [returnObject]="'string'"
+                  [(dateTimePicker)]="startDate"
+                  [mode]="'dropdown'"
+                  [pickerType]="'date'"
+                  placeholder="Start Date"
+                  readonly>
+            </div>
+        </div>
+
+        <!-- Months -->
+        <div class="form-element">
+          <label>Number of months*</label>
+          <form-dropdown
+              [title]="'Select'"
+              (typeChanged)="license.numberOfMonths = $event.id"
+              [active]="{ id: activeLicenseMonths.id, action: activeLicenseMonths.id }"
+              [options]="months"
+          >
+          </form-dropdown>
+        </div>
+      </div>
+
+      <div class="form-element">
+        <p>
+          <checkbox [isChecked]="license.autoRenew" (toggle)="license.autoRenew=$event.isChecked"></checkbox>
+          <label>Auto-renew</label>
+        </p>
+      </div>
+
+      <!-- Hardware -->
+      <div class="form-element">
+        <h2 style="padding-bottom: 15px">Hardware License*</h2>
+        <fox-select
+            (change)="license.hardwareLicenseTypeId = $event.id"
+            [active]="activeLicenseHardware"
+            [items]="licenseHardware">
+        </fox-select>
+      </div>
+
+      <!-- Serial Number -->
+      <form-input
+          [control]="licenseForm.get('serialNumber')"
+          title="Serial Number*">
+      </form-input>
+
+      <fox-button
+          isAllowed="CreateEditLicenses"
+          [value]="'DONE'"
+          [design]="'special'">
+      </fox-button>
+    </div>
+
+    <div class="form-group">
+      <h2>Billing information</h2>
+
+      <!-- Name -->
+      <form-input
+          [control]="licenseForm.get('billingContactName')"
+          title="Name">
+      </form-input>
+
+      <!-- Email -->
+      <form-input
+          [control]="licenseForm.get('billingContactEmail')"
+          title="Email">
+      </form-input>
+
+      <!-- Phone -->
+      <form-input
+          [control]="licenseForm.get('billingContactPhone')"
+          title="Phone">
+      </form-input>
+
+      <!-- Address -->
+      <div class="form-element" [formGroup]="licenseForm">
+        <label for="billingContactAddress">Address</label>
+        <input
+            id="billingContactAddress"
+            type="text"
+            class="form-control input"
+            [(ngModel)]="license.billingContactAddress"
+            formControlName="billingContactAddress"
+            placeholder="Contact Address">
+
+        <div ngxErrors="billingContactAddress">
+          <div class="field-error" ngxError="required" when="touched">
+            Field is required
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

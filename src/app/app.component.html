@@ -1,17 +1,13 @@
 <header>
-  <main-navigation *ngIf="loggedIn()"></main-navigation>
+  <main-navigation *ngIf="loggedIn() && validPermissions()"></main-navigation>
 </header>
 <div class="mainContent">
   <div class="container-fluid">
-    <fox-button
-      *ngIf="loggedIn()"
-      class="logout-btn"
-      (click)="logout()"
-      [value]="'Log out'"
-      [type]="'tertiary'"
-    ></fox-button>
     <router-outlet></router-outlet>
     <!--Loader for app-->
     <!--<app-loader [showLoader]="false"></app-loader>-->
   </div>
 </div>
+<footer>
+  <small>CMS ver. {{ version }}</small>
+</footer>

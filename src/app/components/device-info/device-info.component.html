@@ -1,0 +1,62 @@
+<div class="cardContainer">
+  <div class="back">
+    <div class="content" *ngIf="deviceInfo">
+      <div class="field-name">
+        {{deviceInfo.cameraName}}
+      </div>
+      <div class="field-value">
+        23 hours ago
+      </div>
+      <hr>
+      <div>
+        <div class="field-name">Device Type</div>
+        <div class="field-value">DI</div>
+      </div>
+      <div>
+        <div class="field-name">Lens</div>
+        <div class="field-value">{{deviceInfo.lens}}</div>
+      </div>
+      <div>
+        <div class="field-name">ISO</div>
+        <div class="field-value">{{deviceInfo.iso}}</div>
+      </div>
+      <div>
+        <div class="field-name">Shutter Speed</div>
+        <div class="field-value">{{deviceInfo.shutterSpeed}}</div>
+      </div>
+      <div>
+        <div class="field-name">Aperture</div>
+        <div class="field-value">{{deviceInfo.aperture}}</div>
+      </div>
+      <div>
+        <div class="field-name">White Balance</div>
+        <div class="field-value">{{deviceInfo.whiteBalance}}</div>
+      </div>
+      <div>
+        <div class="field-name">Picture Style</div>
+        <div class="field-value">{{deviceInfo.pictureStyle}}</div>
+      </div>
+      <div class="field-value alert-field">
+        Alert: This device was activated on data and is unavailable for use
+      </div>
+      <hr>
+      <div class="field-name">
+        More Metadata or Notes
+      </div>
+      <div class="field-value">
+        Alert: This device was activated on data and is unavailable for use
+      </div>
+
+    </div>
+    <img [hidden]="!loading" src="../../../assets/img/spinner.gif">
+    <div *ngIf="!deviceInfo && !loading" class="loading">
+      <h4>There is no device info</h4>
+    </div>
+  </div>
+
+  <fox-button
+      (click)="onClose()"
+      [value]="'CLOSE'"
+      [design]="'primary'"
+  ></fox-button>
+</div>

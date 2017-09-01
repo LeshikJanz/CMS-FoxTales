@@ -1,0 +1,114 @@
+<div class="device-container">
+  <form
+    (ngSubmit)="updateDevice(deviceForm.value)"
+    class="form"
+    novalidate>
+
+    <div [formGroup]="deviceForm">
+      <!-- First Name -->
+      <div class="form-element">
+        <label for="name">Name</label>
+        <input
+          id="name"
+          type="text"
+          formControlName="name"
+          placeholder="Name">
+
+        <div ngxErrors="name">
+          <div ngxError="required" when="touched">
+            Field is required
+          </div>
+        </div>
+      </div>
+
+      <div class="form-element">
+        <label for="name">Purchase date</label>
+        <input class="picker-input" [ngModel]="purchaseMomentDate"
+               [returnObject]=" 'string' "
+               [theme]=" '#f57f17' "
+               [(dateTimePicker)]="purchaseMomentDate" [mode]="'dropdown'" [pickerType]="'date'"
+               placeholder="mm/dd/yy" [formControlName]="'purchaseDate'"
+               readonly>
+      </div>
+
+      <!-- Hub -->
+      <div class="form-element">
+        <label for="hubId">Hub</label>
+        <input
+          id="hubId"
+          type="text"
+          formControlName="hubId"
+          placeholder="Hub" disabled>
+
+
+        <div ngxErrors="hubId">
+          <div ngxError="required" when="touched">
+            Field is required
+          </div>
+        </div>
+      </div>
+
+      <!-- Product -->
+      <div class="form-element">
+        <label>Product</label>
+        <fox-select
+          [title]="'Select product'"
+          [active]="selectedProduct"
+          (change)="deviceForm.get('productId').setValue($event.id)"
+          [items]="products"
+        >
+        </fox-select>
+
+        <div ngxErrors="productId">
+          <div ngxError="required" when="touched">
+            Field is required
+          </div>
+        </div>
+      </div>
+
+      <!-- Location -->
+      <div class="form-element">
+        <label>Location</label>
+        <fox-select
+          [title]="'Select location'"
+          [active]="selectedLocation"
+          (change)="deviceForm.get('locationId').setValue($event.id)"
+          [items]="locations"
+        >
+        </fox-select>
+
+        <div ngxErrors="locationId">
+          <div ngxError="required" when="touched">
+            Field is required
+          </div>
+        </div>
+      </div>
+
+      <!-- Client -->
+      <div class="form-element">
+        <label>Client</label>
+        <fox-select
+          [title]="'Select client'"
+          [active]="selectedClient"
+          (change)="deviceForm.get('clientId').setValue($event.id)"
+          [items]="clients"
+        >
+        </fox-select>
+
+        <div ngxErrors="clientId">
+          <div ngxError="required" when="touched">
+            Field is required
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <fox-button
+          value="UPDATE"
+          [disabled]="deviceForm.invalid"
+          design="special"
+      ></fox-button>
+    </div>
+  </form>
+</div>

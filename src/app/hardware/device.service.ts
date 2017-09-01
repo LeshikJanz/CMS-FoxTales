@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Response, Http } from '@angular/http';
+import { Http, RequestOptions, Response, Headers } from '@angular/http';
 import { Observable } from 'rxjs';
-import { IDevice, IDeviceList } from './device.interface';
+import { AuthService } from '../shared/core/auth/auth.service';
 import { Device } from './device';
+import { IDevice, IDeviceFilter, IDeviceList } from './device.interface';
+import { ILog } from './log.interface';
 
 /**
  * User service
@@ -17,7 +19,8 @@ export class DeviceService {
    * @param {Http} http
    * @returns {void}
    */
-  constructor(private http: Http) {
+  constructor(private http: Http,
+              private auth: AuthService) {
   }
 
   /**
@@ -25,11 +28,12 @@ export class DeviceService {
    *
    * See: http://dev.getfoxtales.com/swagger/#!/Devices/ApiDevicesGet
    *
+   * @param {IDeviceFilter} filter - Filter
    * @returns {Observable<IDeviceList>} - Devices
    */
-  public getDevices(): Observable<IDevice[]> {
-    return this.http.get(`${process.env.API_URL}/Devices`)
-      .map((response: Response) => <IDevice[]> response.json());
+  public getDevices(filter: IDeviceFilter): Observable<IDeviceList> {
+    return this.http.post(`${process.env.API_URL}/Devices/GetDeviceList`, filter)
+      .map((response: Response) => <IDeviceList> response.json());
   }
 
   /**
@@ -42,7 +46,33 @@ export class DeviceService {
    */
   public getDevice(id: string): Observable<Device> {
     return this.http.get(`${process.env.API_URL}/Devices/${id}`)
-      .map((response: Response) => <Device> response.json());
+      .map((response: Response) => <Device> response.json()[0]);
+  }
+
+  /**
+   * Get device details
+   *
+   * See: http://dev.getfoxtales.com/swagger/#!/Devices/ApiDevicesByIdGet
+   *
+   * @param {IDeviceFilter} filter - Filter
+   * @returns {Observable<IDeviceList>} - Logs
+   */
+  public getDeviceDetails(filter: IDeviceFilter): Observable<IDeviceList> {
+    return this.http.post(`${process.env.API_URL}/Devices/Details`, filter)
+      .map((response: Response) => <IDeviceList> response.json());
+  }
+
+  /**
+   * Get log by id
+   *
+   * See: http://dev.getfoxtales.com/swagger/#!/Devices/ApiDevicesByIdGet
+   *
+   * @param {string} id - Log id
+   * @returns {Observable<Log>} - Log
+   */
+  public getLog(id: string): Observable<ILog> {
+    return this.http.get(`${process.env.API_URL}/Devices/${id}/Log`)
+      .map((response: Response) => <ILog> response.json());
   }
 
   /**
@@ -66,9 +96,49 @@ export class DeviceService {
    * @param {Device} device - Device
    * @returns {Observable<Device>} - Device
    */
-  public updateDevice(device: Device): Observable<Device> {
-    return this.http.put(`${process.env.API_URL}/Devices/${device.id}`, device)
+  public updateDevice(device: IDevice, id: number): Observable<Device> {
+    return this.http.put(`${process.env.API_URL}/Devices/${id}/update`, device)
       .map((response: Response) => <Device> response.json());
+  }
+
+  /**
+   * Get settings
+   *
+   * See: http://dev.getfoxtales.com/swagger/#!/Devices/ApiDevicesDeviceSettingsGet
+   *
+   * @returns {Observable<any>} - settings
+   */
+  public getSettings(): Observable<any> {
+    return this.http.get(`${process.env.API_URL}/Devices/DeviceSettings`)
+      .map((response: Response) => response.json());
+  }
+
+  /**
+   * Update settings
+   *
+   * See: http://dev.getfoxtales.com/swagger/#!/Devices/ApiDevicesDeviceSettingsPut
+   *
+   * @param {settings} settings - settings
+   * @returns {Observable<settings>} - settings
+   */
+  public updateSettings(settings: any): Observable<any> {
+    return this.http
+      .put(`${process.env.API_URL}/Devices/DeviceSettings?updateType=${settings.updateType}&logsPerDay=${settings.logsPerDay}`, settings)
+      .map((response: Response) => response.json());
+  }
+
+  /**
+   * Rename device
+   *
+   * See: http://dev.getfoxtales.com/swagger/#!/Devices/ApiDevicesByIdRenamePut
+   *
+   * @param {id} id - number
+   * @param {name} name - string
+   * @returns {Observable<any>} - any
+   */
+  public renameDevice(id: number, name: string): Observable<any> {
+    return this.http.put(`${process.env.API_URL}/Devices/${id}/rename?name=${name}`, {})
+      .map((response: Response) => response.json());
   }
 
   /**
@@ -104,6 +174,34 @@ export class DeviceService {
    */
   public getClients(): Observable<any> {
     return this.http.get(`${process.env.API_URL}/Clients/Lookup`)
+      .map((response: Response) => response.json());
+  }
+
+  public downloadDeviceSettings(id: number): Observable<any> {
+    return this.http.get(`${process.env.API_URL}/Devices/${id}/DeviceConnectionSettings`)
+      .map((response: Response) => response.json());
+  }
+
+  public restartDevice(id: any): Observable<any> {
+    return this.http.put(`${process.env.API_URL}/Devices/${id}/restart`, {})
+      .map((response: Response) => response.json());
+  }
+
+  public getUploadUrl(version: string, file: File): Observable<any> {
+    return this.http
+      .get(`${process.env.API_URL}/Devices/GetUploadSoftwareURL/${version}/${file.name}`)
+      .map((response: Response) => response.json());
+  }
+
+  public uploadFileToBlob(url: string, file: File): Observable<any> {
+    let headers = new Headers();
+    headers.append('x-ms-blob-type', 'BlockBlob');
+    let options = new RequestOptions({headers: headers});
+    return this.http.put(url, file, options);
+  }
+
+  public setUploadUrl(data: any): Observable<any> {
+    return this.http.post(`${process.env.API_URL}/Devices/SetUploadSoftwareStatus`, data)
       .map((response: Response) => response.json());
   }
 }

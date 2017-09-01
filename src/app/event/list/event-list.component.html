@@ -1,0 +1,115 @@
+<div toastContainer class="toast-top-center"></div>
+
+<div class="list-container">
+  <div class="actions">
+    <div>
+      <label>Sort by</label>
+      <dropdown
+          [title]="'Start Date'"
+          [options]="sortActions"
+          [size]="'big'"
+          (typeChanged)="onSortChanged($event)"
+      ></dropdown>
+    </div>
+    <div class="list-menu">
+      <search-input [title]="'search event name, location, tag, or date'"
+                    (Change)="onSearchChange($event)"></search-input>
+
+
+    </div>
+  </div>
+
+  <event
+      *ngFor="let event of Events"
+      [atgModal]="atgModal"
+      [deleteModal]="deleteModal"
+      [event]="event"
+      [eventActions]="eventActions"
+      [eventActionsCompleted]="eventActionsCompleted"
+      (cloneAction)="onClone($event)"
+      (addToGroupAction)="getUnusedGroups($event)"
+  >
+  </event>
+
+  <div class="pagination">
+    <section>
+      <div class="arrow-left" (click)="prevPage()"></div>
+
+      {{ startOffset }}-{{ endOffset }} of {{ rowsCount }}
+
+      <div class="arrow-right" (click)="nextPage()"></div>
+    </section>
+  </div>
+
+  <event-to-group-modal #atgModal [eventGroups]="unusedEventGroups"></event-to-group-modal>
+  <event-delete-modal #deleteModal (delete)="onDeleteEvent()"></event-delete-modal>
+
+</div>
+
+<div
+    bsModal
+    #cloneModal="bs-modal"
+    class="modal fade"
+    tabindex="-1"
+    role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div>
+          <h1 class="modal-title" *ngIf="!isCloned">Clone Event</h1>
+          <h1 class="modal-title" *ngIf="isCloned">Event Cloned!</h1>
+        </div>
+        <button type="button" class="close" (click)="cloneModal.hide()" aria-label="Close">
+          <img src="assets/img/close.svg">
+        </button>
+      </div>
+      <div class="modal-body">
+        <div *ngIf="showCloneAnimation">Cloning ...</div>
+
+        <div *ngIf="!showCloneAnimation">
+          <div class="form-element">
+            <label>Name</label>
+            <input type="text" [(ngModel)]="cloneName">
+          </div>
+          <div class="form-element">
+            <label>Start Date</label>
+            <input
+                class="picker-input"
+                [ngModel]="cloneStartDate"
+                [returnObject]="'string'"
+                [(dateTimePicker)]="cloneStartDate"
+                [mode]="'dropdown'"
+                [pickerType]="'date'"
+                placeholder="Start Date"
+                readonly>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <fox-button
+            *ngIf="!isCloned"
+            [disabled]="!cloneName || !cloneStartDate || showCloneAnimation"
+            value="Clone"
+            design="primary"
+            (click)="saveClone()"
+        ></fox-button>
+
+        <fox-button
+            *ngIf="isCloned"
+            [disabled]="!cloneName || !cloneStartDate"
+            value="Save & Close"
+            design="primary"
+            (click)="updateClone()"
+        ></fox-button>
+
+        <fox-button
+            *ngIf="isCloned"
+            [disabled]="!cloneName || !cloneStartDate"
+            [routerLink]="['/events/edit-event', clonedEvent.id]"
+            value="Edit Event"
+            design="primary">
+        </fox-button>
+      </div>
+    </div>
+  </div>
+</div>

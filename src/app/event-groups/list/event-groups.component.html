@@ -1,0 +1,21 @@
+<div>
+  <div class="group-container">
+    <div>
+      <label>Sort by</label>
+      <dropdown
+          [title]="'Upcoming'"
+          [options]="sortActions"
+          [size]="'big'"
+          (typeChanged)="onSortChanged($event)"
+      ></dropdown>
+    </div>
+  </div>
+  <event-group
+      (update)="getUnusedEvents()"
+      [modal]="aeModal"
+      [eventGroups]="eventGroups"
+      style="width: 700px"
+  ></event-group>
+
+  <events-to-cur-group-modal #aeModal (save)="onSave()"></events-to-cur-group-modal>
+</div>

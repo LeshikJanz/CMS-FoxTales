@@ -1,23 +1,35 @@
-<nav class="slidemenu">
+<div class="nav-container">
+  <nav class="slidemenu">
+    <input [routerLink]="['/admin/users']"
+           [class.active]="nav.isActive(['/admin/users', '/admin/user'], false)"
+           id="slide-item-1"
+           type="radio" name="slideItem" class="slide-toggle"/>
+    <label for="slide-item-1"><span>Users</span></label>
+    <input [routerLink]="['/admin/clients']"
+           [class.active]="nav.isActive(['/admin/clients', '/admin/client'], false)"
+           id="slide-item-2"
+           class="slide-toggle"
+           type="radio" name="slideItem"/>
+    <label for="slide-item-2"><span>Clients</span></label>
+    <input type="radio" name="slideItem" id="slide-item-3" class="slide-toggle"/>
+    <label for="slide-item-3"><span>Locations</span></label>
+    <input type="radio" name="slideItem"
+           id="slide-item-4"
+           [routerLink]="['/admin/devices']"
+           [class.active]="nav.isActive(['/admin/devices', '/admin/device/', '/admin/log/'], false)"
+           class="slide-toggle"/>
+    <label for="slide-item-4"><span>Integrations+hardware</span></label>
+    <div class="clear"></div>
 
-  <input type="radio" name="slideItem" id="slide-item-1" class="slide-toggle" checked/>
-  <label for="slide-item-1"><span [routerLink]="['/admin/users']">Users</span></label>
-
-  <input type="radio" name="slideItem" id="slide-item-2" class="slide-toggle"/>
-  <label for="slide-item-2"><span [routerLink]="['/admin/clients']">Clients</span></label>
-
-  <input type="radio" name="slideItem" id="slide-item-3" class="slide-toggle"/>
-  <label for="slide-item-3"><span>Locations</span></label>
-
-  <input type="radio" name="slideItem" id="slide-item-4" class="slide-toggle"/>
-  <label for="slide-item-4"><span [routerLink]="['/admin/devices']">Integrations+hardware</span></label>
-
-  <div class="clear"></div>
-
-  <div class="slider">
-    <div class="slide-line">
-      <div class="bar"></div>
+    <div class="slider">
+      <div class="slide-line">
+        <div class="bar"></div>
+      </div>
     </div>
+  </nav>
+  <div class="actions" *ngIf="nav.isActive(['/admin/users'])">
+    <div id="1" [hidden]="!isArchieved" (click)="onTypeChanged($event.target.id)">Archived</div>
+    <div id="2" [hidden]="isArchieved" (click)="onTypeChanged($event.target.id)">Unarchived</div>
   </div>
-</nav>
+</div>
 <router-outlet></router-outlet>

@@ -2,12 +2,15 @@
      [class.small]="size === 'small'"
      [class.medium]="size === 'medium'"
      [class.big]="size === 'big'"
+     [class.slim]="size === 'slim'"
 >
-  <button dropdownToggle type="button" class="btn btn-primary drop-button">
-    <label>{{currentOption || title}}</label>
+  <div dropdownToggle class="btn btn-primary drop-button">
+    <label>{{curentAction || title}}</label>
     <span class="caret fox-caret"></span>
-  </button>
+  </div>
   <ul *dropdownMenu class="dropdown-menu dropdown-menu-right" role="menu">
-    <li *ngFor="let option of options" role="menuitem"><a class="dropdown-item" (click)="onTypeChanged(option)" href="javascript:void(0)">{{option.action}}</a></li>
+    <li *ngFor="let option of options" role="menuitem" (click)="onTypeChanged(option)">
+      {{option.action}}
+    </li>
   </ul>
 </div>

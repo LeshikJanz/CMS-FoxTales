@@ -1,0 +1,31 @@
+<div class="form-element">
+  <label [ngClass]="{'error': control.touched && control.errors}">
+    {{title}}
+  </label>
+
+  <div [ngClass]="{'success': control.value && control.touched && !control.errors}">
+    <input
+      [attr.disabled]="disabled ? '' : null"
+      type="text"
+      class="form-control"
+      [formControl]="control"
+      [placeholder]="title">
+  </div>
+
+  <div>
+    <button
+      class="close-icon"
+      *ngIf="control.touched && control.errors" type="reset">
+    </button>
+
+    <div class="field-error"
+         *ngIf="control.hasError('required') && control.touched">
+      Field is required
+    </div>
+
+    <div class="field-error"
+         *ngIf="control.touched && (control.hasError('pattern') || control.hasError('email'))">
+      {{errorMsg}}
+    </div>
+  </div>
+</div>

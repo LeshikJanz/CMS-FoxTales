@@ -1,0 +1,22 @@
+@import "../../../shared/styles/headers";
+
+.header-container {
+
+  add-button {
+    margin-left: 10px;
+    background-color: #2fd976;
+    width: 204px;
+    height: 54px;
+    font-size: 16px;
+    border-radius: 6px;
+    align-self: center;
+  }
+
+  .buttons-container {
+    display: flex;
+    width: 500px;
+    justify-content: space-between;
+  }
+}
+
+

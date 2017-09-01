@@ -1,0 +1,44 @@
+<div class="profile-container">
+  <h1>Edit Profile</h1>
+
+  <!--<profile-navigation></profile-navigation>-->
+  <hr>
+  <div class="form">
+    <div class="form-element">
+      <label>Email / Username</label>
+      <input disabled="true" class="form-control" value="{{ profileData?.email }}"/>
+    </div>
+
+    <div class="form-element">
+      <label>First Name</label>
+      <input disabled="true" class="form-control" value="{{ profileData?.firstName }}"/>
+    </div>
+
+    <div class="form-element">
+      <label>Last Name</label>
+      <input disabled="true" class="form-control" value="{{ profileData?.lastName }}"/>
+    </div>
+
+    <div class="form-element">
+      <label>Profile Image</label>
+      <div>
+        <img *ngIf="profileData?.profileImagePath || logo" [src]="logo || profileData?.profileImagePath">
+        <a class="delete-icon" href="javascript:void(0)" *ngIf="profileData?.profileImagePath || logo"
+           (click)="cModal.show()">x</a>
+      </div>
+      <upload-button (imgUploaded)="onImgUploaded($event)"></upload-button>
+    </div>
+
+    <fox-button
+        [value]="'Save'"
+        [design]="'special'"
+        (click)="updateProfile()"
+    ></fox-button>
+  </div>
+</div>
+
+<confirm-modal #cModal
+    (confirm)="removeLogo()"
+               title="Confirm"
+    message="Are you sure you want to remove logo?">
+</confirm-modal>

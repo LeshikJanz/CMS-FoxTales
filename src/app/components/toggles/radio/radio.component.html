@@ -1,0 +1,9 @@
+<ul>
+  <li *ngFor="let option of options">
+    <input type="radio" id="{{option}}-option" name="selector" [ngModel]="type" (ngModelChange)="onChange($event)" value="{{option}}">
+    <label for="{{option}}-option">{{option}}</label>
+
+    <div class="check"></div>
+  </li>
+
+</ul>

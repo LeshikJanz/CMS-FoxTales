@@ -2,14 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { CustomValidators } from 'ng2-validation';
+import { ToastrService } from 'ngx-toastr';
 import { IUser } from '../user.interface';
 import { IUserRole } from '../user-role.interface';
+import { IUserClient } from '../user-client.interface';
 import { UserService } from '../user.service';
 
 @Component({
   selector: 'user-create',
   templateUrl: './user-create.component.html',
-  styleUrls: [ './user-create.component.scss' ]
+  styleUrls: ['./user-create.component.scss']
 })
 export class UserCreateComponent implements OnInit {
   /**
@@ -27,27 +29,48 @@ export class UserCreateComponent implements OnInit {
   public roles: IUserRole[];
 
   /**
+   * Clients
+   *
+   * @type {IUserClient[]}
+   */
+  public clients: IUserClient[];
+
+  /**
    * Additional user details
    *
    * @type {any}
    */
   public userDetails: any = {
-    roles: []
+    roles: [],
+    clientId: null
   };
 
   /**
    * Constructor
    *
    * @param {Router} router - Router
+   * @param {ToastrService} toastrService - Toastr service
    * @param {FormBuilder} formBuilder
    * @param {UserService} userService - User service
    * @returns {void}
    */
   constructor(
     private router: Router,
+    private toastrService: ToastrService,
     private formBuilder: FormBuilder,
-    private userService: UserService
-  ) {
+    private userService: UserService) {
+  }
+
+  /**
+   * Is form invalid
+   *
+   * @return {boolean}
+   */
+  public isFormInvalid(): boolean {
+    if (this.userForm.valid && this.userDetails.clientId && this.userDetails.roles.length) {
+      return false;
+    }
+    return true;
   }
 
   /**
@@ -59,18 +82,36 @@ export class UserCreateComponent implements OnInit {
   public ngOnInit(): void {
     this
       .buildUserForm()
-      .getUserRoles();
+      .getUserRoles()
+      .getUserClients();
   }
 
   /**
    * Get user roles
    *
-   * @returns {void}
+   * @returns {UserCreateComponent} - Component
    */
-  public getUserRoles(): void {
+  public getUserRoles(): UserCreateComponent {
     this.userService
       .getUserRoles()
       .subscribe((roles: IUserRole[]) => this.roles = roles);
+
+    return this;
+  }
+
+  /**
+   * Get user clients
+   *
+   * @returns {UserCreateComponent} - Component
+   */
+  public getUserClients(): UserCreateComponent {
+    this.userService
+      .getClients()
+      .subscribe((clients: IUserClient[]) => {
+        this.clients = clients;
+      });
+
+    return this;
   }
 
   /**
@@ -80,22 +121,36 @@ export class UserCreateComponent implements OnInit {
    * @returns {void}
    */
   public addUser(user: IUser): void {
-    this.extractRoles();
-
     this.userService
       .addUser({ ...user, ...this.userDetails })
-      .subscribe(() => this.router.navigate(['/admin/users']));
+      .subscribe((response: any) => {
+        if (response.success) {
+          this.toastrService.success('User has been created successfully.');
+          this.router.navigate(['/admin/users']);
+        } else {
+          this.toastrService.error(response.message);
+        }
+      });
   }
 
   /**
-   * Extract selected roles
+   * User role select
    *
-   * @returns {void}
+   * @param {any} role - Role
    */
-  public extractRoles(): void {
-    this.userDetails.roles = this.roles
-      .filter((role: IUserRole) => role.checked)
-      .map((role: IUserRole) => role.id);
+  public selectRole(role: any): void {
+    this.userDetails.roles[0] = role.id;
+  }
+
+  /**
+   * User role selected
+   *
+   * @param {any[]} roles - Roles
+   */
+  public rolesSelected(roles: any[]): void {
+    this.userDetails.roles = roles.map((role: IUserRole) => {
+      return role.id;
+    });
   }
 
   /**
@@ -105,27 +160,9 @@ export class UserCreateComponent implements OnInit {
    */
   public buildUserForm(): UserCreateComponent {
     this.userForm = this.formBuilder.group({
-      firstName: ['', [
-        Validators.required
-      ]],
-      lastName: ['', [
-        Validators.required
-      ]],
       email: ['', [
         Validators.required,
         CustomValidators.email
-      ]],
-      phone: ['', [
-        Validators.required
-      ]],
-      location: ['', [
-        Validators.required
-      ]],
-      clientId: ['', [
-        Validators.required
-      ]],
-      selectedClientAccess: ['', [
-        Validators.required
       ]]
     });
 

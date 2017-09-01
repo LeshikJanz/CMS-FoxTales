@@ -1,0 +1,26 @@
+.slidemenu {
+  min-width: 1200px !important;
+}
+
+.slidemenu #slide-item-1.active ~ .slider .bar {
+  margin-left: 0;
+  width: 55px;
+}
+
+.slidemenu #slide-item-2.active ~ .slider .bar {
+  margin-left: 85px;
+  width: 110px;
+}
+
+.slidemenu #slide-item-3.active ~ .slider .bar {
+  width: 130px;
+  margin-left: 225px;
+}
+
+.slidemenu #slide-item-2 + label {
+  width: 140px;
+}
+
+.slidemenu #slide-item-3 + label {
+  width: 160px;
+}

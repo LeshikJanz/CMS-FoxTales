@@ -1,0 +1,96 @@
+@import "mixins";
+
+// ng2-tag-input
+:host /deep/ .ng2-menu-item--selected {
+  color: #f57f17 !important;
+  background: transparent !important;
+}
+
+:host /deep/ .ng2-dropdown-menu::-webkit-scrollbar {
+  display: none;
+}
+
+:host /deep/ tag:focus {
+  background: #e6e7e8 !important;
+  border: 1px solid #f57f17 !important;
+  color: #444444 !important;
+}
+
+:host /deep/ tag:active {
+  background: #f57f17 !important;
+}
+
+:host /deep/ .ng2-menu-item {
+  @include dropdown-li;
+}
+
+:host /deep/ .ng2-tag-input {
+  height: inherit;
+  width: inherit;
+  border: 1px solid !important;
+  min-height: 0 !important;
+  padding: 0 !important;
+
+  .ng2-tags-container {
+    height: inherit;
+    width: inherit;
+    align-items: center;
+    padding-left: 54px;
+    min-height: 65px;
+    background-image: url('../../../assets/img/search.svg');
+    background-repeat: no-repeat;
+    background-position: 20px;
+  }
+
+  tag-input-form {
+    display: flex;
+    align-items: center;
+  }
+
+  input {
+    background-color: #ffffff;
+    font-family: WorkSans;
+    font-size: 16px;
+    color: #3d3d3d;
+    padding-left: 12px;
+    min-width: 250px;
+  }
+
+  input:focus {
+    background-color: #ffffff;
+  }
+
+  input::-webkit-input-placeholder {
+    font-family: WorkSans;
+    font-size: 16px;
+    color: #b2bac4;
+  }
+
+  tag {
+    min-width: 115px;
+    height: 44px;
+    padding-left: 15px;
+    display: flex;
+    align-items: center;
+    border-radius: 3px;
+    margin: 5px;
+
+    > div {
+      width: inherit;
+
+      > div {
+        justify-content: space-between;
+        display: flex;
+        min-width: 90px;
+
+        delete-icon {
+          margin-left: 5px !important;
+
+          path {
+            fill: #343a40 !important;
+          }
+        }
+      }
+    }
+  }
+}

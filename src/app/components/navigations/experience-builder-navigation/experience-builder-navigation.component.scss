@@ -1,0 +1,68 @@
+@import "../../../shared/styles/navigation.scss";
+
+.slidemenu #slide-item-1 + label {
+  width: 110px !important;
+}
+
+.slidemenu #slide-item-2 + label {
+  width: 150px !important;
+}
+
+.slidemenu #slide-item-3 + label {
+  width: 150px !important;
+}
+
+.slidemenu #slide-item-4 + label {
+  width: 120px !important;
+}
+
+.slidemenu #slide-item-5 + label {
+  width: 100px !important;
+}
+
+.slidemenu #slide-item-6 + label {
+  width: 140px !important;
+}
+
+.slidemenu #slide-item-7 + label {
+  width: 140px !important;
+}
+
+.slidemenu #slide-item-1.active ~ .slider .bar {
+  margin-left: 0;
+  width: 105px;
+}
+
+.slidemenu #slide-item-2.active ~ .slider .bar {
+  margin-left: 120px;
+  width: 130px;
+}
+
+.slidemenu #slide-item-3.active ~ .slider .bar {
+  margin-left: 270px;
+  width: 130px;
+}
+
+.slidemenu #slide-item-4.active ~ .slider .bar {
+  margin-left: 415px;
+  width: 110px;
+}
+
+.slidemenu #slide-item-5.active ~ .slider .bar {
+  margin-left: 535px;
+  width: 85px;
+}
+
+.slidemenu #slide-item-6.active ~ .slider .bar {
+  margin-left: 635px;
+  width: 130px;
+}
+
+.slidemenu #slide-item-7.active ~ .slider .bar {
+  margin-left: 780px;
+  width: 120px;
+}
+
+.slidemenu label {
+  width: 70px !important;
+}

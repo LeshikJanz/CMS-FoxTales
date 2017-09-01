@@ -4,8 +4,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Http, HttpModule, RequestOptions, XHRBackend } from '@angular/http';
 import { CustomFormsModule } from 'ng2-validation';
 import { NgxErrorsModule } from '@ultimate/ngxerrors';
+import { DateTimePickerModule } from 'ng-pick-datetime';
 import { ToastrModule, ToastContainerModule } from 'ngx-toastr';
 import { AgmCoreModule } from '@agm/core';
+import { Ng2BootstrapModule } from 'ngx-bootstrap';
 
 import { SharedModule } from '../shared';
 import { HttpService, AuthService, AuthRequestOptions } from '../shared/core';
@@ -16,6 +18,7 @@ import { ClientService } from './client.service';
 import { ClientListComponent } from './list';
 import { ClientCreateComponent } from './create';
 import { ClientEditComponent } from './edit';
+import { ClientLicenseComponent } from './license';
 import { FeatureModule } from '../components/feature.module';
 
 @NgModule({
@@ -26,11 +29,13 @@ import { FeatureModule } from '../components/feature.module';
     CustomFormsModule,
     HttpModule,
     NgxErrorsModule,
+    DateTimePickerModule,
     ToastrModule.forRoot(),
     ToastContainerModule.forRoot(),
+    Ng2BootstrapModule,
     SharedModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyAW7s_PMAH6CJRMMXRVWnQPevWqipMkCyA',
+      apiKey: process.env.GOOGLE_KEY,
       libraries: [ 'places' ]
     }),
     CLIENT_ROUTING,
@@ -52,7 +57,8 @@ import { FeatureModule } from '../components/feature.module';
   declarations: [
     ClientListComponent,
     ClientCreateComponent,
-    ClientEditComponent
+    ClientEditComponent,
+    ClientLicenseComponent
   ]
 })
 export class ClientModule {

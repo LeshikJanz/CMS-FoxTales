@@ -1,25 +1,64 @@
+:host /deep/ table-dropdown ul.dropdown-menu {
+  width: 187px !important;
+}
+
 .event-container {
+  margin: inherit;
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
-  margin-top: 20px;
-  height: 65px;
+  align-items: center;
+  height: 85px;
+  border-bottom: medium solid #b2bac4;
+  border-width: 1px;
 
-  & :first-child {
-    margin-right: 20px;
+  checkbox {
+    height: 32px;
+    width: 32px;
+    font-size: 14px;
+    align-self: center;
   }
 
   .main-info {
+    display: flex;
+    width: 100%;
 
-    & :first-child {
-      > * {
-        margin: auto;
-        margin-right: 20px;
-        padding-bottom: 5px;
+    div:first-child {
+      margin-left: 20px;
+      width: 100%;
+    }
+
+    .brands {
+      display: flex;
+      flex-wrap: wrap;
+      margin-right: 30px;
+    }
+
+    .event-name {
+      font-size: 26px;
+      font-family: Avenir-Book;
+      line-height: 1.38;
+      color: #343a40;
+    }
+
+    .main-content {
+      display: flex;
+      align-items: flex-end;
+      width: 90%;
+      justify-content: space-between;
+
+      > label {
+        min-width: 100px;
       }
 
-      display: flex;
-      align-items: center;
+      > a {
+        display: block;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+    }
+
+    > * :first-child {
 
       img {
         height: 35px;
@@ -27,21 +66,35 @@
       }
 
       label {
-        font-size: 16px;
-        font-weight: bold;
-        font-family: Avenir-Book;
-        line-height: 1.38;
-        color: #343a40;
+        font-family: WorkSans;
+        font-size: 12px;
+        font-weight: 600;
+        line-height: 1;
+        letter-spacing: 0.6px;
+        color: #b2bac4;
+        margin-bottom: 5px;
       }
     }
   }
+  label {
+    font-size: 14px;
+    font-family: WorkSans;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: 0.6px;
+    color: #b2bac4;
+    margin-bottom: 0;
+    margin-left: 20px;
+  }
 
-  .experience {
-
-    label{
-      font-size: 16px;
-      font-family: Avenir-Book;
-      margin-left: 45px;
-    }
+  fox-button {
+    height: 36px;
+    width: 118px;
+    font-size: 14px;
+    align-self: center;
+  }
+  
+  .finishedEvent {
+    margin-left: 20px;
   }
 }

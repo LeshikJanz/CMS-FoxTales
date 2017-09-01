@@ -1,0 +1,104 @@
+.form-element {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  margin-top: 15px;
+  padding-bottom: 20px;
+
+  label {
+    font-family: AvenirNext-DemiBold;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1;
+    color: #4b535c;
+    margin-bottom: 10px;
+  }
+
+  label.error {
+    color: #ff3328;
+  }
+
+  input {
+    width: 400px;
+    height: 65px;
+    border-radius: 3px;
+    background-color: #ffffff;
+    border: solid 1px #3d3d3d;
+    font-family: WorkSans;
+    font-size: 16px;
+    color: #3d3d3d;
+    padding: 6px 22px;
+  }
+
+  input:focus {
+    border-radius: 3px;
+    background-color: #ffffff;
+    border: solid 1px #3d3d3d;
+  }
+
+  .search-box,.close-icon,.search-wrapper {
+    position: relative;
+    padding: 10px;
+  }
+
+  .close-icon {
+    border:1px solid transparent;
+    background-color: transparent;
+    display: inline-block;
+    position: absolute;
+    vertical-align: middle;
+    outline: 0;
+    height: 0;
+    cursor: pointer;
+  }
+  .close-icon:after {
+    content: "X";
+    position: absolute;
+    z-index: 1;
+    right: 15px;
+    bottom: 43px;
+    margin: auto;
+    color: #ff3328;
+    cursor: pointer;
+    font-size: 14px;
+  }
+
+  .ng-touched.ng-invalid {
+    border-color: #ff3328;
+    border-radius: 3px;
+    border: solid 1px #ff3328;
+    font-family: OpenSans;
+    font-size: 16px;
+    color: #ff3328;
+  }
+
+  .success:after {
+    content: '\2714';
+    font-size: inherit;
+    position: absolute;
+    height: 5px;
+    width: 5px;
+    top: 50px;
+    left: 375px;
+    color: #2dcc70;
+  }
+
+  input:disabled {
+    font-family: OpenSans;
+    font-size: 16px;
+    opacity: 0.5;
+  }
+}
+
+.field-error {
+  font-family: Avenir;
+  font-size: 16px;
+  color: #ff3328;
+  margin-top: 10px;
+}
+
+input::-webkit-input-placeholder {
+  font-family: WorkSans !important;
+  font-size: 16px !important;
+  color: #b2bac4 !important;
+}

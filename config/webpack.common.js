@@ -181,10 +181,9 @@ module.exports = function (options) {
         /* File loader for supporting fonts, for example, in CSS files.
         */
         {
-          test: /\.(eot|woff2?|svg|ttf)([\?]?.*)$/,
+          test: /\.(eot|woff2?|svg|ttf|otf)([\?]?.*)$/,
           use: 'file-loader'
         }
-
       ],
 
     },
@@ -256,7 +255,8 @@ module.exports = function (options) {
        * See: https://www.npmjs.com/package/copy-webpack-plugin
        */
       new CopyWebpackPlugin([
-        { from: 'src/assets', to: 'assets' }
+        { from: 'src/assets', to: 'assets' },
+        { from: 'src/static' }
       ]),
 
 

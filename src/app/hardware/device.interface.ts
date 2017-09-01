@@ -6,7 +6,7 @@ export interface IDevice {
   hubId?: number;
   purchaseDate?: string;
   productId?: number;
-  clientId: number;
+  clientId: any;
   locationId: number;
   name: string;
 }
@@ -18,7 +18,36 @@ export interface IDeviceList {
   totalRowCount: number;
   currentPageNumber: number;
   numberRowsOnPage: number;
-  result: IDevice[];
+  result: any;
   suscess: boolean;
   message: string;
+}
+
+/**
+ * Device filter interface
+ */
+export interface IDeviceFilter {
+  id?: number;
+  pageingInfo: {
+    currentPage: number;
+    pageRowCount: number;
+  };
+  currentSortType: number;
+  isAscendantSort: boolean;
+  searchFields?: {
+    [index: string]: string;
+  };
+}
+
+export interface IDeviceDetails {
+  id: number;
+  name: string;
+  purchaseDate: string;
+  appVersion: string;
+  serialNumber: string;
+  hardwareVersion: string;
+  tabletModel: string;
+  cameraModel: string;
+  cameraFirmware: string;
+  lighting: string;
 }

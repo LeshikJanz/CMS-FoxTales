@@ -1,0 +1,105 @@
+@import "../../shared/styles/modal";
+@import "../../shared/styles/form-element";
+@import "../../shared/styles/date-picker";
+
+.list-container .actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-top: 20px;
+
+  label {
+    margin-bottom: 0;
+  }
+
+  & > div:first-child {
+    display: flex;
+    width: 240px;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.list-menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+  height: inherit;
+
+  search-input {
+    width: 400px;
+    height: 65px;
+  }
+}
+
+.create-event {
+  display: flex;
+  justify-content: flex-end;
+
+add-button {
+    background-color: #2fd976;
+    width: 204px;
+    height: 54px;
+    font-size: 16px;
+  border-radius: 6px;
+}
+}
+
+.arrow-right {
+  cursor: pointer;
+  width: 0;
+  height: 0;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+
+  border-left: 8px solid #6a8186;
+}
+
+.arrow-left {
+  cursor: pointer;
+  width: 0;
+  height: 0;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-right: 8px solid #6a8186;
+}
+
+div.pagination {
+  display: flex;
+  justify-content: center;
+  font-family: WorkSans-Regular;
+  font-size: 16px;
+  color: #b2bac4;
+  transition: all 500ms ease-in-out;
+
+  &:hover {
+    color: black;
+  }
+
+  section:last-child {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 259px;
+    height: 50px;
+    border-radius: 3px;
+    border: solid 1px #aab3bd;
+
+    input.paging {
+      width: 40px;
+      height: 30px;
+      border: solid 1px #aab3bd;
+      text-align: center;
+    }
+  }
+}
+
+fox-button {
+  margin: 0;
+  padding: 0;
+}
+
+.modal-body {
+  margin: 0 20px;
+}

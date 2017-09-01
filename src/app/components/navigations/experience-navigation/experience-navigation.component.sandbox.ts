@@ -1,5 +1,5 @@
 import { sandboxOf } from 'angular-playground';
-import { ExperienceNavigationComponent } from "./experience-navigation.component";
+import { ExperienceNavigationComponent } from './experience-navigation.component';
 
 export default sandboxOf(ExperienceNavigationComponent)
   .add('experience-navigation', {

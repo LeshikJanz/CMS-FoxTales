@@ -1,0 +1,80 @@
+label {
+  font-weight: 300;
+}
+
+#sidebar {
+  background-color: white;
+  width: inherit;
+  max-height: inherit;
+  overflow: auto;
+
+  div:hover {
+    transition: border .25s linear;
+    font-weight: 600;
+  }
+}
+
+#sidebar::-webkit-scrollbar {
+  width: 0;
+}
+
+h2 {
+  color: #AAAAAA;
+}
+
+@import url(http://fonts.googleapis.com/css?family=Lato:300);
+
+input[type="radio"] {
+  display: none;
+
+  & + label {
+    display: block;
+    cursor: pointer;
+    padding: 10px;
+    font-size: 18px;
+    border-bottom: 1px solid #eef1f3;
+
+    &:before {
+      content: "";
+      display: block;
+      position: relative;
+      border: 1px solid transparent;
+      width: 10px;
+      height: 10px;
+      float: right;
+    }
+  }
+
+  &:checked + label {
+    background-color: #F2F2F2;
+    font-family: WorkSans-Bold;
+
+    &:before {
+      content: "\2713";
+      font-family: 'lucida grande';
+      font-size: 25px;
+      line-height: 20px;
+      text-align: center;
+      font-weight: 900;
+      padding-right: 50px;
+    }
+    transition: border .25s linear;
+    font-weight: 600;
+  }
+}
+
+label {
+  display: table-cell;
+  vertical-align: middle;
+  font-family: WorkSans;
+  height: 50px;
+  width: 500px;
+  padding-left: 40px;
+  width: 100%;
+  cursor: pointer;
+  margin-bottom: 0;
+
+  &:hover {
+    color: #f57f17;
+  }
+}

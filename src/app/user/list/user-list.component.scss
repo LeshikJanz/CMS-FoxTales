@@ -6,7 +6,7 @@
   justify-content: flex-end;
 }
 
-.creation-button {
+add-button {
   width: 204px;
   height: 54px;
   font-size: 16px;
@@ -20,6 +20,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  padding-bottom: 20px;
 }
 
 .creation-button {
@@ -35,7 +36,8 @@
   align-self: flex-start;
 }
 
-.dr-actions {
+.actions {
   display: flex;
   justify-content: flex-end;
+  height: 50px;
 }

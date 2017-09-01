@@ -1,0 +1,57 @@
+<div>
+  <div
+      class="group-container"
+  >
+    <div class="filters">
+      <div *ngIf="3 == selectedType">
+        <div>
+          <label>Sort by</label>
+          <dropdown
+              [title]="'Upcoming'"
+              [options]="sortActions"
+              [size]="'big'"
+              (typeChanged)="onSortChanged($event)"
+          ></dropdown>
+        </div>
+        <div>
+              <label>Start Date</label>
+              <input class="picker-input" [ngModel]="startDate"
+                     [returnObject]=" 'string' "
+                     [theme]=" '#f57f17' "
+                     [(dateTimePicker)]="startDate"
+                     (dateTimePickerChange)="onStartDateChanged($event)"
+                     [mode]="'dropdown'"
+                     [pickerType]="'date'"
+                     placeholder="mm/dd/yy"
+                     readonly>
+            <label>End Date</label>
+            <input class="picker-input" [ngModel]="endDate"
+                   [returnObject]=" 'string' "
+                   [theme]=" '#f57f17' "
+                   [(dateTimePicker)]="endDate"
+                   (dateTimePickerChange)="onEndDateChanged($event)"
+                   [mode]="'dropdown'"
+                   [pickerType]="'date'"
+                   placeholder="mm/dd/yy"
+                   readonly>
+        </div>
+      </div>
+      <switcher [type]="selectedType"
+                [options]="galleryTypes" (toggle)="onTypeChange($event)"></switcher>
+      <div>
+        <search-input *ngIf='selectedType !== 3' [title]="'find gallery'"
+                      (Change)="onSearchChange($event)"></search-input>
+        <fox-button
+            *ngIf='selectedType === 3'
+            [value]="'Download Gallery'"
+            [design]="'primary'"
+            (click)="atgModal.show()"
+        ></fox-button>
+      </div>
+    </div>
+    <gallery-list *ngIf="selectedType == 2" [galleries]="experiences"></gallery-list>
+    <gallery-item-list *ngIf="selectedType == 3" [galleryItems]="galleryItems"
+                       (toggle)="onChecked($event)" (deleted)="onDelete($event)"></gallery-item-list>
+  </div>
+  <download-modal [galleryItems]="galleryItems" #atgModal></download-modal>
+</div>

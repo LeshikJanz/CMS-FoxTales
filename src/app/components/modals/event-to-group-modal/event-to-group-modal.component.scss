@@ -1,0 +1,64 @@
+@import "../../../shared/styles/modal";
+
+.modal-lg {
+  width: 60%;
+}
+
+.ng2-dropdown-menu {
+  z-index: 2000 !important;
+}
+
+.modal-body {
+  margin: 0;
+  padding: 0;
+  height: 480px;
+  justify-content: initial;
+
+  > div {
+    @include border-bottom;
+
+    &:last-child {
+      border-bottom: none;
+      height: 110px;
+    }
+
+    &:first-child {
+      height: 65px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      search-input {
+        width: 94%;
+        padding-left: 20px;
+      }
+    }
+
+    scroll {
+      max-height: 300px;
+    }
+  }
+
+  .btn-actions {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+
+    fox-button {
+      height: 55px;
+      width: 220px;
+      font-size: 16px;
+    }
+
+    .cancel {
+      margin-left: 25px;
+      width: 150px;
+    }
+  }
+}
+
+:host /deep/ #sidebar div label {
+  padding-left: 40px;
+  cursor: pointer;
+}

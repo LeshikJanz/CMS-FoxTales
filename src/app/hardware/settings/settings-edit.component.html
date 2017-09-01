@@ -1,0 +1,100 @@
+<fox-button (click)="editModal.show()"
+            isAllowed="CreateEditDeviceSettings"
+            [value]="'Manage settings'"
+            [design]="'gray'"></fox-button>
+<div [config]="{ show: false }"
+     bsModal #editModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div>
+          <h1 class="modal-title">Update preferences</h1>
+        </div>
+        <button type="button" class="close" (click)="editModal.hide()" aria-label="Close">
+          <img src="assets/img/close.svg">
+        </button>
+      </div>
+      <div class="modal-body">
+        <form
+          (ngSubmit)="updateSettings(settingsForm.value)"
+          class="form"
+          novalidate>
+
+          <div [formGroup]="settingsForm">
+            <!-- First Name -->
+            <div class="form-element">
+              <div>Set to auto update or manual</div>
+              <div class="radio-inline">
+                <label>
+                  <input
+                    type="radio"
+                    name="updateType"
+                    [value]="0"
+                    formControlName="updateType"
+                    placeholder="Name">
+                  <div>Manual</div>
+                </label>
+                <label>
+                  <input
+                    type="radio"
+                    name="updateType"
+                    [value]="1"
+                    formControlName="updateType"
+                    placeholder="Name">
+                  <div>Auto</div>
+                </label>
+              </div>
+            </div>
+
+            <!-- Log time -->
+            <div class="form-element">
+              <div for="logTime">Select a time</div>
+              <select
+                id="logTime">
+                <option>Select log time</option>
+              </select>
+            </div>
+
+            <!-- logsPerDay -->
+            <div class="form-element">
+              <div for="logsPerDay">Logs per day</div>
+              <input
+                id="logsPerDay"
+                type="number"
+                step="1"
+                min="1"
+                formControlName="logsPerDay"
+                placeholder="Logs per day">
+
+              <div ngxErrors="logsPerDay">
+                <div ngxError="required" when="touched">
+                  Field is required
+                </div>
+                <div ngxError="min" when="touched">
+                  Min value is 1
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="btn-actions">
+            <fox-button
+              [value]="'CONTINUE'"
+              [design]="'gray'"
+              [type]="'submit'"
+              [disabled]="settingsForm.invalid"
+            ></fox-button>
+
+            <fox-button
+              [value]="'CANCEL'"
+              [design]="'gray'"
+              [type]="'button'"
+              (click)="hide()"
+            ></fox-button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

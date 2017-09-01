@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "name": "First group",
+    "clientId": 1,
+    "eventIds": [1, 2]
+  },
+  {
+    "id": null,
+    "name": "Second group",
+    "clientId": 1,
+    "eventIds": [1, 2]
+  },
+  {
+    "id": 1,
+    "name": "Third group",
+    "clientId": 1,
+    "eventIds": [1, 2]
+  },
+  {
+    "id": null,
+    "name": "Fourth group",
+    "clientId": 1,
+    "eventIds": [1, 2]
+  },
+  {
+    "id": 1,
+    "name": "Fifth group",
+    "clientId": 1,
+    "eventIds": [1, 2]
+  },
+  {
+    "id": null,
+    "name": "Sixth group",
+    "clientId": 1,
+    "eventIds": [1, 2]
+  }
+]

@@ -1,0 +1,4 @@
+<div *ngFor="let option of contentOption">
+  <checkbox [name]="option" (toggle)="isChecked($event)"></checkbox>
+  {{ option.name }}
+</div>

@@ -1,0 +1,90 @@
+<fox-button (click)="editModal.show()"
+            isAllowed="CreateEditDeviceFirmware"
+            [value]="'Upload new firmware'"
+            [design]="'gray'"></fox-button>
+<div [config]="{ show: false, backdrop: 'static'}"
+     bsModal #editModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div>
+          <h1 class="modal-title">Upload new firmware update</h1>
+        </div>
+        <button type="button" class="close" (click)="editModal.hide()" aria-label="Close">
+          <img src="assets/img/close.svg">
+        </button>
+      </div>
+      <div class="modal-body">
+        <form
+          (ngSubmit)="setUploadSoftwareStatus(uploadFirmwareForm.value)"
+          class="form"
+          novalidate>
+
+          <div [formGroup]="uploadFirmwareForm">
+            <!-- Version -->
+            <div class="form-element">
+              <label for="version">Version</label>
+              <input
+                id="version"
+                type="text"
+                formControlName="version"
+                placeholder="Version">
+
+              <div ngxErrors="version">
+                <div ngxError="required" when="touched">
+                  Field is required
+                </div>
+              </div>
+            </div>
+
+            <!-- Release note -->
+            <div class="form-element">
+              <label for="releaseNote">Release note</label>
+              <input
+                id="releaseNote"
+                type="text"
+                formControlName="releaseNote"
+                placeholder="Release note">
+            </div>
+
+            <!-- Is critical -->
+            <div class="form-element">
+              <label for="isCritical">Is critical</label>
+              <input
+                id="isCritical"
+                type="checkbox"
+                formControlName="isCritical"
+                placeholder="Release note">
+            </div>
+
+            <div class="form-element">
+              <upload-button (imgUploaded)="onImgUploaded($event)"
+                             [(uploadState)]="uploadState"
+                             [filesAllowed]="true"></upload-button>
+            </div>
+          </div>
+
+          <div class="btn-actions">
+            <div *ngIf="uploading">File is uploading</div>
+            <fox-button
+              [value]="'SAVE'"
+              [design]="'gray'"
+              [type]="'submit'"
+              [disabled]="uploadFirmwareForm.invalid || uploading"
+            ></fox-button>
+
+            <div class="btn-actions">
+              <fox-button
+                [value]="'CANCEL'"
+                [design]="'gray'"
+                [type]="'button'"
+                (click)="hide()"
+                [disabled]="uploading"
+              ></fox-button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,15 @@
+<div class="gallery">
+  <div class="thumbnail-container" *ngFor="let item of galleryItems">
+    <thumbnail
+      (favorite)="onFavorite($event)"
+      (deleted)="onDelete($event)"
+      [item]="item"
+      [title]="'Title of Thumbnail'"
+      [type]="'Type'"
+      [progress]="80"
+      (toggle)="onChecked($event)"
+    ></thumbnail>
+  </div>
+</div>
+
+

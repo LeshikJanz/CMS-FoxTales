@@ -1,0 +1,18 @@
+@import "../../../shared/styles/headers";
+
+.header-container {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  height: 120px;
+
+  add-button {
+    background-color: #2fd976;
+    width: 204px;
+    height: 54px;
+    font-size: 16px;
+    border-radius: 6px;
+    align-self: center;
+  }
+}

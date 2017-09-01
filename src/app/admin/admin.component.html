@@ -1,1 +1,15 @@
+<div [ngSwitch]="curLocation">
+  <users-header *ngSwitchCase="'/admin/users'"></users-header>
+  <clients-header *ngSwitchCase="'/admin/clients'"></clients-header>
+  <client-create-header *ngSwitchCase="'/admin/client'"></client-create-header>
+  <user-create-header *ngSwitchCase="'/admin/user'"></user-create-header>
+  <client-edit-header *ngIf="curLocation && curLocation.indexOf('/admin/client/') >= 0">
+  </client-edit-header>
+  <user-edit-header *ngIf="curLocation && curLocation.indexOf('/admin/user/') >= 0">
+  </user-edit-header>
+  <devices-header *ngSwitchCase="'/admin/devices'"></devices-header>
+  <device-create-header *ngSwitchCase="'/admin/device'"></device-create-header>
+  <device-edit-header *ngIf="curLocation && curLocation.indexOf('/admin/device/') >= 0 && curLocation.indexOf('edit') >= 0"></device-edit-header>
+  <device-details-header *ngIf="curLocation && curLocation.indexOf('/admin/device/') >= 0 && curLocation.indexOf('edit') === -1"></device-details-header>
+</div>
 <admin-navigation></admin-navigation>

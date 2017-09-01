@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, OnChanges} from '@angular/core';
 
 /**
  * Drop down menu
@@ -6,20 +6,24 @@ import { Component, Input, OnInit } from '@angular/core';
 @Component({
   selector: 'fox-button',
   templateUrl: 'fox-button.component.html',
-  styleUrls: [ 'fox-button.component.scss' ]
+  styleUrls: ['fox-button.component.scss']
 })
 
 export class FoxButtonComponent implements OnInit {
   @Input() public value: string;
 
-  @Input() public type: string;
+  @Input() public design: string;
+
+  @Input() public disabled: boolean;
+
+  @Input() public type: string = 'submit';
 
   public ngOnInit() {
     if (this.value == null) {
       throw new Error("Attribute 'value' is required");
     }
-    if (this.type == null) {
-      throw new Error("Attribute 'type' is required");
+    if (this.design == null) {
+      throw new Error("Attribute 'design' is required");
     }
   }
 }

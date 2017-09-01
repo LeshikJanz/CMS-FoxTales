@@ -15,16 +15,15 @@ import {
 import { Router } from '@angular/router';
 import { CustomValidators } from 'ng2-validation';
 import { MapsAPILoader } from '@agm/core';
+import { ToastrService } from 'ngx-toastr';
 import {  } from '@types/googlemaps';
-import * as moment from 'moment';
 import { IClient } from '../client.interface';
-import { IClientLicense } from '../client-license.interface';
 import { ClientService } from '../client.service';
 
 @Component({
   selector: 'client-create',
   templateUrl: './client-create.component.html',
-  styleUrls: [ './client-create.component.scss' ]
+  styleUrls: [ './client-create.component.scss']
 })
 export class ClientCreateComponent implements OnInit {
   /**
@@ -42,19 +41,19 @@ export class ClientCreateComponent implements OnInit {
   public addressControl: FormControl = new FormControl();
 
   /**
+   * Name field
+   *
+   * @type {FormControl}
+   */
+  public nameControl: FormControl = new FormControl();
+
+  /**
    * Address element ref
    *
    * @type {ElementRef}
    */
   @ViewChild('address')
   public addressElementRef: ElementRef;
-
-  /**
-   * Client licenses
-   *
-   * @type {IClientLicense[]}
-   */
-  public licenses: IClientLicense[];
 
   /**
    * Additional client details
@@ -69,6 +68,29 @@ export class ClientCreateComponent implements OnInit {
   };
 
   /**
+   * Client
+   *
+   * @type {IClient}
+   */
+  public client: IClient = {
+    logo: null,
+    logoBytes: null,
+    name: null,
+    email: null,
+    address: null,
+    phone: null,
+    freshBooks: null,
+    socialAccounts: null
+  };
+
+  /**
+   * Base64 logo
+   *
+   * @type {string}
+   */
+  public logoBytes: string;
+
+  /**
    * File reader
    *
    * @type {FileReader}
@@ -81,6 +103,7 @@ export class ClientCreateComponent implements OnInit {
    * @param {MapsAPILoader} mapsAPILoader - Maps API loader
    * @param {NgZone} ngZone - Zone
    * @param {Router} router - Router
+   * @param {ToastrService} toastrService - Toastr service
    * @param {FormBuilder} formBuilder
    * @param {ClientService} clientService - Client service
    * @returns {void}
@@ -89,6 +112,7 @@ export class ClientCreateComponent implements OnInit {
     private mapsAPILoader: MapsAPILoader,
     private ngZone: NgZone,
     private router: Router,
+    private toastrService: ToastrService,
     private formBuilder: FormBuilder,
     private clientService: ClientService
   ) {
@@ -104,8 +128,7 @@ export class ClientCreateComponent implements OnInit {
     this
       .initFileReader()
       .initAddressSearch()
-      .buildClientForm()
-      .getClientLicenses();
+      .buildClientForm();
   }
 
   /**
@@ -122,19 +145,19 @@ export class ClientCreateComponent implements OnInit {
    *
    * @returns {void}
    */
-  public addSocialAccount(): void {
+  public addSocialAccount(event): void {
     this.socialAccounts.push(new FormControl('', Validators.required));
+    event.preventDefault();
   }
 
   /**
-   * Get client licenses
+   * Remove social account control
    *
+   * @param {number} index - Index
    * @returns {void}
    */
-  public getClientLicenses(): void {
-    this.clientService
-      .getClientLicenses()
-      .subscribe((licenses: IClientLicense[]) => this.licenses = licenses);
+  public removeSocialAccount(index: number): void {
+    this.socialAccounts.removeAt(index);
   }
 
   /**
@@ -144,23 +167,16 @@ export class ClientCreateComponent implements OnInit {
    * @returns {void}
    */
   public addClient(client: IClient): void {
-    this.extractLicenses();
-    client.clientSecretValidTo = this.extractDate(client.clientSecretValidTo);
-
     this.clientService
       .addClient({ ...client, ...this.clientDetails })
-      .subscribe(() => this.router.navigate(['/admin/clients']));
-  }
-
-  /**
-   * Extract selected licenses
-   *
-   * @returns {void}
-   */
-  public extractLicenses(): void {
-    this.clientDetails.selectedLicenses = this.licenses
-      .filter((license: IClientLicense) => license.checked)
-      .map((license: IClientLicense) => license.id);
+      .subscribe((response: any) => {
+        if (response.success) {
+          this.toastrService.success('Client has been created successfully.');
+          this.router.navigate(['/admin/clients']);
+        } else {
+          this.toastrService.error(response.message);
+        }
+      });
   }
 
   /**
@@ -180,13 +196,13 @@ export class ClientCreateComponent implements OnInit {
   }
 
   /**
-   * Convert date to ISO 8601 format
+   * Remove logo
    *
-   * @param {string} date - Date
-   * @returns {string} - ISO 8601 formatted date
+   * @return {void}
    */
-  public extractDate(date: string): string {
-    return moment(date).toISOString();
+  public removeLogo(): void {
+    this.logoBytes = null;
+    this.clientDetails.logoBytes = null;
   }
 
   /**
@@ -262,14 +278,14 @@ export class ClientCreateComponent implements OnInit {
   }
 
   /**
-   * Recieve img in base64
+   * Receive img in base64
    *
    * @param {string} base64 - string
    * @returns {void}
    */
-  public onImgUploaded(base64) {
-    console.log(base64);
-    this.clientDetails.logoBytes = base64.replace(/data:image\/(png|jpg|jpeg|gif);base64,/, '');
+  public onImgUploaded(data) {
+    this.logoBytes = data.base64;
+    this.clientDetails.logoBytes = data.base64.replace(/data:image\/(png|jpg|jpeg|gif);base64,/, '');
   }
 
   /**
@@ -281,40 +297,16 @@ export class ClientCreateComponent implements OnInit {
     this.clientForm = this.formBuilder.group({
       logoBytes: [''],
       name: ['', [
-        Validators.required
-      ]],
-      displayName: ['', [
-        Validators.required
+        Validators.required,
+        Validators.pattern('^[a-zA-Z1-9].*')
       ]],
       email: ['', [
         Validators.required,
         CustomValidators.email
       ]],
       address: this.addressControl,
-      phone: ['', [
-        Validators.required
-      ]],
-      freshBooks: ['', [
-        Validators.required
-      ]],
-      tenant: ['', [
-        Validators.required
-      ]],
-      tenantId: ['', [
-        Validators.required
-      ]],
-      domain: ['', [
-        Validators.required
-      ]],
-      clientId: ['', [
-        Validators.required
-      ]],
-      clientSecret: ['', [
-        Validators.required
-      ]],
-      clientSecretValidTo: ['', [
-        Validators.required
-      ]],
+      phone: [''],
+      freshBooks: [''],
       socialAccounts: new FormArray([])
     });
 

@@ -3,17 +3,31 @@
   align-items: center;
   justify-content: space-between;
   height: 75px;
-  background-color: white;
-  font-family: Avenir;
+  background-color: #f8f8f8;
+  font-family: Avenir-Medium;
   color: #687078;
+
+  > div:nth-child(2) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 5%;
+  }
 
   .link-bar {
     display: flex;
     width: 50%;
+    min-width: 600px;
     justify-content: space-around;
 
     a {
+      font-family: Avenir;
+      font-size: 16px;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      color: #4b535c;
       margin: auto;
+      cursor: pointer;
     }
 
     nav {
@@ -42,38 +56,52 @@
 
   .profile {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
+    align-items: center;
+    cursor: pointer;
+    min-width: 150px;
+
+    ul.dropdown-menu {
+      width: inherit;
+
+      li {
+        height: 46px;
+        display: flex;
+        align-items: center;
+        padding-left: 20px;
+        cursor: pointer;
+        font-family: WorkSans;
+        font-size: 16px;
+        color: #343a40;
+        border-top: solid 1px #f5f6f7;
+      }
+
+      li:first-child {
+        border: none !important;
+      }
+
+      li:hover {
+        color: #f57f17;
+      }
+    }
 
     .user-img {
       cursor: pointer;
-      width: 40px;
-      height: 40px;
+      width: 30px;
+      height: 30px;
+      border-radius: 5px;
+      align-self: flex-end;
     }
-
-    > * {
-       margin-left: 20px;
-     }
 
     .user-profile {
       display: flex;
       justify-content: space-between;
-      min-width: 150px;
+      width: 180px;
 
       img {
         cursor: pointer;
-        margin: auto;
         width: 30px;
         height: 30px;
-      }
-
-      .user-name {
-        font-family: Avenir-Medium;
-        font-size: 14px;
-      }
-
-      .user-design-name {
-        font-family: WorkSans-Regular;
-        font-size: 12px;
       }
     }
   }
@@ -91,9 +119,58 @@
     -webkit-border-radius: 5px;
     border-radius: 5px;
   }
+
+  search-bar {
+    width: 0;
+    height: 40px;
+  }
 }
 
-.nav-container:hover {
-  background-color: #f8f8f8;
-}
+.drop-button {
+  background-color: transparent;
+  border: none;
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: flex-start;
+  width: 200px;
 
+  > * {
+    margin-right: 10px;
+  }
+
+  > div {
+    .user-name {
+      font-family: Avenir-Medium;
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 1;
+      letter-spacing: 0.5px;
+      color: #343a40;
+      cursor: pointer;
+    }
+
+    .user-name:after {
+      position: relative;
+      content: "";
+      display: inline-block;
+      bottom: 4px;
+      left: 11px;
+      width: 0.4em;
+      height: 0.4em;
+      border-right: 0.1em solid #37394c;
+      border-top: 0.1em solid #37394c;
+      transform: rotate(135deg);
+      opacity: 0.8;
+      margin-right: 0.5em;
+    }
+
+    .user-design-name {
+      font-family: WorkSans;
+      font-size: 12px;
+      line-height: 1;
+      letter-spacing: 0.4px;
+      color: #7a8693;
+    }
+  }
+}

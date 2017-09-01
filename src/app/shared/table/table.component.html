@@ -2,16 +2,19 @@
   <table style="width: 100%">
     <thead>
     <tr>
+      <th></th>
       <th class="table-header" *ngFor="let col of cols">
         <div>
-          <img (click)="openSearch(col)" [hidden]="!col.searchable" style="cursor: pointer" src="../../../assets/img/column-search.svg">
-          <label [hidden]="col.isSearchOpen" (click)="changeSort(col)">{{ col.title }}</label>
-          <input *ngIf="col.searchable && col.isSearchOpen"
-                 type="text"
-                 placeholder="Search"
-                 class="header-input"
-                 (input)="searchQuery[col.id].next($event.target.value)">
-          <div (click)="changeSort(col)" [class]="col.sort ? 'asc' : 'desc'"></div>
+          <div *ngIf="!col.searchable">{{col.title}}</div>
+          <fox-input [title]="col.title"
+                     (input)="searchQuery[col.id].next(searchValue)"
+                     (Change)="searchValue=$event"
+                     *ngIf="col.searchable"></fox-input>
+          <div class="sorting"
+               (click)="changeSort(col)"
+               *ngIf="!col.notSortable">
+            <div [class]="col.sort ? 'asc' : 'desc'"></div>
+          </div>
         </div>
       </th>
       <th *ngIf="actions"></th>
@@ -19,46 +22,43 @@
     </thead>
     <tbody>
     <tr class="table-row" *ngFor="let row of rows">
+      <td>
+        <checkbox
+          (toggle)="row.checked=$event"></checkbox>
+        <br>
+      </td>
       <td
         *ngFor="let col of cols"
         (click)="clickRow(row)"
-        [innerHtml]="row[col.id] | myFormatCell:col.format:col.formatOptions">
+        [innerHtml]="col.format == 'myFirstName' ? (row | myFormatCell:col.format:col.formatOptions)
+                                          : (row[col.id] | myFormatCell:col.format:col.formatOptions)"
+      >
       </td>
       <td *ngIf="actions">
-        <table-dropdown
-          [title]="'Action'"
-          [options]="actions"
-          [size]="'medium'"
-          (typeChanged)="changeAction(row.id, $event)"
-        ></table-dropdown>
+        <table-dropdown *ngIf="actions.length > 1"
+                        [title]="'Action'"
+                        [options]="actions"
+                        [size]="'medium'"
+                        (typeChanged)="changeAction(row.id, $event)">
+        </table-dropdown>
+        <fox-button *ngIf="actions.length === 1"
+                    [value]="actions[0].title"
+                    (click)="changeAction(row.id, actions[0])"
+                    [design]="'gray'"></fox-button>
       </td>
     </tr>
     </tbody>
   </table>
 </section>
 
-<section>
-  Rows per page:
+<div class="pagination">
+  <section>
+    <div class="arrow-left" (click)="prevPage()"></div>
+    <input class="paging" type="number"
+           (change)="changeLimit($event.target.value)" [(ngModel)]="limit">
 
-  <select (change)="changeLimit($event.target.value)" [(ngModel)]="limit">
-    <option
-      *ngFor="let limit of limits"
-      [value]="limit">
-      {{ limit }}
-    </option>
-  </select>
+    {{ startOffset }}-{{ endOffset }} of {{ rowsCount }}
 
-  {{ startOffset }}-{{ endOffset }} of {{ rowsCount }}
-
-  <a
-    href="javascript:void(0);"
-    (click)="prevPage()">
-    prev
-  </a>
-
-  <a
-    href="javascript:void(0);"
-    (click)="nextPage()">
-    next
-  </a>
-</section>
+    <div class="arrow-right" (click)="nextPage()"></div>
+  </section>
+</div>

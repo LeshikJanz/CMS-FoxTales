@@ -1,0 +1,30 @@
+<div class="nav-container"></div>
+<nav class="slidemenu">
+
+  <input [routerLink]="['/events/events']"
+         [class.active]="nav.isActive(['/events/events', '/events/create-event', '/events/event', '/events/details-event/'], false)"
+         type="radio" name="slideItem" id="slide-item-1" class="slide-toggle"/>
+  <label for="slide-item-1"><span>Events</span></label>
+
+  <input type="radio" name="slideItem"
+         id="slide-item-2" class="slide-toggle"
+         [routerLink]="['/events/event-groups']"
+         [class.active]="nav.isActive(['/events/event-groups', '/events/event-group'], false)"
+  />
+  <label for="slide-item-2"><span>Event Groups</span></label>
+
+  <input type="radio" name="slideItem"
+         id="slide-item-3" class="slide-toggle"
+         [routerLink]="['/events/favorited-media']"
+         [routerLinkActive]="['active']"/>
+  <label for="slide-item-3"><span>Favorited Media</span></label>
+
+  <div class="clear"></div>
+
+  <div class="slider">
+    <div class="slide-line">
+      <div class="bar"></div>
+    </div>
+  </div>
+</nav>
+<router-outlet></router-outlet>

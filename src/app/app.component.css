@@ -1,4 +1,57 @@
-@import url('https://fonts.googleapis.com/css?family=Work+Sans');
+@font-face {
+  font-family: WorkSans;
+  src: url(/assets/fonts/WorkSans/WorkSans-Regular.otf);
+}
+
+@font-face {
+  font-family: Avenir;
+  src: url(/assets/fonts/Avenir/AvenirNextLTPro-Regular.otf);
+}
+
+@font-face {
+  font-family: Avenir-Light;
+  src: url(/assets/fonts/Avenir/AvenirNextLTPro-It.otf);
+}
+
+@font-face {
+  font-family: Avenir-Book;
+  src: url(/assets/fonts/Avenir/AvenirNextLTPro-Regular.otf);
+}
+
+@font-face {
+  font-family: Avenir-Bold;
+  src: url(/assets/fonts/Avenir/AvenirNextLTPro-Bold.otf);
+}
+
+@font-face {
+  font-family: Avenir-Medium;
+  src: url(/assets/fonts/Avenir/AvenirNextLTPro-MediumCn.otf);
+}
+
+@font-face {
+  font-family: OpenSans;
+  src: url(/assets/fonts/OpenSans/OpenSans-Regular.ttf);
+}
+
+@font-face {
+  font-family: OpenSans-Bold;
+  src: url(/assets/fonts/OpenSans/OpenSans-Bold.ttf);
+}
+
+@font-face {
+  font-family: WorkSans;
+  src: url(/assets/fonts/WorkSans/WorkSans-Regular.otf);
+}
+
+@font-face {
+  font-family: WorkSans-Bold;
+  src: url(/assets/fonts/WorkSans/WorkSans-Bold.otf);
+}
+
+@font-face {
+  font-family: WorkSans-Medium;
+  src: url(/assets/fonts/WorkSans/WorkSans-Medium.otf);
+}
 
 .mainContent {
   padding: 0 106px 0 106px;
@@ -14,4 +67,58 @@ header {
   height: 35px;
   width: 80px;
   font-size: 16px;
+}
+
+div.modal div.ng2-dropdown-menu[style] {
+  top: auto !important;
+  left: auto !important;
+  margin-top: -24px !important;
+}
+
+bar {
+  width: 100% !important;
+}
+
+.dropdown-toggle::after {
+  display: inline-block;
+    border-top: 10px solid;
+    border-right: 7px solid transparent;
+    border-left: 7px solid transparent;
+}
+
+h1, h2, h3, h4, h5 label {
+  font-family: Avenir;
+  margin-bottom: 0 !important;
+}
+
+footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  padding: 0 10px;
+}
+
+video::-internal-media-controls-download-button {
+  display:none;
+}
+
+video::-webkit-media-controls-enclosure {
+  overflow:hidden;
+}
+
+button:focus {
+  outline: none !important;
+}
+
+@media screen and (max-width: 1024px) {
+  .mainContent {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+input::-webkit-input-placeholder {
+  font-family: WorkSans !important;
+  font-size: 16px !important;
+  color: #b2bac4 !important;
 }

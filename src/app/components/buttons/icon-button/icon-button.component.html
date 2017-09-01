@@ -1,0 +1,11 @@
+<div class="icon-container">
+  <button>
+    <img *ngIf="type == 'Content'" src='../../../../assets/img/content-icon.svg'>
+    <img *ngIf="type == 'Email'" src='../../../../assets/img/email-icon.svg'>
+    <img *ngIf="type == 'Feeds'" src='../../../../assets/img/feeds-icon.svg'>
+    <img *ngIf="type == 'Gallery'" src='../../../../assets/img/gallery-icon.svg'>
+    <img *ngIf="type == 'Interface'" src='../../../../assets/img/interface-icon.svg'>
+    <img *ngIf="type == 'Social'" src='../../../../assets/img/social-icon.svg'>
+  </button>
+  <label>{{type}}</label>
+</div>

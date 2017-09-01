@@ -1,18 +1,18 @@
-<div class="container">
+<div class="device-container">
   <form
-    (ngSubmit)="addDevice(deviceForm.value)"
-    class="form"
-    novalidate>
+      (ngSubmit)="addDevice(deviceForm.value)"
+      class="form"
+      novalidate>
 
     <div [formGroup]="deviceForm">
       <!-- First Name -->
       <div class="form-element">
         <label for="name">Name</label>
         <input
-          id="name"
-          type="text"
-          formControlName="name"
-          placeholder="Name">
+            id="name"
+            type="text"
+            formControlName="name"
+            placeholder="Name">
 
         <div ngxErrors="name">
           <div ngxError="required" when="touched">
@@ -21,30 +21,25 @@
         </div>
       </div>
 
-      <!-- Hub -->
-      <div>
-        <label for="hubId">Hub</label>
-        <select
-          id="hubId"
-          formControlName="hubId">
-          <option value="test_1">Test 1</option>
-        </select>
-
-        <div ngxErrors="hubId">
-          <div ngxError="required" when="touched">
-            Field is required
-          </div>
-        </div>
+      <div class="form-element">
+        <label for="name">Purchase date</label>
+        <input class="picker-input" [ngModel]="purchaseMomentDate"
+               [returnObject]=" 'string' "
+               [theme]=" '#f57f17' "
+               [(dateTimePicker)]="purchaseMomentDate" [mode]="'dropdown'" [pickerType]="'date'"
+               placeholder="mm/dd/yy" [formControlName]="'purchaseDate'"
+               readonly>
       </div>
 
       <!-- Product -->
-      <div>
-        <label for="productId">Product</label>
-        <select
-          id="productId"
-          formControlName="productId">
-          <option *ngFor="let p of products" [value]="p.id">{{p.name}}</option>
-        </select>
+      <div class="form-element">
+        <label>Product</label>
+        <fox-select
+            [title]="'Select product'"
+            (change)="deviceForm.get('productId').setValue($event.id)"
+            [items]="products"
+        >
+        </fox-select>
 
         <div ngxErrors="productId">
           <div ngxError="required" when="touched">
@@ -54,13 +49,14 @@
       </div>
 
       <!-- Location -->
-      <div>
-        <label for="locationId">Location</label>
-        <select
-          id="locationId"
-          formControlName="locationId">
-          <option *ngFor="let l of locations" [value]="l.id">{{l.name}}</option>
-        </select>
+      <div class="form-element">
+        <label>Location</label>
+        <fox-select
+            [title]="'Select location'"
+            (change)="deviceForm.get('locationId').setValue($event.id)"
+            [items]="locations"
+        >
+        </fox-select>
 
         <div ngxErrors="locationId">
           <div ngxError="required" when="touched">
@@ -70,13 +66,14 @@
       </div>
 
       <!-- Client -->
-      <div>
-        <label for="clientId">Client</label>
-        <select
-          id="clientId"
-          formControlName="clientId">
-          <option *ngFor="let c of clients" [value]="c.id">{{c.name}}</option>
-        </select>
+      <div class="form-element">
+        <label>Client</label>
+        <fox-select
+            [title]="'Select client'"
+            (change)="deviceForm.get('clientId').setValue($event.id)"
+            [items]="clients"
+        >
+        </fox-select>
 
         <div ngxErrors="clientId">
           <div ngxError="required" when="touched">
@@ -88,11 +85,11 @@
     </div>
 
     <div>
-      <button
-        type="submit"
-        [disabled]="deviceForm.invalid"
-        class="create-button">CREATE
-      </button>
+      <fox-button
+          value="CREATE"
+          [disabled]="deviceForm.invalid"
+          design="special"
+      ></fox-button>
     </div>
   </form>
 </div>

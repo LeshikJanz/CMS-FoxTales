@@ -1,0 +1,137 @@
+.basic-details-container {
+  > div h4 {
+    font-family: Avenir;
+    font-size: 20px;
+    font-weight: 900;
+    line-height: 1.8;
+    letter-spacing: 1px;
+    color: #343a40;
+  }
+}
+
+.form-element {
+  display: flex;
+  flex-direction: column;
+  margin-top: 15px;
+
+  label {
+    font-family: Avenir-Book;
+    font-size: 16px;
+    font-weight: 900;
+    line-height: 2.4;
+    letter-spacing: 1px;
+    color: #343a40;
+  }
+
+  &.dates {
+    display: flex;
+    flex-direction: row;
+
+    > div {
+      position: relative;
+    }
+
+    .picker-input {
+      max-width: 150px;
+    }
+
+    .wrap:after {
+      content: "";
+      position: absolute;
+      left: 125px;
+      bottom: 23px;
+      border-left: 8px solid transparent;
+      border-right: 8px solid transparent;
+      border-top: 12px solid gray;
+      pointer-events: none;
+    }
+
+    .arrow-down {
+      position: absolute;
+      top: 70px;
+      right: 50px;
+      width: 0;
+      height: 0;
+      border-left: 15px solid transparent;
+      border-right: 15px solid transparent;
+      border-top: 15px solid gray;
+    }
+
+    input {
+      display: block;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    & > div {
+      display: flex;
+      flex-direction: column;
+      width: 190px;
+    }
+  }
+
+  &.location {
+    width: 100%;
+    max-width: 400px;
+
+    input {
+      width: 90%;
+    }
+  }
+
+  input {
+    width: 300px;
+    height: 65px;
+    font-family: OpenSans;
+    font-size: 18px;
+    color: #3d3d3d;
+    border-radius: 3px;
+    border: solid 1px #3d3d3d;
+    padding-left: 15px;
+  }
+
+  input:focus {
+    border-color: gray;
+  }
+
+  .ng-touched.ng-invalid {
+    border-color: red;
+  }
+}
+
+  .routing {
+    display: flex;
+    width: 500px;
+    height: 140px;
+    justify-content: space-between;
+    align-items: center;
+
+    > div {
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+    }
+
+    img {
+      height: 10px;
+      width: 15px;
+    }
+
+    fox-button {
+      height: 40px;
+      width: 130px;
+      font-size: 18px;
+    }
+
+    a {
+      font-family: WorkSans;
+      font-weight: 600;
+      line-height: 4;
+      letter-spacing: 0.4px;
+      color: #777c84;
+      font-size: 12px;
+      cursor: pointer;
+    }
+  }
+

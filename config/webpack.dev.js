@@ -19,7 +19,13 @@ const HOST = process.env.HOST || 'localhost';
 const PORT = process.env.PORT || 3000;
 const API_URL = process.env.API_URL = 'http://dev.getfoxtales.com/api';
 const AD_TENANT = process.env.AD_TENANT = 'common';
-const AD_CLIENT = process.env.AD_CLIENT = 'dce90867-97f5-42cd-b3e4-013ed22c1824';
+const AD_CLIENT = process.env.AD_CLIENT = '018ba0b5-782f-405b-82c3-871178e219ad';
+const FACEBOOK_ID = process.env.FACEBOOK_ID = '138371986719204';
+const TWITTER_ID = process.env.TWITTER_ID = 'dYwfwIRNmhhcleI0lWYJyby8v';
+const TUMBLR_ID = process.env.TUMBLR_ID = 'USVEg5yTqC536m3d32J60rpR1XovZ3cBE2Vl1EGa3Uwwk1F1WY';
+const AUTH_PROXY = process.env.AUTH_PROXY = 'https://auth-server.herokuapp.com/proxy';
+const GOOGLE_KEY = process.env.GOOGLE_KEY = 'AIzaSyAW7s_PMAH6CJRMMXRVWnQPevWqipMkCyA';
+const BING_KEY = process.env.BING_KEY = 'AgPn8P9gDiOFuiw33ebWeLKdx29J1Z-dNh3PqN03rsgLvu4bTQZwiDvQuwxFhqcZ';
 const HMR = helpers.hasProcessFlag('hot');
 const METADATA = webpackMerge(commonConfig({env: ENV}).metadata, {
   host: HOST,
@@ -27,6 +33,12 @@ const METADATA = webpackMerge(commonConfig({env: ENV}).metadata, {
   API_URL: API_URL,
   AD_TENANT: AD_TENANT,
   AD_CLIENT: AD_CLIENT,
+  FACEBOOK_ID: FACEBOOK_ID,
+  TWITTER_ID: TWITTER_ID,
+  TUMBLR_ID: TUMBLR_ID,
+  AUTH_PROXY: AUTH_PROXY,
+  GOOGLE_KEY: GOOGLE_KEY,
+  BING_KEY: BING_KEY,
   ENV: ENV,
   HMR: HMR
 });
@@ -128,6 +140,10 @@ module.exports = function (options) {
           use: ['style-loader', 'css-loader', 'sass-loader'],
           include: [helpers.root('src', 'styles')]
         },
+        {
+          test: /\.(eot|woff2?|svg|ttf|otf)([\?]?.*)$/,
+          use: 'file-loader'
+        }
 
       ]
 
@@ -150,12 +166,24 @@ module.exports = function (options) {
         'API_URL': JSON.stringify(METADATA.API_URL),
         'AD_TENANT': JSON.stringify(METADATA.AD_TENANT),
         'AD_CLIENT': JSON.stringify(METADATA.AD_CLIENT),
+        'FACEBOOK_ID': JSON.stringify(METADATA.FACEBOOK_ID),
+        'TWITTER_ID': JSON.stringify(METADATA.TWITTER_ID),
+        'TUMBLR_ID': JSON.stringify(METADATA.TUMBLR_ID),
+        'AUTH_PROXY': JSON.stringify(METADATA.AUTH_PROXY),
+        'GOOGLE_KEY': JSON.stringify(METADATA.GOOGLE_KEY),
+        'BING_KEY': JSON.stringify(METADATA.BING_KEY),
         'HMR': METADATA.HMR,
         'process.env': {
           'ENV': JSON.stringify(METADATA.ENV),
           'API_URL' : JSON.stringify(METADATA.API_URL),
           'AD_TENANT': JSON.stringify(METADATA.AD_TENANT),
           'AD_CLIENT': JSON.stringify(METADATA.AD_CLIENT),
+          'FACEBOOK_ID': JSON.stringify(METADATA.FACEBOOK_ID),
+          'TWITTER_ID': JSON.stringify(METADATA.TWITTER_ID),
+          'TUMBLR_ID': JSON.stringify(METADATA.TUMBLR_ID),
+          'AUTH_PROXY': JSON.stringify(METADATA.AUTH_PROXY),
+          'GOOGLE_KEY': JSON.stringify(METADATA.GOOGLE_KEY),
+          'BING_KEY': JSON.stringify(METADATA.BING_KEY),
           'NODE_ENV': JSON.stringify(METADATA.ENV),
           'HMR': METADATA.HMR,
         }
@@ -187,7 +215,9 @@ module.exports = function (options) {
             '@agm/core',
             '@ultimate/ngxerrors',
             'ng2-validation',
-            'ngx-toastr'
+            'ngx-toastr',
+            'ng2-tag-input',
+            'hellojs'
           ]
         },
         dllDir: helpers.root('dll'),

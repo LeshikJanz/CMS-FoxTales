@@ -15,11 +15,12 @@ import {
 import { Router, ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { MapsAPILoader } from '@agm/core';
-import {  } from '@types/googlemaps';
+import {} from '@types/googlemaps';
+import hello from 'hellojs';
 import { CustomValidators } from 'ng2-validation';
-import { IClient } from '../client.interface';
-import { IClientLicense } from '../client-license.interface';
+import { IClient, IClientSocial } from '../client.interface';
 import { ClientService } from '../client.service';
+import { FormService } from "../../shared/core/form/form.service";
 
 /**
  * Client details component
@@ -27,7 +28,7 @@ import { ClientService } from '../client.service';
 @Component({
   selector: 'client-edit',
   templateUrl: './client-edit.component.html',
-  styleUrls: [ './client-edit.component.scss' ]
+  styleUrls: ['client-edit.component.scss']
 })
 export class ClientEditComponent implements OnInit {
   /**
@@ -61,7 +62,6 @@ export class ClientEditComponent implements OnInit {
     logo: null,
     logoBytes: null,
     name: null,
-    displayName: null,
     email: null,
     address: null,
     phone: null,
@@ -70,11 +70,17 @@ export class ClientEditComponent implements OnInit {
   };
 
   /**
-   * Client licenses
+   * Base64 logo
    *
-   * @type {IClientLicense[]}
+   * @type {string}
    */
-  public licenses: IClientLicense[];
+  public logoBytes: string;
+
+  public socialIntegrations: IClientSocial[] = [
+    { id: 1, name: 'Facebook', iconPath: 'assets/img/social/facebook.svg' },
+    { id: 2, name: 'Twitter', iconPath: 'assets/img/social/twitter.svg' },
+    { id: 5, name: 'Tumblr', iconPath: 'assets/img/social/tumblr.svg' }
+  ];
 
   /**
    * File reader
@@ -95,15 +101,14 @@ export class ClientEditComponent implements OnInit {
    * @param {ClientService} clientService - Client service
    * @returns {void}
    */
-  constructor(
-    private mapsAPILoader: MapsAPILoader,
-    private ngZone: NgZone,
-    private router: Router,
-    private route: ActivatedRoute,
-    private formBuilder: FormBuilder,
-    private toastrService: ToastrService,
-    private clientService: ClientService
-  ) {
+  constructor(private mapsAPILoader: MapsAPILoader,
+              private ngZone: NgZone,
+              private router: Router,
+              private elRef: ElementRef,
+              private route: ActivatedRoute,
+              private formBuilder: FormBuilder,
+              private toastrService: ToastrService,
+              private clientService: ClientService) {
   }
 
   /**
@@ -113,10 +118,9 @@ export class ClientEditComponent implements OnInit {
    * @returns {void}
    */
   public ngOnInit(): void {
-    this
-      .initFileReader()
-      .initAddressSearch()
-      .buildClientForm();
+    this.initFileReader()
+      .buildClientForm()
+      .initAddressSearch();
 
     this.route.params.subscribe((params: any) => {
       this.getClient(params['id']);
@@ -138,8 +142,9 @@ export class ClientEditComponent implements OnInit {
    * @param {string} base64 - string
    * @returns {void}
    */
-  public onImgUploaded(base64) {
-    this.client.logoBytes = base64.replace(/data:image\/(png|jpg|jpeg|gif);base64,/, '');
+  public onImgUploaded(data) {
+    this.logoBytes = data.base64;
+    this.client.logoBytes = data.base64.replace(/data:image\/(png|jpg|jpeg|gif);base64,/, '');
   }
 
   /**
@@ -151,6 +156,17 @@ export class ClientEditComponent implements OnInit {
   public addSocialAccount(url?: string): void {
     const accountUrl = url || '';
     this.socialAccounts.push(new FormControl(accountUrl, Validators.required));
+  }
+
+  /**
+   * Remove social account control
+   *
+   * @param {number} index - Index
+   * @returns {void}
+   */
+  public removeSocialAccount(index: number): void {
+    this.client.socialAccounts.splice(index, 1);
+    this.socialAccounts.removeAt(index);
   }
 
   /**
@@ -182,28 +198,9 @@ export class ClientEditComponent implements OnInit {
 
         this.client = client;
 
+        FormService.populateForm(this.client, this.clientForm);
+
         this.addSocialAccounts(client);
-        this.getLicenses();
-      });
-  }
-
-  /**
-   * Update licenses
-   *
-   * @returns {void}
-   */
-  public getLicenses(): void {
-    this.clientService
-      .getClientLicenses()
-      .subscribe((licenses: IClientLicense[]) => {
-        // Check selected licenses
-        if (this.client.selectedLicenses) {
-          licenses.forEach((license: IClientLicense) => {
-            license.checked = -1 !== this.client.selectedLicenses.indexOf(license.id);
-          });
-        }
-
-        this.licenses = licenses;
       });
   }
 
@@ -213,7 +210,7 @@ export class ClientEditComponent implements OnInit {
    * @returns {void}
    */
   public updateClient(): void {
-    this.extractLicenses();
+    this.client = Object.assign({}, this.client, this.clientForm.value);
 
     this.clientService
       .updateClient(this.client)
@@ -221,17 +218,6 @@ export class ClientEditComponent implements OnInit {
         this.toastrService.success('Client has been updated successfully.');
         this.router.navigate(['/admin/clients']);
       });
-  }
-
-  /**
-   * Extract selected licenses
-   *
-   * @returns {void}
-   */
-  public extractLicenses(): void {
-    this.client.selectedLicenses =  this.licenses
-      .filter((license: IClientLicense) => license.checked)
-      .map((license: IClientLicense) => license.id);
   }
 
   /**
@@ -248,6 +234,17 @@ export class ClientEditComponent implements OnInit {
     }
 
     this.fileReader.readAsDataURL(files.item(0));
+  }
+
+  /**
+   * Remove logo
+   *
+   * @return {void}
+   */
+  public removeLogo(): void {
+    this.logoBytes = null;
+    this.client.logo = null;
+    this.client.logoBytes = null;
   }
 
   /**
@@ -304,8 +301,10 @@ export class ClientEditComponent implements OnInit {
    * @return {ClientEditComponent} - Component
    */
   public initAddressSearch(): ClientEditComponent {
+    const that = this;
+
     this.mapsAPILoader.load().then(() => {
-      let autocomplete = new google.maps.places.Autocomplete(this.addressElementRef.nativeElement, {
+      let autocomplete = new google.maps.places.Autocomplete(that.elRef.nativeElement.querySelector('#address'), {
         types: ['address']
       });
 
@@ -332,27 +331,57 @@ export class ClientEditComponent implements OnInit {
    */
   public buildClientForm(): ClientEditComponent {
     this.clientForm = this.formBuilder.group({
-      logoBytes: [''],
       name: ['', [
-        Validators.required
-      ]],
-      displayName: ['', [
-        Validators.required
+        Validators.required,
+        Validators.pattern('^[a-zA-Z1-9].*')
       ]],
       email: ['', [
         Validators.required,
         CustomValidators.email
       ]],
       address: this.addressControl,
-      phone: ['', [
-        Validators.required
-      ]],
-      freshBooks: ['', [
-        Validators.required
-      ]],
+      phone: [''],
+      freshBooks: [''],
       socialAccounts: new FormArray([])
     });
 
     return this;
+  }
+
+  /**
+   * Social auth
+   *
+   * @param {IClientSocial} social - Social account
+   * @returns {void}
+   */
+  public auth(social: IClientSocial): void {
+    const name: string = social.name.toLocaleLowerCase();
+
+    hello(name)
+      .login({ scope: 'publish, photos' }, () => {
+        const response = hello(name).getAuthResponse();
+
+        if (!response) {
+          return;
+        }
+
+        this.clientService
+          .addSocialIntegration(social.id, name, JSON.stringify(response))
+          .subscribe(() => {
+            this.toastrService.success('Social auth has been updated successfully.');
+          });
+      });
+  }
+
+  public cancelAuth(social: IClientSocial): void {
+    const name: string = social.name.toLocaleLowerCase();
+
+    hello.logout(name, { force: true }, () => {
+      this.clientService
+        .addSocialIntegration(social.id, name, null)
+        .subscribe(() => {
+          this.toastrService.success('Social auth has been removed successfully.');
+        });
+    });
   }
 }

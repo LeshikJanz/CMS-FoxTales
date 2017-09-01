@@ -1,0 +1,54 @@
+button {
+  border: none;
+}
+
+.list-menu {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.buttons-block {
+  display: flex;
+  align-items: center;
+  button {
+    max-width: 150px;
+    margin-left: 10px;
+    background: transparent;
+    &:hover {
+      background-color: #868c96;
+    }
+  }
+}
+
+.creation-button {
+  margin-left: 10px;
+  width: 204px;
+  height: 54px;
+  font-size: 16px;
+  border-radius: 6px;
+  color: white;
+  background-color: #2fd976;
+  & label {
+    margin-bottom: 0;
+    color: white;
+    font-family: AvenirNext;
+    font-size: 16px;
+  }
+}
+
+.details-container {
+  display: flex;
+  padding: 25px;
+  flex-wrap: wrap;
+  background-color: #EEEEE9;
+}
+
+.details-item {
+  flex: 0 0 25%;
+  margin: 10px 0;
+  span {
+    font-weight: 600;
+  }
+}

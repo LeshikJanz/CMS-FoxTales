@@ -1,0 +1,110 @@
+<div>
+  <div class="thumbnail-container">
+    <div class="content">
+      <div class="actions">
+        <checkbox (toggle)="onChecked($event)"></checkbox>
+        <img isAllowed="FavoriteContent"
+             (click)="makeFavorite()" [hidden]="!item.favorite" src="../../../assets/img/heart-active.svg" alt="">
+        <img isAllowed="FavoriteContent"
+             (click)="makeFavorite()" [hidden]="item.favorite" src="../../../assets/img/heart-inactive.svg" alt="">
+
+        <img class="icon icon-show" (click)="setVisibility()" [hidden]="!item.visible"
+             src="../../../assets/img/show-icon.svg" alt="">
+        <img class="icon icon-hide" (click)="setVisibility()" [hidden]="item.visible"
+             src="../../../assets/img/hide-icon.svg">
+      </div>
+      <img class="" [ngClass]="{transparent: !item.visible}" *ngIf="item.mediaPath.search('.(jpe?g|gif|png)') > 0"
+           [src]="item ? item.mediaPath :
+       'https://amazingcarousel.com/wp-content/uploads/amazingcarousel/3/images/lightbox/golden-wheat-field-lightbox.jpg'"
+           alt="">
+      <vg-player [ngClass]="{transparent: !item.visible}" *ngIf="item.mediaPath.indexOf('.mp4') > 0"
+                 (onPlayerReady)="onPlayerReady($event)">
+        <video loop="true" [vgMedia]="media" #media id="singleVideo" controls controlsList="nodownload">
+          <source [src]="item.mediaPath" type="video/mp4">
+        </video>
+      </vg-player>
+      <div [hidden]="true" class="buttons">
+        <div class="confirm" (click)="onConfirm()">
+          <img src="../../../assets/img/completed-icon.svg" alt="">
+        </div>
+        <div class="decline" (click)="onDecline()">
+          <img src="../../../assets/img/declined-icon.svg" alt="">
+        </div>
+      </div>
+    </div>
+    <div [hidden]="true" class="info">
+      <div class="title">item.</div>
+      <div class="type">TYPE</div>
+      <div class="progress-container">
+        <div class="progress">
+          <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar"
+               [attr.aria-valuenow]="progress" aria-valuemin="0" aria-valuemax="100"
+               style="min-width: 2em;" [style.width]="(50/100)*100 + '%'">
+            {{50}}%
+          </div>
+          <div></div>
+        </div>
+        <div class="progress-value">{{50}}%</div>
+      </div>
+    </div>
+    <div class="action-menu">
+      <img (click)="getCameraInfo(item.id)" src="../../../assets/img/info.svg">
+      <img isAllowed="CreateEditMedia" (click)="cModal.show()" src="../../../assets/img/delete.svg">
+      <a [href]="item.mediaPath" [download]="item.mediaPath">
+        <img src="../../../assets/img/download-icon.svg">
+      </a>
+      <img (click)="selectMediaToShare(item, 'facebook')" src="../../../assets/img/social/facebook.svg">
+      <img (click)="selectMediaToShare(item, 'twitter')" src="../../../assets/img/social/twitter.svg">
+      <img (click)="selectMediaToShare(item, 'tumblr')" src="../../../assets/img/social/tumblr.svg">
+
+      <!--<a href="javascript:void(0)" (click)="selectMediaToShare(item, 'facebook')">facebook</a>-->
+      <!--<a href="javascript:void(0)" (click)="selectMediaToShare(item, 'twitter')">twitter</a>-->
+      <!--<a href="javascript:void(0)" (click)="selectMediaToShare(item, 'tumblr')">tumblr</a>-->
+    </div>
+  </div>
+
+  <device-info [loading]="loading" (close)="isInfoOpen = false" [deviceInfo]="deviceInfo"
+               [hidden]="!isInfoOpen"></device-info>
+</div>
+
+<confirm-modal #cModal
+               (confirm)="deleteMedia()"
+               title="Are you sure?"
+               message="Are you sure you want to delete this media from library?"></confirm-modal>
+<div
+    bsModal
+    #shareModal="bs-modal"
+    class="modal fade"
+    tabindex="-1"
+    role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title">Share Media</h1>
+        <button type="button" class="close" (click)="shareModal.hide()" aria-label="Close">
+          <img src="assets/img/close.svg">
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>
+          <textarea #shareComment style="width: 100%; height: 200px;" placeholder="Comment"></textarea>
+        </p>
+      </div>
+      <div class="modal-footer">
+        <div class="btn-actions">
+          <fox-button
+              value="Confirm"
+              design="primary"
+              (click)="share(shareComment.value); shareModal.hide()"
+          ></fox-button>
+          <fox-button
+              class="cancel"
+              value="Close"
+              design="secondary"
+              (click)="shareModal.hide()"
+          ></fox-button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

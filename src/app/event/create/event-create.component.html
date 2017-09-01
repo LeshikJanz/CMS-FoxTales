@@ -1,0 +1,128 @@
+<div class="event-container">
+  <form
+      *ngIf="eventForm"
+      (ngSubmit)="addEvent(eventForm.value)"
+      class="form"
+      novalidate>
+
+    <div [formGroup]="eventForm">
+      <!-- Event Name -->
+      <form-input
+          [control]="eventForm.get('name')"
+          title="Event Name*">
+      </form-input>
+
+      <div class="line-group">
+        <div class="form-element">
+          <label>Start Date*</label>
+          <input class="picker-input" [ngModel]="startMomentDate"
+                 [returnObject]=" 'string' "
+                 [theme]=" '#f57f17' "
+                 [(dateTimePicker)]="startMomentDate" [mode]="'dropdown'" [pickerType]="'date'"
+                 placeholder="mm/dd/yy" [formControlName]="'startDate'"
+                 readonly>
+        </div>
+        <div class="form-element">
+          <label>End Date*</label>
+          <div>
+            <input class="picker-input" [ngModel]="endMomentDate"
+                   [theme]=" '#f57f17' "
+                   [returnObject]=" 'string' " [(dateTimePicker)]="endMomentDate"
+                   [mode]="'dropdown'" [pickerType]="'date'" placeholder="mm/dd/yy"
+                   [formControlName]="'endDate'" readonly>
+          </div>
+        </div>
+      </div>
+
+      <!-- Location -->
+      <div class="form-element location" id='searchBoxContainer'>
+        <label for="address">Address</label>
+        <input id='searchBox' formControlName="address" type="text" placeholder="Address" autocomplete="off">
+      </div>
+
+      <!-- Tags -->
+      <div class="form-element tags">
+        <label>Tags</label>
+        <tag-input
+            [transform]="tagTransformer"
+            formControlName="tags"
+            [maxItems]="365"
+            [(ngModel)]="selectedTags"
+            placeholder="+ Event"
+            secondaryPlaceholder="Start typing event name"
+            [(inputText)]='tagInputValue'
+        >
+          <tag-input-dropdown
+              [appendToBody]="false"
+              identifyBy="id"
+              displayBy="name"
+              [matchingFn]="matchingFn"
+              [autocompleteItems]="tags">
+          </tag-input-dropdown>
+        </tag-input>
+      </div>
+
+      <!--Client Access -->
+      <div class="form-element">
+        <label>Client Access*</label>
+        <fox-select
+            [title]="'Select client access'"
+            (change)="eventForm.get('clientId').setValue($event.id)"
+            [items]="clients"
+        >
+        </fox-select>
+      </div>
+
+      <div class="form-element">
+        <label>Notifications</label>
+        <switcher id="groupGallery" [options]="notificationOptions"
+                  (toggle)="notification=$event"></switcher>
+      </div>
+      <div>
+        <fox-button
+            value="CREATE"
+            [disabled]="eventForm.invalid || tagInputValue"
+            design="special"
+        ></fox-button>
+      </div>
+    </div>
+  </form>
+  <div class="map">
+    <div #myMap style='width: 100%; height: 500px;'></div>
+  </div>
+</div>
+
+<div class="modal fade" bsModal #buildExperienceModal="bs-modal" [config]="{backdrop: 'static'}" tabindex="-1"
+     role="dialog" aria-labelledby="mySmallModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title pull-left">Event Created</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="buildExperienceModal.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Continue and create an Experience?
+
+        <div class="btn-actions">
+          <fox-button
+              [value]="'CONTINUE'"
+              [design]="'gray'"
+              [routerLink]="['/experience-builder/intro']"
+              [queryParams]="{ id: experienceId  }"
+          ></fox-button>
+
+          <div class="btn-actions">
+            <fox-button
+                [value]="'NOT NOW'"
+                [design]="'gray'"
+                (click)="hide()"
+            ></fox-button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

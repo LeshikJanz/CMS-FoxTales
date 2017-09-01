@@ -1,0 +1,59 @@
+.group-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-top: 40px;
+  height: 65px;
+  width: inherit;
+  padding-bottom: 20px;
+  border-bottom: medium solid #b2bac4;
+  border-width: 1px;
+
+  .info {
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+  }
+
+  label {
+    font-family: WorkSans;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: 0.6px;
+    color: #b2bac4;
+    margin-bottom: 0;
+    margin-left: 20px;
+    cursor: pointer;
+  }
+
+  .group-name {
+    font-size: 24px;
+    font-family: Avenir-Book;
+    line-height: 1.38;
+    color: #343a40;  }
+
+   fox-button {
+     height: 36px;
+     width: 118px;
+     font-size: 14px
+  }
+}
+
+.circle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  width: 36px;
+  height: 36px;
+
+  img {
+    height: 16px;
+    width: 16px;
+  }
+}
+
+.group-dropdown event {
+  margin: 0 0 0 50px;
+}

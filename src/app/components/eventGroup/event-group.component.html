@@ -1,0 +1,22 @@
+<div *ngFor="let group of eventGroups">
+  <div class="group-container">
+    <div (click)="group.isOpen = !group.isOpen" class="info">
+      <img [hidden]="group.isOpen" class="circle" src="../../../assets/img/plus-outline.svg" alt="">
+      <img [hidden]="!group.isOpen" class="circle" src="../../../assets/img/minus-outline.svg" alt="">
+      <div>
+        <label class="group-name">{{group.name}}</label>
+        <label> {{group.events.length}} events</label>
+        <label [hidden]="!group.events.length">{{group.timePeriod}}</label>
+      </div>
+
+    </div>
+    <table-dropdown [options]="groupActions"
+                    [title]="'Action'" [size]="'big-ul'"
+                    (typeChanged)="onActionChanged(group, $event)"></table-dropdown>
+  </div>
+  <div [hidden]="!group.isOpen" *ngIf="group.events" class="group-dropdown">
+    <event *ngFor="let event of group.events" [event]="event" (toggle)="onChecked(group, $event)"
+           [eventActions]="eventActions">
+    </event>
+  </div>
+</div>

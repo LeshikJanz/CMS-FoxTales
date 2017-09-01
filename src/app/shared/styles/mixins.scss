@@ -1,0 +1,83 @@
+@mixin input-label {
+  font-family: AvenirNext-DemiBold;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1;
+  color: #4b535c;
+  margin-bottom: 10px;
+}
+
+@mixin input-placeholder {
+  font-family: WorkSans;
+  font-size: 16px;
+  color: #b2bac4;
+}
+
+@mixin input-container {
+  width: inherit;
+  height: 65px;
+  border-radius: 3px;
+  background-color: #ffffff;
+  border: solid 1px #3d3d3d;
+}
+
+@mixin input-text {
+  font-family: WorkSans;
+  font-size: 16px;
+  color: #3d3d3d;
+}
+
+@mixin dividing-line {
+  height: 2px;
+  background-color: #f1f1f1;
+}
+
+@mixin heading-1 {
+  font-family: Avenir-Light;
+  font-size: 40px;
+  font-weight: 300;
+  line-height: 1.2;
+  letter-spacing: 1px;
+  color: #343a40;
+}
+
+@mixin heading-2 {
+  font-family: Avenir-Book;
+  font-size: 26px;
+  line-height: 1.85;
+  letter-spacing: 0.5px;
+  color: #343a40;
+}
+
+@mixin heading-4 {
+  font-family: WorkSans;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 2.67;
+  letter-spacing: 0.6px;
+  color: #343a40;
+}
+
+@mixin dropdown-li {
+  height: 46px;
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+  cursor: pointer;
+  font-family: WorkSans !important;
+  font-size: 16px !important;
+  color: #343a40;
+  border-top: solid 1px #f5f6f7;
+}
+
+@mixin border-bottom {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+@mixin regular-text {
+  font-family: WorkSans;
+  font-size: 16px;
+  line-height: 1.75;
+  letter-spacing: 0.5px;
+  color: #626d78;
+}

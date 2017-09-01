@@ -1,0 +1,69 @@
+<div class="group-container">
+  <form
+      *ngIf="eventGroupForm"
+      (ngSubmit)="addEventGroup(eventGroupForm.value)"
+      class="form"
+      novalidate>
+
+    <div [formGroup]="eventGroupForm">
+      <!-- Name -->
+      <form-input
+          [control]="eventGroupForm.get('name')"
+          title="Group Name *">
+      </form-input>
+
+      <!--Client Access -->
+      <div class="form-element">
+        <label>Client Access*</label>
+        <fox-select
+            [title]="'Select client access'"
+            (change)="onClientAccessChange($event)"
+            [items]="clients"
+        >
+        </fox-select>
+      </div>
+
+      <!-- Events -->
+      <div class="form-element wider">
+        <label>Add events</label>
+        <img style="position: absolute; top: 20px;"
+             [hidden]="!loading" src="../../../../assets/img/spinner.gif" alt="">
+        <tag-input
+            formControlName="events"
+            [transform]="tagTransformer"
+            [readonly]="eventGroupForm.get('clientId').invalid"
+            [(inputText)]='tagInputValue'
+            [secondaryPlaceholder]="'Start typing event name'"
+            (click)="eventGroupForm.get('clientId').invalid && showWarning()"
+        >
+          <tag-input-dropdown
+              [identifyBy]="'id'"
+              [displayBy]="'name'"
+              [autocompleteItems]="events">
+          </tag-input-dropdown>
+        </tag-input>
+      </div>
+
+      <div class="form-element">
+        <label for="groupGallery">Enable Group Gallery</label>
+        <div class="gallery">
+          <switcher id="groupGallery" [options]="galleryOptions" (toggle)="isGalleryEnabled=$event"></switcher>
+          <configure-button
+              *ngIf="isGalleryEnabled === 1"
+              [value]="'Configure Gallery'"
+          ></configure-button>
+        </div>
+      </div>
+    </div>
+    <div>
+
+      <fox-button
+          [disabled]="eventGroupForm.invalid || tagInputValue"
+          [value]="'Save and Exit'"
+          [design]="'special'"
+      ></fox-button>
+    </div>
+  </form>
+
+</div>
+

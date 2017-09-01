@@ -12,17 +12,23 @@
     </nav>
   </div>
 
-  <div style="margin-right: 5%">
-    <div class="profile">
-      <img src="assets/img/column-search.svg">
-      <div class="user-profile">
-        <img class="user-img" src="assets/img/default-user-icon.png">
+  <div>
+    <search-bar (Change)="onSearch($event)"></search-bar>
+    <div class="profile btn-group" dropdown placement="bottom">
+      <div dropdownToggle class="btn btn-primary drop-button">
+        <img class="user-img" [hidden]="!user" [src]="user?.profileImagePath">
         <div>
-          <div class="user-name">Aaron Dodson</div>
-          <div class="user-design-name">Aaron Dodson design</div>
+          <div class="user-name">{{user && user.firstName}} {{user && user.lastName}}</div>
         </div>
       </div>
-      <img class="user-img" src="assets/img/help.png">
+      <div>
+        <img class="user-img" src="assets/img/help.png">
+      </div>
+      <ul *dropdownMenu class="dropdown-menu" role="menu">
+        <li *ngFor="let option of options" role="menuitem" (click)="onTypeChanged(option)">
+          {{option.action}}
+        </li>
+      </ul>
     </div>
   </div>
 </div>

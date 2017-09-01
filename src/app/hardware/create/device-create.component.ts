@@ -1,13 +1,15 @@
-import { Component, OnInit } from "@angular/core";
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { Router } from "@angular/router";
-import { IDevice } from "../device.interface";
-import { DeviceService } from "../device.service";
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import * as moment from 'moment';
+import { IDevice } from '../device.interface';
+import { DeviceService } from '../device.service';
 
 @Component({
   selector: 'device-create',
   templateUrl: './device-create.component.html',
-  styleUrls: ['./device-create.component.scss']
+  styleUrls: ['./device-create.component.scss',
+    '../../shared/styles/form-element.scss']
 })
 export class DeviceCreateComponent implements OnInit {
   /**
@@ -37,6 +39,7 @@ export class DeviceCreateComponent implements OnInit {
    * @type {any[]}
    */
   public clients: any[];
+  public purchaseMomentDate: string;
 
   /**
    * Constructor
@@ -104,7 +107,7 @@ export class DeviceCreateComponent implements OnInit {
    * @returns {void}
    */
   public addDevice(device: IDevice): void {
-
+    device['purchaseDate'] = moment(this.purchaseMomentDate, 'MMM DD YYYY').format();
     this.deviceService
       .addDevice(device)
       .subscribe(() => this.router.navigate(['/admin/devices']));
@@ -120,14 +123,12 @@ export class DeviceCreateComponent implements OnInit {
       name: ['', [
         Validators.required
       ]],
-      hubId: ['', [
-        Validators.required
-      ]],
       productId: ['', [
         Validators.required
       ]],
       clientId: [''],
-      locationId: ['']
+      locationId: [''],
+      purchaseDate: ''
     });
   }
 }

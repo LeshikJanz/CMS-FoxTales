@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'admin',
@@ -7,5 +8,12 @@ import { Router } from '@angular/router';
 })
 
 export class AdminComponent {
-  constructor(private router: Router) {}
+  public curLocation: string;
+
+  constructor(private location: Location,
+              private router: Router) {
+    this.router.events.subscribe((val) =>
+      this.curLocation = this.location.path()
+    );
+  }
 }

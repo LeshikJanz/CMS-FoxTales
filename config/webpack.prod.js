@@ -24,9 +24,15 @@ const OptimizeJsPlugin = require('optimize-js-plugin');
 const ENV = process.env.NODE_ENV = process.env.ENV = 'production';
 const HOST = process.env.HOST || 'localhost';
 const PORT = process.env.PORT || 8080;
-const API_URL = process.env.API_URL = 'http://client2.dev.getfoxtales.com/api';
+const API_URL = process.env.API_URL = 'http://test.getfoxtales.com/api';
 const AD_TENANT = process.env.AD_TENANT = 'common';
-const AD_CLIENT = process.env.AD_CLIENT = 'dce90867-97f5-42cd-b3e4-013ed22c1824';
+const AD_CLIENT = process.env.AD_CLIENT = '69ed64b6-9e40-4063-9a79-94f6e3b3359e';
+const FACEBOOK_ID = process.env.FACEBOOK_ID = '345799732489998';
+const TWITTER_ID = process.env.TWITTER_ID = 'a1mlndTaxVag8Y6N9srRRhtNM';
+const TUMBLR_ID = process.env.TUMBLR_ID = '129b6caCkciQVCFOlVG5dzUk8VgsAxTPcMc1EWqCnJtFlTjlIH';
+const AUTH_PROXY = process.env.AUTH_PROXY = 'https://auth-server.herokuapp.com/proxy';
+const GOOGLE_KEY = process.env.GOOGLE_KEY = 'AIzaSyAW7s_PMAH6CJRMMXRVWnQPevWqipMkCyA';
+const BING_KEY = process.env.BING_KEY = 'AgPn8P9gDiOFuiw33ebWeLKdx29J1Z-dNh3PqN03rsgLvu4bTQZwiDvQuwxFhqcZ';
 const METADATA = webpackMerge(commonConfig({
   env: ENV
 }).metadata, {
@@ -35,6 +41,12 @@ const METADATA = webpackMerge(commonConfig({
   API_URL: API_URL,
   AD_TENANT: AD_TENANT,
   AD_CLIENT: AD_CLIENT,
+  FACEBOOK_ID: FACEBOOK_ID,
+  TWITTER_ID: TWITTER_ID,
+  TUMBLR_ID: TUMBLR_ID,
+  AUTH_PROXY: AUTH_PROXY,
+  GOOGLE_KEY: GOOGLE_KEY,
+  BING_KEY: BING_KEY,
   ENV: ENV,
   HMR: false
 });
@@ -165,12 +177,24 @@ module.exports = function (env) {
         'API_URL': JSON.stringify(METADATA.API_URL),
         'AD_TENANT': JSON.stringify(METADATA.AD_TENANT),
         'AD_CLIENT': JSON.stringify(METADATA.AD_CLIENT),
+        'FACEBOOK_ID': JSON.stringify(METADATA.FACEBOOK_ID),
+        'TWITTER_ID': JSON.stringify(METADATA.TWITTER_ID),
+        'TUMBLR_ID': JSON.stringify(METADATA.TUMBLR_ID),
+        'AUTH_PROXY': JSON.stringify(METADATA.AUTH_PROXY),
+        'GOOGLE_KEY': JSON.stringify(METADATA.GOOGLE_KEY),
+        'BING_KEY': JSON.stringify(METADATA.BING_KEY),
         'HMR': METADATA.HMR,
         'process.env': {
           'ENV': JSON.stringify(METADATA.ENV),
           'API_URL' : JSON.stringify(METADATA.API_URL),
           'AD_TENANT': JSON.stringify(METADATA.AD_TENANT),
           'AD_CLIENT': JSON.stringify(METADATA.AD_CLIENT),
+          'FACEBOOK_ID': JSON.stringify(METADATA.FACEBOOK_ID),
+          'TWITTER_ID': JSON.stringify(METADATA.TWITTER_ID),
+          'TUMBLR_ID': JSON.stringify(METADATA.TUMBLR_ID),
+          'AUTH_PROXY': JSON.stringify(METADATA.AUTH_PROXY),
+          'GOOGLE_KEY': JSON.stringify(METADATA.GOOGLE_KEY),
+          'BING_KEY': JSON.stringify(METADATA.BING_KEY),
           'NODE_ENV': JSON.stringify(METADATA.ENV),
           'HMR': METADATA.HMR,
         }

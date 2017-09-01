@@ -1,0 +1,28 @@
+.group-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-top: 20px;
+
+  label {
+    margin-bottom: 0;
+  }
+
+  & > div:first-child {
+    display: flex;
+    width: 240px;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  add-button {
+    width: 204px;
+    height: 54px;
+    font-size: 15px;
+    border-radius: 6px;
+    color: white;
+    background-color: #2fd976;
+  }
+}
+
+

@@ -1,0 +1,37 @@
+<div class="container">
+  <form
+    (ngSubmit)="addExperience(experienceForm.value)"
+    class="form"
+    novalidate>
+
+    <div [formGroup]="experienceForm">
+
+      <!-- Tags -->
+      <div class="form-element">
+        <label>Brand Tags</label>
+        <tag-input
+          formControlName="tags"
+          [transform]="tagTransformer">
+          <tag-input-dropdown
+            [identifyBy]="'id'"
+            [displayBy]="'name'"
+            [autocompleteItems]="tags">
+          </tag-input-dropdown>
+        </tag-input>
+
+        <div ngxErrors="tags">
+          <div class="field-error" ngxError="required" when="touched">
+            Field is required
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <button
+          type="submit"
+          [disabled]="experienceForm.invalid"
+          class="create-button">CREATE</button>
+      </div>
+    </div>
+  </form>
+</div>

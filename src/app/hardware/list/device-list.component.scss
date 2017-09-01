@@ -1,4 +1,13 @@
+.actions {
+  height: 50px;
+}
+
 .list-container {
+}
+
+.buttons-block {
+  display: flex;
+  justify-content: space-between;
 }
 
 .create-client {

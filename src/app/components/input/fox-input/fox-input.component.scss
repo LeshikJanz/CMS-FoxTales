@@ -1,0 +1,112 @@
+.group {
+  position: relative;
+  width: inherit;
+
+  img {
+    position: absolute;
+    top: 10px;
+    width: 13px;
+    height: 13px;
+  }
+}
+
+input {
+  font-size: 18px;
+  padding: 5px 10px 10px 20px;
+  display: block;
+  width: inherit;
+  border: none;
+}
+
+input:focus {
+  outline: none;
+}
+
+/* LABEL ======================================= */
+label {
+  color: black;
+  font-family: Avenir-Heavy;
+  font-size: 16px;
+  font-weight: normal;
+  position: absolute;
+  pointer-events: none;
+  left: 20px;
+  top: 10px;
+  transition: 0.2s ease all;
+  -moz-transition: 0.2s ease all;
+  -webkit-transition: 0.2s ease all;
+}
+
+/* active state */
+input:focus ~ label, input:valid ~ label {
+  top: -10px;
+  left: -2px;
+  font-size: 12px;
+  color: #f57f17;
+}
+
+/* BOTTOM BARS ================================= */
+.bar {
+  position: relative;
+  display: block;
+  width: inherit;
+}
+
+.bar:before, .bar:after {
+  content: '';
+  height: 2px;
+  width: 0;
+  bottom: 5px;
+  position: absolute;
+  background: #f57f17;
+  transition: 0.2s ease all;
+  -moz-transition: 0.2s ease all;
+  -webkit-transition: 0.2s ease all;
+}
+
+/* active state */
+input:focus ~ .bar:before, input:focus ~ .bar:after {
+  width: 100%;
+
+  :host .sorting {
+    display: none;
+  }
+}
+
+/* active state */
+input:focus ~ .highlight {
+  -webkit-animation: inputHighlighter 0.3s ease;
+  -moz-animation: inputHighlighter 0.3s ease;
+  animation: inputHighlighter 0.3s ease;
+}
+
+/* ANIMATIONS ================ */
+@-webkit-keyframes inputHighlighter {
+  from {
+    background: #f57f17;
+  }
+  to {
+    width: 0;
+    background: transparent;
+  }
+}
+
+@-moz-keyframes inputHighlighter {
+  from {
+    background: #f57f17;
+  }
+  to {
+    width: 0;
+    background: transparent;
+  }
+}
+
+@keyframes inputHighlighter {
+  from {
+    background: #f57f17;
+  }
+  to {
+    width: 0;
+    background: transparent;
+  }
+}

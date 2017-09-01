@@ -1,59 +1,38 @@
-.container {
-  margin: 50px 70px;
-}
+@import "../../shared/styles/form-element";
+@import "../../shared/styles/animations";
+@import "../../shared/styles/mixins";
 
-.form {
+.client-container {
   width: 400px;
-}
 
-.form-element {
-  display: flex;
-  flex-direction: column;
-  margin-top: 25px;
-  margin-bottom: 10px;
-}
+  h4.client-licenses {
+    @include heading-4;
+    cursor: pointer;
 
-.ng-touched.ng-invalid {
-  border-color: red;
-}
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 
-.create-button {
-  width: 204px;
-  height: 54px;
-  border-radius: 6px;
-  background-color: #2fd976;
-  color: white;
-  font-size: 16px;
-  margin-top: 30px;
-}
+  .social-integrations {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
 
-.error-text {
-  color: red;
-  font-family: Avenir;
-  font-size: 10px;
-}
+    img {
+      margin: 10px;
+      box-shadow: none;
+      cursor: pointer;
+    }
 
-.form-element .input {
-  height: 30px;
-  font-size: 14px;
-}
-
-button.create-button[disabled] {
-  background-color: gray;
-  cursor: not-allowed;
-}
-
-.field-error {
-  font-style: italic;
-  color: red;
-}
-
-.form-group {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-
-  .license {
-    padding-right: 15px;
+    a {
+      margin-left: 15px;
+      font-family: WorkSans;
+      font-weight: 600;
+      line-height: 4;
+      letter-spacing: 0.4px;
+      color: #777c84;
+      font-size: 14px;
+    }
   }
 }

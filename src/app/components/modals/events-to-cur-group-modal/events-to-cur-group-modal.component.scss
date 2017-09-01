@@ -1,0 +1,28 @@
+@import "../../../shared/styles/modal";
+
+.modal-body {
+  min-height: 250px;
+  margin: 0 20px;
+
+  .btn-actions {
+    display: flex;
+    width: 100%;
+    margin: 20px 0;
+
+    justify-content: center;
+    align-items: center;
+
+    fox-button {
+      height: 55px;
+      width: 120px;
+      font-size: 16px;
+      margin: 0;
+      padding: 0;
+    }
+
+    .cancel {
+      margin-left: 25px;
+      width: 150px;
+    }
+  }
+}

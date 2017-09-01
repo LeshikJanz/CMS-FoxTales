@@ -1,0 +1,194 @@
+.ng-select-container {
+  width: inherit;
+  min-height: 65px;
+  margin-bottom: inherit;
+  border-radius: inherit;
+  border: inherit;
+}
+
+i > * {
+  display: none !important;
+}
+
+:host /deep/ .ui-select-match-item {
+  display: flex;
+  width: 115px;
+  align-items: center;
+  border-radius: 3px;
+  background-color: #d8dce1;
+}
+
+ng-select {
+  width: inherit;
+  height: inherit;
+}
+
+:host /deep/ .ui-select-container {
+  font-family: OpenSans;
+  font-size: 16px;
+  color: #3d3d3d;
+  height: inherit;
+  width: inherit;
+}
+
+:host /deep/ .ui-select-match-text {
+  font-family: OpenSans;
+  font-size: 16px;
+  padding-left: 12px;
+}
+
+:host /deep/ .ui-disabled {
+  opacity: 0.4 !important;
+  background-color: white !important;
+}
+
+:host /deep/ .ui-select-multiple .ui-select-match-item {
+  display: inline-block;
+  height: 44px;
+  line-height: 3;
+  width: 140px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #4b535c;
+  background-color: #d8dce1;
+  margin: 10px;
+
+  > span {
+    float: left;
+    font-family: WorkSans;
+    font-size: 14px;
+    font-weight: 500;
+    color: #4b535c;
+    margin-left: 15px;
+  }
+
+  > a {
+    margin-left: 5px;
+    display: inline-block;
+    line-height: 1.7 !important;
+  }
+}
+
+:host /deep/ .ui-select-match {
+  width: inherit;
+  height: inherit;
+  border-radius: 3px;
+  background-color: #ffffff;
+  border: solid 1px #3d3d3d !important;
+
+  > .btn {
+    width: inherit;
+    height: inherit;
+  }
+}
+
+:host /deep/ .ui-select-search {
+  width: inherit !important;
+  height: 65px !important;
+}
+
+:host /deep/ .dropdown-menu {
+  width: inherit !important;
+}
+
+:host /deep/ .caret {
+  display: none;
+}
+
+:host /deep/ .ui-select-toggle {
+  height: 65px !important;
+  width: inherit;
+  font-size: 18px;
+  border: none;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+:host /deep/ .ui-select-search {
+  font-family: OpenSans;
+  font-size: 18px;
+  border-radius: 5px;
+  border-style: double;
+  border-color: #b4b4b4;
+  height: 40px;
+  width: inherit;
+}
+
+:host /deep/ .ui-select-search::-webkit-input-placeholder {
+  color: transparent;
+}
+
+:host /deep/ .ui-select-placeholder {
+  font-family: WorkSans;
+  font-size: 16px;
+  color: #b2bac4 !important;
+  padding-left: 12px;
+}
+
+:host /deep/ .dropdown-toggle {
+  font-size: 16px;
+
+  &:after {
+    border-top: 10px solid #626d78 !important;
+  }
+}
+
+:host /deep/ .ui-select-choices.dropdown-menu {
+  width: 320px;
+}
+
+:host /deep/ .ui-select-choices-row > a {
+  font-family: OpenSans;
+  font-size: 16px;
+  display: flex !important;
+  align-items: center !important;
+  height: 46px;
+  border-bottom: 1px solid #d8dce1;
+}
+
+:host /deep/ .ui-select-choices-row.active > a {
+  color: #f57f17 !important;
+  background-color: transparent !important;
+  height: 46px;
+}
+
+:host /deep/ .ui-select-container .ui-select-search {
+  width: 320px;
+  background-image: url(../../../../assets/img/search.svg);
+  background-repeat: no-repeat;
+  background-size: 13px 13px;
+  background-position-y: center;
+  background-position-x: 12px;
+  margin: auto;
+  font-family: WorkSans;
+  font-size: 16px;
+  padding-left: 40px;
+  color: #b2bac4;
+  height: inherit;
+  align-self: center;
+}
+
+:host /deep/ .ui-select-multiple {
+  min-height: 65px;
+
+  .ui-select-search {
+    background-image: url(../../../../assets/img/drop-arrow.svg);
+    background-repeat: no-repeat;
+    background-size: 13px 13px;
+    background-position-x: 15px;
+    cursor: pointer;
+    float: right;
+    width: 50px !important;
+    height: 65px !important;
+  }
+}
+
+:host /deep/ .ui-select-choices::-webkit-scrollbar {
+  display: none;
+}
+
+:host /deep/ .btn-link, .btn-link:hover, .btn-link:focus, .btn-link:active {
+  display: none;
+}

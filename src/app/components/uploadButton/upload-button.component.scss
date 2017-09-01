@@ -1,8 +1,8 @@
 .upload-button {
   display: flex;
   flex-direction: row;
-  height: 139px;
-  width: 545px;
+  height: inherit;
+  width: inherit;
   background-color: white;
   border: 1px solid #ccc;
   border-radius: 16px;
@@ -13,6 +13,11 @@
   font-size: 16px;
   justify-content: center;
   align-items: center;
+
+}
+
+.file-area {
+  height: inherit;
 }
 
 .inputfile {
@@ -39,12 +44,14 @@
 }
 
 .inner-text {
-  font-family: 'Work Sans';
+  font-family: WorkSans;
   margin-top: 15px;
   margin-left: 20px;
+  white-space: normal;
 }
 
 .inner-text.default {
+  flex-wrap: wrap;
   font-size: 12px;
 }
 
@@ -80,6 +87,10 @@
   & .fail {
     color: #fc5d5d;
     font-size: 14px;
+  }
+
+  .inner-text {
+    margin-top: 0;
   }
 }
 

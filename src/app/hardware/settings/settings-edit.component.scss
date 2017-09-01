@@ -1,0 +1,106 @@
+@import "../../shared/styles/modal";
+
+.settings-btn {
+  width: 204px;
+  height: 54px;
+  font-size: 16px;
+  border-radius: 6px;
+  color: white;
+  background-color: #2fd976;
+  border: 0;
+  margin-right: 10px;
+}
+
+.modal-header {
+  justify-content: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: space-between;
+
+  .form-element {
+    select, input {
+      width: 200px;
+      height: 30px;
+    }
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 250px;
+  }
+
+  fox-select {
+    width: 300px;
+  }
+
+  fox-button {
+    height: 55px;
+    width: 120px;
+    font-size: 16px;
+    margin: 0;
+  }
+}
+
+.create-button {
+  width: 204px;
+  height: 54px;
+  border-radius: 6px;
+  background-color: #2fd976;
+  color: white;
+  font-size: 16px;
+}
+
+button.create-button[disabled] {
+  background-color: gray;
+  cursor: not-allowed;
+}
+
+.field-error {
+  font-style: italic;
+  color: red;
+}
+
+.form-group {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  .license {
+    padding-right: 15px;
+  }
+}
+
+.btn-actions {
+  display: flex;
+  justify-content: center;
+}
+
+.form-element {
+  align-items: center;
+}
+
+.radio-inline {
+  display: flex;
+  padding: 0;
+  label {
+    div {
+      padding: 5px 25px;
+      border: 1px solid gray;
+      background: #ffffff;
+    }
+
+    input {
+      display: none;
+    }
+
+    input:checked + div {
+      background: gray;
+    }
+  }
+}

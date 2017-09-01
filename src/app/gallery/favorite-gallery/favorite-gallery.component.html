@@ -1,0 +1,67 @@
+<div>
+  <div class="group-container">
+    <div class="filters">
+      <div>
+      <div>
+        <label>Sort by</label>
+        <dropdown
+          [title]="'Upcoming'"
+          [options]="sortActions"
+          [size]="'big'"
+          (typeChanged)="onSortChanged($event)"
+        ></dropdown>
+      </div>
+      <div>
+        <div class="wrap">
+          <label>Client</label>
+          <fox-select
+            [title]="'Select client'"
+            (change)="onClientSelected($event)"
+            [items]="clients">
+          </fox-select>
+        </div>
+
+        <div class="wrap">
+          <label>Event</label>
+          <fox-select
+            [title]="'Select event'"
+            (change)="onEventSelected($event)"
+            [items]="events">
+          </fox-select>
+        </div>
+
+        <div class="wrap">
+          <label>Experience</label>
+          <fox-select
+            [disabled]="!eventExperiences"
+            [title]="'Select experience'"
+            (change)="onExperienceSelected($event)"
+            [items]="eventExperiences">
+          </fox-select>
+        </div>
+          <label>Date Created</label>
+          <input class="picker-input" [ngModel]="createdDate"
+                 [returnObject]=" 'string' "
+                 [theme]=" '#f57f17' "
+                 [(dateTimePicker)]="createdDate"
+                 (dateTimePickerChange)="onCreatedDateChanged($event)"
+                 [mode]="'dropdown'"
+                 [pickerType]="'date'"
+                 placeholder="mm/dd/yy"
+                 readonly>
+
+      </div>
+      </div>
+
+      <fox-button
+              [value]="'Download Media'"
+              [design]="'primary'"
+              (click)="atgModal.show()"
+      ></fox-button>
+
+    </div>
+    <gallery-item-list (favorite)="onFavorite($event)" (toggle)="onChecked($event)" (deleted)="onDelete($event)" [galleryItems]="galleryItems"></gallery-item-list>
+    <download-modal [galleryItems]="galleryItems" #atgModal></download-modal>
+  </div>
+
+</div>

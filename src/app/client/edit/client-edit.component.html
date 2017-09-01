@@ -1,169 +1,115 @@
-<div class="container">
-
-  <h1>{{ client?.displayName }}</h1>
-
-  <img src="{{ client?.logo }}" alt="">
-
+<div class="client-container">
   <form
-    (ngSubmit)="updateClient()"
-    class="form"
-    novalidate>
+      *ngIf="clientForm"
+      (ngSubmit)="updateClient()"
+      class="form"
+      novalidate>
 
     <div [formGroup]="clientForm">
       <!-- Logo -->
-      <label style="font-size: 18px">Client logo</label>
-      <upload-button (imgUploaded)="onImgUploaded($event)"></upload-button>
+      <div class="form-element">
+        <label style="font-size: 22px">Client logo</label>
+        <div>
+          <img src="{{ logoBytes || client?.logo }}" *ngIf="logoBytes || client?.logo">
+          <a href="javascript:void(0)" *ngIf="logoBytes || client?.logo" (click)="cModal.show()">x</a>
+        </div>
+        <upload-button (imgUploaded)="onImgUploaded($event)"></upload-button>
+      </div>
 
       <!-- Name -->
-      <div class="form-element">
-        <label for="name">Client Name</label>
-        <input
-          id="name"
-          type="text"
-          class="form-control input"
-          [(ngModel)]="client.name"
-          formControlName="name"
-          placeholder="Name">
-
-        <div ngxErrors="name">
-          <div class="field-error"  ngxError="required" when="touched">
-            Field is required
-          </div>
-        </div>
-      </div>
-
-      <!-- Display Name -->
-      <div class="form-element">
-        <label for="displayName">Display Name</label>
-        <input
-          id="displayName"
-          type="text"
-          class="form-control input"
-          [(ngModel)]="client.displayName"
-          formControlName="displayName"
-          placeholder="Display Name">
-
-        <div ngxErrors="displayName">
-          <div class="field-error"  ngxError="required" when="touched">
-            Field is required
-          </div>
-        </div>
-      </div>
+      <form-input
+          [control]="clientForm.get('name')"
+          title="Client Name*">
+      </form-input>
 
       <!-- Email -->
-      <div class="form-element">
-        <label for="email">Email</label>
-        <input
-          id="email"
-          type="email"
-          class="form-control input"
-          [(ngModel)]="client.email"
-          formControlName="email"
-          placeholder="Email">
-
-        <div ngxErrors="email">
-          <div class="field-error"  ngxError="required" when="touched">
-            Field is required
-          </div>
-          <div class="field-error"  ngxError="email" when="dirty">
-            Invalid value
-          </div>
-        </div>
-      </div>
+      <form-input
+          [control]="clientForm.get('email')"
+          title="Email">
+      </form-input>
 
       <!-- Address -->
       <div class="form-element">
         <label for="address">Address</label>
         <input
-          id="address"
-          type="text"
-          class="form-control input"
-          [(ngModel)]="client.address"
-          formControlName="address"
-          autocorrect="off"
-          autocapitalize="off"
-          spellcheck="off"
-          #address
-          placeholder="Search for Location">
+            id="address"
+            type="text"
+            class="form-control input"
+            [(ngModel)]="client.address"
+            formControlName="address"
+            autocorrect="off"
+            autocapitalize="off"
+            spellcheck="off"
+            #address
+            placeholder="Search for Location"
+            alt="client.address">
 
         <div ngxErrors="address">
-          <div  ngxError="required" when="touched">
-            Field is required
-          </div>
-        </div>
-      </div>
-
-      <!-- Phone -->
-      <div class="form-element">
-        <label for="phone">Phone</label>
-        <input
-          id="phone"
-          type="text"
-          class="form-control input"
-          [(ngModel)]="client.phone"
-          formControlName="phone"
-          placeholder="Phone">
-
-        <div ngxErrors="phone">
           <div ngxError="required" when="touched">
             Field is required
           </div>
         </div>
       </div>
 
-      <!-- FreshBook -->
-      <div class="form-element">
-        <label for="freshBooks">FreshBook Url</label>
-        <input
-          id="freshBooks"
-          type="text"
-          class="form-control input"
-          [(ngModel)]="client.freshBooks"
-          formControlName="freshBooks"
-          placeholder="FreshBook Url">
+      <form-input
+          [control]="clientForm.get('phone')"
+          title="Phone">
+      </form-input>
 
-        <div ngxErrors="freshBooks">
-          <div ngxError="required" when="touched">
-            Field is required
-          </div>
-        </div>
-      </div>
+      <form-input
+          [control]="clientForm.get('freshBooks')"
+          title="FreshBook Url">
+      </form-input>
 
       <!-- Social Accounts -->
       <div class="form-element" formArrayName="socialAccounts">
         <label>Social Accounts</label>
 
-        <div *ngFor="let account of socialAccounts.controls">
+        <div class="" *ngFor="let account of socialAccounts.controls; let i = index">
           <input
-            type="text"
-            class="form-control input"
-            [formControl]="account"
-            placeholder="Social Account Url">
+              type="text"
+              class="form-control input"
+              [(ngModel)]="client.socialAccounts[i]"
+              [formControl]="account"
+              placeholder="Social Account Url">
+          <a class="delete-icon" href="javascript:void(0)" (click)="removeSocialAccount(i)">x</a>
         </div>
 
         <div>
-          <a href="javascript:void(0)" (click)="addSocialAccount()">add</a>
+          <a class="add-button" href="javascript:void(0)" (click)="addSocialAccount()">+ add another</a>
+        </div>
+      </div>
+      <div class="form-element" isAllowed="CreateEditSocialIntegrations">
+        <label>Social Integrations</label>
+        <div class="social-integrations" *ngFor="let social of socialIntegrations">
+          <img (click)="auth(social)" [src]="social.iconPath" alt="">
+          <a href="javascript:void(0)" (click)="auth(social)">{{ social.name }}</a>
+          <a href="javascript:void(0)" (click)="cancelAuth(social)">x</a>
         </div>
       </div>
     </div>
 
-    <!-- Licenses -->
-    <div class="form-group">
-      <label *ngFor="let license of licenses">
-        <input
-          type="checkbox"
-          name="selectedLicenses[]"
-          class="form-control input checkbox"
-          [(ngModel)]="license.checked">
-        {{ license.name }}
-      </label>
+    <div>
+      <h4
+          class="hvr-icon-wobble-horizontal-right client-licenses"
+          href="javascript:void(0)"
+          *ngIf="client"
+          isAllowed="ViewLicenseList"
+          [routerLink]="['/admin/client', client.id, 'license']">Client licenses</h4>
     </div>
 
     <div>
-      <button
-        type="submit"
-        [disabled]="clientForm.invalid"
-        class="create-button">UPDATE</button>
+      <fox-button
+          [value]="'UPDATE'"
+          [disabled]="clientForm.invalid"
+          [design]="'special'"
+      ></fox-button>
     </div>
   </form>
 </div>
+
+
+<confirm-modal #cModal
+               (confirm)="removeLogo()"
+               title="Are you sure?"
+               message="Are you sure you want to remove logo?"></confirm-modal>

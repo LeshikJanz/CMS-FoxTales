@@ -1,81 +1,48 @@
-<div class="container">
+<div class="client-container">
   <form
-    (ngSubmit)="addClient(clientForm.value)"
-    class="form"
-    novalidate>
+      *ngIf="clientForm"
+      (ngSubmit)="addClient(clientForm.value, $event);"
+      class="form"
+      novalidate>
 
     <div [formGroup]="clientForm">
       <!-- Logo -->
-      <label style="font-size: 18px">Client logo</label>
-      <upload-button (imgUploaded)="onImgUploaded($event)"></upload-button>
+      <div class="form-element">
+        <div>
+          <label style="font-size: 22px">Client logo</label>
+          <div>
+            <img src="{{ logoBytes }}">
+            <a href="javascript:void(0)" *ngIf="logoBytes" (click)="cModal.show()">x</a>
+          </div>
+        </div>
+        <upload-button (imgUploaded)="onImgUploaded($event)"></upload-button>
+      </div>
 
       <!-- Name -->
-      <div class="form-element">
-        <label for="name">Client Name</label>
-        <input
-          id="name"
-          class="form-control input"
-          type="text"
-          formControlName="name"
-          placeholder="Name">
-
-        <div ngxErrors="name">
-          <div class="field-error" ngxError="required" when="touched">
-            Field is required
-          </div>
-        </div>
-      </div>
-
-      <!-- Display Name -->
-      <div class="form-element">
-        <label for="displayName">Display Name</label>
-        <input
-          id="displayName"
-          type="text"
-          class="form-control input"
-          formControlName="displayName"
-          placeholder="Display Name">
-
-        <div ngxErrors="displayName">
-          <div class="field-error" ngxError="required" when="touched">
-            Field is required
-          </div>
-        </div>
-      </div>
+      <form-input
+          [control]="clientForm.get('name')"
+          title="Client Name*">
+      </form-input>
 
       <!-- Email -->
-      <div class="form-element">
-        <label for="email">Email</label>
-        <input
-          id="email"
-          type="email"
-          formControlName="email"
-          class="form-control input"
-          placeholder="Email">
-
-        <div ngxErrors="email">
-          <div class="field-error" ngxError="required" when="touched">
-            Field is required
-          </div>
-          <div ngxError="email" when="dirty">
-            Invalid value
-          </div>
-        </div>
-      </div>
+      <form-input
+          [control]="clientForm.get('email')"
+          title="Admin AD email*">
+      </form-input>
 
       <!-- Address -->
       <div class="form-element">
         <label for="address">Address</label>
         <input
-          id="address"
-          class="form-control input"
-          type="text"
-          formControlName="address"
-          autocorrect="off"
-          autocapitalize="off"
-          spellcheck="off"
-          #address
-          placeholder="Search for Location">
+            id="address"
+            class="form-control"
+            type="text"
+            formControlName="address"
+            autocorrect="off"
+            autocapitalize="off"
+            spellcheck="off"
+            #address
+            placeholder="Search for Location">
 
         <div ngxErrors="address">
           <div class="field-error" ngxError="required" when="touched">
@@ -85,177 +52,27 @@
       </div>
 
       <!-- Phone -->
-      <div class="form-element">
-        <label for="phone">Phone</label>
-        <input
-          id="phone"
-          class="form-control input"
-          type="text"
-          formControlName="phone"
-          placeholder="Phone">
-
-        <div ngxErrors="phone">
-          <div class="field-error" ngxError="required" when="touched">
-            Field is required
-          </div>
-        </div>
-      </div>
+      <form-input
+          [control]="clientForm.get('phone')"
+          title="Phone">
+      </form-input>
 
       <!-- FreshBook -->
-      <div class="form-element">
-        <label for="freshBooks">FreshBook Url</label>
-        <input
-          id="freshBooks"
-          class="form-control input"
-          type="text"
-          formControlName="freshBooks"
-          placeholder="FreshBook Url">
-
-        <div ngxErrors="freshBooks">
-          <div class="field-error" ngxError="required" when="touched">
-            Field is required
-          </div>
-        </div>
-      </div>
-
-
-      <!-- Tenant -->
-      <div class="form-element">
-        <label for="tenant">Tenant</label>
-        <input
-          id="tenant"
-          type="text"
-          formControlName="tenant"
-          class="form-control input"
-          placeholder="Tenant">
-
-        <div class="field-error" ngxErrors="tenant">
-          <div ngxError="required" when="touched">
-            Field is required
-          </div>
-        </div>
-      </div>
-
-      <!-- Tenant id -->
-      <div class="form-element">
-        <label for="tenantId">Tenant Id</label>
-        <input
-          id="tenantId"
-          class="form-control input"
-          type="text"
-          formControlName="tenantId"
-          placeholder="Tenant Id">
-      </div>
-        <div ngxErrors="tenantId">
-          <div class="field-error" ngxError="required" when="touched">
-            Field is required
-          </div>
-        </div>
-
-      <!-- Domain -->
-      <div class="form-element">
-        <label for="domain">Domain</label>
-        <input
-          id="domain"
-          class="form-control input"
-          type="text"
-          formControlName="domain"
-          placeholder="Domain">
-</div>
-        <div ngxErrors="domain">
-          <div class="field-error" ngxError="required" when="touched">
-            Field is required
-          </div>
-        </div>
-
-      <!-- Client Id -->
-      <div class="form-element">
-        <label for="clientId">Client Id</label>
-        <input
-          id="clientId"
-          class="form-control input"
-          type="text"
-          formControlName="clientId"
-          placeholder="Client Id">
-
-        <div ngxErrors="clientId">
-          <div class="field-error" ngxError="required" when="touched">
-            Field is required
-          </div>
-        </div>
-      </div>
-
-      <!-- Client Secret -->
-      <div class="form-element">
-        <label for="clientSecret">Client Secret</label>
-        <input
-          id="clientSecret"
-          class="form-control input"
-          type="text"
-          formControlName="clientSecret"
-          placeholder="Client Secret">
-
-        <div ngxErrors="clientSecret">
-          <div class="field-error" ngxError="required" when="touched">
-            Field is required
-          </div>
-        </div>
-      </div>
-
-      <!-- Client Secret Valid To -->
-      <div class="form-element">
-        <label for="clientSecretValidTo">Client Secret Valid To</label>
-        <input
-          id="clientSecretValidTo"
-          class="form-control input"
-          type="date"
-          formControlName="clientSecretValidTo"
-          placeholder="Client Secret Valid To">
-
-        <div ngxErrors="clientSecretValidTo">
-          <div class="field-error" ngxError="required" when="touched">
-            Field is required
-          </div>
-        </div>
-      </div>
-
-      <!-- Social Accounts -->
-      <div class="form-element" formArrayName="socialAccounts">
-        <label>Social Accounts</label>
-
-        <div *ngFor="let account of socialAccounts.controls">
-          <input
-            type="text"
-            class="form-control input"
-            [formControl]="account"
-            placeholder="Social Account Url">
-        </div>
-
-        <div>
-          <a href="javascript:void(0)" (click)="addSocialAccount()">add</a>
-        </div>
-      </div>
+      <form-input
+          [control]="clientForm.get('freshBooks')"
+          title="FreshBook Url">
+      </form-input>
     </div>
 
-    <!-- Licenses -->
-    <div class="form-group">
-      <div *ngFor="let license of licenses" class="license" >
-        <input
-        type="checkbox"
-        name="selectedLicenses[]"
-        class="form-control input checkbox"
-        [(ngModel)]="license.checked">
-        <label>
-          {{ license.name }}
-        </label>
-      </div>
-    </div>
-
-    <div>
-      <button
-        type="submit"
+    <fox-button
+        [value]="'CREATE'"
         [disabled]="clientForm.invalid"
-        class="create-button">CREATE</button>
-    </div>
+        [design]="'special'"
+    ></fox-button>
   </form>
 </div>
+
+<confirm-modal #cModal
+               (confirm)="removeLogo()"
+               title="Are you sure?"
+               message="Are you sure you want to remove logo?"></confirm-modal>

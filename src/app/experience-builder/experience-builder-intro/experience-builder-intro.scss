@@ -1,0 +1,59 @@
+@import "../../shared/styles/form-element";
+
+.experience-builder-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+
+  .form {
+    width: 60%;
+
+    > h1:first-child {
+      padding-bottom: 40px;
+    }
+
+    fox-button {
+      margin: 0;
+      padding: 0;
+    }
+  }
+
+  .content {
+    width: 25%;
+    min-width: 200px;
+    align-self: center;
+  }
+}
+
+:host /deep/ switcher li {
+  height: 65px !important;
+  width: 130px !important;
+}
+
+.routing {
+  display: flex;
+  height: 140px;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px;
+
+  > div {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+  }
+
+  img {
+    height: 10px;
+    width: 15px;
+  }
+
+  a {
+    font-family: WorkSans;
+    font-weight: 600;
+    line-height: 4;
+    letter-spacing: 0.4px;
+    color: #777c84;
+    font-size: 12px;
+  }
+}
