@@ -1,0 +1,11 @@
+{
+  "app": {
+    "js": "http://localhost:8081/app.js"
+  },
+  "vendor": {
+    "js": "http://localhost:8081/vendor.js"
+  },
+  "polyfills": {
+    "js": "http://localhost:8081/polyfills.js"
+  }
+}
